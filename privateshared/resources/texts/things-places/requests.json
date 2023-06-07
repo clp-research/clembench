@@ -1,0 +1,47 @@
+{
+    "left": [
+        "What is on your left?"
+    ],
+    "right": [
+        "What is on your right?"
+    ],
+    "top": [
+        "What is at the top?"
+    ],
+    "bottom": [
+        "What is at the bottom?"
+    ],
+    "center": [
+        "What is at the center?"
+    ],
+    "northwest": [
+        "What is in the northwest?"
+    ],
+    "northeast": [
+        "What is in the northeast?"
+    ],
+    "southwest": [
+        "What is in the southwest?"
+    ],
+    "southeast": [
+        "What is in the southeast?"
+    ],
+    "here": [
+        "What is here?"
+    ],
+    "there": [
+        "What is there?"
+    ],
+    "nowhere": [
+        "What is nowhere?"
+    ],
+    "everywhere": [
+        "What is everywhere?"
+    ],
+    "inside": [
+        "What is inside?"
+    ],
+    "outside": [
+        "What is outside?"
+    ]
+}

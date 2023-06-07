@@ -1,0 +1,37 @@
+{
+    "appetizer": [
+        "What would you like as appetizers?",
+        "Would you like to order appetizers?",
+        "Any appetizers?",
+        "Shall I bring you any appetizers?",
+        "Have you chosen your appetizers?"
+    ],
+    "drink": [
+        "What would you like to drink?",
+        "What are you drinking today?",
+        "Have you decided what you'd like to drink?",
+        "Any beverages?",
+        "May I bring you anything to drink?"
+    ],
+    "main-dish": [
+        "What would you like to eat?",
+        "What is your choice for the main dish?",
+        "What do you prefer as main dish?",
+        "Have you decided what you'd like as the main meal?",
+        "What can I bring you for the main dish?"
+    ],
+    "dessert": [
+        "Would you like anything for dessert?",
+        "Any desserts?",
+        "Would you like to order dessert?",
+        "Anything sweet after the meal?",
+        "What is your preference for dessert?"
+    ],
+    "salad": [
+        "Would you like any salads?",
+        "What salad are you having today?",
+        "Salads?",
+        "Which salad may I bring you?",
+        "Do you also want a salad?"
+    ]
+}

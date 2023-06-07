@@ -1,0 +1,54 @@
+{
+    "from": [
+        "Berlin",
+        "Paris",
+        "Copenhagen",
+        "Hamburg",
+        "London",
+        "Rome",
+        "Frankfurt",
+        "Prague",
+        "Cologne",
+        "Stockholm"
+    ],
+    "to": [
+        "Lisbon",
+        "Madrid",
+        "Moscow",
+        "Dresden",
+        "Stuttgart",
+        "Vienna",
+        "Athens",
+        "Lyon",
+        "Amsterdam",
+        "Brussels"
+    ],
+    "by": [
+        "Plane",
+        "Train",
+        "Rented Car",
+        "Taxi",
+        "Boat",
+        "Overnight bus"
+    ],
+    "class": [
+        "First",
+        "Business",
+        "Economy",
+        "The cheapest",
+        "The most comfortable"
+    ],
+    "when": [
+        "On April 10",
+        "Next month, first week",
+        "Next Sunday",
+        "In two weeks",
+        "On March 3",
+        "Anytime next week",
+        "In May",
+        "Third week of June",
+        "On August 15",
+        "At the end of next week",
+        "In ten days"
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "from": [
+        "Where do you want to depart from?",
+        "What is the origin of your trip?",
+        "Where are you departing from?",
+        "Where does your trip begin?",
+        "Please inform your place of departure."
+    ],
+    "to": [
+        "Where do you want to go?",
+        "What is your destination?",
+        "Where are you going to?",
+        "What is the destination of your trip?",
+        "Please inform your destination."
+    ],
+    "by": [
+        "What kind of transportation do you want to use?",
+        "Which means of transportation do you prefer?",
+        "How do you want to reach your destination?",
+        "Please let me know what kind of transport you want.",
+        "Do you want a specific kind of transport?"
+    ],
+    "class": [
+        "What class do you prefer?",
+        "Should I book first, business or economy class?",
+        "Do you have a preference for class?",
+        "Please inform the class I should book for you.",
+        "What kind of class do you wish?"
+    ],
+    "when": [
+        "When are you leaving?",
+        "When do you wish to start your journey?",
+        "When does your trip begin?",
+        "When is the trip?",
+        "What is the date of departure?"
+    ]
+}

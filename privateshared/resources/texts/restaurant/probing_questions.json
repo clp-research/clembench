@@ -1,0 +1,37 @@
+{
+    "appetizer": [
+        "Have you told the waiter what you want as appetizers?",
+        "Does the waiter already know your preference for appetizers?",
+        "Has the waiter asked about your choice for appetizers?",
+        "Have you informed the waiter what appetizers you wish?",
+        "Is the waiter aware of what you chose for appetizers?"
+    ],
+    "drink": [
+        "Does the waiter know what you want to drink?",
+        "Have you told the waiter what is your preference for beverages?",
+        "Do you think the waiter is aware of what you will drink?",
+        "Has the waiter been informed about your choice for drinks?",
+        "If I asked the waiter what you want to drink, would he know the answer?"
+    ],
+    "main-dish": [
+        "Does the waiter know your preference for the main dish?",
+        "Have you informed the waiter about what you want as main dish?",
+        "Do you believe the waiter knows what to bring you for the main part of the meal?",
+        "Is the waiter aware of your choice for the main dish?",
+        "Have you ordered the main dish?"
+    ],
+    "dessert": [
+        "Have you ordered dessert?",
+        "Does the waiter know what you want for dessert?",
+        "If I asked the waiter what you'd like for dessert, would he know the answer?",
+        "Have you informed the waiter about your preference for dessert?",
+        "Has the waiter asked about your choice for dessert?"
+    ],
+    "salad": [
+        "Does the waiter know what salad you want?",
+        "Is the waiter aware of your preference for salad?",
+        "Can the waiter already know what salad you are ordering?",
+        "Have you already ordered salad?",
+        "Has the waiter been informed about your choice for a salad?"
+    ]
+}

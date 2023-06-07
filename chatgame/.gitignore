@@ -1,0 +1,6 @@
+instances/*.template
+requests/*.json
+records/*.json
+records/*.txt
+records/*.md
+records/

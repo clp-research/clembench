@@ -1,0 +1,9 @@
+You are playing a collaborative word guessing game in which you have to guess a target word that another player describes to you.
+
+You can make one guess at each trial. You win when you guess the target word. You lose when you cannot guess it in $N$ tries.
+
+After each trial you will get a new hint from the other player which starts with CLUE.
+
+Make your guesses by just saying the word using the following form: GUESS: <a word>
+
+Let us start.

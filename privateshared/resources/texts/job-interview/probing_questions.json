@@ -1,0 +1,39 @@
+{
+    "bachelor": [
+        "Does the interviewer know what your bachelor's degree is?",
+        "Have you told the recruiter about your bachelor course?",
+        "If I asked the interviewer what area you studied, would he or she know the answer?",
+        "Has the recruiter been informed about the field of your bachelor?",
+        "Does the interviewer know what you have studied in your bachelor?"
+    ],
+    "industry-experience": [
+        "Does the recruiter know about the years of your industry experience?",
+        "Have you told the interviewer about the years of your experience in the industry?",
+        "Has the interviewer been informed about your time of industry experience?",
+        "Does the recruiter already know how long you have worked in the industry?",
+        "If I asked the recruiter how long you have been working in the industry, would he or she know the answer?"
+    ],
+    "highest-education": [
+        "Have you informed the recruiter about your highest academic degree?",
+        "Does the interviewer know your level of education?",
+        "Do you think the recruiter knows your latest academic level?",
+        "Is the interviewer aware of your highest education level?",
+        "Have you informed the recruiter about your latest academic degree?"
+    ],
+    "other-skills": [
+        "Have you informed the interviewer about your other skills?",
+        "Does the recruiter know your additional skills?",
+        "Do you think the recruiter knows what other skills you have?",
+        "Is the recruiter aware of your other skills?",
+        "Have you told the interviewer about your extra skills?"
+    ],
+    "availability": [
+        "Does the recruiter know when you can start?",
+        "Have you told the interviewer when you want to start?",
+        "Has the recruiter been informed about your availability?",
+        "Does the interviewer already know your preferred starting date?",
+        "If I asked the interviewer when you are able to start working, would he or she know the answer?",
+        "Have you informed the interviewer about your dates?",
+        "Do you think the recruiter knows when you want to start?"
+    ]
+}

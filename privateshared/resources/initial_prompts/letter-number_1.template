@@ -1,0 +1,11 @@
+Numbers have been assigned to letters, but the questioner does not know about it yet. Here is the mapping:
+
+$INSTANCE$
+
+Questions from the questioner will start with $QUESTIONER$. Please reply in the form: $ANSWER$<some text>
+
+I will also ask you questions. These questions will start with $ME$. Please answer these questions with: $ASIDE$<some text>
+
+Important: Give short, direct answers!
+
+Let us start.

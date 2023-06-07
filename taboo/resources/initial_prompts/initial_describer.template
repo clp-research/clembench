@@ -1,0 +1,22 @@
+You are playing a collaborative word guessing game in which you have to describe a target word for another player to guess.
+
+Rules:
+(a) You have to reply in the form: CLUE: <some text>. Guesses from the other player will start with GUESS.
+(b) You cannot use the target word itself, parts or morphological variants of it in your description.
+(c) In addition, the same rules apply for related words which are provided below.
+
+End conditions:
+(i) If you use the target word or a related word in your description, then you lose.
+(ii) If the other player can guess the target word in $N$ tries, you both win.
+
+Let us start.
+
+This is the target word that you need to describe and that the other player needs to guess:
+
+$TARGET_WORD$
+
+Related words are:
+
+$REL_WORD$
+
+Important: You are under time pressure, give short descriptions that are to the point!

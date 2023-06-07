@@ -1,0 +1,47 @@
+{
+    "left": [
+        "Does the questioner know what is on your left?"
+    ],
+    "right": [
+        "Does the questioner know what is on your right?"
+    ],
+    "top": [
+        "Does the questioner know what is at the top?"
+    ],
+    "bottom": [
+        "Does the questioner know what is at the bottom?"
+    ],
+    "center": [
+        "Does the questioner know what is at the center?"
+    ],
+    "northwest": [
+        "Does the questioner know what is in the northeast?"
+    ],
+    "northeast": [
+        "Does the questioner know what is in the northwest?"
+    ],
+    "southwest": [
+        "Does the questioner know what is in the southwest?"
+    ],
+    "southeast": [
+        "Does the questioner know what is in the southeast?"
+    ],
+    "here": [
+        "Does the questioner know what is here?"
+    ],
+    "there": [
+        "Does the questioner know what is there?"
+    ],
+    "nowhere": [
+        "Does the questioner know what is nowhere?"
+    ],
+    "everywhere": [
+        "Does the questioner know what is everywhere?"
+    ],
+    "inside": [
+        "Does the questioner know what is inside?"
+    ],
+    "outside": [
+        "Does the questioner know what is outside?"
+    ]
+}

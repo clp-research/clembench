@@ -1,0 +1,35 @@
+{
+    "bachelor": [
+        "What was your bachelor course?",
+        "In which area did you graduate?",
+        "What did you study in your bachelor?",
+        "What is your bachelor background?",
+        "What bachelor course did you attend?"
+    ],
+    "industry-experience": [
+        "How many years of experience in the industry do you have?",
+        "How long have you worked in the industry?",
+        "For how long have you been working in the industry?",
+        "How many years have you worked in industry positions?",
+        "How long have you been working in your area in the industry?"
+    ],
+    "highest-education": [
+        "What is your highest academic degree?",
+        "What academic level have you achieved?",
+        "What is your lastest education degree?"
+    ],
+    "other-skills": [
+        "Do you have any other skills?",
+        "What other skills do you have?",
+        "Do you have additional skills?",
+        "What are your other relevant skills?",
+        "Please tell me what other skills you have."
+    ],
+    "availability": [
+        "When can you start?",
+        "From when are you available?",
+        "Please tell me when you could start working for us.",
+        "What is your availability?",
+        "When would you be able to start working here?"
+    ]
+}

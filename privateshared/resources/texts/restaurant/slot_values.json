@@ -1,0 +1,63 @@
+{
+    "appetizer": [
+        "Bruschetta",
+        "Spring rolls",
+        "Antipasti",
+        "Guacamole and nachos",
+        "Fries",
+        "Tomato soup",
+        "Bread and butter",
+        "Onion rings",
+        "Stuffed mushrooms",
+        "Garlic bread"
+    ],
+    "drink": [
+        "Wine",
+        "Bier",
+        "Orange juice",
+        "Soda",
+        "Sparkling water",
+        "Apple juice",
+        "Lemonade",
+        "Ginger ale",
+        "Tea",
+        "Champagne"
+
+    ],
+    "main-dish": [
+        "Lasagna",
+        "Pizza",
+        "Sushi",
+        "Polenta",
+        "Falafel",
+        "Biryani",
+        "Burrito bowl",
+        "Potato curry",
+        "Lentil soup",
+        "Grilled vegetables"
+    ],
+    "dessert": [
+        "Chocolate cake",
+        "Tiramisu",
+        "Ice cream",
+        "Strudel",
+        "Waffles",
+        "Fruit salad",
+        "Crème brûlée",
+        "Lemon pie",
+        "Brownie",
+        "Macaroons"
+    ],
+    "salad": [
+        "Caesar",
+        "Tomato salad",
+        "Greek salad",
+        "Avocado salad",
+        "Tofu salad",
+        "Rocket salad",
+        "Lettuce salad",
+        "Cucumber salad",
+        "Zucchinni and olive salad",
+        "Baby spinach salad"
+    ]
+}

@@ -1,0 +1,152 @@
+{
+  "experiments": [
+    {
+      "name": "low_en",
+      "dialogue_partners": [["gpt-3.5-turbo", "claude-v1.3"], ["claude-v1.3", "gpt-3.5-turbo"]],
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "klein",
+          "related_word": ["small", "little", "short"]
+        }, {
+          "game_id": 1,
+          "target_word": "atmospheric",
+          "related_word": ["atmosphere", "ambient", "evocative"]
+        }, {
+          "game_id": 2,
+          "target_word": "bloody",
+          "related_word": ["blood", "rare", "bleeding"]
+        }, {
+          "game_id": 3,
+          "target_word": "colonial",
+          "related_word": ["colony", "cologne", "settlement"]
+        }, {
+          "game_id": 4,
+          "target_word": "diy",
+          "related_word": ["home", "yourself", "do"]
+        }, {
+          "game_id": 5,
+          "target_word": "levy",
+          "related_word": ["raise", "charge", "gather"]
+        }, {
+          "game_id": 6,
+          "target_word": "bypass",
+          "related_word": ["circumvent", "around", "pass"]
+        }, {
+          "game_id": 7,
+          "target_word": "expedition",
+          "related_word": ["journey", "discovery", "exploration"]
+        }, {
+          "game_id": 8,
+          "target_word": "rarely",
+          "related_word": ["rare", "scarce", "seldom"]
+        }, {
+          "game_id": 9,
+          "target_word": "autograph",
+          "related_word": ["author", "pencil", "signature"]
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "You are playing a collaborative word guessing game in which you have to describe a target word for another player to guess.\n\nRules:\n(a) Guesses from the other player will start with GUESS. You have to reply in the form: CLUE: <some text>\n(b) You cannot use the target word itself, parts or morphological variants of it in your description.\n(c) In addition, the same rules apply for related words which are provided below.\n\nEnd conditions:\n(i) If you use the target word or a related word in your description, then you lose.\n(ii) If the other player can guess the target word in $N$ tries, you both win.\n\nLet us start.\n\nThis is the target word that you need to describe and that the other player needs to guess:\n\n$TARGET_WORD$\n\nRelated words are:\n\n$REL_WORD$\n\nImportant: You are under time pressure, give short descriptions that are to the point!",
+      "guesser_initial_prompt": "You are playing a collaborative word guessing game in which you have to guess a target word that another player describes to you.\n\nYou can make one guess at each trial. You win when you guess the target word. You lose when you cannot guess it in $N$ tries.\n\nAfter each trial you will get a new hint from the other player which starts with CLUE.\n\nMake your guesses by just saying the word using the following form: GUESS: <a word>\n\nLet us start.\n"
+    }, {
+      "name": "medium_en",
+      "dialogue_partners": [["gpt-3.5-turbo", "claude-v1.3"], ["claude-v1.3", "gpt-3.5-turbo"]],
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "contributor",
+          "related_word": ["contribute", "employee", "participant"]
+        }, {
+          "game_id": 1,
+          "target_word": "spice",
+          "related_word": ["food", "hot", "condiment"]
+        }, {
+          "game_id": 2,
+          "target_word": "subsidiary",
+          "related_word": ["incidental", "circumstantial", "substantial"]
+        }, {
+          "game_id": 3,
+          "target_word": "edinburgh",
+          "related_word": ["scotland", "city", "capital"]
+        }, {
+          "game_id": 4,
+          "target_word": "plaza",
+          "related_word": ["square", "space", "piazza"]
+        }, {
+          "game_id": 5,
+          "target_word": "athlete",
+          "related_word": ["sports", "olympic", "athletic"]
+        }, {
+          "game_id": 6,
+          "target_word": "anymore",
+          "related_word": ["any", "more", "some"]
+        }, {
+          "game_id": 7,
+          "target_word": "cabinet",
+          "related_word": ["cupboard", "wardrobe", "locker"]
+        }, {
+          "game_id": 8,
+          "target_word": "czech",
+          "related_word": ["country", "republic", "language"]
+        }, {
+          "game_id": 9,
+          "target_word": "mesh",
+          "related_word": ["entangle", "net", "intertwine"]
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "You are playing a collaborative word guessing game in which you have to describe a target word for another player to guess.\n\nRules:\n(a) Guesses from the other player will start with GUESS. You have to reply in the form: CLUE: <some text>\n(b) You cannot use the target word itself, parts or morphological variants of it in your description.\n(c) In addition, the same rules apply for related words which are provided below.\n\nEnd conditions:\n(i) If you use the target word or a related word in your description, then you lose.\n(ii) If the other player can guess the target word in $N$ tries, you both win.\n\nLet us start.\n\nThis is the target word that you need to describe and that the other player needs to guess:\n\n$TARGET_WORD$\n\nRelated words are:\n\n$REL_WORD$\n\nImportant: You are under time pressure, give short descriptions that are to the point!",
+      "guesser_initial_prompt": "You are playing a collaborative word guessing game in which you have to guess a target word that another player describes to you.\n\nYou can make one guess at each trial. You win when you guess the target word. You lose when you cannot guess it in $N$ tries.\n\nAfter each trial you will get a new hint from the other player which starts with CLUE.\n\nMake your guesses by just saying the word using the following form: GUESS: <a word>\n\nLet us start.\n"
+    }, {
+      "name": "high_en",
+      "dialogue_partners": [["gpt-3.5-turbo", "claude-v1.3"], ["claude-v1.3", "gpt-3.5-turbo"]],
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "israel",
+          "related_word": ["country", "tel aviv", "jew"]
+        }, {
+          "game_id": 1,
+          "target_word": "digital",
+          "related_word": ["analog", "computer", "digit"]
+        }, {
+          "game_id": 2,
+          "target_word": "vol",
+          "related_word": ["volume", "sound", "audio"]
+        }, {
+          "game_id": 3,
+          "target_word": "provision",
+          "related_word": ["commission", "brokerage", "money"]
+        }, {
+          "game_id": 4,
+          "target_word": "msn",
+          "related_word": ["microsoft", "network", "serial"]
+        }, {
+          "game_id": 5,
+          "target_word": "street",
+          "related_word": ["road", "asphalt", "drive"]
+        }, {
+          "game_id": 6,
+          "target_word": "identity",
+          "related_word": ["equality", "id", "person"]
+        }, {
+          "game_id": 7,
+          "target_word": "power",
+          "related_word": ["plant", "electricity", "physics"]
+        }, {
+          "game_id": 8,
+          "target_word": "skin",
+          "related_word": ["animal", "leather", "human"]
+        }, {
+          "game_id": 9,
+          "target_word": "degree",
+          "related_word": ["circle", "qualification", "measure"]
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "You are playing a collaborative word guessing game in which you have to describe a target word for another player to guess.\n\nRules:\n(a) Guesses from the other player will start with GUESS. You have to reply in the form: CLUE: <some text>\n(b) You cannot use the target word itself, parts or morphological variants of it in your description.\n(c) In addition, the same rules apply for related words which are provided below.\n\nEnd conditions:\n(i) If you use the target word or a related word in your description, then you lose.\n(ii) If the other player can guess the target word in $N$ tries, you both win.\n\nLet us start.\n\nThis is the target word that you need to describe and that the other player needs to guess:\n\n$TARGET_WORD$\n\nRelated words are:\n\n$REL_WORD$\n\nImportant: You are under time pressure, give short descriptions that are to the point!",
+      "guesser_initial_prompt": "You are playing a collaborative word guessing game in which you have to guess a target word that another player describes to you.\n\nYou can make one guess at each trial. You win when you guess the target word. You lose when you cannot guess it in $N$ tries.\n\nAfter each trial you will get a new hint from the other player which starts with CLUE.\n\nMake your guesses by just saying the word using the following form: GUESS: <a word>\n\nLet us start.\n"
+    }
+  ]
+}

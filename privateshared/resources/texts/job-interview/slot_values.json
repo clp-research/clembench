@@ -1,0 +1,58 @@
+{
+    "bachelor": [
+        "Mathematics",
+        "Chemistry",
+        "Computer Science",
+        "Psychology",
+        "Law",
+        "Mechanical Engineering",
+        "Economics",
+        "Medicine",
+        "Literature",
+        "Music"
+    ],
+    "industry-experience": [
+        "None",
+        "One year",
+        "Two years",
+        "Three years",
+        "Four years",
+        "Five years",
+        "Ten years",
+        "Fifteen years",
+        "Twenty years",
+        "One and a half year"
+    ],
+    "highest-education": [
+        "Bachelor",
+        "Master",
+        "PhD",
+        "PostDoc",
+        "Professor"
+    ],
+    "other-skills": [
+        "French",
+        "Python",
+        "Project management",
+        "Java",
+        "Spanish",
+        "Leadership skills",
+        "Software development",
+        "Playing piano",
+        "Cooking",
+        "Research"
+
+    ],
+    "availability": [
+        "From December 10",
+        "Next month, first week",
+        "In three months",
+        "In two weeks",
+        "From July 15",
+        "Anytime next month",
+        "From September",
+        "Last week of January",
+        "As soon as possible",
+        "Tomorrow"
+    ]
+}

@@ -15,10 +15,10 @@
         "Does the questioner know what is at the center?"
     ],
     "northwest": [
-        "Does the questioner know what is in the northeast?"
+        "Does the questioner know what is in the northwest?"
     ],
     "northeast": [
-        "Does the questioner know what is in the northwest?"
+        "Does the questioner know what is in the northeast?"
     ],
     "southwest": [
         "Does the questioner know what is in the southwest?"

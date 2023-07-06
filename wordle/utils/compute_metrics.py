@@ -112,10 +112,6 @@ class ComputeMetrics:
 
         feedback_list = [record[1] for record in records]
         score_list = []
-        if len(feedback_list) == 1:
-            # Looks like the game was won in first guess!
-            score_list = [25]
-            return score_list
 
         for feedback in feedback_list:
             # Add a score of 5 for letters in green

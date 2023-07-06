@@ -601,6 +601,9 @@ class WordleGameMaster(GameMaster):
             turn_score = self.cm.turns(turn_results)
             # Compute strategy score
             turn_strategy_score = self.cm.turns_strategy(turn_results)
+            if len(turn_strategy_score) == 1:
+                if aborted:
+                    turn_strategy_score = [0]
 
         # self.log_episode_score("success", episode_score)
         self.log_episode_score(metrics.BENCH_SCORE, speed)

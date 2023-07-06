@@ -289,7 +289,7 @@ class PrivateShared(GameMaster):
             gold += turn_gt
             pred += turn_pred
             # n_probes = n_slots + 1, we take the third round of probing here
-            if turn == 2:
+            if turn == int((len(self.game.slots) + 1) / 2) - 1:
                 mid_acc = acc_score(turn_gt, turn_pred) if not aborted else np.nan
                 self.log_episode_score('Middle-Accuracy', mid_acc)
 

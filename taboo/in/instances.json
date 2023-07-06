@@ -106,7 +106,7 @@
         }, {
           "game_id": 3,
           "target_word": "agricultural",
-          "related_word": ["agrarian", "farming", "rural"]
+          "related_word": ["agrarian", "farming"]
         }, {
           "game_id": 4,
           "target_word": "statute",

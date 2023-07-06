@@ -182,7 +182,7 @@ class Taboo(DialogueGameMaster):
 
     def _after_add_player_response(self, player: Player, utterance: str):
         if player == self.describer:
-            utterance = f"CLUE: {utterance}"
+            utterance = f"CLUE: {utterance}."
             self.add_user_message(self.guesser, utterance)
         if player == self.guesser:
             # NOTE(jg): would be interesting to test whether the model behaves
@@ -192,7 +192,7 @@ class Taboo(DialogueGameMaster):
 
             # if not correct, then we add the guess and go on; otherwise we will stop immediately
             if self.guess_word != self.target_word:
-                utterance = f"GUESS: {self.guess_word}"
+                utterance = f"GUESS: {self.guess_word}."
                 self.add_user_message(self.describer, utterance)
 
     def _on_before_turn(self, turn_idx: int):

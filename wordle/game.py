@@ -214,10 +214,10 @@ class WordleGame:
         if self.guesser_error:
             return self.guesser_error
         else:
-            if self.attempts == self.max_attempts:
-                return "MAX_ATTEMPTS_REACHED"
-            elif self.terminate:
+            if self.terminate:
                 return "SUCCESS"
+            if self.attempts == self.max_attempts:
+                return "MAX_ATTEMPTS_REACHED"            
 
     def check_guess_status(self, guess_feedback):
         letters = []

@@ -1,6 +1,7 @@
 from typing import List, Tuple, Dict
 import numpy as np
 
+from backends import Model, HumanModel
 from clemgame.clemgame import GameMaster, GameBenchmark
 from clemgame import get_logger
 import clemgame.metrics as metrics
@@ -13,10 +14,10 @@ GAME_NAME = "wordle"
 
 
 class WordleGameMaster(GameMaster):
-    def __init__(self, game_name: str, experiment: Dict, players_backends: List[str]):
-        super().__init__(game_name, experiment, players_backends)
+    def __init__(self, game_name: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, experiment, player_models)
         self.config = experiment
-        self.players_backends = players_backends
+        self.player_model_names = [player_model.get_name() for player_model in player_models]
 
         self.cm = ComputeMetrics()
 
@@ -24,24 +25,24 @@ class WordleGameMaster(GameMaster):
         self.game_id = game_id
 
         self.players_dict = {"GM": "Game master for wordle"}
-        self.players_dict["Player 1"] = f"Word Guesser ({self.players_backends[0]})"
+        self.players_dict["Player 1"] = f"Word Guesser ({self.player_model_names[0]})"
 
-        if len(self.players_backends) == 1:
+        if len(self.player_model_names) == 1:
             if self.config["use_critic"]:
                 self.players_dict[
                     "Player 2"
-                ] = f"Word Guesser Critic ({self.players_backends[0]})"
+                ] = f"Word Guesser Critic ({self.player_model_names[0]})"
             else:
                 self.players_dict["Player 2"] = "Guess Word Evaluator (Programmatic)"
         else:
             self.players_dict[
                 "Player 2"
-            ] = f"Word Guesser Critic ({self.players_backends[1]})"
+            ] = f"Word Guesser Critic ({self.player_model_names[1]})"
 
         self.target_word = target_word.strip()
         self.target_word_clue = target_word_clue.strip()
         if self.config["use_clue"]:
-            if self.players_backends[0] == "human":
+            if isinstance(self.player_models[0], HumanModel):
                 logger.info(f"Target word clue: {self.target_word_clue}")
         self.target_word_difficulty = target_word_difficulty
 
@@ -60,7 +61,7 @@ class WordleGameMaster(GameMaster):
             "max_critic_opinion_count"
         ]
         game_config["english_words_list"] = self.config["english_words"]
-        game_config["model_names"] = self.players_backends
+        game_config["model_names"] = self.player_models
 
         prompt_generator_config = {}
         prompt_generator_config["use_error_explanation"] = self.config["common_config"][
@@ -133,12 +134,12 @@ class WordleGameMaster(GameMaster):
                 "critic_error": error,
             }
             if error:
-                content = f"Critic Error: {error} while parsing Player 2's (critic: {self.players_backends[1]}) response, retrying"
+                content = f"Critic Error: {error} while parsing Player 2's (critic: {self.player_model_names[1]}) response, retrying"
             else:
                 if critic_agreement == "yes":
-                    content = f"Player 2 (model: {self.players_backends[1]}) agrees with Player 1's (model: {self.players_backends[0]}) guess, proceeding for validation"
+                    content = f"Player 2 (model: {self.player_model_names[1]}) agrees with Player 1's (model: {self.player_model_names[0]}) guess, proceeding for validation"
                 else:
-                    content = f"Player 2 (model: {self.players_backends[1]}) disagreed with Player 1's (model: {self.players_backends[0]}) guess, so needs to make another guess"
+                    content = f"Player 2 (model: {self.player_model_names[1]}) disagreed with Player 1's (model: {self.player_model_names[0]}) guess, so needs to make another guess"
 
             action = {"type": "metadata", "content": content, "critic_info": metadata}
         else:
@@ -152,7 +153,7 @@ class WordleGameMaster(GameMaster):
                 else:
                     content = f"attempts: {attempts}\ntarget_word = {self.target_word}\nguess: {guess}\nguess_feedback: {guess_feedback}"
             else:
-                content = f"Guesser Error: {error} while parsing Player 1's (model: {self.players_backends[0]}) response, retrying"
+                content = f"Guesser Error: {error} while parsing Player 1's (model: {self.player_model_names[0]}) response, retrying"
             metadata = {
                 "attempts": attempts,
                 "target_word": self.target_word,
@@ -442,9 +443,9 @@ class WordleGameMaster(GameMaster):
 
         # Log the turn-wise results
         data_for_computation = {}
-        data_for_computation["player_1"] = self.players_backends[0]
-        if len(self.players_backends) > 1:
-            data_for_computation["player_2"] = self.players_backends[1]
+        data_for_computation["player_1"] = self.player_model_names[0]
+        if len(self.player_model_names) > 1:
+            data_for_computation["player_2"] = self.player_model_names[1]
         else:
             data_for_computation["player_2"] = ""
         data_for_computation["total_attempts"] = self.game.attempts
@@ -707,10 +708,8 @@ class WordleGameBenchmark(GameBenchmark):
     def get_description(self):
         return "Wordle Game"
 
-    def create_game_master(
-        self, experiment: Dict, player_backend: List[str]
-    ) -> GameMaster:
-        return WordleGameMaster(self.name, experiment, player_backend)
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
+        return WordleGameMaster(self.name, experiment, player_models)
 
     def is_single_player(self) -> bool:
         return True

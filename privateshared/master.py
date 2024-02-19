@@ -10,6 +10,7 @@ from sklearn.metrics import accuracy_score as acc_score
 from sklearn.metrics import cohen_kappa_score
 
 import clemgame.metrics as ms
+from backends import Model
 from clemgame import file_utils
 from clemgame.clemgame import GameMaster, GameBenchmark
 from clemgame import get_logger
@@ -26,10 +27,10 @@ logger = get_logger(__name__)
 
 class PrivateShared(GameMaster):
     """Implement mechanisms for playing PrivateShared."""
-    def __init__(self, experiment: Dict, player_backends: List[str]):
-        super().__init__(GAME_NAME, experiment, player_backends)
+    def __init__(self, experiment: Dict, player_models: List[Model]):
+        super().__init__(GAME_NAME, experiment, player_models)
         self.subtype = experiment['name']
-        self.model_name = self.player_backends[0]
+        self.model_name = self.player_models[0].get_name()
         # load necessary texts
         probes_path = PROBES_PATH.format(self.subtype)
         self.probing_questions = self.load_json(probes_path)
@@ -64,7 +65,7 @@ class PrivateShared(GameMaster):
         self.probing = probes
         self.probe_gt = {slot: i for i, slot in enumerate(request_order)}
         self.game = PrivateSharedGame(
-            self.subtype, request_order, requests, slots, self.model_name)
+            self.subtype, request_order, requests, slots, self.player_models[0])
         # one probing before the game starts and one after each request
         self.n_probe_turns = self.game.max_turns + 1
         # initialise turn counters
@@ -447,11 +448,8 @@ class PrivateSharedGameBenchmark(GameBenchmark):
     def get_description(self):
         return "Questioner and answerer in scorekeeping game."
 
-    def create_game_master(self,
-                           experiment: Dict,
-                           player_backends: List[str]
-                           ) -> GameMaster:
-        return PrivateShared(experiment, player_backends)
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
+        return PrivateShared(experiment, player_models)
 
 
 def main():

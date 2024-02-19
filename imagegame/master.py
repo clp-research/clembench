@@ -1,5 +1,6 @@
 from typing import List, Tuple, Dict
 
+from backends import Model
 from clemgame import metrics
 from clemgame.clemgame import GameMaster, GameBenchmark, GameScorer
 from games.imagegame.game import ImageGame
@@ -19,10 +20,9 @@ logger = get_logger(__name__)
 
 class ImageGameMaster(GameMaster):
 
-    def __init__(self, experiment: Dict, player_backends: List[str]):
-        super().__init__(GAME_NAME, experiment, player_backends)
+    def __init__(self, experiment: Dict, player_models: List[Model]):
+        super().__init__(GAME_NAME, experiment, player_models)
         self.experiment = experiment
-        self.player_backends = player_backends
         self.game = None
         self.request_count = 0
         self.parsed_request_count = 0
@@ -38,12 +38,12 @@ class ImageGameMaster(GameMaster):
     def _on_setup(self, **game_instance):
         self.game_instance = game_instance
 
-        self.game = ImageGame(self.game_instance, self.player_backends)
+        self.game = ImageGame(self.game_instance, self.player_models)
 
         self.log_players({
             "GM": "Game master for imagegame",
-            "Player_1": self.player_backends[0],
-            "Player_2": self.player_backends[1]}
+            "Player_1": self.player_models[0].get_name(),
+            "Player_2": self.player_models[1].get_name()}
         )
 
     def setup(self, **kwargs):
@@ -376,8 +376,8 @@ class ImageGameBenchmark(GameBenchmark):
     def get_description(self):
         return "Image Game simulation to generate referring expressions and fill a grid accordingly"
 
-    def create_game_master(self, experiment: Dict, player_backends: List[str]) -> GameMaster:
-        return ImageGameMaster(experiment, player_backends)
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
+        return ImageGameMaster(experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return ImageGameScorer(experiment, game_instance)

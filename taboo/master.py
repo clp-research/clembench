@@ -203,9 +203,10 @@ class Taboo(DialogueGameMaster):
             # which would be player 1's initial clue.
             self.log_message_to(self.guesser, self.guesser_initial_prompt)
 
+
 class TabooScorer(GameScorer):
-    def __init__(self):
-        super().__init__(GAME_NAME)
+    def __init__(self, experiment: Dict, game_instance: Dict):
+        super().__init__(GAME_NAME, experiment, game_instance)
 
     def compute_scores(self, episode_interactions: Dict) -> None:
         """ Episode level scores"""
@@ -300,8 +301,8 @@ class TabooGameBenchmark(GameBenchmark):
     def create_game_master(self, experiment: Dict, player_backends: List[str]) -> GameMaster:
         return Taboo(experiment, player_backends)
     
-    def create_game_scorer(self) -> GameScorer:
-        return TabooScorer()
+    def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
+        return TabooScorer(experiment, game_instance)
 
 
 def main():

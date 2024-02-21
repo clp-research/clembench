@@ -59,7 +59,7 @@ class WordleGameMaster(GameMaster):
             "max_critic_opinion_count"
         ]
         game_config["english_words_list"] = self.config["english_words"]
-        game_config["model_names"] = self.player_models
+        game_config["models"] = self.player_models
 
         prompt_generator_config = {}
         prompt_generator_config["use_error_explanation"] = self.config["common_config"][

@@ -15,7 +15,7 @@ from games.privateshared.constants import (
     PROMPT_PATH, EXPERIMENTS, N_INSTANCES, tags, what_slot)
 
 ID = 1
-SEED = 2807
+SEED = 2102
 
 logger = clemgame.get_logger(__name__)
 

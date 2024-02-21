@@ -250,6 +250,9 @@ class PrivateShared(GameMaster):
             probe['tries'] = tries
             self._log_probing_outcome(probe, successful, tries)
             success_by_round.append(successful)
+            if not successful:
+                # interrupt immediately
+                break
 
         probing_successful = all(success_by_round)
         if probing_successful:

@@ -134,8 +134,8 @@ class ReferenceGameScorer(GameScorer):
     def __init__(self, experiment: Dict, game_instance: Dict):
         super().__init__(GAME_NAME, experiment, game_instance)
         self.target_grid_name = game_instance["target_grid_name"]
-        self.player_1_response_pattern = game_instance["player_1_response_pattern"]
-        self.player_2_response_pattern = game_instance["player_2_response_pattern"]
+        self.player_1_response_pattern = r'{}'.format(game_instance["player_1_response_pattern"])
+        self.player_2_response_pattern = r'{}'.format(game_instance["player_2_response_pattern"])
         self.player_2_response_tag = game_instance["player_2_response_tag"]
         self.player_1_response_tag = game_instance["player_1_response_tag"]
 

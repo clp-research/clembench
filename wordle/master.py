@@ -65,6 +65,9 @@ class WordleGameMaster(GameMaster):
         ]
         game_config["english_words_list"] = self.config["english_words"]
         game_config["models"] = self.player_models
+        game_config["response_format_keywords"] = self.config[
+            "response_format_keywords"
+        ]
 
         prompt_generator_config = {}
         prompt_generator_config["use_error_explanation"] = self.config["common_config"][
@@ -207,8 +210,8 @@ class WordleGameMaster(GameMaster):
             self._log_api_calls(
                 utterance, send_prompt, message, response, result, "Player 1", "GM"
             )
-            guess = result["guess:"]
-            explanation = result["explanation:"]
+            guess = result[self.config["response_format_keywords"]["guess"]]
+            explanation = result[self.config["response_format_keywords"]["explanation"]]
             logger.debug("Receieved guess = {%s}", guess)
             return guess, explanation, error
         else:
@@ -216,8 +219,12 @@ class WordleGameMaster(GameMaster):
             self._log_api_calls(
                 utterance, send_prompt, message, response, result, "Player 2", "GM"
             )
-            critic_agreement = result["agreement:"]
-            critic_explanation = result["explanation:"]
+            critic_agreement = result[
+                self.config["response_format_keywords"]["agreement"]
+            ]
+            critic_explanation = result[
+                self.config["response_format_keywords"]["explanation"]
+            ]
             return critic_agreement, critic_explanation, error
 
     def _validate_guess(self, guess):

@@ -27,5 +27,13 @@
     "medium_words_file_name": "medium_words.txt",
     "hard_words_file_name": "hard_words.txt",
     "max_token_limit_openai_models": 3800,
-    "max_critic_opinion_count": 1
+    "max_critic_opinion_count": 1,
+    "response_format_keywords": {
+        "guess": "guess",
+        "explanation": "explanation",
+        "agreement": "agreement",
+        "agreement_match_keywords": ["yes", "no", "Yes", "No", "YES", "NO"],
+        "agreement_not_matched": ["no"]
+
+    }
 }

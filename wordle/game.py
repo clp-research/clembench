@@ -1,4 +1,3 @@
-import re
 from typing import Dict, List
 
 from backends import Model
@@ -23,6 +22,7 @@ class WordleGame:
         max_critic_opinion_count: int,
         english_words_list: str,
         models: List[Model],
+        response_format_keywords: Dict,
     ):
         self.max_attempts = max_attempts_per_game
         self.max_retry = max_retry_per_error
@@ -32,21 +32,26 @@ class WordleGame:
         self.max_critic_opinion_count = max_critic_opinion_count
         self.english_words_list = english_words_list
         self.models = models
+        self.response_format_keywords = response_format_keywords
 
-        self.guesser = Guesser(self.models[0])
+        self.guesser = Guesser(self.models[0], self.response_format_keywords)
         self.guesser_mode = self.models[0].get_name()
 
         if len(self.models) > 1:
             if self.models[0] == self.models[1]:
                 # Both Guesser and Critic using same model
-                self.guess_critic = Critic(self.models[0])
+                self.guess_critic = Critic(
+                    self.models[0], self.response_format_keywords
+                )
                 self.guess_critic_mode = self.models[0].get_name()
             else:
-                self.guess_critic = Critic(self.models[1])
+                self.guess_critic = Critic(
+                    self.models[1], self.response_format_keywords
+                )
                 self.guess_critic_mode = self.models[1].get_name()
         else:
             # Both Guesser and Critic using same model
-            self.guess_critic = Critic(self.models[0])
+            self.guess_critic = Critic(self.models[0], self.response_format_keywords)
             self.guess_critic_mode = self.models[0].get_name()
 
         self.guesser_prompt = []
@@ -145,15 +150,26 @@ class WordleGame:
             send_prompt, message, response = self.guess_critic(
                 send_prompt, self.attempts
             )
-            response_keyword = "agreement"
-            result = {f"{response_keyword}:": "", "explanation:": ""}
+            response_keyword = self.response_format_keywords["agreement"]  # "agreement"
+            result = {
+                response_keyword: "",
+                self.response_format_keywords["explanation"]: "",
+            }
             self.find_guess_explanation(
-                self.guess_critic_mode, response, f"{response_keyword}:", result
+                self.guess_critic_mode, response, response_keyword, result
             )
-            error = self.check_for_errors(result[f"{response_keyword}:"], False)
+            error = self.check_for_errors(result[response_keyword], False)
         else:
             if not error:
-                if guess and guess_feedback and agreement != "no":
+                if (
+                    guess
+                    and guess_feedback
+                    and (
+                        agreement is None
+                        or agreement
+                        in self.response_format_keywords["agreement_match_keywords"]
+                    )
+                ):
                     logger.debug(
                         f"Attempt [{self.attempts}] | Guess_Status [{guess_feedback}]"
                     )
@@ -194,12 +210,16 @@ class WordleGame:
             send_prompt = self.guesser_prompt.copy()
 
             send_prompt, message, response = self.guesser(send_prompt, self.attempts)
-            response_keyword = "guess"
-            result = {f"{response_keyword}:": "", "explanation:": ""}
+
+            response_keyword = self.response_format_keywords["guess"]
+            result = {
+                response_keyword: "",
+                self.response_format_keywords["explanation"]: "",
+            }
             self.find_guess_explanation(
-                self.guesser_mode, response, f"{response_keyword}:", result
+                self.guesser_mode, response, response_keyword, result
             )
-            error = self.check_for_errors(result[f"{response_keyword}:"])
+            error = self.check_for_errors(result[response_keyword])
 
         if for_critic:
             self.critic_error = error
@@ -238,7 +258,7 @@ class WordleGame:
             if self.terminate:
                 return "SUCCESS"
             if self.attempts == self.max_attempts:
-                return "MAX_ATTEMPTS_REACHED"            
+                return "MAX_ATTEMPTS_REACHED"
 
     def check_guess_status(self, guess_feedback):
         letters = []
@@ -251,24 +271,16 @@ class WordleGame:
             self.terminate = True
 
     def find_keyword_match(self, text, keyword):
+        # response contains the data in the format of guess:.. explanation:..
+        # hence adding a colon to the keyword to find the exact match
+        keyword = f"{keyword}:"
         start_index = text.find(keyword)
-        end_index = text.find('\n', start_index)
+        end_index = text.find("\n", start_index)
         if start_index == -1 or end_index == -1:
             return "INVALID_FORMAT"
         start_index += len(keyword)
         word = text[start_index:end_index].strip()
         return word
-
-    def find_keyword_match_regex(self, text, keyword):
-        pattern = r"{}(.*)".format(keyword)
-
-        match = re.search(pattern, text)
-
-        if match:
-            match_text = match.group(1)
-            return match_text.strip()
-        else:
-            return "INVALID_FORMAT"
 
     def find_guess_explanation(
         self, player_mode: bool, response: str, keyword: str, result: Dict
@@ -277,17 +289,22 @@ class WordleGame:
             result[keyword] = response.split(" ")[-1].strip()
 
         else:
-            #Adding additional new line to extract the text for each keyword until the next line
-            response = response+"\n"
-            if keyword == "agreement:":
+            # Adding additional new line to extract the text for each keyword until the next line
+            response = response + "\n"
+            if keyword == self.response_format_keywords["agreement"]:
                 match_keyword = self.find_keyword_match(response, keyword)
-                if match_keyword not in ["yes", "no", "Yes", "No", "YES", "NO"]:
+                if (
+                    match_keyword
+                    not in self.response_format_keywords["agreement_match_keywords"]
+                ):
                     result[keyword] = "INVALID_FORMAT"
                 else:
                     result[keyword] = match_keyword
             else:
                 result[keyword] = self.find_keyword_match(response, keyword)
-            result["explanation:"] = self.find_keyword_match(response, "explanation:")
+            result["explanation"] = self.find_keyword_match(
+                response, self.response_format_keywords["explanation"]
+            )
         # return result
 
     def check_for_errors(self, word: str, for_guesser: bool = True):

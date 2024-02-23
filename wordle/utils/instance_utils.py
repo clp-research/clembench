@@ -261,6 +261,7 @@ class InstanceUtils:
         experiment["system_definition"] = system_definition
         experiment["guesser_prompt"] = guesser_prompt
         experiment["guesser_critic_prompt"] = guesser_critic_prompt
+        experiment["response_format_keywords"] = self.common_config["response_format_keywords"]
 
     def update_game_instance_dict(self, game_instance, word, difficulty):
         game_instance["target_word"] = word

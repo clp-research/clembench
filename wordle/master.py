@@ -713,11 +713,13 @@ class WordleGameBenchmark(GameBenchmark):
     def get_description(self):
         return "Wordle Game"
 
-    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
+    def create_game_master(
+        self, experiment: Dict, player_models: List[Model]
+    ) -> GameMaster:
         return WordleGameMaster(self.name, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return WordleGameScorer(experiment, game_instance)
+        return WordleGameScorer(self.name, experiment, game_instance)
 
     def is_single_player(self) -> bool:
         return True

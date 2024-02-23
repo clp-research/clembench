@@ -53,6 +53,9 @@ class WordleGameMaster(GameMaster):
         game_config["max_retry_per_error"] = self.config["common_config"][
             "max_retry_per_error"
         ]
+        game_config["max_retry_invalid_word"] = self.config["common_config"][
+            "max_retry_invalid_word"
+        ]
         game_config["max_word_length"] = self.config["common_config"]["max_word_length"]
         game_config["use_critic"] = self.config["use_critic"]
         game_config["max_critic_opinion_count"] = self.config["common_config"][

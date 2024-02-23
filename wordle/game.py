@@ -17,6 +17,7 @@ class WordleGame:
         prompt_generator_config: Dict,
         max_attempts_per_game: int,
         max_retry_per_error: int,
+        max_retry_invalid_word: int,
         max_word_length: int,
         use_critic: bool,
         max_critic_opinion_count: int,
@@ -25,6 +26,7 @@ class WordleGame:
     ):
         self.max_attempts = max_attempts_per_game
         self.max_retry = max_retry_per_error
+        self.max_retry_invalid_word = max_retry_invalid_word
         self.max_word_length = max_word_length
         self.use_critic = use_critic
         self.max_critic_opinion_count = max_critic_opinion_count
@@ -50,6 +52,7 @@ class WordleGame:
         self.guesser_prompt = []
         self.critic_prompt = []
         self.guesser_retry = 0
+        self.guesser_retry_invalid_word = 0
         self.critic_retry = 0
         self.terminate = False
         self.guesser_error = None
@@ -84,6 +87,10 @@ class WordleGame:
 
         if self.guesser_error:
             if self.guesser_error == "NO_CLUE_FOUND":
+                return False
+            if self.guesser_error == "NOT_VALID_ENGLISH_WORD":
+                if self.guesser_retry_invalid_word < self.max_retry_invalid_word:
+                    return True
                 return False
             if self.guesser_retry < self.max_retry:
                 return True
@@ -166,6 +173,12 @@ class WordleGame:
                     # Since the models don't know what the game treats as
                     # valid words, this should not be treated as an error
                     self.guesser_retry += 1
+                else:
+                    # Some Models might not be able to generate a valid word
+                    # in the first attempt. So, we are keeping a count of 5 tries
+                    # to generate a valid word
+                    self.guesser_retry_invalid_word += 1
+
                 utterance = self.promptgen.recreate(
                     error,
                     guess,
@@ -195,10 +208,17 @@ class WordleGame:
                 self.critic_parsed_req_count += 1
         else:
             self.guesser_error = error
-            if not self.guesser_error or self.guesser_error == "NOT_VALID_ENGLISH_WORD":
+
+            if not self.guesser_error:
                 self.guesser_retry = 0
+                self.guesser_retry_invalid_word = 0
                 self.guesser_parsed_req_count += 1
+
             else:
+                if self.guesser_error == "NOT_VALID_ENGLISH_WORD":
+                    self.guesser_retry = 0
+                    self.guesser_parsed_req_count += 1
+
                 if "human" in self.guesser_mode:
                     logger.error("Some error in the guess: ", self.guesser_error)
 

@@ -17,7 +17,9 @@ class WordleGameMaster(GameMaster):
     def __init__(self, game_name: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, experiment, player_models)
         self.config = experiment
-        self.player_model_names = [player_model.get_name() for player_model in player_models]
+        self.player_model_names = [
+            player_model.get_name() for player_model in player_models
+        ]
 
     def setup(self, game_id, target_word, target_word_clue, target_word_difficulty):
         self.game_id = game_id
@@ -478,9 +480,8 @@ class WordleGameMaster(GameMaster):
 
 
 class WordleGameScorer(GameScorer):
-
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
         self.cm = ComputeMetrics()
 
     def compute_scores(self, episode_interactions: Dict) -> None:

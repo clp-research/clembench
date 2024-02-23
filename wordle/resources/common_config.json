@@ -11,7 +11,8 @@
     "guess_prompt_with_critic_file_name": "guess_prompt_with_critic.json",
     "critic_prompt_file_name": "critic_prompt.json",
     "use_language": "english",
-    "seed_to_select_target_word": 87,
+    "seed_to_select_target_word": 17,
+    "previous_used_seeds": [87],
     "supported_word_difficulty": ["high_frequency", "medium_frequency", "low_frequency"],
     "number_of_target_words": {
                                 "high_frequency": 10,

@@ -1,0 +1,19 @@
+Size her biri 5'e 5 boyutunda olan üç matris veriliyor.
+Matrislerde "▢" ile işaretlenmiş boş hücreler ve "X" ile işaretlenmiş dolu hücreler vardır.
+Göreviniz, hedef matrisi diğer iki çeldirici matristen ayıran ve onu en iyi şekilde tanımlayan bir referans ifadesi oluşturmaktır.
+İlk matris hedef matristir ve sonraki iki matris çeldiricilerdir.
+
+Hedef matris:
+
+TARGET_GRID
+
+Çeldirici matris 1:
+
+SECOND_GRID
+
+Çeldirici matris 2:
+
+THIRD_GRID
+
+Talimat: Hedef matrisi tanımlayın.
+"İfade." etiketi ile başlayan referans ifadesini oluşturun. Diğer metinleri atlayın.

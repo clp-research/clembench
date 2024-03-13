@@ -1,0 +1,21 @@
+Size her biri 5'e 5 boyutunda olan üç matris verilir.
+Izgaralarda "▢" ile işaretlenmiş boş hücreler ve "X" ile işaretlenmiş dolu hücreler vardır.
+Ayrıca size verilen matrislerden birini tanımlayan bir referans ifadesi de veriliyor.
+Göreviniz, verilen referans ifadeyle eşleşen matrisi seçmektir.
+Verilen ifadeyle eşleşen matrisin yalnızca numarasını (metin olarak) birinci, ikinci veya üçüncü olarak oluşturun.
+
+Birinci:
+
+FIRST_GRID
+
+İkinci:
+
+SECOND_GRID
+
+Üçüncü:
+
+THIRD_GRID
+
+TARGET_EXPRESSION
+Soru: İfade hangi matrise denk geliyor?
+"Cevap: " etiketiyle başlayın ve ardından seçiminizi yazın. Diğer metinleri atlayın.

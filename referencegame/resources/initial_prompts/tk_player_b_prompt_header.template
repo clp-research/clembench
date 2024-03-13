@@ -1,0 +1,20 @@
+Size üç sany gözenek berilýär, olaryň hersiniň ululygy 5-den 5-e çenli.
+Torlarda "▢" bilen bellenen boş öýjükler we "X" bilen bellenen doly öýjükler bar.
+Şeýle hem size berlen gözenekleriň birini teswirleÿän aňlatma berilýär.
+Siziň wezipäňiz, berlen aňlatma gabat gelýän gözenegi saýlamakdyr. Berlen aňlatma gabat gelýän gözenegiň sanyny birinji, ikinji ýa-da üçünji ýaly (tekstde) dörediň.
+
+Birinji:
+
+FIRST_GRID
+
+Ikinji:
+
+SECOND_GRID
+
+Üçünji:
+
+THIRD_GRID
+
+TARGET_EXPRESSION
+Sorag: Aňlatma haýsy seti aňladýar?
+"Jogap:" belligi bilen başlap saýlanan sany ýazyň. Başga tekst döretme.

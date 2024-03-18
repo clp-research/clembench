@@ -1,33 +1,30 @@
 """
 Generate instances for the referencegame
-Version 2.0 (less biased instances)
+Version 1.5 (multilingual instances)
 
-Reads grids_v03.json from resources/
-Creates instances.json in in/
+Reads grids_v1.5.json from resources/
+Creates instances_v1.5_{lang}.json in instances/
 """
 
-import random # to create random grids
+import json
 import Levenshtein # to calculate distance between grids
 
 import clemgame
 from clemgame.clemgame import GameInstanceGenerator
 
-random.seed(123)
+from games.referencegame.resources.localization_utils import LANGUAGES, RESPONSE_PATTERNS
 
 logger = clemgame.get_logger(__name__)
 GAME_NAME = "referencegame"
 
 
-def generate_samples(grids_name, grids):
+def generate_samples(grids):
     """
     Generate triplets from grids
-    :param grids_name: string identifier for grid list
     :param grids: list of string grid representations
     :return: list of triplets where the first is the target and the following two are distractors
     """
     samples = []
-    if grids_name == "random_grids":
-        grids = create_random_grids(grids)
     # calculate edit distance between grids
     edit_distances = get_distances(grids)
     # select distractors with smallest edit distance
@@ -37,36 +34,10 @@ def generate_samples(grids_name, grids):
     return samples
 
 
-def create_random_grids(grids, fills=10, num_grids=10):
-    """
-    Create random grids.
-    :param grids: list with an empty grid representation to start from
-    :param fills: number of Xs in random grid
-    :param num_grids: number of grids to create
-    :return: list of random grids
-    """
-
-    empty_grid = grids[0]
-    random_grids = []
-
-    while len(random_grids) != num_grids:
-        x_positions = [i for i,char in enumerate(empty_grid) if char == "\u25a2"]
-        random_x_positions = random.sample(x_positions, fills)
-        # convert grid to list for indexing
-        random_grid = list(empty_grid)
-        for i in random_x_positions:
-            random_grid[i] = "X"
-        # convert grid back to string representation
-        grid_string = "".join(random_grid)
-        if grid_string not in random_grids:
-            random_grids.append(grid_string)
-    return list(random_grids)
-
-
 def get_distances(grids):
     """
     Calculate edit distances to select similar distractors
-    :param grids: list if string grid representations
+    :param grids: list of string grid representations
     :return: matrix of edit distances with ids corresponding to grids (the full matrix is filled for easier access to distances per grid)
     """
     distances = []
@@ -118,37 +89,58 @@ def select_distractors(target_grid: int, distances: list):
     return id1, id2
 
 
+def load_prompt(lang, template):
+    """
+    Load language specific prompt
+    :param lang: language identifier string
+    :param template: filename of prompt template
+    :return: prompt string
+    """
+    with open(f"resources/initial_prompts/{lang}/{template}", encoding='utf8') as f:
+        prompt = f.read()
+    return prompt
+
+
 class ReferenceGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self):
         super().__init__(GAME_NAME)
 
-    def on_generate(self):
+    def on_generate(self, lang):
+        """
+        Create instances into self.instances
+        (Called by super().generate())
+        """
+        # load grids
+        with open("resources/grids_v1.5.json", 'r') as f:
+            grids = json.load(f)
 
-        player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_header_zero_shot.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_header_zero_shot.template")
-        grids = self.load_json("resources/grids_v03.json")
-
+        # generate sub experiments
         for grids_group in grids.keys():
             # get triplets
-            samples = generate_samples(grids_group, grids[grids_group])
-            experiment = self.add_experiment(grids_group)
+            samples = generate_samples(grids[grids_group])
+
+            player_a_prompt_header = load_prompt(lang, "player_a_prompt_header.template")
+            player_b_prompt_header = load_prompt(lang, "player_b_prompt_header.template")
+
+            experiment = self.add_experiment(f"{grids_group}")
 
             game_counter = 0
             for sample in samples:
                 # create three instances from each triplet, where the target for player 2 is in
                 # one of the three possible positions each (selecting one order for the other two)
-                for i in [1,2,3]:
+                for i in [1, 2, 3]:
                     target_grid, second_grid, third_grid = sample
 
                     game_instance = self.add_game_instance(experiment, game_counter)
-                    game_instance["player_1_prompt_header"] = player_a_prompt_header.replace('TARGET_GRID', target_grid)\
-                                                                                    .replace('SECOND_GRID', second_grid)\
+                    game_instance["player_1_prompt_header"] = player_a_prompt_header.replace('TARGET_GRID', target_grid) \
+                                                                                    .replace('SECOND_GRID', second_grid) \
                                                                                     .replace('THIRD_GRID', third_grid)
                     game_instance['player_1_target_grid'] = target_grid
                     game_instance['player_1_second_grid'] = second_grid
                     game_instance['player_1_third_grid'] = third_grid
 
+                    # create order of grids for player 2
                     first_grid = ""
                     target_grid_name = ""
                     if i == 1:
@@ -166,20 +158,23 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                         third_grid = target_grid
                         target_grid_name = "third"
 
-                    game_instance["player_2_prompt_header"] = player_b_prompt_header.replace('FIRST_GRID', first_grid)\
-                                                                                    .replace('SECOND_GRID', second_grid)\
+                    game_instance["player_2_prompt_header"] = player_b_prompt_header.replace('FIRST_GRID', first_grid) \
+                                                                                    .replace('SECOND_GRID', second_grid) \
                                                                                     .replace('THIRD_GRID', third_grid)
                     game_instance['player_2_first_grid'] = first_grid
                     game_instance['player_2_second_grid'] = second_grid
                     game_instance['player_2_third_grid'] = third_grid
                     game_instance['target_grid_name'] = target_grid_name
-                    game_instance['player_1_response_pattern'] = '^expression:\s*(.+)\n*(.+)*$'
-                    game_instance['player_2_response_pattern'] = '^answer:\s*(first|second|third)'
-                    game_instance['player_1_response_tag'] = 'expression:'
-                    game_instance['player_2_response_tag'] = 'answer:'
+                    game_instance['player_1_response_pattern'] = RESPONSE_PATTERNS[lang]["p1"]
+                    game_instance['player_2_response_pattern'] = RESPONSE_PATTERNS[lang]["p2"]
+                    game_instance['player_1_response_tag'] = RESPONSE_PATTERNS[lang]["p1_tag"]
+                    game_instance['player_2_response_tag'] = RESPONSE_PATTERNS[lang]["p2_tag"]
 
                     game_counter += 1
 
 
 if __name__ == '__main__':
-    ReferenceGameInstanceGenerator().generate()
+    # generate language versions
+    for language in LANGUAGES:
+        ReferenceGameInstanceGenerator().generate(
+            filename=f"instances_v1.5_{language}.json", lang=language)

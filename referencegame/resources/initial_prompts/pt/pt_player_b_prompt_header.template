@@ -1,0 +1,21 @@
+Vou te mostrar três tabuleiros quadriculados, cada um de tamanho 5 por 5.
+Os tabuleiros têm quadros vazios marcados por "▢" e quadros preenchidos marcados por "X".
+Vou te dar também um expressão de referência que descreve um desses tabuleiros.
+Sua tarefa é selecionar o tabuleiro que combina com essa expressão de referência.
+Gere apenas o número (em forma de texto) do tabuleiro que combina com essa expressão de referência, selecionando primeiro, segundo ou terceiro.
+
+Primeiro:
+
+FIRST_GRID
+
+Segundo:
+
+SECOND_GRID
+
+Terceiro
+
+THIRD_GRID
+
+TARGET_EXPRESSION
+Pergunta: A qual dos tabuleiros essa expressão de referência se refere?
+Comece com a etiqueta "Resposta: ", seguida da sua escolha. Omita qualquer outro texto.

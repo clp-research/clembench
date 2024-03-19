@@ -69,6 +69,7 @@ class PrivateShared(GameMaster):
         self.probe_text = words['PROBE']
         self.yes = words['YES']
         self.no = words['NO']
+        self.coda = words['CODA']
 
         self.questioner_tag = f"{tag}: "
         self.initial_prompt = initial_prompt
@@ -149,6 +150,8 @@ class PrivateShared(GameMaster):
         clean_request = request.replace(self.questioner_tag, '').strip()
         action = {'type': 'get message', 'content': clean_request}
         self.log_event(from_='Player 2', to='GM', action=action)
+        # append the instruction to be straight to the point
+        request = self.coda.format(request)
         action = {'type': 'send message', 'content': request}
         self.log_event(from_='GM', to='Player 1', action=action)
 

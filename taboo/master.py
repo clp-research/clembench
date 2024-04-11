@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, List
+from typing import Dict, Tuple, List, Union
 
 import numpy as np
 
@@ -47,12 +47,13 @@ class WordDescriber(Player):
 
 
 def check_clue(clue: str, target_word: str, related_words: List[str],
-               stemmer=EN_STEMMER) -> List[Dict]:
+               stemmer=EN_STEMMER, return_clue=False) -> Union[Tuple[str, List[Dict]], List[Dict]]:
     clue = clue.replace("CLUE:", "")
+    clue = clue.strip()
     clue = clue.lower()
     clue = string_utils.remove_punctuation(clue)
-    clue = clue.split(" ")
-    clue_words = [clue_word for clue_word in clue if clue_word not in EN_STOPWORDS]
+    clue_words = clue.split(" ")
+    clue_words = [clue_word for clue_word in clue_words if clue_word not in EN_STOPWORDS]
     clue_word_stems = [stemmer.stem(clue_word) for clue_word in clue_words]
     errors = []
     target_word_stem = stemmer.stem(target_word)
@@ -72,6 +73,8 @@ def check_clue(clue: str, target_word: str, related_words: List[str],
                                f"is similar to clue word '{clue_word}' (stem={clue_word_stem})",
                     "type": 1
                 })
+    if return_clue:
+        return clue, errors
     return errors
 
 
@@ -124,14 +127,10 @@ class Taboo(DialogueGameMaster):
             self.log_to_self("invalid format", "abort game")
             return False
         if self.clue_error is not None:
-            error_type = self.clue_error["type"]
-            if error_type == 0:
-                self.log_to_self("invalid clue", "clue contains target word")
-            if error_type == 1:
-                self.log_to_self("invalid clue", "clue contains related word")
+            self.log_to_self("invalid clue", self.clue_error["message"])
             return False  # stop game if clue is wrong (for now)
         if self.guess_word == self.target_word:
-            self.log_to_self("correct guess", self.guess_word)
+            self.log_to_self("correct guess", "end game")
             return False
         if self.current_turn >= self.max_turns:
             self.log_to_self("max turns reached", str(self.max_turns))
@@ -140,39 +139,35 @@ class Taboo(DialogueGameMaster):
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         if player == self.guesser:
+            # validate response format
             if not utterance.startswith("GUESS:"):
                 self.invalid_response = True
                 return False
+            self.log_to_self("valid response", "continue")
+            # extract guess word
+            guess_word = utterance.replace("GUESS:", "")
+            guess_word = guess_word.strip()
+            guess_word = guess_word.lower()
+            guess_word = string_utils.remove_punctuation(guess_word)
+            self.guess_word = guess_word.lower()
+            self.log_to_self("valid guess", self.guess_word)
         if player == self.describer:
+            # validate response format
             if not utterance.startswith("CLUE:"):
                 self.invalid_response = True
                 return False
-            errors = check_clue(utterance, self.target_word, self.related_words)
+            self.log_to_self("valid response", "continue")
+            # validate clue
+            clue, errors = check_clue(utterance, self.target_word, self.related_words, return_clue=True)
             if errors:
-                error = errors[0]
+                error = errors[0]  # highlight single error
                 self.clue_error = error
                 return False
-        self.log_to_self("valid format", "continue")
+            self.log_to_self("valid clue", clue)
         return True
-
-    def _on_parse_response(self, player: Player, utterance: str) -> Tuple[str, bool]:
-        if player == self.guesser:
-            utterance = utterance.replace("GUESS:", "")
-            utterance = utterance.strip()
-            utterance = utterance.lower()
-            utterance = string_utils.remove_punctuation(utterance)
-            self.guess_word = utterance.lower()
-            self.log_to_self("guess", self.guess_word)
-        if player == self.describer:
-            utterance = utterance.replace("CLUE:", "")
-            utterance = utterance.strip()
-            utterance = string_utils.remove_punctuation(utterance)
-            self.log_to_self("clue", utterance)
-        return utterance, False
 
     def _after_add_player_response(self, player: Player, utterance: str):
         if player == self.describer:
-            utterance = f"CLUE: {utterance}."
             if self.current_turn == 0:  # special case: merge first clue into prompt
                 prompt_with_first_clue = f"{self.guesser_initial_prompt}\n\n{utterance}"
                 self.add_user_message(self.guesser, prompt_with_first_clue)
@@ -186,7 +181,6 @@ class Taboo(DialogueGameMaster):
 
             # if not correct, then we add the guess and go on; otherwise we will stop immediately
             if self.guess_word != self.target_word:
-                utterance = f"GUESS: {self.guess_word}."
                 self.add_user_message(self.describer, utterance)
 
 

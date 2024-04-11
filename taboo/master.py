@@ -113,7 +113,8 @@ class Taboo(DialogueGameMaster):
 
     def _on_before_game(self):
         self.add_user_message(self.describer, self.describer_initial_prompt)
-        self.add_user_message(self.guesser, self.guesser_initial_prompt)
+        # add guesser prompt only later after first clue is given
+        # thus we avoid the problem that the history contains consecutive messages of "user"
 
     def _does_game_proceed(self):
         """Proceed as long as the word hasn't been guessed and the maximum
@@ -172,7 +173,11 @@ class Taboo(DialogueGameMaster):
     def _after_add_player_response(self, player: Player, utterance: str):
         if player == self.describer:
             utterance = f"CLUE: {utterance}."
-            self.add_user_message(self.guesser, utterance)
+            if self.current_turn == 0:  # special case: merge first clue into prompt
+                prompt_with_first_clue = f"{self.guesser_initial_prompt}\n\n{utterance}"
+                self.add_user_message(self.guesser, prompt_with_first_clue)
+            else:
+                self.add_user_message(self.guesser, utterance)
         if player == self.guesser:
             # NOTE(jg): would be interesting to test whether the model behaves
             #   differently when knowing about the guesser's guess or not knowing
@@ -183,14 +188,6 @@ class Taboo(DialogueGameMaster):
             if self.guess_word != self.target_word:
                 utterance = f"GUESS: {self.guess_word}."
                 self.add_user_message(self.describer, utterance)
-
-    def _on_before_turn(self, turn_idx: int):
-        if turn_idx == 0:
-            # Log initial prompt for Player 2
-            # Note: This should somehow be handled in the framework
-            # for now the framework only logs automatically the most recent message;
-            # which would be player 1's initial clue.
-            self.log_message_to(self.guesser, self.guesser_initial_prompt)
 
 
 class TabooScorer(GameScorer):

@@ -132,22 +132,26 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                     game_instance['player_1_third_grid'] = third_grid
 
                     # create order of grids for player 2
+                    # extract target grid names from localization_utils
+                    targets = MULTILINGUAL_PATTERNS[self.lang]["p2_options"].split("|")
+                    assert len(targets) == 3
+
                     first_grid = ""
                     target_grid_name = ""
                     if i == 1:
                         first_grid = target_grid
                         # keep order from player 1 for second and third grid
-                        target_grid_name = "first"
+                        target_grid_name = targets[0] # corresponds to "first"
                     elif i == 2:
                         first_grid = second_grid
                         second_grid = target_grid
                         # third grid stays third grid
-                        target_grid_name = "second"
+                        target_grid_name = targets[1] # "second"
                     elif i == 3:
                         first_grid = third_grid
                         # second grid stays second grid
                         third_grid = target_grid
-                        target_grid_name = "third"
+                        target_grid_name = targets[2] # corresponds to "third"
 
                     game_instance["player_2_prompt_header"] = player_b_prompt_header.replace('FIRST_GRID', first_grid) \
                                                                                     .replace('SECOND_GRID', second_grid) \

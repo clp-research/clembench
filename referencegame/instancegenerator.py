@@ -160,9 +160,7 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                     game_instance['player_2_second_grid'] = second_grid
                     game_instance['player_2_third_grid'] = third_grid
                     game_instance['target_grid_name'] = target_grid_name
-                    game_instance['player_1_response_pattern'] = self._generate_regex("p1")
-                    game_instance['player_2_response_pattern'] = self._generate_regex("p2")
-
+                    game_instance['lang'] = self.lang
                     game_counter += 1
 
     def _load_prompt(self, template):
@@ -175,37 +173,6 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
         with open(f"resources/initial_prompts/{self.lang}/{template}", encoding='utf8') as f:
             prompt = f.read()
         return prompt
-
-    def _generate_regex(self, player, mode="strict"):
-        """
-        Combine language specific content with regex pattern
-        The regex uses 4 named groups: tag, response, content and remainder
-        - model is instructed to start answer with "tag"
-        - "response" combines "content" and "remainder" (in case everything should be passed on to the next player)
-        - "content" is defined a the first produced paragraph (up to a newline)
-        - "remainder" collects all following content
-        Strict parsing mode:
-        - Model response has to start with "tag" (not optional)
-        - "remainder" should be "" (has to be implemented in response checking)
-        Liberal parsing mode:
-        - "tag" doesn't have to be at the beginning but only somewhere in the reply
-        - "tag" is optional
-        - "remainder" doesn't have to be empty (has to be implemented in response checking)
-
-        :param player: string identifier of player ("p1" or "p2")
-        :return: liberal regex pattern for given player in the current language
-        """
-        tag = content = ""
-        if player == "p1":
-            tag = MULTILINGUAL_PATTERNS[self.lang]["p1_tag"]
-            content = ".+"
-        elif player == "p2":
-            tag = MULTILINGUAL_PATTERNS[self.lang]["p2_tag"]
-            content = MULTILINGUAL_PATTERNS[self.lang]["p2_options"]
-        if mode == "strict":
-            return f'(?P<tag>{tag})?\\s*(?P<response>(?P<content>{content})\n*(?P<remainder>(.|\n)*))'
-        else:
-            return f'^(?P<tag>{tag})\\s*(?P<response>(?P<content>{content})\n*(?P<remainder>(.|\n)*))'
 
 
 if __name__ == '__main__':

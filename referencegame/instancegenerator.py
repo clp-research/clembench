@@ -16,6 +16,7 @@ from games.referencegame.resources.localization_utils import MULTILINGUAL_PATTER
 
 logger = clemgame.get_logger(__name__)
 GAME_NAME = "referencegame"
+GRIDS = "resources/grids_v1.5.json"
 
 
 def generate_samples(grids):
@@ -103,7 +104,7 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
         self.lang = lang
 
         # load grids
-        with open("resources/grids_v1.5.json", 'r') as f:
+        with open(GRIDS, 'r') as f:
             grids = json.load(f)
 
         # generate sub experiments
@@ -161,6 +162,7 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                     game_instance['player_2_third_grid'] = third_grid
                     game_instance['target_grid_name'] = target_grid_name
                     game_instance['lang'] = self.lang
+
                     game_counter += 1
 
     def _load_prompt(self, template):

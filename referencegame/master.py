@@ -25,7 +25,8 @@ class ReferenceGameMaster(GameMaster):
         self.player_1_response_pattern = ""
         self.player_2_response_pattern = ""
         #TODO make mode a command line parameter
-        self.mode = "liberal"
+        self.mode = "strict" # "liberal"
+
 
     def setup(self, **game_instance):
         self.game_instance = game_instance
@@ -71,6 +72,7 @@ class ReferenceGameMaster(GameMaster):
             return f'^(?P<tag>{tag})\s*(?P<response>(?P<content>{content})\n*(?P<remainder>(.|\n)*))'
         else:
             return f'(?P<tag>{tag})?\s*(?P<response>(?P<content>{content})\n*(?P<remainder>(.|\n)*))'
+
 
     @classmethod
     def applies_to(cls, game_name: str) -> bool:
@@ -235,6 +237,7 @@ class ReferenceGameScorer(GameScorer):
                 player_2_answer = turn[5]['action']['answer']
                 if player_2_answer.lower() == self.target_grid_name.lower():
                     success = 1
+
                 self.log_episode_score('Aborted at Player 1', 0)
                 self.log_episode_score('Aborted at Player 2', 0)
             else:
@@ -295,9 +298,9 @@ class ReferenceGameBenchmark(GameBenchmark):
 
 def main():
     # select one instance
-    experiments = file_utils.load_json("in/instances.json", "referencegame")
+    experiments = file_utils.load_json("in/instances_v1.5_en.json", "referencegame")
     instance = experiments["experiments"][0]["game_instances"][0]
-    master = ReferenceGameMaster(instance, ["gpt-3.5-turbo", "gpt-3.5-turbo"])
+    master = ReferenceGameMaster(instance, ["fsc-openchat-3.5-0106", "fsc-openchat-3.5-0106git a"])
     master.setup(**instance)
     master.play()
 

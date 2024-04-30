@@ -1,7 +1,8 @@
 MULTILINGUAL_PATTERNS = {"de":
-                             {"p1_tag": 'ausdruck:',
-                              "p2_tag": 'antwort:',
-                              "p2_options": 'erstes|zweites|drittes'},
+                             {"p2_options": 'erstes|zweites|drittes',
+                              "p1_tag": 'ausdruck:',
+                              "p2_tag": 'antwort:'
+                              },
                          "en":
                              {"p2_options": 'first|second|third',
                               "p1_tag": 'expression:',
@@ -18,6 +19,10 @@ MULTILINGUAL_PATTERNS = {"de":
                              {"p2_options": 'primeiro|segundo|terceiro',
                               "p1_tag": 'expressão:',
                               "p2_tag": 'resposta:'},
+                         "te":
+                             {"p2_options": 'మొదటిది|రెండవది|మూడవది',
+                              "p1_tag": 'వివరణ:',
+                              "p2_tag": 'సమాధానం:'},
                          "tk":
                              {"p2_options": 'birinji|ikinji|üçünji',
                               "p1_tag": 'aňlatma:',
@@ -28,6 +33,6 @@ MULTILINGUAL_PATTERNS = {"de":
                               "p2_tag": 'cevap:'},
                          "zh":
                              {"p2_options": '第一|第二|第三',
-                              "p1_tag": '^表达式:',
-                              "p2_tag": '回答:'}
+                              "p1_tag": '^表达式：',
+                              "p2_tag": '回答：'}
                          }

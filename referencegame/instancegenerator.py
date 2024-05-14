@@ -151,7 +151,7 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                     game_instance['player_1_third_grid'] = third_grid
 
                     first_grid = ""
-                    target_grid_name = ""
+                    target_grid_name = []
                     if i == 1:
                         first_grid = target_grid
                         # keep order from player 1 for second and third grid

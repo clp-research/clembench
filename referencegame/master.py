@@ -167,7 +167,7 @@ class ReferenceGameScorer(GameScorer):
             # allow for more liberal player 2 parsing by rematching original response with more liberal regex
             #TODO: move to game master for future runs 
             p2_match = False
-            if turn[5]['action']['type'] == "invalid":
+            if turn[5]['action']['type'] == "invalid format":
                 player_2_pattern = re.compile(self.player_2_response_pattern, re.IGNORECASE)
                 p2_match = re.match(player_2_pattern, turn[5]['action']['original_content'])
 

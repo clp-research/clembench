@@ -1,4 +1,6 @@
-## Text-only Map World Game - Exhaustive Exploration (EE)
+## Text-only Map World Game - Graph Reasoning (EE-gr)
+
+Implemented by: Yerkezhan Abdullayeva
 
 ### How to play
 

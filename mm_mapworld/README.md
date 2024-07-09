@@ -1,5 +1,7 @@
 ## Map World Game - Exhaustive Exploration (EE)
 
+Implemented by: Yan Weiser
+
 ### How to play
 
 Instances to play are already provided in this repository. In order to run them use the following command while being in the root clembench directory:

@@ -1,5 +1,7 @@
 # MatchIt ASCII
 
+Implemented by: Antonia Schmidt
+
 MatchIt ASCII is a dialogue game where two players have to come to an agreement whether the 5x5 grid consisting of ASCII-characters, that each of them gets as input, is the same or not.
 This is the 3q/base version of matchit_ascii, meaning that each player can ask the other three questions about the other grid.
 

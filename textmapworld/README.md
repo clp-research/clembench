@@ -1,5 +1,7 @@
 ## Text-only Map World Game - Exhaustive Exploration (EE)
 
+Implemented by: Yerkezhan Abdullayeva
+
 ### How to play
 
 Instances to play are already provided in this repository. In order to run them use the following command while being in the root clembench directory:

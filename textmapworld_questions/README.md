@@ -1,4 +1,6 @@
-## Text-only Map World Game - Exhaustive Exploration (EE)
+## Text-only Map World Game - Exhaustive Exploration & Questions (EE-qa)
+
+Implemented by: Yerkezhan Abdullayeva
 
 ### How to play
 

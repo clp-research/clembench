@@ -1,5 +1,7 @@
 # MatchIt
 
+Implemented by: Antonia Schmidt
+
 MatchIt is a multimodal dialogue game where two players have to come to an agreement whether the image that each of them gets as input is the same or not.
 This is the base/3q qversion of matchit, meaning that each player can ask the other exactly three questions about the other image.
 

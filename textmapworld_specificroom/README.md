@@ -1,4 +1,6 @@
-## Text-only Map World Game - Exhaustive Exploration (EE)
+## Text-only Map World Game - Specific Room (Go to X - G2X)
+
+Implemented by: Yerkezhan Abdullayeva
 
 ### How to play
 

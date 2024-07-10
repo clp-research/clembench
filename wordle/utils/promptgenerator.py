@@ -214,19 +214,19 @@ class PromptGenerator:
                 }
             )
         else:
-            if agreement == "do_not_use":
-                utterance.append({"role": "user", "content": ""})
-            else:
-                utterance.append(
-                    {
-                        "role": "assistant",
-                        "content": "agreement: "
-                        + agreement
-                        + "\nexplanation: "
-                        + agreement_explanation
-                        + "\n",
-                    }
-                )
+            #if agreement == "do_not_use":
+            #    utterance.append({"role": "user", "content": ""})
+            #else:
+            utterance.append(
+                {
+                    "role": "assistant",
+                    "content": "agreement: "
+                    + agreement
+                    + "\nexplanation: "
+                    + agreement_explanation
+                    + "\n",
+                }
+            )
             utterance.append(
                 {
                     "role": "user",

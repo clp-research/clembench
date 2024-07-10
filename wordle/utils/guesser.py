@@ -19,5 +19,5 @@ class Guesser(Player):
 
     def _custom_response(self, messages, turn_idx) -> str:
         # Repeating the same to maintain similar results w.r.t LLM mode
-        dummy_response = f'{self.response_format_keywords["guess"]}:dummy\n{self.response_format_keywords["explanation"]}:dummy'
+        dummy_response = f'{self.response_format_keywords["guess"]}: dummy\n{self.response_format_keywords["explanation"]}: dummy'
         return dummy_response

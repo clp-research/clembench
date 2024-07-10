@@ -87,6 +87,8 @@ class WordleGame:
 
         if self.use_critic:
             if self.critic_error:
+                if self.critic_error in ["CONTEXT_EXCEEDED_ERROR", "INVALID_FORMAT"]:
+                    return False
                 if self.critic_retry < self.max_retry:
                     return True
                 return False

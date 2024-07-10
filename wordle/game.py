@@ -1,4 +1,5 @@
 from typing import Dict, List
+import re
 
 from backends import Model, ContextExceededError
 from clemgame import get_logger
@@ -91,7 +92,7 @@ class WordleGame:
                 return False
 
         if self.guesser_error:
-            if self.guesser_error in ["NO_CLUE_FOUND", "CONTEXT_EXCEEDED_ERROR"]:
+            if self.guesser_error in ["NO_CLUE_FOUND", "CONTEXT_EXCEEDED_ERROR", "INVALID_FORMAT"]:
                 return False
             if self.guesser_error == "NOT_VALID_ENGLISH_WORD":
                 if self.guesser_retry_invalid_word < self.max_retry_invalid_word:
@@ -284,6 +285,31 @@ class WordleGame:
     def find_keyword_match(self, text, keyword):
         # response contains the data in the format of guess:.. explanation:..
         # hence adding a colon to the keyword to find the exact match
+        if text.find("CONTEXT_EXCEEDED_ERROR") != -1:
+            return "CONTEXT_EXCEEDED_ERROR"
+
+        if keyword in [self.response_format_keywords["guess"], self.response_format_keywords["agreement"]]:
+            if not text.startswith(keyword):
+                return "INVALID_FORMAT"
+
+        keyword = f"{keyword}:"
+
+        # Capture text until the new line character
+        if self.response_format_keywords["explanation"] not in keyword:
+            pattern = re.compile(rf"{keyword}([^\n]*)", re.IGNORECASE)
+        else:
+            pattern = re.compile(rf"{keyword}(.*)", re.IGNORECASE | re.DOTALL)
+        matches = pattern.findall(text)
+        if len(matches) != 1:
+            return "INVALID_FORMAT"
+        else:
+            return matches[0].strip()
+    
+
+
+    def find_keyword_match_woregex(self, text, keyword):
+        # response contains the data in the format of guess:.. explanation:..
+        # hence adding a colon to the keyword to find the exact match
         keyword = f"{keyword}:"
         start_index = text.find(keyword)
         end_index = text.find("\n", start_index)
@@ -304,17 +330,7 @@ class WordleGame:
         else:
             # Adding additional new line to extract the text for each keyword until the next line
             response = response + "\n"
-            if keyword == self.response_format_keywords["agreement"]:
-                match_keyword = self.find_keyword_match(response, keyword)
-                if (
-                    match_keyword
-                    not in self.response_format_keywords["agreement_match_keywords"]
-                ):
-                    result[keyword] = "INVALID_FORMAT"
-                else:
-                    result[keyword] = match_keyword
-            else:
-                result[keyword] = self.find_keyword_match(response, keyword)
+            result[keyword] = self.find_keyword_match(response, keyword)
             result["explanation"] = self.find_keyword_match(
                 response, self.response_format_keywords["explanation"]
             )

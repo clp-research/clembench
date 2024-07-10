@@ -53,7 +53,7 @@ class PromptGenerator:
             if self.use_clue:
                 # Add a clue
                 prompt[-1]["content"] = (
-                    prompt[-1]["content"] + "clue:" + self.target_word_clue + "\n"
+                    prompt[-1]["content"] + "clue: " + self.target_word_clue + "\n"
                 )
             utterance = prompt.copy()
         else:
@@ -62,7 +62,11 @@ class PromptGenerator:
             utterance.append(
                 {
                     "role": "assistant",
-                    "content": "guess:" + guess + "\nexplanation:" + explanation + "\n",
+                    "content": "guess: "
+                    + guess
+                    + "\nexplanation: "
+                    + explanation
+                    + "\n",
                 }
             )
             if self.use_critic:
@@ -74,12 +78,12 @@ class PromptGenerator:
                     utterance.append(
                         {
                             "role": "user",
-                            "content": "clue:"
+                            "content": "clue: "
                             + self.target_word_clue
                             + "\n"
-                            + "guess_agreement:"
+                            + "guess_agreement: "
                             + agreement
-                            + "\nagreement_explanation:"
+                            + "\nagreement_explanation: "
                             + agree_explanation
                             + "\n",
                         }
@@ -113,9 +117,9 @@ class PromptGenerator:
             utterance.append(
                 {
                     "role": "assistant",
-                    "content": "agreement:"
+                    "content": "agreement: "
                     + agreement
-                    + "\nexplanation:"
+                    + "\nexplanation: "
                     + agree_explanation
                     + "\n",
                 }
@@ -123,7 +127,7 @@ class PromptGenerator:
             utterance.append(
                 {
                     "role": "user",
-                    "content": "Provide your response only in this format:\nagreement:yes or no\nexplanation:details\nPlease try again",
+                    "content": "Provide your response only in this format:\nagreement: yes or no\nexplanation: details\nPlease try again",
                 }
             )
             prompt.extend(utterance)
@@ -134,12 +138,12 @@ class PromptGenerator:
             utterance.append(
                 {
                     "role": "assistant",
-                    "content": "clue:"
+                    "content": "clue: "
                     + self.target_word_clue
                     + "\n"
-                    + "guess:"
+                    + "guess: "
                     + guess
-                    + "\nexplanation:"
+                    + "\nexplanation: "
                     + explanation
                     + "\n",
                 }
@@ -149,49 +153,43 @@ class PromptGenerator:
             utterance.append(
                 {
                     "role": "assistant",
-                    "content": "guess:" + guess + "\nexplanation:" + explanation + "\n",
+                    "content": "guess: "
+                    + guess
+                    + "\nexplanation: "
+                    + explanation
+                    + "\n",
                 }
             )
 
         # If no feedback to be given, retry the same prompt
         if self.use_error_explanation:
+            message_format_details = "Provide your response only in this format:\nguess: word\nexplanation: details\nDo not generate any other text. Please try again."
             # Can add feedback to the prompt
             if error == "INVALID_WORD_LENGTH":
-                utterance.append(
-                    {
-                        "role": "user",
-                        "content": "the word should have exactly 5 letters. Please try again",
-                    }
+                error_message = (
+                    "The guess should have exactly 5 letters. Please try again."
                 )
             elif error == "INVALID_WORD":
-                utterance.append(
-                    {
-                        "role": "user",
-                        "content": "the word should contain only alphabets. Please try again",
-                    }
+                error_message = (
+                    "The guess should contain only letters. Please try again."
                 )
             elif error == "NOT_VALID_ENGLISH_WORD":
-                utterance.append(
-                    {
-                        "role": "user",
-                        "content": "your guess is not a valid word for this game. Please try again",
-                    }
+                error_message = (
+                    "Your guess is not a valid word for this game. Please try again."
                 )
             elif error == "INVALID_FORMAT":
-                utterance.append(
-                    {
-                        "role": "user",
-                        "content": "Provide your response only in this format:\nguess:word\nexplanation:details.\nPlease try again",
-                    }
-                )
+                error_message = message_format_details
+
         else:
             # No error explanation to be given
-            utterance.append(
-                {
-                    "role": "user",
-                    "content": "guess an english five letter word Provide your response only in this format:\nguess:word\nexplanation:details.\nPlease try again",
-                }
-            )
+            error_message = "Guess an English five-letter word.\n" + message_format_details
+
+        utterance.append(
+            {
+                "role": "user",
+                "content": error_message,
+            }
+        )
         prompt.extend(utterance)
         return utterance
 
@@ -211,8 +209,8 @@ class PromptGenerator:
                 {
                     "role": "user",
                     "content": self.guesser_critic_prompt[0]["content"]
-                    + f"clue:{self.target_word_clue}\n"
-                    + f"guess:{guess}\nexplanation:{explanation}\n",
+                    + f"clue: {self.target_word_clue}\n"
+                    + f"guess: {guess}\nexplanation: {explanation}\n",
                 }
             )
         else:
@@ -222,9 +220,9 @@ class PromptGenerator:
                 utterance.append(
                     {
                         "role": "assistant",
-                        "content": "agreement:"
+                        "content": "agreement: "
                         + agreement
-                        + "\nexplanation:"
+                        + "\nexplanation: "
                         + agreement_explanation
                         + "\n",
                     }
@@ -232,8 +230,8 @@ class PromptGenerator:
             utterance.append(
                 {
                     "role": "user",
-                    "content": f"clue:{self.target_word_clue}\n"
-                    + f"guess:{guess}\nexplanation:{explanation}\n",
+                    "content": f"clue: {self.target_word_clue}\n"
+                    + f"guess: {guess}\nexplanation: {explanation}\n",
                 }
             )
             if guess_feedback:

@@ -132,6 +132,7 @@ class WordleGameMaster(GameMaster):
             # always call log_next_turn when a new turn starts
             self.log_next_turn()
             self.turn()
+
             if self.success:
                 action = {"type": "correct guess", "content": "game_result = WIN"}
                 self.log_event(from_="GM", to="GM", action=action)
@@ -169,28 +170,33 @@ class WordleGameMaster(GameMaster):
         assert player in ("a", "b")
 
         if not response:
-            return None
+            return None, None
 
         if player == "a":
             if not response.startswith(self.config["lang_keywords"]["guess_lang"]):
-                return None
+                return None, None
 
             guess_keyword = self.config["lang_keywords"]["guess_lang"]
 
         else:
             if not response.startswith(self.config["lang_keywords"]["agreement_lang"]):
-                return None
+                return None, None
 
             guess_keyword = self.config["lang_keywords"]["agreement_lang"]
 
         explanation_keyword = self.config["lang_keywords"]["explanation_lang"]
 
+        response = response.strip()
+        additional_response = response.split("\n")
+        if len(additional_response) > 2:
+            return None, "UNKNOWN_TAGS"
+
         # Guess/Agreement should only be one word
         guess_pattern = re.compile(rf"{guess_keyword}([^\n]*)", re.IGNORECASE)
         # Explanation can spread across multiple lines
         explanation_pattern = re.compile(
-            rf"{explanation_keyword}(.*)", re.IGNORECASE | re.DOTALL
-        )
+            rf"{explanation_keyword}([^\n]*)", re.IGNORECASE)
+        
 
         guess = self._parse_response(guess_pattern, response)
         if guess:
@@ -201,12 +207,12 @@ class WordleGameMaster(GameMaster):
             explanation = explanation.strip()
 
         if not guess:
-            return None
+            return None, "MORE_THAN_ONE_GUESS"
 
         if player == "a":
-            return {"guess": guess, "explanation": explanation}
+            return {"guess": guess, "explanation": explanation}, None
         else:
-            return {"agreement": guess, "explanation": explanation}
+            return {"agreement": guess, "explanation": explanation}, None
 
     def check_correctness(self, player: str, answer: str) -> str:
         """
@@ -285,6 +291,10 @@ class WordleGameMaster(GameMaster):
                 return f"The length of the guessed word is not {self.config['lang_keywords']['max_word_length']}."
             elif error == "NOT_VALID_WORD_FOR_GAME":
                 return "The guessed word is not a valid word for this game."
+            elif error == "MORE_THAN_ONE_GUESS":
+                return "The response should contain the 'guess:' keyword only once."
+            elif error == "UNKNOWN_TAGS":
+                return "The response should contain only the 'guess:' and 'explanation:' keywords and associated information."
         else:
             if error == "INVALID_START_WORD":
                 return "The response should always start with the keyword 'agreement:'"
@@ -292,6 +302,10 @@ class WordleGameMaster(GameMaster):
                 return "The agreement should be a single word and should only be yes or no."
             elif error == "NOT_VALID_CRITIC_WORD":
                 return f"The agreement should be one of the following: {self.config['lang_keywords']['agreement_match_keywords_lang']}"
+            elif error == "MORE_THAN_ONE_GUESS":
+                return "The response should contain the 'agreement:' keyword only once."
+            elif error == "UNKNOWN_TAGS":
+                return "The response should contain only the 'agreement:' and 'explanation:' keywords and associated information."
 
     def _handle_reprompt(self, player):
         assert player in ("a")
@@ -344,10 +358,12 @@ class WordleGameMaster(GameMaster):
                 else:
                     break
 
+            logger.error(f"Current Turn: {self.current_turn}, Error in response from player a: {self.reprompt_answer[self.current_turn]}, is_correct_reply: {is_correct_reply}")
             self.reprompt = False
-            self._handle_abort(
-                player, self.reprompt_answer[self.current_turn], is_correct_reply
-            )
+            if self.cur_retry_per_error[is_correct_reply] == self.max_retry_per_error[is_correct_reply]:
+                self._handle_abort(
+                    player, self.reprompt_answer[self.current_turn], is_correct_reply
+                )
             return False, None
 
     def _handle_abort(self, player, answer, is_correct_reply):
@@ -386,9 +402,13 @@ class WordleGameMaster(GameMaster):
         """Check if answer is valid and correct"""
         assert player in ("a", "b")
         # parse answer
-        answer_parse = self.parse(player, answer)
+        answer_parse, addl_error = self.parse(player, answer)
         if answer_parse is None:
-            self._handle_abort(player, answer_parse, "INVALID_START_WORD")
+            if addl_error:
+                error = addl_error
+            else:
+                error = "INVALID_START_WORD"
+            self._handle_abort(player, answer_parse, error)
             return False
 
         # if correct characters, check correctness wrt game rules
@@ -430,8 +450,11 @@ class WordleGameMaster(GameMaster):
                     use_key
                 ] = answer_parse
 
-            if self.is_guess_correct(val_guess):
-                self.success = True
+
+            if use_key in ["no_critic", "after_critic"]:
+                if self.is_guess_correct(val_guess):
+                    logger.error(f"Guess is correct: {answer_parse['guess']}, setting success flag to True")
+                    self.success = True
 
         else:
             if self.use_critic:
@@ -568,8 +591,6 @@ class WordleGameMaster(GameMaster):
     def _add_guess_feedback_in_next_turns(self, player: str, use_key: str) -> str:        
         assert player in ("a")
 
-        logger.error(f"Current turn: {self.current_turn}, self.guess_feedback: {self.guess_feedback}")
-
         return (self.config["lang_keywords"]["guess_feedback_lang"]
                 + " "
                 + self.guess_feedback[self.current_turn - 1][use_key]
@@ -592,7 +613,7 @@ class WordleGameMaster(GameMaster):
 
     def _prepare_player_query(self, player: str) -> str:
         assert player in ("a", "b")
-        logger.error(f"Current turn: {self.current_turn}, self.use_critic: {self.use_critic}, self.before_critic: {self.before_critic}")
+
         content = ""
         if player == "a":
             if self.use_critic:
@@ -669,7 +690,6 @@ class WordleGameMaster(GameMaster):
 
         # increase the number of API requests
         self.request_counts[self.current_turn] += 1
-        logger.error(f"Current turn: {self.current_turn}, player: {player} answer: {answer}")
         return answer
 
     def is_guess_correct(self, guess_feedback):
@@ -684,14 +704,14 @@ class WordleGameMaster(GameMaster):
         return False
     
     def _handle_playera_response(self, answer_a: str) -> str:
+        model_response = answer_a
         # check if the game should be aborted or lost
         is_valid_turn = self._check_validity("a", answer_a)
-        logger.error(f"Current turn: {self.current_turn}, is_valid_turn: {is_valid_turn}")
         if not is_valid_turn:
             if self.reprompt:
                 # go ahead with reprompt
-                logger.error(f"Current turn: {self.current_turn}, repromting player A")
-                is_valid_turn, answer_a = self._handle_reprompt("a")
+                logger.error(f"Current Turn: {self.current_turn}, INVALID_WORD in response; Reprompting player a")
+                is_valid_turn, model_response = self._handle_reprompt("a")
                 if not is_valid_turn:
                     # stop game
                     return None
@@ -699,7 +719,7 @@ class WordleGameMaster(GameMaster):
                 # stop game
                 return None        
             
-        return answer_a
+        return model_response
 
     def turn(self) -> None:
         """Perform a game turn, utterances by A and B"""
@@ -707,35 +727,38 @@ class WordleGameMaster(GameMaster):
         self.guess_feedback[self.current_turn] = {}
 
         # get player A's reply and add it to its history
-        logger.error(f"Current turn: {self.current_turn}, calling player A")
         answer_a = self._get_model_response("a")
 
         # check if the game should be aborted or lost
-        answer_a = self._handle_playera_response(answer_a)
+        answer_player_a = self._handle_playera_response(answer_a)
+        logger.error(f"Current Turn: {self.current_turn}, Received response from player a: {answer_player_a}, self.success: {self.success}")
 
-        if answer_a is None:
+
+        if answer_player_a is None:
             return None
 
-        logger.error(f"Current turn: {self.current_turn}, Received player A answer {answer_a}, self.use_critic: {self.use_critic}")
         # add A's reply to B's history
         if self.use_critic:
+            logger.error(f"Current turn: {self.current_turn}, use_critic: {self.use_critic}, self.success: {self.success} calling player b")
             self.before_critic = False
-            logger.error(f"Current turn: {self.current_turn}, calling player B")
             answer_b = self._get_model_response("b")
             # check if the game should be aborted or lost
             is_valid_turn = self._check_validity("b", answer_b)
             if not is_valid_turn:
                 # stop game
                 return None
+            
+            logger.error(f"Valid answer {answer_b} from player b, self.success: {self.success} calling player a")
 
             # get player A's reply and add it to its history
-            logger.error(f"Current turn: {self.current_turn}, calling player A")
             answer_a = self._get_model_response("a")
 
+            logger.error(f"Received answer {answer_a} from player a")
             # check if the game should be aborted or lost
-            answer_a = self._handle_playera_response(answer_a)
-
-            if answer_a is None:
+            answer_player_a = self._handle_playera_response(answer_a)
+            logger.error(f"After parsing, answer from player a is: {answer_player_a}, self.success: {self.success}")
+            if answer_player_a is None:
+                logger.error(f"Answer from player a is None, returning, self.success: {self.success}")
                 return None
         self.complete_turns += 1
 

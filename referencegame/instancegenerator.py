@@ -9,12 +9,11 @@ Creates instances.json in instances/
 import random # to create random grids
 import Levenshtein # to calculate distance between grids
 
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
 
 random.seed(123)
 
-logger = clemgame.get_logger(__name__)
+logger = logging.getLogger(__name__)
 GAME_NAME = "referencegame"
 GRIDS = "resources/grids_v1.5.json"
 

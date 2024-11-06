@@ -5,16 +5,15 @@ Creates files in ./instances and ./requests
 """
 
 from random import randint
-
+import logging
 import random
 
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
 
 random.seed(123)
 N_INSTANCES = 10
 
-logger = clemgame.get_logger(__name__)
+logger = logging.getLogger(__name__)
 GAME_NAME = "imagegame"
 
 def generate_random_grid(number_of_letters, grid_dimension, fill_row=False, fill_column=False):

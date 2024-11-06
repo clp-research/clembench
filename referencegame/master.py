@@ -1,17 +1,17 @@
 from typing import List, Dict
 
 import numpy as np
+import logging
 
-from backends import Model
-from clemgame import file_utils
-from clemgame import metrics
-from clemgame.clemgame import GameMaster, GameBenchmark, GameScorer
-from clemgame import get_logger
-from games.referencegame.game import ReferenceGame
+from clemcore.backends import Model
+from clemcore.clemgame import file_utils
+from clemcore.clemgame import metrics
+from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
+from game import ReferenceGame
 import re
 
 GAME_NAME = "referencegame"
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class ReferenceGameMaster(GameMaster):

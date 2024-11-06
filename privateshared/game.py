@@ -6,10 +6,10 @@ import copy
 import random
 from typing import List, Dict, Any, Tuple
 
-from backends import Model, CustomResponseModel
-from clemgame.clemgame import Player
-from clemgame.file_utils import load_json
-from games.privateshared.constants import REQUESTS_PATH, GAME_NAME
+from clemcore.backends import Model, CustomResponseModel
+from clemcore.clemgame import Player
+from clemcore.utils.file_utils import load_json
+from constants import REQUESTS_PATH, GAME_NAME
 
 
 class Answerer(Player):

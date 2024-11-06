@@ -1,17 +1,18 @@
 from typing import List, Tuple, Dict
+import logging
 
-from backends import Model
-from clemgame import metrics
-from clemgame.clemgame import GameMaster, GameBenchmark, GameScorer
-from games.imagegame.game import ImageGame
-from games.imagegame.evaluator import evaluate, calculate_flipped_pixels
-from clemgame import get_logger
+from clemcore.backends import Model
+from clemcore.clemgame import metrics
+from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
+from game import ImageGame
+from evaluator import evaluate, calculate_flipped_pixels
+
 import re
 import math
 
 GAME_NAME = "imagegame"
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class ImageGameMaster(GameMaster):

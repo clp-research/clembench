@@ -4,18 +4,17 @@ Generate instances for the taboo game.
 Creates files in ./instances
 """
 import random
-
+import logging
 from tqdm import tqdm
 
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
 
 N_INSTANCES = 20  # how many different target words; zero means "all"
 N_GUESSES = 3  # how many tries the guesser will have
 N_RELATED_WORDS = 3
 LANGUAGE = "en"
 
-logger = clemgame.get_logger(__name__)
+logger = logging.getLogger(__name__)
 GAME_NAME = "taboo"
 
 

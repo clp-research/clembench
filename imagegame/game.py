@@ -1,7 +1,7 @@
 from typing import Dict, List
 
-from backends import Model
-from clemgame.clemgame import Player
+from clemcore.backends import Model
+from clemcore.clemgame import Player
 
 
 class Instruction:

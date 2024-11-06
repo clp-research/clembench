@@ -8,9 +8,9 @@ from typing import Tuple, Dict, List
 
 from tqdm import tqdm
 
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
-from games.privateshared.constants import (
+import logging
+from clemcore.clemgame import GameInstanceGenerator
+from constants import (
     PROBES_PATH, REQUESTS_PATH, SLOT_PATH, PROMPT_PATH, WORDS_PATH,
     GAME_NAME, EXPERIMENTS)
 
@@ -25,7 +25,7 @@ what_slot = {'travel-booking': 'Travel',
              'things-places': 'Things at places',
              'letter-number': 'Numbered letters'}
 
-logger = clemgame.get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 def sample_instance(slot_values: dict, what_value: str) -> Tuple[dict, str]:

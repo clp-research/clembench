@@ -5,7 +5,7 @@ Script that checks whether no value overlap in the slot values.
 from collections import Counter
 import json
 
-from games.privateshared.constants import EXPERIMENTS
+from privateshared.constants import EXPERIMENTS
 
 for experiment in EXPERIMENTS:
     print(f'Checking {experiment}...')

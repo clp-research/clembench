@@ -5,10 +5,10 @@ Creates files in ./in
 """
 from tqdm import tqdm
 
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
+import logging
+from clemcore.clemgame import GameInstanceGenerator
 
-logger = clemgame.get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 GAME_NAME = "hellogame"
 LANGUAGE = "en"

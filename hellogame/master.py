@@ -1,11 +1,11 @@
 import string
 from typing import Dict, List
 
-from backends import Model, CustomResponseModel
-from clemgame.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster
-from clemgame import get_logger
+from clemcore.backends import Model, CustomResponseModel
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster
+import logging
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 GAME_NAME = "hellogame"
 

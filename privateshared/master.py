@@ -9,19 +9,19 @@ import numpy as np
 from sklearn.metrics import accuracy_score as acc_score
 from sklearn.metrics import cohen_kappa_score
 
-import clemgame.metrics as ms
-from backends import Model
-from clemgame import file_utils
-from clemgame.clemgame import GameMaster, GameBenchmark, GameScorer
-from clemgame import get_logger
+import clemcore.clemgame.metrics as ms
+from clemcore.backends import Model
+from clemcore.clemgame import file_utils
+from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
+import logging
 
-from games.privateshared.game import PrivateSharedGame
-from games.privateshared.constants import (
+from game import PrivateSharedGame
+from constants import (
     GAME_NAME, PROBES_PATH, RETRIES_PATH, UPDATE, WORDS_PATH,
     INVALID_LABEL, INVALID, SUCCESS, NOT_SUCCESS, NOT_PARSED, RESULT)
 
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class PrivateShared(GameMaster):

@@ -1,9 +1,10 @@
+import os.path
 from typing import Dict, Tuple, List, Union
 import logging
 import numpy as np
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
+from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
 from clemcore.utils import file_utils, string_utils
@@ -17,7 +18,7 @@ EN_STOPWORDS = stopwords.words('english')
 
 EN_STEMMER = SnowballStemmer("english")
 
-GAME_NAME = "taboo"
+#GAME_NAME = "taboo"
 
 logger = logging.getLogger(__name__)
 
@@ -84,8 +85,8 @@ class Taboo(DialogueGameMaster):
     word or related words in their explanation. Morphology is checked in check_clue().
     """
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
         self.max_turns: int = experiment["max_turns"]
         self.describer_initial_prompt = self.experiment["describer_initial_prompt"]
         self.guesser_initial_prompt = self.experiment["guesser_initial_prompt"]
@@ -184,8 +185,8 @@ class Taboo(DialogueGameMaster):
 
 
 class TabooScorer(GameScorer):
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
 
     def compute_scores(self, episode_interactions: Dict) -> None:
         """ Episode level scores"""
@@ -271,25 +272,27 @@ class TabooScorer(GameScorer):
 
 class TabooGameBenchmark(GameBenchmark):
 
-    def __init__(self):
-        super().__init__(GAME_NAME)
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec["game_name"], game_spec["game_path"])
+        #TODO: experiment could also be set through GameSpec
 
     def get_description(self):
         return "Taboo game between two agents where one has to describe a word for the other to guess."
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return Taboo(experiment, player_models)
+        return Taboo(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return TabooScorer(experiment, game_instance)
+        return TabooScorer(self.game_name, experiment, game_instance)
 
 
 def main():
     # select one experiment and instance
-    experiments = file_utils.load_json("in/instances.json", "taboo")
+    game_path = os.path.dirname(os.path.abspath(__file__))
+    experiments = file_utils.load_json("in/instances.json", game_path)
     experiment_1 = experiments["experiments"][0]
     game_1 = experiment_1["game_instances"][0]
-    master = Taboo(experiment_1, ["mock", "mock"])
+    master = Taboo("taboo", experiment_1, ["mock", "mock"])
     master.setup(**game_1)
     master.play()
 

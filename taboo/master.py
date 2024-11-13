@@ -18,8 +18,6 @@ EN_STOPWORDS = stopwords.words('english')
 
 EN_STEMMER = SnowballStemmer("english")
 
-#GAME_NAME = "taboo"
-
 logger = logging.getLogger(__name__)
 
 

@@ -1,8 +1,12 @@
 """
 Generate instances for the taboo game.
 
-Creates files in ./instances
+usage:
+python3 instancegenerator.py
+Creates instance.json file in ./in
+
 """
+import os
 import random
 import logging
 from tqdm import tqdm
@@ -13,24 +17,22 @@ N_INSTANCES = 20  # how many different target words; zero means "all"
 N_GUESSES = 3  # how many tries the guesser will have
 N_RELATED_WORDS = 3
 LANGUAGE = "en"
+VERSION = "v1.5"
 
 logger = logging.getLogger(__name__)
-GAME_NAME = "taboo"
 
+random.seed(42)
 
 class TabooGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self):
-        super().__init__(GAME_NAME)
-
-    def load_instances(self):
-        return self.load_json("in/instances")
+        super().__init__(os.path.dirname(__file__))
 
     def on_generate(self):
         for frequency in ["high", "medium", "low"]:
             print("Sampling from freq:", frequency)
             # first choose target words based on the difficultly
-            fp = f"resources/target_words/{LANGUAGE}/{frequency}_freq_100_v1.5"
+            fp = f"resources/target_words/{LANGUAGE}/{frequency}_freq_100_{VERSION}"
             target_words = self.load_file(file_name=fp, file_ending=".txt").split('\n')
             if N_INSTANCES > 0:
                 assert len(target_words) >= N_INSTANCES, \

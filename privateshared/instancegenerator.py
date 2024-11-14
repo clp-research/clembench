@@ -4,15 +4,14 @@ Randomly generate templates for the private/shared game in English.
 Creates files in ./instances and ./requests
 """
 import random
+import os
+import logging
 from typing import Tuple, Dict, List
-
 from tqdm import tqdm
 
-import logging
 from clemcore.clemgame import GameInstanceGenerator
 from constants import (
-    PROBES_PATH, REQUESTS_PATH, SLOT_PATH, PROMPT_PATH, WORDS_PATH,
-    GAME_NAME, EXPERIMENTS)
+    PROBES_PATH, REQUESTS_PATH, SLOT_PATH, PROMPT_PATH, WORDS_PATH, EXPERIMENTS)
 
 ID = 1
 LANG = 'en'
@@ -71,7 +70,7 @@ class PrivateSharedGameInstanceGenerator(GameInstanceGenerator):
     """Generator of instances for all experiments."""
 
     def __init__(self):
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(__file__))
         words = self.load_json(WORDS_PATH.format(LANG))
         self.tags = words['tags']
         self.answer = words["ANSWER"]

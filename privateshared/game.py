@@ -9,7 +9,7 @@ from typing import List, Dict, Any, Tuple
 from clemcore.backends import Model, CustomResponseModel
 from clemcore.clemgame import Player
 from clemcore.utils.file_utils import load_json
-from constants import REQUESTS_PATH, GAME_NAME
+from constants import GAME_PATH, REQUESTS_PATH
 
 
 class Answerer(Player):
@@ -48,7 +48,7 @@ class Questioner(Player):
                  requests: Dict[str, int]
                  ):
         super().__init__(CustomResponseModel())
-        request_strings = load_json(REQUESTS_PATH.format(exp_name), GAME_NAME)
+        request_strings = load_json(REQUESTS_PATH.format(exp_name), GAME_PATH)
         self.max_turns = max_turns
         self.question_order = question_order
         self.requests = requests

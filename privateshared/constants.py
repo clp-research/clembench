@@ -6,7 +6,6 @@ To add a new experiment, append its config to EXPERIMENTS, what_slot and tags.
 import os.path
 
 GAME_PATH = os.path.dirname(os.path.abspath(__file__))
-GAME_NAME = 'privateshared'
 EXPERIMENTS = ['travel-booking', 'job-interview', 'restaurant',
                'things-places', 'letter-number']
 

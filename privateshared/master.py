@@ -11,13 +11,13 @@ from sklearn.metrics import cohen_kappa_score
 
 import clemcore.clemgame.metrics as ms
 from clemcore.backends import Model
-from clemcore.clemgame import file_utils
+from clemcore.clemgame import file_utils, GameSpec
 from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
 import logging
 
 from game import PrivateSharedGame
 from constants import (
-    GAME_NAME, PROBES_PATH, RETRIES_PATH, UPDATE, WORDS_PATH,
+    GAME_PATH, PROBES_PATH, RETRIES_PATH, UPDATE, WORDS_PATH,
     INVALID_LABEL, INVALID, SUCCESS, NOT_SUCCESS, NOT_PARSED, RESULT)
 
 
@@ -26,8 +26,8 @@ logger = logging.getLogger(__name__)
 
 class PrivateShared(GameMaster):
     """Implement mechanisms for playing PrivateShared."""
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
         self.subtype = experiment['name']
         self.model_name = self.player_models[0].get_name()
         # load necessary texts
@@ -191,7 +191,8 @@ class PrivateShared(GameMaster):
 
         return True
 
-    def _has_continuation(self, response: str) -> bool:
+    @staticmethod
+    def _has_continuation(response: str) -> bool:
         """Return True if the response continues after what is needed."""
         # if the answer contains a line break with some continuation after it,
         # we consider it to be an invalid response
@@ -369,15 +370,11 @@ class PrivateShared(GameMaster):
             return 0
         return INVALID_LABEL
 
-    @classmethod
-    def applies_to(cls, game_name: str) -> bool:
-        return game_name == GAME_NAME
-
 
 class PrivateSharedScorer(GameScorer):
 
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
         self.slots = game_instance["slots"]
 
     def compute_scores(self, episode_interactions: Dict) -> None:
@@ -475,20 +472,15 @@ class PrivateSharedScorer(GameScorer):
 
 class PrivateSharedGameBenchmark(GameBenchmark):
     """Integrate the game into the benchmark run."""
-    def __init__(self):
-        super().__init__(GAME_NAME)
 
-    def is_single_player(self):
-        return True
-
-    def get_description(self):
-        return "Questioner and answerer in scorekeeping game."
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return PrivateShared(experiment, player_models)
+        return PrivateShared(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return PrivateSharedScorer(experiment, game_instance)
+        return PrivateSharedScorer(self.game_name,experiment, game_instance)
 
 def main():
     """Play the first episode in the instances."""

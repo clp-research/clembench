@@ -271,11 +271,8 @@ class TabooScorer(GameScorer):
 class TabooGameBenchmark(GameBenchmark):
 
     def __init__(self, game_spec: GameSpec):
-        super().__init__(game_spec["game_name"], game_spec["game_path"])
+        super().__init__(game_spec)
         #TODO: experiment could also be set through GameSpec
-
-    def get_description(self):
-        return "Taboo game between two agents where one has to describe a word for the other to guess."
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
         return Taboo(self.game_name, self.game_path, experiment, player_models)

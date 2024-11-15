@@ -66,7 +66,7 @@ class InstructionGiver(Player):
         return super().__call__(instruction.convert_to_query_messages(), turn_idx)
 
     def _custom_response(self, messages, turn_idx):
-        return "Instruction: Put X in all cells"
+        return "Command: Put X in all cells"
 
 
 class ImageGame:

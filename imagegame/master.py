@@ -1,36 +1,29 @@
-from typing import List, Tuple, Dict
+import os
+from typing import List, Dict
 import logging
 
 from clemcore.backends import Model
-from clemcore.clemgame import metrics
-from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
+from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, GameSpec, metrics
 from game import ImageGame
 from evaluator import evaluate, calculate_flipped_pixels
 
 import re
 import math
 
-GAME_NAME = "imagegame"
-
 logger = logging.getLogger(__name__)
 
 
 class ImageGameMaster(GameMaster):
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
         self.experiment = experiment
         self.game = None
         self.request_count = 0
         self.parsed_request_count = 0
         self.violated_request_count = 0
         self.aborted_ratio = 0
-
         self.turn_request_stats = {}
-
-    def get_description(self) -> str:
-        return "Image Game simulation"
-
 
     def _on_setup(self, **game_instance):
         self.game_instance = game_instance
@@ -45,10 +38,6 @@ class ImageGameMaster(GameMaster):
 
     def setup(self, **kwargs):
         self._on_setup(**kwargs)
-
-    @classmethod
-    def applies_to(cls, game_name: str) -> bool:
-        return game_name == GAME_NAME
 
     def play(self) -> None:
         while self.game.proceeds():
@@ -170,8 +159,8 @@ class ImageGameMaster(GameMaster):
 
 class ImageGameScorer(GameScorer):
 
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
         self.target_grid = game_instance["target_grid"]
         self.player1_response_pattern = r'{}'.format(game_instance["player_1_response_pattern"])
         self.player2_response_pattern = r'{}'.format(game_instance["player_2_response_pattern"])
@@ -364,14 +353,11 @@ class ImageGameScorer(GameScorer):
 
 class ImageGameBenchmark(GameBenchmark):
 
-    def __init__(self):
-        super().__init__(GAME_NAME)
-
-    def get_description(self):
-        return "Image Game simulation to generate referring expressions and fill a grid accordingly"
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return ImageGameMaster(experiment, player_models)
+        return ImageGameMaster(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return ImageGameScorer(experiment, game_instance)
+        return ImageGameScorer(self.game_name, experiment, game_instance)

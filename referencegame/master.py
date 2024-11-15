@@ -1,23 +1,23 @@
+import os
 from typing import List, Dict
 
 import numpy as np
 import logging
 
 from clemcore.backends import Model
-from clemcore.clemgame import file_utils
+from clemcore.clemgame import file_utils, GameSpec
 from clemcore.clemgame import metrics
 from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
 from game import ReferenceGame
 import re
 
-GAME_NAME = "referencegame"
 logger = logging.getLogger(__name__)
 
 
 class ReferenceGameMaster(GameMaster):
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
         self.experiment = experiment
         self.game = None
         self.game_instance = None
@@ -33,16 +33,11 @@ class ReferenceGameMaster(GameMaster):
             "Player_2": self.player_models[1].get_name()}
         )
 
-    @classmethod
-    def applies_to(cls, game_name: str) -> bool:
-        return game_name == GAME_NAME
-
     def play(self) -> None:
         logger.info("Game turn: %d", self.game.turn_count)
         self.turn()
 
     def turn(self):
-
         self.log_next_turn()
         # generate referring expression - Player 1 side
         self.game.given_instruction.add_user_message(self.game.player_1_prompt_header)
@@ -112,8 +107,8 @@ class ReferenceGameMaster(GameMaster):
 
 class ReferenceGameScorer(GameScorer):
 
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
         self.target_grid_name = game_instance["target_grid_name"]
         self.player_2_response_pattern = game_instance["player_2_response_pattern"]
         self.player_1_response_pattern = game_instance["player_1_response_pattern"]
@@ -236,23 +231,19 @@ class ReferenceGameScorer(GameScorer):
 
 class ReferenceGameBenchmark(GameBenchmark):
 
-    def __init__(self):
-        super().__init__(GAME_NAME)
-
-    def get_description(self):
-        return "Reference Game between two agents " \
-               "where one has to describe one of three grids " \
-               "and the other has to guess which one it is."
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return ReferenceGameMaster(experiment, player_models)
+        return ReferenceGameMaster(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return ReferenceGameScorer(experiment, game_instance)
+        return ReferenceGameScorer(self.game_name, experiment, game_instance)
 
 def main():
     # select one instance
-    experiments = file_utils.load_json("in/instances.json", "referencegame")
+    game_path = os.path.dirname(os.path.abspath(__file__))
+    experiments = file_utils.load_json("in/instances.json", game_path)
     instance = experiments["experiments"][0]["game_instances"][0]
     master = ReferenceGameMaster(instance, ["gpt-3.5-turbo", "gpt-3.5-turbo"])
     master.setup(**instance)

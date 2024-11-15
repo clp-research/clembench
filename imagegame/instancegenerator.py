@@ -4,6 +4,7 @@ Randomly generate templates for the private/shared game.
 Creates files in ./instances and ./requests
 """
 
+import os
 from random import randint
 import logging
 import random
@@ -14,7 +15,7 @@ random.seed(123)
 N_INSTANCES = 10
 
 logger = logging.getLogger(__name__)
-GAME_NAME = "imagegame"
+
 
 def generate_random_grid(number_of_letters, grid_dimension, fill_row=False, fill_column=False):
     alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -70,6 +71,7 @@ def generate_random_grid(number_of_letters, grid_dimension, fill_row=False, fill
         grid_as_string += row.strip() + '\n'
     return grid_as_string.strip()
 
+
 def generate_random_grid(number_of_letters, grid_dimension, letter):
     # create an empty grid
     grid = []
@@ -95,10 +97,11 @@ def generate_random_grid(number_of_letters, grid_dimension, letter):
         grid_as_string += row.strip() + '\n'
     return grid_as_string.strip()
 
+
 class ImageGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self):
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(__file__))
 
     def on_generate(self):
 
@@ -146,8 +149,8 @@ class ImageGameInstanceGenerator(GameInstanceGenerator):
                 game_instance["player_1_question"] = prompt_question
                 game_instance['grid_dimension'] = grid_dimension
                 game_instance['number_of_letters'] = grid.count('X')
-                game_instance['player_1_response_pattern'] = '^instruction: [^\n]+$'
-                game_instance['player_1_terminate_pattern'] = '^\s*instruction\s*:\s*done\s*$'
+                game_instance['player_1_response_pattern'] = '^command: [^\n]+$'
+                game_instance['player_1_terminate_pattern'] = '^\s*command\s*:\s*done\s*$'
                 game_instance['player_2_response_pattern'] = '^\n*([A-Z▢]\s){4}[A-Z▢]\n([A-Z▢]\s){4}[A-Z▢]\n([A-Z▢]\s){4}[A-Z▢]\n([A-Z▢]\s){4}[A-Z▢]\n([A-Z▢]\s){4}[A-Z▢]\n*$'
                 game_instance['fill_row'] = False
                 game_instance['fill_column'] = False

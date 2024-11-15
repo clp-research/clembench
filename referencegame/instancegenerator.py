@@ -1,20 +1,22 @@
 """
-Generate instances for the referencegame
-Version 1.6 (strict regex parsing)
+Generate instances for the referencegame v1.6
 
 Reads grids_v1.5.json from resources/ (grids don't change in this version)
-Creates instances.json in instances/
+Creates instances.json in in/
 """
-
+import logging
+import os
 import random # to create random grids
 import Levenshtein # to calculate distance between grids
 
 from clemcore.clemgame import GameInstanceGenerator
 
+logger = logging.getLogger(__name__)
+
 random.seed(123)
 
-logger = logging.getLogger(__name__)
-GAME_NAME = "referencegame"
+VERSION = "v1.5"
+LANGUAGE = "en"
 GRIDS = "resources/grids_v1.5.json"
 
 
@@ -121,7 +123,7 @@ def select_distractors(target_grid: int, distances: list):
 class ReferenceGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self):
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(__file__))
 
     def on_generate(self):
 
@@ -189,4 +191,4 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == '__main__':
-    ReferenceGameInstanceGenerator().generate(filename="instances.json")
+    ReferenceGameInstanceGenerator().generate() # f"instances_{VERSION}_{LANGUAGE}"

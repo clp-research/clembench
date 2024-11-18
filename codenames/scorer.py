@@ -1,18 +1,22 @@
 import statistics, math
-from clemgame.clemgame import GameScorer
-from clemgame.metrics import BENCH_SCORE, METRIC_ABORTED
-from .constants import *
+
+from clemcore.clemgame import GameScorer
+from clemcore.clemgame.metrics import BENCH_SCORE, METRIC_ABORTED
+
+from constants import *
 
 EXPECTED_WORDS_PER_TURN = 2
+
 
 def f1(precision, recall, weight = 2):
     if precision + recall == 0:
         return 0
     return weight * precision * recall / (precision + recall)
 
+
 class CodenamesScorer(GameScorer):
-    def __init__(self, experiment_config, game_instance):
-        super().__init__(GAME_NAME, experiment_config, game_instance)
+    def __init__(self, game_name: str, experiment_config, game_instance):
+        super().__init__(game_name, experiment_config, game_instance)
 
     def log_turn_score(self, turn_idx, name, value, scale=False):
         if type(value) == int or type(value) == float:

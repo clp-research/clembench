@@ -1,5 +1,6 @@
 from typing import Dict, List
-from .constants import TEAM, INNOCENT, OPPONENT, ASSASSIN, HIDDEN, REVEALED
+from constants import TEAM, INNOCENT, OPPONENT, ASSASSIN, HIDDEN, REVEALED
+
 
 class CodenamesBoard:
     def __init__(self, team_words, opponent_words, innocent_words, assassin_words, random_order, flags):

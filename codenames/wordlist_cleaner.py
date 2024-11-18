@@ -1,12 +1,11 @@
 import os, argparse, json
 from pathlib import Path
+from constants import GAME_PATH
 
-
-GAME_PATH = "games/codenames/"
 
 def clean_wordlist(wordlist_name, source, dest):
     print(f"Cleaning {wordlist_name}...")
-    wordlist = load_wordlist(f"{GAME_PATH}{source}/{wordlist_name}")
+    wordlist = load_wordlist(f"{GAME_PATH}/{source}/{wordlist_name}")
     # check whether wordlist contains more than one hierarchical level (category names, frequency thresholds, etc.)
     if type(wordlist["words"]) == list:
         length_before = len(wordlist["words"])
@@ -20,7 +19,8 @@ def clean_wordlist(wordlist_name, source, dest):
             wordlist["words"][attribute] = clean(wordlist["words"][attribute])
             length_after += len(wordlist["words"][attribute])
     print(f"Removed {length_before - length_after} words, contains {length_after} words now.")
-    save_wordlist(wordlist, f"{GAME_PATH}{dest}/{wordlist_name}")    
+    save_wordlist(wordlist, f"{GAME_PATH}/{dest}/{wordlist_name}")
+
 
 def clean(list_of_words):
     # all words in lower()
@@ -33,21 +33,25 @@ def clean(list_of_words):
 
     return list_of_words
 
+
 def load_wordlist(filepath):
     with open(filepath) as file:
         wordlist = json.load(file)
     return wordlist
+
 
 def save_wordlist(wordlist, filepath):
     Path(os.path.dirname(filepath)).mkdir(parents=True, exist_ok=True)
     with open(filepath, 'w') as file:
         json.dump(wordlist, file)
 
+
 def clean_all_wordlists(source="resources/wordlists", dest="resources/cleaned_wordlists"):
-    wordlist_names = os.listdir(f"{GAME_PATH}{source}")
+    wordlist_names = os.listdir(f"{GAME_PATH}/{source}")
     print(wordlist_names)
     for wordlist_name in wordlist_names:
         clean_wordlist(wordlist_name, source, dest)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

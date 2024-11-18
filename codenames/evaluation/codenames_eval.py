@@ -5,8 +5,8 @@ import pandas as pd
 import numpy as np
 
 import evaluation.evalutils as utils
-from clemgame.metrics import *
-from games.codenames.constants import *
+from clemcore.clemgame.metrics import *
+from codenames.constants import *
 from collections import Counter
 import json, copy
 from evaluation.bencheval import PlayedScoreError

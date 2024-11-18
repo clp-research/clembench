@@ -1,9 +1,11 @@
 from typing import Dict, List
-import re, random, string, nltk, backends
+import re, random, nltk
 
-from clemgame.clemgame import Player
-from .constants import *
-from .validation_errors import *
+from clemcore import backends
+from clemcore.clemgame import Player
+
+from constants import *
+from validation_errors import *
 
 MOCK_IS_RANDOM = False
 

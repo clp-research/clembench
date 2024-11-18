@@ -1,18 +1,21 @@
-from typing import Dict, List, Tuple, Set
+from typing import Dict, List, Tuple
 from string import Template
 import random, copy
+import logging
+import os
 
-from clemgame.clemgame import GameMaster, GameScorer, GameBenchmark, Player, DialogueGameMaster
-from clemgame import get_logger
-from clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_REQUEST_COUNT, \
-    METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, BENCH_SCORE
-from games.codenames.constants import *
-from games.codenames.validation_errors import *
-from .players import ClueGiver, Guesser
-from .board import CodenamesBoard
-from .scorer import CodenamesScorer
+from clemcore.clemgame import GameScorer, GameBenchmark, Player, DialogueGameMaster, GameSpec
+from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_REQUEST_COUNT, \
+    METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED
 
-logger = get_logger(__name__)
+from constants import *
+from validation_errors import *
+from players import ClueGiver, Guesser
+from board import CodenamesBoard
+from scorer import CodenamesScorer
+
+logger = logging.getLogger(__name__)
+
 
 class CodenamesGame(DialogueGameMaster):
     """This class implements a codenames game in which player A
@@ -20,8 +23,8 @@ class CodenamesGame(DialogueGameMaster):
     which player B has to guess from the given clue.
     """
 
-    def __init__(self, experiment: Dict, player_backends: List[str]):
-        super().__init__(GAME_NAME, experiment, player_backends)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_backends: List[str]):
+        super().__init__(game_name, game_path, experiment, player_backends)
         self.experiment = experiment
         self.opponent_difficulty: bool = experiment[OPPONENT_DIFFICULTY]
 
@@ -56,7 +59,7 @@ class CodenamesGame(DialogueGameMaster):
 
     def _get_cluegiver_prompt(self, initial = False) -> str:
         folder = "initial_prompts" if initial else "intermittent_prompts"
-        path = f"resources/{folder}/prompt_cluegiver"
+        path = f"{GAME_PATH}/resources/{folder}/prompt_cluegiver"
         prompt_cluegiver = self.load_template(path)
 
         team_words = ", ".join(self.board.get_hidden_words(TEAM))
@@ -72,7 +75,7 @@ class CodenamesGame(DialogueGameMaster):
     
     def _get_guesser_prompt(self, initial = False) -> str:
         folder = "initial_prompts" if initial else "intermittent_prompts"
-        path = f"resources/{folder}/prompt_guesser"
+        path = f"{GAME_PATH}/resources/{folder}/prompt_guesser"
         prompt_guesser = self.load_template(path)
         
         board = ", ".join(self.board.get_all_hidden_words())
@@ -262,17 +265,15 @@ class CodenamesGame(DialogueGameMaster):
         self.log_key("Cluegiver engaged flags", self.cluegiver.flags_engaged)
         self.log_key("Guesser engaged flags", self.guesser.flags_engaged)
 
+
 class CodenamesGameBenchmark(GameBenchmark):
 
-    def __init__(self):
-        super().__init__(GAME_NAME)
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
         random.seed(SEED)
 
-    def get_description(self) -> str:
-        return "Codenames game between a cluegiver and a guesser"
-
-    def create_game_master(self, experiment: Dict, player_backends: List[str]) -> GameMaster:
-        return CodenamesGame(experiment, player_backends)
+    def create_game_master(self, experiment: Dict, player_backends: List[str]) -> DialogueGameMaster:
+        return CodenamesGame(self.game_name, self.game_path, experiment, player_backends)
 
     def create_game_scorer(self, experiment_config, game_instance) -> GameScorer:
-        return CodenamesScorer(experiment_config, game_instance)
+        return CodenamesScorer(self.game_name, experiment_config, game_instance)

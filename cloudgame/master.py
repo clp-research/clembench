@@ -1,24 +1,20 @@
 # TODO add to _validate_player_response: do not automatically return True (important for when not mock)
 # TODO add played or aborted metric to compute_scores (see prev. todo)
-
-
+import os
 import random
-from typing import List, Dict, Tuple
-
+from typing import List, Dict
+import logging
 import numpy as np
 
-import clemgame.metrics as ms
-from clemgame.clemgame import GameMaster, GameBenchmark, DialogueGameMaster, GameScorer
-from clemgame import get_logger
-from clemgame.clemgame import Player
+import clemcore.clemgame.metrics as ms
+from clemcore.clemgame import GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import Player
 
-from backends import Model, CustomResponseModel
-#from games.cloudgame.players import Speaker
-from clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE, METRIC_REQUEST_COUNT, METRIC_REQUEST_COUNT_PARSED,  METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_SUCCESS
-from games.cloudgame.instancegenerator import GAME_NAME
+from clemcore.backends import Model, CustomResponseModel
+from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE, METRIC_REQUEST_COUNT, METRIC_REQUEST_COUNT_PARSED,  METRIC_REQUEST_COUNT_VIOLATED
 
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 class Speaker(Player):
     def __init__(self, backend: Model):
@@ -46,8 +42,8 @@ class Judge(Player):
 class Cloudgame(DialogueGameMaster):
     """Implement mechanisms for playing Cloudgame."""
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
         # fetch experiment parameters here
         self.max_words = 2
         self.turns = []
@@ -64,7 +60,7 @@ class Cloudgame(DialogueGameMaster):
         """" sets the information you specify in instances.json """
         
         self.game_instance = game_instance
-        self.image = game_instance["image"]
+        self.image = os.path.join(self.game_path, game_instance["image"])
         self.initial_prompt = game_instance["prompt"]
 
         self.speaker = Speaker(self.model_a)
@@ -161,8 +157,8 @@ class Cloudgame(DialogueGameMaster):
 
 class CloudgameScorer(GameScorer):
  
-     def __init__(self, experiment: Dict, game_instance: Dict):
-         super().__init__(GAME_NAME, experiment, game_instance)
+     def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+         super().__init__(game_name, experiment, game_instance)
 
      def compute_scores(self, episode_interactions: Dict) -> None:
          
@@ -216,25 +212,18 @@ class CloudgameScorer(GameScorer):
             self.log_episode_score(METRIC_LOSE, 0 if score else 1)
             self.log_episode_score(BENCH_SCORE, 100)
 
+
 class CloudgameBenchmark(GameBenchmark):
     """Integrate the game into the benchmark run."""
-    def __init__(self):
-        super().__init__(GAME_NAME)
-
-    # defines whether the game is single player or not
-    def is_single_player(self):
-        return False
-
-    # add a description of your game
-    def get_description(self):
-        return "A simple game in which a player has to decide whether they see clouds or not."
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     # copy this, replacing the name of the game master in the return statement
     def create_game_master(self,
                            experiment: Dict,
                            player_models: List[Model]
-                           ) -> GameMaster:
-        return Cloudgame(experiment, player_models)
+                           ) -> DialogueGameMaster:
+        return Cloudgame(self.game_name, self.game_path, experiment, player_models)
     
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return CloudgameScorer(experiment, game_instance)
+        return CloudgameScorer(self.game_name, experiment, game_instance)

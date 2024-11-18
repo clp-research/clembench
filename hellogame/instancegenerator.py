@@ -4,20 +4,19 @@ Generate instances for the game.
 Creates files in ./in
 """
 from tqdm import tqdm
-
+import os
 import logging
 from clemcore.clemgame import GameInstanceGenerator
 
 logger = logging.getLogger(__name__)
 
-GAME_NAME = "hellogame"
 LANGUAGE = "en"
 
 
 class HelloGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self):
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(__file__))
 
     def on_generate(self):
         # Create an experiment (here for english greetings)

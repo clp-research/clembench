@@ -2,12 +2,10 @@ import string
 from typing import Dict, List
 
 from clemcore.backends import Model, CustomResponseModel
-from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster
+from clemcore.clemgame import GameBenchmark, Player, DialogueGameMaster, GameSpec
 import logging
 
 logger = logging.getLogger(__name__)
-
-GAME_NAME = "hellogame"
 
 
 class Greeted(Player):
@@ -34,8 +32,8 @@ class HelloGame(DialogueGameMaster):
     is greeting another player with a target name.
     """
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
         self.language: int = experiment["language"]  # fetch experiment parameters here
         self.turns = []
         self.required_words = ["welcome", "hello"]
@@ -96,11 +94,8 @@ class HelloGame(DialogueGameMaster):
 
 class HelloGameBenchmark(GameBenchmark):
 
-    def __init__(self):
-        super().__init__(GAME_NAME)
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
-    def get_description(self):
-        return "Hello game between a greeter and a greeted player"
-
-    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return HelloGame(experiment, player_models)
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> DialogueGameMaster:
+        return HelloGame(self.game_name, self.game_path, experiment, player_models)

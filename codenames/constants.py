@@ -1,5 +1,5 @@
 from enum import Enum
-import string
+import string, os
 
 ### Game related constants
 SEED = 42
@@ -8,7 +8,7 @@ CHARS_TO_STRIP = " .,<>\"'"
 NUMBERS_TO_STRIP = " ," + ''.join(string.digits)
 
 ### Game related string constants
-GAME_NAME = "codenames"
+GAME_PATH = os.path.dirname(os.path.abspath(__file__))
 TEAM = "team"
 OPPONENT = "opponent"
 INNOCENT = "innocent"

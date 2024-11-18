@@ -4,12 +4,12 @@ Generate instances for the game.
 Creates files in ./in
 """
 from tqdm import tqdm
-from clemgame.clemgame import GameInstanceGenerator
-import random, copy, argparse, os
+from clemcore.clemgame import GameInstanceGenerator
+import random, copy, argparse
 from typing import Set
-from clemgame.file_utils import file_path
+from clemcore.utils.file_utils import file_path
 
-from games.codenames.constants import *
+from constants import *
 
 FILENAME = "instances.json"
 GENEROUS_FILENAME = "generous_instances.json"
@@ -138,7 +138,7 @@ generators={'random': generate_random,
 
 class CodenamesInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
-        super().__init__(GAME_NAME)
+        super().__init__(GAME_PATH)
 
     def generate(self, keep=False, variable_name=None, experiment_name=None, generous=False):
         # @overwrite
@@ -194,7 +194,7 @@ class CodenamesInstanceGenerator(GameInstanceGenerator):
                 else:
                     wordlist_name = defaults["wordlist"]
                 wordlist_path = f"resources/cleaned_wordlists/{wordlist_name}"
-                if not os.path.isfile(file_path(wordlist_path, GAME_NAME)):
+                if not os.path.isfile(file_path(wordlist_path, GAME_PATH)):
                     print(f"> Wordlist {wordlist_name} does not exist, skip {name}.")
                     continue
                 wordlist = self.load_json(wordlist_path)["words"]

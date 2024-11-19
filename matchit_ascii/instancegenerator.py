@@ -1,14 +1,15 @@
+import os
 import pandas as pd
 import json
-from clemgame.clemgame import GameInstanceGenerator
 from typing import Dict
 
-GAME_NAME: str = "matchit_ascii"
+from clemcore.clemgame import GameInstanceGenerator
+
 # n instances to be generated
 N: int = 10 # max = len(similar_grid_1) = 27, if not using other grid pairs
 # paths to image pair tables
-PATH_PAIRS: str = "games/matchit_ascii/resources/grid_pairs/grid-pairs.csv"
-PATH_GRIDS: str = "games/matchit_ascii/resources/grid_pairs/grids_matchit.json"
+PATH_PAIRS: str = "resources/grid_pairs/grid-pairs.csv"
+PATH_GRIDS: str = "resources/grid_pairs/grids_matchit.json"
 
 #how many questions can each player ask?
 DEC_TURN: int = 3
@@ -22,10 +23,11 @@ FLAGS: Dict = {"description": "DESCRIPTION:", "question": "QUESTION:", "answer":
 SOL_SAME: str = "same grid"
 SOL_DIFF: str = "different grids"
 
+
 class MatchItInstanceGenerator(GameInstanceGenerator):
-    def __init__(self, game_name):
-        super().__init__(game_name)
-        self.game_name = game_name
+
+    def __init__(self):
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
 
     def on_generate(self): 
         df = pd.read_csv(PATH_PAIRS, index_col = 0)
@@ -34,7 +36,7 @@ class MatchItInstanceGenerator(GameInstanceGenerator):
         sims2 = df[df.category == "similar_grid_2"].sample(n = N, random_state = SEED)
         sams = df[df.category == "same_grid"].sample(n = N, random_state = SEED)
 
-        with open("games/matchit_ascii/resources/grid_pairs/grids_matchit.json") as file:
+        with open("resources/grid_pairs/grids_matchit.json") as file:
             grid_dict = json.load(file)
 
         initial_prompt = self.load_template('resources/prompts/initial_prompt.template').replace("$FLAG$", FLAGS["description"])
@@ -55,7 +57,7 @@ class MatchItInstanceGenerator(GameInstanceGenerator):
                        "different_grid": (diffs, SOL_DIFF)}
     
         for exp_name in experiments.keys(): 
-            experiment =  self.add_experiment(exp_name)
+            experiment = self.add_experiment(exp_name)
             game_id = 0
             experiment["initial_prompt"] = initial_prompt  
             experiment["q_reprompt"] = q_reprompt
@@ -68,8 +70,6 @@ class MatchItInstanceGenerator(GameInstanceGenerator):
                 experiment["wrong_solution"] = SOL_DIFF
             else:
                 experiment["wrong_solution"] = SOL_SAME
- 
-
 
             for index, row in experiments[exp_name][0].iterrows():
                 instance = self.add_game_instance(experiment, game_id)
@@ -83,4 +83,4 @@ class MatchItInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == "__main__":
-    MatchItInstanceGenerator(GAME_NAME).generate()
+    MatchItInstanceGenerator().generate()

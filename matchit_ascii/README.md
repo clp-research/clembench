@@ -3,7 +3,13 @@
 Implemented by: Antonia Schmidt
 
 MatchIt ASCII is a dialogue game where two players have to come to an agreement whether the 5x5 grid consisting of ASCII-characters, that each of them gets as input, is the same or not.
-This is the 3q/base version of matchit_ascii, meaning that each player can ask the other three questions about the other grid.
+
+## Versions
+There are several versions of the game (defined by different instance files)
+* The main version (used in benchmark version 2.0) is `matchit_ascii`, where each player can ask the other **three** questions about the other grid.
+* The version `matchit_ascii_1q`, where each player can ask the other **one** question about the other grid.
+* The version `matchit_ascii_5q`, where each player can ask the other **five** questions about the other grid.
+* The info version of `matchit_ascii_info`, where each player can ask the other **three** questions about the other grid **and the players get informed beforehand** about the fact that each of them has three questions.
 
 # How to sample different number of instances
 

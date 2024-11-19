@@ -1,21 +1,18 @@
-from clemgame.clemgame import Player, GameMaster, GameBenchmark, DialogueGameMaster, GameScorer
-from clemgame import metrics as ms
-from clemgame import get_logger
-from games.matchit_ascii.instancegenerator import GAME_NAME
-from backends import Model
-
+import logging
 from typing import List, Dict, Tuple
-
 import numpy as np
 
+from clemcore.backends import Model
+from clemcore.clemgame import Player, GameMaster, GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import metrics as ms
 
-logger = get_logger(__name__)
+
+logger = logging.getLogger(__name__)
 
 
 class MatchItPlayer(Player):
     def __init__(self, backend: Model):
         super().__init__(backend)
-
 
     def __init__(self, backend: Model, role: str):
         super().__init__(backend)
@@ -44,8 +41,8 @@ class MatchItPlayer(Player):
 
 
 class MatchItAscii(DialogueGameMaster):
-    def __init__(self, experiment: Dict, player_backends: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_backends)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_backends: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_backends)
 
         self.experiment: str = experiment["name"]
         self.flags: dict[str, str] = experiment["flags"]
@@ -243,8 +240,8 @@ class MatchItAscii(DialogueGameMaster):
 
 class MatchItScorer(GameScorer):
  
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)        
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
 
     def compute_scores(self, episode_interactions: Dict) -> None:
 
@@ -330,22 +327,16 @@ class MatchItScorer(GameScorer):
             
 class MatchItBenchmark(GameBenchmark):
     """Integrate the game into the benchmark run."""
-    def __init__(self):
-        super().__init__(GAME_NAME)
-
-    def is_single_player(self):
-        return False
-
-    def get_description(self):
-        return "A simple game in which two players have to decide whether they see the same grid or not, an ascii version of the matchit game."
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     def create_game_master(self,
                            experiment: Dict,
                            player_backends: List[str]
                            ) -> GameMaster:
-        return MatchItAscii(experiment, player_backends)
+        return MatchItAscii(self.game_name, self.game_path, experiment, player_backends)
     
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return MatchItScorer(experiment, game_instance)
+        return MatchItScorer(self.game_name, experiment, game_instance)
 
 

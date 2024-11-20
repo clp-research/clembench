@@ -1,27 +1,22 @@
-import random
 from typing import List, Dict, Tuple
 import re
 import os
 import json
 from queue import Queue
 from copy import deepcopy
-from time import sleep
 import numpy as np
 import matplotlib.pyplot as plt
 import imageio
 import shutil
+import logging
+logger = logging.getLogger(__name__)
 
-import games.mm_mapworld.utils as utils
-
-import clemgame.metrics as ms
-from backends import Model, CustomResponseModel
-from clemgame.clemgame import GameMaster, GameBenchmark, DialogueGameMaster, GameScorer
-from clemgame import get_logger
-from clemgame.clemgame import Player
-
-from clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
-    METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE, \
-        BENCH_SCORE
+import utils
+from clemcore.backends import Model, CustomResponseModel
+from clemcore.clemgame import GameMaster, GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import Player
+from clemcore.utils import file_utils
+from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
 
 
 DIRS = ["north", "south", "east", "west"]
@@ -118,8 +113,8 @@ class PathDescriber(Player):
 class MmMapWorld(DialogueGameMaster):
     """Implement mechanisms for playing MM-MapWorld."""
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name:str, game_path:str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
 
         self.turns = []
         self.aborted: bool = False
@@ -323,8 +318,8 @@ class MmMapWorld(DialogueGameMaster):
     ####### scoring      
         
 class MM_MapWorldScorer(GameScorer):
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name:str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
         instance_data = utils.load_instance(self.game_instance)
         self.imgs = instance_data["imgs"]
         self.nodes = instance_data["nodes"]
@@ -539,23 +534,19 @@ class MM_MapWorldScorer(GameScorer):
 
 class MmMapWorldBenchmark(GameBenchmark):
     """Integrate the game into the benchmark run."""
-    def __init__(self):
-        super().__init__(GAME_NAME)
-
-    # defines whether the game is single player or not
-    def is_single_player(self):
-        return False
-
-    # add a description of your game
-    def get_description(self):
-        return "In this game an agend is placed on a graph and needs to navigate through it by reasoning about past steps taken."
+    def __init__(self, game_spec:GameSpec):
+        super().__init__(game_spec)
 
     # copy this, replacing the name of the game master in the return statement
     def create_game_master(self,
                            experiment: Dict,
                            player_models: List[Model]
                            ) -> GameMaster:
-        return MmMapWorld(experiment, player_models)
+        return MmMapWorld(self.game_name, self.game_path, experiment, player_models)
     
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return MM_MapWorldScorer(experiment, game_instance)
+        return MM_MapWorldScorer(self.game_name, experiment, game_instance)
+
+def main():
+    game_path = os.path.dirname(os.path.abspath(__file__))
+    experiments = file_utils.load_json("in/instances.json", game_path)

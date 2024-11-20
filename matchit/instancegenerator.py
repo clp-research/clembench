@@ -1,12 +1,13 @@
 import pandas as pd
-from clemgame.clemgame import GameInstanceGenerator
+import os
 
-GAME_NAME: str = "matchit"
+from clemcore.clemgame import GameInstanceGenerator
+
 # n instances to be generated
 N: int = 10 # max: len(similar_images.csv) = 161, if not using other image pairs
 # paths to image pair tables
-PATH_DIFF: str = "games/matchit/resources/image_pairs/different_images.csv"
-PATH_SIM: str = "games/matchit/resources/image_pairs/similar_images.csv"
+PATH_DIFF: str = "resources/image_pairs/different_images.csv"
+PATH_SIM: str = "resources/image_pairs/similar_images.csv"
 
 #how many questions can each player ask?
 DEC_TURN: int = 3
@@ -22,7 +23,7 @@ SOL_DIFF: str = "different images"
 
 class MatchItInstanceGenerator(GameInstanceGenerator):
     def __init__(self, game_name):
-        super().__init__(game_name)
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
         self.game_name = game_name
 
     def on_generate(self): 
@@ -82,11 +83,11 @@ class MatchItInstanceGenerator(GameInstanceGenerator):
                 if image_a.startswith("http"):
                     instance["image_a"] = image_a
                 else:
-                    instance["image_a"] = "games/matchit/resources/images/" + image_a
+                    instance["image_a"] = "resources/images/" + image_a
                 if image_b.startswith("http"):
                     instance["image_b"] = image_b
                 else:
-                    instance["image_b"] = "games/matchit/resources/images/" + image_b
+                    instance["image_b"] = "resources/images/" + image_b
                 
                 instance["decision_turn"] = DEC_TURN
 
@@ -94,4 +95,4 @@ class MatchItInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == "__main__":
-    MatchItInstanceGenerator(GAME_NAME).generate()
+    MatchItInstanceGenerator().generate()

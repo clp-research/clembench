@@ -1,4 +1,4 @@
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
 import numpy as np
 import networkx as nx
 from maps import AbstractMap
@@ -10,16 +10,16 @@ import shutil
 
 # set the name of the game in the script, as you named the directory
 # this name will be used everywhere, including in the table of results
-GAME_NAME = 'mm_mapworld_graphs'
+
 NUM_INSTANCES = 10
 GRIDS = {"small": (4,4), "medium": (4,4), "large": (4,4)}
 SIZES = {"small": 4, "medium": 6, "large": 8} # num_nodes
 SEED = 42
 RANDOM_PATH = 'random_test_images'
-IMAGE_PATH = os.path.join('games', 'mm_mapworld', 'resources', 'images')
-DATASET_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k", "needed_imgs")
-MAPPING_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k", "ade_cat_instances.json")
-TEMP_IMAGE_PATH = os.path.join("games", "mm_mapworld_graphs", "resources", "images")
+IMAGE_PATH = os.path.join('resources', 'images')
+DATASET_PATH = os.path.join("resources", "ade_20k", "needed_imgs")
+MAPPING_PATH = os.path.join("resources", "ade_20k", "ade_cat_instances.json")
+TEMP_IMAGE_PATH = os.path.join("resources", "images")
 MOVE_CONSTRUCTION = "GO: "
 STOP_CONSTRUCTION = "DONE"
 GRAPH_REGEX = "\"graph\":\s*(\{\s*\"nodes\"\s*:\s*\[.*\]\s*,\s*\"edges\"\s*:\s*\{.*\})\s*\}$"
@@ -113,7 +113,7 @@ def copy_image(image_path):
 class MmMapWorldGraphsInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
         # always do this to initialise GameInstanceGenerator
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
     def on_generate(self):
         prompts = {
             'initial': self.load_template('resources/initial_prompts/prompt.template'),

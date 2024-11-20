@@ -3,8 +3,16 @@
 Implemented by: Antonia Schmidt
 
 MatchIt is a multimodal dialogue game where two players have to come to an agreement whether the image that each of them gets as input is the same or not.
-This is the base/3q qversion of matchit, meaning that each player can ask the other exactly three questions about the other image.
 
+## Versions
+There are several versions of the game (defined by different instance files):
+
+* The main version (used in benchmark version 2.0) is `matchit`, where each player can ask the other **three** questions about the other image.
+* The version `matchit_1q`, where each player can ask the other **one** question about the other image.
+* The version `matchit_5q`, where each player can ask the other **five** questions about the other image.
+* The info version of `matchit_info`, where each player can ask the other **three** questions about the other image **and the players get informed beforehand** about the fact that each of them has three questions.
+
+Each version exists with two sets of images, one based on Visual Genome (with no suffix in the instance files) and another one based on Pentomino boards (denoted by `_pentomino` in the instance files) .
 # How to sample different number of instances
 
 The instancegenerator.py generates instances by sampling N examples (N $\leq$ 161) per difficulty (same, similar and different image) from the lists of image pairs in resources/imagepairs. N and other version parameters (such as the number of questions) are declared in the instancegenerator file. If N should be larger or other image pairs are wanted, see [here](resources/additional/README.md).

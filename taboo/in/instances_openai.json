@@ -1,0 +1,192 @@
+{
+  "experiments": [
+    {
+      "name": "medium_en",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "envelope",
+          "related_word": [
+            "Mail",
+            "letter",
+            "postage."
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "please",
+          "related_word": [
+            "Sure! Here are three words related to \"please\":",
+            "Kindly",
+            "Request"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "disappear",
+          "related_word": [
+            "Vanish",
+            "fade",
+            "evaporate."
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "critic",
+          "related_word": [
+            "evaluation",
+            "analysis",
+            "review"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "quit",
+          "related_word": [
+            "Stop",
+            "End",
+            "Resign"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "hybrid",
+          "related_word": [
+            "Fusion",
+            "Crossbreed",
+            "Blend"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "anchor",
+          "related_word": [
+            "Boat",
+            "Secure",
+            "Nautical"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "passage",
+          "related_word": [
+            "Corridor",
+            "Route",
+            "Pathway"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "bitch",
+          "related_word": [
+            "female dog",
+            "complaint",
+            "criticize"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "spice",
+          "related_word": [
+            "Seasoning",
+            "flavor",
+            "cooking"
+          ]
+        },
+        {
+          "game_id": 10,
+          "target_word": "respectively",
+          "related_word": [
+            "In order",
+            "sequentially",
+            "corresponding."
+          ]
+        },
+        {
+          "game_id": 11,
+          "target_word": "instructor",
+          "related_word": [
+            "Teacher",
+            "educator",
+            "coach."
+          ]
+        },
+        {
+          "game_id": 12,
+          "target_word": "buck",
+          "related_word": [
+            "Deer",
+            "Antlers",
+            "Money"
+          ]
+        },
+        {
+          "game_id": 13,
+          "target_word": "subsequent",
+          "related_word": [
+            "Following",
+            "succeeding",
+            "later."
+          ]
+        },
+        {
+          "game_id": 14,
+          "target_word": "interval",
+          "related_word": [
+            "Duration",
+            "time",
+            "spacing."
+          ]
+        },
+        {
+          "game_id": 15,
+          "target_word": "preliminary",
+          "related_word": [
+            "Initial",
+            "Introductory",
+            "Preliminary"
+          ]
+        },
+        {
+          "game_id": 16,
+          "target_word": "subsidiary",
+          "related_word": [
+            "Affiliated",
+            "Division",
+            "Branch"
+          ]
+        },
+        {
+          "game_id": 17,
+          "target_word": "prohibit",
+          "related_word": [
+            "ban",
+            "restrict",
+            "forbid"
+          ]
+        },
+        {
+          "game_id": 18,
+          "target_word": "belong",
+          "related_word": [
+            "- Ownership",
+            "- Membership",
+            "- Inclusion"
+          ]
+        },
+        {
+          "game_id": 19,
+          "target_word": "fellowship",
+          "related_word": [
+            "Companionship",
+            "camaraderie",
+            "community."
+          ]
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "You are playing a collaborative word guessing game in which you have to describe a target word for another player to guess.\n\nRules:\n(a) You have to reply in the form: CLUE: <some text>. Guesses from the other player will start with GUESS.\n(b) You cannot use the target word itself, parts or morphological variants of it in your description.\n(c) In addition, the same rules apply for related words which are provided below.\n\nEnd conditions:\n(i) If you use the target word or a related word in your description, then you lose.\n(ii) If the other player can guess the target word in $N$ tries, you both win.\n\nLet us start.\n\nThis is the target word that you need to describe and that the other player needs to guess:\n\n$TARGET_WORD$\n\nRelated words are:\n\n$REL_WORD$\n\nImportant: You are under time pressure, give short descriptions that are to the point!",
+      "guesser_initial_prompt": "You are playing a collaborative word guessing game in which you have to guess a target word that another player describes to you.\n\nYou can make one guess at each trial. You win when you guess the target word. You lose when you cannot guess it in $N$ tries.\n\nAfter each trial you will get a new hint from the other player which starts with CLUE.\n\nMake your guesses by just saying the word using the following form: GUESS: <a word>\n\nLet us start.\n"
+    }
+  ]
+}

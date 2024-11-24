@@ -1,0 +1,170 @@
+{
+  "experiments": [
+    {
+      "name": "medium_en",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "critic",
+          "related_word": [
+            "person"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "tomorrow",
+          "related_word": [
+            "yesterday"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "envelope",
+          "related_word": [
+            "letter",
+            "letter",
+            "envelope"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "fellowship",
+          "related_word": [
+            "fellow",
+            "family",
+            "prize"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "cabinet",
+          "related_word": [
+            "cabinet",
+            "cabinet",
+            "cabinet"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "buck",
+          "related_word": [
+            "deer",
+            "dollar"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "doubt",
+          "related_word": [
+            "experience"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "please",
+          "related_word": [
+            "request"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "molecule",
+          "related_word": [
+            "molecule",
+            "molecule",
+            "hand"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "planner",
+          "related_word": [
+            "notebook",
+            "person"
+          ]
+        },
+        {
+          "game_id": 10,
+          "target_word": "utilize",
+          "related_word": [
+            "use"
+          ]
+        },
+        {
+          "game_id": 11,
+          "target_word": "obvious",
+          "related_word": [
+            "self"
+          ]
+        },
+        {
+          "game_id": 12,
+          "target_word": "subsidiary",
+          "related_word": [
+            "subsidiary",
+            "company",
+            "assistant"
+          ]
+        },
+        {
+          "game_id": 13,
+          "target_word": "contributor",
+          "related_word": [
+            "writer"
+          ]
+        },
+        {
+          "game_id": 14,
+          "target_word": "arc",
+          "related_word": [
+            "discharge",
+            "circle",
+            "sector"
+          ]
+        },
+        {
+          "game_id": 15,
+          "target_word": "hybrid",
+          "related_word": [
+            "organism",
+            "genetics",
+            "loanblend"
+          ]
+        },
+        {
+          "game_id": 16,
+          "target_word": "orient",
+          "related_word": [
+            "oriens"
+          ]
+        },
+        {
+          "game_id": 17,
+          "target_word": "haven",
+          "related_word": [
+            "seaport"
+          ]
+        },
+        {
+          "game_id": 18,
+          "target_word": "recorder",
+          "related_word": [
+            "recorder"
+          ]
+        },
+        {
+          "game_id": 19,
+          "target_word": "passage",
+          "related_word": [
+            "diary",
+            "section",
+            "text"
+          ]
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "You are playing a collaborative word guessing game in which you have to describe a target word for another player to guess.\n\nRules:\n(a) You have to reply in the form: CLUE: <some text>. Guesses from the other player will start with GUESS.\n(b) You cannot use the target word itself, parts or morphological variants of it in your description.\n(c) In addition, the same rules apply for related words which are provided below.\n\nEnd conditions:\n(i) If you use the target word or a related word in your description, then you lose.\n(ii) If the other player can guess the target word in $N$ tries, you both win.\n\nLet us start.\n\nThis is the target word that you need to describe and that the other player needs to guess:\n\n$TARGET_WORD$\n\nRelated words are:\n\n$REL_WORD$\n\nImportant: You are under time pressure, give short descriptions that are to the point!",
+      "guesser_initial_prompt": "You are playing a collaborative word guessing game in which you have to guess a target word that another player describes to you.\n\nYou can make one guess at each trial. You win when you guess the target word. You lose when you cannot guess it in $N$ tries.\n\nAfter each trial you will get a new hint from the other player which starts with CLUE.\n\nMake your guesses by just saying the word using the following form: GUESS: <a word>\n\nLet us start.\n"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import zipfile
 
 from clemgame import file_utils
 
+#TODO: check if all functionality here can be integrated into instancegenerator.py
 
 class InstanceUtils:
     def __init__(self, experiment_config, game_name, language):

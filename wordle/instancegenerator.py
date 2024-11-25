@@ -39,6 +39,8 @@ class WordleGameInstanceGenerator(GameInstanceGenerator):
 
     def on_generate(self):
         self.experiment_config = self.load_json("resources/config.json")
+        # TODO: consolidate variants by having them all in config.json -> just different experiments, not different games
+        # TODO: check if game registry can be used to handle variants?
         self._setresponseformatkeywords(LANGUAGE)
 
         self.instance_utils = InstanceUtils(self.experiment_config, self.game_name, LANGUAGE)

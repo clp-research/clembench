@@ -4,17 +4,17 @@ Generate instances for the taboo game.
 Creates files in ./instances
 """
 import random
+import logging
 
 from tqdm import tqdm
 
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
 
 from games.wordle.utils.instance_utils import InstanceUtils
 
 LANGUAGE = "en"
 
-logger = clemgame.get_logger(__name__)
+logger = logging.getLogger(__name__)
 GAME_NAME = "wordle"
 SEED = "17"
 

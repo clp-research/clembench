@@ -1,20 +1,20 @@
 import random
 import requests
+import os
 
 import zipfile
 
-from clemgame import file_utils
+from clemcore.clemgame import GameResourceLocator
 
-#TODO: check if all functionality here can be integrated into instancegenerator.py
 
-class InstanceUtils:
-    def __init__(self, experiment_config, game_name, language):
+class InstanceUtils(GameResourceLocator):
+    def __init__(self, game_path, experiment_config, game_name, language):
+        super().__init__(path=game_path)
         self.experiment_config = experiment_config
         self.game_name = game_name
         self.language = language
-        self.common_config = file_utils.load_json(
-            "../wordle/resources/common_config.json", self.game_name
-        )
+        self.common_config = self.load_json("resources/common_config")
+        self.langconfig = self.load_json("resources/langconfig")[self.language]
 
     def read_inital_prompt(self, use_clue, use_critic):
         guesser_prompt = ""
@@ -24,31 +24,30 @@ class InstanceUtils:
         # During the instance creation of wordle_withclue, wordle_withcritic, game_name would be different and that leads to file not found error
 
         if use_critic:
-            guesser_prompt = file_utils.load_template(f"resources/initial_prompts/{self.language}/guesser_withcritic_prompt", "wordle")
-            guesser_critic_prompt = file_utils.load_template(f"resources/initial_prompts/{self.language}/critic_prompt", "wordle")
-
+            guesser_prompt = self.load_template(f"resources/initial_prompts/{self.language}/guesser_withcritic_prompt")
+            guesser_critic_prompt = self.load_template(f"resources/initial_prompts/{self.language}/critic_prompt")
         else:
             if use_clue:
-                guesser_prompt = file_utils.load_template(f"resources/initial_prompts/{self.language}/guesser_withclue_prompt", "wordle")
-
+                guesser_prompt = self.load_template(f"resources/initial_prompts/{self.language}/guesser_withclue_prompt")
             else:
-                guesser_prompt = file_utils.load_template(f"resources/initial_prompts/{self.language}/guesser_prompt", "wordle")
+                guesser_prompt = self.load_template(f"resources/initial_prompts/{self.language}/guesser_prompt")
 
         return guesser_prompt, guesser_critic_prompt
     
     def download_nytcrosswords(self):
         # Requires kaggle authentication for successfully downloading the file; see README.md
-        import os
-
-        os.environ['KAGGLE_USERNAME'] = "<your-kaggle-user-name>"
-        os.environ['KAGGLE_KEY'] = "<kaggle-api-key>"
+        kaggle_credentials = self.load_json("wordle_keys")['kaggle']
+        os.environ['KAGGLE_USERNAME'] = kaggle_credentials['username']
+        os.environ['KAGGLE_KEY'] = kaggle_credentials['key']
 
         if os.environ['KAGGLE_USERNAME'] == "<your-kaggle-user-name>" or os.environ['KAGGLE_KEY'] == "<kaggle-api-key>":
             print("Please provide your kaggle credentials in the instance_utils.py file\n")
             return
 
         print("Downloading nytcrosswords...")
-        fp = file_utils.file_path(f"resources/{self.language}/", "wordle")
+
+        fp = f"resources/target_words/{self.language}/"
+
         from kaggle.api.kaggle_api_extended import KaggleApi
         api = KaggleApi()
         api.authenticate()
@@ -61,27 +60,22 @@ class InstanceUtils:
 
     def download_allowed_words(self):
         print("Downloading wordle recognized words for EN Language...")
-        url = self.common_config["official_recognized_words_file_url"][self.language]
+        url = self.langconfig["official_recognized_words_file_url"]
         r = requests.get(url, allow_redirects=True)
-        fp = file_utils.file_path(f"resources/{self.language}", "wordle")
-        file_utils.store_file(r.content.decode("utf-8"), "official_recognized_words.txt", fp)
+        fp = f"resources/target_words/{self.language}/"
+        self.store_file(r.content.decode("utf-8"), "official_recognized_words.txt", fp)
         print("Stored the wordle recognized words file", fp)
 
     def read_file_contents(self, filename, file_ext="txt"):
         if file_ext == "csv":
             words_dict = {}        
             try:
-                words_list = file_utils.load_csv(
-                    f"../wordle/resources/{filename}", self.game_name
-                )
+                words_list = self.load_csv(f"resources/{filename}")
             except FileNotFoundError:
                 #File not available, downloading
-                if filename == "nytcrosswords.csv":
+                if filename.endswith("nytcrosswords.csv"):
                     self.download_nytcrosswords()
-                    words_list = file_utils.load_csv(
-                        f"../wordle/resources/{filename}", self.game_name
-                    )
-
+                    words_list = self.load_csv(f"resources/{filename}")
                 else:
                     print(f"Word clues file {filename} not found, check and download the relevant files")
                     return []
@@ -95,15 +89,11 @@ class InstanceUtils:
 
         elif file_ext == "txt":
             try:
-                words = file_utils.load_file(
-                    f"../wordle/resources/{filename}", self.game_name
-                )
+                words = self.load_file(f"resources/{filename}")
             except FileNotFoundError:
-                if filename == "wordle_recognized_english_words.txt":
+                if filename.endswith("official_recognized_words.txt"):
                     self.download_allowed_words()
-                    words = file_utils.load_file(
-                        f"../wordle/resources/{filename}", self.game_name
-                    )             
+                    words = self.load_file(f"resources/{filename}")
                 else:
                     print(f"File {filename} not found")
                     return []
@@ -152,6 +142,7 @@ class InstanceUtils:
         return data
 
     def read_word_lists(self):
+        print(f"InstanceUtils.read_word_lists() called")
         official_words = []
         # officially recognized wordle words are downloaded from
         # https://github.com/3b1b/videos/blob/master/_2022/wordle/data/allowed_words.txt

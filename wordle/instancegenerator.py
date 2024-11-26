@@ -11,7 +11,7 @@ from tqdm import tqdm
 
 from clemcore.clemgame import GameInstanceGenerator
 
-from games.wordle.utils.instance_utils import InstanceUtils
+from wordle.utils.instance_utils import InstanceUtils
 
 LANGUAGE = "en"
 
@@ -44,7 +44,11 @@ class WordleGameInstanceGenerator(GameInstanceGenerator):
         # TODO: check if game registry can be used to handle variants?
         self._setresponseformatkeywords(LANGUAGE)
 
-        self.instance_utils = InstanceUtils(self.experiment_config, self.game_name, LANGUAGE)
+        self.instance_utils = InstanceUtils(
+            os.path.dirname(os.path.abspath(__file__)),
+            self.experiment_config,
+            self.game_name,
+            LANGUAGE)
 
         target_words_test_dict = self.instance_utils.select_target_words(SEED)
 

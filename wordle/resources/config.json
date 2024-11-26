@@ -1,5 +1,17 @@
 {
-    "name": "no_clue_no_critic",
-    "use_clue": false,
-    "use_critic": false
+    "wordle": {
+        "name": "no_clue_no_critic",
+        "use_clue": false,
+        "use_critic": false
+    },
+    "wordle_withclue": {
+        "name": "clue_no_critic",
+        "use_clue": true,
+        "use_critic": false
+    },
+    "wordle_withcritic": {
+        "name": "clue_with_critic",
+        "use_clue": true,
+        "use_critic": true
+    }
 }

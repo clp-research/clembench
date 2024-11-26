@@ -37,8 +37,9 @@ class InstanceUtils:
         return guesser_prompt, guesser_critic_prompt
     
     def download_nytcrosswords(self):
-        #Requires kaggle authentication for successfully downloading the file
+        # Requires kaggle authentication for successfully downloading the file; see README.md
         import os
+
         os.environ['KAGGLE_USERNAME'] = "<your-kaggle-user-name>"
         os.environ['KAGGLE_KEY'] = "<kaggle-api-key>"
 

@@ -5,6 +5,7 @@ Creates files in ./instances
 """
 import random
 import logging
+import os
 
 from tqdm import tqdm
 
@@ -21,7 +22,7 @@ SEED = "17"
 class WordleGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self, game_name):
-        super().__init__(game_name)
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
         self.game_name = game_name
 
     def load_instances(self):

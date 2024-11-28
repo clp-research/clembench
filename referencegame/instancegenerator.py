@@ -4,6 +4,7 @@ Generate instances for the referencegame v1.6
 Reads grids_v1.5.json from resources/ (grids don't change in this version)
 Creates instances.json in in/
 """
+import argparse
 import logging
 import os
 import random # to create random grids
@@ -125,10 +126,14 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
         super().__init__(os.path.dirname(__file__))
 
-    def on_generate(self):
+    def on_generate(self, feedback=False):
 
         player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_header_zero_shot.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_header_zero_shot.template")
+        if feedback:
+            player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_header_zero_shot_feedback.template")
+        else:
+            player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_header_zero_shot.template")
+
         grids = self.load_json(GRIDS)
 
         for grids_group in grids.keys():
@@ -179,7 +184,11 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                     # named groups:
                     # 'content' captures only the generated referring expression
                     # 'remainder' should be empty (if models followed the instructions)
-                    game_instance['player_2_response_pattern'] = '^answer:\s(?P<content>first|second|third|1|2|3|1st|2nd|3rd)\n*(?P<remainder>.*)'
+                    if feedback:
+                        game_instance['player_2_response_pattern'] = '^.*\n+answer:\s(?P<content>first|second|third|1|2|3|1st|2nd|3rd)\n*(?P<remainder>.*)'
+                    else:
+                        game_instance['player_2_response_pattern'] = '^answer:\s(?P<content>first|second|third|1|2|3|1st|2nd|3rd)\n*(?P<remainder>.*)'
+
                     # 'content' can directly be compared to gold answer
                     # 'remainder' should be empty (if models followed the instructions)
 
@@ -191,4 +200,10 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == '__main__':
-    ReferenceGameInstanceGenerator().generate() # f"instances_{VERSION}_{LANGUAGE}"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--feedback", action='store_true')
+    args = parser.parse_args()
+    if args.feedback:
+        ReferenceGameInstanceGenerator().generate(filename=f"instances_{VERSION}_{LANGUAGE}_with_feedback.json", feedback=True)
+    else:
+        ReferenceGameInstanceGenerator().generate(filename=f"instances_{VERSION}_{LANGUAGE}.json")

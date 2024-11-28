@@ -1,7 +1,9 @@
-import clemgame
-from clemgame import file_utils
+import logging
 
-logger = clemgame.get_logger(__name__)
+import clemcore.clemgame
+from clemcore.utils import file_utils
+
+logger = logging.getLogger(__name__)
 
 # TODO: run this to figure out how the entire instance generation stack is supposed to work
 

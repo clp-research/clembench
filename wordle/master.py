@@ -1,27 +1,26 @@
 from typing import Dict, Tuple, List, Union
+import logging
 
 import re
 import copy
 import numpy as np
 
-from backends import Model, HumanModel
-from clemgame.clemgame import GameMaster, GameBenchmark, GameScorer
-from clemgame import get_logger
-import clemgame.metrics as metrics
+from clemcore.backends import Model, HumanModel
+from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, GameSpec
+import clemcore.clemgame.metrics as metrics
 
-
-from games.wordle.utils.guessvalidator import GuessValidator
-from games.wordle.utils.guesser import Guesser
-from games.wordle.utils.critic import Critic
-from games.wordle.utils.compute_metrics import ComputeMetrics
+from utils.guessvalidator import GuessValidator
+from utils.guesser import Guesser
+from utils.critic import Critic
+from utils.compute_metrics import ComputeMetrics
 
 GAME_NAME = "wordle"
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class WordleGameMaster(GameMaster):
-    def __init__(self, game_name: str, experiment: Dict, player_models: List[Model]):
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, experiment, player_models)
         self.config = experiment
 
@@ -49,7 +48,7 @@ class WordleGameMaster(GameMaster):
         self.use_critic = self.config["use_critic"]
 
         if self.use_clue:
-            if isinstance(self.player_models[0], HumanModel):
+            if self.player_models and isinstance(self.player_models[0], HumanModel):
                 logger.info(f"Target word clue: {self.target_word_clue}")
         self.target_word_difficulty = target_word_difficulty.strip()
 
@@ -974,19 +973,19 @@ class WordleGameScorer(GameScorer):
 
 
 class WordleGameBenchmark(GameBenchmark):
-    def __init__(self):
-        super().__init__(GAME_NAME)
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     def get_description(self):
         return "Wordle Game"
 
-    def create_game_master(
-        self, experiment: Dict, player_models: List[Model]
-    ) -> GameMaster:
-        return WordleGameMaster(self.name, experiment, player_models)
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
+        return WordleGameMaster(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return WordleGameScorer(self.name, experiment, game_instance)
+        return WordleGameScorer(self.game_name, experiment, game_instance)
 
-    def is_single_player(self) -> bool:
-        return True
+    # since this now handles all three variants, is_single_player() is ommitted
+    # the with_critic variant uses two players, while the other variants are single-player
+    # def is_single_player(self) -> bool:
+    #    return True

@@ -4,11 +4,12 @@
     results are written to files and then read in the next step.
     It is recommended to only run one of the 4 steps in main() at a time:
 
-    1) preprocess_unigrams(UNIGRAMS)
+    0) Download unigram_freq.csv from https://www.kaggle.com/datasets/rtatman/english-word-frequency
+        into taboo/resources/target_words/en/
+    1) preprocess_unigrams()
         assigns a POS tag and lemma to each token and removes function words
             as listed below.
-        produces tagged_unigrams.json
-    2) preprocess_unigrams_from_json("tagged_unigrams.json")
+    2) preprocess_unigrams_from_json()
         creates a taboo dataframe with the unique lemmas found in the unigram
             list.
         In steps of 100 words, combines the token frequencies for a lemma
@@ -54,15 +55,17 @@ NFP – superfluous punctuation
 , – punctuation mark, comma
 PDT – predeterminer
 """
-
-import random
+import json
 import pandas as pd
 import spacy
 
-nlp = spacy.load("en_core_web_sm")  # en-core-web-sm-3.5.0
+nlp = spacy.load("en_core_web_sm")  # download with `python -m spacy download en_core_web_sm
 
-DATA = ("taboo_high.json", "taboo_medium.json", "taboo_low.json")
-UNIGRAMS = "unigram_freq.csv"
+UNIGRAMS = "resources/target_words/en/unigram_freq.csv"
+TAGGED_UNIGRAMS = "resources/target_words/en/tagged_unigrams.json"
+TABOO_WORDS = "resources/target_words/en/taboo_words.json"
+TABOO_WORDS_AND_COUNTS = "resources/target_words/en/taboo_words_and_counts.json"
+TABOO_WORD_LISTS = "resources/target_words/en/taboo_word_lists.json"
 
 REMOVE = (
     "IN", "UH", "WRB", "DT", "PRP", "CD", "FW", ".", "WP$", "CC", "WDT", "WP",
@@ -79,17 +82,17 @@ def is_function_word(tag):
     return tag in REMOVE
 
 
-def preprocess_unigrams(filename):
-    df = pd.read_csv(filename)
+def preprocess_unigrams():
+    df = pd.read_csv(UNIGRAMS)
     df = df.dropna()
     df[["POS", "lemma"]] = df["word"].apply(tag_it)
     df["exclude"] = df["POS"].map(is_function_word)
     df = df.where(df["exclude"] == False).dropna()
-    df.to_json("tagged_unigrams.json")
+    df.to_json(TAGGED_UNIGRAMS)
 
 
-def preprocess_unigrams_from_json(filename):
-    df = pd.read_json("tagged_unigrams.json")
+def preprocess_unigrams_from_json():
+    df = pd.read_json(TAGGED_UNIGRAMS)
     get_taboo_words(df)
 
 
@@ -101,7 +104,7 @@ def get_taboo_words(df):
 
     taboo = pd.DataFrame({"word": df["lemma"].unique()})
     print(taboo.shape)
-    taboo.to_json("taboo_words.json")
+    taboo.to_json(TABOO_WORDS)
 
     print(df.shape)
 
@@ -113,12 +116,12 @@ def get_taboo_words(df):
         count = taboo["word"][i:min(i + 100, len(taboo))].apply(sum_counts)
         count.to_json(f"counts_{i}_to_{i + 100}.json")
 
-    taboo.to_json("taboo_words.json")
+    taboo.to_json(TABOO_WORDS)
     print(taboo)
 
 
-def create_taboo_lists(filename):
-    taboo = pd.read_json(filename)
+def create_taboo_lists():
+    taboo = pd.read_json(TABOO_WORDS_AND_COUNTS)
     taboo["frequency per million"] = taboo["count"] / 1000000
     taboo["freq_score"] = round(taboo["frequency per million"], 2)
     taboo = taboo.sort_values(by=["freq_score"], ascending=False)
@@ -129,33 +132,12 @@ def create_taboo_lists(filename):
     high_freq = int(len(taboo) / 3)
     med_freq = len(taboo) - high_freq
 
-    print(high_freq, med_freq)
-
-    # choose 100 from the index
-    data_high = taboo[:high_freq]
-    high_freq_100 = random.choices(data_high.index, k=100)
-
-    data_med = taboo[high_freq:med_freq]
-    med_freq_100 = random.choices(data_med.index, k=100)
-
-    data_low = taboo[med_freq:]
-    low_freq_100 = random.choices(data_low.index, k=100)
-
-    print(taboo.loc[low_freq_100, "word"][:10])
-    print(taboo.loc[high_freq_100, "word"][:10])
-    print(taboo.loc[med_freq_100, "word"][:10])
-
-    with open("taboo_low_freq_100.txt", "w") as o:
-        for w in taboo.loc[low_freq_100, "word"]:
-            o.write(f"{w}\n")
-
-    with open("taboo_medium_freq_100.txt", "w") as o:
-        for w in taboo.loc[med_freq_100, "word"]:
-            o.write(f"{w}\n")
-
-    with open("taboo_high_freq_100.txt", "w") as o:
-        for w in list(taboo.loc[high_freq_100, "word"]):
-            o.write(f"{w}\n")
+    taboo_words = {}
+    taboo_words["high"] = taboo.loc[taboo[:high_freq].index, "word"].values.tolist()
+    taboo_words["medium"] = taboo.loc[taboo[high_freq:med_freq].index, "word"].values.tolist()
+    taboo_words["low"] = taboo.loc[taboo[med_freq:].index, "word"].values.tolist()
+    with open(TABOO_WORD_LISTS, "w", encoding='utf-8') as taboo_file:
+        json.dump(taboo_words, taboo_file, ensure_ascii=False)
 
 
 def combine_counts():
@@ -167,11 +149,11 @@ def combine_counts():
         counts = pd.read_json(f"counts_{i}_to_{i + 100}.json", orient="index")
         taboo.loc[i:i + 100, "count"] = counts[0]
 
-    taboo.to_json("taboo_words_and_counts.json")
+    taboo.to_json(TABOO_WORDS_AND_COUNTS)
 
 
 if __name__ == "__main__":
-    # preprocess_unigrams(UNIGRAMS)
-    # preprocess_unigrams_from_json("tagged_unigrams.json")
-    # combine_counts()
-    create_taboo_lists("taboo_words_and_counts.json")
+    preprocess_unigrams()
+    preprocess_unigrams_from_json()
+    combine_counts()
+    create_taboo_lists()

@@ -1,15 +1,13 @@
 import os
 import json
-from os.path import exists
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
-from games.textmapworld.utils import load_check_graph, generate_filename, create_graphs_file 
-logger = clemgame.get_logger(__name__)
+
+from clemcore.clemgame import GameInstanceGenerator
+from utils import load_check_graph, generate_filename, create_graphs_file 
+
 
 "Enter the parameters for the game instance generator"
 "-------------------------------------------------------------------------------------------------------------"
 "°°°°°°°changeable parameters°°°°°°°"
-game_name = "textmapworld"
 strict = True
 create_new_graphs = False # True or False   !if True, the graphs will be created again, threfore pay attention!
 n = 4
@@ -20,6 +18,7 @@ ambiguity= None #(repetition_rooms, repetition_times) or None
 
 if strict:
     DONE_REGEX = '^DONE$'
+    MOVE_REGEX = '^GO:\s*(north|east|west|south)$'
     MOVE_REGEX = '^GO:\s*(north|east|west|south)$'
 else:
     DONE_REGEX = 'DONE'
@@ -32,17 +31,17 @@ experiments = {"small": (4,"cycle_false"), "medium": (6, "cycle_false"), "large"
 "°°°°°°°imported parameters°°°°°°°"
 prompt_file_name = 'PromptNamedGame.template' if game_type == "named_graph" else 'PromptUnnamedGame.template'
 prompt_file_name = os.path.join('resources', 'initial_prompts', prompt_file_name)
-current_directory = os.getcwd().replace("\instance_generator", "")
-with open(os.path.join(current_directory, "games", "textmapworld", 'resources', 'initial_prompts', "answers.json")) as json_file:
+
+with open(os.path.join("..", "clemgames", "textmapworld", 'resources', 'initial_prompts', "answers.json")) as json_file:
     answers_file = json.load(json_file)
-with open(os.path.join(current_directory, "games", "textmapworld", 'resources', 'initial_prompts', "reminders.json")) as json_file:
+with open(os.path.join("..", "clemgames", "textmapworld", 'resources', 'initial_prompts', "reminders.json")) as json_file:
     reminders_file = json.load(json_file)
 "-------------------------------------------------------------------------------------------------------------"
 
 class GraphGameInstanceGenerator(GameInstanceGenerator):
 
-    def __init__(self,  ):
-        super().__init__(game_name)
+    def __init__(self):
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
 
     def on_generate(self):
         player_a_prompt_header =  self.load_template(prompt_file_name)

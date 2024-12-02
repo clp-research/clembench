@@ -1,9 +1,8 @@
 import ast
 import os
 import numpy as np
-from clemgame import  string_utils
 import networkx as nx
-from games.textmapworld_graphreasoning.graph_generator import GraphGenerator
+from graph_generator import GraphGenerator
 
 "----------------------------------------------------"
 "The functions used in instance_generator.py"

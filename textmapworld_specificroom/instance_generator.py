@@ -1,17 +1,13 @@
 import os
 import json
-import random
-from os.path import exists
-import networkx as nx
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
-from games.textmapworld_specificroom.utils import load_check_graph, generate_filename, create_graphs_file, create_graph
-logger = clemgame.get_logger(__name__)
+
+from clemcore.clemgame import GameInstanceGenerator
+from utils import load_check_graph, generate_filename, create_graphs_file 
+
 
 "Enter the parameters for the game instance generator"
 "-------------------------------------------------------------------------------------------------------------"
 "°°°°°°°changeable parameters°°°°°°°"
-game_name = "textmapworld_specificroom"
 strict = True
 create_new_graphs = False # True or False   !if True, the graphs will be created again, threfore pay attention!
 size = 8        #"large"
@@ -34,17 +30,17 @@ distances = {"on": [0], "close": [1,2], "far": [3,4]}
 "°°°°°°°imported parameters°°°°°°°"
 prompt_file_name = 'PromptNamedGame.template' if game_type == "named_graph" else 'PromptUnnamedGame.template'
 prompt_file_name = os.path.join('resources', 'initial_prompts', prompt_file_name)
-current_directory = os.getcwd().replace("\instance_generator", "")
-with open(os.path.join(current_directory, "games", "textmapworld_specificroom", 'resources', 'initial_prompts', "answers.json")) as json_file:
+
+with open(os.path.join("..", "clemgames", "games", "textmapworld_specificroom", 'resources', 'initial_prompts', "answers.json")) as json_file:
     answers_file = json.load(json_file)
-with open(os.path.join(current_directory, "games", "textmapworld_specificroom", 'resources', 'initial_prompts', "reminders.json")) as json_file:
+with open(os.path.join("..", "clemgames", "textmapworld_specificroom", 'resources', 'initial_prompts', "reminders.json")) as json_file:
     reminders_file = json.load(json_file)
 "-------------------------------------------------------------------------------------------------------------"
 
 class GraphGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self,  ):
-        super().__init__(game_name)
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
 
     def on_generate(self):
 

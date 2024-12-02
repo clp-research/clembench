@@ -1,10 +1,8 @@
 import ast
 import os
-import numpy as np
 import random
 import networkx as nx
-from clemgame import  string_utils
-from games.textmapworld_specificroom.graph_generator import GraphGenerator
+from graph_generator import GraphGenerator
 
 "----------------------------------------------------"
 "The functions used in instance_generator.py"

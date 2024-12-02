@@ -20,10 +20,10 @@
                         "((0, 2), (1, 2))"
                     ],
                     "imgs": {
-                        "(2, 3)": "games/mm_mapworld/resources/images/ADE_train_00013881.jpg",
-                        "(1, 3)": "games/mm_mapworld/resources/images/ADE_train_00016739.jpg",
-                        "(1, 2)": "games/mm_mapworld/resources/images/ADE_train_00016280.jpg",
-                        "(0, 2)": "games/mm_mapworld/resources/images/ADE_train_00020052.jpg"
+                        "(2, 3)": "../clemgames/mm_mapworld/resources/images/ADE_train_00013881.jpg",
+                        "(1, 3)": "../clemgames/mm_mapworld/resources/images/ADE_train_00016739.jpg",
+                        "(1, 2)": "../clemgames/mm_mapworld/resources/images/ADE_train_00016280.jpg",
+                        "(0, 2)": "../clemgames/mm_mapworld/resources/images/ADE_train_00020052.jpg"
                     },
                     "cats": {
                         "(2, 3)": "nursery",

@@ -7,30 +7,25 @@ Creates instances.json in instances/
 """
 import os
 import random
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
 import shutil
 import matplotlib.pyplot as plt
 import json
+import logging
 
 random.seed(123)
 
-logger = clemgame.get_logger(__name__)
-GAME_NAME = "multimodal_referencegame"
+logger = logging.getLogger(__name__)
 
 MAX_NUMBER_INSTANCES = 30
-
-
-
-
 
 class ReferenceGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self):
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
 
     def get_ade_dataset(self):
-        sequences = self.load_csv(f"resources/sequences.csv")
+        sequences = self.load_csv(os.path.join("resources", "sequences.csv"))
 
         aed_dataset = dict()
         for s in sequences:
@@ -39,7 +34,7 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
             if line[0] == '':
                 continue
 
-            image_path = "resources/ade_images/"+line[3].split("/")[-1]
+            image_path = os.path.join("resources", "ade_images", line[3].split("/")[-1])
             image_category = line[4]
 
             if image_category not in aed_dataset:
@@ -56,7 +51,7 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
         for s in file.readlines():
             line = json.loads(s)
 
-            image_path = "resources/docci_dataset/images/"+line["example_id"] + ".jpg"
+            image_path = os.path.join("resources", "docci_dataset", "images", line["example_id"], ".jpg")
 
             for ann in line["cloud_vision_api_responses"]["labelAnnotations"]:
                 if ann["score"] >= 0.8:
@@ -76,14 +71,14 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
         image2category = dict()
 
         for file in files_to_process:
-            data = self.load_json('resources/CLEVR_v1.0/scenes/'+file)
+            data = self.load_json(os.path.join('resources', 'CLEVR_v1.0', 'scenes', file))
 
             for scene in data['scenes']:
 
                 if file == 'CLEVR_train_scenes.json':
-                    image_path = 'resources/CLEVR_v1.0/images/train/'+scene['image_filename']
+                    image_path = os.path.join('resources', 'CLEVR_v1.0', 'images', 'train', scene['image_filename'])
                 else:
-                    image_path = 'resources/CLEVR_v1.0/images/val/'+scene['image_filename']
+                    image_path = os.path.join('resources', 'CLEVR_v1.0', 'images', 'val', scene['image_filename'])
 
                 if os.path.exists(image_path) == False:
                     continue
@@ -137,21 +132,21 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                 line = l.split(' ')
                 ascii_grid.append(line)
 
-            file_path = f"resources/grid_images/{len(saved_grids)}.png"
+            file_path = os.path.join("resources", "grid_images", f"{len(saved_grids)}.png")
             self.plot_grid(ascii_grid, file_path)
 
-            saved_grids[grid] = 'games/multimodal_referencegame/'+file_path
+            saved_grids[grid] = os.path.join("games", "multimodal_referencegame", file_path)
         return saved_grids[grid]
 
     def generate_grid_instances(self):
         # GRID EXPERIMENT
-        player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_images.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_images.template")
+        player_a_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
+        player_b_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_b_prompt_images.template"))
 
         instances = {}
         saved_grids = {}
 
-        with open('resources/ascii_game_instances.json') as json_file:
+        with open(os.path.join("resources", "ascii_game_instances.json")) as json_file:
             instances = json.load(json_file)
 
         for exp in instances['experiments']:
@@ -199,8 +194,8 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                 game_counter += 1
 
     def generate_scene_instances(self):
-        player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_images.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_images.template")
+        player_a_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
+        player_b_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_b_prompt_images.template"))
 
         aed_dataset = self.get_ade_dataset()
 
@@ -211,28 +206,28 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
 
             target_category_images = aed_dataset[target_category]
             target_image = self.select_random_item(target_category_images)
-            shutil.copyfile(target_image, f"resources/scene_images/{str(image_counter)}.jpg")
-            target_image_path = f"games/multimodal_referencegame/resources/scene_images/{str(image_counter)}.jpg"
+            shutil.copyfile(target_image, os.path.join("resources", "scene_images", f"{str(image_counter)}.jpg"))
+            target_image_path = os.path.join("games", "multimodal_referencegame", "resources", "scene_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             # remove the target image from the list, select another image from the same category
             target_category_images.remove(target_image)
             distractor1 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor1, f"resources/scene_images/{str(image_counter)}.jpg")
-            distractor1_path = f"games/multimodal_referencegame/resources/scene_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor1, os.path.join("resources", "scene_images", f"{str(image_counter)}.jpg"))
+            distractor1_path = os.path.join("games", "multimodal_referencegame", "resources", "scene_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             # remove the target image from the list, select another image from the same category
             target_category_images.remove(distractor1)
             distractor2 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor2, f"resources/scene_images/{str(image_counter)}.jpg")
-            distractor2_path = f"games/multimodal_referencegame/resources/scene_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor2, os.path.join("resources", "scene_images", f"{str(image_counter)}.jpg"))
+            distractor2_path = os.path.join("games", "multimodal_referencegame", "resources", "scene_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             for i in [1, 2, 3]:
 
                 player_a_prompt_header = self.load_template(
-                    f"resources/initial_prompts/player_a_prompt_images.template")
+                    os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
                 game_instance = self.add_game_instance(experiment, game_counter)
 
                 player_1_first_image = ""
@@ -316,16 +311,16 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                 break
 
     def generate_scene_static_target_instances(self):
-        player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_images.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_images.template")
+        player_a_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
+        player_b_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_b_prompt_images.template"))
 
         aed_dataset = self.get_ade_dataset()
 
         game_counter = 0
         image_counter = 1
 
-        if os.path.exists('resources/scene_images'):
-            files = os.listdir('resources/scene_images')
+        if os.path.exists(os.path.join("resources", "scene_images")):
+            files = os.listdir(os.path.join("resources", "scene_images"))
             if len(files) > 0:
                 image_counter = len(files) + 1
 
@@ -337,28 +332,28 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
             if target_image_path == '':
                 target_category_images = aed_dataset[target_category]
                 target_image = self.select_random_item(target_category_images)
-                shutil.copyfile(target_image, f"resources/scene_images/{str(image_counter)}.jpg")
-                target_image_path = f"games/multimodal_referencegame/resources/scene_images/{str(image_counter)}.jpg"
+                shutil.copyfile(target_image, os.path.join("resources", "scene_images", f"{str(image_counter)}.jpg"))
+                target_image_path = os.path.join("games", "multimodal_referencegame", "resources", "scene_images", f"{str(image_counter)}.jpg")
                 image_counter += 1
                 # remove the target image from the list, select another image from the same category
                 target_category_images.remove(target_image)
 
             distractor1 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor1, f"resources/scene_images/{str(image_counter)}.jpg")
-            distractor1_path = f"games/multimodal_referencegame/resources/scene_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor1, os.path.join("resources", "scene_images", f"{str(image_counter)}.jpg"))
+            distractor1_path = os.path.join("games", "multimodal_referencegame", "resources", "scene_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             # remove the target image from the list, select another image from the same category
             target_category_images.remove(distractor1)
             distractor2 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor2, f"resources/scene_images/{str(image_counter)}.jpg")
-            distractor2_path = f"games/multimodal_referencegame/resources/scene_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor2, os.path.join("resources", "scene_images", f"{str(image_counter)}.jpg"))
+            distractor2_path = os.path.join("games", "multimodal_referencegame", "resources", "scene_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             for i in [1, 2, 3]:
 
                 player_a_prompt_header = self.load_template(
-                    f"resources/initial_prompts/player_a_prompt_images.template")
+                    os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
                 game_instance = self.add_game_instance(experiment, game_counter)
 
                 player_1_first_image = ""
@@ -442,8 +437,8 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                 break
 
     def generate_docci_instances(self):
-        player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_images.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_images.template")
+        player_a_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
+        player_b_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_b_prompt_images.template"))
 
         docci_dataset = self.get_docci_dataset()
 
@@ -454,28 +449,28 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
 
             target_category_images = docci_dataset[target_category]
             target_image = self.select_random_item(target_category_images)
-            shutil.copyfile(target_image, f"resources/docci_images/{str(image_counter)}.jpg")
-            target_image_path = f"games/multimodal_referencegame/resources/docci_images/{str(image_counter)}.jpg"
+            shutil.copyfile(target_image, os.path.join("resources", "docci_images", f"{str(image_counter)}.jpg"))
+            target_image_path = os.path.join("games", "multimodal_referencegame", "resources", "docci_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             # remove the target image from the list, select another image from the same category
             target_category_images.remove(target_image)
             distractor1 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor1, f"resources/docci_images/{str(image_counter)}.jpg")
-            distractor1_path = f"games/multimodal_referencegame/resources/docci_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor1, os.path.join("resources", "docci_images", f"{str(image_counter)}.jpg"))
+            distractor1_path = os.path.join("games", "multimodal_referencegame", "resources", "docci_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             # remove the distractor1 image from the list, select another image from the same category
             target_category_images.remove(distractor1)
             distractor2 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor2, f"resources/docci_images/{str(image_counter)}.jpg")
-            distractor2_path = f"games/multimodal_referencegame/resources/docci_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor2, os.path.join("resources", "docci_images", f"{str(image_counter)}.jpg"))
+            distractor2_path = os.path.join("games", "multimodal_referencegame", "resources", "docci_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             for i in [1, 2, 3]:
 
                 player_a_prompt_header = self.load_template(
-                    f"resources/initial_prompts/player_a_prompt_images.template")
+                    os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
                 game_instance = self.add_game_instance(experiment, game_counter)
 
                 player_1_first_image = ""
@@ -559,8 +554,8 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                 break
 
     def generate_docci_static_target_instances(self):
-        player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_images.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_images.template")
+        player_a_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
+        player_b_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_b_prompt_images.template"))
 
         docci_dataset = self.get_docci_dataset()
 
@@ -569,8 +564,8 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
         experiment = self.add_experiment('DOCCI_static_target_images')
 
 
-        if os.path.exists('resources/docci_images'):
-            files = os.listdir('resources/docci_images')
+        if os.path.exists(os.path.join("resources", "docci_images")):
+            files = os.listdir(os.path.join("resources", "docci_images"))
             if len(files) > 0:
                 image_counter = len(files) + 1
 
@@ -584,29 +579,29 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
         if target_image_path == '':
             target_category_images = docci_dataset[target_category]
             target_image = self.select_random_item(target_category_images)
-            shutil.copyfile(target_image, f"resources/docci_images/{str(image_counter)}.jpg")
-            target_image_path = f"games/multimodal_referencegame/resources/docci_images/{str(image_counter)}.jpg"
+            shutil.copyfile(target_image, os.path.join("resources", "docci_images", f"{str(image_counter)}.jpg"))
+            target_image_path = os.path.join("games", "multimodal_referencegame", "resources", "docci_images", f"{str(image_counter)}.jpg")
             image_counter += 1
             target_category_images.remove(target_image)
 
         while True:
 
             distractor1 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor1, f"resources/docci_images/{str(image_counter)}.jpg")
-            distractor1_path = f"games/multimodal_referencegame/resources/docci_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor1, os.path.join("resources", "docci_images", f"{str(image_counter)}.jpg"))
+            distractor1_path = os.path.join("games", "multimodal_referencegame", "resources", "docci_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             # remove the distractor1 image from the list, select another image from the same category
             target_category_images.remove(distractor1)
             distractor2 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor2, f"resources/docci_images/{str(image_counter)}.jpg")
-            distractor2_path = f"games/multimodal_referencegame/resources/docci_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor2, os.path.join("resources", "docci_images", f"{str(image_counter)}.jpg"))
+            distractor2_path = os.path.join("games", "multimodal_referencegame", "resources", "docci_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             for i in [1, 2, 3]:
 
                 player_a_prompt_header = self.load_template(
-                    f"resources/initial_prompts/player_a_prompt_images.template")
+                    os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
                 game_instance = self.add_game_instance(experiment, game_counter)
 
                 player_1_first_image = ""
@@ -712,8 +707,8 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
         return distractor1
 
     def generate_clevr_instances(self):
-        player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_images.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_images.template")
+        player_a_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
+        player_b_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_b_prompt_images.template"))
 
         category2image, image2category = self.get_clevr_dataset()
 
@@ -739,28 +734,28 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
             image2category.pop(distractor2)
 
 
-            shutil.copyfile(target_image, f"resources/clevr_images/{str(image_counter)}.jpg")
-            target_image_path = f"games/multimodal_referencegame/resources/clevr_images/{str(image_counter)}.jpg"
+            shutil.copyfile(target_image, os.path.join("resources", "clevr_images", f"{str(image_counter)}.jpg"))
+            target_image_path = os.path.join("games", "multimodal_referencegame", "resources", "clevr_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             # remove the target image from the list, select another image from the same category
             target_category_images.remove(target_image)
             distractor1 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor1, f"resources/clevr_images/{str(image_counter)}.jpg")
-            distractor1_path = f"games/multimodal_referencegame/resources/clevr_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor1, os.path.join("resources", "clevr_images", f"{str(image_counter)}.jpg"))
+            distractor1_path = os.path.join("games", "multimodal_referencegame", "resources", "clevr_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             # remove the distractor1 image from the list, select another image from the same category
             target_category_images.remove(distractor1)
             distractor2 = self.select_random_item(target_category_images)
-            shutil.copyfile(distractor2, f"resources/clevr_images/{str(image_counter)}.jpg")
-            distractor2_path = f"games/multimodal_referencegame/resources/clevr_images/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor2, os.path.join("resources", "clevr_images", f"{str(image_counter)}.jpg"))
+            distractor2_path = os.path.join("games", "multimodal_referencegame", "resources", "clevr_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             for i in [1, 2, 3]:
 
                 player_a_prompt_header = self.load_template(
-                    f"resources/initial_prompts/player_a_prompt_images.template")
+                    os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
                 game_instance = self.add_game_instance(experiment, game_counter)
 
                 player_1_first_image = ""
@@ -844,16 +839,16 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                 break
 
     def generate_clevr_static_target_instances(self):
-        player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_images.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_images.template")
+        player_a_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
+        player_b_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_b_prompt_images.template"))
 
         game_counter = 0
         image_counter = 1
-        image_directory = 'games/multimodal_referencegame/resources/clevr_images'
-
+        image_directory = os.path.join("resources", "clevr_images")
+        
         # find out if there are any images in the image_directory and if there is any, get the last image number by looking at the suffix before the .jpg file extension
-        if os.path.exists('resources/clevr_images'):
-            files = os.listdir('resources/clevr_images')
+        if os.path.exists(image_directory):
+            files = os.listdir(image_directory)
             if len(files) > 0:
                 image_counter = len(files) + 1
 
@@ -872,8 +867,8 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                 target_categories = image2category[target_image]
                 image2category.pop(target_image)
 
-                shutil.copyfile(target_image, f"resources/clevr_images/{str(image_counter)}.jpg")
-                target_image_path = f"{image_directory}/{str(image_counter)}.jpg"
+                shutil.copyfile(target_image, os.path.join("resources", "clevr_images", f"{str(image_counter)}.jpg"))
+                target_image_path = os.path.join("resources", "clevr_images", f"{str(image_counter)}.jpg")
                 image_counter += 1
 
             distractor1 = self.select_distractor_for_clevr(target_categories, category2image, image2category)
@@ -882,18 +877,18 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
             distractor2 = self.select_distractor_for_clevr(target_categories, category2image, image2category)
             image2category.pop(distractor2)
 
-            shutil.copyfile(distractor1, f"resources/clevr_images/{str(image_counter)}.jpg")
-            distractor1_path = f"{image_directory}/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor1, os.path.join("resources", "clevr_images", f"{str(image_counter)}.jpg"))
+            distractor1_path = os.path.join("resources", "clevr_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
-            shutil.copyfile(distractor2, f"resources/clevr_images/{str(image_counter)}.jpg")
-            distractor2_path = f"{image_directory}/{str(image_counter)}.jpg"
+            shutil.copyfile(distractor2, os.path.join("resources", "clevr_images", f"{str(image_counter)}.jpg"))
+            distractor2_path = os.path.join("resources", "clevr_images", f"{str(image_counter)}.jpg")
             image_counter += 1
 
             for i in [1, 2, 3]:
 
                 player_a_prompt_header = self.load_template(
-                    f"resources/initial_prompts/player_a_prompt_images.template")
+                    os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
                 game_instance = self.add_game_instance(experiment, game_counter)
 
                 player_1_first_image = ""
@@ -977,31 +972,31 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
                 break
 
     def generate_pentomino_instances(self):
-        player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_images.template")
-        player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_images.template")
+        player_a_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
+        player_b_prompt_header = self.load_template(os.path.join("resources", "initial_prompts", "player_b_prompt_images.template"))
 
         game_counter = 0
         image_counter = 1
-        image_directory = 'games/multimodal_referencegame/resources/pentomino_images'
+        image_directory = os.path.join("resources", "pentomino_images")
 
         image_files = []
-        if os.path.exists('resources/pentomino_images'):
-            image_files = os.listdir('resources/pentomino_images')
+        if os.path.exists(image_directory):
+            image_files = os.listdir(image_directory)
 
         experiment = self.add_experiment('pentomino_images')
 
         # loop over image image_files and take the first 7 sets of images: 1st image is the target image, the next 2 are distractors, and create 3 sets of tuples  where one is the target image and the other two are the distractors
         for i in range(1, len(image_files)+1, 7):
 
-            target_image_path = f"{image_directory}/{i}.jpg"
+            target_image_path = os.path.join(image_directory, f"{i}.jpg")
 
             k = 1
             for j in range(i + 1, i + 7, 2):
-                distractor1_path = f"{image_directory}/{j}.jpg"
-                distractor2_path = f"{image_directory}/{j+1}.jpg"
+                distractor1_path = os.path.join(image_directory, f"{j}.jpg")
+                distractor2_path = os.path.join(image_directory, f"{j+1}.jpg")
 
                 player_a_prompt_header = self.load_template(
-                    f"resources/initial_prompts/player_a_prompt_images.template")
+                    os.path.join("resources", "initial_prompts", "player_a_prompt_images.template"))
                 game_instance = self.add_game_instance(experiment, game_counter)
 
                 player_1_first_image = ""

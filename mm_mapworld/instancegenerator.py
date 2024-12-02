@@ -1,4 +1,4 @@
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
 import numpy as np
 import networkx as nx
 from maps import AbstractMap
@@ -10,21 +10,21 @@ import shutil
 
 # set the name of the game in the script, as you named the directory
 # this name will be used everywhere, including in the table of results
-GAME_NAME = 'mm_mapworld'
+
 NUM_INSTANCES = 10
 GRIDS = {"small": (4,4), "medium": (4,4), "large": (4,4)}
 SIZES = {"small": 4, "medium": 6, "large": 8} # num_nodes
 SEED = 42
 CAPTIONS = True
 RANDOM_PATH = 'random_test_images'
-IMAGE_PATH = os.path.join('games', 'mm_mapworld', 'resources', 'images')
+IMAGE_PATH = os.path.join("resources", "images")
 if CAPTIONS:
-    DATASET_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k_reduced", "ade_imgs")
-    MAPPING_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k_reduced", "cats.json")
+    DATASET_PATH = os.path.join("resources", "ade_20k_reduced", "ade_imgs")
+    MAPPING_PATH = os.path.join("resources", "ade_20k_reduced", "cats.json")
 else:
-    DATASET_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k", "needed_imgs")
-    MAPPING_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k", "ade_cat_instances.json")
-TEMP_IMAGE_PATH = os.path.join("games", "mm_mapworld", "resources", "images")
+    DATASET_PATH = os.path.join("resources", "ade_20k", "needed_imgs")
+    MAPPING_PATH = os.path.join("resources", "ade_20k", "ade_cat_instances.json")
+TEMP_IMAGE_PATH = os.path.join("resources", "images")
 MOVE_CONSTRUCTION = "GO: "
 STOP_CONSTRUCTION = "DONE"
 RESPONSE_REGEX = "^\{[\s]*\"description\":\s*\"([^\{]*?)\"\s*,\s*\"action\":\s*\"([^\{]*?)\"[\s]*\}$"
@@ -129,16 +129,16 @@ def copy_image(image_path):
 class MmMapWorldInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
         # always do this to initialise GameInstanceGenerator
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
     def on_generate(self):
         prompts = {
-            'initial': self.load_template('resources/initial_prompts/prompt.template'),
-            'initial_one_shot': self.load_template('resources/initial_prompts/prompt_one_shot.template'),
-            'later_success': self.load_template('resources/later_prompts/successful_move.template'),
-            'later_invalid': self.load_template('resources/later_prompts/invalid_move.template'),
-            'reprompt_format': self.load_template('resources/reprompts/invalid_format.template'),
-            'limit_warning': self.load_template('resources/later_prompts/turn_limit.template'),
-            'loop_warning': self.load_template('resources/later_prompts/loop.template'),
+            'initial': self.load_template(os.path.join('resources', 'initial_prompts', 'prompt.template')),
+            'initial_one_shot': self.load_template(os.path.join('resources', 'initial_prompts', 'prompt_one_shot.template')),
+            'later_success': self.load_template(os.path.join('resources', 'later_prompts', 'successful_move.template')),
+            'later_invalid': self.load_template(os.path.join('resources', 'later_prompts', 'invalid_move.template')),
+            'reprompt_format': self.load_template(os.path.join('resources', 'reprompts', 'invalid_format.template')),
+            'limit_warning': self.load_template(os.path.join('resources', 'later_prompts', 'turn_limit.template')),
+            'loop_warning': self.load_template(os.path.join('resources', 'later_prompts', 'loop.template')),
         }
         experiments = {
             'small': {"size": "small", "reprompt": False, "one_shot": True},

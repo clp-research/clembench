@@ -284,7 +284,7 @@ class WordleGameMaster(GameMaster):
         assert player in ("a", "b")
         if player == "a":
             if error == "INVALID_START_WORD":
-                return "The response should always start with the keyword 'guess:'"
+                return "The response should always start with the keyword 'explanation:'"
             elif error == "INVALID_FORMAT":
                 return "The guess should be a single word and should only contain letters."
             elif error == "INVALID_WORD_LENGTH":
@@ -297,7 +297,7 @@ class WordleGameMaster(GameMaster):
                 return "The response should contain only the 'guess:' and 'explanation:' keywords and associated information."
         else:
             if error == "INVALID_START_WORD":
-                return "The response should always start with the keyword 'agreement:'"
+                return "The response should always start with the keyword 'explanation:'"
             elif error == "INVALID_FORMAT":
                 return "The agreement should be a single word and should only be yes or no."
             elif error == "NOT_VALID_CRITIC_WORD":

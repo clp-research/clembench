@@ -526,10 +526,12 @@ class WordleGameMaster(GameMaster):
             guess_val = self.game_result["guess"][self.current_turn - 1]
             explanation_val = self.game_result["explanation"][self.current_turn - 1]
 
-        content += self.config["lang_keywords"]["guess_lang"] + " " + guess_val + "\n"
+        # Changing the order of guess and explanation. Explanation should come first followed by guess
+        #content += self.config["lang_keywords"]["guess_lang"] + " " + guess_val + "\n"
         content += (
-            self.config["lang_keywords"]["explanation_lang"] + " " + explanation_val
+            self.config["lang_keywords"]["explanation_lang"] + " " + explanation_val + "\n"
         )
+        content += self.config["lang_keywords"]["guess_lang"] + " " + guess_val
 
         return content
 
@@ -579,13 +581,18 @@ class WordleGameMaster(GameMaster):
             guess_word_lang = self.config["lang_keywords"]["agreement_word_lang"]
 
 
-        content += guess_lang + " " + guess_word_lang + "\n"
+        # Changing the order of guess and explanation. Explanation should come first followed by guess
+        #content += guess_lang + " " + guess_word_lang + "\n"
 
         content += (
             self.config["lang_keywords"]["explanation_lang"]
             + " "
             + self.config["lang_keywords"]["explanataion_details_lang"]
+            + "\n"
         )
+
+        content += guess_lang + " " + guess_word_lang
+
         return content
         
     def _add_guess_feedback_in_next_turns(self, player: str, use_key: str) -> str:        

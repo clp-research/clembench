@@ -173,13 +173,13 @@ class WordleGameMaster(GameMaster):
             return None, None
 
         if player == "a":
-            if not response.startswith(self.config["lang_keywords"]["guess_lang"]):
+            if not response.startswith(self.config["lang_keywords"]["explanation_lang"]):
                 return None, None
 
             guess_keyword = self.config["lang_keywords"]["guess_lang"]
 
         else:
-            if not response.startswith(self.config["lang_keywords"]["agreement_lang"]):
+            if not response.startswith(self.config["lang_keywords"]["explanation_lang"]):
                 return None, None
 
             guess_keyword = self.config["lang_keywords"]["agreement_lang"]

@@ -1,19 +1,25 @@
+from clemcore.backends import Model, CustomResponseModel
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
+from clemcore.utils import file_utils, string_utils
+
 from typing import Dict, Tuple, List
 import json
 import numpy as np
-import re
 import ast
-from backends import Model, CustomResponseModel
-from clemgame.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
-from clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
-from games.textmapworld_specificroom.utils import loop_identification, get_directions, string_available_directions, have_common_element, get_nextnode_label, count_word_in_sentence
 from queue import Queue
 from copy import deepcopy
-from clemgame import get_logger
-from clemgame import file_utils, string_utils
+import re
 import random
-GAME_NAME = "textmapworld_specificroom"
-logger = get_logger(__name__)
+from logging import getLogger
+logger = getLogger(__name__)
+
+import sys
+import os
+sys.path.append(os.path.abspath('../clemgames/textmapworld'))
+from textmapworld_utils import loop_identification, get_directions, string_available_directions, have_common_element, get_nextnode_label
+
+
 INVALID = 0
 
 
@@ -126,8 +132,8 @@ class textmapworld_specificroom(DialogueGameMaster):
     This class implements a graph traversal game in which player A (DecisionMaker). 
     """
 
-    def __init__(self, experiment: Dict, player_models : List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models : List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
         self.steps_made = 0
         self.max_turns = 20
         self.game_error = None
@@ -273,8 +279,8 @@ class textmapworld_specificroom(DialogueGameMaster):
 
 class GraphGameScorer(GameScorer):
 
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
         self.nodes = ast.literal_eval(game_instance['Graph_Nodes'])
         self.game_type = game_instance['Game_Type']
         self.ambiguity = game_instance['Ambiguity']
@@ -420,22 +426,19 @@ class GraphGameScorer(GameScorer):
 
 class GraphGameBenchmark(GameBenchmark):
 
-    def __init__(self):
-        super().__init__(GAME_NAME)
-
-    def get_description(self):
-        return "Graph Game."
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return textmapworld_specificroom(experiment, player_models)
+        return textmapworld_specificroom(self.game_name, self.game_path, experiment, player_models)
     
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return GraphGameScorer(experiment, game_instance)
+        return GraphGameScorer(self.game_name, experiment, game_instance)
 
 
 def main():
     # select one experiment and instance
-    experiments = file_utils.load_json("in/instances.json", "textmapworld_specificroom")
+    experiments = file_utils.load_json("in/instances_specificroom.json", "textmapworld")
     experiment_1 = experiments["experiments"][0]
     game_1 = experiment_1["game_instances"]
     master = textmapworld_specificroom(experiment_1, ["mock", "mock"])

@@ -1,10 +1,8 @@
 import ast
 import os
 import numpy as np
-import random
 import networkx as nx
-from clemgame import  string_utils
-from games.textmapworld_specificroom.graph_generator import GraphGenerator
+from graph_generator import GraphGenerator
 
 "----------------------------------------------------"
 "The functions used in instance_generator.py"
@@ -90,6 +88,7 @@ def have_common_element(str1, str2):
     return any(match in common_elements for match in common_matches)
 
 
+
 def get_nextnode_label(moves, node, utterance, move_construction):
     next_label=None
     utterance = utterance.strip()
@@ -118,37 +117,48 @@ def ambiguity_move(old_one, new_one, mapping, moves, move_type):
                                         if s[0] == move_type:
                                             return label, s[1]
                                         
+
 def loop_identification(visited_nodes):
     if len(visited_nodes) >= 4:
         if len(set(visited_nodes[-4:])) < 3:
             return True
     return False
 
-"----------------------------------------------------"
-"The functions used in instance_generator.py"
 
-#Create a networkx graph from the given graph data.
-def create_graph(nodes, edges):
+def lowercase_list_strings(original_list):
+    return [item.lower() for item in original_list]
+
+def lowercase_tuple_strings(original_list, type):
+    if type == "generated":
+        combined_list = [value for sublist in original_list.values() for value in sublist]
+        return [(item[0].lower(), item[1].lower()) for item in combined_list]
+    elif type == "original":
+        return [(item[0].lower(), item[1].lower()) for item in original_list]
+    elif type == "none":
+        return original_list
+    
+def create_graph(nodes, edges, type):
     G = nx.Graph()
+    if type == "generated" or type == "original":
+        nodes= lowercase_list_strings(nodes)
+    edges= lowercase_tuple_strings(edges, type)
     G.add_nodes_from(nodes)
-    G.add_edges_from(edges)
+    for edge in edges:
+        if len(edge) == 2:
+            G.add_edge(edge[0], edge[1])
     return G
 
-# Function to get nodes at a certain distance from the initial node
-def get_nodes_at_distance(graph, initial_node, distance):
-    return [node for node in nx.single_source_shortest_path_length(graph, initial_node) if nx.single_source_shortest_path_length(graph, initial_node)[node] == distance]
-
-# Randomly select nodes at various distances from the initial node
-def select_nodes_at_distances(G, initial_position, max_distance):
-    chosen_nodes = {}
-    for distance in range(max_distance):
-        nodes_at_distance = get_nodes_at_distance(G, initial_position, distance)
-        if nodes_at_distance:
-            random_node = random.choice(nodes_at_distance)
-            chosen_nodes[str(distance)] = random_node
-        else:
-            print(f"No nodes found at distance {distance} from {initial_position}")
-    return chosen_nodes
+    
+def normalize(distance):
+        normalized_distance = 1 / (1 + np.exp(-0.5 * distance))
+        normalized_distance = 2*(normalized_distance - 0.5)
+        return normalized_distance
+    
+def calculate_similarity(graph1, graph2):
+    distance = nx.graph_edit_distance(graph1, graph2)
+    normalized_distance = normalize(distance)
+    similarity = 1 - normalized_distance
+    return similarity
 
 def count_word_in_sentence(sentence, word):
     # Split the sentence into words

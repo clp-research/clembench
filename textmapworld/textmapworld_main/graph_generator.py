@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 import time
 import networkx as nx
 import os
-game_name = "textmapworld_graphreasoning"
+
+game_name = "textmapworld"
 
 class SaveGraphInfo:
 
@@ -187,7 +188,6 @@ class GraphGenerator:
         cycle_types=["cycle_true", "cycle_false", "random", "adding_cycle"]
         if self.cycle not in cycle_types:
             return "The cycle variable is not valid"
-        
         while self.G.number_of_nodes() < self.n_rooms :
             # Prevent diagonal moves when cycle is set to "random"
             random_dir = np.random.choice(list(dir2delta.keys()))
@@ -254,7 +254,7 @@ class GraphGenerator:
                             self.G.add_edge(neighbor, random_node)
                             break
 
-        if len(list(self.G.nodes()))<self.n_rooms:
+        if len(list(self.G.nodes())) < self.n_rooms:
             return "No graph generated"
         if self.cycle=="cycle_false" and find_cycle(source=self.current_pos, orientation="ignore") != "No cycle found":
             return "No graph generated"

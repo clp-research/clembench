@@ -1,0 +1,49 @@
+Let us play a game. You are given three grids where each of them is 5 by 5 in size.
+Grids have empty cells marked with "▢" and filled cells marked with "X".
+The goal is to generate a single referring expression that captures the main content in the grid named as "Target grid".
+Generate the referring expression starting with the tag "Expression: " for the given target grid and exclude any other text.
+
+Here is an example with grids. The first grid is the target grid and the following two grids are distractors.
+
+Target grid:
+
+X X X X X
+▢ ▢ X ▢ ▢
+▢ ▢ X ▢ ▢
+▢ ▢ X ▢ ▢
+▢ ▢ X ▢ ▢
+
+Second grid:
+
+X X X X X
+▢ ▢ X ▢ ▢
+X X X X X
+▢ ▢ X ▢ ▢
+X X X X X
+
+Third grid:
+
+X X X X X
+▢ ▢ ▢ ▢ ▢
+▢ ▢ ▢ ▢ ▢
+▢ ▢ ▢ ▢ ▢
+X X X X X
+
+The referring expression for the given target grid is like so:
+Expression: Filled as T.
+
+Ok. Now do this for the following grids.
+
+Target grid:
+
+TARGET_GRID
+
+Second grid:
+
+SECOND_GRID
+
+Third grid:
+
+THIRD_GRID
+
+Generate the referring expression for the given target.

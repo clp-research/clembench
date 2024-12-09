@@ -1,5 +1,5 @@
-"""
-Generate instances for the taboo game.
+"""The script generates game instances for the Taboo game. It selects target words and generates a list of related words.
+The script uses either ConceptNet or the OpenAI API to retrieve or generate these related words.
 
 usage:
 python3 instancegenerator.py
@@ -9,55 +9,175 @@ Creates instance.json file in ./in
 import os
 import random
 import logging
-from tqdm import tqdm
+import openai
+import requests
+import spacy
+import argparse
 
 from clemcore.clemgame import GameInstanceGenerator
 
-N_INSTANCES = 20  # how many different target words; zero means "all"
+from utils.select_taboo_words import is_function_word
+
+N_INSTANCES = 20  # how many different target words
 N_GUESSES = 3  # how many tries the guesser will have
 N_RELATED_WORDS = 3
 LANGUAGE = "en"
-VERSION = "v1.5"
+VERSION = "v2.0"
+
+WORD_LISTS = f"resources/target_words/{LANGUAGE}/taboo_word_lists.json"
 
 logger = logging.getLogger(__name__)
 
-random.seed(42)
+# Seed for reproducibility
+random.seed(87326423)
+
+# Set up OpenAI API key if using openai
+OPENAI_API_KEY = ""  # Insert your OpenAI API key
+
 
 class TabooGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self):
         super().__init__(os.path.dirname(__file__))
+        self.n = N_RELATED_WORDS
+        self.language = LANGUAGE
+        # Variable for storing spaCy model (only loaded if conceptnet is used)
+        self.tagger = None
 
-    def on_generate(self):
+    def on_generate(self, mode):
+        # prepare related word generation
+        if mode == "conceptnet":
+            # this is currently the default
+            self.filename = f"instances_{VERSION}_{LANGUAGE}.json"
+            # Load spaCy model for filtering nouns
+            self.tagger = spacy.load("en_core_web_sm")
+            generator_function = self.get_related_words_from_conceptnet
+        else:
+            self.filename = f"instances_{VERSION}_{LANGUAGE}_{mode}.json"
+            if mode == "openai":
+                openai.api_key = OPENAI_API_KEY
+                generator_function = self.generate_related_words_from_openai
+
+        taboo_words = self.load_json(file_name=WORD_LISTS)
+
         for frequency in ["high", "medium", "low"]:
-            print("Sampling from freq:", frequency)
-            # first choose target words based on the difficultly
-            fp = f"resources/target_words/{LANGUAGE}/{frequency}_freq_100_{VERSION}"
-            target_words = self.load_file(file_name=fp, file_ending=".txt").split('\n')
-            if N_INSTANCES > 0:
-                assert len(target_words) >= N_INSTANCES, \
-                    f'Fewer words available ({len(target_words)}) than requested ({N_INSTANCES}).'
-                target_words = random.sample(target_words, k=N_INSTANCES)
+            print("\nSampling from freq:", frequency)
 
-            # use the same target_words for the different player assignments
             experiment = self.add_experiment(f"{frequency}_{LANGUAGE}")
             experiment["max_turns"] = N_GUESSES
+            experiment["describer_initial_prompt"] = self.load_template("resources/initial_prompts/initial_describer")
+            experiment["guesser_initial_prompt"] = self.load_template("resources/initial_prompts/initial_guesser")
 
-            describer_prompt = self.load_template("resources/initial_prompts/initial_describer")
-            guesser_prompt = self.load_template("resources/initial_prompts/initial_guesser")
-            experiment["describer_initial_prompt"] = describer_prompt
-            experiment["guesser_initial_prompt"] = guesser_prompt
+            target_id = 0
+            while target_id < N_INSTANCES:
+                if not taboo_words[frequency]:
+                    print(
+                        f"No more words available to sample. Only found the requested {N_RELATED_WORDS} related words for {target_id} target words.")
+                    break
+                # Sample a new target word
+                target = random.choice(taboo_words[frequency])
+                taboo_words[frequency].remove(target)
 
-            for game_id in tqdm(range(len(target_words))):
-                target = target_words[game_id]
+                # Generate related words
+                print(f"Retrieving related words for '{target}'")
+                related_words = []
+                if mode == "conceptnet":
+                    related_words = self.get_related_words_from_conceptnet(target)
+                elif mode == "openai":
+                    related_words = self.generate_related_words_from_openai(target)
 
-                game_instance = self.add_game_instance(experiment, game_id)
-                game_instance["target_word"] = target
-                game_instance["related_word"] = []  # ps: add manually for now b.c. api doesn't provide ranking
+                if len(related_words) < N_RELATED_WORDS and not mode == "manual":
+                    print(f"Skipping '{target}' due to lack of related words.")
+                    continue  # Skip this word and try another
 
-                if len(game_instance["related_word"]) < N_RELATED_WORDS:
-                    print(f"Found less than {N_RELATED_WORDS} related words for: {target}")
+                else:  # Add a valid game instance
+                    game_instance = self.add_game_instance(experiment, target_id)
+                    game_instance["target_word"] = target
+                    game_instance["related_word"] = related_words
+                    target_id += 1
+
+    def get_related_words_from_conceptnet(self, word, filter_nouns=False):
+        """
+        Fetch related words from ConceptNet and filter for nouns.
+        """
+        try:
+            url = f"http://api.conceptnet.io/c/{self.language}/{word}/"
+            response = requests.get(url)
+            response.raise_for_status()
+            data = response.json()
+
+            related_words = set()
+            edges = data.get("edges", [])
+            for edge in edges:
+                if edge.get("end", {}).get("language", "") == LANGUAGE:  # only use same language
+                    related_term = edge.get("end", {}).get("label", "")
+                    # make sure word is different from target, is only one word, and not a function word
+                    if related_term.lower() != word.lower() \
+                            and " " not in related_term \
+                            and not is_function_word(related_term):
+                        if filter_nouns:
+                            if self.is_noun(related_term):
+                                related_words.add(related_term)
+                        else:
+                            related_words.add(related_term)
+                    if len(related_words) >= self.n:
+                        break
+            return list(related_words)
+
+        except Exception as e:
+            print(f"Error fetching related words for '{word}': {e}")
+            return []
+
+    def is_noun(self, word):
+        """
+        Checks if a word is a noun
+        :param word: the word to be checked
+        :return: True if word is a noun according to spacy, False otherwise
+        """
+        doc = self.tagger(word)  # Analyse word with spaCy
+        for token in doc:
+            if token.pos_ == "NOUN":
+                return True
+        return False
+
+    def generate_related_words_from_openai(self, target_word):
+        """
+        Generates related words for a target word using the OpenAI API (new interface).
+        :param target_word: The target word.
+        :return: List of related words.
+        """
+        try:
+            # Prompt for Chat model
+            messages = [
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": f"Give me {N_RELATED_WORDS} words that are related to '{target_word}'."}
+            ]
+
+            # Request to the ChatCompletion-API
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",  # or "gpt-4.0-turbo" if available
+                messages=messages,
+                max_tokens=50,
+                temperature=0.7
+            )
+
+            raw_response = response['choices'][0]['message']['content'].strip()
+
+            # Standardize the response
+            if "\n" in raw_response:  # Check for newline-separated list
+                related_words = [line.split(".")[-1].strip() for line in raw_response.split("\n") if line.strip()]
+            else:  # Assume comma-separated list
+                related_words = raw_response.split(", ")
+
+            return related_words[:self.n]  # limit the number of related words
+        except Exception as e:
+            logger.error(f"Error generating related words for '{target_word}': {e}")
+            return []
 
 
 if __name__ == '__main__':
-    TabooGameInstanceGenerator().generate()
+    parser = argparse.ArgumentParser(description="Generate Taboo game instances.")
+    parser.add_argument("-m", "--mode", choices=["manual", "conceptnet", "openai"], default="conceptnet",
+                        help="Choose whether to use ConceptNet or OpenAI.")
+    args = parser.parse_args()
+    TabooGameInstanceGenerator().generate(mode=args.mode)

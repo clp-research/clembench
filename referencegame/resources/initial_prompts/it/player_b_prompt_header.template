@@ -1,0 +1,21 @@
+Ti vengono date tre matrici, ognuna delle quali ha una dimensione di 5 x 5.
+Le matrici hanno celle vuote contrassegnate da "▢" e celle piene contrassegnate da "X".
+Ti viene data anche un'espressione di riferimento che descrive una delle matrici date.
+Il tuo compito è selezionare la matrice che corrisponde all'espressione di riferimento data.
+Genera solo il numero (in forma di testo) della matrice che corrisponde all'espressione data selezionando uno tra: primo, secondo o terzo.
+
+Primo:
+
+FIRST_GRID
+
+Secondo:
+
+SECOND_GRID
+
+Terzo:
+
+THIRD_GRID
+
+TARGET_EXPRESSION
+Domanda: A quale matrice si riferisce l'espressione?
+Iniziare con il tag "Risposta: ", seguito dalla selezione. Omettere qualsiasi altro testo.

@@ -172,13 +172,13 @@ class WordleGameMaster(GameMaster):
             return None, None
 
         if player == "a":
-            if not response.startswith(self.config["lang_keywords"]["guess_lang"]):
+            if not response.startswith(self.config["lang_keywords"]["explanation_lang"]):
                 return None, None
 
             guess_keyword = self.config["lang_keywords"]["guess_lang"]
 
         else:
-            if not response.startswith(self.config["lang_keywords"]["agreement_lang"]):
+            if not response.startswith(self.config["lang_keywords"]["explanation_lang"]):
                 return None, None
 
             guess_keyword = self.config["lang_keywords"]["agreement_lang"]
@@ -283,7 +283,7 @@ class WordleGameMaster(GameMaster):
         assert player in ("a", "b")
         if player == "a":
             if error == "INVALID_START_WORD":
-                return "The response should always start with the keyword 'guess:'"
+                return "The response should always start with the keyword 'explanation:'"
             elif error == "INVALID_FORMAT":
                 return "The guess should be a single word and should only contain letters."
             elif error == "INVALID_WORD_LENGTH":
@@ -296,7 +296,7 @@ class WordleGameMaster(GameMaster):
                 return "The response should contain only the 'guess:' and 'explanation:' keywords and associated information."
         else:
             if error == "INVALID_START_WORD":
-                return "The response should always start with the keyword 'agreement:'"
+                return "The response should always start with the keyword 'explanation:'"
             elif error == "INVALID_FORMAT":
                 return "The agreement should be a single word and should only be yes or no."
             elif error == "NOT_VALID_CRITIC_WORD":
@@ -525,10 +525,12 @@ class WordleGameMaster(GameMaster):
             guess_val = self.game_result["guess"][self.current_turn - 1]
             explanation_val = self.game_result["explanation"][self.current_turn - 1]
 
-        content += self.config["lang_keywords"]["guess_lang"] + " " + guess_val + "\n"
+        # Changing the order of guess and explanation. Explanation should come first followed by guess
+        #content += self.config["lang_keywords"]["guess_lang"] + " " + guess_val + "\n"
         content += (
-            self.config["lang_keywords"]["explanation_lang"] + " " + explanation_val
+            self.config["lang_keywords"]["explanation_lang"] + " " + explanation_val + "\n"
         )
+        content += self.config["lang_keywords"]["guess_lang"] + " " + guess_val
 
         return content
 
@@ -578,13 +580,18 @@ class WordleGameMaster(GameMaster):
             guess_word_lang = self.config["lang_keywords"]["agreement_word_lang"]
 
 
-        content += guess_lang + " " + guess_word_lang + "\n"
+        # Changing the order of guess and explanation. Explanation should come first followed by guess
+        #content += guess_lang + " " + guess_word_lang + "\n"
 
         content += (
             self.config["lang_keywords"]["explanation_lang"]
             + " "
             + self.config["lang_keywords"]["explanataion_details_lang"]
+            + "\n"
         )
+
+        content += guess_lang + " " + guess_word_lang
+
         return content
         
     def _add_guess_feedback_in_next_turns(self, player: str, use_key: str) -> str:        

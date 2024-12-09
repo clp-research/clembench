@@ -1,0 +1,21 @@
+Du siehst drei Gitter, die jeweils 5 x 5 Zellen haben.
+Die leeren Zellen sind mit "▢" markiert und die gefüllten Zellen sind mit "X" markiert.
+Außerdem bekommst du einen beschreibenden Ausdruck, der zu einem der Gitter passt.
+Deine Aufgabe ist es, das Gitter zu identifizieren, zu dem der Ausdruck am besten passt.
+Deine Antwort soll nur die Zahl des Gitters (als Text) enthalten, also erstes, zweites oder drittes.
+
+Erstes:
+
+FIRST_GRID
+
+Zweites:
+
+SECOND_GRID
+
+Drittes:
+
+THIRD_GRID
+
+TARGET_EXPRESSION
+Frage: Zu welchem Gitter gehört dieser Ausdruck?
+Gib deine Antwort, beginnend mit dem Präfix "Antwort: ". Verzichte auf jegliche weiteren Ausführungen.

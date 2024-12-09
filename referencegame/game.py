@@ -55,7 +55,8 @@ class InstructionFollower(Player):
 
     def _custom_response(self, messages, turn_idx):
         answer = random.choice(["first", "second", "third"])
-        return f"Answer: {answer}"
+        added = random.choice(["", ".", " grid"])
+        return f"Answer: {answer}{added}"
 
 
 class InstructionGiver(Player):
@@ -74,6 +75,9 @@ class ReferenceGame:
 
     def __init__(self, game_instance: Dict, player_backends: List[str]):
         self.player_backends = player_backends
+        self.lang = game_instance['lang']
+        self.p1_mode = game_instance['p1_mode']
+        self.p2_mode = game_instance['p2_mode']
         self.game_id = game_instance['game_id']
         self.player_1_prompt_header = game_instance['player_1_prompt_header']
         self.player_2_prompt_header = game_instance['player_2_prompt_header']
@@ -98,7 +102,6 @@ class ReferenceGame:
         self.followed_instruction = Instruction()
 
         self.turn_count = 0
-
 
     def proceeds(self) -> bool:
         return True

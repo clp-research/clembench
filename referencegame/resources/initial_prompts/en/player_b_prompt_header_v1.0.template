@@ -1,0 +1,49 @@
+Let us play a game. You are given three grids where each of them is 5 by 5 in size. Grids have empty cells marked with "▢" and filled cells marked with "X".
+You are also given a referring expression that describes one of the given grids. The goal is to select a grid that matches the given referring expression.
+Here is an example with grids and the referring expression.
+Generate only the number (in text) of the grid that the given expression matches to by selecting first, second, or third. Start with the tag "Answer: " and followed by the generated expression.
+
+First grid:
+
+X X X X X
+▢ ▢ X ▢ ▢
+X X X X X
+▢ ▢ X ▢ ▢
+X X X X X
+
+Second grid:
+
+X X X X X
+▢ ▢ X ▢ ▢
+▢ ▢ X ▢ ▢
+▢ ▢ X ▢ ▢
+▢ ▢ X ▢ ▢
+
+Third grid:
+
+X X X X X
+▢ ▢ ▢ ▢ ▢
+▢ ▢ ▢ ▢ ▢
+▢ ▢ ▢ ▢ ▢
+X X X X X
+
+Expression: Filled as T.
+Question: Which grid does the expression refer to? Generate only the names of the grids like "first", "second" or "third", exclude any other word.
+Answer: second
+
+Ok. Now do this for the following grids.Generate only the number (in text) of the grid that the given expression matches to by selecting first, second, or third.
+
+First grid:
+
+FIRST_GRID
+
+Second grid:
+
+SECOND_GRID
+
+Third grid:
+
+THIRD_GRID
+
+TARGET_EXPRESSION
+Question: Which grid does the expression refer to? Generate only the names of the grids like "first", "second" or "third", exclude any other word.

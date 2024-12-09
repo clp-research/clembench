@@ -1,0 +1,19 @@
+Ti vengono date tre matrici, ognuna delle quali ha una dimensione di 5 x 5.
+Le matrici hanno celle vuote contrassegnate da "▢" e celle piene contrassegnate da "X".
+Il tuo compito è quello di generare un'espressione di riferimento che descriva al meglio la matrice di destinazione e la distingua dalle altre due matrici di distrazione.
+La prima matrice è la matrice obiettivo, mentre le due matrici successive sono i distrattori.
+
+Matrice obiettivo:
+
+TARGET_GRID
+
+Matrice distrattore 1:
+
+SECOND_GRID
+
+Matrice distrattore 2:
+
+THIRD_GRID
+
+Istruzioni: Descrivere la matrice obiettivo.
+Generare l'espressione di riferimento a partire dal tag "Espressione: " per la matrice obiettivo indicata. Omettere qualsiasi altro testo.

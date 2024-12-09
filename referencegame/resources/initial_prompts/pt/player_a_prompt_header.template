@@ -1,0 +1,19 @@
+Vou te mostrar três tabuleiros quadriculados, cada um de tamanho 5 por 5.
+Os tabuleiros têm quadros vazios marcados por "▢" e quadros preenchidos marcados por "X".
+Sua tarefa é gerar uma expressão de referência que melhor descreva o tabuleiro-alvo, de forma a distingui-lo dos outros dois tabuleiros distratores.
+O primeiro tabuleiro é o tabuleiro-alvo, e os dois seguintes são distratores.
+
+Tabuleiro-alvo:
+
+TARGET_GRID
+
+Tabuleiro distrator 1:
+
+SECOND_GRID
+
+Tabuleiro distrator 2:
+
+THIRD_GRID
+
+Instrução: Descreva o tabuleiro-alvo.
+Gere a expressão de referência começando com a etiqueta "Expressão: " para o tabuleiro-alvo indicado. Omita qualquer outro texto.

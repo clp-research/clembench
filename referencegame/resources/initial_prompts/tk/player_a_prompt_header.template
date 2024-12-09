@@ -1,0 +1,19 @@
+Size üç sany gözenek berilýär, olaryň hersiniň ululygy 5-den 5-e çenli.
+Gözeneklerde "▢" bilen bellenen boş öýjükler we "X" bilen bellenen doly öýjükler bar.
+Siziň wezipäňiz, beýleki iki daşlaşdyryjy gözenekden tapawutlandyryp, maksat gözenegi has gowy teswirleÿän aňlatmany döretmekdir.
+Birinji gözenek maksatly gözenekdir we aşakdaky iki gözenek daşlaşdyryjydyr.
+
+Maksatly gözenek:
+
+TARGET_GRID
+
+Daşlaşdyryjy gözenek 1:
+
+SECOND_GRID
+
+Daşlaşdyryjy gözenek 2:
+
+THIRD_GRID
+
+Görkezme: Maksatly gözenegi teswirläň.
+Berlen maksat gözenegi üçin "Aňlatma:" belligi bilen başlap oňa gabat gelýän aňlatmasyny dörediň. Başga tekst döretme.

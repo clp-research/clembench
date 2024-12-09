@@ -2,7 +2,10 @@ import os
 import json
 
 from clemcore.clemgame import GameInstanceGenerator
-from utils import load_check_graph, generate_filename, create_graphs_file, create_graph
+import sys
+import os
+sys.path.append(os.path.abspath('../clemgames/textmapworld'))
+from textmapworld_utils import load_check_graph, generate_filename, create_graphs_file, create_graph_specificroom
 import random
 import networkx as nx
 
@@ -87,7 +90,7 @@ class GraphGameInstanceGenerator(GameInstanceGenerator):
                     game_instance["Max_Turns_Reminder_Text"] = reminders_file["max_turns_reminder"]
                     game_instance["Mapping"] = str(grid["Mapping"])
                     game_instance["Strict"] = strict
-                    generated_graph = create_graph(grid["Graph_Nodes"], grid["Graph_Edges"])
+                    generated_graph = create_graph_specificroom(grid["Graph_Nodes"], grid["Graph_Edges"])
                     dists = dict(nx.all_pairs_shortest_path_length(generated_graph))
                     random_distance = random.choice(value)
                     distance_found = False
@@ -107,18 +110,6 @@ class GraphGameInstanceGenerator(GameInstanceGenerator):
                                     game_instance["Specific_Room"] = neighbor
                                     game_instance["Specific_Room_Distance"] = str(random_distance)
                                     break
-
-    def generate(self, filename="instances_specificroom.json", **kwargs):
-        """Generate the game benchmark and store the instances JSON file.
-        Intended to not be modified by inheriting classes, modify on_generate instead.
-        Args:
-            filename: The name of the instances JSON file to be stored in the 'in' subdirectory. Defaults to
-                'instances.json'.
-            kwargs: Keyword arguments (or dict) to pass to the on_generate method.
-        """
-        self.on_generate(**kwargs)
-        self.store_file(self.instances, filename, sub_dir=os.path.join("..", "in"))
-                            
                         
 
 if __name__ == '__main__':

@@ -11,21 +11,17 @@ import matplotlib.pyplot as plt
 import imageio
 import shutil
 
-import games.mm_mapworld.utils as utils
-
-import clemgame.metrics as ms
-from backends import Model, CustomResponseModel
-from clemgame.clemgame import GameMaster, GameBenchmark, DialogueGameMaster, GameScorer
-from clemgame import get_logger
-from clemgame.clemgame import Player
-
-from clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
-    METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE, \
-        BENCH_SCORE
-
+import sys
+sys.path.append(os.path.abspath('../clemgames/mm_mapworld'))
+import mm_mapworld_utils as utils
+from clemcore.backends import Model, CustomResponseModel
+from clemcore.clemgame import GameMaster, GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import Player
+from clemcore.utils import file_utils
+from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
 
 DIRS = ["north", "south", "east", "west"]
-GAME_NAME = 'mm_mapworld'
+GAME_NAME = 'mm_mapworld_specificroom'
 MAX_TURNS = 20
 
 CARDINAL_TO_DELTA = {
@@ -48,12 +44,8 @@ class PathWalker(Player):
 
     def _custom_response(self, messages, turn_idx) -> str:
         """Return a random direction."""
-        actions = ["GO: west", "GO: east", "GO: north", "GO: south", "DONE"]
-        response = {
-            "description": " ",
-            "action": np.random.choice(actions)
-        }
-        return json.dumps(response)
+        random_dir = random.choice(DIRS)
+        return f'GO: {random_dir}'
     
 
 class PathDescriber(Player):
@@ -64,12 +56,15 @@ class PathDescriber(Player):
         self.nodes = instance_data["nodes"]
         self.edges = instance_data["edges"]
         self.start = instance_data["start"]
+        self.cats = instance_data["cats"]
+        self.target = instance_data["target"]
+        self.target_cat = game_instance["target_cat"].replace('_', ' ')
         self.current_room = instance_data["start"]
+        self.init_prompt = game_instance["initial_prompt"].replace("$GOAL$", self.target_cat)
         self.success_response = game_instance["success_response"]
         self.invalid_response = game_instance["invalid_response"]
-        self.init_prompt = game_instance["initial_prompt"]
-        self.loop_response = game_instance["loop_warning"]
-        self.limit_warning = game_instance["limit_warning"]
+        self.loop_response = game_instance["loop_warning"].replace("$GOAL$", self.target_cat)
+        self.limit_warning = game_instance["limit_warning"].replace("$GOAL$", self.target_cat)
         self.visited_nodes=[self.current_room]
         self.use_loop_warning = game_instance["use_loop_warning"]
         self.use_turn_limit_warning = game_instance["use_turn_limit_warning"]
@@ -110,7 +105,7 @@ class PathDescriber(Player):
                 response = self.success_response.replace("$DIRECTIONS$", ", ".join(available_directions))
             # if self.detect_loop() and self.use_loop_warning:
             #     response = self.loop_response + response
-            # if turn_idx == (MAX_TURNS - 1) and self.use_turn_limit_warning:
+            # if turn_idx == (MAX_TURNS - 5) and self.use_turn_limit_warning:
             #     response = self.limit_warning + response
         return response
 
@@ -118,8 +113,8 @@ class PathDescriber(Player):
 class MmMapWorld(DialogueGameMaster):
     """Implement mechanisms for playing MM-MapWorld."""
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name:str, game_path:str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
 
         self.turns = []
         self.aborted: bool = False
@@ -150,22 +145,20 @@ class MmMapWorld(DialogueGameMaster):
         self.imgs = instance_data["imgs"]
         self.nodes = instance_data["nodes"]
         self.edges = instance_data["edges"]
-        self.start = instance_data["start"]
         self.cats = instance_data["cats"]
+        self.target = instance_data["target"]
+        self.target_cat = game_instance["target_cat"]
+        self.start = instance_data["start"]
         self.current_room = instance_data["start"]
         self.visited_nodes=[self.current_room]
-        
         self.response_regex = re.compile(game_instance["response_regex"], re.IGNORECASE)
         self.done_regex = re.compile(game_instance["done_regex"], re.IGNORECASE)
         self.move_regex = re.compile(game_instance["move_regex"], re.IGNORECASE)
-        
-        self.done_const = game_instance["stop_construction"]
         self.move_const = game_instance["move_construction"]
-        
         self.use_images = game_instance["use_images"]
         
         self.do_reprompt = game_instance["reprompt"]
-        self.reprompt_format = game_instance["reprompt_format"]
+        self.reprompt_format = game_instance["reprompt_format"].replace("$GOAL$", self.target_cat)
 
         self.describer = PathDescriber(CustomResponseModel(), game_instance)
         self.walker = PathWalker(self.player_models[0])
@@ -181,7 +174,7 @@ class MmMapWorld(DialogueGameMaster):
         self.add_user_message(self.describer, begin_message)
             
     def _on_before_turn(self, turn_idx: int):
-        img_path = 'games/mm_mapworld/resources/images/'
+        img_path = 'games/mm_mapworld_specificroom/resources/images/'
         value = {
             "image": [img_path + os.path.split(self.imgs[self.current_room])[1]]
         }
@@ -231,7 +224,6 @@ class MmMapWorld(DialogueGameMaster):
                 return False
             try:
                 action = json.loads(hit.group())['action']
-                action = action.lower()
             except json.decoder.JSONDecodeError:
                 self.aborted = True
                 self.log_to_self("JSON decode error", "Game aborted.")
@@ -254,7 +246,7 @@ class MmMapWorld(DialogueGameMaster):
                 self.aborted = True
                 self.log_to_self("Invalid format", "Game aborted.")
                 return False
-            new_dir = hit.group(1)
+            new_dir = hit.group(1).lower()
             self.move = new_dir
             self.log_to_self("Valid format", "Continue")
         return True
@@ -265,6 +257,7 @@ class MmMapWorld(DialogueGameMaster):
                 self.add_user_message(self.describer, utterance)
         if player == self.describer:
             self.add_user_message(self.walker, utterance, image = [player.imgs[self.current_room]])
+
                 
     def _should_reprompt(self, player: Player):
         if player == self.walker and self.need_reprompt and not self.did_reprompt:
@@ -291,16 +284,16 @@ class MmMapWorld(DialogueGameMaster):
             if self.move is not None:
                 self.cardinal_room_change(self.move)
                 self.describer.cardinal_room_change(self.move)
-            self.describer.invalid_move = old_room == self.current_room
             self.visited_nodes.append(self.current_room)
             self.describer.visited_nodes.append(self.current_room)
+            self.describer.invalid_move = old_room == self.current_room
             self.log_to_self(type_ = "move", value = json.dumps({"old": old_room, "new": self.current_room}))
         self.need_reprompt = False
         self.did_reprompt = False
             
 
     ########## Multimodal specific functions:
-    
+
     def remove_previous_images(self, player: Player):
         history = self.messages_by_names[player.descriptor]
         for i in range(len(history)-1):
@@ -315,21 +308,27 @@ class MmMapWorld(DialogueGameMaster):
         history = self.messages_by_names[player.descriptor]
         history.append(message)
 
-    def add_user_message(self, player: Player, utterance: str, image = None):
+    def add_user_message(self, player: Player, utterance: str, **kwargs):
         self.remove_previous_images(player)
-        self.add_message(player, utterance, role="user", image=image)
+        self.add_message(player, utterance, role="user", **kwargs)
         
         
     ####### scoring      
         
 class MM_MapWorldScorer(GameScorer):
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
         instance_data = utils.load_instance(self.game_instance)
+        self.name = game_name
         self.imgs = instance_data["imgs"]
         self.nodes = instance_data["nodes"]
         self.edges = instance_data["edges"]
         self.start_node = instance_data["start"]
+        self.target = instance_data["target"]
+        self.target_cat = game_instance['target_cat']
+        self.cats = instance_data['cats']
+        self.dist = game_instance['dist']
+        
         
     def adj(self, node):
         return set([ed[1] for ed in self.edges if ed[0] == node])
@@ -377,12 +376,15 @@ class MM_MapWorldScorer(GameScorer):
         offset = 0.05
         fig = plt.figure(figsize=(4, 4))
         for node in self.nodes:
-            if node in path and node != path[-1]:
+            if node in path and node != path[-1] and node != self.target:
                 plt.plot(node[0], node[1], 'o', color='brown', 
                         linewidth = 20, markersize = 25, zorder = 9, mfc = 'tab:olive')
-            if node == path[-1]:
+            if node == path[-1] and node != self.target:
                 plt.plot(node[0], node[1], 'o', color='brown', 
                         linewidth = 20, markersize = 25, zorder = 9, mfc = 'tab:cyan')
+            if node == self.target:
+                plt.plot(node[0], node[1], 'o', color='brown', 
+                        linewidth = 20, markersize = 25, zorder = 9, mfc = 'tab:orange')
             if not node in path:
                 plt.plot(node[0], node[1], 'o', color='brown', 
                         linewidth = 20, markersize = 25, zorder = 9, mfc = 'tab:gray')
@@ -391,7 +393,10 @@ class MM_MapWorldScorer(GameScorer):
         traveled = {node: 0 for node in self.nodes}
         traveled[self.start_node] += 1
         for edge in self.edges:
-            plt.plot([edge[0][0], edge[1][0]], [edge[0][1], edge[1][1]], color='gray', linestyle='--', zorder = 5)
+            if edge[0] in path and edge[1] in path:
+                plt.plot([edge[0][0], edge[1][0]], [edge[0][1], edge[1][1]], color='black', linestyle='--', zorder = 5)
+            else:
+                plt.plot([edge[0][0], edge[1][0]], [edge[0][1], edge[1][1]], color='gray', linestyle='--', zorder = 5)
         last = path[0]
         if len(path) > 1:
             for i in range(1, len(path)):
@@ -422,7 +427,7 @@ class MM_MapWorldScorer(GameScorer):
                 )
         plt.xlabel('X')
         plt.ylabel('Y')
-        plt.grid(True, alpha = 0.35)
+        plt.grid(True)
         return fig
 
 
@@ -467,6 +472,7 @@ class MM_MapWorldScorer(GameScorer):
                     seen.update(self.adj(current))
                     visited.add(current)
                     self.path.append(current)
+        end = self.path[-1]
                 
         # log all the scores
         if aborted: # set all values to NaN if game is aborted
@@ -485,7 +491,7 @@ class MM_MapWorldScorer(GameScorer):
             self.log_episode_score(BENCH_SCORE, np.NaN)
         else: # else set them to their respective values
             self.log_episode_score(METRIC_ABORTED, 0)
-            if self.visited_all(visited, self.nodes):
+            if self.target == end:
                 self.log_episode_score(METRIC_SUCCESS, 1)
                 self.log_episode_score(METRIC_LOSE, 0)
             else:
@@ -496,16 +502,12 @@ class MM_MapWorldScorer(GameScorer):
             self.log_episode_score('invalid_moves', invalid_moves)
             self.log_episode_score('visited', len(visited))
             self.log_episode_score('seen', len(seen))
-            eff = 100*sum(good_move)/max([len(good_move), 1])
+            l = len(self.path)
+            eff = 100*(1/max(1, l - self.dist))
             self.log_episode_score('effieciency', eff)
-            exp = 100*len(visited)/len(self.nodes)
-            self.log_episode_score('exploration', exp)
-            if not eff and not exp:
-                self.log_episode_score(BENCH_SCORE, 0)
-            else:
-                self.log_episode_score(BENCH_SCORE, (2*exp*eff)/(eff+exp))
-            
-        
+            find = 100*int((self.target == end))
+            self.log_episode_score('finding', find)
+            self.log_episode_score(BENCH_SCORE, find)     
 
         
     def store_scores(self, results_root: str, dialogue_pair: str, game_record_dir: str):
@@ -539,23 +541,19 @@ class MM_MapWorldScorer(GameScorer):
 
 class MmMapWorldBenchmark(GameBenchmark):
     """Integrate the game into the benchmark run."""
-    def __init__(self):
-        super().__init__(GAME_NAME)
-
-    # defines whether the game is single player or not
-    def is_single_player(self):
-        return False
-
-    # add a description of your game
-    def get_description(self):
-        return "In this game an agend is placed on a graph and needs to navigate through it by reasoning about past steps taken."
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     # copy this, replacing the name of the game master in the return statement
     def create_game_master(self,
                            experiment: Dict,
                            player_models: List[Model]
                            ) -> GameMaster:
-        return MmMapWorld(experiment, player_models)
+        return MmMapWorld(self.game_name, self.game_path, experiment, player_models)
     
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return MM_MapWorldScorer(experiment, game_instance)
+        return MM_MapWorldScorer(self.game_name, experiment, game_instance)
+
+def main():
+    game_path = os.path.dirname(os.path.abspath(__file__))
+    experiments = file_utils.load_json("in/instances.json", game_path)

@@ -180,6 +180,12 @@ def create_graph(nodes, edges, type):
             G.add_edge(edge[0], edge[1])
     return G
 
+#Create a networkx graph from the given graph data.
+def create_graph_specificroom(nodes, edges):
+    G = nx.Graph()
+    G.add_nodes_from(nodes)
+    G.add_edges_from(edges)
+    return G
     
 def normalize(distance):
         normalized_distance = 1 / (1 + np.exp(-0.5 * distance))

@@ -1,7 +1,11 @@
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
+import sys
+import os
+sys.path.append(os.path.abspath('../clemgames/mm_mapworld'))
+from mm_mapworld_maps import AbstractMap
+
 import numpy as np
 import networkx as nx
-from maps import AbstractMap
 import os
 import random
 import json
@@ -10,21 +14,21 @@ import shutil
 
 # set the name of the game in the script, as you named the directory
 # this name will be used everywhere, including in the table of results
-GAME_NAME = 'mm_mapworld'
+
 NUM_INSTANCES = 10
 GRIDS = {"small": (4,4), "medium": (4,4), "large": (4,4)}
 SIZES = {"small": 4, "medium": 6, "large": 8} # num_nodes
 SEED = 42
 CAPTIONS = True
 RANDOM_PATH = 'random_test_images'
-IMAGE_PATH = os.path.join('games', 'mm_mapworld', 'resources', 'images')
+IMAGE_PATH = os.path.join("resources", "images")
 if CAPTIONS:
-    DATASET_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k_reduced", "ade_imgs")
-    MAPPING_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k_reduced", "cats.json")
+    DATASET_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
+    MAPPING_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "captions.json")
 else:
-    DATASET_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k", "needed_imgs")
-    MAPPING_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k", "ade_cat_instances.json")
-TEMP_IMAGE_PATH = os.path.join("games", "mm_mapworld", "resources", "images")
+    DATASET_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
+    MAPPING_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "cats.json")
+TEMP_IMAGE_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "images")
 MOVE_CONSTRUCTION = "GO: "
 STOP_CONSTRUCTION = "DONE"
 RESPONSE_REGEX = "^\{[\s]*\"description\":\s*\"([^\{]*?)\"\s*,\s*\"action\":\s*\"([^\{]*?)\"[\s]*\}$"
@@ -82,14 +86,19 @@ def assign_images(nodes):
     imgs = {}
     cat_mapping = {}
     for i in range(len(nodes)):
-        node_img = np.random.choice(mapping[chosen_cats[i]])
         if CAPTIONS:
-            cat_mapping[nodes[i]] = chosen_cats[i]
-            after_copy_path = copy_image(os.path.join(DATASET_PATH, chosen_cats[i], node_img))
+            if nodes[i] in cat_mapping:
+                cat_mapping[nodes[i]].append(chosen_cats[i])
+            else:
+                cat_mapping[nodes[i]] = [chosen_cats[i]]
+
+            node_img = np.random.choice(cat_mapping[nodes[i]])
+            after_copy_path = copy_image(os.path.join(DATASET_PATH, node_img))
             imgs[nodes[i]] = after_copy_path
         else:
-            cat_mapping[nodes[i]] = chosen_cats[i].split("/")[1]
-            after_copy_path = copy_image(os.path.join(DATASET_PATH, node_img))
+            node_img = np.random.choice(mapping[chosen_cats[i]])
+            cat_mapping[nodes[i]] = chosen_cats[i]
+            after_copy_path = copy_image(os.path.join(DATASET_PATH, chosen_cats[i], node_img))
             imgs[nodes[i]] = after_copy_path
     return imgs, cat_mapping
 
@@ -129,16 +138,16 @@ def copy_image(image_path):
 class MmMapWorldInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
         # always do this to initialise GameInstanceGenerator
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
     def on_generate(self):
         prompts = {
-            'initial': self.load_template('resources/initial_prompts/prompt.template'),
-            'initial_one_shot': self.load_template('resources/initial_prompts/prompt_one_shot.template'),
-            'later_success': self.load_template('resources/later_prompts/successful_move.template'),
-            'later_invalid': self.load_template('resources/later_prompts/invalid_move.template'),
-            'reprompt_format': self.load_template('resources/reprompts/invalid_format.template'),
-            'limit_warning': self.load_template('resources/later_prompts/turn_limit.template'),
-            'loop_warning': self.load_template('resources/later_prompts/loop.template'),
+            'initial': self.load_template(os.path.join('resources', 'initial_prompts', 'prompt.template')),
+            'initial_one_shot': self.load_template(os.path.join('resources', 'initial_prompts', 'prompt_one_shot.template')),
+            'later_success': self.load_template(os.path.join('resources', 'later_prompts', 'successful_move.template')),
+            'later_invalid': self.load_template(os.path.join('resources', 'later_prompts', 'invalid_move.template')),
+            'reprompt_format': self.load_template(os.path.join('resources', 'reprompts', 'invalid_format.template')),
+            'limit_warning': self.load_template(os.path.join('resources', 'later_prompts', 'turn_limit.template')),
+            'loop_warning': self.load_template(os.path.join('resources', 'later_prompts', 'loop.template')),
         }
         experiments = {
             'small': {"size": "small", "reprompt": False, "one_shot": True},
@@ -163,6 +172,7 @@ class MmMapWorldInstanceGenerator(GameInstanceGenerator):
                  instance["done_regex"] = DONE_REGEX
                  instance["move_regex"] = MOVE_REGEX
                  game_id += 1
+
 
 if __name__ == '__main__':
     # always call this, which will actually generate and save the JSON file

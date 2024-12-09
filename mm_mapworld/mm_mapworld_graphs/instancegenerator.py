@@ -1,7 +1,10 @@
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
+import sys
+import os
+sys.path.append(os.path.abspath('../clemgames/mm_mapworld'))
+from mm_mapworld_maps import AbstractMap
+
 import numpy as np
-import networkx as nx
-from maps import AbstractMap
 import os
 import random
 import json
@@ -10,16 +13,16 @@ import shutil
 
 # set the name of the game in the script, as you named the directory
 # this name will be used everywhere, including in the table of results
-GAME_NAME = 'mm_mapworld_graphs'
+
 NUM_INSTANCES = 10
 GRIDS = {"small": (4,4), "medium": (4,4), "large": (4,4)}
 SIZES = {"small": 4, "medium": 6, "large": 8} # num_nodes
 SEED = 42
-RANDOM_PATH = 'random_test_images'
-IMAGE_PATH = os.path.join('games', 'mm_mapworld', 'resources', 'images')
-DATASET_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k", "needed_imgs")
-MAPPING_PATH = os.path.join("games", "mm_mapworld", "resources", "ade_20k", "ade_cat_instances.json")
-TEMP_IMAGE_PATH = os.path.join("games", "mm_mapworld_graphs", "resources", "images")
+RANDOM_PATH = "random_test_images"
+IMAGE_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "images")
+DATASET_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
+MAPPING_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "captions.json")
+TEMP_IMAGE_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "images")
 MOVE_CONSTRUCTION = "GO: "
 STOP_CONSTRUCTION = "DONE"
 GRAPH_REGEX = "\"graph\":\s*(\{\s*\"nodes\"\s*:\s*\[.*\]\s*,\s*\"edges\"\s*:\s*\{.*\})\s*\}$"
@@ -61,8 +64,12 @@ def assign_images(nodes):
     imgs = {}
     cat_mapping = {}
     for i in range(len(nodes)):
-        cat_mapping[nodes[i]] = chosen_cats[i].split("/")[1]
-        node_img = np.random.choice(mapping[chosen_cats[i]])
+        if nodes[i] in cat_mapping:
+            cat_mapping[nodes[i]].append(chosen_cats[i])
+        else:
+            cat_mapping[nodes[i]] = [chosen_cats[i]]
+
+        node_img = np.random.choice(cat_mapping[nodes[i]])
         after_copy_path = copy_image(os.path.join(DATASET_PATH, node_img))
         imgs[nodes[i]] = after_copy_path
     return imgs, cat_mapping
@@ -113,16 +120,16 @@ def copy_image(image_path):
 class MmMapWorldGraphsInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
         # always do this to initialise GameInstanceGenerator
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(os.path.abspath(__file__)))
     def on_generate(self):
         prompts = {
-            'initial': self.load_template('resources/initial_prompts/prompt.template'),
-            'initial_one_shot': self.load_template('resources/initial_prompts/prompt_one_shot.template'),
-            'later_success': self.load_template('resources/later_prompts/successful_move.template'),
-            'later_invalid': self.load_template('resources/later_prompts/invalid_move.template'),
-            'reprompt_format': self.load_template('resources/reprompts/invalid_format.template'),
-            'limit_warning': self.load_template('resources/later_prompts/turn_limit.template'),
-            'loop_warning': self.load_template('resources/later_prompts/loop.template'),
+            'initial': self.load_template(os.path.join("resources", "initial_prompts", "prompt.template")),
+            'initial_one_shot': self.load_template(os.path.join("resources", "initial_prompts", "prompt_one_shot.template")),
+            'later_success': self.load_template(os.path.join("resources", "later_prompts", "successful_move.template")),
+            'later_invalid': self.load_template(os.path.join("resources", "later_prompts", "invalid_move.template")),
+            'reprompt_format': self.load_template(os.path.join("resources", "reprompts", "invalid_format.template")),
+            'limit_warning': self.load_template(os.path.join("resources", "later_prompts", "turn_limit.template")),
+            'loop_warning': self.load_template(os.path.join("resources", "later_prompts", "loop.template")),
         }
         experiments = {
             'small': {"size": "small", "reprompt": False, "one_shot": True},
@@ -131,19 +138,19 @@ class MmMapWorldGraphsInstanceGenerator(GameInstanceGenerator):
         }
 
         prep_image_dir()
-        base_instance_path = os.path.join("games", "mm_mapworld", "in", "instances.json")
+        base_instance_path = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_graphs", "in", "instances.json")
         
         if os.path.exists(base_instance_path):
             with open(base_instance_path, 'r') as f:
                 base_instances = json.load(f)
-            images_path = os.path.join("games", "mm_mapworld", "resources", "images")
+            images_path = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "images")
             assert os.path.exists(images_path), "run instancegenerator for mm_mapworld to create images directory."
             new_instances = {"experiments": base_instances["experiments"][:3]}
             for i in range(len(new_instances["experiments"])):
                 new_instances["experiments"][i]["game_instances"] = instances_from_instances(new_instances["experiments"][i]["game_instances"], prompts)
                 for j in range(len(new_instances["experiments"][i]["game_instances"])):
                     new_instances["experiments"][i]["game_instances"][j]["response_regex"] = RESPONSE_REGEX
-            new_instance_path = os.path.join("games", "mm_mapworld_graphs", "in", "instances.json")
+            new_instance_path = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_graphs", "in", "instances.json")
             with open(new_instance_path, "w", encoding='utf-8') as f:
                 json.dump(new_instances, f)
             if os.path.exists(TEMP_IMAGE_PATH):
@@ -165,6 +172,7 @@ class MmMapWorldGraphsInstanceGenerator(GameInstanceGenerator):
                     instance["done_regex"] = DONE_REGEX
                     instance["move_regex"] = MOVE_REGEX
                     game_id += 1
+
 
 if __name__ == '__main__':
     # always call this, which will actually generate and save the JSON file

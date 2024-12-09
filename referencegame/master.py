@@ -1,8 +1,8 @@
-import os
 from typing import List, Dict
 
 import numpy as np
 import logging
+import os
 
 from clemcore.backends import Model
 from clemcore.clemgame import file_utils, GameSpec
@@ -46,7 +46,8 @@ class ReferenceGameMaster(GameMaster):
         action = {'type': 'send message', 'content': self.game.given_instruction.user_messages[-1]}
         self.log_event(from_="GM", to="Player 1", action=action)
 
-        player_1_prompt, player_1_response, player_1_response_text = self.game.instruction_giver(self.game.given_instruction, None)
+        player_1_prompt, player_1_response, player_1_response_text = self.game.instruction_giver(
+            self.game.given_instruction, None)
 
         # log the retrieved utterance
         action = {'type': 'get message', 'content': player_1_response_text}
@@ -56,14 +57,18 @@ class ReferenceGameMaster(GameMaster):
 
         player_1_pattern = re.compile(self.game.player_1_response_pattern, re.IGNORECASE)
         p1_match = re.match(player_1_pattern, player_1_response_text)
-        if p1_match and p1_match.group('remainder') == "":
+        match = False
+        if p1_match:
+            if self.game.p1_mode == "liberal" or (self.game.p1_mode == "strict" and p1_match.group('remainder') == ""):
+                # in liberal mode, we don't care how much more the model generated
+                # in strict mode, the model should not produce more than one paragraph
+                match = True
+                action = {'type': 'parse', 'content': player_1_response_text,
+                          'expression': p1_match.group('content')}
+                self.log_event(from_="GM", to="GM", action=action)
 
-            action = {'type': 'parse', 'content': player_1_response_text,
-                      'expression': p1_match.group('content')}
-            self.log_event(from_="GM", to="GM", action=action)
-            
-        else:
-            # if the Player 1 message don't match the rule => start with "Expression: " and contains only one paragraph
+        if not match:
+            # if the Player 1 message doesn't match the rule in the given mode
             # log the message and abort the game
             action = {'type': 'invalid format', 'content': 'Invalid generated expression',
                       'original_content': player_1_response_text}
@@ -72,13 +77,15 @@ class ReferenceGameMaster(GameMaster):
             return
 
         # guess the grid - Player 2 side
-        self.game.followed_instruction.add_user_message(self.game.player_2_prompt_header.replace('TARGET_EXPRESSION', player_1_response_text))
+        self.game.followed_instruction.add_user_message(
+            self.game.player_2_prompt_header.replace('TARGET_EXPRESSION', player_1_response_text))
 
         # log the game master to player 2
         action = {'type': 'send message', 'content': self.game.followed_instruction.user_messages[-1]}
         self.log_event(from_="GM", to="Player 2", action=action)
 
-        player_2_prompt, player_2_response, player_2_response_text = self.game.instruction_follower(self.game.followed_instruction, None)
+        player_2_prompt, player_2_response, player_2_response_text = self.game.instruction_follower(
+            self.game.followed_instruction, None)
 
         self.game.followed_instruction.add_system_message(player_2_response_text)
 
@@ -88,17 +95,24 @@ class ReferenceGameMaster(GameMaster):
         action = {'type': 'get message', 'content': player_2_response_text}
         self.log_event(from_="Player 2", to="GM", action=action, call=(player_2_prompt, player_2_response))
 
-
-        # check if the Player 2 message matches the rule => start with "Answer: " and generate only the label
+        # check if the Player 2 message matches the rule => start with the right tag and generate only the label
         player_2_pattern = re.compile(self.game.player_2_response_pattern, re.IGNORECASE)
         p2_match = re.match(player_2_pattern, player_2_response_text)
-        if p2_match and p2_match.group('remainder') == "":
+        match = False
+        if p2_match:
+            if self.game.p2_mode == "liberal" or (self.game.p2_mode == "strict" and p2_match.group('remainder') == ""):
+                # in liberal mode, we don't care how much more the model generated (like "grid" or punctuation)
+                # in strict mode, the model should only produce the label
+                match = True
+                if p2_match.group('response').lower() in self.game.target_grid_name:
+                    action = {'type': 'parse_correct', 'content': player_2_response_text,
+                              'answer': p2_match.group('response')}
+                else:
+                    action = {'type': 'parse_wrong', 'content': player_2_response_text,
+                              'answer': p2_match.group('response')}
+                self.log_event(from_="GM", to="GM", action=action)
 
-            action = {'type': 'parse', 'content': player_2_response_text,
-                      'answer': p2_match.group('content')}
-            self.log_event(from_="GM", to="GM", action=action)
-
-        else:
+        if not match:
             # abort the game if the output doesn't match the rule
             action = {'type': 'invalid format', 'content': 'Invalid generated choice',
                       'original_content': player_2_response_text}
@@ -109,20 +123,17 @@ class ReferenceGameScorer(GameScorer):
 
     def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
         super().__init__(game_name, experiment, game_instance)
-        self.target_grid_name = game_instance["target_grid_name"]
-        self.player_2_response_pattern = game_instance["player_2_response_pattern"]
-        self.player_1_response_pattern = game_instance["player_1_response_pattern"]
 
     def compute_scores(self, episode_interactions: Dict) -> None:
         '''
         Compute and log scores for one episode of referencegame.
         :param episode_interactions: the game episode interactions log
         '''
-        
-        # For referencegame, there is just one turn (one exchange of p1-p2 is logged as one turn) 
+
+        # For referencegame, there is just one turn (one exchange of p1-p2 is logged as one turn)
         turn = episode_interactions["turns"][0]
         turn_index = 0
-        
+
         aborted = False
 
         turn_request_count = 0
@@ -140,15 +151,9 @@ class ReferenceGameScorer(GameScorer):
         if turn[2]['action']['type'] == "parse":
             turn_parsed_request_count += 1
             episode_parsed_request_count += 1
-            
+
             # log the Player 1 - message length
-            p1_expression = ''
-            if 'expression' not in turn[2]['action']:
-                player_1_pattern = re.compile(self.player_1_response_pattern, re.IGNORECASE)
-                p1_match = re.match(player_1_pattern, turn[2]['action']['content'])
-                p1_expression = p1_match.group('content')
-            else:
-                p1_expression = turn[2]['action']['expression']
+            p1_expression = turn[2]['action']['expression']
             expression_length = len(p1_expression)
             self.log_turn_score(turn_index, 'Generated Expression Length', expression_length)
             # as there is just one turn, this is the same as episode scores
@@ -166,31 +171,13 @@ class ReferenceGameScorer(GameScorer):
             # check if the Player 2 message matched the rule
             # (true if sixth interaction (GM to GM) has type "parse")
 
-            # allow for more liberal player 2 parsing by rematching original response with more liberal regex
-            #TODO: move to game master for future runs 
-            p2_match = False
-            if turn[5]['action']['type'] == "invalid format":
-                player_2_pattern = re.compile(self.player_2_response_pattern, re.IGNORECASE)
-                p2_match = re.match(player_2_pattern, turn[5]['action']['original_content'])
-
-            if turn[5]['action']['type'] == "parse" or p2_match:
+            if turn[5]['action']['type'].startswith("parse"):
                 turn_parsed_request_count += 1
                 episode_parsed_request_count += 1
-                # check if the target grid number matches the output from Player 2
-                player_2_answer = ""
-                if p2_match:
-                    player_2_answer = p2_match.group('content')
-                elif turn[5]['action']['type'] == "parse":
-                    if 'answer' not in turn[5]['action']:
-                        player_2_pattern = re.compile(self.player_2_response_pattern, re.IGNORECASE)
-                        p2_match = re.match(player_2_pattern, turn[5]['action']['content'])
-                        player_2_answer = p2_match.group('content')
-                    else:
-                        player_2_answer = turn[5]['action']['answer']
-                    
-                if player_2_answer.lower() in self.target_grid_name:
+
+                if "correct" in turn[5]['action']['type']:
                     success = 1
-                    
+
                 self.log_episode_score('Aborted at Player 1', 0)
                 self.log_episode_score('Aborted at Player 2', 0)
             else:
@@ -206,7 +193,6 @@ class ReferenceGameScorer(GameScorer):
             self.log_episode_score('Generated Expression Number of Tokens', np.nan)
             aborted = True
 
-
         # log the turn request count, parsed & violated request counts
         self.log_turn_score(turn_index, metrics.METRIC_REQUEST_COUNT, turn_request_count)
         self.log_turn_score(turn_index, metrics.METRIC_REQUEST_COUNT_PARSED, turn_parsed_request_count)
@@ -217,10 +203,14 @@ class ReferenceGameScorer(GameScorer):
         # log the episode request count, parsed & violated request counts
         self.log_episode_score(metrics.METRIC_REQUEST_COUNT, episode_request_count)
         self.log_episode_score(metrics.METRIC_REQUEST_COUNT_PARSED, episode_parsed_request_count)
-        self.log_episode_score(metrics.METRIC_REQUEST_COUNT_VIOLATED, episode_request_count - episode_parsed_request_count)
-        self.log_episode_score(metrics.METRIC_SUCCESS, success)
-        self.log_episode_score(metrics.METRIC_LOSE, 1 - success)
+        self.log_episode_score(metrics.METRIC_REQUEST_COUNT_VIOLATED,
+                               episode_request_count - episode_parsed_request_count)
+
         self.log_episode_score(metrics.METRIC_ABORTED, int(aborted))
+        success = success if not aborted else np.nan
+        self.log_episode_score(metrics.METRIC_SUCCESS, success)
+        loose = 1 - success if not aborted else np.nan
+        self.log_episode_score(metrics.METRIC_LOSE, loose)
 
         bench_score = success * 100 if not aborted else np.nan
         self.log_episode_score(metrics.BENCH_SCORE, bench_score)
@@ -239,6 +229,7 @@ class ReferenceGameBenchmark(GameBenchmark):
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return ReferenceGameScorer(self.game_name, experiment, game_instance)
+
 
 def main():
     # select one instance

@@ -1,7 +1,7 @@
 import random
 from typing import Dict, List
 
-from clemgame.clemgame import Player
+from clemcore.clemgame import Player
 
 
 class Instruction:

@@ -1,22 +1,21 @@
 from typing import List, Dict
 import numpy as np
-from backends import Model
-from clemgame import file_utils
-from clemgame import metrics
-from clemgame.clemgame import GameMaster, GameBenchmark, GameScorer
-from clemgame import get_logger
-from games.multimodal_referencegame.game import MultimodalReferenceGame
-from games.referencegame.game import ReferenceGame
 import re
+import logging
 
-GAME_NAME = "multimodal_referencegame"
-logger = get_logger(__name__)
+from clemcore.backends import Model
+from clemcore.utils import file_utils
+from clemcore.clemgame import metrics
+from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, GameSpec
+from game import MultimodalReferenceGame
+
+logger = logging.getLogger(__name__)
 
 
 class MultimodalReferenceGameMaster(GameMaster):
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
         self.experiment = experiment
         self.game = None
         self.game_instance = None
@@ -31,10 +30,6 @@ class MultimodalReferenceGameMaster(GameMaster):
             "Player_1": self.player_models[0].get_name(),
             "Player_2": self.player_models[1].get_name()}
         )
-
-    @classmethod
-    def applies_to(cls, game_name: str) -> bool:
-        return game_name == GAME_NAME
 
     def play(self) -> None:
         logger.info("Game turn: %d", self.game.turn_count)
@@ -115,8 +110,8 @@ class MultimodalReferenceGameMaster(GameMaster):
 
 class MultimodalReferenceGameScorer(GameScorer):
 
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
         self.target_grid_name = game_instance["target_image_name"]
         self.player_2_response_pattern = game_instance["player_2_response_pattern"]
 
@@ -227,19 +222,14 @@ class MultimodalReferenceGameScorer(GameScorer):
 
 class MultimodalReferenceGameBenchmark(GameBenchmark):
 
-    def __init__(self):
-        super().__init__(GAME_NAME)
-
-    def get_description(self):
-        return "Reference Game between two agents " \
-               "where one has to describe one of three grids " \
-               "and the other has to guess which one it is."
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return MultimodalReferenceGameMaster(experiment, player_models)
+        return MultimodalReferenceGameMaster(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return MultimodalReferenceGameScorer(experiment, game_instance)
+        return MultimodalReferenceGameScorer(self.game_name, experiment, game_instance)
 
 
 def main():

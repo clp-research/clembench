@@ -2,20 +2,20 @@ from typing import Dict, Tuple, List
 import json
 import numpy as np
 import ast
+import logging
 import networkx as nx
 import matplotlib.pyplot as plt
-from backends import Model, CustomResponseModel
-from clemgame.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
-from clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
-from games.textmapworld_graphreasoning.utils import loop_identification, get_directions, string_available_directions, have_common_element, get_nextnode_label, calculate_similarity, create_graph, count_word_in_sentence
+from clemcore.backends import Model, CustomResponseModel
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
+from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
+from utils import loop_identification, get_directions, string_available_directions, have_common_element, get_nextnode_label, calculate_similarity, create_graph, count_word_in_sentence
 from queue import Queue
 from copy import deepcopy
-from clemgame import get_logger
 import re
-from clemgame import file_utils, string_utils
+from clemcore.utils import file_utils, string_utils
 import random
 GAME_NAME = "textmapworld_graphreasoning"
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
  
 INVALID = 0
 

@@ -1,17 +1,17 @@
 from typing import Dict, List
 import numpy as np
-from backends import Model
-from clemgame.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
-from clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
+import logging
+from clemcore.backends import Model
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
+from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
-from clemgame import get_logger
-from clemgame import file_utils, string_utils
+from clemcore.utils import file_utils, string_utils
 import math
 import re
 
 GAME_NAME = "guesswhat"
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class Guesser(Player):

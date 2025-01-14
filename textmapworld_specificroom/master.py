@@ -3,17 +3,17 @@ import json
 import numpy as np
 import re
 import ast
-from backends import Model, CustomResponseModel
-from clemgame.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
-from clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
-from games.textmapworld_specificroom.utils import loop_identification, get_directions, string_available_directions, have_common_element, get_nextnode_label, count_word_in_sentence
+import logging
+from clemcore.backends import Model, CustomResponseModel
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
+from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
+from utils import loop_identification, get_directions, string_available_directions, have_common_element, get_nextnode_label, count_word_in_sentence
 from queue import Queue
 from copy import deepcopy
-from clemgame import get_logger
-from clemgame import file_utils, string_utils
+from clemcore.utils import file_utils, string_utils
 import random
 GAME_NAME = "textmapworld_specificroom"
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 INVALID = 0
 
 

@@ -1,8 +1,9 @@
-from clemgame.clemgame import Player, GameMaster, GameBenchmark, DialogueGameMaster, GameScorer
-from clemgame import metrics as ms
-from clemgame import get_logger
-from games.matchit.instancegenerator import GAME_NAME
-from backends import Model
+import logging
+from clemcore.clemgame import Player, GameMaster, GameBenchmark, DialogueGameMaster, GameScorer
+from clemcore.clemgame import metrics as ms
+
+from instancegenerator import GAME_NAME
+from clemcore.backends import Model
 from nltk import word_tokenize, pos_tag
 from nltk.stem import WordNetLemmatizer
 
@@ -12,7 +13,7 @@ import numpy as np
 import os
 
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class MatchItPlayer(Player):

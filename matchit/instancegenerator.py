@@ -1,5 +1,5 @@
 import pandas as pd
-from clemgame.clemgame import GameInstanceGenerator
+from clemcore.clemgame import GameInstanceGenerator
 
 GAME_NAME: str = "matchit"
 # n instances to be generated
@@ -13,7 +13,8 @@ DEC_TURN: int = 3
 # should the players be informed about the number of questions they can ask?
 INFO_NUM_QUESTIONS: bool = False
 
-SEED: int = 42
+# SEED: int = 42  # seed for old/v1.6 instances
+SEED: int = 123
 
 # Flags that have to be at the beginning of each response; are also specified in the prompts
 FLAGS: dict[str, str] = {"description": "DESCRIPTION:", "question": "QUESTION:", "answer": "ANSWER:", "decision": "DECISION:"}

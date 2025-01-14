@@ -11,6 +11,8 @@ logger = clemgame.get_logger(__name__)
 "Enter the parameters for the game instance generator"
 "-------------------------------------------------------------------------------------------------------------"
 "°°°°°°°changeable parameters°°°°°°°"
+SEED = 42
+
 game_name = "textmapworld_specificroom"
 strict = True
 create_new_graphs = False # True or False   !if True, the graphs will be created again, threfore pay attention!
@@ -114,4 +116,5 @@ class GraphGameInstanceGenerator(GameInstanceGenerator):
 
 if __name__ == '__main__':
     # always call this, which will actually generate and save the JSON file
+    random.seed(SEED)
     GraphGameInstanceGenerator().generate()

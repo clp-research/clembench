@@ -6,6 +6,7 @@ Generate instances for the Guess What game.
 import os
 import sys
 from pathlib import Path
+import logging
 
 print(f"Python executable: {sys.executable}")
 print(f"Python path: {sys.path}")
@@ -16,8 +17,8 @@ sys.path.append(str(Path(__file__).resolve().parents[2]))
 import random
 import json
 from tqdm import tqdm
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
+import clemcore.clemgame as clemgame
+from clemcore.clemgame import GameInstanceGenerator
 
 # number of words per episode
 num_words = 8
@@ -25,9 +26,10 @@ num_words = 8
 # number of instances per experiment
 N_INSTANCES = 10
 
-logger = clemgame.get_logger(__name__)
+logger = logging.getLogger(__name__)
 GAME_NAME = "guesswhat"
 
+SEED = 42
 
 class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
@@ -283,6 +285,7 @@ class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
             json.dump(data, f, indent=4)
 
 if __name__ == '__main__':
+    random.seed(SEED)
     GuessWhatGameInstanceGenerator().generate()
 
 

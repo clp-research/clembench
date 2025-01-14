@@ -13,7 +13,8 @@ LANGUAGE = "en"
 
 logger = logging.getLogger(__name__)
 GAME_NAME = "wordle"
-SEED = "17"
+# SEED = "17"  # seed for old/v1.6 instances
+SEED = "42"
 
 class WordleGameInstanceGenerator(GameInstanceGenerator):
     """Generate instances for wordle."""

@@ -5,8 +5,6 @@ from clemcore.utils import file_utils
 
 logger = logging.getLogger(__name__)
 
-# TODO: run this to figure out how the entire instance generation stack is supposed to work
-
 def read_file_contents(filename, file_ext="txt"):
     if file_ext == "csv":
         words_dict = {}

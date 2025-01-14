@@ -14,7 +14,9 @@ from constants import *
 FILENAME = "instances.json"
 GENEROUS_FILENAME = "generous_instances.json"
 FLAGS = ["IGNORE RAMBLING", "IGNORE FALSE TARGETS OR GUESSES", "REPROMPT ON ERROR", "STRIP WORDS", "IGNORE NUMBER OF TARGETS"]
-SEED = 42
+
+# SEED = 42  # seed for old/v1.6 instances
+SEED = 123
 
 def generate_random(wordlist, required):
     # sample words for the board

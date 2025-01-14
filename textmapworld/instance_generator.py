@@ -2,10 +2,11 @@ import os
 import json
 from os.path import exists
 import random
-import clemgame
-from clemgame.clemgame import GameInstanceGenerator
-from games.textmapworld.utils import load_check_graph, generate_filename, create_graphs_file 
-logger = clemgame.get_logger(__name__)
+import logging
+import clemcore.clemgame as clemgame
+from clemcore.clemgame import GameInstanceGenerator
+from utils import load_check_graph, generate_filename, create_graphs_file
+logger = logging.getLogger(__name__)
 
 "Enter the parameters for the game instance generator"
 "-------------------------------------------------------------------------------------------------------------"
@@ -35,17 +36,22 @@ experiments = {"small": (4,"cycle_false"), "medium": (6, "cycle_false"), "large"
 "°°°°°°°imported parameters°°°°°°°"
 prompt_file_name = 'PromptNamedGame.template' if game_type == "named_graph" else 'PromptUnnamedGame.template'
 prompt_file_name = os.path.join('resources', 'initial_prompts', prompt_file_name)
+# prompt_file_name = os.path.join("../clemgames/textmapworld", 'resources', 'initial_prompts', prompt_file_name)
+# print("prompt_file_name:", prompt_file_name)
 current_directory = os.getcwd().replace("\instance_generator", "")
-with open(os.path.join(current_directory, "games", "textmapworld", 'resources', 'initial_prompts', "answers.json")) as json_file:
+# with open(os.path.join(current_directory, "games", "textmapworld", 'resources', 'initial_prompts', "answers.json")) as json_file:
+with open(os.path.join("../clemgames/textmapworld", 'resources', 'initial_prompts', "answers.json")) as json_file:
     answers_file = json.load(json_file)
-with open(os.path.join(current_directory, "games", "textmapworld", 'resources', 'initial_prompts', "reminders.json")) as json_file:
+# with open(os.path.join(current_directory, "games", "textmapworld", 'resources', 'initial_prompts', "reminders.json")) as json_file:
+with open(os.path.join("../clemgames/textmapworld", 'resources', 'initial_prompts', "reminders.json")) as json_file:
     reminders_file = json.load(json_file)
 "-------------------------------------------------------------------------------------------------------------"
 
 class GraphGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self,  ):
-        super().__init__(game_name)
+        # super().__init__(game_name)
+        super().__init__("../clemgames/textmapworld")
 
     def on_generate(self):
         player_a_prompt_header =  self.load_template(prompt_file_name)

@@ -1,8 +1,8 @@
 import ast
 import os
 import numpy as np
-from clemgame import  string_utils
-from games.textmapworld.graph_generator import GraphGenerator
+from clemcore.utils import string_utils
+from graph_generator import GraphGenerator
 
 "----------------------------------------------------"
 "The functions used in instance_generator.py"

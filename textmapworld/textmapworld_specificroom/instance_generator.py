@@ -12,6 +12,8 @@ import networkx as nx
 "Enter the parameters for the game instance generator"
 "-------------------------------------------------------------------------------------------------------------"
 "°°°°°°°changeable parameters°°°°°°°"
+SEED = 42
+
 strict = True
 create_new_graphs = False # True or False   !if True, the graphs will be created again, threfore pay attention!
 size = 8        #"large"
@@ -113,5 +115,6 @@ class GraphGameInstanceGenerator(GameInstanceGenerator):
                         
 
 if __name__ == '__main__':
+    random.seed(SEED)
     # always call this, which will actually generate and save the JSON file
     GraphGameInstanceGenerator().generate()

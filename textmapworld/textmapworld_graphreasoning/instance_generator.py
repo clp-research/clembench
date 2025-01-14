@@ -5,6 +5,7 @@ from clemcore.clemgame import GameInstanceGenerator
 
 import sys
 import os
+import random
 sys.path.append(os.path.abspath('../clemgames/textmapworld'))
 from textmapworld_utils import load_check_graph, generate_filename, create_graphs_file
 
@@ -12,6 +13,8 @@ from textmapworld_utils import load_check_graph, generate_filename, create_graph
 "Enter the parameters for the game instance generator"
 "-------------------------------------------------------------------------------------------------------------"
 "°°°°°°°changeable parameters°°°°°°°"
+SEED = 42
+
 strict = True
 create_new_graphs = False # True or False   !if True, the graphs will be created again, threfore pay attention!
 n = 4
@@ -98,5 +101,6 @@ class GraphGameInstanceGenerator(GameInstanceGenerator):
                         
 
 if __name__ == '__main__':
+    random.seed(SEED)
     # always call this, which will actually generate and save the JSON file
     GraphGameInstanceGenerator().generate()

@@ -871,7 +871,7 @@ class WordleGameScorer(GameScorer):
                 # Compute Episode Scores
                 episode_score = self.cm.episodes(results["guess"])
                 # Compute Rank
-                speed = self.cm.speed(results["guess"], self.name)
+                speed = self.cm.speed(results["guess"], self.game_name)
             # Compute Guess repetition
             repeats_guess, num_guess_repeats = self.cm.repeats_guess(results["guess"])
 

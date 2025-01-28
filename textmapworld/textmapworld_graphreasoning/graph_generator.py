@@ -6,6 +6,8 @@ import time
 import networkx as nx
 import os
 
+game_name = "textmapworld_graphreasoning"
+
 class SaveGraphInfo:
 
     def direction_list_maker(node, directions_list):
@@ -65,7 +67,7 @@ class SaveGraphInfo:
 
 class GraphGenerator:
     
-    def __init__(self, graph_type, n, m, n_rooms, cycle, ambiguity, game_name):
+    def __init__(self, graph_type, n, m, n_rooms, cycle, ambiguity):
         self.n = n
         self.m = m
         self.n_rooms = n_rooms
@@ -73,7 +75,6 @@ class GraphGenerator:
         self.map_array = np.zeros((n, m))
         self.graph_type = graph_type
         self.ambiguity = ambiguity
-        self.game_name = game_name
 
         if self.cycle!= "adding_cycle":
             self.G = nx.Graph()
@@ -187,6 +188,7 @@ class GraphGenerator:
         cycle_types=["cycle_true", "cycle_false", "random", "adding_cycle"]
         if self.cycle not in cycle_types:
             return "The cycle variable is not valid"
+        
         while self.G.number_of_nodes() < self.n_rooms :
             # Prevent diagonal moves when cycle is set to "random"
             random_dir = np.random.choice(list(dir2delta.keys()))
@@ -253,7 +255,7 @@ class GraphGenerator:
                             self.G.add_edge(neighbor, random_node)
                             break
 
-        if len(list(self.G.nodes())) < self.n_rooms:
+        if len(list(self.G.nodes()))<self.n_rooms:
             return "No graph generated"
         if self.cycle=="cycle_false" and find_cycle(source=self.current_pos, orientation="ignore") != "No cycle found":
             return "No graph generated"
@@ -313,8 +315,8 @@ class GraphGenerator:
             picture_number = random.randint(0, 10000)
             picture_name = "graph_" + str(picture_number) + ".png"
             # get the current working directory
-            current_working_directory = os.path.join("..", "clemgames", "textmapworld", self.game_name, "resources", "images")
-            file_exists = exists(os.path.join(current_working_directory, picture_name))
+            current_working_directory = str(os.getcwd().split("graph_generator.py")[0]) + "/games/"+ game_name+ "/resources/images/"
+            file_exists = exists(current_working_directory + picture_name)
             
             if file_exists:
                 picture_name = "graph_" + str(picture_number + 1) + ".png"

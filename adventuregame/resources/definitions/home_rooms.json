@@ -1,0 +1,44 @@
+[
+  {
+    "type_name": "kitchen",
+    "repr_str": "kitchen",
+    "standard_content": ["refrigerator", "counter", "table"],
+    "exit_targets": ["pantry", "livingroom", "hallway"],
+    "max_connections": 3
+  },
+  {
+    "type_name": "pantry",
+    "repr_str": "pantry",
+    "standard_content": ["refrigerator", "shelf", "freezer"],
+    "exit_targets": ["kitchen", "hallway"],
+    "max_connections": 1
+  },
+  {
+    "type_name": "hallway",
+    "repr_str": "hallway",
+    "standard_content": ["pottedplant"],
+    "exit_targets": ["kitchen", "pantry", "livingroom", "broomcloset"],
+    "max_connections": 4
+  },
+  {
+    "type_name": "livingroom",
+    "repr_str": "living room",
+    "standard_content": ["pottedplant", "table", "chair", "couch"],
+    "exit_targets": ["kitchen", "hallway"],
+    "max_connections": 2
+  },
+  {
+    "type_name": "broomcloset",
+    "repr_str": "broom closet",
+    "standard_content": ["broom"],
+    "exit_targets": ["hallway"],
+    "max_connections": 1
+  },
+  {
+    "type_name": "bedroom",
+    "repr_str": "bedroom",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["livingroom", "hallway"],
+    "max_connections": 1
+  }
+]

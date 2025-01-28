@@ -1,0 +1,39 @@
+{
+  "home_deliver_two": {
+    "action_definitions": ["basic_actions.json"],
+    "room_definitions": ["home_rooms.json"],
+    "entity_definitions": ["home_entities.json"],
+    "initial_state_config": {
+      "entity_adjectives": "none"
+    },
+    "task_config": {
+      "task": "deliver",
+      "deliver_to_floor": false
+    },
+    "goal_count": 2,
+    "mutable_fact_types": ["at", "in", "on", "closed", "open"],
+    "optimal_solver_turn_limit": 50,
+    "min_optimal_turns": 5,
+    "max_optimal_turns": 30,
+    "bench_turn_limit": 50
+  },
+  "home_deliver_three": {
+    "action_definitions": ["basic_actions_v2.json"],
+    "room_definitions": ["home_rooms.json"],
+    "entity_definitions": ["home_entities.json"],
+    "domain_definitions": ["home_domain.json"],
+    "initial_state_config": {
+      "entity_adjectives": "none"
+    },
+    "task_config": {
+      "task": "deliver",
+      "deliver_to_floor": false
+    },
+    "goal_count": 3,
+    "mutable_fact_types": ["at", "in", "on", "closed", "open"],
+    "optimal_solver_turn_limit": 50,
+    "min_optimal_turns": 5,
+    "max_optimal_turns": 30,
+    "bench_turn_limit": 50
+  }
+}

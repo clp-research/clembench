@@ -24,6 +24,11 @@ This game variant helps to investigate the influence of the critic's role in the
 ### Instantiation
 In our experiments, we use a list of 2,309 possible target words and a list of 12,953 valid guess words. For textual clues, we use [New York Times crossword clues](https://www.kaggle.com/datasets/darinhawley/new-york-times-crossword-clues-answers-19932021). We sort the target words by word frequency. Out of the initial 2,309 target words, frequency details are not available for one word, and clues are not available for 39 words. These words are subsequently excluded from the experiments. The remaining 2,269 target words are sorted based on their word frequency (descending frequency) and then divided into three equal groups. The first group which contains high-frequency words, has a total of 756 words. The second group, consisting of words with medium frequency, also contains 756 words. Finally, the third group, which contains low-frequency words, has a total of 757 words. To evaluate our methodology, we chose (random seed: 42) 10 words from each frequency group, resulting in a total of 30 target words for evaluation purposes, for each game variant. As metrics, we keep track of the success rate (how often the guesser guessed the target word, within the limit of 6 guesses), the average speed (if successful, then at which turn), and for each turn closeness (based on the letter-feedback). We also keep track of whether the guesser repeats a guess (a strategic failure), and, in the critic variant, whether the guesser changes the guess after feedback from the critic.
 
+Acquiring the needed word lists requires a Kaggle account to access its API. You can get your Kaggle API credentials 
+from https://www.kaggle.com/settings. If you don't have an existing access token, click the "Create New Token" button. 
+This will download a `kaggle.json` file. Copy `wordle_keys.json.template`, remove `.template` from the file name and 
+copy the contents of the downloaded `kaggle.json` to the `kaggle` key in `wordle_keys.json`.
+
 ### Error Handling
 The experiments revolve closely around the cLLM models, which are expected to respond in a specific format and adhere to certain rules. However, there are multiple scenarios where the responses from these models may result in errors.
 

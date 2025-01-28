@@ -6,6 +6,7 @@ from clemcore.clemgame import GameInstanceGenerator
 import sys
 import os
 import random
+
 sys.path.append(os.path.abspath('../clemgames/textmapworld'))
 from textmapworld_utils import load_check_graph, generate_filename, create_graphs_file
 
@@ -102,5 +103,6 @@ class GraphGameInstanceGenerator(GameInstanceGenerator):
 
 if __name__ == '__main__':
     random.seed(SEED)
+
     # always call this, which will actually generate and save the JSON file
     GraphGameInstanceGenerator().generate()

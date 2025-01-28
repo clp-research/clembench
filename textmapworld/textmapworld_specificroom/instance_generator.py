@@ -12,6 +12,7 @@ import networkx as nx
 "Enter the parameters for the game instance generator"
 "-------------------------------------------------------------------------------------------------------------"
 "°°°°°°°changeable parameters°°°°°°°"
+
 SEED = 42
 
 strict = True

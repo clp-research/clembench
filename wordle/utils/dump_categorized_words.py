@@ -1,8 +1,9 @@
-import clemgame
-from clemgame import file_utils
+import logging
 
-logger = clemgame.get_logger(__name__)
+import clemcore.clemgame
+from clemcore.utils import file_utils
 
+logger = logging.getLogger(__name__)
 
 def read_file_contents(filename, file_ext="txt"):
     if file_ext == "csv":

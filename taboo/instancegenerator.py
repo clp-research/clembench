@@ -6,6 +6,7 @@ python3 instancegenerator.py
 Creates instance.json file in ./in
 
 """
+import json
 import os
 import random
 import logging
@@ -13,6 +14,8 @@ import openai
 import requests
 import spacy
 import argparse
+
+import nltk
 
 from clemcore.clemgame import GameInstanceGenerator
 
@@ -29,7 +32,8 @@ WORD_LISTS = f"resources/target_words/{LANGUAGE}/taboo_word_lists.json"
 logger = logging.getLogger(__name__)
 
 # Seed for reproducibility
-random.seed(87326423)
+# random.seed(87326423)  # v1 seed
+random.seed(73128361)  # v2.0 seed
 
 # Set up OpenAI API key if using openai
 OPENAI_API_KEY = ""  # Insert your OpenAI API key
@@ -43,6 +47,8 @@ class TabooGameInstanceGenerator(GameInstanceGenerator):
         self.language = LANGUAGE
         # Variable for storing spaCy model (only loaded if conceptnet is used)
         self.tagger = None
+        # Using nltk Snowball stemmer:
+        self.stemmer = nltk.stem.SnowballStemmer('english')
 
     def on_generate(self, mode):
         # prepare related word generation
@@ -77,6 +83,9 @@ class TabooGameInstanceGenerator(GameInstanceGenerator):
                 # Sample a new target word
                 target = random.choice(taboo_words[frequency])
                 taboo_words[frequency].remove(target)
+                # only use words of length 3 or greater:
+                if len(target) < 3:
+                    continue
 
                 # Generate related words
                 print(f"Retrieving related words for '{target}'")
@@ -90,10 +99,17 @@ class TabooGameInstanceGenerator(GameInstanceGenerator):
                     print(f"Skipping '{target}' due to lack of related words.")
                     continue  # Skip this word and try another
 
-                else:  # Add a valid game instance
+                else:
+                    # stem words:
+                    target_word_stem = self.stemmer.stem(target)
+                    related_word_stem = [self.stemmer.stem(related_word) for related_word in related_words]
+                    # The nltk SnowballStemmer is not reliable - manual inspection and correction still needed!
+                    # Add a valid game instance
                     game_instance = self.add_game_instance(experiment, target_id)
                     game_instance["target_word"] = target
                     game_instance["related_word"] = related_words
+                    game_instance["target_word_stem"] = target_word_stem
+                    game_instance["related_word_stem"] = related_word_stem
                     target_id += 1
 
     def get_related_words_from_conceptnet(self, word, filter_nouns=False):
@@ -105,6 +121,8 @@ class TabooGameInstanceGenerator(GameInstanceGenerator):
             response = requests.get(url)
             response.raise_for_status()
             data = response.json()
+
+            # this could have safety checks, like checking for the word being slang
 
             related_words = set()
             edges = data.get("edges", [])

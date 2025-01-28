@@ -15,7 +15,8 @@ from constants import (
 
 ID = 1
 LANG = 'en'
-SEED = 2102
+# SEED = 2102  # old/v1.6 seed
+SEED = 42
 N_INSTANCES = 10
 
 what_slot = {'travel-booking': 'Travel',

@@ -8,15 +8,18 @@ from clemcore.clemgame import GameInstanceGenerator
 # n instances to be generated
 N: int = 10 # max = len(similar_grid_1) = 27, if not using other grid pairs
 # paths to image pair tables
-PATH_PAIRS: str = "resources/grid_pairs/grid-pairs.csv"
-PATH_GRIDS: str = "resources/grid_pairs/grids_matchit.json"
+# PATH_PAIRS: str = "resources/grid_pairs/grid-pairs.csv"
+PATH_PAIRS: str = os.path.join("resources", "grid_pairs", "grid-pairs.csv")
+# PATH_GRIDS: str = "resources/grid_pairs/grids_matchit.json"
+PATH_GRIDS: str = os.path.join("resources", "grid_pairs", "grids_matchit.json")
 
 #how many questions can each player ask?
 DEC_TURN: int = 3
 # should the players be informed about the number of questions they can ask?
 INFO_NUM_QUESTIONS: bool = False
 
-SEED: int = 42
+# SEED: int = 42  # seed for old/v1.6 instances
+SEED: int = 123
 
 # Flags that have to be at the beginning of each response; are also specified in the prompts
 FLAGS: Dict = {"description": "DESCRIPTION:", "question": "QUESTION:", "answer": "ANSWER:", "decision": "DECISION:"}
@@ -29,14 +32,17 @@ class MatchItInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
         super().__init__(os.path.dirname(os.path.abspath(__file__)))
 
-    def on_generate(self): 
-        df = pd.read_csv(PATH_PAIRS, index_col = 0)
+    def on_generate(self):
+        print("current path:", self.game_path)
+        # df = pd.read_csv(PATH_PAIRS, index_col = 0)
+        df = pd.read_csv(os.path.join(self.game_path, PATH_PAIRS), index_col = 0)
         diffs = df[df.category == "different_grid"].sample(n = N, random_state = SEED)
         sims1 = df[df.category == "similar_grid_1"].sample(n = N, random_state = SEED)
         sims2 = df[df.category == "similar_grid_2"].sample(n = N, random_state = SEED)
         sams = df[df.category == "same_grid"].sample(n = N, random_state = SEED)
 
-        with open("resources/grid_pairs/grids_matchit.json") as file:
+        # with open("resources/grid_pairs/grids_matchit.json") as file:
+        with open(os.path.join(self.game_path, PATH_GRIDS)) as file:
             grid_dict = json.load(file)
 
         initial_prompt = self.load_template('resources/prompts/initial_prompt.template').replace("$FLAG$", FLAGS["description"])

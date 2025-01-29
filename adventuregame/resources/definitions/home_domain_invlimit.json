@@ -1,0 +1,3 @@
+{
+  "pddl_domain": "(define\n    (domain home)\n    (:types\n        kitchen pantry hallway livingroom broomcloset bedroom - room\n        player inventory floor table sidetable counter refrigerator cupboard wardrobe shelf freezer pottedplant chair bed couch broom mop sandwich apple banana orange peach plate book pillow - entity\n        inventory floor table sidetable counter refrigerator cupboard wardrobe shelf freezer chair bed couch - receptacle\n        )\n    (:functions\n        (itemcount ?i - inventory)\n        )\n    )"
+}

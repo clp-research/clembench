@@ -12,7 +12,7 @@ import random
 from clemcore.clemgame import GameInstanceGenerator
 
 random.seed(123)
-N_INSTANCES = 10
+N_INSTANCES = 30
 
 logger = logging.getLogger(__name__)
 
@@ -108,7 +108,7 @@ class ImageGameInstanceGenerator(GameInstanceGenerator):
         player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_header.template")
         player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_header.template")
         prompt_question = self.load_template(f"resources/initial_prompts/prompt_question.template")
-        initial_grids = self.load_json("resources/grids_v1_5.json")
+        initial_grids = self.load_json("resources/grids_v2.0.json")
 
         compact_grids = []
         random_grids = []
@@ -126,7 +126,7 @@ class ImageGameInstanceGenerator(GameInstanceGenerator):
             random_grid = generate_random_grid(random_grid_letter_count, 5, random_letter)
 
             grid = grid.replace('X', random_letter)
-            alphabet = alphabet.replace(random_letter, '')
+            #alphabet = alphabet.replace(random_letter, '')
 
             compact_grids.append(grid)
             random_grids.append(random_grid)

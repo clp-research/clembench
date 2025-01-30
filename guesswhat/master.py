@@ -2,7 +2,7 @@ from typing import Dict, List
 import numpy as np
 import logging
 from clemcore.backends import Model
-from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameSpec
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
 from clemcore.utils import file_utils, string_utils
@@ -375,8 +375,8 @@ class GuessWhatScorer(GameScorer):
 
 
 class GuessWhatGameBenchmark(GameBenchmark):
-    def __init__(self):
-        super().__init__(GAME_NAME)
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     def get_description(self):
         return "Guess What? game between two agents where one asks questions to guess the target word from list of candidates and the other answers with 'yes' or 'no'."

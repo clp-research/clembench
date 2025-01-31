@@ -45,8 +45,8 @@ class GuessWhat(DialogueGameMaster):
     question or makes a guess, and player B (the Answerer) responds with "yes" or "no".
     """
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, experiment, player_models)
 
         self.max_turns: int = experiment["max_turns"]
         self.question_tag = experiment["question_tag"]
@@ -241,8 +241,8 @@ class GuessWhat(DialogueGameMaster):
 
 class GuessWhatScorer(GameScorer):
 
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
 
     def compute_scores(self, episode_interactions: Dict) -> None:
         turn_scores = []
@@ -382,7 +382,7 @@ class GuessWhatGameBenchmark(GameBenchmark):
         return "Guess What? game between two agents where one asks questions to guess the target word from list of candidates and the other answers with 'yes' or 'no'."
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return GuessWhat(experiment, player_models)
+        return GuessWhat(self.game_name, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return GuessWhatScorer(experiment, game_instance)

@@ -45,9 +45,9 @@ class GuessWhat(DialogueGameMaster):
     question or makes a guess, and player B (the Answerer) responds with "yes" or "no".
     """
 
-    def __init__(self, game_name: str, experiment: Dict, player_models: List[Model]):
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         logger.info(f"GuessWhat GM init arguments: game_name={game_name}, player_models={player_models}, experiment={experiment}")
-        super().__init__(game_name, experiment, player_models)
+        super().__init__(game_name, game_path, experiment, player_models)
 
         self.max_turns: int = experiment["max_turns"]
         self.question_tag = experiment["question_tag"]
@@ -384,7 +384,7 @@ class GuessWhatGameBenchmark(GameBenchmark):
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
         logger.info(f"Arguments passed to GuessWhatGameBenchmark.create_game_master: player_models={player_models}, experiment={experiment}")
-        return GuessWhat(self.game_name, experiment, player_models)
+        return GuessWhat(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return GuessWhatScorer(experiment, game_instance)

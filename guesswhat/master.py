@@ -2,7 +2,7 @@ from typing import Dict, List
 import numpy as np
 import logging
 from clemcore.backends import Model
-from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameSpec
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
 from clemcore.utils import file_utils, string_utils
@@ -45,8 +45,8 @@ class GuessWhat(DialogueGameMaster):
     question or makes a guess, and player B (the Answerer) responds with "yes" or "no".
     """
 
-    def __init__(self, experiment: Dict, player_models: List[Model]):
-        super().__init__(GAME_NAME, experiment, player_models)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
 
         self.max_turns: int = experiment["max_turns"]
         self.question_tag = experiment["question_tag"]
@@ -241,8 +241,8 @@ class GuessWhat(DialogueGameMaster):
 
 class GuessWhatScorer(GameScorer):
 
-    def __init__(self, experiment: Dict, game_instance: Dict):
-        super().__init__(GAME_NAME, experiment, game_instance)
+    def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
+        super().__init__(game_name, experiment, game_instance)
 
     def compute_scores(self, episode_interactions: Dict) -> None:
         turn_scores = []
@@ -375,17 +375,17 @@ class GuessWhatScorer(GameScorer):
 
 
 class GuessWhatGameBenchmark(GameBenchmark):
-    def __init__(self):
-        super().__init__(GAME_NAME)
+    def __init__(self, game_spec: GameSpec):
+        super().__init__(game_spec)
 
     def get_description(self):
         return "Guess What? game between two agents where one asks questions to guess the target word from list of candidates and the other answers with 'yes' or 'no'."
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return GuessWhat(experiment, player_models)
+        return GuessWhat(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return GuessWhatScorer(experiment, game_instance)
+        return GuessWhatScorer(self.game_name, experiment, game_instance)
 
 
 def main():

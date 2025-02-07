@@ -16,7 +16,9 @@ def find_line_starting_with(prefix, lines):
     for line in lines:
         if line.startswith(prefix):
             return line
-        
+
+def add_space_after_comma(text):
+    return re.sub(r',(?=[^\s])', ', ', text)
 class ClueGiver(Player):
     def __init__(self, model_name: str, flags: Dict[str, bool]):
         super().__init__(model_name)
@@ -69,6 +71,7 @@ class ClueGiver(Player):
     
     def validate_response(self, utterance: str, previous_targets: List[str], remaining_words: List[str]):
         # utterance should contain two lines, one with the clue, one with the targets
+        utterance = add_space_after_comma(utterance)
         parts = utterance.split('\n')
         if len(parts) < 1:
             raise TooFewTextError(utterance)
@@ -136,6 +139,7 @@ class ClueGiver(Player):
             raise NoCorrectTargetError(utterance, targets, remaining_words)
             
     def parse_response(self, utterance: str, remaining_words: List[str]) -> str:
+        utterance = add_space_after_comma(utterance)
         parts = utterance.split('\n')
         clue = find_line_starting_with(self.clue_prefix, parts).removeprefix(self.clue_prefix)
         targets = find_line_starting_with(self.target_prefix, parts).removeprefix(self.target_prefix)
@@ -183,6 +187,7 @@ class Guesser(Player):
     
     def validate_response(self, utterance: str, previous_guesses: List[str], remaining_words: List[str], number_of_allowed_guesses: int, clue: str, ):
         # utterance should only contain one line
+        utterance = add_space_after_comma(utterance)
         if '\n' in utterance:
             if self.flags["IGNORE RAMBLING"]:
                 line = find_line_starting_with(self.prefix, utterance.split('\n'))
@@ -236,6 +241,7 @@ class Guesser(Player):
         
             
     def parse_response(self, utterance: str, remaining_words: List[str]) -> str:
+        utterance = add_space_after_comma(utterance)
         if self.flags["IGNORE RAMBLING"]:
             utterance = find_line_starting_with(self.prefix, utterance.split('\n'))
         utterance = utterance.removeprefix(self.prefix)

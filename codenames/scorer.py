@@ -1,7 +1,7 @@
 import statistics, math
 
 from clemcore.clemgame import GameScorer
-from clemcore.clemgame.metrics import BENCH_SCORE, METRIC_ABORTED
+from clemcore.clemgame.metrics import BENCH_SCORE, METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS
 
 from constants import *
 
@@ -158,7 +158,10 @@ class CodenamesScorer(GameScorer):
             return
 
         # Main Score: harmonic mean of success (revealed team words / all team words (recall)) and efficiency (1/number of turns)
-        progress = self.scores["episode scores"][Episode_Scores.RECALL]
-        efficiency = self.scores["episode scores"][Episode_Scores.EFFICIENCY]
-        main_score = statistics.harmonic_mean([progress, efficiency])
+        # progress = self.scores["episode scores"][Episode_Scores.RECALL]
+        # efficiency = self.scores["episode scores"][Episode_Scores.EFFICIENCY]
+        # main_score = statistics.harmonic_mean([progress, efficiency])
+        main_score = 0
+        if self.scores["episode scores"][METRIC_SUCCESS]:
+            main_score = 1
         self.log_episode_score(BENCH_SCORE, main_score, scale=True)

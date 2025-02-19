@@ -1,0 +1,9 @@
+{
+  "game_name": "textmapworld_graphreasoning",
+  "description": "Exhaustively exploring a map with graph reasoning.",
+  "main_game": "textmapworld",
+  "players": "one",
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["2.0"]
+}

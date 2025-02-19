@@ -90,7 +90,6 @@ class Taboo(DialogueGameMaster):
         self.guesser_initial_prompt = self.experiment["guesser_initial_prompt"]
 
     def _on_setup(self, **game_instance):
-        logger.info("_on_setup")
         self.game_instance = game_instance
 
         self.target_word = game_instance["target_word"]

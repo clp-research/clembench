@@ -1,0 +1,9 @@
+{
+  "game_name": "textmapworld",
+  "description": "Exhaustively exploring a map.",
+  "main_game": "textmapworld",
+  "players": "one",
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["2.0"]
+}

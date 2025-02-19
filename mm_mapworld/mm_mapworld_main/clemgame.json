@@ -1,0 +1,9 @@
+{
+  "game_name": "mm_mapworld",
+  "description": "In this game an agent is placed on a graph and needs to navigate through it by reasoning about past steps taken",
+  "main_game": "mm_mapworld_main",
+  "players": "two",
+  "image": "single",
+  "languages": ["en"],
+  "benchmark": ["1.6", "1.6.5", "2.0"]
+}

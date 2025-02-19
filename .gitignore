@@ -3,3 +3,15 @@
 __pycache__/
 
 wordle/wordle_keys.json
+*.log
+# custom results
+results/
+
+# secrets
+key.json
+# optional game registry
+game_registry.json
+# optional model registry
+model_registry.json
+# custom backends
+*_api.py

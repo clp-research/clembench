@@ -1,0 +1,9 @@
+{
+  "game_name": "taboo",
+  "description": "Taboo game between two agents where one has to describe a word for the other to guess.",
+  "main_game": "taboo",
+  "players": "two",
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["0.9", "1.0", "1.5", "2.0"]
+}

@@ -1,0 +1,9 @@
+{
+  "game_name": "wordle",
+  "description": "Wordle 5-letter word guessing game.",
+  "main_game": "wordle",
+  "players": "one",
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["2.0"]
+}

@@ -1,0 +1,9 @@
+{
+  "game_name": "privateshared",
+  "description": "Questioner and answerer in scorekeeping game.",
+  "main_game": "privateshared",
+  "players": "two",
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["0.9", "1.0", "1.5", "2.0"]
+}

@@ -1,0 +1,9 @@
+{
+  "game_name": "cloudgame",
+  "description": "A simple game in which a player has to decide whether they see clouds or not and a second player has to judge this response.",
+  "main_game": "cloudgame",
+  "players": "two",
+  "image": "single",
+  "languages": ["en"],
+  "benchmark": []
+}

@@ -1,0 +1,10 @@
+{
+  "game_name": "wordle_withcritic",
+  "description": "Wordle 5-letter word guessing game with critic.",
+  "main_game": "wordle",
+  "instances": "instances_withcritic",
+  "players": "two",
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["2.0"]
+}

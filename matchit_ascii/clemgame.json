@@ -1,0 +1,9 @@
+{
+  "game_name": "matchit_ascii",
+  "description": "A simple game in which two players have to decide whether they see the same grid or not, an ascii version of the matchit game.",
+  "main_game": "matchit_ascii",
+  "players": "two",
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["2.0"]
+}

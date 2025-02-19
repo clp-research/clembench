@@ -493,8 +493,8 @@ class AdventureGameScorer(GameScorer):
         # log full rating as main score:
         self.log_episode_score(metrics.BENCH_SCORE, partial_success_rating)
 
-        # invalid format aborted:
-        if invalid_format:
+        # invalid format or turn limit aborted:
+        if invalid_format or turn_limit_loss:
             self.log_episode_score(metrics.METRIC_ABORTED, 1)
             self.log_episode_score(metrics.METRIC_SUCCESS, 0)
             self.log_episode_score(metrics.METRIC_LOSE, 0)
@@ -507,8 +507,6 @@ class AdventureGameScorer(GameScorer):
             else:
                 self.log_episode_score(metrics.METRIC_SUCCESS, 0)
                 self.log_episode_score(metrics.METRIC_LOSE, 1)
-
-        # TODO?: count turn_limit_reached as ABORTED?
 
         # planning episode-level:
         # plan following:

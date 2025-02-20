@@ -5,7 +5,7 @@ import re
 import copy
 import numpy as np
 
-from clemcore.backends import Model, HumanModel
+from clemcore.backends import Model, HumanModel, ContextExceededError
 from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, GameSpec
 import clemcore.clemgame.metrics as metrics
 
@@ -682,7 +682,15 @@ class WordleGameMaster(GameMaster):
             self.log_event(from_="GM", to=use_from, action=action)
 
         # make an API call (or get a programmatic response) from player a
-        prompt, raw_answer, answer = use_player(use_player.history, self.current_turn)
+        try:
+            prompt, raw_answer, answer = use_player(use_player.history, self.current_turn)
+        except ContextExceededError as error:
+            logger.error(f"Current Turn: {self.current_turn}, Error in response from player {player}: {error}")
+            self.aborted = True
+            prompt = use_player.history
+            raw_answer = "Context token limit exceeded"
+            answer = "Context token limit exceeded"
+            #return None
         # add API call to the records
         action = {"type": "get message", "content": answer}
         self.log_event(

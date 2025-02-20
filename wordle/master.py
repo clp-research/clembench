@@ -9,10 +9,10 @@ from clemcore.backends import Model, HumanModel
 from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, GameSpec
 import clemcore.clemgame.metrics as metrics
 
-from utils.guessvalidator import GuessValidator
-from utils.guesser import Guesser
-from utils.critic import Critic
-from utils.compute_metrics import ComputeMetrics
+from wordle.utils.guessvalidator import GuessValidator
+from wordle.utils.guesser import Guesser
+from wordle.utils.critic import Critic
+from wordle.utils.compute_metrics import ComputeMetrics
 
 GAME_NAME = "wordle"
 

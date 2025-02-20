@@ -29,38 +29,48 @@ class GuessValidator:
             response = " ".join(response)
             return response
 
-        marked_target_positions = []
-        for index in range(len(guessed_word)):
-            letter = guessed_word[index]
-            if letter in target_word:
-                # Check if the letter is in the correct position
-                target_index = target_word.find(letter)
-                if target_index == -1:
-                    # Letter is not in the target word
-                    response += letter + "<red> "
-                else:
-                    while target_index in marked_target_positions:
-                        target_index = target_word.find(letter, target_index + 1)
-                        if target_index == -1:
-                            break
 
-                    if target_index == -1:
-                        # No more occurences of the letter in the target word
-                        response += letter + "<red> "
-                    else:
-                        if target_index == index:
-                            # Letter is in the target word and in the correct position
-                            response += letter + "<green> "
-                            marked_target_positions.append(target_index)
-                        else:
-                            # Letter is in the target word but not in the correct position
-                            if guessed_word[target_index] == letter:
-                                # There is another occurence of the letter in the guessed word
-                                response += letter + "<red> "
-                            else:
-                                response += letter + "<yellow> "
-                                marked_target_positions.append(target_index)
+        result = ["⬜"] * len(target_word)
+        target_list = list(target_word)
+        # Step 1: Mark greens (🟩) and track available letters in the target
+        for i in range(len(target_word)):
+            if guessed_word[i] == target_list[i]:  
+                result[i] = "🟩"
+                target_list[i] = None  # Mark as used to prevent duplicate processing
+
+        # Step 2: Mark yellows (🟨), ensuring we don't overcount letters
+        for i in range(len(target_word)):
+            if result[i] == "🟩":
+                continue  # Skip already marked greens
+            if guessed_word[i] in target_list:  # Check if letter is available in the target
+                result[i] = "🟨"
+                target_list[target_list.index(guessed_word[i])] = None  # Mark as used to avoid overmarking
+
+        # Prepare the response
+        for i in range(len(target_word)):
+            if result[i] == "🟩":
+                response += guessed_word[i] + "<green> "
+            elif result[i] == "🟨":
+                response += guessed_word[i] + "<yellow> "
             else:
-                # Letter is not in the target word
-                response += letter + "<red> "
+                response += guessed_word[i] + "<red> "
         return response.strip()
+
+
+
+if __name__ == "__main__":
+    '''
+    tests = [('stoop', 'boost'), ('round', 'broad'), ('hello', 'world'), ('spare', 'spree'), ('sweep', 'clean')]
+    tests = [('spree', 'spare'), ('spree', 'smaer'), ('spree', 'seats'), ('spree', 'elbow'),
+             ('spree', 'erase'), ('spree', 'cheer'),  ('spree', 'sweep'), ('spree', 'spear'),
+             ('spree', 'speer'), ('spree', 'spree')]
+    tests = [('store', 'proud'), ('large', 'stare'), ('clean', 'damps'), ('shore', 'heals'), ('first', 'bunks')]
+    '''
+    tests = [('strap', 'spree'), ('strap', 'start'), ('strap', 'fluff'), ('strap', 'hello'),
+            ('strap', 'error'), ('strap', 'zappy'), ('strap', 'smash'), ('strap', 'banal'),
+            ('strap', 'strap')]
+
+
+    for target_word, guessed_word in tests:
+        guess = GuessValidator(target_word)
+        print(f"Target: {target_word}, Guessed: {guessed_word}, Result: {guess.validate(guessed_word)}")

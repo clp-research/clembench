@@ -1,0 +1,42 @@
+{
+  "letter_grids": [
+    "X X X X X\nX X □ X X\nX X X X X\nX X □ X X\nX X X X X",
+    "X X X X X\nX □ □ □ □\nX □ □ □ □\nX □ □ □ □\nX X X X X",
+    "X X X X X\nX X □ □ □\nX X X X X\nX X □ □ □\nX X X X X",
+    "X X X X X\nX □ □ □ □\nX X X □ □\nX □ □ □ □\nX □ □ □ □",
+    "X □ □ □ X\nX X X X X\nX X X X X\nX X X X X\nX □ □ □ X",
+    "X X X X X\nX □ □ □ X\nX X X X X\nX X □ □ □\nX X □ □ □"
+  ],
+  "number_grids": [
+    "X X X X □\n□ □ □ X □\nX X X X □\nX □ □ □ □\nX X X X X",
+    "X X X X X\n□ □ □ X □\nX X X X X\n□ □ □ X □\nX X X X X",
+    "X □ □ X X\nX □ □ X X\nX X X X X\n□ □ □ X X\n□ □ □ X X",
+    "X X X X X\nX □ □ □ □\nX X X X □\n□ □ □ X □\nX X X X □",
+    "X X X X X\nX □ □ □ □\nX X X X X\nX □ □ □ X\nX X X X X",
+    "X X X X X\n□ □ □ X □\n□ □ □ X □\n□ □ □ X □\n□ □ □ X □"
+  ],
+  "line_grids_rows": [
+    "X X X X X\n□ □ □ □ □\nX X X X X\n□ □ □ □ □\nX X X X X",
+    "□ X X X □\n□ X X X □\n□ X X X □\n□ X X X □\n□ X X X □",
+    "X X □ □ □\nX X □ □ □\nX X □ □ □\nX X □ □ □\nX X □ □ □",
+    "□ □ X X X\n□ □ X X X\n□ □ X X X\n□ □ X X X\n□ □ X X X",
+    "X □ X □ X\nX □ X □ X\nX □ X □ X\nX □ X □ X\nX □ X □ X",
+    "□ X □ X □\n□ X □ X □\n□ X □ X □\n□ X □ X □\n□ X □ X □"
+  ],
+  "line_grids_columns": [
+    "X X X □ □\nX X X □ □\nX X X □ □\nX X X □ □\nX X X □ □",
+    "□ X X X X\n□ X X X X\n□ X X X X\n□ X X X X\n□ X X X X",
+    "X □ X X X\nX □ X X X\nX □ X X X\nX □ X X X\nX □ X X X",
+    "X X □ X X\nX X □ X X\nX X □ X X\nX X □ X X\nX X □ X X",
+    "X X X □ X\nX X X □ X\nX X X □ X\nX X X □ X\nX X X □ X",
+    "X X X X □\nX X X X □\nX X X X □\nX X X X □\nX X X X □"
+  ],
+  "random_grids": [
+    "X □ X □ X\n□ X X X □\nX X □ X X\n□ X X X □\nX □ X □ X",
+    "□ X X X □\nX □ X □ X\nX X □ X X\nX □ X □ X\n□ X X X □",
+    "X □ X X X\nX X X □ X\nX X □ X X\nX X X □ X\nX □ X X X",
+    "X X □ X X\nX □ □ X X\nX X X X □\n□ X X X X\nX X X X X",
+    "X □ X □ □\nX □ □ □ X\nX □ □ X X\n□ X □ □ X\nX □ X X X",
+    "X X X X X\nX X X □ X\n□ □ □ X X\n□ □ □ □ X\nX □ X X X"
+  ]
+}

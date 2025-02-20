@@ -19,8 +19,8 @@ from resources.localization_utils import MULTILINGUAL_PATTERNS
 
 logger = logging.getLogger(__name__)
 
-VERSION = "v1.6"
-GRIDS = "resources/grids_v1.5.json"
+VERSION = "v2.0"
+GRIDS = "resources/grids_v2.0.json"
 P1_MODE = "strict"  # "liberal"
 P2_MODE = "strict"  # "liberal"
 # modes relate to regex parsing:

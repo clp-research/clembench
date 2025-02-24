@@ -5,9 +5,10 @@ import logging
 import os
 
 from clemcore.backends import Model
-from clemcore.clemgame import file_utils, GameSpec
+from clemcore.clemgame import GameSpec
 from clemcore.clemgame import metrics
 from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
+
 from game import ReferenceGame
 import re
 
@@ -234,6 +235,7 @@ class ReferenceGameBenchmark(GameBenchmark):
 def main():
     # select one instance
     game_path = os.path.dirname(os.path.abspath(__file__))
+    from clemcore.utils import file_utils
     experiments = file_utils.load_json("in/instances.json", game_path)
     instance = experiments["experiments"][0]["game_instances"][0]
     master = ReferenceGameMaster(instance, ["gpt-3.5-turbo", "gpt-3.5-turbo"])

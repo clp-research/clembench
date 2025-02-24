@@ -11,8 +11,6 @@ import matplotlib.pyplot as plt
 import imageio
 import shutil
 
-import sys
-sys.path.append(os.path.abspath('../clemgames/mm_mapworld'))
 import mm_mapworld_utils as utils
 from clemcore.backends import Model, CustomResponseModel
 from clemcore.clemgame import GameMaster, GameBenchmark, DialogueGameMaster, GameScorer, GameSpec

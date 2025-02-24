@@ -91,7 +91,6 @@ class HelloGame(DialogueGameMaster):
             score = 1
         self.log_episode_score('Accuracy', score)
 
-
 class HelloGameBenchmark(GameBenchmark):
 
     def __init__(self, game_spec: GameSpec):

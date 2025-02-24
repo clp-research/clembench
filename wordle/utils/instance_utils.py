@@ -202,21 +202,21 @@ class InstanceUtils(GameResourceLocator):
         if "high_frequency" in self.common_config["supported_word_difficulty"]:
             if self.easy_words_list:
                 random.seed(use_seed)
-                target_words_test_dict["high_frequency"] = random.choices(
+                target_words_test_dict["high_frequency"] = random.sample(
                     self.easy_words_list, k=number_of_target_words["high_frequency"]
                 )
 
         if "medium_frequency" in self.common_config["supported_word_difficulty"]:
             if self.medium_words_list:
                 random.seed(use_seed)
-                target_words_test_dict["medium_frequency"] = random.choices(
+                target_words_test_dict["medium_frequency"] = random.sample(
                     self.medium_words_list, k=number_of_target_words["medium_frequency"]
                 )
 
         if "low_frequency" in self.common_config["supported_word_difficulty"]:
             if self.hard_words_list:
                 random.seed(use_seed)
-                target_words_test_dict["low_frequency"] = random.choices(
+                target_words_test_dict["low_frequency"] = random.sample(
                     self.hard_words_list, k=number_of_target_words["low_frequency"]
                 )
 

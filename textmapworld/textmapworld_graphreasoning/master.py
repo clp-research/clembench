@@ -14,9 +14,6 @@ import random
 from logging import getLogger
 logger = getLogger(__name__)
 
-import sys
-import os
-sys.path.append(os.path.abspath('../clemgames/textmapworld'))
 from textmapworld_utils import loop_identification, get_directions, string_available_directions, have_common_element, get_nextnode_label, calculate_similarity, create_graph
 
 

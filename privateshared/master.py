@@ -11,7 +11,7 @@ from sklearn.metrics import cohen_kappa_score
 
 import clemcore.clemgame.metrics as ms
 from clemcore.backends import Model
-from clemcore.clemgame import file_utils, GameSpec
+from clemcore.clemgame import GameSpec
 from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
 import logging
 
@@ -484,6 +484,7 @@ class PrivateSharedGameBenchmark(GameBenchmark):
 
 def main():
     """Play the first episode in the instances."""
+    from clemcore.utils import file_utils
     instances = file_utils.load_json("in/instances.json", "privateshared")
     experiment = instances["experiments"][0]
     instance = experiment["game_instances"][0]

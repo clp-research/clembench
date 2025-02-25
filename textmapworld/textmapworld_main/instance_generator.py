@@ -15,7 +15,8 @@ from textmapworld_utils import load_check_graph, generate_filename, create_graph
 "Enter the parameters for the game instance generator"
 "-------------------------------------------------------------------------------------------------------------"
 "°°°°°°°changeable parameters°°°°°°°"
-SEED = 42
+# SEED = 42  # v1.6/first batch v2 seed
+SEED = 365
 
 strict = True
 create_new_graphs = False # True or False   !if True, the graphs will be created again, threfore pay attention!

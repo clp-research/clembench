@@ -13,7 +13,8 @@ import networkx as nx
 "-------------------------------------------------------------------------------------------------------------"
 "°°°°°°°changeable parameters°°°°°°°"
 
-SEED = 42
+# SEED = 42  # v1.6/first batch v2 seed
+SEED = 365
 
 strict = True
 create_new_graphs = False # True or False   !if True, the graphs will be created again, threfore pay attention!

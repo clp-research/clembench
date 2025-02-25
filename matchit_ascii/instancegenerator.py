@@ -19,7 +19,8 @@ DEC_TURN: int = 3
 INFO_NUM_QUESTIONS: bool = False
 
 # SEED: int = 42  # seed for old/v1.6 instances
-SEED: int = 123
+# SEED: int = 123 # seed for first batch of v2 instances
+SEED: int = 365
 
 # Flags that have to be at the beginning of each response; are also specified in the prompts
 FLAGS: Dict = {"description": "DESCRIPTION:", "question": "QUESTION:", "answer": "ANSWER:", "decision": "DECISION:"}

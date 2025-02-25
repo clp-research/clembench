@@ -85,8 +85,8 @@ Episode-level scores
 
 - Sensitivity (Recall) and Specificity (Episode Negative Recall)
 - Efficiency (words revealed/number of turns / 2)
-- Quality Score: harmonic mean of Sensitivity and Efficiency
-- Won, Lost, Aborted, Lost through assassin, number of turns
+- Quality Score: average of success (win rate against the mock opponent)
+- Success, Lose, Aborted, Lost through assassin, number of turns
 - valid and invalid requests, request success ratio
 - average turn-level scores
 

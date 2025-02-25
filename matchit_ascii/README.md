@@ -33,3 +33,7 @@ For the used difficulties, the following actions were chosen:
 - similar_grid_1: vflip, hflip, turn
 - similar_grid_2: edit_2
 - different_grid: none
+
+# Scoring
+
+- Quality Score: average of decisions (same or different grid)

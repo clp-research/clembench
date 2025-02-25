@@ -48,6 +48,9 @@ Example: "small": (4,"cycle_false").
 
 Besides the Main score that is being used for the final clemscore, other scores are also calculated.
 
+- Quality Score: harmonic mean of Efficiency and Exploration
+- Efficiency: how many of the performed moves were necessary
+- Exploration: how many of the nodes were visited
 - **Aborted** - is a binary score, indicating whether the instance was aborted at some point during the run
 - **Success** - is a binary score that is 1 if all rooms have been visited and the game was not aborted
 - **Lose** - is the inverse of **Success**

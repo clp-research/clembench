@@ -1,2 +1,3 @@
 lark==1.1.9
 clingo==5.7.1
+jinja2

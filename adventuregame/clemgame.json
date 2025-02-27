@@ -1,0 +1,9 @@
+{
+  "game_name": "adventuregame",
+  "description": "Interactive Fiction clemgame",
+  "main_game": "adventuregame",
+  "players": "one",
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["v2"]
+}

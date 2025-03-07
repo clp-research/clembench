@@ -1,4 +1,4 @@
-## Collections of games to be run with the [clembench framework](https://github.com/clp-research/clembench)
+## Collections of games to be run with the [clemcore framework](https://github.com/clp-research/clemcore)
 
 ## Installation (Python 3.10+)
 
@@ -19,7 +19,7 @@ After the installation you will have access to the `clem` CLI tool. The main fun
 (myclem) clem list games               # list the games available for a run
 (myclem) clem list backends            # list the backends available for a run
 (myclem) clem list models              # list the models available for a run
-(myclem) clem run -g <game> -m <model> # runs the game benchmark; also transcribes and scores
+(myclem) clem run -g <game> -m <model> # runs the game benchmark; also scores
 (myclem) clem transcribe               # translates interactions into html files
 (myclem) clem score                    # computes individual performance measures
 (myclem) clem eval                     # computes overall performances measures; requires scores

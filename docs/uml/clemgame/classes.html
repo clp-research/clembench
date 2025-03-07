@@ -1,0 +1,106 @@
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      <div class="mermaid">
+    
+        classDiagram
+          class DialogueGameMaster {
+            current_turn : int
+            messages_by_names : Dict[str, List]
+            players_by_names : Dict[str, Player]
+            add_assistant_message(player: Player, utterance: str)
+            add_message(player: Player, utterance: str, role: str)
+            add_player(player: Player)
+            add_user_message(player: Player, utterance: str)
+            get_players() List[Player]
+            log_message_to(player: Player, message: str)
+            log_message_to_self(message: str)
+            log_to_self(type_: str, value: str)
+            play() None
+            prompt(player: Player, is_reprompt)
+            setup()
+          }
+          class GameBenchmark {
+            filter_experiment : List[str]
+            instances : NoneType
+            build_transcripts(results_dir: str)
+            compute_scores(results_dir: str)
+            create_game_master(experiment: Dict, player_models: List[backends.Model])* GameMaster
+            create_game_scorer(experiment: Dict, game_instance: Dict)* GameScorer
+            get_description()* str
+            is_single_player() bool
+            run(player_models: List[backends.Model], results_dir: str)
+            setup(instances_name: str)
+          }
+          class GameInstanceGenerator {
+            instances : dict
+            add_experiment(experiment_name: str, dialogue_partners: List[Tuple[str, str]]) Dict
+            add_game_instance(experiment: Dict, game_id)
+            generate(filename)
+            on_generate()*
+          }
+          class GameMaster {
+            experiment : Dict
+            player_models : Optional[List[backends.Model]]
+            play()* None
+            setup()*
+          }
+          class GameRecorder {
+            interactions : dict
+            log_current_turn : int
+            requests : list
+            log_event(from_: str, to: str, action: Dict, call: Tuple[Any, Any])
+            log_key(key: str, value: Any)
+            log_next_turn()
+            log_players(players_dic: Dict)
+            store_records(results_root: str, dialogue_pair_desc: str, game_record_dir: str)
+          }
+          class GameResourceLocator {
+            game_name : str
+            game_path : Optional[str]
+            logger : NoneType, RootLogger
+            load_csv(file_name: str) Dict
+            load_file(file_name: str, file_ending: str) str
+            load_instances(instances_name)
+            load_json(file_name: str) Dict
+            load_results_json(file_name: str, results_dir: str, dialogue_pair: str) Dict
+            load_template(file_name: str) str
+            store_file(data, file_name: str, sub_dir: str)
+            store_results_file(data, file_name: str, dialogue_pair: str, sub_dir: str, root_dir: str)
+          }
+          class GameScorer {
+            experiment : Dict
+            game_instance : Dict
+            scores : dict
+            compute_scores(episode_interactions: Dict) None
+            log_episode_score(score_name, score_value)
+            log_main_score(episode_interactions: Dict)*
+            log_turn_score(turn_idx, score_name, score_value)
+            score_game(episode_interactions: Dict) None
+            score_game_end(episode_interactions: Dict) None
+            score_requests(episode_interactions: Dict)
+            score_turns(episode_interactions: Dict)* None
+            store_scores(results_root: str, dialogue_pair: str, game_record_dir: str)
+          }
+          class GameSpec {
+            game_path
+            from_dict(spec: Dict)
+            game_file_exists()
+            get_game_file()
+            matches(spec: Dict)
+          }
+          class Player {
+            descriptor : Optional[str]
+            model : Model
+            get_description() str
+          }
+          DialogueGameMaster --|> GameMaster
+          GameBenchmark --|> GameResourceLocator
+          GameInstanceGenerator --|> GameResourceLocator
+          GameMaster --|> GameRecorder
+          GameRecorder --|> GameResourceLocator
+          GameScorer --|> GameResourceLocator
+  
+       </div>
+  </body>
+</html>

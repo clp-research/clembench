@@ -1,0 +1,88 @@
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      <div class="mermaid">
+    
+        classDiagram
+          class clemcore {
+          }
+          class backends {
+          }
+          class alephalpha_api {
+          }
+          class anthropic_api {
+          }
+          class cohere_api {
+          }
+          class google_api {
+          }
+          class huggingface_local_api {
+          }
+          class huggingface_multimodal_api {
+          }
+          class initial_hf_check {
+          }
+          class llamacpp_api {
+          }
+          class mistral_api {
+          }
+          class model_registry_eos_check {
+          }
+          class openai_api {
+          }
+          class openai_compatible_api {
+          }
+          class utils {
+          }
+          class clemgame {
+          }
+          class metrics {
+          }
+          class cli {
+          }
+          class slurkbot {
+          }
+          class utils {
+          }
+          class file_utils {
+          }
+          class string_utils {
+          }
+          class transcript_utils {
+          }
+          clemcore --> backends
+          clemcore --> clemgame
+          clemcore --> file_utils
+          backends --> file_utils
+          alephalpha_api --> backends
+          alephalpha_api --> utils
+          anthropic_api --> backends
+          anthropic_api --> utils
+          cohere_api --> backends
+          cohere_api --> utils
+          google_api --> backends
+          google_api --> utils
+          huggingface_local_api --> backends
+          huggingface_local_api --> utils
+          huggingface_multimodal_api --> backends
+          llamacpp_api --> backends
+          llamacpp_api --> utils
+          mistral_api --> backends
+          mistral_api --> utils
+          model_registry_eos_check --> file_utils
+          openai_api --> backends
+          openai_api --> utils
+          openai_compatible_api --> backends
+          openai_compatible_api --> utils
+          utils --> backends
+          clemgame --> backends
+          clemgame --> metrics
+          clemgame --> file_utils
+          clemgame --> transcript_utils
+          cli --> clemcore
+          cli --> backends
+          transcript_utils --> file_utils
+  
+       </div>
+  </body>
+</html>

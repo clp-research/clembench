@@ -1,0 +1,12 @@
+[
+  {
+    "game_name": "adventuregame",
+    "game_path": "../clemgames/adventuregame",
+    "description": "Adventure game",
+    "main_game": "adventuregame",
+    "players": "one",
+    "image": "none",
+    "languages": ["en"],
+    "benchmark": ["2.0"]
+  }
+]

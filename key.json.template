@@ -1,0 +1,22 @@
+{
+  "openai": {
+    "organisation": "",
+    "api_key": ""
+  },
+  "anthropic": {
+    "api_key": ""
+  },
+  "alephalpha": {
+    "api_key": ""
+  },
+  "huggingface": {
+    "api_key": ""
+  },
+  "cohere": {
+    "api_key": ""
+  },
+  "generic_openai_compatible": {
+    "api_key": "",
+    "base_url": "http://127.0.0.1:8000/v1"
+  }
+}

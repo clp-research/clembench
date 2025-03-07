@@ -1,0 +1,173 @@
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      <div class="mermaid">
+    
+        classDiagram
+          class AlephAlpha {
+            client : Client
+            get_model_for(model_spec: ModelSpec) Model
+          }
+          class AlephAlphaModel {
+            client : Client
+            generate_response(messages: List[Dict]) Tuple[Any, Any, str]
+          }
+          class Anthropic {
+            client : Anthropic
+            get_model_for(model_spec: backends.ModelSpec) backends.Model
+          }
+          class AnthropicModel {
+            client : Anthropic
+            encode_image(image_path)
+            encode_messages(messages)
+            generate_response(messages: List[Dict]) Tuple[str, Any, str]
+          }
+          class Backend {
+            get_model_for(model_spec: ModelSpec)* Model
+          }
+          class Cohere {
+            client : Client
+            get_model_for(model_spec: backends.ModelSpec) backends.Model
+          }
+          class CohereModel {
+            client : Client
+            generate_response(messages: List[Dict]) Tuple[str, Any, str]
+          }
+          class ContextExceededError {
+            context_size : int
+            tokens_left : int
+            tokens_used : int
+          }
+          class CustomResponseModel {
+            generate_response(messages: List[Dict])* Tuple[Any, Any, str]
+          }
+          class GenericOpenAI {
+            client : OpenAI
+            get_model_for(model_spec: backends.ModelSpec) backends.Model
+            list_models()
+          }
+          class GenericOpenAIModel {
+            client : OpenAI
+            generate_response(messages: List[Dict]) Tuple[str, Any, str]
+          }
+          class Google {
+            get_model_for(model_spec: backends.ModelSpec) backends.Model
+          }
+          class GoogleModel {
+            model
+            download_image(image_url)
+            encode_images(images)
+            encode_messages(messages)
+            generate_response(messages: List[Dict]) Tuple[str, Any, str]
+            upload_file(file_path, mime_type)
+          }
+          class HuggingfaceLocal {
+            get_model_for(model_spec: backends.ModelSpec) backends.Model
+          }
+          class HuggingfaceLocalModel {
+            config
+            context_size : int
+            device : str
+            model
+            tokenizer : PreTrainedTokenizerFast
+            generate_response(messages: List[Dict], return_full_text: bool, log_messages: bool) Tuple[Any, Any, str]
+          }
+          class HuggingfaceMultimodal {
+            get_model_for(model_spec: backends.ModelSpec) backends.Model
+          }
+          class HuggingfaceMultimodalModel {
+            context_size
+            cull
+            device : str
+            idefics
+            model_name
+            model_type
+            multimodal_model
+            padding
+            processor
+            split_prefix
+            supports_multiple_images
+            template
+            generate_response(messages: List[Dict]) Tuple[Any, Any, str]
+          }
+          class HumanModel {
+            generate_response(messages: List[Dict])* Tuple[Any, Any, str]
+          }
+          class LlamaCPPLocal {
+            get_model_for(model_spec: backends.ModelSpec) backends.Model
+          }
+          class LlamaCPPLocalModel {
+            chat_formatter
+            context_size
+            model
+            generate_response(messages: List[Dict], return_full_text: bool) Tuple[Any, Any, str]
+          }
+          class Mistral {
+            client
+            get_model_for(model_spec: backends.ModelSpec) backends.Model
+            list_models()
+          }
+          class MistralModel {
+            client
+            generate_response(messages: List[Dict]) Tuple[str, Any, str]
+          }
+          class Model {
+            model_spec
+            generate_response(messages: List[Dict])* Tuple[Any, Any, str]
+            get_gen_arg(arg_name)
+            get_max_tokens()
+            get_name() str
+            get_temperature()
+            set_gen_arg(arg_name, arg_value)
+            set_gen_args()
+          }
+          class ModelSpec {
+            HUMAN_SPECS : list
+            PROGRAMMATIC_SPECS : list
+            from_dict(spec: Dict)
+            from_name(model_name: str)
+            has_attr(attribute)
+            has_backend()
+            has_temperature()
+            is_human()
+            is_programmatic()
+            unify(other: 'ModelSpec') 'ModelSpec'
+          }
+          class OpenAI {
+            client : OpenAI
+            get_model_for(model_spec: backends.ModelSpec) backends.Model
+            list_models()
+          }
+          class OpenAIModel {
+            client : OpenAI
+            encode_image(image_path)
+            encode_messages(messages)
+            generate_response(messages: List[Dict]) Tuple[str, Any, str]
+          }
+          CustomResponseModel --|> Model
+          HumanModel --|> Model
+          AlephAlpha --|> Backend
+          AlephAlphaModel --|> Model
+          Anthropic --|> Backend
+          AnthropicModel --|> Model
+          Cohere --|> Backend
+          CohereModel --|> Model
+          Google --|> Backend
+          GoogleModel --|> Model
+          HuggingfaceLocal --|> Backend
+          HuggingfaceLocalModel --|> Model
+          HuggingfaceMultimodal --|> Backend
+          HuggingfaceMultimodalModel --|> Model
+          LlamaCPPLocal --|> Backend
+          LlamaCPPLocalModel --|> Model
+          Mistral --|> Backend
+          MistralModel --|> Model
+          OpenAI --|> Backend
+          OpenAIModel --|> Model
+          GenericOpenAI --|> Backend
+          GenericOpenAIModel --|> Model
+          ModelSpec --o Model : model_spec
+  
+       </div>
+  </body>
+</html>

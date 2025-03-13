@@ -1,0 +1,11 @@
+clemcore
+lark==1.1.9 # adventuregame
+clingo==5.7.1 # adventuregame
+jinja2 # adventuregame
+spacy==3.7.4 # taboo
+nltk==3.8.1 # codenames taboo
+scikit-learn # privateshared
+matplotlib # mm_mapworld textmapworld
+networkx # mm_mapworld textmapworld
+imageio # mm_mapworld
+numpy # mm_mapworld

@@ -2,7 +2,11 @@
 
 ## Installation (Python 3.10+)
 
-Install the required library: `pip install clemcore`
+Install the required dependencies to run all games: 
+
+`pip install -r clembench/requirements.txt`
+
+This will also install the `clem` CLI tool.
 
 
 ### API Keys
@@ -25,7 +29,7 @@ After the installation you will have access to the `clem` CLI tool. The main fun
 (myclem) clem eval                     # computes overall performances measures; requires scores
 ```
 
-To add new custom models, populate the `model_registry.json` file with the required fields.
+To add new custom models, populate the `model_registry.json` file with the required fields  (template is provided as *model_registry.json.template*).
 
 To run your custom game, populate the `game_registry.json` file with the required fields and directory path (template is provided as *game_registry.json.template*).
 

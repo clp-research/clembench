@@ -1,0 +1,12 @@
+[
+  {
+    "game_name": "mm_mapworld",
+    "game_path": "../clemgames/mm_mapworld/mm_mapworld_main",
+    "description": "Multimodal Map World game",
+    "main_game": "mm_mapworld",
+    "player": "single",
+    "image": "single",
+    "languages": ["en"],
+    "benchmark": ["2.0"]
+  }
+]

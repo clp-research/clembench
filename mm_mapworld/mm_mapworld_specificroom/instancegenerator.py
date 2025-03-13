@@ -1,7 +1,7 @@
 from clemcore.clemgame import GameInstanceGenerator
 import sys
 import os
-sys.path.append(os.path.abspath('../clemgames/mm_mapworld'))
+sys.path.append(os.path.abspath('../clembench/mm_mapworld'))
 from mm_mapworld_maps import AbstractMap
 
 import numpy as np
@@ -21,11 +21,11 @@ SIZES = {"small": 4, "medium": 6, "large": 8}
 DISTS = {"on": [0], "close": [1,2], "far": [3,4]}
 SEED = 42
 RANDOM_PATH = 'random_test_images'
-IMAGE_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_specificroom", "resources", "images")
+IMAGE_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_specificroom", "resources", "images")
 # The dataset annotation is in english, making the language agnostic is going to be more challenging
-DATASET_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
-MAPPING_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "cats.json")
-TEMP_IMAGE_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_specificroom", "resources", "images")
+DATASET_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
+MAPPING_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "cats.json")
+TEMP_IMAGE_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_specificroom", "resources", "images")
 RESPONSE_REGEX = "^\{[\s]*\"description\":\s*\"([^\{]*?)\"\s*,\s*\"action\":\s*\"([^\{]*?)\"[\s]*\}$"
 MOVE_CONSTRUCTION = "GO: "
 FOUND_REGEX = "^DONE$"

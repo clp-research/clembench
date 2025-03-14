@@ -1,7 +1,7 @@
 from clemcore.clemgame import GameInstanceGenerator
 import sys
 import os
-sys.path.append(os.path.abspath('../clemgames/mm_mapworld'))
+sys.path.append(os.path.abspath('../clembench/mm_mapworld'))
 from mm_mapworld_maps import AbstractMap
 
 import numpy as np
@@ -23,12 +23,12 @@ CAPTIONS = True
 RANDOM_PATH = 'random_test_images'
 IMAGE_PATH = os.path.join("resources", "images")
 if CAPTIONS:
-    DATASET_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
-    MAPPING_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "captions.json")
+    DATASET_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
+    MAPPING_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "captions.json")
 else:
-    DATASET_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
-    MAPPING_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "cats.json")
-TEMP_IMAGE_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "images")
+    DATASET_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
+    MAPPING_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "cats.json")
+TEMP_IMAGE_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "images")
 MOVE_CONSTRUCTION = "GO: "
 STOP_CONSTRUCTION = "DONE"
 RESPONSE_REGEX = "^\{[\s]*\"description\":\s*\"([^\{]*?)\"\s*,\s*\"action\":\s*\"([^\{]*?)\"[\s]*\}$"

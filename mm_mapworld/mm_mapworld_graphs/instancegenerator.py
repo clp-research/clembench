@@ -1,7 +1,7 @@
 from clemcore.clemgame import GameInstanceGenerator
 import sys
 import os
-sys.path.append(os.path.abspath('../clemgames/mm_mapworld'))
+sys.path.append(os.path.abspath('../clembench/mm_mapworld'))
 from mm_mapworld_maps import AbstractMap
 
 import numpy as np
@@ -19,10 +19,10 @@ GRIDS = {"small": (4,4), "medium": (4,4), "large": (4,4)}
 SIZES = {"small": 4, "medium": 6, "large": 8} # num_nodes
 SEED = 42
 RANDOM_PATH = "random_test_images"
-IMAGE_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "images")
-DATASET_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
-MAPPING_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "captions.json")
-TEMP_IMAGE_PATH = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "images")
+IMAGE_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "images")
+DATASET_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "ade_imgs")
+MAPPING_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "ade_20k_reduced", "captions.json")
+TEMP_IMAGE_PATH = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "images")
 MOVE_CONSTRUCTION = "GO: "
 STOP_CONSTRUCTION = "DONE"
 GRAPH_REGEX = "\"graph\":\s*(\{\s*\"nodes\"\s*:\s*\[.*\]\s*,\s*\"edges\"\s*:\s*\{.*\})\s*\}$"
@@ -138,19 +138,19 @@ class MmMapWorldGraphsInstanceGenerator(GameInstanceGenerator):
         }
 
         prep_image_dir()
-        base_instance_path = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_graphs", "in", "instances.json")
+        base_instance_path = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_graphs", "in", "instances.json")
         
         if os.path.exists(base_instance_path):
             with open(base_instance_path, 'r') as f:
                 base_instances = json.load(f)
-            images_path = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_main", "resources", "images")
+            images_path = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_main", "resources", "images")
             assert os.path.exists(images_path), "run instancegenerator for mm_mapworld to create images directory."
             new_instances = {"experiments": base_instances["experiments"][:3]}
             for i in range(len(new_instances["experiments"])):
                 new_instances["experiments"][i]["game_instances"] = instances_from_instances(new_instances["experiments"][i]["game_instances"], prompts)
                 for j in range(len(new_instances["experiments"][i]["game_instances"])):
                     new_instances["experiments"][i]["game_instances"][j]["response_regex"] = RESPONSE_REGEX
-            new_instance_path = os.path.join("..", "clemgames", "mm_mapworld", "mm_mapworld_graphs", "in", "instances.json")
+            new_instance_path = os.path.join("..", "clembench", "mm_mapworld", "mm_mapworld_graphs", "in", "instances.json")
             with open(new_instance_path, "w", encoding='utf-8') as f:
                 json.dump(new_instances, f)
             if os.path.exists(TEMP_IMAGE_PATH):

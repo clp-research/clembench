@@ -10,7 +10,7 @@ results/
 # secrets
 key.json
 # optional game registry
-# game_registry.json
+game_registry.json
 # optional model registry
 model_registry.json
 # custom backends

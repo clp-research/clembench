@@ -5,62 +5,62 @@
             "game_instances": [
                 {
                     "game_id": 0,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/1.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/1.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/1.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/1.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 1,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/2.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/2.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/2.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/2.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 2,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/3.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/3.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/3.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/3.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 3,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/4.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/4.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/4.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/4.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 4,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/5.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/5.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/5.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/5.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 5,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/6.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/6.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/6.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/6.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 6,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/7.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/7.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/7.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/7.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 7,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/8.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/8.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/8.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/8.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 8,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/9.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/9.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/9.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/9.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 9,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/10.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/10.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/10.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/10.jpg",
                     "decision_turn": 3
                 }
             ],
@@ -83,62 +83,62 @@
             "game_instances": [
                 {
                     "game_id": 0,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/1.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/2.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/1.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/2.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 1,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/1.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/3.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/1.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/3.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 2,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/2.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/3.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/2.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/3.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 3,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/1.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/4.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/1.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/4.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 4,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/1.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/5.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/1.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/5.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 5,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/4.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/5.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/4.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/5.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 6,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/1.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/6.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/1.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/6.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 7,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/1.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/7.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/1.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/7.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 8,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/6.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/7.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/6.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/7.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 9,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/8.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/9.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/8.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/9.jpg",
                     "decision_turn": 3
                 }
             ],
@@ -161,62 +161,62 @@
             "game_instances": [
                 {
                     "game_id": 0,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/1.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/8.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/1.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/8.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 1,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/2.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/9.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/2.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/9.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 2,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/3.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/10.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/3.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/10.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 3,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/4.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/11.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/4.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/11.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 4,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/5.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/12.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/5.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/12.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 5,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/6.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/13.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/6.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/13.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 6,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/7.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/14.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/7.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/14.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 7,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/8.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/15.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/8.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/15.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 8,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/9.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/16.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/9.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/16.jpg",
                     "decision_turn": 3
                 },
                 {
                     "game_id": 9,
-                    "image_a": "../clemgames/multimodal_referencegame/resources/pentomino_images/10.jpg",
-                    "image_b": "../clemgames/multimodal_referencegame/resources/pentomino_images/17.jpg",
+                    "image_a": "../clembench/multimodal_referencegame/resources/pentomino_images/10.jpg",
+                    "image_b": "../clembench/multimodal_referencegame/resources/pentomino_images/17.jpg",
                     "decision_turn": 3
                 }
             ],

@@ -512,7 +512,7 @@ class MM_MapWorldScorer(GameScorer):
         self.store_results_file(self.scores, "scores.json",
                                 dialogue_pair=dialogue_pair,
                                 sub_dir=game_record_dir,
-                                root_dir=results_root)
+                                results_dir=results_root)
         
         # plotting & animation
         if not os.path.exists("tmp"):

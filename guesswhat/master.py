@@ -2,7 +2,7 @@ from typing import Dict, List
 import numpy as np
 import logging
 from clemcore.backends import Model
-from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameSpec, GameRecorder
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
 from clemcore.utils import file_utils, string_utils
@@ -15,27 +15,27 @@ logger = logging.getLogger(__name__)
 
 
 class Guesser(Player):
-    def __init__(self, model: Model, max_turns):
-        super().__init__(model)
+    def __init__(self, model: Model, game_recorder: GameRecorder, max_turns):
+        super().__init__(model, game_recorder)
         self.max_turns = max_turns
 
-    def _custom_response(self, messages, turn_idx):
+    def _custom_response(self, messages):
         # mock response
-        if turn_idx < self.max_turns-1: 
+        if self.current_turn < self.max_turns-1:
             return "QUESTION: Is it a mammal?"
         else: 
             return "GUESS: Table"
 
 class Answerer(Player):
-    def __init__(self, model: Model, max_turns):
-        super().__init__(model)
+    def __init__(self, model: Model, game_recorder: GameRecorder, max_turns):
+        super().__init__(model, game_recorder)
         self.max_turns = max_turns
         
-    def _custom_response(self, messeges, turn_idx):
+    def _custom_response(self, messeges):
         # mock response
-        if turn_idx < self.max_turns:
+        if self.current_turn < self.max_turns:
             return "ANSWER: No."
-        elif turn_idx >= self.max_turns:
+        elif self.current_turn >= self.max_turns:
             raise Exception("We should not be here...")
 
 
@@ -122,8 +122,8 @@ class GuessWhat(DialogueGameMaster):
         self.guesser_initial_prompt = self.guesser_initial_prompt.replace("$LIST$", str(self.candidate_list)).replace("$N$", str(self.max_turns-1))
         self.answerer_initial_prompt = self.answerer_initial_prompt.replace("$TARGET WORD$", str(self.target_word))
         
-        self.guesser = Guesser(self.player_models[0], self.max_turns)
-        self.answerer = Answerer(self.player_models[1], self.max_turns)
+        self.guesser = Guesser(self.player_models[0], self, self.max_turns)
+        self.answerer = Answerer(self.player_models[1], self, self.max_turns)
 
         self.add_player(self.guesser)
         self.add_player(self.answerer)

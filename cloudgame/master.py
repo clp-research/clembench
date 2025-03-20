@@ -7,7 +7,7 @@ import logging
 import numpy as np
 
 import clemcore.clemgame.metrics as ms
-from clemcore.clemgame import GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import GameBenchmark, DialogueGameMaster, GameScorer, GameSpec, GameRecorder
 from clemcore.clemgame import Player
 
 from clemcore.backends import Model, CustomResponseModel
@@ -17,10 +17,10 @@ from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOS
 logger = logging.getLogger(__name__)
 
 class Speaker(Player):
-    def __init__(self, backend: Model):
-        super().__init__(backend)  
+    def __init__(self, model: Model, game_recorder: GameRecorder):
+        super().__init__(model, game_recorder)
 
-    def _custom_response(self, messages, turn_idx) -> str:
+    def _custom_response(self, messages) -> str:
         """Return yes or no randomly."""
         k = random.randint(0, 1)   
         if k == 0:
@@ -31,10 +31,10 @@ class Speaker(Player):
 
 class Judge(Player):
 
-    def __init__(self):
-        super().__init__(CustomResponseModel())
+    def __init__(self, game_recorder):
+        super().__init__(CustomResponseModel(), game_recorder)
 
-    def _custom_response(self, messages, turn_idx):
+    def _custom_response(self, messages):
         return "That seems right."
 
 
@@ -63,8 +63,8 @@ class Cloudgame(DialogueGameMaster):
         self.image = os.path.join(self.game_path, game_instance["image"])
         self.initial_prompt = game_instance["prompt"]
 
-        self.speaker = Speaker(self.model_a)
-        self.judge = Judge()
+        self.speaker = Speaker(self.model_a, self)
+        self.judge = Judge(self)
 
         self.add_player(self.speaker)
         self.add_player(self.judge)

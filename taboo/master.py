@@ -4,7 +4,7 @@ import logging
 import numpy as np
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
+from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameRecorder
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
 from clemcore.utils import file_utils, string_utils
@@ -23,25 +23,38 @@ logger = logging.getLogger(__name__)
 
 class WordGuesser(Player):
 
-    def __init__(self, model: Model):
-        super().__init__(model)
+    def __init__(self, model: Model, recorder: GameRecorder):
+        super().__init__(model, recorder)
 
-    def _custom_response(self, messages, turn_idx):
-        # mock response
-        return f'GUESS: Pear'
+    def _custom_response(self, messages):
+        word = "Too few turns (0)"
+        if self.current_turn == 1:
+            word = "Apple"
+        if self.current_turn == 2:
+            word = "Banana"
+        if self.current_turn == 3:
+            word = "Cherry"
+        if self.current_turn >= 4:
+            word = f"Too many turns ({self.current_turn})"
+        return f'GUESS: {word}'
 
 
 class WordDescriber(Player):
 
-    def __init__(self, model: Model, max_turns):
-        super().__init__(model)
-        self.max_turns = max_turns
+    def __init__(self, model: Model, recorder: GameRecorder):
+        super().__init__(model, recorder)
 
-    def _custom_response(self, messages, turn_idx):
-        if turn_idx < self.max_turns:
-            return "CLUE: This is a difficult word to describe."
-        if turn_idx >= self.max_turns:
-            raise Exception("We should not be here...")
+    def _custom_response(self, messages):
+        clue = "Too few turns (0)"
+        if self.current_turn == 1:
+            clue = f"({self.current_turn}) My first clue is ..."
+        if self.current_turn == 2:
+            clue = f"({self.current_turn}) My second clue is ..."
+        if self.current_turn == 3:
+            clue = f"({self.current_turn}) My third clue is ..."
+        if self.current_turn >= 4:
+            clue = f"Too many turns ({self.current_turn})"
+        return f"CLUE: {clue}"
 
 
 def check_clue(clue: str, target_word: str, related_words: List[str],
@@ -101,8 +114,8 @@ class Taboo(DialogueGameMaster):
         self.describer_initial_prompt = self.describer_initial_prompt.replace("$N$", str(self.max_turns))
         self.guesser_initial_prompt = self.guesser_initial_prompt.replace("$N$", str(self.max_turns))
 
-        self.describer = WordDescriber(self.player_models[0], self.max_turns)
-        self.guesser = WordGuesser(self.player_models[1])
+        self.describer = WordDescriber(self.player_models[0], self)
+        self.guesser = WordGuesser(self.player_models[1], self)
 
         self.add_player(self.describer)
         self.add_player(self.guesser)
@@ -120,19 +133,45 @@ class Taboo(DialogueGameMaster):
         """Proceed as long as the word hasn't been guessed and the maximum
         length isn't reached.
         """
-        if self.invalid_response:
-            self.log_to_self("invalid format", "abort game")
-            return False
-        if self.clue_error is not None:
-            self.log_to_self("invalid clue", self.clue_error["message"])
-            return False  # stop game if clue is wrong (for now)
-        if self.guess_word == self.target_word:
-            self.log_to_self("correct guess", "end game")
-            return False
-        if self.current_turn >= self.max_turns:
-            self.log_to_self("max turns reached", str(self.max_turns))
+        if self.is_terminal():
+            if self.is_aborted():
+                self.log_to_self("invalid format", "abort game")
+            if self.is_clue_error():  # stop game if clue is wrong (for now)
+                self.log_to_self("invalid clue", self.clue_error["message"])
+            if self.is_turn_limit_reached():
+                self.log_to_self("max turns reached", str(self.max_turns))
+            if self.is_success():
+                self.log_to_self("correct guess", "end game")
             return False
         return True
+
+    def is_terminal(self):
+        if self.is_aborted():
+            return True
+        if self.is_failure():
+            return True
+        if self.is_success():
+            return True
+        return False
+
+    def is_aborted(self):
+        return self.invalid_response
+
+    def is_failure(self):
+        if self.is_clue_error():
+            return True
+        if self.is_turn_limit_reached():
+            return True
+        return False
+
+    def is_clue_error(self):
+        return self.clue_error is not None
+
+    def is_turn_limit_reached(self):
+        return self.current_turn >= self.max_turns
+
+    def is_success(self):
+        return self.guess_word == self.target_word
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         if player == self.guesser:
@@ -179,6 +218,14 @@ class Taboo(DialogueGameMaster):
             # if not correct, then we add the guess and go on; otherwise we will stop immediately
             if self.guess_word != self.target_word:
                 self.add_user_message(self.describer, utterance)
+
+    def compute_turn_score(self):
+        return 1 if self.is_success() else 0
+
+    def compute_episode_score(self):
+        if self.is_success():
+            return 100 / (self.current_turn + 1)  # zero-based
+        return 0
 
 
 class TabooScorer(GameScorer):
@@ -271,7 +318,7 @@ class TabooGameBenchmark(GameBenchmark):
 
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
-        #TODO: experiment could also be set through GameSpec
+        # TODO: experiment could also be set through GameSpec
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
         return Taboo(self.game_name, self.game_path, experiment, player_models)

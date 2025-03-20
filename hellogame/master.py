@@ -2,7 +2,7 @@ import string
 from typing import Dict, List
 
 from clemcore.backends import Model, CustomResponseModel
-from clemcore.clemgame import GameBenchmark, Player, DialogueGameMaster, GameSpec
+from clemcore.clemgame import GameBenchmark, Player, DialogueGameMaster, GameSpec, GameRecorder
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,21 +10,21 @@ logger = logging.getLogger(__name__)
 
 class Greeted(Player):
 
-    def __init__(self, name):
-        super().__init__(CustomResponseModel())
+    def __init__(self, name, game_recorder: GameRecorder):
+        super().__init__(CustomResponseModel(), game_recorder)
         self.name = name
 
-    def _custom_response(self, messages, turn_idx):
+    def _custom_response(self, messages):
         return f"{self.name}: Hi, thanks for having me!"
 
 
 class Greeter(Player):
 
-    def __init__(self, model: Model):
-        super().__init__(model)
+    def __init__(self, model: Model, game_recorder: GameRecorder):
+        super().__init__(model, game_recorder)
 
-    def _custom_response(self, messages, turn_idx):
-        raise NotImplementedError("This should not be called, but the remote APIs.")
+    def _custom_response(self, messages):
+        return "GREET: Hello Ted!"
 
 
 class HelloGame(DialogueGameMaster):
@@ -37,14 +37,16 @@ class HelloGame(DialogueGameMaster):
         self.language: int = experiment["language"]  # fetch experiment parameters here
         self.turns = []
         self.required_words = ["welcome", "hello"]
+        self.missing_words = []
         self.success = True
+        self.aborted = False
 
     def _on_setup(self, **game_instance):
         self.game_instance = game_instance  # fetch game parameters here
 
         # Create the players
-        self.greeted = Greeted(game_instance["target_name"])
-        self.greeter = Greeter(self.player_models[0])
+        self.greeted = Greeted(game_instance["target_name"], self)
+        self.greeter = Greeter(self.player_models[0], self)
 
         # Add the players: these will be logged to the records interactions.json
         # Note: During game play the players will be called in the order added here
@@ -61,6 +63,12 @@ class HelloGame(DialogueGameMaster):
         # Determine if the game should proceed. This is also called once initially.
         if len(self.turns) == 0:
             return True
+        if self.aborted:
+            self.log_to_self("invalid format", "abort game")
+        if self.success:
+            self.log_to_self("greeting successful", "end game")
+        else:
+            self.log_to_self("greeting failed", f"missing words=[{','.join(self.missing_words)}]")
         return False
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
@@ -68,6 +76,7 @@ class HelloGame(DialogueGameMaster):
         if player == self.greeter:
             # Check rule: utterance starts with key word
             if not utterance.startswith("GREET:"):
+                self.aborted = True
                 self.success = False
                 return True
             # Check rule: required words are included
@@ -76,6 +85,7 @@ class HelloGame(DialogueGameMaster):
             for required_word in self.required_words:
                 if required_word not in utterance:
                     self.success = False
+                    self.missing_words.append(required_word)
         return True
 
     def _on_after_turn(self, turn_idx: int):
@@ -85,11 +95,15 @@ class HelloGame(DialogueGameMaster):
         if player == self.greeter:
             self.add_user_message(self.greeted, utterance)
 
-    def compute_scores(self) -> None:
+    def compute_turn_score(self):
+        return self.compute_episode_score()  # single turn game
+
+    def compute_episode_score(self):
         score = 0
         if self.success:
             score = 1
-        self.log_episode_score('Accuracy', score)
+        return score
+
 
 class HelloGameBenchmark(GameBenchmark):
 

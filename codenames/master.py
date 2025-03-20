@@ -1,9 +1,10 @@
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Union
 from string import Template
 import random, copy
 import logging
 import os
 
+from clemcore import backends
 from clemcore.clemgame import GameScorer, GameBenchmark, Player, DialogueGameMaster, GameSpec
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED
@@ -23,14 +24,11 @@ class CodenamesGame(DialogueGameMaster):
     which player B has to guess from the given clue.
     """
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_backends: List[str]):
-        super().__init__(game_name, game_path, experiment, player_backends)
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[backends.Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
         self.experiment = experiment
         self.opponent_difficulty: bool = experiment[OPPONENT_DIFFICULTY]
 
-        self.model_a: str = player_backends[0]
-        self.model_b: str = player_backends[1]
-        
     def _on_setup(self, **game_instance):
         self.game_instance = game_instance
         self.board: CodenamesBoard = CodenamesBoard(game_instance[ASSIGNMENTS][TEAM], 
@@ -49,8 +47,8 @@ class CodenamesGame(DialogueGameMaster):
         self.parsed_request_count = 0
         self.violated_request_count = 0
 
-        self.cluegiver: Player = ClueGiver(self.model_a, self.experiment["flags"])
-        self.guesser: Player = Guesser(self.model_b, self.experiment["flags"])
+        self.cluegiver: ClueGiver = ClueGiver(self.player_models[0], self, self.experiment["flags"])
+        self.guesser: Guesser = Guesser(self.player_models[1], self, self.experiment["flags"])
         self.add_player(self.cluegiver)
         self.add_player(self.guesser)
     
@@ -136,7 +134,7 @@ class CodenamesGame(DialogueGameMaster):
             return False
         return True
 
-    def _validate_player_response(self, player: Player, utterance: str) -> bool:
+    def _validate_player_response(self, player: Union[ClueGiver, Guesser], utterance: str) -> bool:
         self.request_count += 1
         self.invalid_response = False
         if player == self.cluegiver:
@@ -162,7 +160,7 @@ class CodenamesGame(DialogueGameMaster):
         
         return not self.invalid_response
     
-    def _on_parse_response(self, player: Player, utterance: str) -> Tuple[str, bool]:
+    def _on_parse_response(self, player: Union[ClueGiver, Guesser], utterance: str) -> Tuple[str, bool]:
         self.parsed_request_count += 1
         if player == self.cluegiver:
             utterance = player.parse_response(utterance, self.board.get_all_hidden_words())
@@ -175,19 +173,19 @@ class CodenamesGame(DialogueGameMaster):
                 
             return parsed_utterance, False
         
-    def _on_before_reprompt(self, player: Player):
+    def _on_before_reprompt(self, player: Union[ClueGiver, Guesser]):
         logger.debug("Reprompting...")
         player.retries += 1
         player.flags_engaged["REPROMPT ON ERROR"] += 1
         self.add_user_message(player, f"Your answer did not follow the requested format: {self.last_error_message}")
     
-    def _should_reprompt(self, player: Player):
+    def _should_reprompt(self, player: Union[ClueGiver, Guesser]):
         if player.flags["REPROMPT ON ERROR"]:
             if player.retries < MAX_RETRIES:
                 return self.invalid_response
         return False
     
-    def _after_add_player_response(self, player: Player, utterance: str):
+    def _after_add_player_response(self, player: Union[ClueGiver, Guesser], utterance: str):
         if player == self.cluegiver:
             # score cluegiver precision
             for target in player.targets:
@@ -272,8 +270,8 @@ class CodenamesGameBenchmark(GameBenchmark):
         super().__init__(game_spec)
         random.seed(SEED)
 
-    def create_game_master(self, experiment: Dict, player_backends: List[str]) -> DialogueGameMaster:
-        return CodenamesGame(self.game_name, self.game_path, experiment, player_backends)
+    def create_game_master(self, experiment: Dict, player_models: List[backends.Model]) -> DialogueGameMaster:
+        return CodenamesGame(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment_config, game_instance) -> GameScorer:
         return CodenamesScorer(self.game_name, experiment_config, game_instance)

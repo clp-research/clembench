@@ -38,7 +38,7 @@ class AdventureGameMaster(DialogueGameMaster):
         # initialize IF interpreter:
         self.if_interpreter = AdventureIFInterpreter(self.game_path, self.game_instance)
         # create clem player:
-        self.player = Player(self.player_models[0])
+        self.player = Player(self.player_models[0], self)
         # Add the players: these will be logged to the records interactions.json
         # Note: During game play the players will be called in the order added here
         self.add_player(self.player)

@@ -23,37 +23,23 @@ logger = logging.getLogger(__name__)
 
 class WordGuesser(Player):
 
-    def __init__(self, model: Model, recorder: GameRecorder):
-        super().__init__(model, recorder)
+    def __init__(self, model: Model):
+        super().__init__(model)
+        self._custom_responses = ["Apple", "Banana", "Cherry"]
 
     def _custom_response(self, messages):
-        word = "Too few turns (0)"
-        if self.current_turn == 1:
-            word = "Apple"
-        if self.current_turn == 2:
-            word = "Banana"
-        if self.current_turn == 3:
-            word = "Cherry"
-        if self.current_turn >= 4:
-            word = f"Too many turns ({self.current_turn})"
+        word = self._custom_responses.pop(0)
         return f'GUESS: {word}'
 
 
 class WordDescriber(Player):
 
-    def __init__(self, model: Model, recorder: GameRecorder):
-        super().__init__(model, recorder)
+    def __init__(self, model: Model):
+        super().__init__(model)
+        self._custom_responses = ["(1) My first clue is ...", "(2) My second clue is ...", "(3) My third clue is ..."]
 
     def _custom_response(self, messages):
-        clue = "Too few turns (0)"
-        if self.current_turn == 1:
-            clue = f"({self.current_turn}) My first clue is ..."
-        if self.current_turn == 2:
-            clue = f"({self.current_turn}) My second clue is ..."
-        if self.current_turn == 3:
-            clue = f"({self.current_turn}) My third clue is ..."
-        if self.current_turn >= 4:
-            clue = f"Too many turns ({self.current_turn})"
+        clue = self._custom_responses.pop(0)
         return f"CLUE: {clue}"
 
 
@@ -98,7 +84,7 @@ class Taboo(DialogueGameMaster):
 
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
-        self.max_turns: int = experiment["max_turns"]
+        self.max_rounds: int = experiment["max_turns"]
         self.describer_initial_prompt = self.experiment["describer_initial_prompt"]
         self.guesser_initial_prompt = self.experiment["guesser_initial_prompt"]
 
@@ -111,11 +97,11 @@ class Taboo(DialogueGameMaster):
         self.describer_initial_prompt = self.describer_initial_prompt.replace("$TARGET_WORD$", self.target_word)
         rel_words = f"- {self.related_words[0]}\n- {self.related_words[1]}\n- {self.related_words[2]}"
         self.describer_initial_prompt = self.describer_initial_prompt.replace("$REL_WORD$", rel_words)
-        self.describer_initial_prompt = self.describer_initial_prompt.replace("$N$", str(self.max_turns))
-        self.guesser_initial_prompt = self.guesser_initial_prompt.replace("$N$", str(self.max_turns))
+        self.describer_initial_prompt = self.describer_initial_prompt.replace("$N$", str(self.max_rounds))
+        self.guesser_initial_prompt = self.guesser_initial_prompt.replace("$N$", str(self.max_rounds))
 
-        self.describer = WordDescriber(self.player_models[0], self)
-        self.guesser = WordGuesser(self.player_models[1], self)
+        self.describer = WordDescriber(self.player_models[0])
+        self.guesser = WordGuesser(self.player_models[1])
 
         self.add_player(self.describer)
         self.add_player(self.guesser)
@@ -125,13 +111,11 @@ class Taboo(DialogueGameMaster):
         self.guess_word = None
 
     def _on_before_game(self):
-        self.add_user_message(self.describer, self.describer_initial_prompt)
+        self.set_context_for(self.describer, self.describer_initial_prompt)
         # add guesser prompt only later after first clue is given
-        # thus we avoid the problem that the history contains consecutive messages of "user"
 
     def _does_game_proceed(self):
-        """Proceed as long as the word hasn't been guessed and the maximum
-        length isn't reached.
+        """Proceed as long as the word hasn't been guessed and the maximum length isn't reached.
         """
         if self.is_terminal():
             if self.is_aborted():
@@ -139,7 +123,7 @@ class Taboo(DialogueGameMaster):
             if self.is_clue_error():  # stop game if clue is wrong (for now)
                 self.log_to_self("invalid clue", self.clue_error["message"])
             if self.is_turn_limit_reached():
-                self.log_to_self("max turns reached", str(self.max_turns))
+                self.log_to_self("max rounds reached", str(self.max_rounds))
             if self.is_success():
                 self.log_to_self("correct guess", "end game")
             return False
@@ -168,7 +152,7 @@ class Taboo(DialogueGameMaster):
         return self.clue_error is not None
 
     def is_turn_limit_reached(self):
-        return self.current_turn >= self.max_turns
+        return self.current_round >= self.max_rounds
 
     def is_success(self):
         return self.guess_word == self.target_word
@@ -202,29 +186,22 @@ class Taboo(DialogueGameMaster):
             self.log_to_self("valid clue", clue)
         return True
 
-    def _after_add_player_response(self, player: Player, utterance: str):
+    def _on_valid_player_response(self, player: Player, parsed_response: str):
         if player == self.describer:
-            if self.current_turn == 0:  # special case: merge first clue into prompt
-                prompt_with_first_clue = f"{self.guesser_initial_prompt}\n\n{utterance}"
-                self.add_user_message(self.guesser, prompt_with_first_clue)
+            if self.current_round == 0:  # special case: merge first clue into prompt
+                prompt_with_first_clue = f"{self.guesser_initial_prompt}\n\n{parsed_response}"
+                self.set_context_for(self.guesser, prompt_with_first_clue)
             else:
-                self.add_user_message(self.guesser, utterance)
+                self.set_context_for(self.guesser, parsed_response)
         if player == self.guesser:
-            # NOTE(jg): would be interesting to test whether the model behaves
-            #   differently when knowing about the guesser's guess or not knowing
-            #   about the guesser's guess. Human players would take the "direction
-            #   of thinking" into account
+            self.set_context_for(self.describer, parsed_response)
 
-            # if not correct, then we add the guess and go on; otherwise we will stop immediately
-            if self.guess_word != self.target_word:
-                self.add_user_message(self.describer, utterance)
-
-    def compute_turn_score(self):
+    def compute_response_score(self, response, context):
         return 1 if self.is_success() else 0
 
     def compute_episode_score(self):
         if self.is_success():
-            return 100 / (self.current_turn + 1)  # zero-based
+            return 100 / (self.current_round + 1)  # zero-based
         return 0
 
 

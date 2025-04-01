@@ -2,6 +2,7 @@ import os
 
 from typing import List, Dict, Tuple
 
+from clemcore import backends
 from clemcore.backends import Model
 from clemcore.utils import file_utils
 import clemcore.clemgame.metrics as metrics
@@ -13,8 +14,16 @@ import numpy as np
 
 from if_wrapper import AdventureIFInterpreter
 
-
 logger = logging.getLogger(__name__)
+
+
+class Adventurer(Player):
+
+    def __init__(self, model: backends.Model):
+        super().__init__(model)
+
+    def _custom_response(self, context: Dict) -> str:
+        return "Go"
 
 
 class AdventureGameMaster(DialogueGameMaster):
@@ -23,9 +32,10 @@ class AdventureGameMaster(DialogueGameMaster):
     Runs the benchmark by prompting the model and passing model outputs to the IF interpreter.
     Handles prompted format adherence checks and creates episode records.
     """
+
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
-        self.turns = []
+        self.game_path = game_path
         self.success = True
         self.invalid_format: str = ""  # to track responses with invalid format
         self.finished: bool = False  # game finished successfully
@@ -38,7 +48,7 @@ class AdventureGameMaster(DialogueGameMaster):
         # initialize IF interpreter:
         self.if_interpreter = AdventureIFInterpreter(self.game_path, self.game_instance)
         # create clem player:
-        self.player = Player(self.player_models[0], self)
+        self.player = Adventurer(self.player_models[0])
         # Add the players: these will be logged to the records interactions.json
         # Note: During game play the players will be called in the order added here
         self.add_player(self.player)
@@ -63,9 +73,10 @@ class AdventureGameMaster(DialogueGameMaster):
         # combine prompt with initial room description as first message:
         first_message = self.game_instance["prompt"] + initial_room_desc
         # add the initial prompts to the message history:
-        self.add_user_message(self.player, first_message)
+        self.set_context_for(self.player, first_message)
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
+        self.log_message_to_self(f"Round: {self.current_round}")
         # logger.info(f"Player response:\n{utterance}")
         # check player response:
         if player == self.player:
@@ -89,7 +100,7 @@ class AdventureGameMaster(DialogueGameMaster):
                     return False
         return True
 
-    def _on_parse_response(self, player: Player, utterance: str) -> Tuple[str, bool]:
+    def _parse_response(self, player: Player, utterance: str) -> str:
         """
         Decide if a response utterance should be modified. If not simply return the utterance.
         When a modified utterance and a true value is returned, then a 'parse' event is logged.
@@ -104,7 +115,7 @@ class AdventureGameMaster(DialogueGameMaster):
         if self.if_variant == 'plan':
             # do not split for next actions plan if action is 'done'
             if utterance == "> done":
-                return utterance, True
+                return utterance
             # split the response to extract only the planned actions:
             split_response = utterance.split("\nNext actions:")
             if len(split_response) >= 2:
@@ -115,18 +126,7 @@ class AdventureGameMaster(DialogueGameMaster):
                 self.plan_history.append(plan_sequence)
                 # record the new plan for processing:
                 self.log_to_self(f"turn_plan", plan_sequence)
-                return utterance, True
-            else:
-                return utterance, False
-
-        return utterance, True
-
-    def _on_before_turn(self, turn_idx: int):
-        """
-        After turn increment, before prompting.
-        Logs current turn index for convenient comparison of runtime logs and transcripts.
-        """
-        self.log_message_to_self(f"Turn {turn_idx}")
+        return utterance
 
     def _does_game_proceed(self) -> bool:
         """
@@ -144,107 +144,101 @@ class AdventureGameMaster(DialogueGameMaster):
             self.log_to_self("adventure_finished", list(self.goals_achieved))  # can be JSON'd; for easier eval
             # return False  # do not stop game when all goal states have been achieved
         # stop game when turn limit is reached:
-        if len(self.turns) >= self.game_instance['max_turns']:
-            self.log_to_self("turn_limit_reached", f"Turn limit {self.game_instance['max_turns']} reached, end episode.")
+        if self.current_round >= self.game_instance['max_turns']:
+            self.log_to_self("turn_limit_reached",
+                             f"Turn limit {self.game_instance['max_turns']} reached, end episode.")
             return False
         # stop game when model used DONE action:
         if self.model_done:
-            self.log_to_self("model_done", f"Model produced DONE action at turn {len(self.turns)}, end episode.")
+            self.log_to_self("model_done",
+                             f"Model produced DONE action at turn {self.current_round}, end episode.")
             return False
         # otherwise keep playing:
         return True
 
-    def _on_after_turn(self, turn_idx: int):
-        """
-        Play loop hook: Called after all players have been prompted and their responses have been parsed+validated.
-        """
-        if self._does_game_proceed():  # only pass last message to IF if the game is still going
-            # IF INTERACTION
-            # get the last player action from message history:
-            last_action: str = self.messages_by_names[self.player.descriptor][-1]['content']
-            # logger.info(f"Raw last message:\n{last_action}")
-            # strip player action to IF input; only first line action command is used:
-            if_input: str = last_action[1:].split("\n")[0].strip()
-            logger.info(f"Stripped IF input: {if_input}")
+    def _on_valid_player_response(self, player: Player, parsed_response: str):
+        # IF INTERACTION
+        # logger.info(f"Raw last message:\n{last_action}")
+        # strip player action to IF input; only first line action command is used:
+        if_input: str = parsed_response[1:].split("\n")[0].strip()
+        logger.info(f"Stripped IF input: {if_input}")
 
-            # count achieved goals:
-            prior_goal_count = len(self.goals_achieved)
+        # count achieved goals:
+        prior_goal_count = len(self.goals_achieved)
 
-            # send to IF interpreter to process action:
-            goals_achieved, if_response, action_info = self.if_interpreter.process_action(if_input)
-            # IF interpreter returns: set of achieved goal states in string form,
-            # textual feedback response, failure/action info dict
-            logger.info(f"IF response: {if_response}")
+        # send to IF interpreter to process action:
+        goals_achieved, if_response, action_info = self.if_interpreter.process_action(if_input)
+        # IF interpreter returns: set of achieved goal states in string form,
+        # textual feedback response, failure/action info dict
+        logger.info(f"IF response: {if_response}")
 
-            if 'fail_type' in action_info:
-                # record failure dict for scoring:
-                self.log_to_self("action_fail", action_info)  # can be JSON'd; for easier eval
-            else:
-                self.log_to_self("action_info", action_info)
+        if 'fail_type' in action_info:
+            # record failure dict for scoring:
+            self.log_to_self("action_fail", action_info)  # can be JSON'd; for easier eval
+        else:
+            self.log_to_self("action_info", action_info)
 
-            # catch DONE action to end game after this turn:
-            if 'done_action' in action_info:
-                logger.info(f"model_done: {action_info['done_action']}")
-                # self.log_to_self("model_done", if_input)
-                self.model_done = True
+        # catch DONE action to end game after this turn:
+        if 'done_action' in action_info:
+            logger.info(f"model_done: {action_info['done_action']}")
+            # self.log_to_self("model_done", if_input)
+            self.model_done = True
 
-            # if 'exploration_info' in action_info:
-            #    self.log_to_self("exploration_info", action_info['exploration_info'])
+        # if 'exploration_info' in action_info:
+        #    self.log_to_self("exploration_info", action_info['exploration_info'])
 
-            # handle goals:
-            self.goals_achieved = goals_achieved
-            # count goals achieved this turn:
-            post_goal_count = len(self.goals_achieved)
-            # calculate turn goal score; can be negative if a goal is 'unachieved':
-            turn_score = post_goal_count - prior_goal_count
-            # combine goal info into dict:
-            goal_status = {"goal_states_achieved": list(self.goals_achieved), "turn_goal_score": turn_score}
-            # record goal status dict for scoring:
-            self.log_to_self("goal_status", goal_status)  # can be JSON'd; for easier eval
+        # handle goals:
+        self.goals_achieved = goals_achieved
+        # count goals achieved this turn:
+        post_goal_count = len(self.goals_achieved)
+        # calculate turn goal score; can be negative if a goal is 'unachieved':
+        turn_score = post_goal_count - prior_goal_count
+        # combine goal info into dict:
+        goal_status = {"goal_states_achieved": list(self.goals_achieved), "turn_goal_score": turn_score}
+        # record goal status dict for scoring:
+        self.log_to_self("goal_status", goal_status)  # can be JSON'd; for easier eval
 
-            if self.if_variant == 'plan':
-                # current plan viability:
-                # get latest/current plan from plan history:
-                cur_plan: list = self.plan_history[-1]
-                self.log_to_self("current_plan", f"{str(cur_plan)}")
-                # get length of plan:
-                cur_plan_command_count: int = len(cur_plan)
-                self.log_to_self("plan_length", cur_plan_command_count)
-                # pass plan to IF interpreter for execution:
-                cur_plan_results: list = self.if_interpreter.execute_plan_sequence(cur_plan)
-                self.log_to_self("plan_results", cur_plan_results)
-                # plan result sequences cut off after the first failed plan action
-                # so the sequence at this point only contains one failed action
-                # or successful actions followed by a single failed action
-                # get successful planned actions:
-                cur_plan_successes: list = list()
-                for plan_result in cur_plan_results:
-                    # plan_result[2] is action_info dict, if it does not contain fail_type key, the action succeeded
-                    if 'fail_type' not in plan_result[2]:
-                        cur_plan_successes.append(plan_result)
-                # calculate the ratio of successful planned actions:
-                cur_plan_success_ratio: float = len(cur_plan_successes) / cur_plan_command_count
-                self.log_to_self("plan_command_success_ratio", cur_plan_success_ratio)
-                # append success ratio to history for 'bad' plan scoring:
-                self.plan_success_ratio_history.append(cur_plan_success_ratio)
-                # plan following:
-                if len(self.plan_history) >= 2:
-                    prior_plan: list = self.plan_history[-2]
-                    first_prior_plan_command: str = prior_plan[0]
-                    plan_followed: int = 0
-                    # check if this turn's action matches the next action planned in the turn before:
-                    if first_prior_plan_command == if_input:
-                        plan_followed = 1
-                    else:
-                        plan_followed = 0
-                    # since plan scoring is intended to check for plan adaptation, only two-turn plan execution is
-                    # covered; longer planned sequences and their execution would require this to be a lot more
-                    # elaborate and recursive than this
-                    self.log_to_self("plan_followed", plan_followed)  # can be JSON'd; for easier eval
-            # add IF response to dialog:
-            self.add_user_message(self.player, if_response)
-            # record successful turn:
-            self.turns.append(self.success)
+        if self.if_variant == 'plan':
+            # current plan viability:
+            # get latest/current plan from plan history:
+            cur_plan: list = self.plan_history[-1]
+            self.log_to_self("current_plan", f"{str(cur_plan)}")
+            # get length of plan:
+            cur_plan_command_count: int = len(cur_plan)
+            self.log_to_self("plan_length", cur_plan_command_count)
+            # pass plan to IF interpreter for execution:
+            cur_plan_results: list = self.if_interpreter.execute_plan_sequence(cur_plan)
+            self.log_to_self("plan_results", cur_plan_results)
+            # plan result sequences cut off after the first failed plan action
+            # so the sequence at this point only contains one failed action
+            # or successful actions followed by a single failed action
+            # get successful planned actions:
+            cur_plan_successes: list = list()
+            for plan_result in cur_plan_results:
+                # plan_result[2] is action_info dict, if it does not contain fail_type key, the action succeeded
+                if 'fail_type' not in plan_result[2]:
+                    cur_plan_successes.append(plan_result)
+            # calculate the ratio of successful planned actions:
+            cur_plan_success_ratio: float = len(cur_plan_successes) / cur_plan_command_count
+            self.log_to_self("plan_command_success_ratio", cur_plan_success_ratio)
+            # append success ratio to history for 'bad' plan scoring:
+            self.plan_success_ratio_history.append(cur_plan_success_ratio)
+            # plan following:
+            if len(self.plan_history) >= 2:
+                prior_plan: list = self.plan_history[-2]
+                first_prior_plan_command: str = prior_plan[0]
+                plan_followed: int = 0
+                # check if this turn's action matches the next action planned in the turn before:
+                if first_prior_plan_command == if_input:
+                    plan_followed = 1
+                else:
+                    plan_followed = 0
+                # since plan scoring is intended to check for plan adaptation, only two-turn plan execution is
+                # covered; longer planned sequences and their execution would require this to be a lot more
+                # elaborate and recursive than this
+                self.log_to_self("plan_followed", plan_followed)  # can be JSON'd; for easier eval
+        # add IF response to dialog:
+        self.set_context_for(self.player, if_response)
 
     def _on_after_game(self):
         # record final results once game episode has ended:
@@ -257,6 +251,7 @@ class AdventureGameScorer(GameScorer):
     GameScorer subclass for AdventureGame.
     Reads episode records, counts failures, calculates scores and stores the results in score files.
     """
+
     def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
         super().__init__(game_name, experiment, game_instance)
 
@@ -337,7 +332,8 @@ class AdventureGameScorer(GameScorer):
                         turn_exploration['pragmatic_action'] = 1
                     else:
                         turn_exploration['pragmatic_action'] = 0
-                    turn_exploration['effective_epistemic_gain_amount'] = exploration_info['effective_epistemic_gain_amount']
+                    turn_exploration['effective_epistemic_gain_amount'] = exploration_info[
+                        'effective_epistemic_gain_amount']
                     turn_exploration['known_entities_ratio'] = exploration_info['known_entities_ratio']
                     turn_exploration['visited_rooms_ratio'] = exploration_info['visited_rooms_ratio']
                     turn_exploration['known_goal_entities_ratio'] = exploration_info['known_goal_entities_ratio']
@@ -394,10 +390,12 @@ class AdventureGameScorer(GameScorer):
             if turn_exploration:
                 self.log_turn_score(turn_idx, 'epistemic_action', turn_exploration['epistemic_action'])
                 self.log_turn_score(turn_idx, 'pragmatic_action', turn_exploration['pragmatic_action'])
-                self.log_turn_score(turn_idx, 'effective_epistemic_gain_amount', turn_exploration['effective_epistemic_gain_amount'])
+                self.log_turn_score(turn_idx, 'effective_epistemic_gain_amount',
+                                    turn_exploration['effective_epistemic_gain_amount'])
                 self.log_turn_score(turn_idx, 'known_entities_ratio', turn_exploration['known_entities_ratio'])
                 self.log_turn_score(turn_idx, 'visited_rooms_ratio', turn_exploration['visited_rooms_ratio'])
-                self.log_turn_score(turn_idx, 'known_goal_entities_ratio', turn_exploration['known_goal_entities_ratio'])
+                self.log_turn_score(turn_idx, 'known_goal_entities_ratio',
+                                    turn_exploration['known_goal_entities_ratio'])
 
             # append turn values to episode-level lists:
             turn_scores.append(turn_score)

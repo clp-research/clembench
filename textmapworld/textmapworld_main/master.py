@@ -94,13 +94,10 @@ class PathDescriber(Player):
 
     def _custom_response(self, context) -> str:
         "Generate the response for the player"
-        for message in self._messages[::-1]:
-            if message["role"] == "user":
-                content = message["content"]
-                found = re.search(self.move_construction, content, re.IGNORECASE)
-                if found:
-                    utterance = found.group(1).lower()
-                    break
+        utterance = None
+        found = re.search(self.move_construction, context["content"], re.IGNORECASE)
+        if found:
+            utterance = found.group(1).lower()
         validation = self.validate_answer(utterance)
         if self.directions_next_node == None:
             return "Game needs to be aborted"

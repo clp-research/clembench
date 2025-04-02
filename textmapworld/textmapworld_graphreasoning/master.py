@@ -29,9 +29,10 @@ class PathGuesser(Player):
     def _custom_response(self, context):
         random_path = random.choice(["north", "south", "east", "west"])
         answer = {}
-        answer["Action"] = f"GO: {random_path}"
-        answer["Graph"] = 'nodes: {}, edges: {}'
-        return str(answer)
+        answer["action"] = f"GO: {random_path}"
+        answer["graph"] = {"nodes": [], "edges": {}}
+        answer = str(answer).replace("'", "\"")  # we have to undo the quote inversion of str()
+        return answer
 
 
 class PathDescriber(Player):
@@ -97,17 +98,17 @@ class PathDescriber(Player):
 
     def _custom_response(self, context) -> str:
         "Generate the response for the player"
-        for message in self._messages[::-1]:
-            if message["role"] == "user":
-                try:
-                    content = ast.literal_eval(message["content"])["action"]
-                    self.graph_info = ast.literal_eval(message["content"])["graph"]
-                except:
-                    return "Game needs to be aborted"
-                move = re.search(self.move_construction, content, re.IGNORECASE)
-                if move:
-                    utterance = move.group(1)
-                    break
+        try:
+            content = ast.literal_eval(context["content"])["action"]
+            self.graph_info = ast.literal_eval(context["content"])["graph"]
+        except:
+            return "Game needs to be aborted"
+        utterance = None
+        move = re.search(self.move_construction, content, re.IGNORECASE)
+        if move:
+            utterance = move.group(1)
+        logger.info(f"context: {context}")
+        logger.info(f"utterance: {utterance}")
         validation = self.validate_answer(utterance)
         if self.directions_next_node == None:
             return "Game needs to be aborted"

@@ -1,8 +1,3 @@
-import random
-
-# from random import choice
-
-
 class GuessValidator:
     def __init__(self, target_word):
         self.target_word = target_word
@@ -29,12 +24,11 @@ class GuessValidator:
             response = " ".join(response)
             return response
 
-
         result = ["⬜"] * len(target_word)
         target_list = list(target_word)
         # Step 1: Mark greens (🟩) and track available letters in the target
         for i in range(len(target_word)):
-            if guessed_word[i] == target_list[i]:  
+            if guessed_word[i] == target_list[i]:
                 result[i] = "🟩"
                 target_list[i] = None  # Mark as used to prevent duplicate processing
 
@@ -57,7 +51,6 @@ class GuessValidator:
         return response.strip()
 
 
-
 if __name__ == "__main__":
     '''
     tests = [('stoop', 'boost'), ('round', 'broad'), ('hello', 'world'), ('spare', 'spree'), ('sweep', 'clean')]
@@ -67,9 +60,8 @@ if __name__ == "__main__":
     tests = [('store', 'proud'), ('large', 'stare'), ('clean', 'damps'), ('shore', 'heals'), ('first', 'bunks')]
     '''
     tests = [('strap', 'spree'), ('strap', 'start'), ('strap', 'fluff'), ('strap', 'hello'),
-            ('strap', 'error'), ('strap', 'zappy'), ('strap', 'smash'), ('strap', 'banal'),
-            ('strap', 'strap')]
-
+             ('strap', 'error'), ('strap', 'zappy'), ('strap', 'smash'), ('strap', 'banal'),
+             ('strap', 'strap')]
 
     for target_word, guessed_word in tests:
         guess = GuessValidator(target_word)

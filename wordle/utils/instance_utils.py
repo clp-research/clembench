@@ -28,12 +28,13 @@ class InstanceUtils(GameResourceLocator):
             guesser_critic_prompt = self.load_template(f"resources/initial_prompts/{self.language}/critic_prompt")
         else:
             if use_clue:
-                guesser_prompt = self.load_template(f"resources/initial_prompts/{self.language}/guesser_withclue_prompt")
+                guesser_prompt = self.load_template(
+                    f"resources/initial_prompts/{self.language}/guesser_withclue_prompt")
             else:
                 guesser_prompt = self.load_template(f"resources/initial_prompts/{self.language}/guesser_prompt")
 
         return guesser_prompt, guesser_critic_prompt
-    
+
     def download_nytcrosswords(self):
         # Requires kaggle authentication for successfully downloading the file; see README.md
         kaggle_credentials = self.load_json("wordle_keys")['kaggle']
@@ -53,8 +54,8 @@ class InstanceUtils(GameResourceLocator):
         api.authenticate()
         api.dataset_download_files("darinhawley/new-york-times-crossword-clues-answers-19932021", path=fp)
 
-        #Unzip the file 
-        with zipfile.ZipFile(fp+"/new-york-times-crossword-clues-answers-19932021.zip","r") as zip_ref:
+        # Unzip the file
+        with zipfile.ZipFile(fp + "/new-york-times-crossword-clues-answers-19932021.zip", "r") as zip_ref:
             zip_ref.extractall(fp)
         print("Stored the nytc crosswords clues file", fp)
 
@@ -68,11 +69,11 @@ class InstanceUtils(GameResourceLocator):
 
     def read_file_contents(self, filename, file_ext="txt"):
         if file_ext == "csv":
-            words_dict = {}        
+            words_dict = {}
             try:
                 words_list = self.load_csv(f"resources/{filename}")
             except FileNotFoundError:
-                #File not available, downloading
+                # File not available, downloading
                 if filename.endswith("nytcrosswords.csv"):
                     self.download_nytcrosswords()
                     words_list = self.load_csv(f"resources/{filename}")
@@ -109,13 +110,13 @@ class InstanceUtils(GameResourceLocator):
     def categorize_target_words(self, unigram_freq_sorted_dict, clue_words_dict):
         easy_words = unigram_freq_sorted_dict[: int(len(unigram_freq_sorted_dict) / 3)]
         medium_words = unigram_freq_sorted_dict[
-            int(len(unigram_freq_sorted_dict) / 3) : int(
-                2 * len(unigram_freq_sorted_dict) / 3
-            )
-        ]
+                       int(len(unigram_freq_sorted_dict) / 3): int(
+                           2 * len(unigram_freq_sorted_dict) / 3
+                       )
+                       ]
         hard_words = unigram_freq_sorted_dict[
-            int(2 * len(unigram_freq_sorted_dict) / 3) :
-        ]
+                     int(2 * len(unigram_freq_sorted_dict) / 3):
+                     ]
 
         easy_words_list = [word[0] for word in easy_words]
         medium_words_list = [word[0] for word in medium_words]
@@ -190,7 +191,7 @@ class InstanceUtils(GameResourceLocator):
         self.hard_words_list = hard_words_list
 
     def select_target_words(self, use_seed):
-        #use_seed = self.common_config["seed_to_select_target_word"]
+        # use_seed = self.common_config["seed_to_select_target_word"]
         number_of_target_words = self.common_config["number_of_target_words"]
 
         target_words_test_dict = {}
@@ -236,7 +237,7 @@ class InstanceUtils(GameResourceLocator):
         experiment["guesser_prompt"] = guesser_prompt
         experiment["guesser_critic_prompt"] = guesser_critic_prompt
         experiment["lang_keywords"] = lang_keywords
-        experiment["lang_keywords"]["official_words_list"] = self.official_words        
+        experiment["lang_keywords"]["official_words_list"] = self.official_words
 
     def update_game_instance_dict(self, game_instance, word, difficulty):
         game_instance["target_word"] = word

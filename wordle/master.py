@@ -57,7 +57,7 @@ class Critic(Player):
 
 class WordleGameMaster(GameMaster):
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, experiment, player_models)
+        super().__init__(game_name, game_path, experiment, player_models)
         # initialise attributes that will be used for the evaluation scores
         self.aborted: bool = False
         self.lose: bool = False
@@ -125,6 +125,15 @@ class WordleGameMaster(GameMaster):
         # log any additional keys that will be relevant for evaluation
         self.log_key("n_turns", self.max_rounds)
 
+    def proceed(self) -> None:
+        """Check if the game loop should continue (firstlast specific)."""
+        return (
+                self.current_round < self.max_rounds
+                and not self.aborted
+                and not self.lose
+                and not self.success
+        )
+
     def play(self) -> None:
         """Initialise the dialogue history (firstlast specific)."""
         # append the initial message of each player to their history
@@ -147,14 +156,92 @@ class WordleGameMaster(GameMaster):
                 self.log_to_self("incorrect guess", "game_result = LOSS")
         self.log_eval_assets()  # log all temporary game variables that are needed for evaluation
 
-    def proceed(self) -> None:
-        """Check if the game loop should continue (firstlast specific)."""
-        return (
-                self.current_round < self.max_rounds
-                and not self.aborted
-                and not self.lose
-                and not self.success
+    def turn(self) -> None:
+        """Perform a game turn, utterances by A and B"""
+        self.before_critic = True
+        self.guess_feedback[self.current_round] = {}
+
+        answer_a = self._get_model_response("a")  # get player A's reply and add it to its history
+        answer_player_a = self._handle_playera_response(answer_a)  # check if the game should be aborted or lost
+        logger.info(
+            f"Current Turn: {self.current_round}, "
+            f"Received response from player a: {answer_player_a}, self.success: {self.success}")
+
+        if answer_player_a is None:
+            return None
+
+        if self.experiment["use_critic"]:  # add A's reply to B's history
+            logger.info(
+                f"Current turn: {self.current_round}, "
+                f"use_critic: True, self.success: {self.success} calling player b")
+            self.before_critic = False
+            answer_b = self._get_model_response("b")
+            is_valid_turn = self._check_validity("b", answer_b)  # check if the game should be aborted or lost
+            if not is_valid_turn:
+                return None  # stop game
+            logger.info(f"Valid answer {answer_b} from player b, self.success: {self.success} calling player a")
+
+            answer_a = self._get_model_response("a")  # get player A's reply and add it to its history
+            logger.info(f"Received answer {answer_a} from player a")
+            answer_player_a = self._handle_playera_response(answer_a)  # check if the game should be aborted or lost
+            logger.info(f"After parsing, answer from player a is: {answer_player_a}, self.success: {self.success}")
+            if answer_player_a is None:
+                logger.info(f"Answer from player a is None, returning, self.success: {self.success}")
+                return None
+        self.complete_turns += 1
+
+    def _get_model_response(self, player: str, reprompt=False) -> str:
+        assert player in ("a", "b")
+        if player == "a":
+            use_player = self.player_a
+            use_from = "Player 1"
+        if player == "b":
+            use_player = self.player_b
+            use_from = "Player 2"
+        if not reprompt:
+            content = self._prepare_player_query(player)  # also add the reply to the transcript
+            content_to_log = content if self.current_round > 1 else use_player.history[-1]["content"]
+            action = {"type": "send message", "content": content_to_log}
+            self.log_event(from_="GM", to=use_from, action=action)
+
+        # make an API call (or get a programmatic response) from player a
+        try:
+            prompt, raw_answer, answer = use_player(use_player.history, self.current_round)
+        except ContextExceededError as error:
+            logger.error(f"Current Turn: {self.current_round}, Error in response from player {player}: {error}")
+            self.aborted = True
+            prompt = use_player.history
+            raw_answer = "Context token limit exceeded"
+            answer = "Context token limit exceeded"
+            # return None
+        # add API call to the records
+        action = {"type": "get message", "content": answer}
+        self.log_event(
+            from_=use_from,
+            to="GM",
+            action=action,
+            call=(copy.deepcopy(prompt), raw_answer),
         )
+        # add reply to its own memory
+        self._append_utterance(answer, player, "assistant")
+
+        # increase the number of API requests
+        self.request_counts[self.current_round] += 1
+        return answer
+
+    def _handle_playera_response(self, answer_a: str) -> str:
+        model_response = answer_a
+        is_valid_turn = self._check_validity("a", answer_a)  # check if the game should be aborted or lost
+        if not is_valid_turn:
+            if self.reprompt:
+                # go ahead with reprompt
+                logger.error(f"Current Turn: {self.current_round}, INVALID_WORD in response; Reprompting player a")
+                is_valid_turn, model_response = self._handle_reprompt("a")
+                if not is_valid_turn:
+                    return None  # stop game
+            else:
+                return None  # stop game
+        return model_response
 
     def _parse_response(self, pattern, response):
         matches = pattern.findall(response)
@@ -540,45 +627,6 @@ class WordleGameMaster(GameMaster):
 
         return content
 
-    def _get_model_response(self, player: str, reprompt=False) -> str:
-        assert player in ("a", "b")
-        if player == "a":
-            use_player = self.player_a
-            use_from = "Player 1"
-        if player == "b":
-            use_player = self.player_b
-            use_from = "Player 2"
-        if not reprompt:
-            content = self._prepare_player_query(player)  # also add the reply to the transcript
-            content_to_log = content if self.current_round > 1 else use_player.history[-1]["content"]
-            action = {"type": "send message", "content": content_to_log}
-            self.log_event(from_="GM", to=use_from, action=action)
-
-        # make an API call (or get a programmatic response) from player a
-        try:
-            prompt, raw_answer, answer = use_player(use_player.history, self.current_round)
-        except ContextExceededError as error:
-            logger.error(f"Current Turn: {self.current_round}, Error in response from player {player}: {error}")
-            self.aborted = True
-            prompt = use_player.history
-            raw_answer = "Context token limit exceeded"
-            answer = "Context token limit exceeded"
-            # return None
-        # add API call to the records
-        action = {"type": "get message", "content": answer}
-        self.log_event(
-            from_=use_from,
-            to="GM",
-            action=action,
-            call=(copy.deepcopy(prompt), raw_answer),
-        )
-        # add reply to its own memory
-        self._append_utterance(answer, player, "assistant")
-
-        # increase the number of API requests
-        self.request_counts[self.current_round] += 1
-        return answer
-
     def is_guess_correct(self, guess_feedback):
         letters = []
         colors = []
@@ -589,54 +637,6 @@ class WordleGameMaster(GameMaster):
         if all("green" in color for color in colors):
             return True
         return False
-
-    def _handle_playera_response(self, answer_a: str) -> str:
-        model_response = answer_a
-        is_valid_turn = self._check_validity("a", answer_a)  # check if the game should be aborted or lost
-        if not is_valid_turn:
-            if self.reprompt:
-                # go ahead with reprompt
-                logger.error(f"Current Turn: {self.current_round}, INVALID_WORD in response; Reprompting player a")
-                is_valid_turn, model_response = self._handle_reprompt("a")
-                if not is_valid_turn:
-                    return None  # stop game
-            else:
-                return None  # stop game
-        return model_response
-
-    def turn(self) -> None:
-        """Perform a game turn, utterances by A and B"""
-        self.before_critic = True
-        self.guess_feedback[self.current_round] = {}
-
-        answer_a = self._get_model_response("a")  # get player A's reply and add it to its history
-        answer_player_a = self._handle_playera_response(answer_a)  # check if the game should be aborted or lost
-        logger.info(
-            f"Current Turn: {self.current_round}, "
-            f"Received response from player a: {answer_player_a}, self.success: {self.success}")
-
-        if answer_player_a is None:
-            return None
-
-        if self.experiment["use_critic"]:  # add A's reply to B's history
-            logger.info(
-                f"Current turn: {self.current_round}, "
-                f"use_critic: True, self.success: {self.success} calling player b")
-            self.before_critic = False
-            answer_b = self._get_model_response("b")
-            is_valid_turn = self._check_validity("b", answer_b)  # check if the game should be aborted or lost
-            if not is_valid_turn:
-                return None  # stop game
-            logger.info(f"Valid answer {answer_b} from player b, self.success: {self.success} calling player a")
-
-            answer_a = self._get_model_response("a")  # get player A's reply and add it to its history
-            logger.info(f"Received answer {answer_a} from player a")
-            answer_player_a = self._handle_playera_response(answer_a)  # check if the game should be aborted or lost
-            logger.info(f"After parsing, answer from player a is: {answer_player_a}, self.success: {self.success}")
-            if answer_player_a is None:
-                logger.info(f"Answer from player a is None, returning, self.success: {self.success}")
-                return None
-        self.complete_turns += 1
 
     def log_eval_assets(self) -> None:
         """Aux to log variables needed for scoring (firstlast specific)"""

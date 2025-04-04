@@ -161,11 +161,12 @@ class PrivateShared(GameMaster):
         self.log_next_round()
         all_probes = []
 
-        # todo: request answerer with initial prompt, but dont check the answer
+        # we request answerer with initial prompt, but dont check the answer here.
         # the problem here is that we usually append the first generated answer to the initial prompt.
         # however, here we do probing initially, but these messages should not be memorized by the player.
         # this means that the player would forget about the initial prompt. initially this was solved
         # with an empty fake response in the player's history.
+        self.answerer_turn(self.initial_prompt)
 
         # probing round before game starts
         turn_probes, probing_successful = self.probe()

@@ -26,13 +26,18 @@ class Guesser(Player):
         self.history: List = []
         self.count_turn = 0
 
+    def generate_response(self):
+        context = self.history[-1]
+        response_text = super().__call__(context)
+        return response_text
+
     def _terminal_response(self, context: Dict) -> str:
         guess_word = input("Enter your guess: ")
         return guess_word
 
     def _custom_response(self, context: Dict) -> str:
-        dummy_response = (f'{self.response_format_keywords["guess_lang"]} dummy\n'
-                          f'{self.response_format_keywords["explanation_lang"]} dummy')
+        dummy_response = (f'{self.response_format_keywords["explanation_lang"]} dummy\n'
+                          f'{self.response_format_keywords["guess_lang"]} dummy')
         return dummy_response
 
 
@@ -45,13 +50,18 @@ class Critic(Player):
         self.history: List = []
         self.count_turn = 0
 
+    def generate_response(self):
+        context = self.history[-1]
+        response_text = super().__call__(context)
+        return response_text
+
     def _terminal_response(self, context: Dict) -> str:
         guess_agreement = input("Enter your agreement for the guess: ")
         return guess_agreement
 
     def _custom_response(self, context: Dict) -> str:
-        dummy_response = (f'{self.response_format_keywords["agreement_lang"]} yes\n'
-                          f'{self.response_format_keywords["explanation_lang"]} agree with your guess')
+        dummy_response = (f'{self.response_format_keywords["explanation_lang"]} agree with your guess\n'
+                          f'{self.response_format_keywords["agreement_lang"]} yes')
         return dummy_response
 
 
@@ -94,6 +104,11 @@ class WordleGameMaster(GameMaster):
                 "Player 2": player2_details,
             }
         )
+        # append the initial message of each player to their history
+        # the value user means the message is from an interlocutor of the model
+        self.player_a.history.append({"role": "user", "content": self.experiment["guesser_prompt"]})
+        if self.player_b:
+            self.player_b.history.append({"role": "user", "content": self.experiment["guesser_critic_prompt"]})
 
         # initialise game variables
         self.max_rounds = self.experiment["common_config"]["n_turns"]
@@ -136,11 +151,6 @@ class WordleGameMaster(GameMaster):
 
     def play(self) -> None:
         """Initialise the dialogue history (firstlast specific)."""
-        # append the initial message of each player to their history
-        # the value user means the message is from an interlocutor of the model
-        self.player_a.history.append({"role": "user", "content": prompt_player_a})
-        if self.player_b:
-            self.player_b.history.append({"role": "user", "content": prompt_player_b})
         while self.proceed():
             self.current_round += 1
             self.log_next_round()  # always call when a new round starts
@@ -194,34 +204,17 @@ class WordleGameMaster(GameMaster):
         assert player in ("a", "b")
         if player == "a":
             use_player = self.player_a
-            use_from = "Player 1"
         if player == "b":
             use_player = self.player_b
-            use_from = "Player 2"
         if not reprompt:
-            content = self._prepare_player_query(player)  # also add the reply to the transcript
-            content_to_log = content if self.current_round > 1 else use_player.history[-1]["content"]
-            action = {"type": "send message", "content": content_to_log}
-            self.log_event(from_="GM", to=use_from, action=action)
-
+            self._prepare_player_query(player)
         # make an API call (or get a programmatic response) from player a
         try:
-            prompt, raw_answer, answer = use_player(use_player.history, self.current_round)
+            answer = use_player.generate_response()
         except ContextExceededError as error:
             logger.error(f"Current Turn: {self.current_round}, Error in response from player {player}: {error}")
             self.aborted = True
-            prompt = use_player.history
-            raw_answer = "Context token limit exceeded"
             answer = "Context token limit exceeded"
-            # return None
-        # add API call to the records
-        action = {"type": "get message", "content": answer}
-        self.log_event(
-            from_=use_from,
-            to="GM",
-            action=action,
-            call=(copy.deepcopy(prompt), raw_answer),
-        )
         # add reply to its own memory
         self._append_utterance(answer, player, "assistant")
 
@@ -613,7 +606,7 @@ class WordleGameMaster(GameMaster):
             else:
                 if self.current_round == 1 and self.experiment["use_clue"]:
                     content = self._add_clue_to_initial_prompt(player)
-                else:
+                if self.current_round > 1:
                     content = self._add_guess_feedback_in_next_turns(player, "no_critic")
         if player == "b":
             content = self._prepare_playera_reply_to_playerb()

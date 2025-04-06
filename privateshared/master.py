@@ -158,7 +158,6 @@ class PrivateShared(GameMaster):
         return self.current_round < self.game.max_turns
 
     def play(self) -> None:
-        self.log_next_round()
         all_probes = []
 
         # we request answerer with initial prompt, but dont check the answer here.

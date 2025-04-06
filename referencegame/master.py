@@ -77,7 +77,6 @@ class ReferenceGameMaster(GameMaster):
         self.turn()
 
     def turn(self):
-        self.log_next_round()
         # generate referring expression - Player 1 side
         context = dict(role="user", content=self.game.player_1_prompt_header)
         player_1_response_text = self.instruction_giver(context)

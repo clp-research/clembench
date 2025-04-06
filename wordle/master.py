@@ -153,11 +153,11 @@ class WordleGameMaster(GameMaster):
         """Initialise the dialogue history (firstlast specific)."""
         while self.proceed():
             self.current_round += 1
-            self.log_next_round()  # always call when a new round starts
             self.turn()
             if self.success:
                 self.log_to_self("correct guess", "game_result = WIN")
                 break
+            self.log_next_round()  # always call when a new round starts
         if not self.success:
             if self.aborted:
                 self.log_to_self("invalid format", "game_result = ABORT")

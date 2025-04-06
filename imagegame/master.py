@@ -90,7 +90,6 @@ class ImageGameMaster(GameMaster):
 
     def turn(self):
         # instruction giving - A side
-        self.log_next_round()
         self.turn_request_stats[self.game.current_turn] = {'request_count': 0, 'parsed_count': 0, 'violated_count': 0}
 
         context = dict(role="user", content="")

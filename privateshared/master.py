@@ -33,8 +33,8 @@ class Words:
 
 
 class Answerer(Player):
-    def __init__(self, model: Model, name, game_recorder, words: Words):
-        super().__init__(model, name, game_recorder)
+    def __init__(self, model: Model, name, game_recorder, initial_prompt: str, words: Words):
+        super().__init__(model, name, game_recorder, initial_prompt)
         self.words = words
 
     def _custom_response(self, context: Dict) -> str:
@@ -96,7 +96,6 @@ class PrivateShared(GameMaster):
         self.probing_questions: Dict = None
         self.retries: Dict = None
         self.questioner_tag: str = None
-        self.initial_prompt: str = None
         self.probe_gt: Dict = None
         self.probing: Dict = None
         self.game: PrivateSharedGame = None
@@ -125,7 +124,6 @@ class PrivateShared(GameMaster):
         self.retries = self.load_json(RETRIES_PATH)['suffixes']
 
         self.questioner_tag = f"{tag}: "
-        self.initial_prompt = initial_prompt
         self.probing = probes
         self.probe_gt = {slot: i for i, slot in enumerate(request_order)}
         self.game = PrivateSharedGame(request_order, slots)
@@ -134,7 +132,7 @@ class PrivateShared(GameMaster):
         request_strings = self.load_json(REQUESTS_PATH.format(self.experiment['name']))
         self.words = Words(self.load_json(WORDS_PATH.format(lang)))  # load language specific words
         self.answerer: Answerer = Answerer(self.player_models[0], "Player 1 (Answerer)",
-                                           self.game_recorder, self.words)
+                                           self.game_recorder, initial_prompt, self.words)
         self.questioner: Questioner = Questioner("Player 2 (Questioner)", self.game_recorder,
                                                  request_order, requests, request_strings)
 
@@ -159,13 +157,6 @@ class PrivateShared(GameMaster):
 
     def play(self) -> None:
         all_probes = []
-
-        # we request answerer with initial prompt, but dont check the answer here.
-        # the problem here is that we usually append the first generated answer to the initial prompt.
-        # however, here we do probing initially, but these messages should not be memorized by the player.
-        # this means that the player would forget about the initial prompt. initially this was solved
-        # with an empty fake response in the player's history.
-        self.answerer_turn(self.initial_prompt)
 
         # probing round before game starts
         turn_probes, probing_successful = self.probe()

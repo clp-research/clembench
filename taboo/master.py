@@ -85,8 +85,6 @@ class Taboo(DialogueGameMaster):
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
         self.max_rounds: int = experiment["max_turns"]
-        self.describer_initial_prompt = self.experiment["describer_initial_prompt"]
-        self.guesser_initial_prompt = self.experiment["guesser_initial_prompt"]
 
     def _on_setup(self, **game_instance):
         self.game_instance = game_instance
@@ -94,25 +92,24 @@ class Taboo(DialogueGameMaster):
         self.target_word = game_instance["target_word"]
         self.related_words = game_instance["related_word"]
 
-        self.describer_initial_prompt = self.describer_initial_prompt.replace("$TARGET_WORD$", self.target_word)
+        describer_initial_prompt = self.experiment["describer_initial_prompt"]
+        describer_initial_prompt = describer_initial_prompt.replace("$TARGET_WORD$", self.target_word)
         rel_words = f"- {self.related_words[0]}\n- {self.related_words[1]}\n- {self.related_words[2]}"
-        self.describer_initial_prompt = self.describer_initial_prompt.replace("$REL_WORD$", rel_words)
-        self.describer_initial_prompt = self.describer_initial_prompt.replace("$N$", str(self.max_rounds))
-        self.guesser_initial_prompt = self.guesser_initial_prompt.replace("$N$", str(self.max_rounds))
+        describer_initial_prompt = describer_initial_prompt.replace("$REL_WORD$", rel_words)
+        describer_initial_prompt = describer_initial_prompt.replace("$N$", str(self.max_rounds))
+
+        guesser_initial_prompt = self.experiment["guesser_initial_prompt"]
+        guesser_initial_prompt = guesser_initial_prompt.replace("$N$", str(self.max_rounds))
 
         self.describer = WordDescriber(self.player_models[0])
         self.guesser = WordGuesser(self.player_models[1])
 
-        self.add_player(self.describer)
-        self.add_player(self.guesser)
+        self.add_player(self.describer, describer_initial_prompt)
+        self.add_player(self.guesser, guesser_initial_prompt)
 
         self.invalid_response = False
         self.clue_error = None
         self.guess_word = None
-
-    def _on_before_game(self):
-        self.set_context_for(self.describer, self.describer_initial_prompt)
-        # add guesser prompt only later after first clue is given
 
     def _does_game_proceed(self):
         """Proceed as long as the word hasn't been guessed and the maximum length isn't reached.
@@ -188,11 +185,7 @@ class Taboo(DialogueGameMaster):
 
     def _on_valid_player_response(self, player: Player, parsed_response: str):
         if player == self.describer:
-            if self.current_round == 0:  # special case: merge first clue into prompt
-                prompt_with_first_clue = f"{self.guesser_initial_prompt}\n\n{parsed_response}"
-                self.set_context_for(self.guesser, prompt_with_first_clue)
-            else:
-                self.set_context_for(self.guesser, parsed_response)
+            self.set_context_for(self.guesser, parsed_response)
         if player == self.guesser:
             self.set_context_for(self.describer, parsed_response)
 

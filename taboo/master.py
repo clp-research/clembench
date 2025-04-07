@@ -104,8 +104,8 @@ class Taboo(DialogueGameMaster):
         self.describer = WordDescriber(self.player_models[0])
         self.guesser = WordGuesser(self.player_models[1])
 
-        self.add_player(self.describer, describer_initial_prompt)
-        self.add_player(self.guesser, guesser_initial_prompt)
+        self.add_player(self.describer, initial_context=describer_initial_prompt)
+        self.add_player(self.guesser, initial_prompt=guesser_initial_prompt)
 
         self.invalid_response = False
         self.clue_error = None

@@ -292,7 +292,6 @@ class PrivateShared(GameMaster):
 
     def probe(self) -> Tuple[List[Dict], bool]:
         """Perform a round of probing."""
-        self.log_to_self("info", "Begin probing")
         probes = self._create_turn_probes()
         success_by_round = []
         for probe in probes:
@@ -309,7 +308,6 @@ class PrivateShared(GameMaster):
         probing_successful = all(success_by_round)
         if probing_successful:  # actual valid rounds for posterior evaluation
             self.played_probing_rounds += 1
-        self.log_to_self("info", "End probing")
         return probes, probing_successful
 
     def _probing_loop(self, probe: Dict) -> Tuple[str, str, bool, int]:

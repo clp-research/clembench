@@ -1543,7 +1543,7 @@ class AdventureIFInterpreter(GameResourceLocator):
 
         # record initial exploration state:
         if not self.exploration_state:
-            logger.info("Recording initial exploration state.")
+            # logger.info("Recording initial exploration state.")
             self.exploration_state = self.get_current_perceived()
             self.exploration_history.append(self.exploration_state)
 

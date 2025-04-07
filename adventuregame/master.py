@@ -1,6 +1,6 @@
 import os
 
-from typing import List, Dict, Tuple
+from typing import List, Dict
 
 from clemcore import backends
 from clemcore.backends import Model
@@ -76,7 +76,7 @@ class AdventureGameMaster(DialogueGameMaster):
         self.set_context_for(self.player, first_message)
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
-        self.log_message_to_self(f"Round: {self.current_round}")
+        self.log_to_self("metadata", f"Round: {self.current_round}")
         # logger.info(f"Player response:\n{utterance}")
         # check player response:
         if player == self.player:

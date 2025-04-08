@@ -2,7 +2,7 @@ from typing import Dict, List
 import re, random, nltk
 
 from clemcore import backends
-from clemcore.clemgame import Player
+from clemcore.clemgame import Player, GameRecorder
 
 from constants import *
 from validation_errors import *
@@ -12,16 +12,20 @@ MOCK_IS_RANDOM = False
 nltk.download('wordnet', quiet=True)
 EN_LEMMATIZER = nltk.stem.WordNetLemmatizer()
 
+
 def find_line_starting_with(prefix, lines):
     for line in lines:
         if line.startswith(prefix):
             return line
 
+
 def add_space_after_comma(text):
     return re.sub(r',(?=[^\s])', ', ', text)
+
+
 class ClueGiver(Player):
-    def __init__(self, model_name: str, flags: Dict[str, bool]):
-        super().__init__(model_name)
+    def __init__(self, model: backends.Model, flags: Dict[str, bool]):
+        super().__init__(model)
         self.clue_prefix: str = "CLUE: "
         self.target_prefix: str = "TARGETS: "
         self.clue: str = 'clue'
@@ -31,15 +35,14 @@ class ClueGiver(Player):
         self.flags = flags
         self.flags_engaged = {key: 0 for key, value in flags.items()}
 
-    def __call__(self, history, current_turn):
+    def __call__(self, context: Dict, memorize: bool = True) -> str:
         try:
-            return super().__call__(history, current_turn)
+            return super().__call__(context)
         except backends.ContextExceededError:
-            prompt = history[-1]
-            return prompt, "CONTEXT EXCEEDED" , "CONTEXT EXCEEDED!"
+            return "CONTEXT EXCEEDED"
         
-    def _custom_response(self, history, turn) -> str:
-        prompt = history[-1]["content"]
+    def _custom_response(self, context) -> str:
+        prompt = context["content"]
         match = re.search(r"team words are: (.*)\.", prompt)
         if match != None:
             # Player was actually prompted (otherwise it was reprompted and the team_words stay the same)
@@ -157,16 +160,16 @@ class ClueGiver(Player):
 
 
 class Guesser(Player):
-    def __init__(self, model_name: str, flags: Dict[str, bool]):
-        super().__init__(model_name)
+    def __init__(self, model: backends.Model, flags: Dict[str, bool]):
+        super().__init__(model)
         self.guesses: List[str] = ['guess', 'word']
         self.prefix: str = "GUESS: "
         self.retries: int = 0
         self.flags = flags
         self.flags_engaged = {key: 0 for key, value in flags.items()}
 
-    def _custom_response(self, history, turn) -> str:
-        prompt = history[-1]["content"]
+    def _custom_response(self, context) -> str:
+        prompt = context["content"]
         board = prompt.split('\n\n')[1].split(', ')
         number_of_allowed_guesses = int(re.search(r"up to ([0-9]+) words", prompt).group(1))
         if MOCK_IS_RANDOM:

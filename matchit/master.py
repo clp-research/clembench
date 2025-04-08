@@ -10,10 +10,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class MatchItPlayer(Player):
 
-    def __init__(self, backend: Model, role: str):
-        super().__init__(backend)
+    def __init__(self, model: Model, role: str):
+        super().__init__(model)
         self.role: str = role
 
         self.description: str = ""
@@ -23,8 +24,8 @@ class MatchItPlayer(Player):
 
         self.had_success: bool = False
 
-    def _custom_response(self, messages, turn_idx) -> str:
-        last_message = messages[-1]["content"]
+    def _custom_response(self, context) -> str:
+        last_message = context["content"]
 
         if "collaborative" in last_message:
             return f"DESCRIPTION: from Player {self.role}"
@@ -34,33 +35,31 @@ class MatchItPlayer(Player):
             return f"ANSWER: from Player {self.role}"
         elif "decision" in last_message:
             return "DECISION: Same image."
-        else: 
+        else:
             return "ANSWER: How did we land here? This is the else in the mock answers."
 
 
 class MatchIt(DialogueGameMaster):
+
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
 
         self.experiment: str = experiment["name"]
         self.flags: dict[str, str] = experiment["flags"]
-        
+
         self.initial_prompt: str = experiment["initial_prompt"]
-        self.q_reprompt: str = experiment["q_reprompt"] # "Reprompt: Now ask a question, starting with \"QUESTION: \""
-        self.desc_intro: str = experiment["desc_intro"] # "This is my"
-        self.d_reprompt: str = experiment["d_reprompt"] # "Make a decision." 
-        self.a_request: str = experiment["a_request"] #" Start your answer with ANSWER:"
+        self.q_reprompt: str = experiment["q_reprompt"]  # "Reprompt: Now ask a question, starting with \"QUESTION: \""
+        self.desc_intro: str = experiment["desc_intro"]  # "This is my"
+        self.d_reprompt: str = experiment["d_reprompt"]  # "Make a decision."
+        self.a_request: str = experiment["a_request"]  # " Start your answer with ANSWER:"
 
         self.solution: str = experiment["solution"]
         self.wrong_solution: str = experiment["wrong_solution"]
-        
+
         self.final_decision: bool = False
         self.success_a: bool = True
         self.success_b: bool = True
         self.aborted: bool = False
-            
-        self.model_a: Model = player_models[0]
-        self.model_b: Model = player_models[1]
 
     def _on_setup(self, **game_instance):
         self.game_instance = game_instance
@@ -69,60 +68,56 @@ class MatchIt(DialogueGameMaster):
 
         self.decision_turn: int = game_instance["decision_turn"]
 
-        self.player_a: Player = MatchItPlayer(self.model_a, "A")
-        self.player_b: Player = MatchItPlayer(self.model_b, "B")
+        self.player_a: MatchItPlayer = MatchItPlayer(self.player_models[0], "A")
+        self.player_b: MatchItPlayer = MatchItPlayer(self.player_models[1], "B")
 
         self.add_player(self.player_a)
         self.add_player(self.player_b)
 
-        self.n_turns: int = -1
-        self.answer_counter: int = 0 # counts how many answers a player has given per turn -> for reprompting
+        self.answer_counter: int = 0  # counts how many answers a player has given per turn -> for reprompting
 
     def _on_before_game(self):
         # add prompt to Player A message history
-        self.add_user_message(self.player_a, self.initial_prompt, image = [self.image_a])
+        self.set_context_for(self.player_a, self.initial_prompt, image=[self.image_a])
         logger.info("Added Prompt A")
-
-
-    def _on_before_turn(self, turn_idx: int):
-        self.n_turns += 1
 
     def _does_game_proceed(self) -> bool:
         if self.aborted:
             self.log_to_self("Game over", "Aborted")
-            return False        
+            return False
         elif self.final_decision:
             return False
-        else: 
+        else:
             return True
-    
+
     def check_flag(self, first_word: str, flag: str):
         if first_word == flag:
             self.log_to_self("valid format", "continue")
             return True
-        else: 
+        else:
             self.log_to_self("invalid format", f"abort, first word: {first_word}")
             self.aborted = True
             return False
 
-    def _validate_player_response(self, player: Player, utterance: str) -> bool:
-        if not utterance.strip(): # check for empty message
+    def _validate_player_response(self, player: MatchItPlayer, utterance: str) -> bool:
+        if not utterance.strip():  # check for empty message
             self.log_to_self("invalid content", "abort, empty message")
             self.aborted = True
             return False
-        utt_parts = list(filter(None, utterance.strip().split("\n"))) #filter to be sure that there are no empty strings
+        utt_parts = list(
+            filter(None, utterance.strip().split("\n")))  # filter to be sure that there are no empty strings
         first_word = utt_parts[0].split(" ")[0]
         # logger.info("first word = " + first_word)
         # logger.info("utterance = " + utterance)
-        
+
         # first turn
-        if self.n_turns == 0:
-            if self.answer_counter == 1: 
+        if self.current_round == 0:
+            if self.answer_counter == 1:
                 return self.check_flag(first_word, self.flags["question"])
             else:
                 return self.check_flag(first_word, self.flags["description"])
         # decision turn
-        elif self.n_turns == self.decision_turn and player == self.player_b:
+        elif self.current_round == self.decision_turn and player == self.player_b:
             if self.answer_counter == 1:
                 if self.check_flag(first_word, self.flags["decision"]):
                     if utterance.lower().strip(".\n") == (self.flags["decision"] + " " + self.solution).lower():
@@ -141,30 +136,29 @@ class MatchIt(DialogueGameMaster):
             else:
                 return self.check_flag(first_word, self.flags["answer"])
         # last turn, only for Player A's decision
-        elif self.n_turns == self.decision_turn + 1:
+        elif self.current_round == self.decision_turn + 1:
             self.final_decision = True
             if self.check_flag(first_word, self.flags["decision"]):
                 if utterance.lower().strip(".\n") == (self.flags["decision"] + " " + self.solution).lower():
-                        player.success = True
-                        self.log_to_self(f"Decision Player {player.role}", "success")
+                    player.success = True
+                    self.log_to_self(f"Decision Player {player.role}", "success")
                 elif utterance.lower().strip(".\n") == (self.flags["decision"] + " " + self.wrong_solution).lower():
                     player.success = False
                     self.log_to_self(f"Decision Player {player.role}", "loss")
                 else:
                     self.log_to_self("invalid content", "abort, wrong message content.")
-                    self.aborted = True 
+                    self.aborted = True
                     return False
                 return True
-                
+
         # all other turns
         else:
             if self.answer_counter == 0:
                 return self.check_flag(first_word, self.flags["answer"])
-            else: 
+            else:
                 return self.check_flag(first_word, self.flags["question"])
 
-
-    def _on_parse_response(self, player: Player, utterance: str) -> Tuple[str, bool]:
+    def _parse_response(self, player: MatchItPlayer, utterance: str) -> str:
         utterance = utterance.strip()
         if utterance.startswith(self.flags["description"]):
             player.description = utterance
@@ -174,88 +168,73 @@ class MatchIt(DialogueGameMaster):
             player.answer = utterance
         elif utterance.startswith(self.flags["decision"]):
             player.decision = utterance
-        
+
         self.answer_counter += 1
 
-        return utterance, False
+        return utterance
 
-    def _after_add_player_response(self, player: Player, utterance: str):
+    def _on_valid_player_response(self, player: Player, parsed_response: str):
         # first turn
-        if self.n_turns == 0:
+        if self.current_round == 0:
             if player == self.player_a:
-                self.add_user_message(self.player_b, self.initial_prompt, image = [self.image_b])
+                self.set_context_for(self.player_b, self.initial_prompt, image=[self.image_b])
             elif player == self.player_b:
                 if self.player_b.description != "" and self.player_b.question != "":
-                    self.add_user_message(self.player_a, self.desc_intro + self.player_b.description + "\n" + self.player_b.question + self.a_request)
+                    self.set_context_for(self.player_a,
+                                         self.desc_intro + self.player_b.description + "\n" + self.player_b.question + self.a_request)
                     self.player_b.question = ""
                 else:
-                    logger.info(f"Warning for first turn, Player B DESC = {self.player_b.description}; QUES = {self.player_b.question}")
+                    logger.info(
+                        f"Warning for first turn, Player B DESC = {self.player_b.description}; QUES = {self.player_b.question}")
         # decision turn
-        elif self.n_turns == self.decision_turn and player == self.player_b and self.answer_counter == 1:
-            self.add_user_message(self.player_a, player.answer + "\n" + self.d_reprompt)
+        elif self.current_round == self.decision_turn and player == self.player_b and self.answer_counter == 1:
+            self.set_context_for(self.player_a, player.answer + "\n" + self.d_reprompt)
         # all other turns
         else:
             other_player = self.player_a if player == self.player_b else self.player_b
-            
+
             if player.answer != "" and player.question != "":
-                #self.log_to_self("note", "a+q -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
-                self.add_user_message(other_player, player.answer + "\n" + player.question + self.a_request)
+                # self.log_to_self("note", "a+q -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
+                self.set_context_for(other_player, player.answer + "\n" + player.question + self.a_request)
                 player.description = ""
                 player.question = ""
                 player.answer = ""
                 player.decision = ""
             elif player.decision != "" and player.question != "":
-                #self.log_to_self("note", "a+d -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
-                self.add_user_message(other_player, player.decision + "\n" + player.question)
+                # self.log_to_self("note", "a+d -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
+                self.set_context_for(other_player, player.decision + "\n" + player.question)
                 player.description = ""
                 player.question = ""
                 player.answer = ""
                 player.decision = ""
 
-
-    def _should_reprompt(self, player: Player):
+    def _should_pass_turn(self):
         while self._does_game_proceed():
-            if self.n_turns == 0 and player == self.player_a:
+            if self.current_round == 0 and self.current_player == self.player_a:
                 self.answer_counter = 0
-                return False
-            elif self.n_turns == self.decision_turn + 1:
-                return False
-            if self.answer_counter > 1: 
+                return True
+            elif self.current_round == self.decision_turn + 1:
+                return True
+            if self.answer_counter > 1:
                 self.answer_counter = 0
-                return False
-            return True
-        return False  
-    
-    def _on_before_reprompt(self, player: Player):
-        if self.n_turns == self.decision_turn and player == self.player_b:
-            self.add_user_message(player, self.d_reprompt)
-        elif self.n_turns == 0:
-            self.add_user_message(player, self.desc_intro + self.player_a.description + "\n" + self.q_reprompt)
-        else:
-            self.add_user_message(player, self.q_reprompt)
-        
+                return True
 
-
-
-### Multimodal changes:
-    def add_message(self, player: Player, utterance: str, role: str, image = None):
-        if image is None:
-            message = {"role": role, "content": utterance}
-        else:
-            message = {"role": role, "content": utterance, "image": image}
-        history = self.messages_by_names[player.descriptor]
-        history.append(message)
-
-    def add_user_message(self, player: Player, utterance: str, image = None):
-        self.add_message(player, utterance, role="user", image= image)
-    
+            # prepare next turn here
+            if self.current_round == self.decision_turn and self.current_player == self.player_b:
+                self.set_context_for(self.current_player, self.d_reprompt)
+            elif self.current_round == 0:
+                self.set_context_for(self.current_player,
+                                     self.desc_intro + self.player_a.description + "\n" + self.q_reprompt)
+            else:
+                self.set_context_for(self.current_player, self.q_reprompt)
+            return False
+        return True
 
 
 class MatchItScorer(GameScorer):
- 
+
     def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
         super().__init__(game_name, experiment, game_instance)
-   
 
     def compute_scores(self, episode_interactions: Dict) -> None:
 
@@ -264,7 +243,7 @@ class MatchItScorer(GameScorer):
         success_b = False
         aborted = False
         for turn_idx, turn in enumerate(episode_interactions["turns"]):
-            turn_score_dict = {"request_count": 0, "violated_request_count" : 0, "parsed_request_count" : 0} 
+            turn_score_dict = {"request_count": 0, "violated_request_count": 0, "parsed_request_count": 0}
 
             for event in turn:
                 action = event["action"]
@@ -272,8 +251,8 @@ class MatchItScorer(GameScorer):
                 if action["type"] == "invalid format":
                     turn_score_dict["violated_request_count"] += 1
                     turn_score_dict["request_count"] += 1
-                    #first_word = action["content"].split(" ")[-1]
-                    #with open("first_words.txt", "a") as myfile:
+                    # first_word = action["content"].split(" ")[-1]
+                    # with open("first_words.txt", "a") as myfile:
                     #    myfile.write(first_word + "\n")
                 elif action["type"] == "invalid content":
                     turn_score_dict["violated_request_count"] += 1
@@ -295,7 +274,7 @@ class MatchItScorer(GameScorer):
             self.log_turn_score(turn_idx, ms.METRIC_REQUEST_COUNT_VIOLATED, turn_score_dict["violated_request_count"])
             self.log_turn_score(turn_idx, ms.METRIC_REQUEST_COUNT_PARSED, turn_score_dict["parsed_request_count"])
             self.log_turn_score(turn_idx, ms.METRIC_REQUEST_COUNT, turn_score_dict["request_count"])
-            #calculate episode scores from turn scores
+            # calculate episode scores from turn scores
             all_turn_scores.append(turn_score_dict)
 
             violated_request_count = sum([turn["violated_request_count"] for turn in all_turn_scores])
@@ -330,7 +309,7 @@ class MatchItScorer(GameScorer):
                     self.log_episode_score(ms.BENCH_SCORE, 0)  # current decision, may change (before: 50)
                     self.log_episode_score("Player Score", 50)
 
-                else:   # = success_a and success_b:   
+                else:  # = success_a and success_b:
                     self.log_episode_score(ms.METRIC_ABORTED, 0)
                     self.log_episode_score(ms.METRIC_SUCCESS, 1)
                     self.log_episode_score(ms.METRIC_LOSE, 0)
@@ -338,22 +317,20 @@ class MatchItScorer(GameScorer):
                     self.log_episode_score(ms.BENCH_SCORE, 100)
                     self.log_episode_score("Player Score", 100)
 
-            
+
 class MatchItBenchmark(GameBenchmark):
     """Integrate the game into the benchmark run."""
+
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
 
-    def create_game_master(self,
-                           experiment: Dict,
-                           player_models: List[str]
-                           ) -> GameMaster:
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
         return MatchIt(self.game_name, self.game_path, experiment, player_models)
-    
+
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return MatchItScorer(self.game_name, experiment, game_instance)
+
 
 def main():
     game_path = os.path.dirname(os.path.abspath(__file__))
     experiments = file_utils.load_json("in/instances.json", game_path)
-

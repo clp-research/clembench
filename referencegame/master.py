@@ -1,3 +1,4 @@
+import random
 from typing import List, Dict
 
 import numpy as np
@@ -5,14 +6,50 @@ import logging
 import os
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameSpec
+from clemcore.clemgame import GameSpec, Player
 from clemcore.clemgame import metrics
 from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
 
-from game import ReferenceGame
 import re
 
 logger = logging.getLogger(__name__)
+
+
+class InstructionFollower(Player):
+
+    def _custom_response(self, context):
+        answer = random.choice(["first", "second", "third"])
+        added = random.choice(["", ".", " grid"])
+        return f"Answer: {answer}{added}"
+
+
+class InstructionGiver(Player):
+
+    def _custom_response(self, context):
+        return "Expression: The one that looks like the target."
+
+
+class ReferenceGame:
+
+    def __init__(self, game_instance: Dict):
+        self.lang = game_instance['lang']
+        self.p1_mode = game_instance['p1_mode']
+        self.p2_mode = game_instance['p2_mode']
+        self.game_id = game_instance['game_id']
+        self.player_1_prompt_header = game_instance['player_1_prompt_header']
+        self.player_2_prompt_header = game_instance['player_2_prompt_header']
+        self.target_grid_name = game_instance['target_grid_name']
+
+        self.player_1_response_pattern = r'{}'.format(game_instance['player_1_response_pattern'])
+        self.player_2_response_pattern = r'{}'.format(game_instance['player_2_response_pattern'])
+
+        self.player_1_target_grid = game_instance['player_1_target_grid']
+        self.player_1_second_grid = game_instance['player_1_second_grid']
+        self.player_1_third_grid = game_instance['player_1_third_grid']
+
+        self.player_2_first_grid = game_instance['player_2_first_grid']
+        self.player_2_second_grid = game_instance['player_2_second_grid']
+        self.player_2_third_grid = game_instance['player_2_third_grid']
 
 
 class ReferenceGameMaster(GameMaster):
@@ -21,13 +58,15 @@ class ReferenceGameMaster(GameMaster):
         super().__init__(game_name, game_path, experiment, player_models)
         self.experiment = experiment
         self.game = None
-        self.game_instance = None
 
     def setup(self, **game_instance):
-        self.game_instance = game_instance
-
-        self.game = ReferenceGame(self.game_instance, self.player_models)
-
+        self.game = ReferenceGame(game_instance)
+        self.instruction_giver = InstructionGiver(self.player_models[0],
+                                                  name="Player 1 (InstructionGiver)",
+                                                  game_recorder=self.game_recorder)
+        self.instruction_follower = InstructionFollower(self.player_models[1],
+                                                        name="Player 2 (InstructionFollower)",
+                                                        game_recorder=self.game_recorder)
         self.log_players({
             "GM": "Game master for referencegame",
             "Player_1": self.player_models[0].get_name(),
@@ -35,26 +74,12 @@ class ReferenceGameMaster(GameMaster):
         )
 
     def play(self) -> None:
-        logger.info("Game turn: %d", self.game.turn_count)
         self.turn()
 
     def turn(self):
-        self.log_next_turn()
         # generate referring expression - Player 1 side
-        self.game.given_instruction.add_user_message(self.game.player_1_prompt_header)
-
-        # log the game master to player 1
-        action = {'type': 'send message', 'content': self.game.given_instruction.user_messages[-1]}
-        self.log_event(from_="GM", to="Player 1", action=action)
-
-        player_1_prompt, player_1_response, player_1_response_text = self.game.instruction_giver(
-            self.game.given_instruction, None)
-
-        # log the retrieved utterance
-        action = {'type': 'get message', 'content': player_1_response_text}
-        self.log_event(from_="Player 1", to="GM", action=action, call=(player_1_prompt, player_1_response))
-
-        self.game.given_instruction.add_system_message(player_1_response_text)
+        context = dict(role="user", content=self.game.player_1_prompt_header)
+        player_1_response_text = self.instruction_giver(context)
 
         player_1_pattern = re.compile(self.game.player_1_response_pattern, re.IGNORECASE)
         p1_match = re.match(player_1_pattern, player_1_response_text)
@@ -67,34 +92,18 @@ class ReferenceGameMaster(GameMaster):
                 action = {'type': 'parse', 'content': player_1_response_text,
                           'expression': p1_match.group('content')}
                 self.log_event(from_="GM", to="GM", action=action)
-
         if not match:
             # if the Player 1 message doesn't match the rule in the given mode
             # log the message and abort the game
             action = {'type': 'invalid format', 'content': 'Invalid generated expression',
                       'original_content': player_1_response_text}
             self.log_event(from_="GM", to="GM", action=action)
-
             return
 
         # guess the grid - Player 2 side
-        self.game.followed_instruction.add_user_message(
-            self.game.player_2_prompt_header.replace('TARGET_EXPRESSION', player_1_response_text))
-
-        # log the game master to player 2
-        action = {'type': 'send message', 'content': self.game.followed_instruction.user_messages[-1]}
-        self.log_event(from_="GM", to="Player 2", action=action)
-
-        player_2_prompt, player_2_response, player_2_response_text = self.game.instruction_follower(
-            self.game.followed_instruction, None)
-
-        self.game.followed_instruction.add_system_message(player_2_response_text)
-
-        self.game.turn_count += 1
-
-        # log the retrieved utterance
-        action = {'type': 'get message', 'content': player_2_response_text}
-        self.log_event(from_="Player 2", to="GM", action=action, call=(player_2_prompt, player_2_response))
+        context = dict(role="user",
+                       content=self.game.player_2_prompt_header.replace('TARGET_EXPRESSION', player_1_response_text))
+        player_2_response_text = self.instruction_follower(context)
 
         # check if the Player 2 message matches the rule => start with the right tag and generate only the label
         player_2_pattern = re.compile(self.game.player_2_response_pattern, re.IGNORECASE)

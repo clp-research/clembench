@@ -4,7 +4,7 @@ import logging
 import numpy as np
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
+from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameRecorder
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
 from clemcore.utils import file_utils, string_utils
@@ -25,23 +25,22 @@ class WordGuesser(Player):
 
     def __init__(self, model: Model):
         super().__init__(model)
+        self._custom_responses = ["Apple", "Banana", "Cherry"]
 
-    def _custom_response(self, messages, turn_idx):
-        # mock response
-        return f'GUESS: Pear'
+    def _custom_response(self, messages):
+        word = self._custom_responses.pop(0)
+        return f'GUESS: {word}'
 
 
 class WordDescriber(Player):
 
-    def __init__(self, model: Model, max_turns):
+    def __init__(self, model: Model):
         super().__init__(model)
-        self.max_turns = max_turns
+        self._custom_responses = ["(1) My first clue is ...", "(2) My second clue is ...", "(3) My third clue is ..."]
 
-    def _custom_response(self, messages, turn_idx):
-        if turn_idx < self.max_turns:
-            return "CLUE: This is a difficult word to describe."
-        if turn_idx >= self.max_turns:
-            raise Exception("We should not be here...")
+    def _custom_response(self, messages):
+        clue = self._custom_responses.pop(0)
+        return f"CLUE: {clue}"
 
 
 def check_clue(clue: str, target_word: str, related_words: List[str],
@@ -85,9 +84,7 @@ class Taboo(DialogueGameMaster):
 
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
-        self.max_turns: int = experiment["max_turns"]
-        self.describer_initial_prompt = self.experiment["describer_initial_prompt"]
-        self.guesser_initial_prompt = self.experiment["guesser_initial_prompt"]
+        self.max_rounds: int = experiment["max_turns"]
 
     def _on_setup(self, **game_instance):
         self.game_instance = game_instance
@@ -95,44 +92,67 @@ class Taboo(DialogueGameMaster):
         self.target_word = game_instance["target_word"]
         self.related_words = game_instance["related_word"]
 
-        self.describer_initial_prompt = self.describer_initial_prompt.replace("$TARGET_WORD$", self.target_word)
+        describer_initial_prompt = self.experiment["describer_initial_prompt"]
+        describer_initial_prompt = describer_initial_prompt.replace("$TARGET_WORD$", self.target_word)
         rel_words = f"- {self.related_words[0]}\n- {self.related_words[1]}\n- {self.related_words[2]}"
-        self.describer_initial_prompt = self.describer_initial_prompt.replace("$REL_WORD$", rel_words)
-        self.describer_initial_prompt = self.describer_initial_prompt.replace("$N$", str(self.max_turns))
-        self.guesser_initial_prompt = self.guesser_initial_prompt.replace("$N$", str(self.max_turns))
+        describer_initial_prompt = describer_initial_prompt.replace("$REL_WORD$", rel_words)
+        describer_initial_prompt = describer_initial_prompt.replace("$N$", str(self.max_rounds))
 
-        self.describer = WordDescriber(self.player_models[0], self.max_turns)
+        guesser_initial_prompt = self.experiment["guesser_initial_prompt"]
+        guesser_initial_prompt = guesser_initial_prompt.replace("$N$", str(self.max_rounds))
+
+        self.describer = WordDescriber(self.player_models[0])
         self.guesser = WordGuesser(self.player_models[1])
 
-        self.add_player(self.describer)
-        self.add_player(self.guesser)
+        self.add_player(self.describer, initial_context=describer_initial_prompt)
+        self.add_player(self.guesser, initial_prompt=guesser_initial_prompt)
 
         self.invalid_response = False
         self.clue_error = None
         self.guess_word = None
 
-    def _on_before_game(self):
-        self.add_user_message(self.describer, self.describer_initial_prompt)
-        # add guesser prompt only later after first clue is given
-        # thus we avoid the problem that the history contains consecutive messages of "user"
-
     def _does_game_proceed(self):
-        """Proceed as long as the word hasn't been guessed and the maximum
-        length isn't reached.
+        """Proceed as long as the word hasn't been guessed and the maximum length isn't reached.
         """
-        if self.invalid_response:
-            self.log_to_self("invalid format", "abort game")
-            return False
-        if self.clue_error is not None:
-            self.log_to_self("invalid clue", self.clue_error["message"])
-            return False  # stop game if clue is wrong (for now)
-        if self.guess_word == self.target_word:
-            self.log_to_self("correct guess", "end game")
-            return False
-        if self.current_turn >= self.max_turns:
-            self.log_to_self("max turns reached", str(self.max_turns))
+        if self.is_terminal():
+            if self.is_aborted():
+                self.log_to_self("invalid format", "abort game")
+            if self.is_clue_error():  # stop game if clue is wrong (for now)
+                self.log_to_self("invalid clue", self.clue_error["message"])
+            if self.is_turn_limit_reached():
+                self.log_to_self("max rounds reached", str(self.max_rounds))
+            if self.is_success():
+                self.log_to_self("correct guess", "end game")
             return False
         return True
+
+    def is_terminal(self):
+        if self.is_aborted():
+            return True
+        if self.is_failure():
+            return True
+        if self.is_success():
+            return True
+        return False
+
+    def is_aborted(self):
+        return self.invalid_response
+
+    def is_failure(self):
+        if self.is_clue_error():
+            return True
+        if self.is_turn_limit_reached():
+            return True
+        return False
+
+    def is_clue_error(self):
+        return self.clue_error is not None
+
+    def is_turn_limit_reached(self):
+        return self.current_round >= self.max_rounds
+
+    def is_success(self):
+        return self.guess_word == self.target_word
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         if player == self.guesser:
@@ -163,22 +183,19 @@ class Taboo(DialogueGameMaster):
             self.log_to_self("valid clue", clue)
         return True
 
-    def _after_add_player_response(self, player: Player, utterance: str):
+    def _on_valid_player_response(self, player: Player, parsed_response: str):
         if player == self.describer:
-            if self.current_turn == 0:  # special case: merge first clue into prompt
-                prompt_with_first_clue = f"{self.guesser_initial_prompt}\n\n{utterance}"
-                self.add_user_message(self.guesser, prompt_with_first_clue)
-            else:
-                self.add_user_message(self.guesser, utterance)
+            self.set_context_for(self.guesser, parsed_response)
         if player == self.guesser:
-            # NOTE(jg): would be interesting to test whether the model behaves
-            #   differently when knowing about the guesser's guess or not knowing
-            #   about the guesser's guess. Human players would take the "direction
-            #   of thinking" into account
+            self.set_context_for(self.describer, parsed_response)
 
-            # if not correct, then we add the guess and go on; otherwise we will stop immediately
-            if self.guess_word != self.target_word:
-                self.add_user_message(self.describer, utterance)
+    def compute_response_score(self, response, context):
+        return 1 if self.is_success() else 0
+
+    def compute_episode_score(self):
+        if self.is_success():
+            return 100 / (self.current_round + 1)  # zero-based
+        return 0
 
 
 class TabooScorer(GameScorer):
@@ -271,7 +288,7 @@ class TabooGameBenchmark(GameBenchmark):
 
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
-        #TODO: experiment could also be set through GameSpec
+        # TODO: experiment could also be set through GameSpec
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
         return Taboo(self.game_name, self.game_path, experiment, player_models)

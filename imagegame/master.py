@@ -1,10 +1,8 @@
-import os
 from typing import List, Dict
 import logging
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, GameSpec, metrics
-from game import ImageGame
+from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, metrics, Player
 from evaluator import evaluate, calculate_flipped_pixels
 
 import re
@@ -13,62 +11,95 @@ import math
 logger = logging.getLogger(__name__)
 
 
+class InstructionFollower(Player):
+
+    def _custom_response(self, context):
+        return "▢ P O T ▢\n▢ S ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢\n▢ D A M ▢"
+
+
+class InstructionGiver(Player):
+
+    def _custom_response(self, context):
+        return "Command: Put X in all cells"
+
+
+class ImageGame:
+
+    def __init__(self, game_instance: Dict):
+        self.game_id = game_instance['game_id']
+        self.player_1_prompt_header = game_instance['player_1_prompt_header']
+        self.player_2_prompt_header = game_instance['player_2_prompt_header']
+        self.player_1_question = game_instance['player_1_question']
+        self.target_grid = game_instance['target_grid']
+        self.grid_dimension = game_instance['grid_dimension']
+        self.number_of_letters = game_instance['number_of_letters']
+        self.fill_row = game_instance['fill_row']
+        self.fill_column = game_instance['fill_column']
+        self.player_1_response_pattern = r'{}'.format(game_instance['player_1_response_pattern'])
+        self.player_1_terminate_pattern = r'{}'.format(game_instance['player_1_terminate_pattern'])
+        self.player_2_response_pattern = r'{}'.format(game_instance['player_2_response_pattern'])
+        self.context_for_player: Dict[str, Dict] = {}
+        self.current_turn = 0
+        self.max_turns = self.grid_dimension * self.grid_dimension
+        self.terminate = False
+
+
 class ImageGameMaster(GameMaster):
 
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
         self.experiment = experiment
-        self.game = None
         self.request_count = 0
         self.parsed_request_count = 0
         self.violated_request_count = 0
         self.aborted_ratio = 0
         self.turn_request_stats = {}
 
-    def _on_setup(self, **game_instance):
+    def set_context_for(self, player, content):
+        self.game.context_for_player[player.name] = dict(role="user", content=content)
+
+    def get_context_for(self, player):
+        return self.game.context_for_player[player.name]
+
+    def setup(self, **game_instance):
         self.game_instance = game_instance
-
-        self.game = ImageGame(self.game_instance, self.player_models)
-
+        self.game = ImageGame(self.game_instance)
+        self.instruction_giver = InstructionGiver(self.player_models[0],
+                                                  name="Player 1 (InstructionGiver)",
+                                                  game_recorder=self.game_recorder)
+        self.instruction_follower = InstructionFollower(self.player_models[1],
+                                                        name="Player 2 (InstructionFollower)",
+                                                        game_recorder=self.game_recorder)
         self.log_players({
             "GM": "Game master for imagegame",
             "Player_1": self.player_models[0].get_name(),
             "Player_2": self.player_models[1].get_name()}
         )
 
-    def setup(self, **kwargs):
-        self._on_setup(**kwargs)
+    def proceeds(self) -> bool:
+        if self.game.terminate:
+            return False
+        if self.game.current_turn >= self.game.max_turns:
+            self.log_to_self("game end", "turn limit reached")
+            return False
+        return True
 
     def play(self) -> None:
-        while self.game.proceeds():
-            logger.info("Game turn: %d", self.game.current_turn)
+        while self.proceeds():
             self.turn()
 
     def turn(self):
         # instruction giving - A side
-        self.log_next_turn()
         self.turn_request_stats[self.game.current_turn] = {'request_count': 0, 'parsed_count': 0, 'violated_count': 0}
 
-        if self.game.next_turn_message != '':
-            self.game.given_instruction.add_user_message(self.game.next_turn_message)
-        self.game.next_turn_message = self.game.player_1_question
-
-        # log the game master to player 1
-        action = {'type': 'send message', 'content': self.game.given_instruction.user_messages[-1]}
-        self.log_event(from_="GM", to="Player 1", action=action)
-
-        player_1_prompt, player_1_response, player_1_response_text = self.game.instruction_giver(self.game.given_instruction,
-                                                                                            self.game.current_turn)
+        context = dict(role="user", content="")
+        if self.game.current_turn == 0:  # add prompt
+            context["content"] = self.game.player_1_prompt_header + '\n' + self.game.target_grid + '\n'
+        context["content"] += self.game.player_1_question
+        player_1_response_text = self.instruction_giver(context)
 
         self.request_count += 1
         self.turn_request_stats[self.game.current_turn]['request_count'] += 1
-
-        # log the retrieved utterance
-        action = {'type': 'get message', 'content': player_1_response_text}
-        self.log_event(from_="Player 1", to="GM", action=action, call=(player_1_prompt, player_1_response))
-
-        # add the message to Player 1
-        self.game.given_instruction.add_system_message(player_1_response_text)
 
         # check if it reached the end on 1 side
         match = re.compile(self.game.player_1_terminate_pattern, re.IGNORECASE).match(player_1_response_text)
@@ -76,13 +107,14 @@ class ImageGameMaster(GameMaster):
             self.parsed_request_count += 1
             self.turn_request_stats[self.game.current_turn]['parsed_count'] += 1
             self.game.terminate = True
+            self.log_to_self("found terminate pattern", player_1_response_text)
             return
         else:
             # continue if the Player didn't say -> Instruction: DONE
             # check if Player 1 message follows the rule => start with "Instruction:"
-            player_1_message_matched = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(player_1_response_text)
+            player_1_message_matched = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(
+                player_1_response_text)
             if player_1_message_matched:
-                parsed_instruction = ''
                 if '\n' in player_1_response_text:
                     parsed_instruction = player_1_response_text.split('\n')[0]
                 else:
@@ -107,26 +139,15 @@ class ImageGameMaster(GameMaster):
                 self.game.terminate = True
                 return
 
-
             # instruction following - 2 side
             if self.game.current_turn == 0:
-                self.game.followed_instruction.add_user_message(
-                    self.game.player_2_prompt_header + '\n' + player_1_response_text)
+                self.set_context_for(self.instruction_follower,
+                                     self.game.player_2_prompt_header + '\n' + player_1_response_text)
             else:
-                self.game.followed_instruction.add_user_message(player_1_response_text)
+                self.set_context_for(self.instruction_follower, player_1_response_text)
 
-
-            # log the game master to player 2
-            action = {'type': 'send message', 'content': self.game.followed_instruction.user_messages[-1]}
-            self.log_event(from_="GM", to="Player 2", action=action)
-
-            player_2_prompt, player_2_response, player_2_response_text = self.game.instruction_follower(
-                self.game.followed_instruction, self.game.current_turn)
-
-            # log the retrieved utterance
-            action = {'type': 'get message', 'content': player_2_response_text}
-            self.log_event(from_="Player 2", to="GM", action=action, call=(player_2_prompt, player_2_response))
-            self.game.followed_instruction.add_system_message(player_2_response_text)
+            context = self.get_context_for(self.instruction_follower)
+            player_2_response_text = self.instruction_follower(context)
 
             # increase the request count
             self.turn_request_stats[self.game.current_turn]['request_count'] += 1
@@ -141,7 +162,6 @@ class ImageGameMaster(GameMaster):
                 action = {'type': 'parse', 'content': player_2_response_text,
                           'original_content': player_2_response_text}
                 self.log_event(from_="GM", to="GM", action=action)
-
             else:
                 # log the invalid format
                 action = {'type': 'invalid format', 'content': 'Invalid grid format',
@@ -284,7 +304,6 @@ class ImageGameScorer(GameScorer):
             self.log_turn_score(t_index, metrics.METRIC_REQUEST_COUNT_VIOLATED,
                                 turn_violated_request_count)
 
-
         # Episode level logging
         if aborted:
             # if aborted give NaN value to all metrics
@@ -352,9 +371,6 @@ class ImageGameScorer(GameScorer):
 
 
 class ImageGameBenchmark(GameBenchmark):
-
-    def __init__(self, game_spec: GameSpec):
-        super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
         return ImageGameMaster(self.game_name, self.game_path, experiment, player_models)

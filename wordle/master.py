@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, List, Union
+from typing import Dict, List
 import logging
 
 import re
@@ -6,12 +6,10 @@ import copy
 import numpy as np
 
 from clemcore.backends import Model, HumanModel, ContextExceededError
-from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, GameSpec
+from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, GameSpec, Player, GameRecorder
 import clemcore.clemgame.metrics as metrics
 
 from utils.guessvalidator import GuessValidator
-from utils.guesser import Guesser
-from utils.critic import Critic
 from utils.compute_metrics import ComputeMetrics
 
 GAME_NAME = "wordle"
@@ -19,21 +17,57 @@ GAME_NAME = "wordle"
 logger = logging.getLogger(__name__)
 
 
+class Guesser(Player):
+    def __init__(self, model: Model, game_recorder: GameRecorder, response_format_keywords: Dict):
+        super().__init__(model, "Player 1 (Guesser)", game_recorder)
+        self.response_format_keywords = response_format_keywords
+
+        # a list to keep the dialogue history
+        self.history: List = []
+        self.count_turn = 0
+
+    def generate_response(self):
+        context = self.history[-1]
+        response_text = super().__call__(context)
+        return response_text
+
+    def _terminal_response(self, context: Dict) -> str:
+        guess_word = input("Enter your guess: ")
+        return guess_word
+
+    def _custom_response(self, context: Dict) -> str:
+        dummy_response = (f'{self.response_format_keywords["explanation_lang"]} dummy\n'
+                          f'{self.response_format_keywords["guess_lang"]} dummy')
+        return dummy_response
+
+
+class Critic(Player):
+    def __init__(self, model_name: Model, game_recorder: GameRecorder, response_format_keywords: Dict):
+        super().__init__(model_name, "Player 2 (Critic)", game_recorder)
+        self.response_format_keywords = response_format_keywords
+
+        # a list to keep the dialogue history
+        self.history: List = []
+        self.count_turn = 0
+
+    def generate_response(self):
+        context = self.history[-1]
+        response_text = super().__call__(context)
+        return response_text
+
+    def _terminal_response(self, context: Dict) -> str:
+        guess_agreement = input("Enter your agreement for the guess: ")
+        return guess_agreement
+
+    def _custom_response(self, context: Dict) -> str:
+        dummy_response = (f'{self.response_format_keywords["explanation_lang"]} agree with your guess\n'
+                          f'{self.response_format_keywords["agreement_lang"]} yes')
+        return dummy_response
+
+
 class WordleGameMaster(GameMaster):
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, experiment, player_models)
-        self.config = experiment
-
-        self.model_a = player_models[0]
-        if len(player_models) > 1:
-            self.model_b = player_models[1]
-
-        elif len(player_models) == 1 and self.config["use_critic"]:
-            self.model_b = player_models[0]
-
-        else:
-            self.model_b = None
-
+        super().__init__(game_name, game_path, experiment, player_models)
         # initialise attributes that will be used for the evaluation scores
         self.aborted: bool = False
         self.lose: bool = False
@@ -44,10 +78,8 @@ class WordleGameMaster(GameMaster):
         self.game_id = game_id
         self.target_word = target_word.strip()
         self.target_word_clue = target_word_clue.strip()
-        self.use_clue = self.config["use_clue"]
-        self.use_critic = self.config["use_critic"]
 
-        if self.use_clue:
+        if self.experiment["use_clue"]:
             if self.player_models and isinstance(self.player_models[0], HumanModel):
                 logger.info(f"Target word clue: {self.target_word_clue}")
         self.target_word_difficulty = target_word_difficulty.strip()
@@ -56,107 +88,153 @@ class WordleGameMaster(GameMaster):
         self.guess_feedback = {}
 
         # instantiate both players
-        self.player_a = Guesser(self.model_a, self.config["lang_keywords"])
-        if self.model_b:
-            self.player_b = Critic(self.model_b, self.config["lang_keywords"])
-            player2_details = f"Word Guesser Critic ({self.model_b})"
-        else:
-            self.player_b = None
-            player2_details = f"Player B: ObjectID Evaluator (Programmatic)"
+        self.player_a = Guesser(self.player_models[0], self.game_recorder, self.experiment["lang_keywords"])
+        self.player_b = None
+        player2_details = f"Player B: ObjectID Evaluator (Programmatic)"
+        if len(self.player_models) > 1:
+            self.player_b = Critic(self.player_models[1], self.game_recorder, self.experiment["lang_keywords"])
+            player2_details = f"Word Guesser Critic ({self.player_models[1]})"
+        elif len(self.player_models) == 1 and self.experiment["use_critic"]:
+            self.player_b = Critic(self.player_models[0], self.game_recorder, self.experiment["lang_keywords"])
+            player2_details = f"Word Guesser Critic ({self.player_models[0]})"
+        self.log_players(  # always log the details of the players in this format (see logdoc)
+            {
+                "GM": "Game master for wordle",
+                "Player 1": f"Word Guesser ({self.player_models[0]})",
+                "Player 2": player2_details,
+            }
+        )
+        # append the initial message of each player to their history
+        # the value user means the message is from an interlocutor of the model
+        self.player_a.history.append({"role": "user", "content": self.experiment["guesser_prompt"]})
+        if self.player_b:
+            self.player_b.history.append({"role": "user", "content": self.experiment["guesser_critic_prompt"]})
 
-        self.n_turns = self.config["common_config"]["n_turns"]
         # initialise game variables
-        self.current_turn: int = 0
+        self.max_rounds = self.experiment["common_config"]["n_turns"]
+        self.current_round: int = 0
         self.reprompt = False
-        self.reprompt_error = {key: None for key in range(1, self.n_turns + 1)}
-        self.reprompt_answer = {key: None for key in range(1, self.n_turns + 1)}
+        self.reprompt_error = {key: None for key in range(1, self.max_rounds + 1)}
+        self.reprompt_answer = {key: None for key in range(1, self.max_rounds + 1)}
 
-        self.max_retry_per_error = self.config["common_config"]["max_retry_per_error"]
+        self.max_retry_per_error = self.experiment["common_config"]["max_retry_per_error"]
         self.cur_retry_per_error = {key: 0 for key in self.max_retry_per_error.keys()}
 
         # initialise common metrics
-        self.request_counts = {
-            key: 0 for key in range(1, self.n_turns + 1)
-        }  # [0] * (self.n_turns + 1)
-        self.parsed_request_counts = {
-            key: 0 for key in range(1, self.n_turns + 1)
-        }  # [0] * (self.n_turns + 1)
-        self.violated_request_counts = {
-            key: 0 for key in range(1, self.n_turns + 1)
-        }  # [0] * (self.n_turns + 1)
+        self.request_counts = {key: 0 for key in range(1, self.max_rounds + 1)}
+        self.parsed_request_counts = {key: 0 for key in range(1, self.max_rounds + 1)}
+        self.violated_request_counts = {key: 0 for key in range(1, self.max_rounds + 1)}
 
         self.game_result = {
             "target_word": self.target_word,
             "target_word_clue": self.target_word_clue,
             "target_word_difficulty": self.target_word_difficulty,
-            "use_clue": self.use_clue,
-            "use_critic": self.use_critic,
+            "use_clue": self.experiment["use_clue"],
+            "use_critic": self.experiment["use_critic"],
             "guess": [],
             "guess_explanation": [],
             "critic_feedback": {},
         }
         self.before_critic = False
 
-        # add initial prompts to each player's messages
-        self.initiate(
-            self.config["guesser_prompt"], self.config["guesser_critic_prompt"]
-        )
-
-        # always log the details of the players in this format (see logdoc)
-        self.log_players(
-            {
-                "GM": "Game master for wordle",
-                "Player 1": f"Word Guesser ({self.model_a})",
-                "Player 2": player2_details,
-            }
-        )
-
         # log any additional keys that will be relevant for evaluation
-        self.log_key("n_turns", self.n_turns)
-
-    def initiate(self, prompt_player_a: str, prompt_player_b: str = None) -> None:
-        """Initialise the dialogue history (firstlast specific)."""
-        # append the initial message of each player to their history
-        # the value user means the message is from an interlocutor of the model
-        self.player_a.history.append({"role": "user", "content": prompt_player_a})
-
-        if self.player_b:
-            self.player_b.history.append({"role": "user", "content": prompt_player_b})
-
-    def play(self) -> None:
-        """Play the game until the end (mandatory)."""
-        # play the game
-        while self.proceed():
-            self.current_turn += 1
-            # always call log_next_turn when a new turn starts
-            self.log_next_turn()
-            self.turn()
-
-            if self.success:
-                action = {"type": "correct guess", "content": "game_result = WIN"}
-                self.log_event(from_="GM", to="GM", action=action)
-                break
-
-        if not self.success:
-            if self.aborted:
-                action = {"type": "invalid format", "content": "game_result = ABORT"}
-                self.log_event(from_="GM", to="GM", action=action)
-            else:
-                self.lose = True
-                action = {"type": "incorrect guess", "content": "game_result = LOSS"}
-                self.log_event(from_="GM", to="GM", action=action)
-
-        # log all temporary game variables that are needed for evaluation
-        self.log_eval_assets()
+        self.log_key("n_turns", self.max_rounds)
 
     def proceed(self) -> None:
         """Check if the game loop should continue (firstlast specific)."""
         return (
-            self.current_turn < self.n_turns
-            and not self.aborted
-            and not self.lose
-            and not self.success
+                self.current_round < self.max_rounds
+                and not self.aborted
+                and not self.lose
+                and not self.success
         )
+
+    def play(self) -> None:
+        """Initialise the dialogue history (firstlast specific)."""
+        while self.proceed():
+            self.current_round += 1
+            self.turn()
+            if self.success:
+                self.log_to_self("correct guess", "game_result = WIN")
+                break
+            self.log_next_round()  # always call when a new round starts
+        if not self.success:
+            if self.aborted:
+                self.log_to_self("invalid format", "game_result = ABORT")
+            else:
+                self.lose = True
+                self.log_to_self("incorrect guess", "game_result = LOSS")
+        self.log_eval_assets()  # log all temporary game variables that are needed for evaluation
+
+    def turn(self) -> None:
+        """Perform a game turn, utterances by A and B"""
+        self.before_critic = True
+        self.guess_feedback[self.current_round] = {}
+
+        answer_a = self._get_model_response("a")  # get player A's reply and add it to its history
+        answer_player_a = self._handle_playera_response(answer_a)  # check if the game should be aborted or lost
+        logger.info(
+            f"Current Turn: {self.current_round}, "
+            f"Received response from player a: {answer_player_a}, self.success: {self.success}")
+
+        if answer_player_a is None:
+            return None
+
+        if self.experiment["use_critic"]:  # add A's reply to B's history
+            logger.info(
+                f"Current turn: {self.current_round}, "
+                f"use_critic: True, self.success: {self.success} calling player b")
+            self.before_critic = False
+            answer_b = self._get_model_response("b")
+            is_valid_turn = self._check_validity("b", answer_b)  # check if the game should be aborted or lost
+            if not is_valid_turn:
+                return None  # stop game
+            logger.info(f"Valid answer {answer_b} from player b, self.success: {self.success} calling player a")
+
+            answer_a = self._get_model_response("a")  # get player A's reply and add it to its history
+            logger.info(f"Received answer {answer_a} from player a")
+            answer_player_a = self._handle_playera_response(answer_a)  # check if the game should be aborted or lost
+            logger.info(f"After parsing, answer from player a is: {answer_player_a}, self.success: {self.success}")
+            if answer_player_a is None:
+                logger.info(f"Answer from player a is None, returning, self.success: {self.success}")
+                return None
+        self.complete_turns += 1
+
+    def _get_model_response(self, player: str, reprompt=False) -> str:
+        assert player in ("a", "b")
+        if player == "a":
+            use_player = self.player_a
+        if player == "b":
+            use_player = self.player_b
+        if not reprompt:
+            self._prepare_player_query(player)
+        # make an API call (or get a programmatic response) from player a
+        try:
+            answer = use_player.generate_response()
+        except ContextExceededError as error:
+            logger.error(f"Current Turn: {self.current_round}, Error in response from player {player}: {error}")
+            self.aborted = True
+            answer = "Context token limit exceeded"
+        # add reply to its own memory
+        self._append_utterance(answer, player, "assistant")
+
+        # increase the number of API requests
+        self.request_counts[self.current_round] += 1
+        return answer
+
+    def _handle_playera_response(self, answer_a: str) -> str:
+        model_response = answer_a
+        is_valid_turn = self._check_validity("a", answer_a)  # check if the game should be aborted or lost
+        if not is_valid_turn:
+            if self.reprompt:
+                # go ahead with reprompt
+                logger.error(f"Current Turn: {self.current_round}, INVALID_WORD in response; Reprompting player a")
+                is_valid_turn, model_response = self._handle_reprompt("a")
+                if not is_valid_turn:
+                    return None  # stop game
+            else:
+                return None  # stop game
+        return model_response
 
     def _parse_response(self, pattern, response):
         matches = pattern.findall(response)
@@ -172,18 +250,14 @@ class WordleGameMaster(GameMaster):
             return None, None
 
         if player == "a":
-            if not response.startswith(self.config["lang_keywords"]["explanation_lang"]):
+            if not response.startswith(self.experiment["lang_keywords"]["explanation_lang"]):
                 return None, None
+            guess_keyword = self.experiment["lang_keywords"]["guess_lang"]
 
-            guess_keyword = self.config["lang_keywords"]["guess_lang"]
-
-        else:
-            if not response.startswith(self.config["lang_keywords"]["explanation_lang"]):
+        if player == "b":
+            if not response.startswith(self.experiment["lang_keywords"]["explanation_lang"]):
                 return None, None
-
-            guess_keyword = self.config["lang_keywords"]["agreement_lang"]
-
-        explanation_keyword = self.config["lang_keywords"]["explanation_lang"]
+            guess_keyword = self.experiment["lang_keywords"]["agreement_lang"]
 
         response = response.strip()
         additional_response = response.split("\n")
@@ -193,9 +267,9 @@ class WordleGameMaster(GameMaster):
         # Guess/Agreement should only be one word
         guess_pattern = re.compile(rf"{guess_keyword}([^\n]*)", re.IGNORECASE)
         # Explanation can spread across multiple lines
+        explanation_keyword = self.experiment["lang_keywords"]["explanation_lang"]
         explanation_pattern = re.compile(
             rf"{explanation_keyword}([^\n]*)", re.IGNORECASE)
-        
 
         guess = self._parse_response(guess_pattern, response)
         if guess:
@@ -210,7 +284,8 @@ class WordleGameMaster(GameMaster):
 
         if player == "a":
             return {"guess": guess, "explanation": explanation}, None
-        else:
+
+        if player == "b":
             return {"agreement": guess, "explanation": explanation}, None
 
     def check_correctness(self, player: str, answer: str) -> str:
@@ -225,58 +300,49 @@ class WordleGameMaster(GameMaster):
 
         if player == "a":
             to_check = answer["guess"]
-        else:
+        if player == "b":
             to_check = answer["agreement"]
 
         if to_check.count(" ") > 0 or not to_check.isalpha():
             return "INVALID_FORMAT"
 
         if player == "a":
-            if len(to_check) != self.config["lang_keywords"]["max_word_length"]:
+            if len(to_check) != self.experiment["lang_keywords"]["max_word_length"]:
                 return "INVALID_WORD_LENGTH"
 
-            if to_check not in self.config["lang_keywords"]["official_words_list"]:
+            if to_check not in self.experiment["lang_keywords"]["official_words_list"]:
                 return "NOT_VALID_WORD_FOR_GAME"
 
-        else:
-            if (
-                to_check
-                not in self.config["lang_keywords"]["agreement_match_keywords_lang"]
-            ):
+        if player == "b":
+            if to_check not in self.experiment["lang_keywords"]["agreement_match_keywords_lang"]:
                 return "NOT_VALID_CRITIC_WORD"
 
         return "VALID_GUESS"
 
     def _get_content_to_log_for_each_turn(self, player, answer, status):
         assert player in ("a", "b")
-
         content = ""
         if answer:
             if player == "a":
-                content = f"attempts = {self.current_turn}\ntarget_word = {self.target_word}\n"
-                if self.use_clue:
+                content = f"attempts = {self.current_round}\ntarget_word = {self.target_word}\n"
+                if self.experiment["use_clue"]:
                     content += f"target_word_clue = {self.target_word_clue}\n"
-
                 content += f"guess = {answer['guess']}\n"
                 if status == "progress":
-                    if not self.use_critic:
+                    if not self.experiment["use_critic"]:
                         use_key = "no_critic"
                     else:
                         if self.before_critic:
                             use_key = "before_critic"
                         else:
                             use_key = "after_critic"
-
-                    content += f"guess_feedback = {self.guess_feedback[self.current_turn][use_key]}"
-
-            else:
+                    content += f"guess_feedback = {self.guess_feedback[self.current_round][use_key]}"
+            if player == "b":
                 if status == "progress":
-                    # content = f"agreement = {answer['agreement']}\nexplanation = {answer['explanation']}"
                     if answer["agreement"] == "yes":
                         content = "Critic agrees with the Guesser -- Sharing the critic's explanation with the guesser"
                     else:
                         content = "Critic does not agree with the Guesser -- Sharing the critic's explanation with the guesser"
-
         return content
 
     def _get_error_to_log(self, player, error):
@@ -287,20 +353,21 @@ class WordleGameMaster(GameMaster):
             elif error == "INVALID_FORMAT":
                 return "The guess should be a single word and should only contain letters."
             elif error == "INVALID_WORD_LENGTH":
-                return f"The length of the guessed word is not {self.config['lang_keywords']['max_word_length']}."
+                return f"The length of the guessed word is not {self.experiment['lang_keywords']['max_word_length']}."
             elif error == "NOT_VALID_WORD_FOR_GAME":
                 return "The guessed word is not a valid word for this game."
             elif error == "MORE_THAN_ONE_GUESS":
                 return "The response should contain the 'guess:' keyword only once."
             elif error == "UNKNOWN_TAGS":
                 return "The response should contain only the 'guess:' and 'explanation:' keywords and associated information."
-        else:
+        if player == "b":
             if error == "INVALID_START_WORD":
                 return "The response should always start with the keyword 'explanation:'"
             elif error == "INVALID_FORMAT":
                 return "The agreement should be a single word and should only be yes or no."
             elif error == "NOT_VALID_CRITIC_WORD":
-                return f"The agreement should be one of the following: {self.config['lang_keywords']['agreement_match_keywords_lang']}"
+                return (f"The agreement should be one of the following: "
+                        f"{self.experiment['lang_keywords']['agreement_match_keywords_lang']}")
             elif error == "MORE_THAN_ONE_GUESS":
                 return "The response should contain the 'agreement:' keyword only once."
             elif error == "UNKNOWN_TAGS":
@@ -308,34 +375,28 @@ class WordleGameMaster(GameMaster):
 
     def _handle_reprompt(self, player):
         assert player in ("a")
-
         if self.reprompt:
             # increase the counter of requests that conform to form rules
-            self.parsed_request_counts[self.current_turn] += 1
-
-            is_correct_reply = self.reprompt_error[self.current_turn]
-
+            self.parsed_request_counts[self.current_round] += 1
+            is_correct_reply = self.reprompt_error[self.current_round]
             while (
-                self.cur_retry_per_error[is_correct_reply]
-                < self.max_retry_per_error[is_correct_reply]
+                    self.cur_retry_per_error[is_correct_reply]
+                    < self.max_retry_per_error[is_correct_reply]
             ):
                 self.cur_retry_per_error[is_correct_reply] += 1
-
-                content_to_log = f"Guesser Error: {is_correct_reply} while parsing Player 1's (model: {self.model_a}) response"
+                content_to_log = (f"Guesser Error: {is_correct_reply} while parsing Player 1's "
+                                  f"(model: {self.player_models[0]}) response")
                 action = {"type": "metadata", "content": content_to_log}
                 self.log_event(from_="GM", to="GM", action=action)
-
                 content = (
-                    self.config["lang_keywords"]["error_prompt_text"][is_correct_reply]
-                    + " "
-                    + self.config["lang_keywords"]["error_prompt_text"]["RETRY"]
-                    + "\n\n"
+                        self.experiment["lang_keywords"]["error_prompt_text"][is_correct_reply]
+                        + " "
+                        + self.experiment["lang_keywords"]["error_prompt_text"]["RETRY"]
+                        + "\n\n"
                 )
                 content += self._get_short_prompt(player)
                 content = content.strip()
-
                 self._append_utterance(content, player, "user")
-
                 # also add the reply to the transcript
                 action = {"type": "send message", "content": content}
                 self.log_event(from_="GM", to="Player 1", action=action)
@@ -348,33 +409,31 @@ class WordleGameMaster(GameMaster):
                     self.cur_retry_per_error[is_correct_reply] = 0
                     self.reprompt = False
                     return True, answer
-                
+
                 # increase the counter of requests that conform to form rules
-                self.parsed_request_counts[self.current_turn] += 1
+                self.parsed_request_counts[self.current_round] += 1
 
                 if self.reprompt:
-                    is_correct_reply = self.reprompt_error[self.current_turn]
+                    is_correct_reply = self.reprompt_error[self.current_round]
                 else:
                     break
 
-            logger.error(f"Current Turn: {self.current_turn}, Error in response from player a: {self.reprompt_answer[self.current_turn]}, is_correct_reply: {is_correct_reply}")
+            logger.error(
+                f"Current Turn: {self.current_round}, Error in response from player a: "
+                f"{self.reprompt_answer[self.current_round]}, is_correct_reply: {is_correct_reply}")
             self.reprompt = False
             if self.cur_retry_per_error[is_correct_reply] == self.max_retry_per_error[is_correct_reply]:
-                self._handle_abort(
-                    player, self.reprompt_answer[self.current_turn], is_correct_reply
-                )
+                self._handle_abort(player, self.reprompt_answer[self.current_round], is_correct_reply)
             return False, None
 
     def _handle_abort(self, player, answer, is_correct_reply):
         assert player in ("a", "b")
-
         self.aborted = True
         # log the abortion event
-        content_to_log = ""#self._get_content_to_log_for_each_turn(player, answer, "abort")
-        
+        content_to_log = ""
         if player == "a":
             content_to_log += "\nGuess "
-        else:
+        if player == "b":
             content_to_log += "\nAgreement "
 
         content_to_log += f"does not conform to the format rules"
@@ -382,20 +441,14 @@ class WordleGameMaster(GameMaster):
             error_log = self._get_error_to_log(player, is_correct_reply)
             content_to_log += f"\nError: {error_log}"
 
-        action = {"type": "metadata", "content": content_to_log.strip()}
-        self.log_event(from_="GM", to="GM", action=action)
-        # increase the counter of requests that violate form rules
-        self.violated_request_counts[self.current_turn] += 1
+        self.log_to_self("metadata", content_to_log.strip())
+        self.violated_request_counts[self.current_round] += 1
 
     def set_reprompt(self, is_correct_reply, answer):
-        if (
-            self.cur_retry_per_error[is_correct_reply]
-            < self.max_retry_per_error[is_correct_reply]
-        ):
+        if (self.cur_retry_per_error[is_correct_reply] < self.max_retry_per_error[is_correct_reply]):
             self.reprompt = True
-            self.reprompt_error[self.current_turn] = is_correct_reply
-            self.reprompt_answer[self.current_turn] = answer
-            # self.cur_retry_per_error[is_correct_reply] += 1
+            self.reprompt_error[self.current_round] = is_correct_reply
+            self.reprompt_answer[self.current_round] = answer
 
     def _check_validity(self, player: str, answer: str) -> bool:
         """Check if answer is valid and correct"""
@@ -413,7 +466,7 @@ class WordleGameMaster(GameMaster):
         # if correct characters, check correctness wrt game rules
         is_correct_reply = self.check_correctness(player, answer_parse)
         if is_correct_reply != "VALID_GUESS":
-            if is_correct_reply in self.config["common_config"]["retry_error_type"]:
+            if is_correct_reply in self.experiment["common_config"]["retry_error_type"]:
                 self.set_reprompt(is_correct_reply, answer_parse)
                 return False
 
@@ -421,138 +474,79 @@ class WordleGameMaster(GameMaster):
             return False
 
         # increase the counter of requests that conform to form rules
-        self.parsed_request_counts[self.current_turn] += 1
+        self.parsed_request_counts[self.current_round] += 1
 
-        if not self.use_critic:
-            use_key = "no_critic"
-        else:
-            if self.before_critic:
-                use_key = "before_critic"
-            else:
-                use_key = "after_critic"
+        use_key = "no_critic"
+        if self.experiment["use_critic"] and self.before_critic:
+            use_key = "before_critic"
+        elif self.experiment["use_critic"]:
+            use_key = "after_critic"
 
         if player == "a":
             val_guess = self.guessvalidator.validate(answer_parse["guess"])
+            self.guess_feedback[self.current_round][use_key] = val_guess
 
-            self.guess_feedback[self.current_turn][use_key] = val_guess
-            if not self.use_critic or (self.use_critic and not self.before_critic):
+            if not self.experiment["use_critic"] or (self.experiment["use_critic"] and not self.before_critic):
                 self.game_result["guess"].append((answer_parse["guess"], val_guess))
-                self.game_result["guess_explanation"].append(
-                    answer_parse["explanation"]
-                )
+                self.game_result["guess_explanation"].append(answer_parse["explanation"])
 
-            if self.use_critic:
-                if self.current_turn not in self.game_result["critic_feedback"]:
-                    self.game_result["critic_feedback"][self.current_turn] = {}
+            if self.experiment["use_critic"]:
+                if self.current_round not in self.game_result["critic_feedback"]:
+                    self.game_result["critic_feedback"][self.current_round] = {}
+                self.game_result["critic_feedback"][self.current_round][use_key] = answer_parse
 
-                self.game_result["critic_feedback"][self.current_turn][
-                    use_key
-                ] = answer_parse
+            if use_key in ["no_critic", "after_critic"] and self.is_guess_correct(val_guess):
+                logger.error(f"Guess is correct: {answer_parse['guess']}, setting success flag to True")
+                self.success = True
 
-
-            if use_key in ["no_critic", "after_critic"]:
-                if self.is_guess_correct(val_guess):
-                    logger.error(f"Guess is correct: {answer_parse['guess']}, setting success flag to True")
-                    self.success = True
-
-        else:
-            if self.use_critic:
-                self.game_result["critic_feedback"][self.current_turn][
-                    "critic_response"
-                ] = answer_parse
+        if player == "b" and self.experiment["use_critic"]:
+            self.game_result["critic_feedback"][self.current_round]["critic_response"] = answer_parse
 
         # log the fact that the answer was correct
-        if player == "a" and self.use_critic and not self.before_critic:
-            guess_before_critic = self.game_result["critic_feedback"][
-                self.current_turn
-            ]["before_critic"]["guess"]
-            guess_after_critic = self.game_result["critic_feedback"][self.current_turn][
-                "after_critic"
-            ]["guess"]
-            critic_agreement = self.game_result["critic_feedback"][self.current_turn][
-                "critic_response"
-            ]["agreement"]
+        if player == "a" and self.experiment["use_critic"] and not self.before_critic:
+            guess_before_critic = self.game_result["critic_feedback"][self.current_round]["before_critic"]["guess"]
+            guess_after_critic = self.game_result["critic_feedback"][self.current_round]["after_critic"]["guess"]
+            critic_agreement = self.game_result["critic_feedback"][self.current_round]["critic_response"]["agreement"]
             if guess_before_critic != guess_after_critic:
                 guess_response = "Change in player1's guess."
-                logger.debug(
-                    "Player1 changed the guess word after sharing the critic's opinion"
-                )
-                self.game_result["critic_feedback"][self.current_turn][
-                    "guess_changed_after_critic_response"
-                ] = True
+                logger.debug("Guesser changed the guess word after sharing the critic's opinion")
+                self.game_result["critic_feedback"][self.current_round]["guess_changed_after_critic_response"] = True
             else:
                 guess_response = "No change in player1's guess."
-                logger.debug(
-                    "Player1 did not change the guess word after sharing the critic's opinion"
-                )
-                self.game_result["critic_feedback"][self.current_turn][
-                    "guess_changed_after_critic_response"
-                ] = False
-
+                logger.debug("Guesser did not change the guess word after sharing the critic's opinion")
+                self.game_result["critic_feedback"][self.current_round]["guess_changed_after_critic_response"] = False
             guess_response += f"\nguess_before_critic_opinion: {guess_before_critic}\n\
                                 critic_agreement: {critic_agreement}\nguess_after_critic_opinion: {guess_after_critic}\n\
                                                 Proceeding with guess validation"
+            self.log_to_self("metadata", guess_response)
 
-            action = {"type": "metadata", "content": guess_response}
-            self.log_event(from_="GM", to="GM", action=action)
-
-        if not self.use_critic or (self.use_critic and not self.before_critic):
-            content_to_log = self._get_content_to_log_for_each_turn(
-                player, answer_parse, "progress"
-            )
-            action = {"type": "metadata", "content": content_to_log}
-            self.log_event(from_="GM", to="GM", action=action)
+        if not self.experiment["use_critic"] or (self.experiment["use_critic"] and not self.before_critic):
+            content_to_log = self._get_content_to_log_for_each_turn(player, answer_parse, "progress")
+            self.log_to_self("metadata", content_to_log)
 
         return True
 
     def _prepare_playera_reply_to_playerb(self) -> str:
-        content = (
-            "\n\n"
-            + self.config["lang_keywords"]["clue_lang"]
-            + " "
-            + self.target_word_clue
-            + "\n"
-        )
+        content = "\n\n" + self.experiment["lang_keywords"]["clue_lang"] + " " + self.target_word_clue + "\n"
 
-        if self.use_critic:
-            guess_val = self.game_result["critic_feedback"][self.current_turn][
-                "before_critic"
-            ]["guess"]
-            explanation_val = self.game_result["critic_feedback"][self.current_turn][
-                "before_critic"
-            ]["explanation"]
+        if self.experiment["use_critic"]:
+            guess_val = self.game_result["critic_feedback"][self.current_round]["before_critic"]["guess"]
+            explanation_val = self.game_result["critic_feedback"][self.current_round]["before_critic"]["explanation"]
         else:
-            guess_val = self.game_result["guess"][self.current_turn - 1]
-            explanation_val = self.game_result["explanation"][self.current_turn - 1]
+            guess_val = self.game_result["guess"][self.current_round - 1]
+            explanation_val = self.game_result["explanation"][self.current_round - 1]
 
         # Changing the order of guess and explanation. Explanation should come first followed by guess
-        #content += self.config["lang_keywords"]["guess_lang"] + " " + guess_val + "\n"
-        content += (
-            self.config["lang_keywords"]["explanation_lang"] + " " + explanation_val + "\n"
-        )
-        content += self.config["lang_keywords"]["guess_lang"] + " " + guess_val
+        # content += self.config["lang_keywords"]["guess_lang"] + " " + guess_val + "\n"
+        content += self.experiment["lang_keywords"]["explanation_lang"] + " " + explanation_val + "\n"
+        content += self.experiment["lang_keywords"]["guess_lang"] + " " + guess_val
 
         return content
 
     def _prepare_playerb_reply_to_playera(self, answer_b: str) -> str:
-        content = (
-            self.config["lang_keywords"]["clue_lang"]
-            + " "
-            + self.target_word_clue
-            + "\n"
-        )
-        content += (
-            self.config["lang_keywords"]["guess_agreement_lang"]
-            + " "
-            + answer_b["agreement"]
-            + "\n"
-        )
-        content += (
-            self.config["lang_keywords"]["agreement_explanation_lang"]
-            + " "
-            + answer_b["explanation"]
-        )
-
+        content = self.experiment["lang_keywords"]["clue_lang"] + " " + self.target_word_clue + "\n"
+        content += self.experiment["lang_keywords"]["guess_agreement_lang"] + " " + answer_b["agreement"] + "\n"
+        content += self.experiment["lang_keywords"]["agreement_explanation_lang"] + " " + answer_b["explanation"]
         return content
 
     def _append_utterance(self, utterance: str, player: str, role: str) -> None:
@@ -560,151 +554,71 @@ class WordleGameMaster(GameMaster):
         assert player in ("a", "b")
         if player == "a":
             self.player_a.history.append({"role": role, "content": utterance})
-        else:
+        if player == "b":
             self.player_b.history.append({"role": role, "content": utterance})
 
     def _get_short_prompt(self, player: str) -> str:
         """Get short prompt for a player"""
         assert player in ("a", "b")
-
-        content = (
-            self.config["lang_keywords"]["error_prompt_text"]["INVALID_FORMAT"]
-            + "\n"
-        )
-
+        content = self.experiment["lang_keywords"]["error_prompt_text"]["INVALID_FORMAT"] + "\n"
         if player == "a":
-            guess_lang = self.config["lang_keywords"]["guess_lang"]
-            guess_word_lang = self.config["lang_keywords"]["guess_word_lang"]
-        else:
-            guess_lang = self.config["lang_keywords"]["agreement_lang"]
-            guess_word_lang = self.config["lang_keywords"]["agreement_word_lang"]
-
-
+            guess_lang = self.experiment["lang_keywords"]["guess_lang"]
+            guess_word_lang = self.experiment["lang_keywords"]["guess_word_lang"]
+        if player == "b":
+            guess_lang = self.experiment["lang_keywords"]["agreement_lang"]
+            guess_word_lang = self.experiment["lang_keywords"]["agreement_word_lang"]
         # Changing the order of guess and explanation. Explanation should come first followed by guess
-        #content += guess_lang + " " + guess_word_lang + "\n"
-
-        content += (
-            self.config["lang_keywords"]["explanation_lang"]
-            + " "
-            + self.config["lang_keywords"]["explanataion_details_lang"]
-            + "\n"
-        )
-
+        # content += guess_lang + " " + guess_word_lang + "\n"
+        content += self.experiment["lang_keywords"]["explanation_lang"] + " "
+        content += self.experiment["lang_keywords"]["explanataion_details_lang"] + "\n"
         content += guess_lang + " " + guess_word_lang
-
         return content
-        
-    def _add_guess_feedback_in_next_turns(self, player: str, use_key: str) -> str:        
+
+    def _add_guess_feedback_in_next_turns(self, player: str, use_key: str) -> str:
         assert player in ("a")
-
-        return (self.config["lang_keywords"]["guess_feedback_lang"]
-                + " "
-                + self.guess_feedback[self.current_turn - 1][use_key]
-               )
-
+        feedback = self.experiment["lang_keywords"]["guess_feedback_lang"] + " "
+        feedback += self.guess_feedback[self.current_round - 1][use_key]
+        return feedback
 
     def _add_clue_to_initial_prompt(self, player: str) -> str:
         assert player in ("a")
-
-        content = (
-            "\n\n"
-            + self.config["lang_keywords"]["clue_lang"]
-            + " "
-            + self.target_word_clue
-            + "\n"
-        )
+        content = "\n\n" + self.experiment["lang_keywords"]["clue_lang"] + " " + self.target_word_clue + "\n"
         self.player_a.history[-1]["content"] += content
         return content
 
-
     def _prepare_player_query(self, player: str) -> str:
         assert player in ("a", "b")
-
         content = ""
         if player == "a":
-            if self.use_critic:
+            if self.experiment["use_critic"]:
                 if not self.before_critic:
-                    content = self._prepare_playerb_reply_to_playera(
-                        self.game_result["critic_feedback"][self.current_turn][
-                            "critic_response"
-                        ]
-                    )
-                    if self.current_turn == 1:
+                    critic_response = self.game_result["critic_feedback"][self.current_round]["critic_response"]
+                    content = self._prepare_playerb_reply_to_playera(critic_response)
+                    if self.current_round == 1:
                         content += "\n\n" + self._get_short_prompt(player)
                         content = content.strip()
                         self._append_utterance(content, player, "user")
-
                 else:
-                    if self.current_turn == 1:
+                    if self.current_round == 1:
                         content = self._add_clue_to_initial_prompt(player)
                     else:
                         content = self._add_guess_feedback_in_next_turns(player, "after_critic")
             else:
-                if self.current_turn == 1:
-                    if self.use_clue:
-                        content = self._add_clue_to_initial_prompt(player)
-                    
-                else:
+                if self.current_round == 1 and self.experiment["use_clue"]:
+                    content = self._add_clue_to_initial_prompt(player)
+                if self.current_round > 1:
                     content = self._add_guess_feedback_in_next_turns(player, "no_critic")
-
-        else:
+        if player == "b":
             content = self._prepare_playera_reply_to_playerb()
-            if self.current_turn == 1:
+            if self.current_round == 1:
                 self.player_b.history[-1]["content"] += content
 
-        if self.current_turn > 1:
+        if self.current_round > 1:
             content += "\n\n" + self._get_short_prompt(player)
             content = content.strip()
             self._append_utterance(content, player, "user")
 
         return content
-
-    def _get_model_response(self, player: str, reprompt=False) -> str:
-        assert player in ("a", "b")
-
-        if player == "a":
-            use_player = self.player_a
-            use_from = "Player 1"
-
-        else:
-            use_player = self.player_b
-            use_from = "Player 2"
-
-        if not reprompt:
-            content = self._prepare_player_query(player)
-
-            # also add the reply to the transcript
-            content_to_log = (
-                content if self.current_turn > 1 else use_player.history[-1]["content"]
-            )
-
-            action = {"type": "send message", "content": content_to_log}
-            self.log_event(from_="GM", to=use_from, action=action)
-
-        # make an API call (or get a programmatic response) from player a
-        try:
-            prompt, raw_answer, answer = use_player(use_player.history, self.current_turn)
-        except ContextExceededError as error:
-            logger.error(f"Current Turn: {self.current_turn}, Error in response from player {player}: {error}")
-            self.aborted = True
-            prompt = use_player.history
-            raw_answer = "Context token limit exceeded"
-            answer = "Context token limit exceeded"
-            #return None
-        # add API call to the records
-        action = {"type": "get message", "content": answer}
-        self.log_event(
-            from_=use_from,
-            to="GM",
-            action=action,
-            call=(copy.deepcopy(prompt), raw_answer),
-        )
-        # add reply to its own memory
-        self._append_utterance(answer, player, "assistant")
-
-        # increase the number of API requests
-        self.request_counts[self.current_turn] += 1
-        return answer
 
     def is_guess_correct(self, guess_feedback):
         letters = []
@@ -716,84 +630,25 @@ class WordleGameMaster(GameMaster):
         if all("green" in color for color in colors):
             return True
         return False
-    
-    def _handle_playera_response(self, answer_a: str) -> str:
-        model_response = answer_a
-        # check if the game should be aborted or lost
-        is_valid_turn = self._check_validity("a", answer_a)
-        if not is_valid_turn:
-            if self.reprompt:
-                # go ahead with reprompt
-                logger.error(f"Current Turn: {self.current_turn}, INVALID_WORD in response; Reprompting player a")
-                is_valid_turn, model_response = self._handle_reprompt("a")
-                if not is_valid_turn:
-                    # stop game
-                    return None
-            else:
-                # stop game
-                return None        
-            
-        return model_response
-
-    def turn(self) -> None:
-        """Perform a game turn, utterances by A and B"""
-        self.before_critic = True
-        self.guess_feedback[self.current_turn] = {}
-
-        # get player A's reply and add it to its history
-        answer_a = self._get_model_response("a")
-
-        # check if the game should be aborted or lost
-        answer_player_a = self._handle_playera_response(answer_a)
-        logger.error(f"Current Turn: {self.current_turn}, Received response from player a: {answer_player_a}, self.success: {self.success}")
-
-
-        if answer_player_a is None:
-            return None
-
-        # add A's reply to B's history
-        if self.use_critic:
-            logger.error(f"Current turn: {self.current_turn}, use_critic: {self.use_critic}, self.success: {self.success} calling player b")
-            self.before_critic = False
-            answer_b = self._get_model_response("b")
-            # check if the game should be aborted or lost
-            is_valid_turn = self._check_validity("b", answer_b)
-            if not is_valid_turn:
-                # stop game
-                return None
-            
-            logger.error(f"Valid answer {answer_b} from player b, self.success: {self.success} calling player a")
-
-            # get player A's reply and add it to its history
-            answer_a = self._get_model_response("a")
-
-            logger.error(f"Received answer {answer_a} from player a")
-            # check if the game should be aborted or lost
-            answer_player_a = self._handle_playera_response(answer_a)
-            logger.error(f"After parsing, answer from player a is: {answer_player_a}, self.success: {self.success}")
-            if answer_player_a is None:
-                logger.error(f"Answer from player a is None, returning, self.success: {self.success}")
-                return None
-        self.complete_turns += 1
 
     def log_eval_assets(self) -> None:
         """Aux to log variables needed for scoring (firstlast specific)"""
-        self.log_key("Played turns", self.current_turn)
+        self.log_key("Played turns", self.current_round)
         self.log_key("Complete turns", self.complete_turns)
         self.log_key(metrics.METRIC_ABORTED, self.aborted)
         self.log_key(metrics.METRIC_LOSE, self.lose)
         # self.log_key(metrics.METRIC_SUCCESS, self.success)
         log_req_counts = list(self.request_counts.values())
-        log_req_counts = log_req_counts[: self.current_turn]
+        log_req_counts = log_req_counts[: self.current_round]
         self.log_key(metrics.METRIC_REQUEST_COUNT, log_req_counts)
 
         log_req_counts = list(self.parsed_request_counts.values())
-        log_req_counts = log_req_counts[: self.current_turn]
+        log_req_counts = log_req_counts[: self.current_round]
         self.log_key(
             metrics.METRIC_REQUEST_COUNT_PARSED, log_req_counts)
 
         log_req_counts = list(self.violated_request_counts.values())
-        log_req_counts = log_req_counts[: self.current_turn]
+        log_req_counts = log_req_counts[: self.current_round]
 
         self.log_key(
             metrics.METRIC_REQUEST_COUNT_VIOLATED, log_req_counts)
@@ -999,8 +854,3 @@ class WordleGameBenchmark(GameBenchmark):
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return WordleGameScorer(self.game_name, experiment, game_instance)
-
-    # since this now handles all three variants, is_single_player() is ommitted
-    # the with_critic variant uses two players, while the other variants are single-player
-    # def is_single_player(self) -> bool:
-    #    return True

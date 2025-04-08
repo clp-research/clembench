@@ -63,7 +63,7 @@ class ComputeMetrics:
                 speed = 30
             elif len(records) == 6:
                 speed = 20
-            
+
         return round(speed, 2)
 
     def change_of_opinion(self, records):

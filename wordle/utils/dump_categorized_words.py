@@ -1,9 +1,9 @@
 import logging
 
-import clemcore.clemgame
 from clemcore.utils import file_utils
 
 logger = logging.getLogger(__name__)
+
 
 def read_file_contents(filename, file_ext="txt"):
     if file_ext == "csv":
@@ -44,6 +44,7 @@ def write_to_file(data, filename):
     with open(filename, "w") as fp:
         fp.write("\n".join(data))
 
+
 # Function to classify each frequency
 def classify_frequency(freq, mean_freq, std_dev_freq):
     if freq > mean_freq + std_dev_freq:
@@ -66,7 +67,8 @@ def start_word_categorization():
     clue_words = read_file_contents(clue_file, file_ext="csv")
 
     sorted_unigram_freq = sorted(unigram_freq.items(), key=lambda x: int(x[1]), reverse=True)
-    print(f"Unigram Frequency:: Min = {sorted_unigram_freq[-1][1]}, Max = {sorted_unigram_freq[0][1]}, Median = {sorted_unigram_freq[int(len(sorted_unigram_freq)/2)][1]}")
+    print(
+        f"Unigram Frequency:: Min = {sorted_unigram_freq[-1][1]}, Max = {sorted_unigram_freq[0][1]}, Median = {sorted_unigram_freq[int(len(sorted_unigram_freq) / 2)][1]}")
 
     target_words_freq_dict = get_freq(target_words, unigram_freq, clue_words)
     # Sort the dictionary by value
@@ -123,7 +125,6 @@ def start_word_categorization():
         hard_words,
         "games/wordle/resources/hard_words.txt",
     )
-
 
 
 if __name__ == "__main__":

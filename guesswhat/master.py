@@ -2,7 +2,7 @@ from typing import Dict, List
 import numpy as np
 import logging
 from clemcore.backends import Model
-from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameSpec, GameRecorder
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
 from clemcore.utils import file_utils, string_utils
@@ -15,28 +15,20 @@ logger = logging.getLogger(__name__)
 
 
 class Guesser(Player):
-    def __init__(self, model: Model, max_turns):
+    def __init__(self, model: Model):
         super().__init__(model)
-        self.max_turns = max_turns
+        self.responses = ["QUESTION: Is it a mammal?"] * 7 + ["GUESS: Table"]
 
-    def _custom_response(self, messages, turn_idx):
-        # mock response
-        if turn_idx < self.max_turns-1: 
-            return "QUESTION: Is it a mammal?"
-        else: 
-            return "GUESS: Table"
+    def _custom_response(self, context):
+        return self.responses.pop(0)
+
 
 class Answerer(Player):
-    def __init__(self, model: Model, max_turns):
+    def __init__(self, model: Model):
         super().__init__(model)
-        self.max_turns = max_turns
-        
-    def _custom_response(self, messeges, turn_idx):
-        # mock response
-        if turn_idx < self.max_turns:
-            return "ANSWER: No."
-        elif turn_idx >= self.max_turns:
-            raise Exception("We should not be here...")
+
+    def _custom_response(self, context):
+        return "ANSWER: No."
 
 
 class GuessWhat(DialogueGameMaster):
@@ -63,7 +55,6 @@ class GuessWhat(DialogueGameMaster):
         self.incorrect_guess = False
         self.correct_guess = False
 
-
     def check_question(self, question: str, candidate_list: List[str]) -> List[Dict]:
 
         """
@@ -77,7 +68,6 @@ class GuessWhat(DialogueGameMaster):
         length_question_pattern = re.compile(r'{}'.format(self.length_question_pattern, re.IGNORECASE))
         syllable_question_pattern = re.compile(r'{}'.format(self.syllable_question_pattern, re.IGNORECASE))
         pos_question_pattern = re.compile(r'{}'.format(self.pos_question_pattern, re.IGNORECASE))
-
 
         if letter_based_pattern.search(question_text):
             errors.append({
@@ -100,7 +90,7 @@ class GuessWhat(DialogueGameMaster):
 
         if syllable_question_pattern.search(question_text):
             errors.append({
-               "message": "Invalid question. Asking about the number of syllables is not allowed.",
+                "message": "Invalid question. Asking about the number of syllables is not allowed.",
                 "type": 4
             })
 
@@ -108,7 +98,7 @@ class GuessWhat(DialogueGameMaster):
             errors.append({
                 "message": "Invalid question. Asking about the part of speech (POS) of the target word is not allowed.",
                 "type": 5
-        })
+            })
 
         return errors
 
@@ -119,24 +109,24 @@ class GuessWhat(DialogueGameMaster):
         self.target_word = game_instance["target_word"]
         self.candidate_list = game_instance["candidate_list"]
 
-        self.guesser_initial_prompt = self.guesser_initial_prompt.replace("$LIST$", str(self.candidate_list)).replace("$N$", str(self.max_turns-1))
+        self.guesser_initial_prompt = self.guesser_initial_prompt.replace("$LIST$", str(self.candidate_list)).replace(
+            "$N$", str(self.max_turns - 1))
         self.answerer_initial_prompt = self.answerer_initial_prompt.replace("$TARGET WORD$", str(self.target_word))
-        
-        self.guesser = Guesser(self.player_models[0], self.max_turns)
-        self.answerer = Answerer(self.player_models[1], self.max_turns)
+
+        self.guesser = Guesser(self.player_models[0])
+        self.answerer = Answerer(self.player_models[1])
 
         self.add_player(self.guesser)
         self.add_player(self.answerer)
 
-         # Two different variables for the errors 
+        # Two different variables for the errors
         self.invalid_format = False
         self.invalid_content = False
 
         self.guess_word = None
 
-
     def _on_before_game(self):
-        self.add_user_message(self.guesser, self.guesser_initial_prompt)
+        self.set_context_for(self.guesser, self.guesser_initial_prompt)
 
     def _does_game_proceed(self):
         if self.invalid_format:
@@ -151,7 +141,7 @@ class GuessWhat(DialogueGameMaster):
         if self.incorrect_guess:
             self.log_to_self("incorrect guess", "end game")
             return False
-        if self.current_turn >= self.max_turns:
+        if self.current_round >= self.max_turns:
             self.log_to_self("max turns reached", str(self.max_turns))
             return False
         return True
@@ -159,13 +149,14 @@ class GuessWhat(DialogueGameMaster):
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
 
         self.invalid_format = False  # Reset the flags at the beginning of validation
-        self.invalid_content = False 
+        self.invalid_content = False
 
         if player == self.guesser:
 
             # Check if the response is neither a valid question nor a valid guess format
             if not (utterance.startswith(self.question_tag) or utterance.startswith(self.guess_tag)):
-                self.log_to_self("invalid format", "Invalid format. Guesser must use the form 'QUESTION: ' or 'GUESS: '.")
+                self.log_to_self("invalid format",
+                                 "Invalid format. Guesser must use the form 'QUESTION: ' or 'GUESS: '.")
                 self.invalid_format = True
 
                 return False
@@ -184,10 +175,11 @@ class GuessWhat(DialogueGameMaster):
                 if "?" in question_text:
                     parts = question_text.split("?")
                     if len(parts) > 2 or parts[1].strip() != "":
-                        self.log_to_self("invalid format", "Invalid format. Question must stop after the question mark.")
+                        self.log_to_self("invalid format",
+                                         "Invalid format. Question must stop after the question mark.")
                         self.invalid_format = True
                         return False
-                    
+
                 # Check for specific content-related errors by calling check_question
                 errors = self.check_question(utterance, self.candidate_list)
                 if errors:
@@ -226,17 +218,17 @@ class GuessWhat(DialogueGameMaster):
                 return False
         return True
 
-    def _after_add_player_response(self, player: Player, utterance: str):
+    def _on_valid_player_response(self, player: Player, parsed_response: str):
         if player == self.guesser:
-            if self.current_turn == 0:
+            if self.current_round == 0:
                 # Include first question in the prompt
-                prompt_with_first_question = f"{self.answerer_initial_prompt}\n\n{utterance}"
-                self.add_user_message(self.answerer, prompt_with_first_question)
+                prompt_with_first_question = f"{self.answerer_initial_prompt}\n\n{parsed_response}"
+                self.set_context_for(self.answerer, prompt_with_first_question)
             else:
-                self.add_user_message(self.answerer, utterance)
+                self.set_context_for(self.answerer, parsed_response)
         if player == self.answerer:
             if not self.incorrect_guess and not self.correct_guess:  # Check if a guess has not been made
-                self.add_user_message(self.guesser, utterance)
+                self.set_context_for(self.guesser, parsed_response)
 
 
 class GuessWhatScorer(GameScorer):
@@ -251,10 +243,10 @@ class GuessWhatScorer(GameScorer):
         invalid_format_answerer_count = 0
         invalid_content_guesser_count = 0
         invalid_content_answerer_count = 0
-        
+
         guesser_won = False
         max_turns = self.experiment["max_turns"]
-        
+
         speed_score = 0
 
         # Set lower_bound_turns based on the level to calculate speed
@@ -262,14 +254,13 @@ class GuessWhatScorer(GameScorer):
 
         num_categories_1 = 4
         num_features_3 = 4
-        
+
         if game_level == "Level_1" or "Abs_Level_1":
-            lower_bound_turns = num_categories_1 + 1  
+            lower_bound_turns = num_categories_1 + 1
         elif game_level == "Level_2" or "Abs_Level_2":
             lower_bound_turns = math.log2(max_turns) + 1
         elif game_level == "Level_3" or "Abs_Level_3":
             lower_bound_turns = num_features_3 + 1
-
 
         for turn_idx, turn in enumerate(episode_interactions["turns"]):
             turn_score = {"request_count": 1}
@@ -301,7 +292,6 @@ class GuessWhatScorer(GameScorer):
 
                 if action["type"] == "correct guess":
                     guesser_won = True
-    
 
             if invalid_format_in_turn or invalid_content_in_turn:
                 turn_score["violated_request_count"] = 1
@@ -313,13 +303,13 @@ class GuessWhatScorer(GameScorer):
             self.log_turn_score(turn_idx, 'Accuracy', 1 if guesser_won else 0)
             self.log_turn_score(turn_idx, METRIC_REQUEST_COUNT_VIOLATED, turn_score["violated_request_count"])
             self.log_turn_score(turn_idx, METRIC_REQUEST_COUNT_PARSED, turn_score["parsed_request_count"])
-            self.log_turn_score(turn_idx, METRIC_REQUEST_COUNT,turn_score["request_count"])
+            self.log_turn_score(turn_idx, METRIC_REQUEST_COUNT, turn_score["request_count"])
             turn_scores.append(turn_score)
 
         # Sum up turn scores
         violated_request_count = sum(turn["violated_request_count"] for turn in turn_scores)
         self.log_episode_score(METRIC_REQUEST_COUNT_VIOLATED, violated_request_count)
-        
+
         parsed_request_count = sum(turn["parsed_request_count"] for turn in turn_scores)
         self.log_episode_score(METRIC_REQUEST_COUNT_PARSED, parsed_request_count)
 
@@ -365,7 +355,6 @@ class GuessWhatScorer(GameScorer):
                 self.log_episode_score(METRIC_SUCCESS, 0)
                 self.log_episode_score(METRIC_LOSE, 1)
                 self.log_episode_score(BENCH_SCORE, 0)
-                
 
         # Log invalid response counts for both players
         self.log_episode_score("Invalid format guesser response", invalid_format_guesser_count)

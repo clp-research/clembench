@@ -488,14 +488,14 @@ class AdventureGameScorer(GameScorer):
         partial_success_rating = achieved_ratio
         # scale full rating to 0-100:
         partial_success_rating = partial_success_rating * 100
-        # log full rating as main score:
-        self.log_episode_score(metrics.BENCH_SCORE, partial_success_rating)
 
         # invalid format or turn limit aborted:
         if invalid_format or turn_limit_loss:
             self.log_episode_score(metrics.METRIC_ABORTED, 1)
             self.log_episode_score(metrics.METRIC_SUCCESS, 0)
             self.log_episode_score(metrics.METRIC_LOSE, 0)
+            # when game is aborted, BENCH_SCORE must be NaN to appease Pandas:
+            self.log_episode_score(metrics.BENCH_SCORE, np.nan)
         else:
             self.log_episode_score(metrics.METRIC_ABORTED, 0)
             # log successful/failed play:
@@ -505,6 +505,8 @@ class AdventureGameScorer(GameScorer):
             else:
                 self.log_episode_score(metrics.METRIC_SUCCESS, 0)
                 self.log_episode_score(metrics.METRIC_LOSE, 1)
+            # log full rating as main score:
+            self.log_episode_score(metrics.BENCH_SCORE, partial_success_rating)
 
         # planning episode-level:
         # plan following:

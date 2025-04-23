@@ -18,8 +18,8 @@ fi
 PYTHON_VERSION=$(python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 VERSION_MAJOR=$(echo "$PYTHON_VERSION" | cut -d'.' -f1)
 VERSION_MINOR=$(echo "$PYTHON_VERSION" | cut -d'.' -f2)
-if [[ $VERSION_MAJOR -lt 3 || ($VERSION_MAJOR -eq 3 && $VERSION_MINOR -lt 9) ]]; then
-    echo "Error: Python version must be at least 3.9 but is $PYTHON_VERSION"
+if [[ $VERSION_MAJOR -lt 3 || ($VERSION_MAJOR -eq 3 && $VERSION_MINOR -lt 10) ]]; then
+    echo "Error: Python version must be at least 3.10 but is $PYTHON_VERSION"
     exit 1
 fi
 

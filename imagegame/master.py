@@ -89,6 +89,8 @@ class ImageGameMaster(GameMaster):
             self.turn()
 
     def turn(self):
+        if self.game.current_turn > 0:
+            self.log_next_round()
         # instruction giving - A side
         self.turn_request_stats[self.game.current_turn] = {'request_count': 0, 'parsed_count': 0, 'violated_count': 0}
 

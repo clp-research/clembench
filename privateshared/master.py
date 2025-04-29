@@ -33,8 +33,8 @@ class Words:
 
 
 class Answerer(Player):
-    def __init__(self, model: Model, name, game_recorder, initial_prompt: str, words: Words):
-        super().__init__(model, name, game_recorder, initial_prompt)
+    def __init__(self, model: Model, name, game_recorder, words: Words):
+        super().__init__(model, name, game_recorder)
         self.words = words
 
     def _custom_response(self, context: Dict) -> str:
@@ -131,8 +131,9 @@ class PrivateShared(GameMaster):
 
         request_strings = self.load_json(REQUESTS_PATH.format(self.experiment['name']))
         self.words = Words(self.load_json(WORDS_PATH.format(lang)))  # load language specific words
+        self.initial_prompt = initial_prompt
         self.answerer: Answerer = Answerer(self.player_models[0], "Player 1 (Answerer)",
-                                           self.game_recorder, initial_prompt, self.words)
+                                           self.game_recorder, self.words)
         self.questioner: Questioner = Questioner("Player 2 (Questioner)", self.game_recorder,
                                                  request_order, requests, request_strings)
 
@@ -157,6 +158,14 @@ class PrivateShared(GameMaster):
 
     def play(self) -> None:
         all_probes = []
+
+        # setup fake dialogue prequel (like in the original version of the game)
+        self.answerer._messages.append(dict(role="user", content=self.initial_prompt))
+        self.game_recorder.log_event(from_="GM", to=self.answerer.name,
+                                      action={"type": "send message", "content": self.initial_prompt, "label": "pseudo"})
+        self.answerer._messages.append(dict(role="assistant", content="Ok."))
+        self.game_recorder.log_event(from_=self.answerer.name, to="GM",
+                                      action={"type": "get message", "content": "Ok.", "label": "pseudo"})
 
         # probing round before game starts
         turn_probes, probing_successful = self.probe()
@@ -193,9 +202,10 @@ class PrivateShared(GameMaster):
         context = dict(role="user", content=self.words.dummy_prompt)
         request = self.questioner(context)
         tagged_request = f"{self.questioner_tag}{request}"
-        # append the instruction to be straight to the point
-        tagged_coda_request = self.words.coda.format(tagged_request)
-        return tagged_coda_request
+        # append the instruction to be straight to the point (for regression testing not fixed here )
+        # tagged_coda_request = self.words.coda.format(tagged_request)
+        # return tagged_coda_request
+        return tagged_request
 
     def answerer_turn(self, request: str, memorize=True) -> str:
         context = dict(role="user", content=request)

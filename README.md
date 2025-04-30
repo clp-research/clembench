@@ -8,6 +8,13 @@ Install the required dependencies to run all games:
 
 This will also install the `clem` CLI tool.
 
+### Versioning
+
+The clembench release versions tags are structured like `major.minor.patch` where
+
+- `major` indicates the compatibility with a major clemcore version e.g. `2.x.x` is only compatible with clemcore versions `2.x.x`
+- `minor` indicates the set of games in the benchmark e.g. an addition or removal of a game
+- `patch` indicates smaller adjustments to the games that don't affect compatibility
 
 ### API Keys
 

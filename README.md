@@ -13,8 +13,15 @@ This will also install the `clem` CLI tool.
 The clembench release versions tags are structured like `major.minor.patch` where
 
 - `major` indicates the compatibility with a major clemcore version e.g. `2.x.x` is only compatible with clemcore versions `2.x.x`
-- `minor` indicates the set of games in the benchmark e.g. an addition or removal of a game
-- `patch` indicates smaller adjustments to the games that don't affect compatibility
+- `minor` indicates changes to the games in the benchmark that don't affect compatibility with clemcore e.g. refactorings, additions or removals of games
+- `patch` indicates smaller adjustments or hotfixes to the games that don't affect compatibility with clemcore 
+
+The following image visualizes the established dependencies and version history:
+
+<a href="versions.png">
+    <img src="versions.png" alt="Thumbnail" width="450" style="display: block; margin: auto;"/>
+</a>
+
 
 ### API Keys
 

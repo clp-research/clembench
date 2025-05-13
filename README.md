@@ -8,27 +8,6 @@ Install the required dependencies to run all games:
 
 This will also install the `clem` CLI tool.
 
-### Versioning
-
-The clembench release versions tags are structured like `major.minor.patch` where
-
-- `major` indicates the compatibility with a major clemcore version e.g. `2.x.x` is only compatible with clemcore versions `2.x.x`
-- `minor` indicates changes to the games in the benchmark that don't affect compatibility with clemcore e.g. refactorings, additions or removals of games
-- `patch` indicates smaller adjustments or hotfixes to the games that don't affect compatibility with clemcore 
-
-The following image visualizes the established dependencies and version history:
-
-<a href="versions.png">
-    <img src="versions.png" alt="Thumbnail" width="450" style="display: block; margin: auto;"/>
-</a>
-
-
-### API Keys
-
-To use APIs (OpenAI, Anthropic, Google, Mistral, etc.), create a `key.json` file that includes the required fields for each backend. The template file (key.json.template) is provided.
-
-Copy the file into `/Users/<YOUR_USER_NAME>/.clemcore/` for MacOS or `` for Linux.
-
 ### Models, Backends, Games
 
 After the installation you will have access to the `clem` CLI tool. The main functions are:
@@ -47,6 +26,147 @@ To add new custom models, populate the `model_registry.json` file with the requi
 
 To run your custom game, populate the `game_registry.json` file with the required fields and directory path (template is provided as *game_registry.json.template*).
 
+### API Keys
+
+To use APIs (OpenAI, Anthropic, Google, Mistral, etc.), create a `key.json` file that includes the required fields for each backend. 
+The template file (key.json.template) is provided.
+
+Copy the file into `<userhome>/.clemcore/` to make it generally available.
+
+## Using the benchmark
+
+### Recommended workspace
+
+We recommend creating a specific workspace directory to work with clembench, which contains the benchmark game directories and optional files.  
+The `clem` CLI command operates relative to the current working directory, that is, the directory it is called from. 
+The workspace directory serves as a convenient working directory.
+
+Workspace directory contents may look like this:
+```
+(optional) key.json
+(optional) game_registry.json 
+(optional) model_registry.json  
+(optional) custom_api.py 
+clembench/
+```
+
+The files have the following functions:
+- **key.json**: Contains secrets for the remote API calls; if this file does not exist, then `clem` looks into 
+`~/.clemcore/`.
+- **game_registry.json**: Allows to make additional game specifications usable for the runs. The game specifications 
+must at least contain the `game_name`, `game_path` and `players` attribute.
+- **model_registry.json**: Allows to add additional model specifications. This is specifically useful to run with models 
+that have not been packaged yet. In addition, it allows to point model specification to custom backend names.
+- **custom_api.py**: `clem` automatically discovers additional _api files placed into the cwd, so that users of the 
+framework can run their own backends with the games.
+- **clembench/**: Contains the game directories (with the game code) available for the benchmark runs.
+
+Note that `clem` does automatically discover game directories that are at most 3-levels away from the current working directory/`cwd`.
+To be discoverable, game directories have to carry a `clemgame.json` (here a game path is not required, because `clem` automatically determines it).
+
+### Use Case: Benchmarking
+
+To prepare running multiple models for all games that constitute the Clembench benchmark, checkout the [clembench](https://github.com/clp-research/clembench) repository into a new [workspace directory](#recommended-workspace).  
+To access remote API backends, add a `key.json` containing the respective API access keys to the workspace directory.
+In addition, you might need to add additional model entries that are not yet packaged to a `model_registry.json`.  
+To run all available games on for example `model1`, execute `clem run -g all -m model1` in a terminal. The example `model1` is the key string for the model to be run in the model registry (either packaged `clemcore/clemcore/backends/model_registry.json` or custm `model_registry.json` in the workspace directory). 
+To run multiple models, we currently recommend using a batch script containing multiple clem CLI calls, one for each model.
+
+By default, result files will be stored in the current working directory, in the `results` subdirectory. 
+Results can be stored in a different directory by executing `clem run -g all -m model1 -r <other_directory>`, with `<other_directory>` being the path to the target directory.
+
+Hence, a benchmarking workspace directory might look as follows:
+```
+myworkspace
+- clembench/
+- results/
+- key.json 
+- model_registry.json  
+```
+
+### Use Case: Game Development
+
+To implement your own game to be run with `clem`, we recommend using a typical clem game project structure, with the game directory as your [workspace directory](#recommended-workspace).  
+To make the game visible to `clem` you need to add a `clemgame.json` to the directory.
+This file must specify at least the following (possible values separated by ` | `):
+```
+{
+  "game_name": "mygame",
+  "description": "A brief description of mygame",
+  "player": "single" | "two" | "multi",
+  "image": "none" | "single" | "multi",
+  "languages": ["en"]
+}
+```
+To test your game with a packaged model, run the command `clem run -g mygame -m model` from within the game directory.
+The results will be written into a `results` subdirectory. To use remote API backends, add a `key.json` with your remote 
+API access key(s) to the workspace directory.  
+To generate HTML transcripts of your game run's episodes run `clem transcribe -g mygame`.  
+Overall, a game developers workspace directory will possibly look as follows:
+```
+mygame
+- in/
+- resources/
+- results/
+- __init__.py
+- master.py
+- instancegenerator.py
+- clemgame.json
+- key.json   
+```
+For more information on creating and adding clemgames, see [howto add games](docs/howto_add_games.md), [howto add games example](docs/howto_add_games_example.ipynb), [howto prototype games](docs/howto_prototype_games.ipynb) and the [logging and scoring docs](docs/logging_and_scoring.md).
+
+### Use Case: Model Development
+
+To test the performance of your custom model on the benchmark, checkout the [clembench](https://github.com/clp-research/clembench) repository into your [workspace directory](#recommended-workspace).
+To make your model available to `clem`, create a `model_registry.json` with the specifications of your model in the working directory.
+The model registry entry must at least specify a name and a backend:
+```
+{
+  "model_name":"mymodel",
+  "backend":"mybackend"
+}
+```
+More information on the model registry is available in the [model registry and backends readme](docs/model_backend_registry_readme.md).  
+
+#### Custom backend
+
+If your model is not compatible with the packaged local backends (HuggingFace `transformers`, `llama-cpp-python`, `vLLM`) it requires a custom backend. 
+In this case, create a `mybackend_api.py` in the workspace directory which implements the `generate_response` method for the model and might specify how it is loaded. 
+
+All backend module files must be named `<backend name>_api.py`, with `<backend name>` being the backend to refer to in the model registry. 
+For more information on custom backends, see the [adding models and backends howto](docs/howto_add_models.md). 
+
+`clem` tries to locate all non-package backend modules in the workspace directory. Therefore, your model's registry 
+entry must match the backend module, with the model entry `"backend"` key value matching the `<backend name>` of your 
+custom `<backend name>_api.py` backend module file.
+
+#### Running clembench with your model
+Run `clem -g all -m mymodel` from the workspace directory to run your model on all games. The results will be stored in the `results` subdirectory. 
+Hence, a model developers workspace might look as follows:
+```
+myworkspace
+- clembench/
+- results/
+- model_registry.json
+- mybackend_api.py  
+```
+
+# Versioning
+
+The clembench release versions tags are structured like `major.minor.patch` where
+
+- `major` indicates the compatibility with a major clemcore version e.g. `2.x.x` is only compatible with clemcore versions `2.x.x`
+- `minor` indicates changes to the games in the benchmark that don't affect compatibility with clemcore e.g. refactorings, additions or removals of games
+- `patch` indicates smaller adjustments or hotfixes to the games that don't affect compatibility with clemcore 
+
+The following image visualizes the established dependencies and version history:
+
+<a href="versions.png">
+    <img src="versions.png" alt="Thumbnail" width="450" style="display: block; margin: auto;"/>
+</a>
+
+# Contributing
 
 We welcome you to contribute to or extend the benchmark with your own games and models. 
 Please open a pull request in the respective repository. 
@@ -58,4 +178,4 @@ However, the following documentation needs still to be checked for up-to-datenes
 - [How to run the benchmark, update leaderboard workflow](docs/howto_benchmark_workflow.md)
 - [How to add a new model](docs/howto_add_models.md)
 - [How to add and run your own game](docs/howto_add_games.md)
-- [How to integrate with Slurk](docs/howto_slurk.md)
+

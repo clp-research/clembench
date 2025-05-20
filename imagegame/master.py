@@ -65,16 +65,15 @@ class ImageGameMaster(GameMaster):
         self.game_instance = game_instance
         self.game = ImageGame(self.game_instance)
         self.instruction_giver = InstructionGiver(self.player_models[0],
-                                                  name="Player 1 (InstructionGiver)",
+                                                  name="Player 1",
+                                                  game_role="Instruction Giver",
                                                   game_recorder=self.game_recorder)
         self.instruction_follower = InstructionFollower(self.player_models[1],
-                                                        name="Player 2 (InstructionFollower)",
+                                                        name="Player 2",
+                                                        game_role="Instruction Follower",
                                                         game_recorder=self.game_recorder)
-        self.log_players({
-            "GM": "Game master for imagegame",
-            "Player_1": self.player_models[0].get_name(),
-            "Player_2": self.player_models[1].get_name()}
-        )
+        self.log_player(self.instruction_giver)
+        self.log_player(self.instruction_follower)
 
     def proceeds(self) -> bool:
         if self.game.terminate:

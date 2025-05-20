@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 class Guesser(Player):
     def __init__(self, model: Model, game_recorder: GameRecorder, response_format_keywords: Dict):
-        super().__init__(model, "Player 1 (Guesser)", game_recorder)
+        super().__init__(model, "Player 1", game_recorder=game_recorder)
         self.response_format_keywords = response_format_keywords
 
         # a list to keep the dialogue history
@@ -43,7 +43,7 @@ class Guesser(Player):
 
 class Critic(Player):
     def __init__(self, model_name: Model, game_recorder: GameRecorder, response_format_keywords: Dict):
-        super().__init__(model_name, "Player 2 (Critic)", game_recorder)
+        super().__init__(model_name, "Player 2", game_recorder=game_recorder)
         self.response_format_keywords = response_format_keywords
 
         # a list to keep the dialogue history
@@ -90,24 +90,17 @@ class WordleGameMaster(GameMaster):
         # instantiate both players
         self.player_a = Guesser(self.player_models[0], self.game_recorder, self.experiment["lang_keywords"])
         self.player_b = None
-        player2_details = f"Player B: ObjectID Evaluator (Programmatic)"
         if len(self.player_models) > 1:
             self.player_b = Critic(self.player_models[1], self.game_recorder, self.experiment["lang_keywords"])
-            player2_details = f"Word Guesser Critic ({self.player_models[1]})"
         elif len(self.player_models) == 1 and self.experiment["use_critic"]:
             self.player_b = Critic(self.player_models[0], self.game_recorder, self.experiment["lang_keywords"])
-            player2_details = f"Word Guesser Critic ({self.player_models[0]})"
-        self.log_players(  # always log the details of the players in this format (see logdoc)
-            {
-                "GM": "Game master for wordle",
-                "Player 1": f"Word Guesser ({self.player_models[0]})",
-                "Player 2": player2_details,
-            }
-        )
+
         # append the initial message of each player to their history
         # the value user means the message is from an interlocutor of the model
         self.player_a.history.append({"role": "user", "content": self.experiment["guesser_prompt"]})
+        self.log_player(self.player_a)
         if self.player_b:
+            self.log_player(self.player_b)
             self.player_b.history.append({"role": "user", "content": self.experiment["guesser_critic_prompt"]})
 
         # initialise game variables

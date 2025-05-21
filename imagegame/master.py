@@ -2,7 +2,7 @@ from typing import List, Dict
 import logging
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, metrics, Player
+from clemcore.clemgame import GameMaster, DialogueGameMaster, GameBenchmark, GameScorer, metrics, Player
 from evaluator import evaluate, calculate_flipped_pixels
 
 import re
@@ -40,28 +40,20 @@ class ImageGame:
         self.player_2_response_pattern = r'{}'.format(game_instance['player_2_response_pattern'])
         self.context_for_player: Dict[str, Dict] = {}
         self.current_turn = 0
-        self.max_turns = self.grid_dimension * self.grid_dimension
+        self.max_rounds = self.grid_dimension * self.grid_dimension * 2
         self.terminate = False
 
-
-class ImageGameMaster(GameMaster):
+class ImageGameMaster(DialogueGameMaster):
 
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
-        self.experiment = experiment
+
+    def _on_setup(self, **game_instance):
         self.request_count = 0
         self.parsed_request_count = 0
         self.violated_request_count = 0
         self.aborted_ratio = 0
-        self.turn_request_stats = {}
 
-    def set_context_for(self, player, content):
-        self.game.context_for_player[player.name] = dict(role="user", content=content)
-
-    def get_context_for(self, player):
-        return self.game.context_for_player[player.name]
-
-    def setup(self, **game_instance):
         self.game_instance = game_instance
         self.game = ImageGame(self.game_instance)
         self.instruction_giver = InstructionGiver(self.player_models[0],
@@ -72,111 +64,101 @@ class ImageGameMaster(GameMaster):
                                                         name="Player 2",
                                                         game_role="Instruction Follower",
                                                         game_recorder=self.game_recorder)
-        self.log_player(self.instruction_giver)
-        self.log_player(self.instruction_follower)
+        p1_initial_prompt = self.game.player_1_prompt_header + '\n' + self.game.target_grid + '\n' + self.game.player_1_question
+        self.add_player(self.instruction_giver, initial_context=p1_initial_prompt)
+        self.add_player(self.instruction_follower, initial_prompt=self.game.player_2_prompt_header)
 
-    def proceeds(self) -> bool:
+    def _validate_player_response(self, player: Player, response: str) -> bool:
+        """
+        Decide if a player response matches the valid response patterns.
+        An invalid response breaks the game rules and ends the game.
+
+        Args:
+            player: The player that gave the response.
+            response: The response of the current player.
+        Returns:
+            True, if the response is fine. Otherwise, False.
+        """
+        if player == self.instruction_giver:
+            match = re.compile(self.game.player_1_terminate_pattern, re.IGNORECASE).match(response)
+            if match:
+                return True
+            else:
+                match = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(response)
+                if match:
+                    return True
+                else:
+                    self.game.terminate = True
+                    self.log_to_self("invalid format", "Invalid instruction format")
+                    return False
+        else:
+            match = re.compile(self.game.player_2_response_pattern).match(response)
+            if match:
+                return True
+            else:
+                self.game.terminate = True
+                self.log_to_self("invalid format", "Invalid grid format")
+                return False
+
+    def _parse_response(self, player: Player, response: str) -> str:
+        """ Takes a valid player response and parses it.
+
+        Args:
+            player: The Player instance that produced the response.
+            response: The response of the current player.
+        Returns:
+            The parsed response
+        """
+        if player == self.instruction_giver:
+            match = re.compile(self.game.player_1_terminate_pattern, re.IGNORECASE).match(response)
+            if match:
+                self.game.terminate = True
+                self.log_to_self("found terminate pattern", response)
+                return None
+            # check if the Player 1 message follows the rule => start with "Instruction:"
+            match = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(response)
+            if match:
+                if '\n' in response:
+                    parsed_instruction = response.split('\n')[0]
+                else:
+                    parsed_instruction = response
+                self.log_to_self("found instruction", parsed_instruction)
+                return parsed_instruction
+        elif player == self.instruction_follower:
+            match = re.compile(self.game.player_2_response_pattern).match(response)
+            if match:
+                self.log_to_self("found grid", response)
+                return response
+        return None
+            
+    def _on_valid_player_response(self, player: Player, parsed_response: str) -> None:
+        """Method executed after a player response has been parsed and validated.
+        This method is used to set the context for the other player.
+
+        Args:
+            player: The Player instance that produced the response (or has been modified by the GM).
+            parsed_response: The parsed and valid response of the current player.
+        """
+        if player == self.instruction_giver:
+            self.set_context_for(self.instruction_follower, parsed_response)
+        else:
+            self.set_context_for(self.instruction_giver, self.game.player_1_question)
+
+    def _does_game_proceed(self) -> bool:
+        """Check if game should proceed.
+        This method is called after each turn to check if the game should continue or stop.
+        It returns False if `self.game.terminate` is True or if the maximum number of rounds has been reached.
+        
+        Returns:
+            A bool, True if game continues, False if game should stop.
+        TODO: revisit, check if this is sufficient
+        """
         if self.game.terminate:
             return False
-        if self.game.current_turn >= self.game.max_turns:
+        if self.current_round >= self.game.max_rounds:
             self.log_to_self("game end", "turn limit reached")
             return False
         return True
-
-    def play(self) -> None:
-        while self.proceeds():
-            self.turn()
-
-    def turn(self):
-        if self.game.current_turn > 0:
-            self.log_next_round()
-        # instruction giving - A side
-        self.turn_request_stats[self.game.current_turn] = {'request_count': 0, 'parsed_count': 0, 'violated_count': 0}
-
-        context = dict(role="user", content="")
-        if self.game.current_turn == 0:  # add prompt
-            context["content"] = self.game.player_1_prompt_header + '\n' + self.game.target_grid + '\n'
-        context["content"] += self.game.player_1_question
-        player_1_response_text = self.instruction_giver(context)
-
-        self.request_count += 1
-        self.turn_request_stats[self.game.current_turn]['request_count'] += 1
-
-        # check if it reached the end on 1 side
-        match = re.compile(self.game.player_1_terminate_pattern, re.IGNORECASE).match(player_1_response_text)
-        if match:
-            self.parsed_request_count += 1
-            self.turn_request_stats[self.game.current_turn]['parsed_count'] += 1
-            self.game.terminate = True
-            self.log_to_self("found terminate pattern", player_1_response_text)
-            return
-        else:
-            # continue if the Player didn't say -> Instruction: DONE
-            # check if Player 1 message follows the rule => start with "Instruction:"
-            player_1_message_matched = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(
-                player_1_response_text)
-            if player_1_message_matched:
-                if '\n' in player_1_response_text:
-                    parsed_instruction = player_1_response_text.split('\n')[0]
-                else:
-                    parsed_instruction = player_1_response_text
-
-                self.parsed_request_count += 1
-                self.turn_request_stats[self.game.current_turn]['parsed_count'] += 1
-                action = {'type': 'parse', 'content': parsed_instruction,
-                          'original_content': player_1_response_text}
-                self.log_event(from_="GM", to="GM", action=action)
-                player_1_response_text = parsed_instruction
-            else:
-                # log invalid format for the Player 1
-                action = {'type': 'invalid format', 'content': 'Invalid instruction format',
-                          'original_content': player_1_response_text}
-                self.log_event(from_="GM", to="GM", action=action)
-                self.turn_request_stats[self.game.current_turn]['violated_count'] += 1
-
-                self.violated_request_count += 1
-                self.aborted_ratio += 1
-                # terminate the game play when the message doesn't follow the rule
-                self.game.terminate = True
-                return
-
-            # instruction following - 2 side
-            if self.game.current_turn == 0:
-                self.set_context_for(self.instruction_follower,
-                                     self.game.player_2_prompt_header + '\n' + player_1_response_text)
-            else:
-                self.set_context_for(self.instruction_follower, player_1_response_text)
-
-            context = self.get_context_for(self.instruction_follower)
-            player_2_response_text = self.instruction_follower(context)
-
-            # increase the request count
-            self.turn_request_stats[self.game.current_turn]['request_count'] += 1
-            self.request_count += 1
-
-            # check if Player 2 message has the required format: grid
-            match = re.compile(self.game.player_2_response_pattern).match(player_2_response_text)
-            if match:
-                self.parsed_request_count += 1
-                self.turn_request_stats[self.game.current_turn]['parsed_count'] += 1
-
-                action = {'type': 'parse', 'content': player_2_response_text,
-                          'original_content': player_2_response_text}
-                self.log_event(from_="GM", to="GM", action=action)
-            else:
-                # log the invalid format
-                action = {'type': 'invalid format', 'content': 'Invalid grid format',
-                          'original_content': player_2_response_text}
-                self.log_event(from_="GM", to="GM", action=action)
-                self.turn_request_stats[self.game.current_turn]['violated_count'] += 1
-                self.violated_request_count += 1
-                self.aborted_ratio += 1
-                # terminate the game play when the message doesn't follow the rule
-                self.game.terminate = True
-                return
-
-        self.game.current_turn += 1
-
 
 class ImageGameScorer(GameScorer):
 
@@ -186,7 +168,7 @@ class ImageGameScorer(GameScorer):
         self.player1_response_pattern = r'{}'.format(game_instance["player_1_response_pattern"])
         self.player2_response_pattern = r'{}'.format(game_instance["player_2_response_pattern"])
         self.player1_terminate_pattern = r'{}'.format(game_instance["player_1_terminate_pattern"])
-
+                    
     def compute_scores(self, episode_interactions: Dict) -> None:
 
         precision, recall, f1 = 0, 0, 0
@@ -202,6 +184,7 @@ class ImageGameScorer(GameScorer):
         episode_violated_request_count = 0
 
         aborted = False
+        terminated = False
         number_of_turns = 0
 
         # loop over each turn and calculate the metrics for both Player 1 and 2.
@@ -211,57 +194,33 @@ class ImageGameScorer(GameScorer):
             turn_request_count = 0
             turn_parsed_request_count = 0
             turn_violated_request_count = 0
-
-            # Player 1 message
-            player_1_message = turn[1]['action']['content']
-
-            # Player generates "DONE"
-            match = re.compile(self.player1_terminate_pattern, re.IGNORECASE).match(player_1_message)
-            if match:
+            player_1_message, player_2_message = None, None
+            
+            for event in turn:
+                invalid_response = False
+                action = event['action']
+                if action['type'] == 'found terminate pattern':
+                    terminated = True
+                    break
+                elif action['type'] == 'invalid format':
+                    invalid_response = True
+                elif action['type'] == 'found instruction':
+                    player_1_message = action['content']
+                elif action['type'] == 'found grid':
+                    player_2_message = action['content']
+                turn_request_count += 1
+                episode_request_count += 1
+                if invalid_response:
+                    turn_violated_request_count += 1
+                    episode_violated_request_count += 1
+                    aborted = True
+                    break
+                else:
+                    turn_parsed_request_count += 1
+                    episode_parsed_request_count += 1
+            
+            if aborted or terminated:
                 break
-
-            turn_request_count += 1
-            episode_request_count += 1
-
-            # check the Player 1 message if it matches the rule
-            player_1_message_matched = re.compile(self.player1_response_pattern, re.IGNORECASE).match(player_1_message)
-            if player_1_message_matched:
-                if '\n' in player_1_message:
-                    parsed_instruction = player_1_message.split('\n')[0]
-                    player_1_message = parsed_instruction
-
-                turn_parsed_request_count += 1
-                episode_parsed_request_count += 1
-            else:
-                turn_violated_request_count += 1
-                episode_violated_request_count += 1
-                aborted = True
-                # do not continue processing the rest of the turn when the game is aborted
-                break
-
-            # check if the turn includes the Player 2 message
-            # in case the turn doesn't include an item and index position 4, it means the game has been aborted
-            if len(turn) < 4:
-                aborted = True
-                break
-
-            # Player 2 message
-            player_2_message = turn[4]['action']['content']
-            turn_request_count += 1
-            episode_request_count += 1
-
-            # check Player 2 message if it matches the instruction => grid
-            match = re.compile(self.player2_response_pattern).match(player_2_message)
-            if match:
-                turn_parsed_request_count += 1
-                episode_parsed_request_count += 1
-            else:
-                turn_violated_request_count += 1
-                episode_violated_request_count += 1
-                aborted = True
-                break
-
-            # calculate player-specific and turn-specific metrics
 
             try:
                 precision, recall, f1 = evaluate(self.target_grid, player_2_message)

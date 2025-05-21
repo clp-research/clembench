@@ -1,4 +1,4 @@
-clemcore>=2.0.0,<3.0.0
+clemcore>=2.4.0,<3.0.0
 lark==1.1.9 # adventuregame
 clingo==5.7.1 # adventuregame
 jinja2 # adventuregame

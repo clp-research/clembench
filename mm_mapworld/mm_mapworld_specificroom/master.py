@@ -481,17 +481,14 @@ class MM_MapWorldScorer(GameScorer):
             self.log_episode_score('finding', find)
             self.log_episode_score(BENCH_SCORE, find)
 
-    def store_scores(self, results_root: str, dialogue_pair: str, game_record_dir: str):
-        self.store_results_file(self.scores, "scores.json",
-                                dialogue_pair=dialogue_pair,
-                                sub_dir=game_record_dir,
-                                results_dir=results_root)
+    def store_scores(self, interactions_dir: str):
+        super().store_scores(interactions_dir)
 
         # plotting & animation
         if not os.path.exists("tmp"):
             os.makedirs("tmp")
         path_plot = self.plot_path(self.path)
-        path_plot.savefig(os.path.join(results_root, dialogue_pair, self.name, game_record_dir, "path.png"))
+        path_plot.savefig(os.path.join(interactions_dir, "path.png"))
         plt.close()
         if not os.path.exists("tmp/step_plots"):
             os.makedirs("tmp/step_plots")
@@ -501,8 +498,7 @@ class MM_MapWorldScorer(GameScorer):
             step_plot.savefig(f"tmp/step_plots/{i}.png")
             images.append(imageio.imread(f"tmp/step_plots/{i}.png"))
             plt.close()
-        imageio.mimsave(os.path.join(results_root, dialogue_pair, self.name, game_record_dir, "animation.gif"), images,
-                        fps=1, loop=True)
+        imageio.mimsave(os.path.join(interactions_dir, "animation.gif"), images, fps=1, loop=True)
         try:
             shutil.rmtree("tmp")
         except OSError as e:

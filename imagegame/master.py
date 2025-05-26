@@ -151,7 +151,6 @@ class ImageGameMaster(DialogueGameMaster):
         
         Returns:
             A bool, True if game continues, False if game should stop.
-        TODO: revisit, check if this is sufficient
         """
         if self.game.terminate:
             return False

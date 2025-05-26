@@ -8,7 +8,7 @@ import os
 from clemcore.backends import Model
 from clemcore.clemgame import GameSpec, Player
 from clemcore.clemgame import metrics
-from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer
+from clemcore.clemgame import DialogueGameMaster, GameBenchmark, GameScorer
 
 import re
 
@@ -51,15 +51,15 @@ class ReferenceGame:
         self.player_2_second_grid = game_instance['player_2_second_grid']
         self.player_2_third_grid = game_instance['player_2_third_grid']
 
+        self.terminate = False
 
-class ReferenceGameMaster(GameMaster):
+
+class ReferenceGameMaster(DialogueGameMaster):
 
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
-        self.experiment = experiment
-        self.game = None
 
-    def setup(self, **game_instance):
+    def _on_setup(self, **game_instance):
         self.game = ReferenceGame(game_instance)
         self.instruction_giver = InstructionGiver(self.player_models[0],
                                                   name="Player 1",
@@ -69,64 +69,93 @@ class ReferenceGameMaster(GameMaster):
                                                         name="Player 2",
                                                         game_role="Instruction Follower",
                                                         game_recorder=self.game_recorder)
-        self.log_player(self.instruction_giver)
-        self.log_player(self.instruction_follower)
+        p1_initial_prompt = self.game.player_1_prompt_header
+        self.add_player(self.instruction_giver, initial_context=p1_initial_prompt)
+        self.add_player(self.instruction_follower)
 
-    def play(self) -> None:
-        self.turn()
+    # def play(self) -> None:
+    #     self.turn()
 
-    def turn(self):
-        # generate referring expression - Player 1 side
-        context = dict(role="user", content=self.game.player_1_prompt_header)
-        player_1_response_text = self.instruction_giver(context)
+    def _validate_player_response(self, player, response):
+        """
+        Decide if a player response matches the valid response patterns.
+        An invalid response breaks the game rules and ends the game.
 
-        player_1_pattern = re.compile(self.game.player_1_response_pattern, re.IGNORECASE)
-        p1_match = re.match(player_1_pattern, player_1_response_text)
-        match = False
-        if p1_match:
-            if self.game.p1_mode == "liberal" or (self.game.p1_mode == "strict" and p1_match.group('remainder') == ""):
-                # in liberal mode, we don't care how much more the model generated
-                # in strict mode, the model should not produce more than one paragraph
-                match = True
-                action = {'type': 'parse', 'content': player_1_response_text,
-                          'expression': p1_match.group('content')}
-                self.log_event(from_="GM", to="GM", action=action)
-        if not match:
-            # if the Player 1 message doesn't match the rule in the given mode
-            # log the message and abort the game
-            action = {'type': 'invalid format', 'content': 'Invalid generated expression',
-                      'original_content': player_1_response_text}
-            self.log_event(from_="GM", to="GM", action=action)
-            return
+        Args:
+            player: The player that gave the response.
+            response: The response of the current player.
+        Returns:
+            True, if the response is fine. Otherwise, False.
+        """
+        if player == self.instruction_giver:
+            # Player 1 response validation
+            p1_match = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(response)
+            if p1_match:
+                if self.game.p1_mode == "liberal" or (self.game.p1_mode == "strict" and p1_match.group('remainder') == ""):
+                    # in liberal mode, we don't care how much more the model generated
+                    # in strict mode, the model should not produce more than one paragraph
+                    return True
+            self.game.terminate = True
+            self.log_to_self("invalid format", "Invalid generated expression")
+            return False
+        elif player == self.instruction_follower:
+            # Game only has one round, so we terminate regardless of the response
+            self.game.terminate = True
+            # Player 2 response validation
+            p2_match = re.compile(self.game.player_2_response_pattern, re.IGNORECASE).match(response)
+            if p2_match:
+                if self.game.p2_mode == "liberal" or (self.game.p2_mode == "strict" and p2_match.group('remainder') == ""):
+                    # in liberal mode, we don't care how much more the model generated (like "grid" or punctuation)
+                    # in strict mode, the model should only produce the label
+                    return True
+            self.log_to_self("invalid format", "Invalid generated expression")
+            return False
+        
+    def _parse_response(self, player, response):
+        """ Takes a valid player response and parses it.
 
-        # guess the grid - Player 2 side
-        context = dict(role="user",
-                       content=self.game.player_2_prompt_header.replace('TARGET_EXPRESSION', player_1_response_text))
-        player_2_response_text = self.instruction_follower(context)
+        Args:
+            player: The Player instance that produced the response.
+            response: The response of the current player.
+        Returns:
+            The parsed response
+        """
+        if player == self.instruction_giver:
+            # Player 1 response parsing
+            p1_match = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(response)
+            if p1_match:
+                return response
+        elif player == self.instruction_follower:
+            # Player 2 response parsing
+            player_2_pattern = re.compile(self.game.player_2_response_pattern, re.IGNORECASE)
+            p2_match = re.match(player_2_pattern, response)
+            if p2_match:
+                return p2_match.group('response').lower()  # return the label only
+        return None
+    
+    def _on_valid_player_response(self, player: Player, parsed_response: str) -> None:
+        """Method executed after a player response has been parsed and validated.
+        This method is used to set the context for the other player.
 
-        # check if the Player 2 message matches the rule => start with the right tag and generate only the label
-        player_2_pattern = re.compile(self.game.player_2_response_pattern, re.IGNORECASE)
-        p2_match = re.match(player_2_pattern, player_2_response_text)
-        match = False
-        if p2_match:
-            if self.game.p2_mode == "liberal" or (self.game.p2_mode == "strict" and p2_match.group('remainder') == ""):
-                # in liberal mode, we don't care how much more the model generated (like "grid" or punctuation)
-                # in strict mode, the model should only produce the label
-                match = True
-                if p2_match.group('response').lower() in self.game.target_grid_name:
-                    action = {'type': 'parse_correct', 'content': player_2_response_text,
-                              'answer': p2_match.group('response')}
-                else:
-                    action = {'type': 'parse_wrong', 'content': player_2_response_text,
-                              'answer': p2_match.group('response')}
-                self.log_event(from_="GM", to="GM", action=action)
+        Args:
+            player: The Player instance that produced the response (or has been modified by the GM).
+            parsed_response: The parsed and valid response of the current player.
+        """
+        if player == self.instruction_giver:
+            self.log_to_self('parse', parsed_response)
+            # Game only has one round, so we can use the initial prompt header here
+            p2_prompt = self.game.player_2_prompt_header.replace('TARGET_EXPRESSION', parsed_response)
+            self.set_context_for(self.instruction_follower, p2_prompt)
+        else:
+            if parsed_response in self.game.target_grid_name:
+                self.log_to_self('parse_correct', parsed_response)
+            else:
+                self.log_to_self('parse_wrong', parsed_response)
 
-        if not match:
-            # abort the game if the output doesn't match the rule
-            action = {'type': 'invalid format', 'content': 'Invalid generated choice',
-                      'original_content': player_2_response_text}
-            self.log_event(from_="GM", to="GM", action=action)
-
+    def _does_game_proceed(self):
+        if self.game.terminate:
+            return False
+        return True
 
 class ReferenceGameScorer(GameScorer):
 
@@ -134,10 +163,11 @@ class ReferenceGameScorer(GameScorer):
         super().__init__(game_name, experiment, game_instance)
 
     def compute_scores(self, episode_interactions: Dict) -> None:
-        '''
+        """
         Compute and log scores for one episode of referencegame.
-        :param episode_interactions: the game episode interactions log
-        '''
+        Args:
+            episode_interactions: The interactions of the episode, as a dictionary.
+        """
 
         # For referencegame, there is just one turn (one exchange of p1-p2 is logged as one turn)
         turn = episode_interactions["turns"][0]
@@ -162,7 +192,7 @@ class ReferenceGameScorer(GameScorer):
             episode_parsed_request_count += 1
 
             # log the Player 1 - message length
-            p1_expression = turn[2]['action']['expression']
+            p1_expression = turn[2]['action']['content']
             expression_length = len(p1_expression)
             self.log_turn_score(turn_index, 'Generated Expression Length', expression_length)
             # as there is just one turn, this is the same as episode scores
@@ -233,7 +263,7 @@ class ReferenceGameBenchmark(GameBenchmark):
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
 
-    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> DialogueGameMaster:
         return ReferenceGameMaster(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:

@@ -70,7 +70,7 @@ class HelloGame(DialogueGameMaster):
             self.log_to_self("greeting failed", f"missing words=[{','.join(self.missing_words)}]")
         return False
 
-    def _validate_player_response(self, player: Player, utterance: str) -> bool:
+    def _parse_response(self, player: Player, utterance: str) -> bool:
         # Check responses for specific players
         if player == self.greeter:
             # Check rule: utterance starts with key word
@@ -85,11 +85,17 @@ class HelloGame(DialogueGameMaster):
                 if required_word not in utterance:
                     self.success = False
                     self.missing_words.append(required_word)
-        return True
+        return utterance, True
 
-    def _on_valid_player_response(self, player: Player, parsed_response: str):
+    def _advance_game(self, player: Player, parsed_response: str):
         if player == self.greeter:
             self.set_context_for(self.greeted, parsed_response)
+
+    def compute_turn_score(self):
+        score = 0
+        if self.success:
+            score = 1
+        return score
 
     def compute_episode_score(self):
         score = 0

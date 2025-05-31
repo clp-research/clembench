@@ -2,7 +2,7 @@ import string
 from typing import Dict, List
 
 from clemcore.backends import Model, CustomResponseModel
-from clemcore.clemgame import GameBenchmark, Player, DialogueGameMaster, GameSpec, GameRecorder
+from clemcore.clemgame import GameBenchmark, Player, ReasoningPlayer, DialogueGameMaster, GameSpec, GameRecorder
 import logging
 
 logger = logging.getLogger(__name__)
@@ -18,7 +18,7 @@ class Greeted(Player):
         return f"{self.target_name}: Hi, thanks for having me!"
 
 
-class Greeter(Player):
+class Greeter(ReasoningPlayer):
 
     def __init__(self, model: Model):
         super().__init__(model)

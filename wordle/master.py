@@ -108,13 +108,13 @@ class WordGuesser(Player):
     def __init__(self, model: Model, formatter: ResponseFormatter):
         super().__init__(model)
         self.formatter = formatter
-        self._custom_responses = ["apple", "beach", "crane", "after", "those"]
+        self._custom_responses = ["apple", "beach", "crane", "after", "those", "horse"]
 
     def _terminal_response(self, context: Dict) -> str:
         guess = input("Enter your guess: ")
         return self.formatter.to_guesser_response("human guesser", guess)
 
-    def _custom_response(self, messages):
+    def _custom_response(self, messages):  # for playing with_critic we need doulbe the amoutn of responses
         guess = self._custom_responses.pop(0)
         return self.formatter.to_guesser_response("custom guesser", guess)
 
@@ -123,7 +123,7 @@ class WordCritic(Player):
     def __init__(self, model: Model, formatter: ResponseFormatter):
         super().__init__(model)
         self.formatter = formatter
-        self._custom_responses = ["yes", "no", "no", "yes", "no"]
+        self._custom_responses = ["yes", "no", "no", "yes", "no", "no"]
 
     def _terminal_response(self, context: Dict) -> str:
         feedback = input("Do you agree with the guess? (yes/no) ")
@@ -132,6 +132,23 @@ class WordCritic(Player):
     def _custom_response(self, messages):
         feedback = self._custom_responses.pop(0)
         return self.formatter.to_guesser_response("custom critic", feedback)
+
+
+class ReflectingWordGuesser(WordGuesser):
+    """ When playing with a critic, the word guesser has two turns:
+        1. Turn: The guesser provides on initial guess which is given to the critic
+        2. Turn: The guesser reflects on the feedback given by the critic and (potentially) adjusts the initial guess
+    """
+
+    def __init__(self, model: Model, formatter: ResponseFormatter):
+        super().__init__(model, formatter)
+        # self._custom_responses = ["yes", "no", "no", "yes", "no", "no"] -- from the critic
+        self._custom_responses = ["apple", "apple",
+                                  "beach", "crane",
+                                  "those", "horse",
+                                  "after", "after",
+                                  "worse", "morse",
+                                  "quiet", "fight",]
 
 
 def parse_response(player: Player, response: str, lang_keywords: Dict) -> Tuple[str, str]:
@@ -275,7 +292,7 @@ class Wordle(DialogueGameMaster):
 
     def get_turn_stats(self):
         return {
-            "attempts": self.current_round,
+            "attempts": self.current_round + 1,
             "target_word": self.target_word,
             "guess": self.current_guess,
             "guess_feedback": self.guess_feedback
@@ -334,7 +351,7 @@ class WordleWithCritic(WordleWithClue):
 
     def _add_players(self):
         guesser_model = self.player_models[0]
-        self.guesser = WordGuesser(guesser_model, self.formatter)
+        self.guesser = ReflectingWordGuesser(guesser_model, self.formatter)
         self.add_player(self.guesser, initial_prompt=self.experiment["guesser_prompt"])
 
         critic_model = self.player_models[1] if len(self.player_models) > 1 else guesser_model
@@ -343,7 +360,7 @@ class WordleWithCritic(WordleWithClue):
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         if player == self.guesser:
-            return super()._validate_player_response()
+            return super()._validate_player_response(player, utterance)
         if player == self.critic:
             try:
                 agreement, explanation = parse_response(player, utterance, self.lang_keywords)
@@ -381,7 +398,7 @@ class WordleWithCritic(WordleWithClue):
         self.commit_guess = False
 
     def _should_pass_turn(self):
-        return self.awaiting_critic
+        return self.awaiting_critic or self.current_player == self.critic  # critic always passes turn
 
     def _does_game_proceed(self):
         # Proceed if waiting for critic response (skip termination checks)
@@ -475,13 +492,9 @@ class WordleGameBenchmark(GameBenchmark):
         super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        # Determine which variant to use based on experiment configuration
-        use_clue = experiment.get("use_clue", False)
-        use_critic = experiment.get("use_critic", False)
-
-        if use_critic:
+        if self.game_name == "wordle_withcritic":
             return WordleWithCritic(self.game_name, self.game_path, experiment, player_models)
-        elif use_clue:
+        elif self.game_name == "wordle_withclue":
             return WordleWithClue(self.game_name, self.game_path, experiment, player_models)
         else:
             return Wordle(self.game_name, self.game_path, experiment, player_models)

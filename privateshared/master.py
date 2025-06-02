@@ -75,7 +75,8 @@ class Questioner(Player):
         return self.request_strings[self.question_type][request_idx]
 
     def set_question_type_for(self, current_round: int):
-        self.question_type = self.question_order[current_round - 1]
+        if current_round < len(self.question_order):
+            self.question_type = self.question_order[current_round]
 
 
 class PrivateSharedGame:
@@ -97,7 +98,8 @@ class PrivateShared(DialogueGameMaster):
     def _on_setup(self, **game_instance):
         """
         Sets the game up, given the game instance parameters.
-        arguments:
+
+        Args:
             game_instance: A dictionary containing the game instance parameters.
         """
         self.filled_slots: List = []
@@ -117,7 +119,7 @@ class PrivateShared(DialogueGameMaster):
         request_strings = self.load_json(REQUESTS_PATH.format(self.experiment['name']))
         self.words = Words(self.load_json(WORDS_PATH.format(game_instance['lang'])))  # load language specific words
         self.initial_prompt = game_instance['initial_prompt']
-        self.all_probes: List[List[Dict]] = []  
+        self.all_probes: List[List[Dict]] = []
         
         self.answerer: Answerer = Answerer(self.player_models[0], "Player 1",
                                            self.game_recorder, self.words)
@@ -130,14 +132,18 @@ class PrivateShared(DialogueGameMaster):
         self.parsed_request_counts = [0] * self.n_probe_turns
         self.violated_request_counts = [0] * self.n_probe_turns
 
-        # TODO: check if label="pseudo" works and shows up correctly in the transcript
-        self.add_player(self.questioner, initial_context=dict(role="user", content=self.words.dummy_prompt))
-        self.questioner.set_question_type_for(0)  # set the question type for the first round
         self.add_player(self.answerer)
         self.answerer._messages.append(dict(role='user', content=self.initial_prompt, label='pseudo'))
-        self.answerer._messages.append(dict(role="assistant", content="Ok."))
-        self.log_event(from_=self.answerer.name, to="GM",
+        self.answerer._messages.append(dict(role="assistant", content=self.words.ok, label="pseudo"))
+        self.log_event(from_="GM", to=self.answerer.name,
                        action=dict(type="send message", content=self.initial_prompt, label="pseudo"))
+        self.log_event(from_=self.answerer.name, to="GM",
+                       action=dict(type="get message", content=self.words.ok, label="pseudo"))
+    
+        self.add_player(self.questioner, initial_context=dict(role="user", content=self.words.dummy_prompt))
+        self.questioner.set_question_type_for(self.current_round)  # set the question type for the first round
+        self.set_context_for(self.questioner, self.words.dummy_prompt)
+
 
         # Conduct a preliminary probing round before the actual game starts
         turn_probes, probing_successful = self.probe()
@@ -145,16 +151,18 @@ class PrivateShared(DialogueGameMaster):
         if not probing_successful:
             self.log_to_self("invalid format", "Abort: invalid format in probing.")
             self.aborted = True
+        # Preliminary probing round counts as round 0
+        self.current_round += 1
+        self.current_player_idx = 1 # start with the questioner
 
-    # def _next_player(self) -> Player:
-    #     """
-    #     TODO: Is this sound?
-    #     """
-    #     if self.current_player == self.questioner:
-    #         return self.answerer
-    #     if self.probing_turn:
-    #         return self.answerer
-    #     return self.questioner
+    def _start_next_round(self) -> bool:
+        """
+        If questioner's turn comes next, we start a new round.
+
+        Rreturns:
+            True, when to start a new round
+        """
+        return self.current_player_idx == 1
 
     def _validate_player_response(self, player, response):
         """
@@ -176,6 +184,7 @@ class PrivateShared(DialogueGameMaster):
         return True
     
     def _parse_response(self, player, response):
+        # No need to parse questioner's response, since it is programmatic
         if player == self.questioner:
             return response
         # Parse valid answerer's response
@@ -183,13 +192,16 @@ class PrivateShared(DialogueGameMaster):
         return clean_response
     
     def _on_valid_player_response(self, player, parsed_response):
+        """
+        Handle a valid response from a player and prepare the next turn.
+
+        Args:
+            player: The player that gave the response.
+            parsed_response: The parsed response of the current player.
+        """
+        logger.info(f"Game round {str(self.current_round)}: Valid response from {player.name}:\n\t{parsed_response}")
         if player == self.questioner:
-            self.questioner.set_question_type_for(self.current_round)
-            request = self.questioner(dict(role="user", content=self.words.dummy_prompt))
-            # context = dict(role="user", content=f"{self.questioner_tag}{request}")
-            self.set_context_for(self.answerer, f"{self.questioner_tag}{request}")
-            # TODO: Do I need to manually increment the request counts?
-            self.request_counts[self.current_round] += 1  # requests to the answerer per round
+            self.set_context_for(self.answerer, f"{self.questioner_tag}{parsed_response}")
         else:
             # Check if the answer was correct
             slot_filled = self._is_slot_filled(parsed_response)
@@ -198,166 +210,23 @@ class PrivateShared(DialogueGameMaster):
             # check if the agent gave away more info than it should
             # update ground truth if necessary
             self._update_anticipated_slots(parsed_response)
-
             # probing turn
             turn_probes, probing_successful = self.probe()
             self.all_probes.append(turn_probes)
             if not probing_successful:
                 self.log_to_self("invalid format", "Abort: invalid format in probing.")
                 self.aborted = True
-            # TODO: Do I need to manually increment the request counts?
             # increment request counts
             self.request_counts[self.current_round] += 1  # requests to the answerer per round
 
             self.questioner.set_question_type_for(self.current_round)
-            self.set_context_for(self.questioner,
-                                 dict(role="user", content=self.words.dummy_prompt))
-
-    # TODO: remove this method once refactoring is done
-    def old_setup(self,
-              game_id: int,
-              initial_prompt: str,
-              request_order: List[str],
-              requests: Dict[str, int],
-              probes: Dict[int, Dict[str, int]],
-              slots: Dict[str, str],
-              tag: str,
-              lang: str,
-              ) -> None:
-        
-        ### NOTE TO SELF:
-        # This is called from benchmark.py, where all these parameters are passed as `**game_instance`.
-        #################
-
-        # load necessary texts
-        self.probing_questions = self.load_json(PROBES_PATH.format(self.experiment['name']))
-        self.retries = self.load_json(RETRIES_PATH)['suffixes']
-
-        self.questioner_tag = f"{tag}: "
-        self.probing = probes
-        self.probe_gt = {slot: i for i, slot in enumerate(request_order)}
-        self.game = PrivateSharedGame(request_order, slots)
-        self.n_probe_turns = self.game.max_turns + 1  # one probing before the game starts and one after each request
-
-        request_strings = self.load_json(REQUESTS_PATH.format(self.experiment['name']))
-        self.words = Words(self.load_json(WORDS_PATH.format(lang)))  # load language specific words
-        self.initial_prompt = initial_prompt
-        self.answerer: Answerer = Answerer(self.player_models[0], "Player 1",
-                                           self.game_recorder, self.words)
-        self.questioner: Questioner = Questioner("Player 2", self.game_recorder,
-                                                 request_order, requests, request_strings)
-
-        # initialise turn counters
-        self.request_counts = [0] * self.n_probe_turns
-        self.parsed_request_counts = [0] * self.n_probe_turns
-        self.violated_request_counts = [0] * self.n_probe_turns
-
-        self.log_player(self.answerer)
-        self.log_player(self.questioner)
-
-    # # TODO: DGM already has self.current_round, do we need this?
-    # @property
-    # def current_round(self):
-    #     return self.game.current_round
-    
-    def _does_game_proceed(self) -> bool:
-        # TODO: check if sufficient
-        return self.current_round < self.game.max_turns
-
-    def proceeds(self) -> bool:
-        """Check if the game can continue, i.e. not all slots are filled."""
-        return self.current_round < self.game.max_turns
+            self.set_context_for(self.questioner, self.words.dummy_prompt)
     
     def _on_after_game(self):
         self.log_key('probes', self.all_probes)
         self.log_key('realised_slots', self.probe_gt)
-        action = {'type': 'end', 'content': 'Game finished.'}
-        self.log_event(from_='GM', to='GM', action=action)
+        self.log_to_self('end', 'Game finished.')
         self._log_eval_assets()
-
-    # TODO: remove
-    def old_play(self) -> None:
-        all_probes = []
-
-        # setup fake dialogue prequel (like in the original version of the game)
-        self.answerer._messages.append(dict(role="user", content=self.initial_prompt))
-        self.game_recorder.log_event(from_="GM", to=self.answerer.name,
-                                      action={"type": "send message", "content": self.initial_prompt, "label": "pseudo"})
-        self.answerer._messages.append(dict(role="assistant", content="Ok."))
-        self.game_recorder.log_event(from_=self.answerer.name, to="GM",
-                                      action={"type": "get message", "content": "Ok.", "label": "pseudo"})
-
-        # probing round before game starts
-        turn_probes, probing_successful = self.probe()
-        all_probes.append(turn_probes)
-        if not probing_successful:
-            self.log_to_self("invalid format", "Abort: invalid format in probing.")
-            self.aborted = True
-
-        # actual game: alternate real turns and probing
-        while self.proceeds() and not self.aborted:
-            self.log_next_round()
-            # slot filling turn
-            turn_successful = self.turn()
-            if not turn_successful:
-                self.log_to_self("invalid format", "Abort: invalid format in slot filling.")
-                self.aborted = True
-                break
-            # probing round
-            turn_probes, probing_successful = self.probe()
-            all_probes.append(turn_probes)
-            if not probing_successful:
-                self.log_to_self("invalid format", "Abort: invalid format in probing.")
-                self.aborted = True
-                break
-
-        self.log_key('probes', all_probes)
-        self.log_key('realised_slots', self.probe_gt)
-        action = {'type': 'end', 'content': 'Game finished.'}
-        self.log_event(from_='GM', to='GM', action=action)
-        self._log_eval_assets()
-
-    # def questioner_turn(self):
-    #     self.questioner.set_question_type_for(self.current_round)
-    #     context = dict(role="user", content=self.words.dummy_prompt)
-    #     request = self.questioner(context)
-    #     tagged_request = f"{self.questioner_tag}{request}"
-    #     # append the instruction to be straight to the point (for regression testing not fixed here )
-    #     # tagged_coda_request = self.words.coda.format(tagged_request)
-    #     # return tagged_coda_request
-    #     return tagged_request
-
-    # def answerer_turn(self, request: str, memorize=True) -> str:
-    #     context = dict(role="user", content=request)
-    #     answer = self.answerer(context, memorize=memorize)
-    #     self.request_counts[self.current_round] += 1  # requests to the answerer per round
-    #     return answer
-
-    def old_turn(self) -> bool:
-        """Perform one slot-filling turn."""
-        self.game.current_round += 1
-
-        request = self.questioner_turn()
-        answer = self.answerer_turn(request)
-        parsed_answer = self._parse_slot_response(answer)
-        self.log_to_self("parse", parsed_answer)
-
-        # if answer cannot be parsed, break immediately
-        if parsed_answer == INVALID:
-            self.violated_request_counts[self.current_round] += 1
-            return False
-        self.parsed_request_counts[self.current_round] += 1
-
-        # check if the answer was correct
-        slot_filled = self._is_slot_filled(answer)
-        self.filled_slots.append(slot_filled)
-        self.log_to_self("metadata", f"Slot filled: {slot_filled}")
-
-        # check if the agent gave away more info than it should
-        # update ground truth if necessary
-        self._update_anticipated_slots(answer)
-
-        return True
 
     @staticmethod
     def _has_continuation(response: str) -> bool:
@@ -371,20 +240,15 @@ class PrivateShared(DialogueGameMaster):
             return True
         return False
 
-    # TODO: can probably be removed
-    def _parse_slot_response(self, response: str) -> str:
-        """Extract parsed answer in slot filling turn."""
-        if (not response.startswith(self.words.answer.strip())
-                or self._has_continuation(response)):
-            logger.warning(f"Game round {str(self.current_round)}: {NOT_PARSED}")
-            return INVALID
-        clean_response = self._filter_tag(response, self.words.answer.strip())
-        return clean_response
-
     def _is_slot_filled(self, answer: str) -> bool:
         """Check if answer contains the correct value for a slot."""
+        logger.info(f"Game round {str(self.current_round)}: Checking slot value.")
+        logger.info(f"\tAnswer: {answer}")
+        logger.info(f"self.game.question_order: {self.game.question_order}")
         slot = self.game.question_order[self.current_round - 1]
+        # logger.info(f"slot of previous round: {self.game.question_order[self.current_round]}")
         value = self.game.slots[slot]
+        logger.info(f"\tSlot: {slot}; value: {value}")
         if value.lower() in answer.lower():
             return True
         return False
@@ -488,14 +352,14 @@ class PrivateShared(DialogueGameMaster):
         """Extract parsed answer in probing turn."""
         if (not response.startswith(self.words.aside.strip())
                 or self._has_continuation(response)):
-            logger.warning(f"Game round {str(self.current_round)}: {NOT_PARSED}")
+            # logger.warning(f"Game round {str(self.current_round)}: {NOT_PARSED}")
             return INVALID
         clean_response = self._filter_tag(response, self.words.aside.strip())
         if clean_response.lower().startswith(self.words.yes):
             return self.words.yes
         if clean_response.lower().startswith(self.words.no):
             return self.words.no
-        logger.warning(f"Game round {str(self.current_round)}: {NOT_PARSED}")
+        # logger.warning(f"Game round {str(self.current_round)}: {NOT_PARSED}")
         return INVALID
 
     def _convert_response(self, response: str) -> int:

@@ -148,7 +148,7 @@ class ReflectingWordGuesser(WordGuesser):
                                   "those", "horse",
                                   "after", "after",
                                   "worse", "morse",
-                                  "quiet", "fight",]
+                                  "quiet", "fight", ]
 
 
 def parse_response(player: Player, response: str, lang_keywords: Dict) -> Tuple[str, str]:
@@ -226,12 +226,17 @@ class Wordle(DialogueGameMaster):
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
         self.max_rounds: int = experiment["common_config"]["n_turns"]
+        self.max_retry_per_error = self.experiment["common_config"]["max_retry_per_error"]
         self.lang_keywords = experiment["lang_keywords"]
         self.formatter = ResponseFormatter(self.lang_keywords)
 
     def _on_setup(self, **game_instance):
         self.target_word = game_instance["target_word"].strip().lower()
-        self.invalid_response = False
+        self.valid_response = False
+        self.reprompt_attempts = 0
+        self.success = False
+        self.failure = False
+        self.aborted = False
         self.current_guess = None
         self.current_explanation = None
         self.guess_feedback = None
@@ -243,30 +248,7 @@ class Wordle(DialogueGameMaster):
         self.add_player(self.guesser, initial_context=self.experiment["guesser_prompt"])
 
     def _does_game_proceed(self):
-        if self.is_terminal():
-            if self.is_aborted():
-                self.log_to_self("invalid format", "game_result = ABORT")
-            elif self.is_turn_limit_reached():
-                self.log_to_self("max rounds reached", "game_result = LOSS")
-            elif self.is_success():
-                self.log_to_self("correct guess", "game_result = WIN")
-            return False
-        return True
-
-    def is_terminal(self):
-        return self.is_aborted() or self.is_failure() or self.is_success()
-
-    def is_aborted(self):
-        return self.invalid_response
-
-    def is_failure(self):
-        return self.is_turn_limit_reached() and not self.is_success()
-
-    def is_turn_limit_reached(self):
-        return self.current_round >= self.max_rounds
-
-    def is_success(self):
-        return self.current_guess == self.target_word
+        return not (self.success or self.failure or self.aborted)
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         try:
@@ -276,19 +258,40 @@ class Wordle(DialogueGameMaster):
             self.current_explanation = explanation
             # Validate guess
             validate_guess(guess, self.lang_keywords)
+            self.valid_response = True
+            self.reprompt_attempts = 0
             return True
         except (ParseError, RuleViolationError) as e:
-            # todo prepare re-prompting for invalid response somewhere; if max re-prompts then abort
-            self.invalid_response = True
+            self.valid_response = False
             self.log_to_self("metadata", e.reason)
             return False
 
+    def _should_pass_turn(self):
+        if not self.valid_response:  # perform re-prompting up to N times
+            self.reprompt_attempts += 1
+            if self.reprompt_attempts > self.max_retry_per_error:
+                self.log_to_self("invalid format", "game_result = ABORT")
+                self.aborted = True
+            return False
+        return True
+
+    def _start_next_round(self) -> bool:
+        return self.valid_response
+
     def _on_valid_player_response(self, player: Player, parsed_response: str):
-        # Provide feedback to guesser for next round
-        self.guess_feedback = self.guess_validator.validate(self.current_guess)
-        content = self.formatter.to_gm_response_for_guesser(self.guess_feedback)
-        self.set_context_for(self.guesser, content)
-        self.log_to_self("metadata", self.formatter.to_gm_turn_stats(self.get_turn_stats()))
+        # Check terminal conditions
+        if self.target_word == self.current_guess:
+            self.log_to_self("correct guess", "game_result = WIN")
+            self.success = True
+        elif self.current_round + 1 >= self.max_rounds:  # zero-based rounds
+            self.log_to_self("max rounds played", "game_result = LOSS")
+            self.failure = True
+        else:
+            # Provide feedback to guesser for next round
+            self.guess_feedback = self.guess_validator.validate(self.current_guess)
+            content = self.formatter.to_gm_response_for_guesser(self.guess_feedback)
+            self.set_context_for(self.guesser, content)
+            self.log_to_self("metadata", self.formatter.to_gm_turn_stats(self.get_turn_stats()))
 
     def get_turn_stats(self):
         return {
@@ -299,10 +302,10 @@ class Wordle(DialogueGameMaster):
         }
 
     def compute_response_score(self, response, context):
-        return 1 if self.is_success() else 0
+        return 1 if self.success else 0
 
     def compute_episode_score(self):
-        if self.is_success():
+        if self.success:
             return 100 / self.current_round
         return 0
 
@@ -314,6 +317,8 @@ class WordleWithClue(Wordle):
         super()._on_setup(**game_instance)
         # Set clue as initial context; will be appended to initial_prompt on the Player's first turn
         self.target_word_clue = game_instance["target_word_clue"].strip()
+
+    def _on_before_game(self):
         self.set_context_for(self.guesser, f"{self.lang_keywords['clue_lang']} {self.target_word_clue}")
 
     def _add_players(self):
@@ -369,9 +374,10 @@ class WordleWithCritic(WordleWithClue):
                 validate_agreement(agreement, self.lang_keywords)
                 return True
             except (ParseError, RuleViolationError) as e:
-                # todo prepare re-prompting for invalid response somewhere; if max re-prompts then abort
-                self.invalid_response = True
+                # Immediately abort when critic fails to produce a valid response
+                self.aborted = True
                 self.log_to_self("metadata", e.reason)
+                self.log_to_self("invalid format", "game_result = ABORT")
                 return False
 
     def _on_valid_player_response(self, player: Player, parsed_response: str):
@@ -391,18 +397,23 @@ class WordleWithCritic(WordleWithClue):
             self.awaiting_critic = False
 
     def _start_next_round(self):
-        return self.commit_guess
+        return self.commit_guess  # this requires self.invalid_response = False
 
     def _on_before_round(self):
         self.awaiting_critic = True
         self.commit_guess = False
 
     def _should_pass_turn(self):
-        return self.awaiting_critic or self.current_player == self.critic  # critic always passes turn
+        if self.current_player == self.critic:  # critic always passes turn
+            return True
+        if not super()._should_pass_turn():  # possible re-prompting of guesser
+            return False
+        return self.awaiting_critic  # pass turn only to get critic response
 
     def _does_game_proceed(self):
-        # Proceed if waiting for critic response (skip termination checks)
-        if self.awaiting_critic and not self.invalid_response:
+        # Proceed if waiting for critic response (skip success/failure conditions)
+        # However the game might be aborted, when the guesser fails to produce a valid response
+        if self.awaiting_critic and not self.aborted:
             return True
         return super()._does_game_proceed()
 

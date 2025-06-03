@@ -5,13 +5,12 @@ import numpy as np
 import re
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameRecorder
+from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
-    METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
-from clemcore.utils import file_utils, string_utils
+    METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, BENCH_SCORE
 
 from utils.guessvalidator import GuessValidator
-from utils.compute_metrics import ComputeMetrics
+from utils.compute_metrics import turns_closeness, turns_strategy
 
 logger = logging.getLogger(__name__)
 
@@ -452,6 +451,7 @@ class WordleWithCritic(WordleWithClue):
                 self.state.commit_guess = True
                 super()._on_valid_player_response(player, parsed_response)
         if player == self.critic:
+            self.critics_judgements.append(self.state.current_agreement)
             content = self.formatter.to_critic_response(self.state.current_agreement,
                                                         self.state.current_agreement_explanation)
             self.set_context_for(self.guesser, content)
@@ -497,15 +497,29 @@ SPEED_SCORES = {
     6: 20
 }
 GUESS_REPETITIONS = "Guess Repetitions"
+CLOSENESS_SCORE = "Closeness Score"  # turn metric
+STRATEGY_SCORE = "Strategy Score"  # turn metric
 
 
 class WordleScorer(GameScorer):
     def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
         super().__init__(game_name, experiment, game_instance)
-        self.cm = ComputeMetrics()
 
     def score_turns(self, episode_interactions: Dict) -> None:
-        pass  # not yet used
+        guesser_feedbacks = episode_interactions[GUESSER_FEEDBACKS]
+
+        if not guesser_feedbacks:
+            self.log_turn_score(0, CLOSENESS_SCORE, np.nan)
+            self.log_turn_score(0, STRATEGY_SCORE, np.nan)
+            return
+
+        closeness_scores = turns_closeness(guesser_feedbacks)
+        for idx, score in enumerate(closeness_scores):
+            self.log_turn_score(idx + 1, CLOSENESS_SCORE, score)
+
+        strategy_scores = turns_strategy(guesser_feedbacks, is_aborted=episode_interactions[METRIC_ABORTED])
+        for idx, score in enumerate(strategy_scores):
+            self.log_turn_score(idx + 1, STRATEGY_SCORE, score)
 
     def compute_speed(self, num_rounds: int):
         """
@@ -544,6 +558,7 @@ REPETITION_ON_AGREEMENT = "Repetition-Guesser-On-Critic-Agreement"
 ADJUSTMENT_ON_AGREEMENT = "Non-Repetition-Guesser-On-Critic-Agreement"
 REPETITION_ON_DISAGREEMENT = "Repetition-Guesser-On-Critic-Disagreement"
 ADJUSTMENT_ON_DISAGREEMENT = "Non-Repetition-Guesser-On-Critic-Disagreement"
+CHANGE_OF_OPINION = "Change-Of-Opinion"  # turn metric
 
 
 class WordleWithCriticScorer(WordleScorer):
@@ -600,6 +615,9 @@ class WordleWithCriticScorer(WordleScorer):
         adjustment_agreement = np.nan
         adjustment_disagreement = np.nan
         if results["overall_change"]:
+            for idx, change in enumerate(results["overall_change"]):
+                self.log_turn_score(idx + 1, CHANGE_OF_OPINION, change)
+
             total_agreements = results["total_yes"]
             if total_agreements > 0:
                 repetition_agreement = round(results["use_same_guess_yes"] / total_agreements, 2)

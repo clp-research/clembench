@@ -232,6 +232,7 @@ class WordleGameState:
     aborted: bool = False
     valid_response: bool = False
     reprompt_attempts: int = 0
+    error: Optional[ResponseError] = None
     current_guess: str = None
     current_explanation: str = None
     guess_feedback: str = None
@@ -267,7 +268,8 @@ class Wordle(DialogueGameMaster):
             target_word=game_instance["target_word"].strip().lower(),
             words=self.experiment["lang_keywords"],
             max_rounds=self.experiment["common_config"]["n_turns"],
-            max_retry_per_error=self.experiment["common_config"]["max_retry_per_error"],
+            # NOT_VALID_WORD_FOR_GAME is the only entry in the dict; we only handle this case in the game for now
+            max_retry_per_error=self.experiment["common_config"]["max_retry_per_error"]["NOT_VALID_WORD_FOR_GAME"],
             guesser_initial_prompt=self.experiment["guesser_prompt"]
         )
         self.guess_validator = GuessValidator(self.state.target_word)
@@ -290,21 +292,28 @@ class Wordle(DialogueGameMaster):
             self.state.current_explanation = explanation
             # Validate guess
             validate_guess(guess, self.state.words)
-            self.state.valid_response = True
-            self.reprompt_attempts = 0
             self.parsed_request_counts += 1
+            # Reset re-prompting states
+            self.state.valid_response = True
+            self.state.reprompt_attempts = 0
+            self.state.error = None
             return True
         except (ParseError, RuleViolationError) as e:
             self.violated_request_counts += 1
             self.state.valid_response = False
+            self.state.error = e
             self.log_to_self("metadata", e.reason)
             return False
 
     def _should_pass_turn(self):
-        if not self.state.valid_response:  # perform re-prompting up to N times
-            self.state.reprompt_attempts += 1
-            if self.state.reprompt_attempts > self.state.max_retry_per_error:
-                self.log_to_self("invalid format", "game_result = ABORT")
+        if not self.state.valid_response:
+            if str(self.state.error) == "NOT_VALID_WORD_FOR_GAME":
+                # perform re-prompting up to N times
+                self.state.reprompt_attempts += 1
+                if self.state.reprompt_attempts > self.state.max_retry_per_error:
+                    self.log_to_self("invalid format", "game_result = ABORT")
+                    self.state.aborted = True
+            else:
                 self.state.aborted = True
             return False
         return True
@@ -314,6 +323,7 @@ class Wordle(DialogueGameMaster):
 
     def _on_valid_player_response(self, player: Player, parsed_response: str):
         self.state.guess_feedback = self.guess_validator.validate(self.state.current_guess)
+        self.log_to_self("metadata", self.formatter.to_gm_turn_stats(self.get_turn_stats()))
         self.guesser_feedbacks.append(self.state.guess_feedback)
         self.guesser_guesses.append(self.state.current_guess)
         # Check terminal conditions
@@ -323,11 +333,9 @@ class Wordle(DialogueGameMaster):
         elif self.current_round + 1 >= self.state.max_rounds:  # zero-based rounds
             self.log_to_self("max rounds played", "game_result = LOSS")
             self.state.failure = True
-        else:
-            # Provide feedback to guesser for next round
+        else:  # Provide feedback to guesser for next round
             content = self.formatter.to_gm_response_for_guesser(self.state.guess_feedback)
             self.set_context_for(self.guesser, content)
-            self.log_to_self("metadata", self.formatter.to_gm_turn_stats(self.get_turn_stats()))
 
     def get_turn_stats(self):
         return {

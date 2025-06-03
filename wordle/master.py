@@ -521,35 +521,30 @@ class WordleScorer(GameScorer):
         for idx, score in enumerate(strategy_scores):
             self.log_turn_score(idx + 1, STRATEGY_SCORE, score)
 
-    def compute_speed(self, num_rounds: int):
+    def compute_speed(self, episode_interactions):
         """
         Rank is computed based on the number of turns taken to guess the word.
         The lesser the number of turns, the higher the speed
         """
+        num_rounds: int = len(episode_interactions["turns"])
         if self.game_name == "wordle":
             return SPEED_SCORES[num_rounds]
         return round(100 / num_rounds, 2)
 
-    def compute_guess_repetition(self, guesses: List[str]):
-        """
-        Assuming records contain turns_data in the format [[explanation, guess, guess_feedback]]
-        """
-        num_of_repeats = len(guesses) - len(set(guesses))
-        return num_of_repeats
+    def compute_guess_repetition(self, episode_interactions):
+        guesses = episode_interactions[GUESSER_GUESSES]
+        return len(guesses) - len(set(guesses))
 
     def log_main_score(self, episode_interactions: Dict):
         if episode_interactions[METRIC_ABORTED]:
             self.log_episode_score(BENCH_SCORE, np.nan)
             self.log_episode_score(GUESS_REPETITIONS, np.nan)
         elif episode_interactions[METRIC_LOSE]:
-            guesses = episode_interactions[GUESSER_GUESSES]
             self.log_episode_score(BENCH_SCORE, 0)
-            self.log_episode_score(GUESS_REPETITIONS, self.compute_guess_repetition(guesses))
+            self.log_episode_score(GUESS_REPETITIONS, self.compute_guess_repetition(episode_interactions))
         elif episode_interactions[METRIC_SUCCESS]:
-            num_rounds = len(episode_interactions["turns"])
-            guesses = episode_interactions[GUESSER_GUESSES]
-            self.log_episode_score(BENCH_SCORE, self.compute_speed(num_rounds))
-            self.log_episode_score(GUESS_REPETITIONS, self.compute_guess_repetition(guesses))
+            self.log_episode_score(BENCH_SCORE, self.compute_speed(episode_interactions))
+            self.log_episode_score(GUESS_REPETITIONS, self.compute_guess_repetition(episode_interactions))
         else:
             raise RuntimeError("Cannot compute BENCH_SCORE because neither aborted, lose nor success is set.")
 
@@ -601,6 +596,10 @@ class WordleWithCriticScorer(WordleScorer):
                 "use_same_guess_no": use_same_guess_no,
                 "use_diff_guess_no": use_diff_guess_no,
                 "overall_change": overall_change}
+
+    def compute_guess_repetition(self, episode_interactions):
+        guesses = episode_interactions[GUESSER_GUESSES_COMMITTED]
+        return len(guesses) - len(set(guesses))
 
     def log_main_score(self, episode_interactions: Dict):
         super().log_main_score(episode_interactions)

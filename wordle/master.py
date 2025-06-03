@@ -246,11 +246,22 @@ class WordleGameState:
     current_agreement_explanation: Optional[str] = None
 
 
+# interaction keys to log structured data for scoring
+GUESSER_GUESSES = "Guesser Guesses"
+GUESSER_FEEDBACKS = "Guesser Feedbacks"
+
+
 class Wordle(DialogueGameMaster):
     """Basic Wordle game without clue or critic"""
 
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
+        # game specific logging
+        self.request_counts: int = 0
+        self.parsed_request_counts: int = 0
+        self.violated_request_counts: int = 0
+        self.guesser_guesses: List[str] = []
+        self.guesser_feedbacks: List[str] = []
 
     def _on_setup(self, **game_instance):
         self.state = WordleGameState(
@@ -272,6 +283,7 @@ class Wordle(DialogueGameMaster):
         return not (self.state.success or self.state.failure or self.state.aborted)
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
+        self.request_counts += 1
         try:
             # Parse response of the only player: the guesser
             guess, explanation = parse_response(player, utterance, self.state.words)
@@ -281,8 +293,10 @@ class Wordle(DialogueGameMaster):
             validate_guess(guess, self.state.words)
             self.state.valid_response = True
             self.reprompt_attempts = 0
+            self.parsed_request_counts += 1
             return True
         except (ParseError, RuleViolationError) as e:
+            self.violated_request_counts += 1
             self.state.valid_response = False
             self.log_to_self("metadata", e.reason)
             return False
@@ -300,6 +314,9 @@ class Wordle(DialogueGameMaster):
         return self.state.valid_response
 
     def _on_valid_player_response(self, player: Player, parsed_response: str):
+        self.state.guess_feedback = self.guess_validator.validate(self.state.current_guess)
+        self.guesser_feedbacks.append(self.state.guess_feedback)
+        self.guesser_guesses.append(self.state.current_guess)
         # Check terminal conditions
         if self.state.target_word == self.state.current_guess:
             self.log_to_self("correct guess", "game_result = WIN")
@@ -309,7 +326,6 @@ class Wordle(DialogueGameMaster):
             self.state.failure = True
         else:
             # Provide feedback to guesser for next round
-            self.state.guess_feedback = self.guess_validator.validate(self.state.current_guess)
             content = self.formatter.to_gm_response_for_guesser(self.state.guess_feedback)
             self.set_context_for(self.guesser, content)
             self.log_to_self("metadata", self.formatter.to_gm_turn_stats(self.get_turn_stats()))
@@ -329,6 +345,18 @@ class Wordle(DialogueGameMaster):
         if self.state.success:
             return 100 / self.current_round
         return 0
+
+    def _on_after_game(self):
+        self.log_key(METRIC_ABORTED, int(self.state.aborted))
+        self.log_key(METRIC_LOSE, int(self.state.failure))
+        self.log_key(METRIC_SUCCESS, int(self.state.success))
+
+        self.log_key(METRIC_REQUEST_COUNT, self.request_counts)
+        self.log_key(METRIC_REQUEST_COUNT_PARSED, self.parsed_request_counts)
+        self.log_key(METRIC_REQUEST_COUNT_VIOLATED, self.violated_request_counts)
+
+        self.log_key(GUESSER_GUESSES, self.guesser_guesses)
+        self.log_key(GUESSER_FEEDBACKS, self.guesser_feedbacks)
 
 
 class WordleWithClue(Wordle):
@@ -357,6 +385,10 @@ class WordleWithClue(Wordle):
         }
 
 
+GUESSER_GUESSES_COMMITTED = "Guesser Guesses Committed"
+CRITIC_JUDGEMENTS = "Critic Judgements"
+
+
 class WordleWithCritic(WordleWithClue):
     """
     Wordle game with clue and critic player.
@@ -367,6 +399,10 @@ class WordleWithCritic(WordleWithClue):
 
     Only then the color feedback is given and it's the guessers turn again.
     """
+
+    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_name, game_path, experiment, player_models)
+        self.critics_judgements: List[str] = []
 
     def _on_setup(self, **game_instance):
         super()._on_setup(**game_instance)
@@ -387,14 +423,17 @@ class WordleWithCritic(WordleWithClue):
         if player == self.guesser:
             return super()._validate_player_response(player, utterance)
         if player == self.critic:
+            self.request_counts += 1
             try:
                 agreement, explanation = parse_response(player, utterance, self.state.words)
                 self.state.current_agreement = agreement
                 self.state.current_agreement_explanation = explanation
                 validate_agreement(agreement, self.state.words)
+                self.parsed_request_counts += 1
                 return True
             except (ParseError, RuleViolationError) as e:
                 # Immediately abort when critic fails to produce a valid response
+                self.violated_request_counts += 1
                 self.state.aborted = True
                 self.log_to_self("metadata", e.reason)
                 self.log_to_self("invalid format", "game_result = ABORT")
@@ -404,6 +443,7 @@ class WordleWithCritic(WordleWithClue):
         # Only provide game feedback after critic interaction is complete
         if player == self.guesser:
             if self.state.awaiting_critic:  # little state machine
+                self.guesser_guesses.append(self.state.current_guess)
                 content = self.formatter.to_gm_response_for_critic(self.state.guesser_initial_clue,
                                                                    self.state.current_explanation,
                                                                    self.state.current_guess)
@@ -439,9 +479,24 @@ class WordleWithCritic(WordleWithClue):
         return super()._does_game_proceed()
 
     def _on_after_game(self):
-        self.log_key(METRIC_ABORTED, int(self.state.aborted))
-        self.log_key(METRIC_LOSE, int(self.state.failure))
-        self.log_key(METRIC_SUCCESS, int(self.state.success))
+        super()._on_after_game()
+        # Note: For wordle with critic guesses has twice as many entries [initial_1, committed_1, ...]
+        guesses_committed = [guess for guess in self.guesser_guesses[1::2]]
+        guesses = [guess for guess in self.guesser_guesses[::2]]
+        self.log_key(GUESSER_GUESSES, guesses)
+        self.log_key(GUESSER_GUESSES_COMMITTED, guesses_committed)
+        self.log_key(CRITIC_JUDGEMENTS, self.critics_judgements)
+
+
+SPEED_SCORES = {
+    1: 100,
+    2: 100,
+    3: 100,
+    4: 50,
+    5: 30,
+    6: 20
+}
+GUESS_REPETITIONS = "Guess Repetitions"
 
 
 class WordleScorer(GameScorer):
@@ -449,79 +504,120 @@ class WordleScorer(GameScorer):
         super().__init__(game_name, experiment, game_instance)
         self.cm = ComputeMetrics()
 
-    def compute_scores(self, episode_interactions: Dict) -> None:
-        """Compute episode-level and turn-level scores"""
+    def score_turns(self, episode_interactions: Dict) -> None:
+        pass  # not yet used
 
-        # Extract game results from interactions
-        aborted = False
-        success = False
-        total_turns = 0
-        guesses = []
+    def compute_speed(self, num_rounds: int):
+        """
+        Rank is computed based on the number of turns taken to guess the word.
+        The lesser the number of turns, the higher the speed
+        """
+        if self.game_name == "wordle":
+            return SPEED_SCORES[num_rounds]
+        return round(100 / num_rounds, 2)
 
-        for turn_idx, turn in enumerate(episode_interactions["turns"]):
-            total_turns = turn_idx + 1
-            turn_success = False
-            turn_aborted = False
+    def compute_guess_repetition(self, guesses: List[str]):
+        """
+        Assuming records contain turns_data in the format [[explanation, guess, guess_feedback]]
+        """
+        num_of_repeats = len(guesses) - len(set(guesses))
+        return num_of_repeats
 
-            for event in turn:
-                action = event["action"]
-                if action["type"] == "invalid format" or action["type"] == "parse error":
-                    turn_aborted = True
-                    aborted = True
-                elif action["type"] == "correct guess":
-                    turn_success = True
-                    success = True
-                elif action["type"] == "valid guess" or action["type"] == "final guess":
-                    # Extract guess from content
-                    content = action["content"]
-                    if " -> " in content:
-                        guess_part = content.split(" -> ")[0]
-                        guesses.append(guess_part)
-
-            # Log turn-level scores
-            self.log_turn_score(turn_idx, 'Accuracy', 1 if turn_success else 0)
-            self.log_turn_score(turn_idx, METRIC_REQUEST_COUNT, 1)
-            self.log_turn_score(turn_idx, METRIC_REQUEST_COUNT_PARSED, 0 if turn_aborted else 1)
-            self.log_turn_score(turn_idx, METRIC_REQUEST_COUNT_VIOLATED, 1 if turn_aborted else 0)
-
-        # Compute episode-level metrics
-        if aborted:
-            self.log_episode_score(METRIC_ABORTED, 1)
-            self.log_episode_score(METRIC_SUCCESS, 0)
-            self.log_episode_score(METRIC_LOSE, 0)
+    def log_main_score(self, episode_interactions: Dict):
+        if episode_interactions[METRIC_ABORTED]:
             self.log_episode_score(BENCH_SCORE, np.nan)
+            self.log_episode_score(GUESS_REPETITIONS, np.nan)
+        elif episode_interactions[METRIC_LOSE]:
+            guesses = episode_interactions[GUESSER_GUESSES]
+            self.log_episode_score(BENCH_SCORE, 0)
+            self.log_episode_score(GUESS_REPETITIONS, self.compute_guess_repetition(guesses))
+        elif episode_interactions[METRIC_SUCCESS]:
+            num_rounds = len(episode_interactions["turns"])
+            guesses = episode_interactions[GUESSER_GUESSES]
+            self.log_episode_score(BENCH_SCORE, self.compute_speed(num_rounds))
+            self.log_episode_score(GUESS_REPETITIONS, self.compute_guess_repetition(guesses))
         else:
-            self.log_episode_score(METRIC_ABORTED, 0)
-            if success:
-                self.log_episode_score(METRIC_SUCCESS, 1)
-                self.log_episode_score(METRIC_LOSE, 0)
-                self.log_episode_score(BENCH_SCORE, 100 / total_turns)
+            raise RuntimeError("Cannot compute BENCH_SCORE because neither aborted, lose nor success is set.")
+
+
+REPETITION_ON_AGREEMENT = "Repetition-Guesser-On-Critic-Agreement"
+ADJUSTMENT_ON_AGREEMENT = "Non-Repetition-Guesser-On-Critic-Agreement"
+REPETITION_ON_DISAGREEMENT = "Repetition-Guesser-On-Critic-Disagreement"
+ADJUSTMENT_ON_DISAGREEMENT = "Non-Repetition-Guesser-On-Critic-Disagreement"
+
+
+class WordleWithCriticScorer(WordleScorer):
+
+    def change_of_opinion(self, guesses, guesses_committed, critic_feedbacks):
+        """
+        Change of opinion is computed based on the number of times the opinion is changed after the critic's opinion
+        """
+        total_yes = 0
+        total_no = 0
+
+        use_same_guess_yes = 0
+        use_diff_guess_yes = 0
+        use_same_guess_no = 0
+        use_diff_guess_no = 0
+        overall_change = []
+
+        # Note: zip will truncate to the shortest list e.g. if a critic feedback is missing
+        for guess, guess_mod, critic_agreement in zip(guesses, guesses_committed, critic_feedbacks):
+            if guess != guess_mod:
+                overall_change.append(1)
+                if critic_agreement == "yes":
+                    total_yes += 1
+                    use_diff_guess_yes += 1
+                else:
+                    total_no += 1
+                    use_diff_guess_no += 1
             else:
-                self.log_episode_score(METRIC_SUCCESS, 0)
-                self.log_episode_score(METRIC_LOSE, 1)
-                self.log_episode_score(BENCH_SCORE, 0)
+                overall_change.append(0)
+                if critic_agreement == "yes":
+                    total_yes += 1
+                    use_same_guess_yes += 1
+                else:
+                    total_no += 1
+                    use_same_guess_no += 1
 
-        # Request count metrics
-        self.log_episode_score(METRIC_REQUEST_COUNT, total_turns)
-        parsed_count = total_turns if not aborted else total_turns - 1
-        self.log_episode_score(METRIC_REQUEST_COUNT_PARSED, parsed_count)
-        violated_count = 1 if aborted else 0
-        self.log_episode_score(METRIC_REQUEST_COUNT_VIOLATED, violated_count)
+        return {"total_yes": total_yes, "total_no": total_no,
+                "use_same_guess_yes": use_same_guess_yes,
+                "use_diff_guess_yes": use_diff_guess_yes,
+                "use_same_guess_no": use_same_guess_no,
+                "use_diff_guess_no": use_diff_guess_no,
+                "overall_change": overall_change}
 
-        if total_turns > 0:
-            self.log_episode_score(METRIC_REQUEST_SUCCESS, parsed_count / total_turns)
-        else:
-            self.log_episode_score(METRIC_REQUEST_SUCCESS, 0)
+    def log_main_score(self, episode_interactions: Dict):
+        super().log_main_score(episode_interactions)
 
-        # Game-specific metrics
-        if guesses and not aborted:
-            # Check for repeated guesses
-            unique_guesses = len(set(guesses))
-            total_guesses = len(guesses)
-            repetitions = total_guesses - unique_guesses
-            self.log_episode_score('Repetition-Guesser', repetitions)
-        else:
-            self.log_episode_score('Repetition-Guesser', 0)
+        guesses = episode_interactions[GUESSER_GUESSES]
+        guesses_committed = episode_interactions[GUESSER_GUESSES_COMMITTED]
+        critic_judgements = episode_interactions[CRITIC_JUDGEMENTS]
+        results = self.change_of_opinion(guesses, guesses_committed, critic_judgements)
+
+        repetition_agreement = np.nan
+        repetition_disagreement = np.nan
+        adjustment_agreement = np.nan
+        adjustment_disagreement = np.nan
+        if results["overall_change"]:
+            total_agreements = results["total_yes"]
+            if total_agreements > 0:
+                repetition_agreement = round(results["use_same_guess_yes"] / total_agreements, 2)
+                adjustment_agreement = round(results["use_diff_guess_yes"] / total_agreements, 2)
+            else:
+                repetition_agreement = 0
+                adjustment_agreement = 0
+            total_disagreements = results["total_no"]
+            if total_disagreements > 0:
+                repetition_disagreement = round(results["use_same_guess_no"] / total_disagreements, 2)
+                adjustment_disagreement = round(results["use_diff_guess_no"] / total_disagreements, 2)
+            else:
+                repetition_disagreement = 0
+                adjustment_disagreement = 0
+        self.log_episode_score(REPETITION_ON_AGREEMENT, repetition_agreement)
+        self.log_episode_score(ADJUSTMENT_ON_AGREEMENT, adjustment_agreement)
+        self.log_episode_score(REPETITION_ON_DISAGREEMENT, repetition_disagreement)
+        self.log_episode_score(ADJUSTMENT_ON_DISAGREEMENT, adjustment_disagreement)
 
 
 class WordleGameBenchmark(GameBenchmark):
@@ -537,4 +633,6 @@ class WordleGameBenchmark(GameBenchmark):
             return Wordle(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
+        if self.game_name == "wordle_withcritic":
+            return WordleWithCriticScorer(self.game_name, experiment, game_instance)
         return WordleScorer(self.game_name, experiment, game_instance)

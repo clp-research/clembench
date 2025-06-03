@@ -1,5 +1,5 @@
-import os.path
-from typing import Dict, Tuple, List, Union
+from dataclasses import dataclass
+from typing import Dict, Tuple, List, Optional
 import logging
 import numpy as np
 import re
@@ -220,92 +220,113 @@ def validate_agreement(agreement: str, lang_keywords: Dict):
         raise error
 
 
+@dataclass
+class WordleGameState:
+    # Wordle
+    target_word: str
+    words: Dict[str, str]
+    max_rounds: int
+    max_retry_per_error: int
+    guesser_initial_prompt: str
+    success: bool = False
+    failure: bool = False
+    aborted: bool = False
+    valid_response: bool = False
+    reprompt_attempts: int = 0
+    current_guess: str = None
+    current_explanation: str = None
+    guess_feedback: str = None
+    # WordleWithClue
+    guesser_initial_clue: Optional[str] = None
+    # WordleWithCritic
+    critic_initial_prompt: Optional[str] = None
+    awaiting_critic: Optional[bool] = None
+    commit_guess: Optional[bool] = None
+    current_agreement: Optional[str] = None
+    current_agreement_explanation: Optional[str] = None
+
+
 class Wordle(DialogueGameMaster):
     """Basic Wordle game without clue or critic"""
 
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
-        self.max_rounds: int = experiment["common_config"]["n_turns"]
-        self.max_retry_per_error = self.experiment["common_config"]["max_retry_per_error"]
-        self.lang_keywords = experiment["lang_keywords"]
-        self.formatter = ResponseFormatter(self.lang_keywords)
 
     def _on_setup(self, **game_instance):
-        self.target_word = game_instance["target_word"].strip().lower()
-        self.valid_response = False
-        self.reprompt_attempts = 0
-        self.success = False
-        self.failure = False
-        self.aborted = False
-        self.current_guess = None
-        self.current_explanation = None
-        self.guess_feedback = None
-        self.guess_validator = GuessValidator(self.target_word)
+        self.state = WordleGameState(
+            target_word=game_instance["target_word"].strip().lower(),
+            words=self.experiment["lang_keywords"],
+            max_rounds=self.experiment["common_config"]["n_turns"],
+            max_retry_per_error=self.experiment["common_config"]["max_retry_per_error"],
+            guesser_initial_prompt=self.experiment["guesser_prompt"]
+        )
+        self.guess_validator = GuessValidator(self.state.target_word)
+        self.formatter = ResponseFormatter(self.state.words)
         self._add_players()
 
     def _add_players(self):
         self.guesser = WordGuesser(self.player_models[0], self.formatter)
-        self.add_player(self.guesser, initial_context=self.experiment["guesser_prompt"])
+        self.add_player(self.guesser, initial_context=self.state.guesser_initial_prompt)
 
     def _does_game_proceed(self):
-        return not (self.success or self.failure or self.aborted)
+        return not (self.state.success or self.state.failure or self.state.aborted)
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         try:
             # Parse response of the only player: the guesser
-            guess, explanation = parse_response(player, utterance, self.lang_keywords)
-            self.current_guess = guess
-            self.current_explanation = explanation
+            guess, explanation = parse_response(player, utterance, self.state.words)
+            self.state.current_guess = guess
+            self.state.current_explanation = explanation
             # Validate guess
-            validate_guess(guess, self.lang_keywords)
-            self.valid_response = True
+            validate_guess(guess, self.state.words)
+            self.state.valid_response = True
             self.reprompt_attempts = 0
             return True
         except (ParseError, RuleViolationError) as e:
-            self.valid_response = False
+            self.state.valid_response = False
             self.log_to_self("metadata", e.reason)
             return False
 
     def _should_pass_turn(self):
-        if not self.valid_response:  # perform re-prompting up to N times
-            self.reprompt_attempts += 1
-            if self.reprompt_attempts > self.max_retry_per_error:
+        if not self.state.valid_response:  # perform re-prompting up to N times
+            self.state.reprompt_attempts += 1
+            if self.state.reprompt_attempts > self.state.max_retry_per_error:
                 self.log_to_self("invalid format", "game_result = ABORT")
-                self.aborted = True
+                self.state.aborted = True
             return False
         return True
 
     def _start_next_round(self) -> bool:
-        return self.valid_response
+        return self.state.valid_response
 
     def _on_valid_player_response(self, player: Player, parsed_response: str):
         # Check terminal conditions
-        if self.target_word == self.current_guess:
+        if self.state.target_word == self.state.current_guess:
             self.log_to_self("correct guess", "game_result = WIN")
-            self.success = True
-        elif self.current_round + 1 >= self.max_rounds:  # zero-based rounds
+            self.state.success = True
+        elif self.current_round + 1 >= self.state.max_rounds:  # zero-based rounds
             self.log_to_self("max rounds played", "game_result = LOSS")
-            self.failure = True
+            self.state.failure = True
         else:
             # Provide feedback to guesser for next round
-            self.guess_feedback = self.guess_validator.validate(self.current_guess)
-            content = self.formatter.to_gm_response_for_guesser(self.guess_feedback)
+            self.state.guess_feedback = self.guess_validator.validate(self.state.current_guess)
+            content = self.formatter.to_gm_response_for_guesser(self.state.guess_feedback)
             self.set_context_for(self.guesser, content)
             self.log_to_self("metadata", self.formatter.to_gm_turn_stats(self.get_turn_stats()))
 
     def get_turn_stats(self):
         return {
             "attempts": self.current_round + 1,
-            "target_word": self.target_word,
-            "guess": self.current_guess,
-            "guess_feedback": self.guess_feedback
+            "target_word": self.state.target_word,
+            "guess": self.state.current_guess,
+            "guess_feedback": self.state.guess_feedback
         }
 
     def compute_response_score(self, response, context):
-        return 1 if self.success else 0
+        return 1 if self.state.success else 0
 
     def compute_episode_score(self):
-        if self.success:
+        if self.state.success:
             return 100 / self.current_round
         return 0
 
@@ -316,22 +337,23 @@ class WordleWithClue(Wordle):
     def _on_setup(self, **game_instance):
         super()._on_setup(**game_instance)
         # Set clue as initial context; will be appended to initial_prompt on the Player's first turn
-        self.target_word_clue = game_instance["target_word_clue"].strip()
-
-    def _on_before_game(self):
-        self.set_context_for(self.guesser, f"{self.lang_keywords['clue_lang']} {self.target_word_clue}")
+        self.state.guesser_initial_clue = game_instance["target_word_clue"].strip()
 
     def _add_players(self):
         self.guesser = WordGuesser(self.player_models[0], self.formatter)
-        self.add_player(self.guesser, initial_prompt=self.experiment["guesser_prompt"])
+        self.add_player(self.guesser, initial_prompt=self.state.guesser_initial_prompt)
+
+    def _on_before_game(self):
+        content = f"{self.state.words['clue_lang']} {self.state.guesser_initial_clue}"
+        self.set_context_for(self.guesser, content)
 
     def get_turn_stats(self):
         return {
             "attempts": self.current_round,
-            "target_word": self.target_word,
-            "target_word_clue": self.target_word_clue,
-            "guess": self.current_guess,
-            "guess_feedback": self.guess_feedback
+            "target_word": self.state.target_word,
+            "target_word_clue": self.state.guesser_initial_clue,
+            "guess": self.state.current_guess,
+            "guess_feedback": self.state.guess_feedback
         }
 
 
@@ -348,34 +370,32 @@ class WordleWithCritic(WordleWithClue):
 
     def _on_setup(self, **game_instance):
         super()._on_setup(**game_instance)
-        self.target_word_difficulty = game_instance["target_word_difficulty"].strip()
-        self.awaiting_critic = True  # whether the critic has already been consulted
-        self.commit_guess = False  # guesser has an initial and a final guess (to commit == end the round)
-        self.current_agreement = None
-        self.current_agreement_explanation = None
+        self.state.critic_initial_prompt = self.experiment["guesser_critic_prompt"]
+        self.state.awaiting_critic = True  # whether the critic has already been consulted
+        self.state.commit_guess = False  # guesser has an initial and a final guess (to commit == end the round)
 
     def _add_players(self):
         guesser_model = self.player_models[0]
         self.guesser = ReflectingWordGuesser(guesser_model, self.formatter)
-        self.add_player(self.guesser, initial_prompt=self.experiment["guesser_prompt"])
+        self.add_player(self.guesser, initial_prompt=self.state.guesser_initial_prompt)
 
         critic_model = self.player_models[1] if len(self.player_models) > 1 else guesser_model
         self.critic = WordCritic(critic_model, self.formatter)
-        self.add_player(self.critic, initial_prompt=self.experiment["guesser_critic_prompt"])
+        self.add_player(self.critic, initial_prompt=self.state.critic_initial_prompt)
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         if player == self.guesser:
             return super()._validate_player_response(player, utterance)
         if player == self.critic:
             try:
-                agreement, explanation = parse_response(player, utterance, self.lang_keywords)
-                self.current_agreement = agreement
-                self.current_agreement_explanation = explanation
-                validate_agreement(agreement, self.lang_keywords)
+                agreement, explanation = parse_response(player, utterance, self.state.words)
+                self.state.current_agreement = agreement
+                self.state.current_agreement_explanation = explanation
+                validate_agreement(agreement, self.state.words)
                 return True
             except (ParseError, RuleViolationError) as e:
                 # Immediately abort when critic fails to produce a valid response
-                self.aborted = True
+                self.state.aborted = True
                 self.log_to_self("metadata", e.reason)
                 self.log_to_self("invalid format", "game_result = ABORT")
                 return False
@@ -383,39 +403,45 @@ class WordleWithCritic(WordleWithClue):
     def _on_valid_player_response(self, player: Player, parsed_response: str):
         # Only provide game feedback after critic interaction is complete
         if player == self.guesser:
-            if self.awaiting_critic:  # little state machine
-                content = self.formatter.to_gm_response_for_critic(self.target_word_clue,
-                                                                   self.current_explanation,
-                                                                   self.current_guess)
+            if self.state.awaiting_critic:  # little state machine
+                content = self.formatter.to_gm_response_for_critic(self.state.guesser_initial_clue,
+                                                                   self.state.current_explanation,
+                                                                   self.state.current_guess)
                 self.set_context_for(self.critic, content)
             else:  # another turn with the gm
-                self.commit_guess = True
+                self.state.commit_guess = True
                 super()._on_valid_player_response(player, parsed_response)
         if player == self.critic:
-            content = self.formatter.to_critic_response(self.current_agreement, self.current_agreement_explanation)
+            content = self.formatter.to_critic_response(self.state.current_agreement,
+                                                        self.state.current_agreement_explanation)
             self.set_context_for(self.guesser, content)
-            self.awaiting_critic = False
+            self.state.awaiting_critic = False
 
     def _start_next_round(self):
-        return self.commit_guess  # this requires self.invalid_response = False
+        return self.state.commit_guess  # this requires self.valid_response = True
 
     def _on_before_round(self):
-        self.awaiting_critic = True
-        self.commit_guess = False
+        self.state.awaiting_critic = True
+        self.state.commit_guess = False
 
     def _should_pass_turn(self):
         if self.current_player == self.critic:  # critic always passes turn
             return True
         if not super()._should_pass_turn():  # possible re-prompting of guesser
             return False
-        return self.awaiting_critic  # pass turn only to get critic response
+        return self.state.awaiting_critic  # pass turn only to get critic response
 
     def _does_game_proceed(self):
         # Proceed if waiting for critic response (skip success/failure conditions)
-        # However the game might be aborted, when the guesser fails to produce a valid response
-        if self.awaiting_critic and not self.aborted:
+        # However the game might be aborted, when the guesser or critic fails to produce a valid response
+        if self.state.awaiting_critic and not self.state.aborted:
             return True
         return super()._does_game_proceed()
+
+    def _on_after_game(self):
+        self.log_key(METRIC_ABORTED, int(self.state.aborted))
+        self.log_key(METRIC_LOSE, int(self.state.failure))
+        self.log_key(METRIC_SUCCESS, int(self.state.success))
 
 
 class WordleScorer(GameScorer):

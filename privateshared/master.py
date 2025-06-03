@@ -163,6 +163,12 @@ class PrivateShared(DialogueGameMaster):
             True, when to start a new round
         """
         return self.current_player_idx == 1
+    
+    def _does_game_proceed(self) -> bool:
+        """Check if the game can continue, i.e. not all slots are filled and the game wasn't aborted."""
+        if self.aborted:
+            return False
+        return self.current_round <= self.game.max_turns
 
     def _validate_player_response(self, player, response):
         """
@@ -180,7 +186,9 @@ class PrivateShared(DialogueGameMaster):
         if (not response.startswith(self.words.answer.strip())
                 or self._has_continuation(response)):
             logger.warning(f"Game round {str(self.current_round)}: {NOT_PARSED}")
+            self.violated_request_counts[self.current_round] += 1
             return False
+        self.parsed_request_counts[self.current_round] += 1
         return True
     
     def _parse_response(self, player, response):
@@ -199,7 +207,6 @@ class PrivateShared(DialogueGameMaster):
             player: The player that gave the response.
             parsed_response: The parsed response of the current player.
         """
-        logger.info(f"Game round {str(self.current_round)}: Valid response from {player.name}:\n\t{parsed_response}")
         if player == self.questioner:
             self.set_context_for(self.answerer, f"{self.questioner_tag}{parsed_response}")
         else:
@@ -242,13 +249,8 @@ class PrivateShared(DialogueGameMaster):
 
     def _is_slot_filled(self, answer: str) -> bool:
         """Check if answer contains the correct value for a slot."""
-        logger.info(f"Game round {str(self.current_round)}: Checking slot value.")
-        logger.info(f"\tAnswer: {answer}")
-        logger.info(f"self.game.question_order: {self.game.question_order}")
         slot = self.game.question_order[self.current_round - 1]
-        # logger.info(f"slot of previous round: {self.game.question_order[self.current_round]}")
         value = self.game.slots[slot]
-        logger.info(f"\tSlot: {slot}; value: {value}")
         if value.lower() in answer.lower():
             return True
         return False
@@ -337,7 +339,7 @@ class PrivateShared(DialogueGameMaster):
             content = SUCCESS.format(probe['target'], tries)
         # answer valid?
         self.log_to_self("metadata", content)
-        logger.info(f"Game round {str(self.current_round)}: {content}")
+        # logger.info(f"Game round {str(self.current_round)}: {content}")
         # answer correct?
         result = '' if probe['value'] == probe['gt'] else 'in'
         self.log_to_self("check", RESULT.format(result))

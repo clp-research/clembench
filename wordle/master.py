@@ -23,14 +23,16 @@ class ResponseError(Exception):
     Alternatively, the 'reason' attribute can be used to define more granular error types.
     """
 
-    def __init__(self, reason: str = None, response: str = None):
+    def __init__(self, reason: Optional[str] = None, response: Optional[str] = None, key: Optional[str] = None):
         """
         :param reason: (optional) a brief description of the cause
         :param response: (optional) the player's response
+        :param key: (optional) a key word
         """
         super().__init__(reason)
         self.reason = reason
         self.response = response
+        self.key = key
 
     def __str__(self):
         return f"{self.__class__.__name__}: {self.reason}"
@@ -48,6 +50,11 @@ class RuleViolationError(GameError):
         - taboo: mentioning the target word as the clue giver
         - wordle: guessing words that are not exactly 5 letters long
     """
+    pass
+
+
+class InvalidWordError(RuleViolationError):
+    """Raised when the word is 5-letters but not part of the game's vocabulary"""
     pass
 
 
@@ -82,6 +89,14 @@ class ResponseFormatter:
         return (f"{self.words['explanation_lang']} {explanation}\n"
                 f"{self.words['agreement_lang']} {agreement}\n")
 
+    def to_gm_reprompt_for_guesser(self, error: ResponseError):
+        return (f"{self.words['error_prompt_text'][error.key]} "  # only white space separated
+                f"{self.words['error_prompt_text']['RETRY']}\n\n"  # Please try again.
+                f"{self.words['error_prompt_text']['INVALID_FORMAT']}\n"  # Provide your response only in this format.
+                f"{self.words['explanation_lang']} {self.words['explanataion_details_lang']}\n"
+                f"{self.words['guess_lang']} {self.words['guess_word_lang']}\n"
+                )
+
     def to_gm_response_for_guesser(self, feedback):
         return (f"{self.words['guess_feedback_lang']} {feedback}\n\n"
                 f"{self.words['error_prompt_text']['INVALID_FORMAT']}\n"  # Provide your response only in this format.
@@ -107,7 +122,9 @@ class WordGuesser(Player):
     def __init__(self, model: Model, formatter: ResponseFormatter):
         super().__init__(model)
         self.formatter = formatter
-        self._custom_responses = ["apple", "beach", "crane", "after", "those", "horse"]
+        self._custom_responses = ["apple", "beach", "crane",
+                                  "pathy",  # throw in an invalid word
+                                  "after", "those", "horse"]
 
     def _terminal_response(self, context: Dict) -> str:
         guess = input("Enter your guess: ")
@@ -153,17 +170,15 @@ class ReflectingWordGuesser(WordGuesser):
 def parse_response(player: Player, response: str, lang_keywords: Dict) -> Tuple[str, str]:
     """Parse guesser response and extract guess and explanation"""
     if not response or not response.startswith(lang_keywords["explanation_lang"]):
-        error = ParseError("INVALID_START_WORD")
-        error.reason = f"The response should always start with the keyword '{lang_keywords['explanation_lang']}'"
-        raise error
+        raise ParseError(f"The response should always start with the keyword '{lang_keywords['explanation_lang']}'",
+                         key="INVALID_START_WORD")
 
     response = response.strip()
     lines = response.split("\n")
     if len(lines) > 2:
-        error = ParseError("UNKNOWN_TAGS")
-        error.reason = (f"The response should contain only the '{lang_keywords['guess_lang']}' and "
-                        f"'{lang_keywords['explanation_lang']}' keywords and associated information.")
-        raise error
+        raise ParseError(f"The response should contain only the '{lang_keywords['guess_lang']}' and "
+                         f"'{lang_keywords['explanation_lang']}' keywords and associated information.",
+                         key="UNKNOWN_TAGS")
 
     # Extract explanation and guess
     explanation_pattern = re.compile(rf"{lang_keywords['explanation_lang']}([^\n]*)", re.IGNORECASE)
@@ -177,9 +192,8 @@ def parse_response(player: Player, response: str, lang_keywords: Dict) -> Tuple[
     content_match = content_pattern.findall(response)
 
     if len(content_match) != 1:
-        error = ParseError("MORE_THAN_ONE_GUESS")
-        error.reason = f"The response should contain the '{content_prefix}' keyword only once."
-        raise error
+        raise ParseError(f"The response should contain the '{content_prefix}' keyword only once.",
+                         key="MORE_THAN_ONE_GUESS")
 
     content = content_match[0].strip().lower()
     explanation = explanation_match.group(1).strip() if explanation_match else ""
@@ -190,33 +204,28 @@ def parse_response(player: Player, response: str, lang_keywords: Dict) -> Tuple[
 def validate_guess(guess: str, lang_keywords: Dict):
     """Validate guess format and content"""
     if not guess.isalpha() or " " in guess:
-        error = RuleViolationError("INVALID_FORMAT")
-        error.reason = "The guess should be a single word and should only contain letters."
-        raise error
+        raise RuleViolationError("The guess should be a single word and should only contain letters.",
+                                 key="INVALID_FORMAT")
 
     if len(guess) != lang_keywords["max_word_length"]:
-        error = RuleViolationError("INVALID_WORD_LENGTH")
-        error.reason = f"The length of the guessed word is not {lang_keywords['max_word_length']}."
-        raise error
+        raise RuleViolationError(f"The length of the guessed word is not {lang_keywords['max_word_length']}.",
+                                 key="INVALID_WORD_LENGTH")
 
     if guess not in lang_keywords["official_words_list"]:
-        error = RuleViolationError("NOT_VALID_WORD_FOR_GAME")
-        error.reason = f"The guessed word is not a valid word for this game."
-        raise error
+        raise InvalidWordError(f"The guessed word is not a valid word for this game.",
+                               key="NOT_VALID_WORD_FOR_GAME")
 
 
 def validate_agreement(agreement: str, lang_keywords: Dict):
     """Validate critic agreement"""
     if not agreement.isalpha() or " " in agreement:
-        error = RuleViolationError("INVALID_FORMAT")
-        error.reason = "The agreement should be a single word and should only contain letters."
-        raise error
+        raise RuleViolationError("The agreement should be a single word and should only contain letters.",
+                                 key="INVALID_FORMAT")
 
     if agreement not in lang_keywords["agreement_match_keywords_lang"]:
-        error = RuleViolationError("NOT_VALID_CRITIC_WORD")
-        error.reason = (f"The agreement should be one of the following: "
-                        f"{lang_keywords['agreement_match_keywords_lang']}")
-        raise error
+        raise RuleViolationError(f"The agreement should be one of the following: "
+                                 f"{lang_keywords['agreement_match_keywords_lang']}",
+                                 key="NOT_VALID_CRITIC_WORD")
 
 
 @dataclass
@@ -302,18 +311,21 @@ class Wordle(DialogueGameMaster):
             self.violated_request_counts += 1
             self.state.valid_response = False
             self.state.error = e
-            self.log_to_self("metadata", e.reason)
+            self.log_to_self("metadata", f"Error: {e.reason}")
             return False
 
     def _should_pass_turn(self):
         if not self.state.valid_response:
-            if str(self.state.error) == "NOT_VALID_WORD_FOR_GAME":
+            if isinstance(self.state.error, InvalidWordError):
                 # perform re-prompting up to N times
                 self.state.reprompt_attempts += 1
                 if self.state.reprompt_attempts > self.state.max_retry_per_error:
                     self.log_to_self("invalid format", "game_result = ABORT")
                     self.state.aborted = True
+                else:  # adjust re-prompt text
+                    self.set_context_for(self.guesser, self.formatter.to_gm_reprompt_for_guesser(self.state.error))
             else:
+                self.log_to_self("invalid format", "game_result = ABORT")
                 self.state.aborted = True
             return False
         return True

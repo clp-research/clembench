@@ -385,7 +385,7 @@ class WordleWithClue(Wordle):
     """Wordle game with target word clue"""
 
     def _on_setup(self, **game_instance):
-        super()._on_setup(**game_instance)
+        super()._on_setup(**game_instance)  # this calls _add_players()
         # Set clue as initial context; will be appended to initial_prompt on the Player's first turn
         self.state.guesser_initial_clue = game_instance["target_word_clue"].strip()
 
@@ -427,7 +427,7 @@ class WordleWithCritic(WordleWithClue):
         self.critics_judgements: List[str] = []
 
     def _on_setup(self, **game_instance):
-        super()._on_setup(**game_instance)
+        super()._on_setup(**game_instance)  # this calls _add_players()
         self.state.critic_initial_prompt = self.experiment["guesser_critic_prompt"]
         self.state.awaiting_critic = True  # whether the critic has already been consulted
         self.state.commit_guess = False  # guesser has an initial and a final guess (to commit == end the round)
@@ -439,7 +439,8 @@ class WordleWithCritic(WordleWithClue):
 
         critic_model = self.player_models[1] if len(self.player_models) > 1 else guesser_model
         self.critic = WordCritic(critic_model, self.formatter)
-        self.add_player(self.critic, initial_prompt=self.state.critic_initial_prompt)
+        # set initial prompt from self.experiment because self.state.critic_initial_prompt is not yet set
+        self.add_player(self.critic, initial_prompt=self.experiment["guesser_critic_prompt"])
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         if player == self.guesser:

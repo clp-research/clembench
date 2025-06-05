@@ -167,25 +167,25 @@ class ReflectingWordGuesser(WordGuesser):
                                   "quiet", "fight", ]
 
 
-def parse_response(player: Player, response: str, lang_keywords: Dict) -> Tuple[str, str]:
+def parse_response(player: Player, response: str, words: Dict) -> Tuple[str, str]:
     """Parse guesser response and extract guess and explanation"""
-    if not response or not response.startswith(lang_keywords["explanation_lang"]):
-        raise ParseError(f"The response should always start with the keyword '{lang_keywords['explanation_lang']}'",
+    if not response or not response.startswith(words["explanation_lang"]):
+        raise ParseError(f"The response should always start with the keyword '{words['explanation_lang']}'",
                          key="INVALID_START_WORD")
 
     response = response.strip()
     lines = response.split("\n")
     if len(lines) > 2:
-        raise ParseError(f"The response should contain only the '{lang_keywords['guess_lang']}' and "
-                         f"'{lang_keywords['explanation_lang']}' keywords and associated information.",
+        raise ParseError(f"The response should contain only the '{words['guess_lang']}' and "
+                         f"'{words['explanation_lang']}' keywords and associated information.",
                          key="UNKNOWN_TAGS")
 
     # Extract explanation and guess
-    explanation_pattern = re.compile(rf"{lang_keywords['explanation_lang']}([^\n]*)", re.IGNORECASE)
+    explanation_pattern = re.compile(rf"{words['explanation_lang']}([^\n]*)", re.IGNORECASE)
 
-    content_prefix = lang_keywords['guess_lang']
+    content_prefix = words['guess_lang']
     if player == WordCritic:
-        content_prefix = lang_keywords['agreement_lang']
+        content_prefix = words['agreement_lang']
     content_pattern = re.compile(rf"{content_prefix}([^\n]*)", re.IGNORECASE)
 
     explanation_match = explanation_pattern.search(response)
@@ -201,30 +201,30 @@ def parse_response(player: Player, response: str, lang_keywords: Dict) -> Tuple[
     return content, explanation
 
 
-def validate_guess(guess: str, lang_keywords: Dict):
+def validate_guess(guess: str, words: Dict):
     """Validate guess format and content"""
     if not guess.isalpha() or " " in guess:
         raise RuleViolationError("The guess should be a single word and should only contain letters.",
                                  key="INVALID_FORMAT")
 
-    if len(guess) != lang_keywords["max_word_length"]:
-        raise RuleViolationError(f"The length of the guessed word is not {lang_keywords['max_word_length']}.",
+    if len(guess) != words["max_word_length"]:
+        raise RuleViolationError(f"The length of the guessed word is not {words['max_word_length']}.",
                                  key="INVALID_WORD_LENGTH")
 
-    if guess not in lang_keywords["official_words_list"]:
+    if guess not in words["official_words_list"]:
         raise InvalidWordError(f"The guessed word is not a valid word for this game.",
                                key="NOT_VALID_WORD_FOR_GAME")
 
 
-def validate_agreement(agreement: str, lang_keywords: Dict):
+def validate_agreement(agreement: str, words: Dict):
     """Validate critic agreement"""
     if not agreement.isalpha() or " " in agreement:
         raise RuleViolationError("The agreement should be a single word and should only contain letters.",
                                  key="INVALID_FORMAT")
 
-    if agreement not in lang_keywords["agreement_match_keywords_lang"]:
+    if agreement not in words["agreement_match_keywords_lang"]:
         raise RuleViolationError(f"The agreement should be one of the following: "
-                                 f"{lang_keywords['agreement_match_keywords_lang']}",
+                                 f"{words['agreement_match_keywords_lang']}",
                                  key="NOT_VALID_CRITIC_WORD")
 
 
@@ -308,7 +308,6 @@ class Wordle(DialogueGameMaster):
             self.state.error = None
             return True
         except (ParseError, RuleViolationError) as e:
-            self.violated_request_counts += 1
             self.state.valid_response = False
             self.state.error = e
             self.log_to_self("metadata", f"Error: {e.reason}")
@@ -325,6 +324,7 @@ class Wordle(DialogueGameMaster):
                 else:  # adjust re-prompt text
                     self.set_context_for(self.guesser, self.formatter.to_gm_reprompt_for_guesser(self.state.error))
             else:
+                self.violated_request_counts += 1  # only count toward violated requests when not InvalidWordError
                 self.log_to_self("invalid format", "game_result = ABORT")
                 self.state.aborted = True
             return False

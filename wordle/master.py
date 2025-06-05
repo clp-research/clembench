@@ -53,7 +53,7 @@ class RuleViolationError(GameError):
     pass
 
 
-class InvalidWordError(RuleViolationError):
+class UnknownFiveLetterWordError(RuleViolationError):
     """Raised when the word is 5-letters but not part of the game's vocabulary"""
     pass
 
@@ -212,8 +212,8 @@ def validate_guess(guess: str, words: Dict):
                                  key="INVALID_WORD_LENGTH")
 
     if guess not in words["official_words_list"]:
-        raise InvalidWordError(f"The guessed word is not a valid word for this game.",
-                               key="NOT_VALID_WORD_FOR_GAME")
+        raise UnknownFiveLetterWordError(f"The guessed word is not a valid word for this game.",
+                                         key="NOT_VALID_WORD_FOR_GAME")
 
 
 def validate_agreement(agreement: str, words: Dict):
@@ -308,6 +308,10 @@ class Wordle(DialogueGameMaster):
             self.state.error = None
             return True
         except (ParseError, RuleViolationError) as e:
+            if isinstance(self.state.error, UnknownFiveLetterWordError):
+                self.parsed_request_counts += 1  # in this case still count toward parsed requests, but re-prompt
+            else:
+                self.violated_request_counts += 1
             self.state.valid_response = False
             self.state.error = e
             self.log_to_self("metadata", f"Error: {e.reason}")
@@ -315,7 +319,7 @@ class Wordle(DialogueGameMaster):
 
     def _should_pass_turn(self):
         if not self.state.valid_response:
-            if isinstance(self.state.error, InvalidWordError):
+            if isinstance(self.state.error, UnknownFiveLetterWordError):
                 # perform re-prompting up to N times
                 self.state.reprompt_attempts += 1
                 if self.state.reprompt_attempts > self.state.max_retry_per_error:
@@ -324,7 +328,6 @@ class Wordle(DialogueGameMaster):
                 else:  # adjust re-prompt text
                     self.set_context_for(self.guesser, self.formatter.to_gm_reprompt_for_guesser(self.state.error))
             else:
-                self.violated_request_counts += 1  # only count toward violated requests when not InvalidWordError
                 self.log_to_self("invalid format", "game_result = ABORT")
                 self.state.aborted = True
             return False

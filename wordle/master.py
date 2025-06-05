@@ -1,3 +1,4 @@
+import random
 from dataclasses import dataclass
 from typing import Dict, Tuple, List, Optional
 import logging
@@ -128,8 +129,9 @@ class ResponseFormatter:
 
 
 class WordGuesser(Player):
-    def __init__(self, model: Model, words: Dict):
+    def __init__(self, model: Model, words: Dict, target_word: str):
         super().__init__(model)
+        self.target_word = target_word
         self.words = words
         self._custom_responses = ["apple", "beach", "crane",
                                   "pathy",  # throw in an invalid word
@@ -146,6 +148,10 @@ class WordGuesser(Player):
 
     def _custom_response(self, messages):  # for playing with_critic we need doulbe the amoutn of responses
         guess = self._custom_responses.pop(0)
+        if random.randint(0, 100) < 10:  # let the player occasionally win
+            guess = self.target_word
+        if random.randint(0, 100) > 90:  # let the player occasionally abort (not 5-letter word)
+            guess = "scrumbled eggs"
         return self.to_guesser_response("custom guesser", guess)
 
 
@@ -175,8 +181,8 @@ class ReflectingWordGuesser(WordGuesser):
         2. Turn: The guesser reflects on the feedback given by the critic and (potentially) adjusts the initial guess
     """
 
-    def __init__(self, model: Model, words: Dict):
-        super().__init__(model, words)
+    def __init__(self, model: Model, words: Dict, target_word: str):
+        super().__init__(model, words, target_word)
         # self._custom_responses = ["yes", "no", "no", "yes", "no", "no"] -- from the critic
         self._custom_responses = ["apple", "apple",
                                   "beach", "crane",
@@ -305,7 +311,7 @@ class Wordle(DialogueGameMaster):
         self._add_players()
 
     def _add_players(self):
-        self.guesser = WordGuesser(self.player_models[0], self.state.words)
+        self.guesser = WordGuesser(self.player_models[0], self.state.words, self.state.target_word)
         self.add_player(self.guesser, initial_context=self.state.guesser_initial_prompt)
 
     def _does_game_proceed(self):
@@ -409,7 +415,7 @@ class WordleWithClue(Wordle):
         self.state.guesser_initial_clue = game_instance["target_word_clue"].strip()
 
     def _add_players(self):
-        self.guesser = WordGuesser(self.player_models[0], self.state.words)
+        self.guesser = WordGuesser(self.player_models[0], self.state.words, self.state.target_word)
         self.add_player(self.guesser, initial_prompt=self.state.guesser_initial_prompt)
 
     def _on_before_game(self):
@@ -453,7 +459,7 @@ class WordleWithCritic(WordleWithClue):
 
     def _add_players(self):
         guesser_model = self.player_models[0]
-        self.guesser = ReflectingWordGuesser(guesser_model, self.state.words)
+        self.guesser = ReflectingWordGuesser(guesser_model, self.state.words, self.state.target_word)
         self.add_player(self.guesser, initial_prompt=self.state.guesser_initial_prompt)
 
         critic_model = self.player_models[1] if len(self.player_models) > 1 else guesser_model

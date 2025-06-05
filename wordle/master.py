@@ -280,8 +280,9 @@ class WordleGameState:
     current_agreement_explanation: Optional[str] = None
 
 
-# interaction keys to log structured data for scoring
+# interaction keys to log structured data for scoring or logging
 GUESSER_GUESSES = "Guesser Guesses"
+GUESSER_EXPLANATIONS = "Guesser Explanations"
 GUESSER_FEEDBACKS = "Guesser Feedbacks"
 
 
@@ -295,6 +296,7 @@ class Wordle(DialogueGameMaster):
         self.parsed_request_counts: int = 0
         self.violated_request_counts: int = 0
         self.guesser_guesses: List[str] = []
+        self.guesser_explanations: List[str] = []
         self.guesser_feedbacks: List[str] = []
 
     def _on_setup(self, **game_instance):
@@ -366,6 +368,7 @@ class Wordle(DialogueGameMaster):
         self.log_to_self("metadata", self.formatter.to_gm_turn_stats(self.get_turn_stats()))
         self.guesser_feedbacks.append(self.state.guess_feedback)
         self.guesser_guesses.append(self.state.current_guess)
+        self.guesser_explanations.append(self.state.current_explanation)
         # Check terminal conditions
         if self.state.target_word == self.state.current_guess:
             self.log_to_self("correct guess", "game_result = WIN")
@@ -404,6 +407,7 @@ class Wordle(DialogueGameMaster):
 
         self.log_key(GUESSER_GUESSES, self.guesser_guesses)
         self.log_key(GUESSER_FEEDBACKS, self.guesser_feedbacks)
+        self.log_key(GUESSER_EXPLANATIONS, self.guesser_explanations)
 
 
 class WordleWithClue(Wordle):

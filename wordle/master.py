@@ -428,7 +428,7 @@ class WordleWithClue(Wordle):
 
     def get_turn_stats(self):
         return {
-            "attempts": self.current_round,
+            "attempts": self.current_round + 1,
             "target_word": self.state.target_word,
             "target_word_clue": self.state.guesser_initial_clue,
             "guess": self.state.current_guess,

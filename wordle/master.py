@@ -80,14 +80,9 @@ class ResponseFormatter:
     def __init__(self, words):
         self.words = words
 
-    def to_guesser_response(self, explanation: str, guess: str):
-        return (f"{self.words['explanation_lang']} {explanation}\n"
-                f"{self.words['guess_lang']} {guess}")
-
-    def to_critic_response(self, explanation: str, agreement: str):
-        """ The format of an actual response of the critic """
-        return (f"{self.words['explanation_lang']} {explanation}\n"
-                f"{self.words['agreement_lang']} {agreement}")
+    # noinspection PyMethodMayBeStatic
+    def to_gm_turn_stats(self, stats: Dict):
+        return '\n'.join(f'{key} = {value}' for key, value in stats.items())
 
     def to_gm_reprompt_for_guesser(self, error: ResponseError):
         return (f"{self.words['error_prompt_text'][error.key]} "  # only white space separated
@@ -104,8 +99,25 @@ class ResponseFormatter:
                 f"{self.words['guess_lang']} {self.words['guess_word_lang']}"
                 )
 
-    def to_gm_response_for_critic(self, clue: str, explanation: str, guess: str):
+    def to_gm_response_for_guesser_with_critic(self, clue: str, explanation: str, agreement: str):
+        """ The format of a message send by the GM to the guesser with critic"""
+        # todo: having more than explanation, agreement (see to_critic_response()) in the response reduces performance
+        return (f"{self.words['clue_lang']} {clue}\n"
+                f"{self.words['agreement_lang']} {agreement}\n"
+                f"{self.words['explanation_lang']} {explanation}\n\n"
+                f"{self.words['error_prompt_text']['INVALID_FORMAT']}\n"  # Provide your response only in this format.
+                f"{self.words['explanation_lang']} {self.words['explanataion_details_lang']}\n"
+                f"{self.words['guess_lang']} {self.words['guess_word_lang']}"
+                )
+
+    def to_gm_response_for_critic(self, clue: str, explanation: str, guess: str, is_initial_context: bool):
         """ The format of a message send by the GM to the critic"""
+        if is_initial_context:  # todo consider to remove this case as w/o format hint reduces pairing performance
+            # On critic's first turn we leave away the format information because already described in initial prompt
+            return (f"{self.words['clue_lang']} {clue}\n"
+                    f"{self.words['explanation_lang']} {explanation}\n"
+                    f"{self.words['guess_lang']} {guess}"
+                    )
         return (f"{self.words['clue_lang']} {clue}\n"
                 f"{self.words['explanation_lang']} {explanation}\n"
                 f"{self.words['guess_lang']} {guess}\n\n"
@@ -114,40 +126,47 @@ class ResponseFormatter:
                 f"{self.words['agreement_lang']} {self.words['agreement_word_lang']}"
                 )
 
-    def to_gm_turn_stats(self, stats: Dict):
-        return '\n'.join(f'{key} = {value}' for key, value in stats.items())
-
 
 class WordGuesser(Player):
-    def __init__(self, model: Model, formatter: ResponseFormatter):
+    def __init__(self, model: Model, words: Dict):
         super().__init__(model)
-        self.formatter = formatter
+        self.words = words
         self._custom_responses = ["apple", "beach", "crane",
                                   "pathy",  # throw in an invalid word
                                   "after", "those", "horse"]
 
+    def to_guesser_response(self, explanation: str, guess: str):
+        """ Only for custom response behavior (mock); documents the expected response format """
+        return (f"{self.words['explanation_lang']} {explanation}\n"
+                f"{self.words['guess_lang']} {guess}")
+
     def _terminal_response(self, context: Dict) -> str:
         guess = input("Enter your guess: ")
-        return self.formatter.to_guesser_response("human guesser", guess)
+        return self.to_guesser_response("human guesser", guess)
 
     def _custom_response(self, messages):  # for playing with_critic we need doulbe the amoutn of responses
         guess = self._custom_responses.pop(0)
-        return self.formatter.to_guesser_response("custom guesser", guess)
+        return self.to_guesser_response("custom guesser", guess)
 
 
 class WordCritic(Player):
-    def __init__(self, model: Model, formatter: ResponseFormatter):
+    def __init__(self, model: Model, words: Dict):
         super().__init__(model)
-        self.formatter = formatter
+        self.words = words
         self._custom_responses = ["yes", "no", "no", "yes", "no", "no"]
+
+    def to_critic_response(self, explanation: str, agreement: str):
+        """ Only for custom response behavior (mock); documents the expected response format """
+        return (f"{self.words['explanation_lang']} {explanation}\n"
+                f"{self.words['agreement_lang']} {agreement}")
 
     def _terminal_response(self, context: Dict) -> str:
         feedback = input("Do you agree with the guess? (yes/no) ")
-        return self.formatter.to_critic_response("human feedback", feedback)
+        return self.to_critic_response("human feedback", feedback)
 
     def _custom_response(self, messages):
         feedback = self._custom_responses.pop(0)
-        return self.formatter.to_critic_response("custom critic", feedback)
+        return self.to_critic_response("custom critic", feedback)
 
 
 class ReflectingWordGuesser(WordGuesser):
@@ -156,8 +175,8 @@ class ReflectingWordGuesser(WordGuesser):
         2. Turn: The guesser reflects on the feedback given by the critic and (potentially) adjusts the initial guess
     """
 
-    def __init__(self, model: Model, formatter: ResponseFormatter):
-        super().__init__(model, formatter)
+    def __init__(self, model: Model, words: Dict):
+        super().__init__(model, words)
         # self._custom_responses = ["yes", "no", "no", "yes", "no", "no"] -- from the critic
         self._custom_responses = ["apple", "apple",
                                   "beach", "crane",
@@ -286,7 +305,7 @@ class Wordle(DialogueGameMaster):
         self._add_players()
 
     def _add_players(self):
-        self.guesser = WordGuesser(self.player_models[0], self.formatter)
+        self.guesser = WordGuesser(self.player_models[0], self.state.words)
         self.add_player(self.guesser, initial_context=self.state.guesser_initial_prompt)
 
     def _does_game_proceed(self):
@@ -348,7 +367,7 @@ class Wordle(DialogueGameMaster):
         elif self.current_round + 1 >= self.state.max_rounds:  # zero-based rounds
             self.log_to_self("max rounds played", "game_result = LOSS")
             self.state.failure = True
-        else:  # Provide feedback to guesser for next round
+        else:  # Provide word validation feedback to guesser for next round
             content = self.formatter.to_gm_response_for_guesser(self.state.guess_feedback)
             self.set_context_for(self.guesser, content)
 
@@ -390,7 +409,7 @@ class WordleWithClue(Wordle):
         self.state.guesser_initial_clue = game_instance["target_word_clue"].strip()
 
     def _add_players(self):
-        self.guesser = WordGuesser(self.player_models[0], self.formatter)
+        self.guesser = WordGuesser(self.player_models[0], self.state.words)
         self.add_player(self.guesser, initial_prompt=self.state.guesser_initial_prompt)
 
     def _on_before_game(self):
@@ -434,11 +453,11 @@ class WordleWithCritic(WordleWithClue):
 
     def _add_players(self):
         guesser_model = self.player_models[0]
-        self.guesser = ReflectingWordGuesser(guesser_model, self.formatter)
+        self.guesser = ReflectingWordGuesser(guesser_model, self.state.words)
         self.add_player(self.guesser, initial_prompt=self.state.guesser_initial_prompt)
 
         critic_model = self.player_models[1] if len(self.player_models) > 1 else guesser_model
-        self.critic = WordCritic(critic_model, self.formatter)
+        self.critic = WordCritic(critic_model, self.state.words)
         # set initial prompt from self.experiment because self.state.critic_initial_prompt is not yet set
         self.add_player(self.critic, initial_prompt=self.experiment["guesser_critic_prompt"])
 
@@ -469,15 +488,17 @@ class WordleWithCritic(WordleWithClue):
                 self.guesser_guesses.append(self.state.current_guess)
                 content = self.formatter.to_gm_response_for_critic(self.state.guesser_initial_clue,
                                                                    self.state.current_explanation,
-                                                                   self.state.current_guess)
+                                                                   self.state.current_guess,
+                                                                   is_initial_context=self.current_round == 0)
                 self.set_context_for(self.critic, content)
             else:  # another turn with the gm
                 self.state.commit_guess = True
                 super()._on_valid_player_response(player, parsed_response)
         if player == self.critic:
             self.critics_judgements.append(self.state.current_agreement)
-            content = self.formatter.to_critic_response(self.state.current_agreement_explanation,
-                                                        self.state.current_agreement)
+            content = self.formatter.to_gm_response_for_guesser_with_critic(self.state.guesser_initial_clue,
+                                                                            self.state.current_agreement_explanation,
+                                                                            self.state.current_agreement)
             self.set_context_for(self.guesser, content)
             self.state.awaiting_critic = False
 

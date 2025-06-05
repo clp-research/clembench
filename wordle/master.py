@@ -335,7 +335,7 @@ class Wordle(DialogueGameMaster):
             self.state.error = None
             return True
         except (ParseError, RuleViolationError) as e:
-            if isinstance(self.state.error, UnknownFiveLetterWordError):
+            if isinstance(e, UnknownFiveLetterWordError):
                 self.parsed_request_counts += 1  # in this case still count toward parsed requests, but re-prompt
             else:
                 self.violated_request_counts += 1

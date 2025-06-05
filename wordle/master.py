@@ -80,41 +80,41 @@ class ResponseFormatter:
     def __init__(self, words):
         self.words = words
 
-    def to_guesser_response(self, explanation, guess):
+    def to_guesser_response(self, explanation: str, guess: str):
         return (f"{self.words['explanation_lang']} {explanation}\n"
-                f"{self.words['guess_lang']} {guess}\n")
+                f"{self.words['guess_lang']} {guess}")
 
-    def to_critic_response(self, agreement, explanation):
+    def to_critic_response(self, explanation: str, agreement: str):
         """ The format of an actual response of the critic """
         return (f"{self.words['explanation_lang']} {explanation}\n"
-                f"{self.words['agreement_lang']} {agreement}\n")
+                f"{self.words['agreement_lang']} {agreement}")
 
     def to_gm_reprompt_for_guesser(self, error: ResponseError):
         return (f"{self.words['error_prompt_text'][error.key]} "  # only white space separated
                 f"{self.words['error_prompt_text']['RETRY']}\n\n"  # Please try again.
                 f"{self.words['error_prompt_text']['INVALID_FORMAT']}\n"  # Provide your response only in this format.
                 f"{self.words['explanation_lang']} {self.words['explanataion_details_lang']}\n"
-                f"{self.words['guess_lang']} {self.words['guess_word_lang']}\n"
+                f"{self.words['guess_lang']} {self.words['guess_word_lang']}"
                 )
 
-    def to_gm_response_for_guesser(self, feedback):
+    def to_gm_response_for_guesser(self, feedback: str):
         return (f"{self.words['guess_feedback_lang']} {feedback}\n\n"
                 f"{self.words['error_prompt_text']['INVALID_FORMAT']}\n"  # Provide your response only in this format.
                 f"{self.words['explanation_lang']} {self.words['explanataion_details_lang']}\n"
-                f"{self.words['guess_lang']} {self.words['guess_word_lang']}\n"
+                f"{self.words['guess_lang']} {self.words['guess_word_lang']}"
                 )
 
-    def to_gm_response_for_critic(self, clue, explanation, guess):
+    def to_gm_response_for_critic(self, clue: str, explanation: str, guess: str):
         """ The format of a message send by the GM to the critic"""
         return (f"{self.words['clue_lang']} {clue}\n"
                 f"{self.words['explanation_lang']} {explanation}\n"
                 f"{self.words['guess_lang']} {guess}\n\n"
                 f"{self.words['error_prompt_text']['INVALID_FORMAT']}\n"  # Provide your response only in this format.
                 f"{self.words['explanation_lang']} {self.words['explanataion_details_lang']}\n"
-                f"{self.words['agreement_lang']} {self.words['agreement_word_lang']}\n"
+                f"{self.words['agreement_lang']} {self.words['agreement_word_lang']}"
                 )
 
-    def to_gm_turn_stats(self, stats):
+    def to_gm_turn_stats(self, stats: Dict):
         return '\n'.join(f'{key} = {value}' for key, value in stats.items())
 
 
@@ -143,11 +143,11 @@ class WordCritic(Player):
 
     def _terminal_response(self, context: Dict) -> str:
         feedback = input("Do you agree with the guess? (yes/no) ")
-        return self.formatter.to_guesser_response("human feedback", feedback)
+        return self.formatter.to_critic_response("human feedback", feedback)
 
     def _custom_response(self, messages):
         feedback = self._custom_responses.pop(0)
-        return self.formatter.to_guesser_response("custom critic", feedback)
+        return self.formatter.to_critic_response("custom critic", feedback)
 
 
 class ReflectingWordGuesser(WordGuesser):
@@ -184,7 +184,7 @@ def parse_response(player: Player, response: str, words: Dict) -> Tuple[str, str
     explanation_pattern = re.compile(rf"{words['explanation_lang']}([^\n]*)", re.IGNORECASE)
 
     content_prefix = words['guess_lang']
-    if player == WordCritic:
+    if isinstance(player, WordCritic):
         content_prefix = words['agreement_lang']
     content_pattern = re.compile(rf"{content_prefix}([^\n]*)", re.IGNORECASE)
 
@@ -192,7 +192,7 @@ def parse_response(player: Player, response: str, words: Dict) -> Tuple[str, str
     content_match = content_pattern.findall(response)
 
     if len(content_match) != 1:
-        raise ParseError(f"The response should contain the '{content_prefix}' keyword only once.",
+        raise ParseError(f"The response should contain the '{content_prefix}' keyword exactly once.",
                          key="MORE_THAN_ONE_GUESS")
 
     content = content_match[0].strip().lower()
@@ -475,8 +475,8 @@ class WordleWithCritic(WordleWithClue):
                 super()._on_valid_player_response(player, parsed_response)
         if player == self.critic:
             self.critics_judgements.append(self.state.current_agreement)
-            content = self.formatter.to_critic_response(self.state.current_agreement,
-                                                        self.state.current_agreement_explanation)
+            content = self.formatter.to_critic_response(self.state.current_agreement_explanation,
+                                                        self.state.current_agreement)
             self.set_context_for(self.guesser, content)
             self.state.awaiting_critic = False
 

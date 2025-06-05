@@ -104,8 +104,8 @@ class ResponseFormatter:
         """ The format of a message send by the GM to the guesser with critic"""
         # todo: having more than explanation, agreement (see to_critic_response()) in the response reduces performance
         return (f"{self.words['clue_lang']} {clue}\n"
-                f"{self.words['agreement_lang']} {agreement}\n"
-                f"{self.words['explanation_lang']} {explanation}\n\n"
+                f"{self.words['guess_agreement_lang']} {agreement}\n"
+                f"{self.words['agreement_explanation_lang']} {explanation}\n\n"
                 f"{self.words['error_prompt_text']['INVALID_FORMAT']}\n"  # Provide your response only in this format.
                 f"{self.words['explanation_lang']} {self.words['explanataion_details_lang']}\n"
                 f"{self.words['guess_lang']} {self.words['guess_word_lang']}"

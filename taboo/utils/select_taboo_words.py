@@ -67,19 +67,12 @@ TABOO_WORDS = "resources/target_words/en/taboo_words.json"
 TABOO_WORDS_AND_COUNTS = "resources/target_words/en/taboo_words_and_counts.json"
 TABOO_WORD_LISTS = "resources/target_words/en/taboo_word_lists.json"
 
-REMOVE = (
-    "IN", "UH", "WRB", "DT", "PRP", "CD", "FW", ".", "WP$", "CC", "WDT", "WP",
-    "TO", "LS", "ADD", "EX", "XX", ":", "NFP", "``", ",", "PDT", "PRP$"
-)
 
 
 def tag_it(word):
     token = nlp(word)
     return pd.Series([token[0].tag_, token[0].lemma_])
 
-
-def is_function_word(tag):
-    return tag in REMOVE
 
 
 def preprocess_unigrams():

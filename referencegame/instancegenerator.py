@@ -10,12 +10,11 @@ Creates instances_{version}_{lang}.json in in/
 
 import logging
 import os
-import json
 import Levenshtein # to calculate distance between grids
 
 from clemcore.clemgame import GameInstanceGenerator
 
-from resources.localization_utils import MULTILINGUAL_PATTERNS
+from referencegame.resources.localization_utils import MULTILINGUAL_PATTERNS
 
 logger = logging.getLogger(__name__)
 
@@ -107,24 +106,25 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
         super().__init__(os.path.dirname(__file__))
         self.lang = None
 
-    def on_generate(self, lang):
+    def on_generate(self, seed: int, **kwargs):
         """
         Create instances into self.instances
         (Called by super().generate())
         """
-        self.lang = lang
+        self.lang = kwargs["lang"]
 
         # load grids
-        with open(GRIDS, 'r') as f:
-            grids = json.load(f)
+        grids = self.load_json(GRIDS)
 
         # generate sub experiments
         for grids_group in grids.keys():
             # get triplets
             samples = generate_samples(grids[grids_group])
 
-            player_a_prompt_header = self._load_prompt("player_a_prompt_header.template")
-            player_b_prompt_header = self._load_prompt("player_b_prompt_header.template")
+            player_a_prompt_header = self.load_template(f"resources/initial_prompts/"
+                                                        f"{self.lang}/player_a_prompt_header.template")
+            player_b_prompt_header = self.load_template(f"resources/initial_prompts/"
+                                                        f"{self.lang}/player_b_prompt_header.template")
 
             experiment = self.add_experiment(f"{grids_group}")
 
@@ -182,17 +182,6 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
 
                     game_counter += 1
 
-    def _load_prompt(self, template):
-        """
-        Load language specific prompt
-        :param lang: language identifier string
-        :param template: filename of prompt template
-        :return: prompt string
-        """
-        with open(f"resources/initial_prompts/{self.lang}/{template}", encoding='utf8') as f:
-            prompt = f.read()
-        return prompt
-
     def _generate_regex(self, player: str):
         """
         Combine language specific content with regex pattern
@@ -230,4 +219,4 @@ if __name__ == '__main__':
     # generate language versions
     for language in MULTILINGUAL_PATTERNS.keys():
         ReferenceGameInstanceGenerator().generate(
-            filename=f"instances_{VERSION}_{language}.json", lang=language)
+            filename=f"instances_{VERSION}_{language}.json", seed=42, lang=language)

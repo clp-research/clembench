@@ -10,13 +10,11 @@ from typing import Tuple, Dict, List
 from tqdm import tqdm
 
 from clemcore.clemgame import GameInstanceGenerator
-from constants import (
-    PROBES_PATH, REQUESTS_PATH, SLOT_PATH, PROMPT_PATH, WORDS_PATH, EXPERIMENTS)
+from privateshared.constants import PROBES_PATH, REQUESTS_PATH, SLOT_PATH, PROMPT_PATH, WORDS_PATH, EXPERIMENTS
 
 ID = 1
 LANG = 'en'
 # SEED = 2102  # old/v1.6 seed
-SEED = 42
 N_INSTANCES = 10
 
 what_slot = {'travel-booking': 'Travel',
@@ -78,7 +76,7 @@ class PrivateSharedGameInstanceGenerator(GameInstanceGenerator):
         self.aside = words["ASIDE"]
         self.me = words["ME"]
 
-    def on_generate(self):
+    def on_generate(self, seed: int, **kwargs):
         """Generate configuration of all experiments."""
 
         for exp_name in EXPERIMENTS:
@@ -115,5 +113,4 @@ class PrivateSharedGameInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == '__main__':
-    random.seed(SEED)
-    PrivateSharedGameInstanceGenerator().generate()
+    PrivateSharedGameInstanceGenerator().generate(seed=42)

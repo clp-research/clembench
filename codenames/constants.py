@@ -8,7 +8,6 @@ CHARS_TO_STRIP = " .,<>\"'"
 NUMBERS_TO_STRIP = " ," + ''.join(string.digits)
 
 ### Game related string constants
-GAME_PATH = os.path.dirname(os.path.abspath(__file__))
 TEAM = "team"
 OPPONENT = "opponent"
 INNOCENT = "innocent"

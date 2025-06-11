@@ -9,7 +9,7 @@ import random, copy, argparse
 from typing import Set
 from clemcore.utils.file_utils import file_path
 
-from constants import *
+from codenames.constants import *
 
 FILENAME = "instances.json"
 GENEROUS_FILENAME = "generous_instances.json"

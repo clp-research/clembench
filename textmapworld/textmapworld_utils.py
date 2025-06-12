@@ -1,64 +1,6 @@
-import ast
-import os
 import random
 import networkx as nx
-from graph_generator import GraphGenerator
-
-"----------------------------------------------------"
-"The functions used in instance_generator.py"
-
-def generate_filename(game_type, graph_size, cycle_type, ambiguity):
-
-    if cycle_type == "cycle_true":
-        cycle = "True"
-    elif cycle_type == "cycle_false":
-        cycle = "False"
-    if graph_size==None:
-        filename_parts = [game_type.capitalize().split("_graph")[0], cycle, str(ambiguity)]
-        filename = "_".join(filename_parts)
-    else:
-        filename_parts = [game_type.capitalize().split("_graph")[0], str(graph_size), cycle, str(ambiguity)]
-        filename = "_".join(filename_parts) + ".txt"
-    return filename
-
-
-def load_check_graph(file_graphs, instance_number, game_type):
-    grids = []
-    with open(str(file_graphs), 'r') as file:
-        for c, line in enumerate(file):
-            line = line.rstrip()
-            doc = ast.literal_eval(line)
-            nodes = doc.get('Graph_Nodes', [])
-            check_set = set()
-            if c < instance_number:
-                if all(isinstance(item, tuple) for item in nodes):
-                    checked_graph_type = "unnamed_graph"
-                    check_set.add(checked_graph_type)
-                elif all(isinstance(item, str) for item in nodes):
-                    checked_graph_type = "named_graph"
-                    check_set.add(checked_graph_type)
-                grids.append(doc)
-        if  check_set != {str(game_type)}:
-            raise ValueError("Graph type does not match the specified type")
-    return grids
-
-
-
-def create_graphs_file(graphs_file_name, num_graphs, graph_type, n, m, rooms, cycle_bool, abiguity, game_name):
-    
-    generated_graphs = 0
-    with open(graphs_file_name, "w") as f:
-        file_length = os.path.getsize(graphs_file_name)
-        while generated_graphs < num_graphs:
-            new_instance = GraphGenerator(graph_type, n, m, rooms, cycle_bool, abiguity, game_name)
-            result = new_instance.generate_instance()
-            if result != "No graph generated":
-                f.write(str(result) + "\n")
-                generated_graphs+=1
-    # Check if file is empty
-    if os.path.getsize(graphs_file_name) == 0:
-        raise ValueError("Generated file is empty")
-    return graphs_file_name
+import numpy as np
 
 "----------------------------------------------------"
 "The functions used in master.py"
@@ -181,12 +123,7 @@ def create_graph(nodes, edges, type):
     return G
 
 #Create a networkx graph from the given graph data.
-def create_graph_specificroom(nodes, edges):
-    G = nx.Graph()
-    G.add_nodes_from(nodes)
-    G.add_edges_from(edges)
-    return G
-    
+
 def normalize(distance):
         normalized_distance = 1 / (1 + np.exp(-0.5 * distance))
         normalized_distance = 2*(normalized_distance - 0.5)

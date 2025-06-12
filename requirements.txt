@@ -9,3 +9,5 @@ matplotlib # mm_mapworld textmapworld
 networkx # mm_mapworld textmapworld
 imageio # mm_mapworld
 numpy # mm_mapworld
+Levenshtein # referencegame instance generation
+kaggle # wordle instance generation

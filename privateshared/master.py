@@ -75,8 +75,7 @@ class Questioner(Player):
         return self.request_strings[self.question_type][request_idx]
 
     def set_question_type_for(self, current_round: int):
-        if current_round < len(self.question_order):
-            self.question_type = self.question_order[current_round]
+        self.question_type = self.question_order[current_round - 1]
 
 
 class PrivateSharedGame:
@@ -133,27 +132,31 @@ class PrivateShared(DialogueGameMaster):
         self.violated_request_counts = [0] * self.n_probe_turns
 
         self.add_player(self.answerer)
+        self.add_player(self.questioner, initial_context=dict(role="user", content=self.words.dummy_prompt))
+        self.current_player_idx = 1 # start with the questioner
+
+    def _on_before_game(self):
+        self.set_context_for(self.questioner, self.words.dummy_prompt)
+
         self.answerer._messages.append(dict(role='user', content=self.initial_prompt, label='pseudo'))
         self.answerer._messages.append(dict(role="assistant", content=self.words.ok, label="pseudo"))
         self.log_event(from_="GM", to=self.answerer.name,
                        action=dict(type="send message", content=self.initial_prompt, label="pseudo"))
         self.log_event(from_=self.answerer.name, to="GM",
                        action=dict(type="get message", content=self.words.ok, label="pseudo"))
-    
-        self.add_player(self.questioner, initial_context=dict(role="user", content=self.words.dummy_prompt))
-        self.questioner.set_question_type_for(self.current_round)  # set the question type for the first round
-        self.set_context_for(self.questioner, self.words.dummy_prompt)
-
-
+        
         # Conduct a preliminary probing round before the actual game starts
         turn_probes, probing_successful = self.probe()
         self.all_probes.append(turn_probes)
         if not probing_successful:
             self.log_to_self("invalid format", "Abort: invalid format in probing.")
             self.aborted = True
-        # Preliminary probing round counts as round 0
-        self.current_round += 1
-        self.current_player_idx = 1 # start with the questioner
+
+        self.current_round = 1  # preliminary probing round is round 0
+
+    def _on_before_round(self):
+        self.questioner.set_question_type_for(self.current_round)
+        self.set_context_for(self.questioner, self.words.dummy_prompt)
 
     def _start_next_round(self) -> bool:
         """
@@ -225,9 +228,6 @@ class PrivateShared(DialogueGameMaster):
                 self.aborted = True
             # increment request counts
             self.request_counts[self.current_round] += 1  # requests to the answerer per round
-
-            self.questioner.set_question_type_for(self.current_round)
-            self.set_context_for(self.questioner, self.words.dummy_prompt)
     
     def _on_after_game(self):
         self.log_key('probes', self.all_probes)
@@ -339,7 +339,6 @@ class PrivateShared(DialogueGameMaster):
             content = SUCCESS.format(probe['target'], tries)
         # answer valid?
         self.log_to_self("metadata", content)
-        # logger.info(f"Game round {str(self.current_round)}: {content}")
         # answer correct?
         result = '' if probe['value'] == probe['gt'] else 'in'
         self.log_to_self("check", RESULT.format(result))
@@ -354,14 +353,12 @@ class PrivateShared(DialogueGameMaster):
         """Extract parsed answer in probing turn."""
         if (not response.startswith(self.words.aside.strip())
                 or self._has_continuation(response)):
-            # logger.warning(f"Game round {str(self.current_round)}: {NOT_PARSED}")
             return INVALID
         clean_response = self._filter_tag(response, self.words.aside.strip())
         if clean_response.lower().startswith(self.words.yes):
             return self.words.yes
         if clean_response.lower().startswith(self.words.no):
             return self.words.no
-        # logger.warning(f"Game round {str(self.current_round)}: {NOT_PARSED}")
         return INVALID
 
     def _convert_response(self, response: str) -> int:

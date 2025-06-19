@@ -85,6 +85,35 @@ myworkspace
 - model_registry.json  
 ```
 
+As an exemplary workflow and a more concrete showcase, let's say, we want to know how well the `Meta-Llama-3.1-8B-Instruct` model performs on the benchmark.
+For this, we let the model play the games in the benchmark. 
+The following command runs the model on the games that were selected for version `v2.0` of the benchmark: 
+```bash
+clem run -g "{'benchmark':['2.0']}" -m Meta-Llama-3.1-8B-Instruct 
+```
+
+You can also use `-g all` to run all games or, for example, `-g taboo` to run just a specific game.
+
+After the `run` command has finished, a `results` folder appears which contains the recorded interactions of gameplay.
+We score the interactions with the following command:
+
+```bash
+clem score # Note: -r option defaults to 'results' 
+```
+
+You can also use, for example, `-g taboo` to score just a specific game.
+
+The score command creates `score.json` in each episode directory which we use for the overall evaluation.
+The evaluation runs with the following command:
+
+```bash
+clem eval # Note: -r option defaults to 'results'
+```
+
+This creates a `results.csv` and `results.html` which presents the overall aggregated result and for each game individually. 
+
+> **Note:** The `clem` CLI has become available during workspace setup when we installed the `requirements.txt`.
+
 ### Use Case: Benchmark Custom Models
 
 To test the performance of your own model on the benchmark, checkout the [clembench](https://github.com/clp-research/clembench) repository into your [workspace directory](#recommended-workspace).

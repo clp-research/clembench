@@ -73,9 +73,6 @@ class ReferenceGameMaster(DialogueGameMaster):
         self.add_player(self.instruction_giver, initial_context=p1_initial_prompt)
         self.add_player(self.instruction_follower)
 
-    # def play(self) -> None:
-    #     self.turn()
-
     def _validate_player_response(self, player, response):
         """
         Decide if a player response matches the valid response patterns.

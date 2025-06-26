@@ -11,21 +11,21 @@ The evaluation method for scorekeeping proposed by \citet{madureira-schlangen-20
 We thus introduce a dialogue game which enables testing the scorekeeping abilities of these models, by measuring how well the cLLM's discourse model gets correctly updated after each turn.
 
 ### Game Description
-This is a slot-filling conversation, mediated by a game master, with asymmetric roles between a questioner and an answerer. We define $n$ slots to be filled. The answerer player $A$ privately knows the values of all slots from the beginning of the interaction (passed via an initial prompt) but the questioner $Q$ does not. The questioner then asks $n$ questions, %$(q_i)_{i=1}^n$,
-one by one, aiming at filling those slots based on $A$'s answers. %$(a_i)_{i=1}^n$.
+This is a slot-filling conversation, mediated by a game master, with asymmetric roles between a questioner and an answerer. We define $n$ slots to be filled. The answerer player $A$ privately knows the values of all slots from the beginning of the interaction (passed via an initial prompt) but the questioner $Q$ does not. The questioner then asks $n$ questions, $(q_i)_{i=1}^n$,
+one by one, aiming at filling those slots based on $A$'s answers. $(a_i)_{i=1}^n$.
 A final state is reached when $Q$ fills all the slots and the the goal state is having all values correctly filled.
 
-Before the interaction starts and after each question-answer pair, %$(q_i, a_i)$,
-the game master probes the agent's discourse model by asking about the status (private or shared) of every slot, one by one and in a random order, in the conversation so far. This results in a sequence of $n+1$ probing rounds, each containing $n$ binary decisions, which can be used to evaluate the performance of the model.% in this dialogue game.
+Before the interaction starts and after each question-answer pair, $(q_i, a_i)$,
+the game master probes the agent's discourse model by asking about the status (private or shared) of every slot, one by one and in a random order, in the conversation so far. This results in a sequence of $n+1$ probing rounds, each containing $n$ binary decisions, which can be used to evaluate the performance of the model in this dialogue game.
 
 ### Instantiation
 Here we introduce two versions of this setting with $5$ slots: i) a travel agent and a customer booking a trip and ii) a recruiter and a job applicant in a job interview. We implement the questioner programmatically and let the cLLM play the role of the answerer. This game is an example of a "messenger" setup, where the game master plays a more active role, by parsing responses and performing the probing rounds. The game master begins by instructing the cLLM about the setting, explaining that it should give replies according to the given values for each slot.
 
 Besides the task-oriented requests from $Q$, the cLLM must also respond to probing questions privately posed by the game master. The initial prompt defines special labels to be used for each type of question and response. Because the questioner's order of requests is under the control of the game master, the truth values are known and can be immediately compared to the cLLM' answers. For completeness, we also make the probing before any move from the questioner.  Note that, in the first probing round, all slot values are private, whereas in the last one, all are shared.
 
-**(i) Travel Agency**: simulates a conversation between a customer (the cLLM) and a travel agent. The customer wishes to book a trip according to a set of 5 slots: `from` (origin), `to` (destination), `by` (means of transportation), `class` and `when` (time of departure). For probing, the game master can ask, for instance, *"Does the travel agent know where you want to go?"*. The correct answer is *no* until the travel agent has received a reply for that slot, when the correct answer changes to *yes*.
+**(i) Travel Agency:** simulates a conversation between a customer (the cLLM) and a travel agent. The customer wishes to book a trip according to a set of 5 slots: `from` (origin), `to` (destination), `by` (means of transportation), `class` and `when` (time of departure). For probing, the game master can ask, for instance, *"Does the travel agent know where you want to go?"*. The correct answer is *no* until the travel agent has received a reply for that slot, when the correct answer changes to *yes*.
 
-**(i) Job Interview**: simulates a conversation between a job applicant (the cLLM) and a recruiter. The job applicant has a CV with 5 slots: `bachelor`, `industry experience`, `highest education`, `other skills` and `availability`. For probing, the game master can ask, for instance, *"Has the recruiter been informed about your availability?"*. Again, the correct answer is *no* until the recruiter has received a reply for that slot.
+**(ii) Job Interview:** simulates a conversation between a job applicant (the cLLM) and a recruiter. The job applicant has a CV with 5 slots: `bachelor`, `industry experience`, `highest education`, `other skills` and `availability`. For probing, the game master can ask, for instance, *"Has the recruiter been informed about your availability?"*. Again, the correct answer is *no* until the recruiter has received a reply for that slot.
 
 ### Implementation
 For each version, we generate 10 instances by randomly selecting values for all slots and a random order for the questioner's requests. The cLLM is prompted to only give short, direct answers to avoid that slot values are given in anticipation.
@@ -43,7 +43,7 @@ As discussed in \cite{madureira-schlangen-2022-visual}, a model biased towards c
 
 The validity of the results rely on the slots having been correctly filled. As a sanity check, we compute the proportion of answers that contain the correct slot value as an additional episode level score (**slot-filling-accuracy**). (However, even if the cLLM hallucinates an answer, the probing can still be performed, because a wrong value is still a shared value.)
 
-**Preferred Score**: The harmonic mean between slot-filling-accuracy and truncated $\kappa$ is normalised to $[0, 100$ and used as the main score, summarising the performance of an agent in an episode.
+**Preferred Score**: The harmonic mean between slot-filling-accuracy and truncated $\kappa$ is normalised to $[0, 100]$ and used as the main score, summarising the performance of an agent in an episode.
 
 # Important implementation details
 

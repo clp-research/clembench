@@ -115,8 +115,8 @@ class PathDescriber(Player):
 class MmMapWorldGraphs(DialogueGameMaster):
     """Implement mechanisms for playing MM-MapWorld."""
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
 
         self.aborted: bool = False
         self.stop: bool = False
@@ -705,7 +705,7 @@ class MmMapWorldGraphsBenchmark(GameBenchmark):
                            experiment: Dict,
                            player_models: List[Model]
                            ) -> GameMaster:
-        return MmMapWorldGraphs(self.game_name, self.game_path, experiment, player_models)
+        return MmMapWorldGraphs(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return MM_MapWorldGraphsScorer(self.game_name, experiment, game_instance)

@@ -24,8 +24,8 @@ class CodenamesGame(DialogueGameMaster):
     which player B has to guess from the given clue.
     """
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[backends.Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[backends.Model]):
+        super().__init__(game_spec, experiment, player_models)
         self.experiment = experiment
         self.opponent_difficulty: bool = experiment[OPPONENT_DIFFICULTY]
 
@@ -276,7 +276,7 @@ class CodenamesGameBenchmark(GameBenchmark):
         random.seed(SEED)
 
     def create_game_master(self, experiment: Dict, player_models: List[backends.Model]) -> DialogueGameMaster:
-        return CodenamesGame(self.game_name, self.game_path, experiment, player_models)
+        return CodenamesGame(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment_config, game_instance) -> GameScorer:
         return CodenamesScorer(self.game_name, experiment_config, game_instance)

@@ -41,8 +41,8 @@ class MatchItPlayer(Player):
 
 class MatchIt(DialogueGameMaster):
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
 
         self.experiment: str = experiment["name"]
         self.flags: dict[str, str] = experiment["flags"]
@@ -325,7 +325,7 @@ class MatchItBenchmark(GameBenchmark):
         super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return MatchIt(self.game_name, self.game_path, experiment, player_models)
+        return MatchIt(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return MatchItScorer(self.game_name, experiment, game_instance)

@@ -289,8 +289,8 @@ GUESSER_FEEDBACKS = "Guesser Feedbacks"
 class Wordle(DialogueGameMaster):
     """Basic Wordle game without clue or critic"""
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
         # game specific logging
         self.request_counts: int = 0
         self.parsed_request_counts: int = 0
@@ -451,8 +451,8 @@ class WordleWithCritic(WordleWithClue):
     Only then the color feedback is given and it's the guessers turn again.
     """
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
         self.critics_judgements: List[str] = []
 
     def _on_setup(self, **game_instance):
@@ -698,11 +698,11 @@ class WordleGameBenchmark(GameBenchmark):
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
         if self.game_name == "wordle_withcritic":
-            return WordleWithCritic(self.game_name, self.game_path, experiment, player_models)
+            return WordleWithCritic(self.game_spec, experiment, player_models)
         elif self.game_name == "wordle_withclue":
-            return WordleWithClue(self.game_name, self.game_path, experiment, player_models)
+            return WordleWithClue(self.game_spec, experiment, player_models)
         else:
-            return Wordle(self.game_name, self.game_path, experiment, player_models)
+            return Wordle(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         if self.game_name == "wordle_withcritic":

@@ -42,10 +42,10 @@ class Judge(Player):
 class Cloudgame(DialogueGameMaster):
     """Implement mechanisms for playing Cloudgame."""
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
         # fetch experiment parameters here
-        self.game_path = game_path
+        self.game_path = game_spec.game_path
         self.max_words = 2
         self.allowed_words = ["yes", "no"]
         self.success = True
@@ -193,7 +193,7 @@ class CloudgameBenchmark(GameBenchmark):
                            experiment: Dict,
                            player_models: List[Model]
                            ) -> DialogueGameMaster:
-        return Cloudgame(self.game_name, self.game_path, experiment, player_models)
+        return Cloudgame(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return CloudgameScorer(self.game_name, experiment, game_instance)

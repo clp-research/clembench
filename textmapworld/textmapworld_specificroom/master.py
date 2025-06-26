@@ -121,8 +121,8 @@ class textmapworld_specificroom(DialogueGameMaster):
     This class implements a graph traversal game in which player A (DecisionMaker). 
     """
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
         self.steps_made = 0
         self.max_turns = 20
         self.game_error = None
@@ -412,7 +412,7 @@ class GraphGameBenchmark(GameBenchmark):
         super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return textmapworld_specificroom(self.game_name, self.game_path, experiment, player_models)
+        return textmapworld_specificroom(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return GraphGameScorer(self.game_name, experiment, game_instance)

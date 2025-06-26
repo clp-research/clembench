@@ -32,8 +32,8 @@ class HelloGame(DialogueGameMaster):
     is greeting another player with a target name.
     """
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
         self.language: int = experiment["language"]  # fetch experiment parameters here
         self.required_words = ["welcome", "hello"]
         self.missing_words = []
@@ -104,4 +104,4 @@ class HelloGameBenchmark(GameBenchmark):
         super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> DialogueGameMaster:
-        return HelloGame(self.game_name, self.game_path, experiment, player_models)
+        return HelloGame(self.game_spec, experiment, player_models)

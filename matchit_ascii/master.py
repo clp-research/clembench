@@ -36,8 +36,8 @@ class MatchItPlayer(Player):
 
 
 class MatchItAscii(DialogueGameMaster):
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_backends: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_backends)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_backends: List[Model]):
+        super().__init__(game_spec, experiment, player_backends)
 
         self.experiment: str = experiment["name"]
         self.flags: dict[str, str] = experiment["flags"]
@@ -327,7 +327,7 @@ class MatchItBenchmark(GameBenchmark):
                            experiment: Dict,
                            player_backends: List[str]
                            ) -> GameMaster:
-        return MatchItAscii(self.game_name, self.game_path, experiment, player_backends)
+        return MatchItAscii(self.game_spec, experiment, player_backends)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return MatchItScorer(self.game_name, experiment, game_instance)

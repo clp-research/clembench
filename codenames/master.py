@@ -56,8 +56,7 @@ class CodenamesGame(DialogueGameMaster):
 
     def _get_cluegiver_prompt(self, initial=False) -> str:
         folder = "initial_prompts" if initial else "intermittent_prompts"
-        path = f"{GAME_PATH}/resources/{folder}/prompt_cluegiver"
-        prompt_cluegiver = self.load_template(path)
+        prompt_cluegiver = self.load_template(f"resources/{folder}/prompt_cluegiver")
 
         team_words = ", ".join(self.board.get_hidden_words(TEAM))
         opponent_words = ", ".join(self.board.get_hidden_words(OPPONENT))
@@ -77,8 +76,7 @@ class CodenamesGame(DialogueGameMaster):
         return self._get_guesser_prompt("intermittent_prompts")
 
     def _get_guesser_prompt(self, folder) -> str:
-        path = f"{GAME_PATH}/resources/{folder}/prompt_guesser"
-        prompt_guesser = self.load_template(path)
+        prompt_guesser = self.load_template(f"resources/{folder}/prompt_guesser")
 
         board = ", ".join(self.board.get_all_hidden_words())
         instance_prompt_guesser = Template(prompt_guesser).substitute(board=board,

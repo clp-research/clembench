@@ -2,7 +2,7 @@
   "game_name": "guesswhat",
   "description": "Guess What? game between two agents where one asks questions to guess the target word from list of candidates and the other answers with 'yes' or 'no'.",
   "main_game": "guesswhat",
-  "players": "two",
+  "players": 2,
   "image": "none",
   "languages": ["en"],
   "benchmark": ["2.0"],

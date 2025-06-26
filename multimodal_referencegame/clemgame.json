@@ -2,7 +2,7 @@
   "game_name": "multimodal_referencegame",
   "description": "Reference Game between two agents where one has to describe one of three images and the other has to guess which one it is.",
   "main_game": "referencegame",
-  "players": "two",
+  "players": 2,
   "image": "multi",
   "languages": ["en"],
   "benchmark": ["1.6", "1.6.5", "2.0"],

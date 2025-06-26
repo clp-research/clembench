@@ -7,7 +7,7 @@ import logging
 from clemcore.backends import Model
 from clemcore.utils import file_utils
 from clemcore.clemgame import metrics, Player
-from clemcore.clemgame import GameMaster, GameBenchmark, GameScorer, GameSpec
+from clemcore.clemgame import DialogueGameMaster, GameBenchmark, GameScorer, GameSpec
 
 logger = logging.getLogger(__name__)
 
@@ -45,14 +45,14 @@ class MultimodalReferenceGame:
         self.player_2_third_image = game_instance['player_2_third_image']
 
 
-class MultimodalReferenceGameMaster(GameMaster):
+class MultimodalReferenceGameMaster(DialogueGameMaster):
 
     def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
         super().__init__(game_name, game_path, experiment, player_models)
         self.experiment = experiment
         self.game = None
 
-    def setup(self, **game_instance):
+    def _on_setup(self, **game_instance):
         self.game = MultimodalReferenceGame(game_instance)
         self.instruction_giver = InstructionGiver(self.player_models[0],
                                                   name="Player 1",
@@ -60,60 +60,101 @@ class MultimodalReferenceGameMaster(GameMaster):
         self.instruction_follower = InstructionFollower(self.player_models[1],
                                                         name="Player 2",
                                                         game_recorder=self.game_recorder)
-        self.log_player(self.instruction_giver)
-        self.log_player(self.instruction_follower)
-
-    def play(self) -> None:
-        self.turn()
-
-    def turn(self):
-        # generate referring expression - Player 1 side
-        context = dict(role="user",
+        p1_initial_context = dict(role="user",
                        content=self.game.player_1_prompt_header,
                        image=[self.game.player_1_first_image,
                               self.game.player_1_second_image,
                               self.game.player_1_third_image])
-        player_1_response_text = self.instruction_giver(context)
+        self.add_player(self.instruction_giver, initial_context=p1_initial_context)
+        self.add_player(self.instruction_follower)
+        self.terminate = False
 
-        player_1_pattern = re.compile(self.game.player_1_response_pattern, re.IGNORECASE)
-        p1_match = re.match(player_1_pattern, player_1_response_text.strip())
-        if p1_match and p1_match.group('remainder') == "":
-            action = {'type': 'parse', 'content': player_1_response_text,
-                      'expression': p1_match.group('content')}
-            self.log_event(from_="GM", to="GM", action=action)
-        else:
+    def _validate_player_response(self, player, response):
+        """
+        Decide if a player response matches the valid response patterns.
+        An invalid response breaks the game rules and ends the game.
+
+        Args:
+            player: The player that gave the response.
+            response: The response of the current player.
+        Returns:
+            True, if the response is fine. Otherwise, False.
+        """
+        if player == self.instruction_giver:
+            # Player 1 response validation
+            p1_match = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(response)
+            if p1_match and p1_match.group('remainder') == "":
+                return True
+            self.terminate = True
             # if the Player 1 message don't match the rule => start with "Expression: " and contains only one paragraph
             # log the message and abort the game
             action = {'type': 'invalid format', 'content': 'Invalid generated expression',
-                      'original_content': player_1_response_text}
+                      'original_content': response}
             self.log_event(from_="GM", to="GM", action=action)
-            return
-
-        # guess the grid - Player 2 side
-        context = dict(role="user",
-                       content=self.game.player_2_prompt_header.replace('TARGET_EXPRESSION', player_1_response_text),
-                       image=[self.game.player_2_first_image,
-                              self.game.player_2_second_image,
-                              self.game.player_2_third_image])
-
-        player_2_response_text = self.instruction_follower(context)
-
-        # check if the Player 2 message matches the rule => start with "Answer: " and generate only the label
-        player_2_pattern = re.compile(self.game.player_2_response_pattern, re.IGNORECASE)
-        p2_match = re.match(player_2_pattern, player_2_response_text)
-        if p2_match and p2_match.group('remainder') == "":
-            action = {'type': 'parse', 'content': player_2_response_text,
-                      'answer': p2_match.group('content')}
-            self.log_event(from_="GM", to="GM", action=action)
-
-            action = {'type': 'expected answer', 'content': self.game.target_image_name,
-                      'answer': self.game.target_image_name}
-            self.log_event(from_="GM", to="GM", action=action)
-        else:
+            return False
+        elif player == self.instruction_follower:
+            # Game only has one round, so we terminate regardless of the response
+            self.terminate = True
+            # Player 2 response validation
+            p2_match = re.compile(self.game.player_2_response_pattern, re.IGNORECASE).match(response)
+            if p2_match and p2_match.group('remainder') == "":
+                return True
             # abort the game if the output doesn't match the rule
             action = {'type': 'invalid format', 'content': 'Invalid generated choice',
-                      'original_content': player_2_response_text}
+                      'original_content': response}
             self.log_event(from_="GM", to="GM", action=action)
+            return False
+        
+    def _parse_response(self, player, response):
+        """ Takes a valid player response and parses it.
+
+        Args:
+            player: The Player instance that produced the response.
+            response: The response of the current player.
+        Returns:
+            The parsed response
+        """
+        if player == self.instruction_giver:
+            # Player 1 response parsing
+            p1_match = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(response)
+            if p1_match:
+                return response
+        elif player == self.instruction_follower:
+            # Player 2 response parsing
+            player_2_pattern = re.compile(self.game.player_2_response_pattern, re.IGNORECASE)
+            p2_match = re.match(player_2_pattern, response)
+            if p2_match:
+                return p2_match.group('content').lower()  # return the label only
+        return None
+    
+    def _on_valid_player_response(self, player: Player, parsed_response: str) -> None:
+        """Method executed after a player response has been parsed and validated.
+        This method is used to set the context for the other player.
+
+        Args:
+            player: The Player instance that produced the response (or has been modified by the GM).
+            parsed_response: The parsed and valid response of the current player.
+        """
+        if player == self.instruction_giver:
+            self.log_to_self('parse', parsed_response)
+            # Game only has one round, so we can use the initial prompt header here
+            content = self.game.player_2_prompt_header.replace('TARGET_EXPRESSION', parsed_response)
+            image = [self.game.player_2_first_image,
+                     self.game.player_2_second_image,
+                     self.game.player_2_third_image]
+            self.set_context_for(self.instruction_follower,
+                                 content = content,
+                                 image = image)
+        else:
+            if parsed_response in self.game.target_image_name:
+                self.log_to_self('parse_correct', parsed_response)
+            else:
+                self.log_to_self('parse_wrong', parsed_response)
+    
+    def _does_game_proceed(self):
+        if self.terminate:
+            return False
+        return True
 
 
 class MultimodalReferenceGameScorer(GameScorer):
@@ -152,7 +193,7 @@ class MultimodalReferenceGameScorer(GameScorer):
             episode_parsed_request_count += 1
 
             # log the Player 1 - message length
-            p1_expression = turn[2]['action']['expression']
+            p1_expression = turn[2]['action']['content']
             expression_length = len(p1_expression)
             self.log_turn_score(turn_index, 'Generated Expression Length', expression_length)
             # as there is just one turn, this is the same as episode scores
@@ -233,21 +274,8 @@ class MultimodalReferenceGameBenchmark(GameBenchmark):
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
 
-    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> DialogueGameMaster:
         return MultimodalReferenceGameMaster(self.game_name, self.game_path, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return MultimodalReferenceGameScorer(self.game_name, experiment, game_instance)
-
-
-def main():
-    # select one instance
-    experiments = file_utils.load_json("in/instances.json", "referencegame")
-    instance = experiments["experiments"][0]["game_instances"][0]
-    master = MultimodalReferenceGameMaster(instance, ["gpt-3.5-turbo", "gpt-3.5-turbo"])
-    master.setup(**instance)
-    master.play()
-
-
-if __name__ == '__main__':
-    main()

@@ -203,6 +203,12 @@ class TabooScorer(GameScorer):
         super().__init__(game_name, experiment, game_instance)
 
     def compute_scores(self, episode_interactions: Dict) -> None:
+        if "meta" in episode_interactions:  # if given, copy over meta info
+            self.scores["meta"] = episode_interactions["meta"]
+        if "player_models" in episode_interactions:  # if given, copy over players info
+            self.scores["player_models"] = episode_interactions["player_models"]
+        if "players" in episode_interactions:  # if given, copy over players info
+            self.scores["players"] = episode_interactions["players"]
         """ Episode level scores"""
         turn_scores = []
         prev_guess = None

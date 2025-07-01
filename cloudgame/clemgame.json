@@ -6,5 +6,6 @@
   "image": "single",
   "languages": ["en"],
   "benchmark": [],
-  "regression": "large"
+  "regression": "large",
+  "roles": ["Judge", "Speaker"]
 }

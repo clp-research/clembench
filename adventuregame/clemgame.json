@@ -6,5 +6,6 @@
   "image": "none",
   "languages": ["en"],
   "benchmark": ["v2"],
-  "regression": "large"
+  "regression": "large",
+  "role": "player"
 }

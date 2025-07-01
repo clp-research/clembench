@@ -6,5 +6,6 @@
   "image": "multi",
   "languages": ["en"],
   "benchmark": ["1.6", "1.6.5", "2.0"],
-  "regression": "large"
+  "regression": "large",
+  "roles": ["Instruction_giver", "Instruction_follower"]
 }

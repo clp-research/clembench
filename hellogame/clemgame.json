@@ -6,5 +6,6 @@
   "image": "none",
   "languages": ["en"],
   "benchmark": [],
-  "regression": "never"
+  "regression": "never",
+  "roles": "Greeter"
 }

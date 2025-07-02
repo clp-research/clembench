@@ -1,0 +1,9 @@
+{
+  "game_name": "playschool_cladder",
+  "description": "The full_v1.5_default CLadder experiments from clembench-playpen/cladder",
+  "main_game": "playschool_cladder",
+  "players": 1,
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["static"]
+}

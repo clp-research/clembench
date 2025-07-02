@@ -1,0 +1,3 @@
+task: playschool_glue_diagnostics_logic
+dataset_name: logic
+include: _glue_diagnostics_template

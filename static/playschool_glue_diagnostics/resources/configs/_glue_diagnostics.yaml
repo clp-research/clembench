@@ -1,0 +1,10 @@
+group: playschool_glue_diagnostics
+task:
+  - playschool_glue_diagnostics_lexical_semantics
+  - playschool_glue_diagnostics_predicate_argument_structure
+  - playschool_glue_diagnostics_logic
+  - playschool_glue_diagnostics_knowledge_world
+  - playschool_glue_diagnostics_knowledge_common_sense
+aggregate_metric_list:
+    - metric: acc
+      aggregation: mean

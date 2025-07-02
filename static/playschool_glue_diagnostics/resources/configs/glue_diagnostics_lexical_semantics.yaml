@@ -1,0 +1,3 @@
+task: playschool_glue_diagnostics_lexical_semantics
+dataset_name: lexical_semantics
+include: _glue_diagnostics_template

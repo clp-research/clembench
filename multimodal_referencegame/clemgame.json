@@ -5,6 +5,6 @@
   "players": 2,
   "image": "multi",
   "languages": ["en"],
-  "benchmark": ["1.6", "1.6.5", "2.0"],
+  "benchmark": ["multimodal_1.6", "multimodal_1.6.5", "multimodal_2.0"],
   "regression": "large"
 }

@@ -4,9 +4,9 @@ from typing import Dict, List
 
 from clemcore import backends
 from clemcore.backends import Model
-from clemcore.clemgame import Player, DialogueGameMaster, GameBenchmark, GameMaster
+from clemcore.clemgame import Player, DialogueGameMaster, GameBenchmark, GameMaster, GameScorer
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS, METRIC_REQUEST_COUNT, \
-    METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED
+    METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, BENCH_SCORE
 from jinja2 import Template
 
 
@@ -25,9 +25,9 @@ class Answerer(Player):
 class GameState:
     target: str
     initial_prompt: str
-    success: bool = False
-    failure: bool = False
-    aborted: bool = False
+    success: bool = False  # When response format is adhered to and exact match is achieved
+    failure: bool = False  # When response format is adhered to, but no exact match
+    aborted: bool = False  # When response format is violated todo: extract possible choices for each experiment
 
 
 class BbhFewShotGameMaster(DialogueGameMaster):
@@ -74,7 +74,20 @@ class BbhFewShotGameMaster(DialogueGameMaster):
         self.log_key(METRIC_REQUEST_COUNT_VIOLATED, self.violated_request_counts)
 
 
+class BbhFewShotGameScorer(GameScorer):
+
+    def score_turns(self, episode_interactions: Dict) -> None:
+        pass  # single-turn
+
+    def log_main_score(self, episode_interactions: Dict):
+        accuracy = 1.0 if episode_interactions[METRIC_SUCCESS] else 0.0
+        self.log_episode_score(BENCH_SCORE, accuracy)
+
+
 class BbhFewShotGameBenchmark(GameBenchmark):
 
     def create_game_master(self, experiment: Dict, player_models: List[backends.Model]) -> GameMaster:
         return BbhFewShotGameMaster(self.game_spec, experiment, player_models)
+
+    def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
+        return BbhFewShotGameScorer(self.game_name, experiment, game_instance)

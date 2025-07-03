@@ -1,11 +1,13 @@
 clemcore>=2.5.0,<3.0.0
 datasets=~3.5.1 # static benchmarks instance generation
 jinja2=~3.1.6 # static benchmarks instance generation
+langdetect~=1.0.9 # playschool ifeval
+immutabledict~=4.2.1 # playschool ifeval
 lark==1.1.9 # adventuregame
 clingo==5.7.1 # adventuregame
 jinja2 # adventuregame
 spacy==3.7.4 # taboo
-nltk==3.8.1 # codenames taboo
+nltk==3.8.1 # codenames taboo; pin due to transformers<=4.53.0 requires nltk<=3.8.1
 scikit-learn # privateshared
 matplotlib # mm_mapworld textmapworld
 networkx # mm_mapworld textmapworld

@@ -2,6 +2,7 @@ import random
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
+import numpy as np
 from clemcore import backends
 from clemcore.backends import Model
 from clemcore.clemgame import Player, DialogueGameMaster, GameBenchmark, GameMaster, ParseError
@@ -103,6 +104,9 @@ class CLadderGameScorer(GameScorer):
         pass  # single-turn
 
     def log_main_score(self, episode_interactions: Dict):
+        if episode_interactions[METRIC_ABORTED]:
+            self.log_episode_score(BENCH_SCORE, np.nan)
+            return
         accuracy = 1.0 if episode_interactions[METRIC_SUCCESS] else 0.0
         self.log_episode_score(BENCH_SCORE, accuracy)
 

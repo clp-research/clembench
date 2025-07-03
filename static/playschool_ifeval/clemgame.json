@@ -5,5 +5,5 @@
   "players": 1,
   "image": "none",
   "languages": ["en"],
-  "benchmark": ["static"]
+  "benchmark": ["static_1.0", "cognitive_1.0"]
 }

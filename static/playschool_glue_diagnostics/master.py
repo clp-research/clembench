@@ -2,12 +2,14 @@ import random
 import re
 from dataclasses import dataclass
 from typing import Dict, List, Optional
+
+import numpy as np
 from jinja2 import Template
 from clemcore import backends
 from clemcore.backends import Model
 from clemcore.clemgame import Player, DialogueGameMaster, GameBenchmark, GameMaster, GameScorer, ParseError
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS, METRIC_REQUEST_COUNT, \
-    METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED
+    METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, BENCH_SCORE
 
 
 class Annotator(Player):
@@ -101,10 +103,14 @@ class GlueDiagnosticsGameMaster(DialogueGameMaster):
 class GlueDiagnosticsGameScorer(GameScorer):
 
     def score_turns(self, episode_interactions: Dict) -> None:
-        pass
+        pass  # single-turn
 
     def log_main_score(self, episode_interactions: Dict):
-        pass
+        if episode_interactions[METRIC_ABORTED]:
+            self.log_episode_score(BENCH_SCORE, np.nan)
+            return
+        accuracy = 1.0 if episode_interactions[METRIC_SUCCESS] else 0.0
+        self.log_episode_score(BENCH_SCORE, accuracy)
 
 
 class GlueDiagnosticsGameBenchmark(GameBenchmark):

@@ -1,9 +1,9 @@
 {
-  "game_name": "playschool_glue_diagnostics",
+  "game_name": "glue_diagnostics",
   "description": "The GLUE diagnostics benchmark evaluates sentence understanding through Natural Language Inference (NLI) problems.",
-  "main_game": "playschool_glue_diagnostics",
+  "main_game": "glue_diagnostics",
   "players": 1,
   "image": "none",
   "languages": ["en"],
-  "benchmark": ["static"]
+  "benchmark": ["static_1.0", "cognitive_1.0"]
 }

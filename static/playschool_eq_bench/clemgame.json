@@ -1,9 +1,9 @@
 {
-  "game_name": "playschool_eq_bench",
+  "game_name": "eqbench",
   "description": "EQ-Bench is a benchmark for language models designed to assess emotional intelligence.",
-  "main_game": "playschool_eq_bench",
+  "main_game": "eqbench",
   "players": 1,
   "image": "none",
   "languages": ["en"],
-  "benchmark": ["static"]
+  "benchmark": ["static_1.0", "cognitive_1.0"]
 }

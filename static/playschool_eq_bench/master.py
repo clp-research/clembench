@@ -1,14 +1,17 @@
+import math
 import random
 import re
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
+import numpy as np
 from clemcore import backends
 from clemcore.backends import Model
-from clemcore.clemgame import Player, DialogueGameMaster, GameBenchmark, GameMaster, GameScorer, ParseError, \
-    RuleViolationError
+from clemcore.clemgame import Player, DialogueGameMaster, GameBenchmark, GameMaster, GameScorer, ParseError
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS, METRIC_REQUEST_COUNT, \
-    METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED
+    METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, BENCH_SCORE
+
+KEY_PARSED_RESPONSE: str = "Parsed Response"
 
 
 def to_response_format(target: Dict):
@@ -111,6 +114,8 @@ class EQBenchGameMaster(DialogueGameMaster):
             self.state.failure = True
 
     def _on_after_game(self):
+        self.log_key(KEY_PARSED_RESPONSE, self.state.parsed_response)
+
         self.log_key(METRIC_ABORTED, int(self.state.aborted))
         self.log_key(METRIC_LOSE, int(self.state.failure))
         self.log_key(METRIC_SUCCESS, int(self.state.success))
@@ -123,10 +128,38 @@ class EQBenchGameMaster(DialogueGameMaster):
 class EQBenchGameScorer(GameScorer):
 
     def score_turns(self, episode_interactions: Dict) -> None:
-        pass
+        pass  # single-turn
 
     def log_main_score(self, episode_interactions: Dict):
-        pass  # see utils.py
+        parsed_response = episode_interactions[KEY_PARSED_RESPONSE]
+        if parsed_response is None:
+            self.log_episode_score(BENCH_SCORE, np.nan)
+            return
+        """This implements calculate_score_fullscale of the original work"""
+        difference_tally = 0  # Tally of difference from reference answers for this question
+        reference = self.game_instance["target"]
+        # Calculate the difference between the response score and the reference score
+        # Note: It is mandatory that all emotions of the reference are also mentioned in the response!
+        for emotion, emotion_score in parsed_response.items():
+            reference_score = reference[emotion]
+            d = abs(float(emotion_score) - float(reference_score))  # this will be a value between 0 and 10
+            if d == 0:
+                scaled_difference = 0
+            elif d <= 5:
+                # S-shaped scaling function
+                # https://www.desmos.com/calculator
+                # 6.5\cdot\ \frac{1}{\left(1\ +\ e^{\left(-1.2\cdot\left(x-4\right)\right)}\right)}
+                scaled_difference = 6.5 * (1 / (1 + math.e ** (-1.2 * (d - 4))))
+            else:
+                scaled_difference = d
+            difference_tally += scaled_difference
+
+        # Inverting the difference tally so that the closer the answer is to reference, the higher the score.
+        # The adjustment constant is chosen such that answering randomly produces a score of zero.
+        adjust_const = 0.7477
+        final_score = 10 - (difference_tally * adjust_const)
+        final_score_percent = final_score * 10
+        self.log_episode_score(BENCH_SCORE, final_score_percent)
 
 
 class EQBenchGameBenchmark(GameBenchmark):

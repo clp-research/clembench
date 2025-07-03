@@ -1,7 +1,7 @@
 import dataclasses
 from typing import Dict, Optional, Union
 
-from static.playschool_ifeval import instructions_registry
+from static.ifeval import instructions_registry
 
 
 @dataclasses.dataclass

@@ -1,7 +1,7 @@
 {
-  "game_name": "playschool_ifeval",
+  "game_name": "ifeval",
   "description": "IFEval is an instruction following benchmark that focuses on a set of verifiable instructions",
-  "main_game": "playschool_ifeval",
+  "main_game": "ifeval",
   "players": 1,
   "image": "none",
   "languages": ["en"],

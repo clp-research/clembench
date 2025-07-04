@@ -1,0 +1,3 @@
+task: playschool_lm_pragmatics_indirect_speech_seed_0
+test_split: seed_0
+include: _indirect_speech_template_yaml

@@ -1,0 +1,23 @@
+group: playschool_mmlu_pro
+task:
+  - playschool_mmlu_pro_biology
+  - playschool_mmlu_pro_business
+  - playschool_mmlu_pro_chemistry
+  - playschool_mmlu_pro_computer_science
+  - playschool_mmlu_pro_economics
+  - playschool_mmlu_pro_engineering
+  - playschool_mmlu_pro_health
+  - playschool_mmlu_pro_history
+  - playschool_mmlu_pro_law
+  - playschool_mmlu_pro_math
+  - playschool_mmlu_pro_other
+  - playschool_mmlu_pro_philosophy
+  - playschool_mmlu_pro_physics
+  - playschool_mmlu_pro_psychology
+aggregate_metric_list:
+  - aggregation: mean
+    metric: exact_match
+    weight_by_size: true
+    filter_list: custom-extract
+metadata:
+  version: 2.0

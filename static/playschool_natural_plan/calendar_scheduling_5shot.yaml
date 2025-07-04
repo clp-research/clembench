@@ -1,0 +1,5 @@
+task: playschool_calendar_scheduling_5shot
+dataset_path: clembench-playpen/natural-plan-calendar
+doc_to_text: prompt_5shot
+include: _natural_plan_template_yaml
+process_results: !function metrics_calendar.calendar_planning_accuracy

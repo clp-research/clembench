@@ -1,0 +1,3 @@
+task: playschool_lm_pragmatics_metaphor_seed_2
+test_split: seed_2
+include: _metaphor_template_yaml

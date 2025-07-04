@@ -1,0 +1,3 @@
+task: playschool_lm_pragmatics_irony_seed_3
+test_split: seed_3
+include: _irony_template_yaml

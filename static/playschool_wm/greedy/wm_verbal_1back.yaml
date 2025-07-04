@@ -1,0 +1,6 @@
+group: wm_verbal_1back_greedy
+task:
+  - wm_verbal_1back_greedy_tasks
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True

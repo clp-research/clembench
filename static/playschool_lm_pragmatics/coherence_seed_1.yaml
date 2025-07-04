@@ -1,0 +1,3 @@
+task: playschool_lm_pragmatics_coherence_seed_1
+test_split: seed_1
+include: _coherence_template_yaml

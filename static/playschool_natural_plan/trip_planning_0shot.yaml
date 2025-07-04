@@ -1,0 +1,5 @@
+task: playschool_trip_planning_0shot
+dataset_path: clembench-playpen/natural-plan-trip
+doc_to_text: prompt_0shot
+include: _natural_plan_template_yaml
+process_results: !function metrics_trip.trip_planning_accuracy

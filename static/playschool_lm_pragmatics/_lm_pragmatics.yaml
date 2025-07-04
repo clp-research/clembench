@@ -1,0 +1,49 @@
+group: playschool_lm_pragmatics
+task:
+  - group: playschool_coherence
+    task:
+      - playschool_lm_pragmatics_coherence
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+  - group: playschool_deceits
+    task:
+      - playschool_lm_pragmatics_deceits
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+  - group: playschool_humour
+    task:
+      - playschool_lm_pragmatics_humour
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+  - group: playschool_irony
+    task:
+      - playschool_lm_pragmatics_irony
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+  - group: playschool_maxims
+    task:
+      - playschool_lm_pragmatics_maxims
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+  - group: playschool_metaphor
+    task:
+      - playschool_lm_pragmatics_metaphor
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+  - group: playschool_indirect_speech
+    task:
+      - playschool_lm_pragmatics_indirect_speech
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True
+metadata:
+  version: 2

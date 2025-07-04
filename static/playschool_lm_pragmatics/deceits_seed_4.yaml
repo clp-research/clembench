@@ -1,0 +1,3 @@
+task: playschool_lm_pragmatics_deceits_seed_4
+test_split: seed_4
+include: _deceits_template_yaml

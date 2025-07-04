@@ -1,0 +1,3 @@
+dataset_name: irony
+tag: playschool_lm_pragmatics_irony
+include: _general_template_yaml

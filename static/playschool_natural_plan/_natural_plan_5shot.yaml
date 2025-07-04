@@ -1,0 +1,8 @@
+group: playschool_natural_plan_5shot
+task:
+  - playschool_calendar_scheduling_5shot
+  - playschool_trip_planning_5shot
+  - playschool_meeting_planning_5shot
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True

@@ -1,0 +1,3 @@
+dataset_name: humour
+tag: playschool_lm_pragmatics_humour
+include: _general_template_yaml

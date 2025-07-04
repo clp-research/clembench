@@ -1,0 +1,3 @@
+task: playschool_lm_pragmatics_humour_seed_0
+test_split: seed_0
+include: _humour_template_yaml

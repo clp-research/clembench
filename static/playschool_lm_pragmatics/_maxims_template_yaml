@@ -1,0 +1,3 @@
+dataset_name: maxims
+tag: playschool_lm_pragmatics_maxims
+include: _general_template_yaml

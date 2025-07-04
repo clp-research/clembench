@@ -1,0 +1,6 @@
+task: playschool_meeting_planning_5shot
+dataset_path: clembench-playpen/natural-plan-meeting
+doc_to_text: prompt_5shot
+include: _natural_plan_template_yaml
+process_results: !function metrics_meeting.meeting_planning_accuracy
+

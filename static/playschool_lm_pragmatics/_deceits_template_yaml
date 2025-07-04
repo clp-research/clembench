@@ -1,0 +1,3 @@
+dataset_name: deceits
+tag: playschool_lm_pragmatics_deceits
+include: _general_template_yaml

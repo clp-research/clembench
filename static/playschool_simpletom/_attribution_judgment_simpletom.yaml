@@ -1,0 +1,8 @@
+group: playschool_attribution_judgment_simpletom
+task:
+  - playschool_simpletom_behavior-qa
+  - playschool_simpletom_judgment-qa
+aggregate_metric_list:
+  - aggregation: mean
+    metric: acc
+    weight_by_size: true

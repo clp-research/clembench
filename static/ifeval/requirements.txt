@@ -1,2 +1,0 @@
-langdetect~=1.0.9
-immutabledict~=4.2.1

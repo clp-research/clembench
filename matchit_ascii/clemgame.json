@@ -7,5 +7,5 @@
   "languages": ["en"],
   "benchmark": ["2.0"],
   "regression": "large",
-  "roles": ["Player_a", "Player_b"]
+  "roles": ["Player A", "Player B"]
 }

@@ -8,7 +8,7 @@
     "languages": ["en"],
     "benchmark": ["2.0"],
     "regression": "small",
-    "roles": "Guesser"
+    "roles": ["Guesser"]
   },
   {
     "game_name": "wordle_withclue",
@@ -20,7 +20,7 @@
     "languages": ["en"],
     "benchmark": ["2.0"],
     "regression": "large",
-    "roles": ["Guesser", "Clue_giver"]
+    "roles": ["Guesser", "Clue Giver"]
   },
   {
     "game_name": "wordle_withcritic",
@@ -32,6 +32,6 @@
     "languages": ["en"],
     "benchmark": ["2.0"],
     "regression": "large",
-    "roles": ["Guesser", "Clue_giver"]
+    "roles": ["Guesser", "Clue Giver"]
   }
 ]

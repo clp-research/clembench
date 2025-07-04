@@ -7,5 +7,5 @@
   "languages": ["en"],
   "benchmark": ["0.9", "1.0", "1.5", "2.0"],
   "regression": "small",
-  "roles": ["Player_1", "Player_2"]
+  "roles": ["Instruction Giver", "Instruction Follower"]
 }

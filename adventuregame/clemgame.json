@@ -7,5 +7,5 @@
   "languages": ["en"],
   "benchmark": ["v2"],
   "regression": "large",
-  "role": "player"
+  "role": ["Adventurer"]
 }

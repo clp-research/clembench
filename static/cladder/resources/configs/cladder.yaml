@@ -1,0 +1,16 @@
+task: playschool_cladder
+dataset_path: clembench-playpen/cladder
+dataset_name: full_v1.5_default
+test_split: default
+output_type: generate_until
+doc_to_text: "You are an expert in causal inference. The following question is not a typical commonsense query, but rather a meticulously designed question created by a professor specializing in causal inference, intended to assess the students' mastery of the course content.\n{{prompt}}\nStart your answer with 'Yes' or 'No', followed by additional reasoning or evidence to support your explanation."
+doc_to_target: label
+doc_to_choice: "{{['yes', 'no']}}"
+generation_kwargs:
+  max_gen_toks: 10
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 0.0

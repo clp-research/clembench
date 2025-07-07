@@ -1,0 +1,9 @@
+{
+  "game_name": "mmlu_pro",
+  "description": "An MMLU-based benchmark that adds reasoning questions and expands the answer set to ten options.",
+  "main_game": "mmlu_pro",
+  "players": 1,
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["static_1.0", "standard_1.0"]
+}

@@ -6,5 +6,6 @@
   "image": "none",
   "languages": ["en"],
   "benchmark": ["2.0"],
-  "regression": "large"
+  "regression": "large",
+  "roles": ["Describer"]
 }

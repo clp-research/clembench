@@ -5,6 +5,7 @@
   "players": 1,
   "image": "none",
   "languages": ["en"],
-  "benchmark": ["v2"],
-  "regression": "large"
+  "benchmark": ["2.0"],
+  "regression": "large",
+  "roles": ["Adventurer"]
 }

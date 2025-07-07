@@ -5,19 +5,13 @@ Generate instances for the Guess What game.
 
 import os
 import sys
-from pathlib import Path
-import logging
 
 print(f"Python executable: {sys.executable}")
 print(f"Python path: {sys.path}")
 
-# Adjust the path to include the project root directory
-sys.path.append(str(Path(__file__).resolve().parents[2]))
-
 import random
 import json
 from tqdm import tqdm
-import clemcore.clemgame as clemgame
 from clemcore.clemgame import GameInstanceGenerator
 
 # number of words per episode
@@ -26,19 +20,12 @@ num_words = 8
 # number of instances per experiment
 N_INSTANCES = 10
 
-logger = logging.getLogger(__name__)
-GAME_NAME = "guesswhat"
-
-SEED = 42
 
 class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
-        super().__init__(GAME_NAME)
+        super().__init__(os.path.dirname(__file__))
 
-    def load_instances(self):
-        return self.load_json("in/instances")
-
-    def on_generate(self):
+    def on_generate(self, seed: int, **kwargs):
         output_instances = {
             "experiments": []
         }
@@ -126,11 +113,9 @@ class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
             answerer_prompt = self.load_template("resources/initial_prompts/answerer_prompt")
             guesser_prompt = self.load_template("resources/initial_prompts/guesser_prompt")
 
-
             experiment["answerer_initial_prompt"] = answerer_prompt
 
             experiment["guesser_initial_prompt"] = guesser_prompt
-
 
             used_words = set()
             game_instances = []
@@ -146,7 +131,6 @@ class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
 
             experiment["game_instances"] = game_instances
             output_instances["experiments"].append(experiment)
-
 
     def generate_instance(self, level, used_words):
         instance = {"items": [], "target": ""}
@@ -181,7 +165,6 @@ class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
             elif level == 3:
                 return [sub for sub in category["Subcategories"] if len(sub["Members"]) >= 2]
             return []
-
 
         # Retry limit to prevent infinite loops
         for _ in range(100):
@@ -280,12 +263,5 @@ class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
         return None, None
 
 
-    def save_json(self, data, filepath):
-        with open(filepath, 'w') as f:
-            json.dump(data, f, indent=4)
-
 if __name__ == '__main__':
-    random.seed(SEED)
-    GuessWhatGameInstanceGenerator().generate()
-
-
+    GuessWhatGameInstanceGenerator().generate(seed=42)

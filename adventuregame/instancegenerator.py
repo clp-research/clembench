@@ -7,7 +7,6 @@ import os
 
 from tqdm import tqdm
 
-import clemcore
 from clemcore.clemgame import GameInstanceGenerator
 
 import logging
@@ -19,11 +18,10 @@ class AdventureGameInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
         super().__init__(os.path.dirname(os.path.abspath(__file__)))
 
-    def on_generate(self, raw_adventures_file: str):
-        """Generate both basic and planning variant instances from raw adventures.
-        Args:
-            raw_adventures_file: File name of the JSON file containing raw adventures data.
-        """
+    def on_generate(self, seed: int, **kwargs):
+        # raw_adventures_file: File name of the JSON file containing raw adventures data.
+        raw_adventures_file = kwargs.get("raw_adventures_file")
+
         # load generated home_deliver_two adventures:
         adventures = self.load_json(f"resources/{raw_adventures_file}")
 
@@ -63,13 +61,20 @@ class AdventureGameInstanceGenerator(GameInstanceGenerator):
                 game_instance["initial_state"] = initial_state  # game parameters
                 game_instance["goal_state"] = goal_state  # game parameters
                 game_instance["max_turns"] = adventures[difficulty][adventure_id]['bench_turn_limit']  # game parameters
-                game_instance["optimal_turns"] = adventures[difficulty][adventure_id]['optimal_turns']  # game parameters
-                game_instance["optimal_solution"] = adventures[difficulty][adventure_id]['optimal_solution']  # game parameters
-                game_instance["optimal_commands"] = adventures[difficulty][adventure_id]['optimal_commands']  # game parameters
-                game_instance["action_definitions"] = adventures[difficulty][adventure_id]['action_definitions']  # game parameters
-                game_instance["room_definitions"] = adventures[difficulty][adventure_id]['room_definitions']  # game parameters
-                game_instance["entity_definitions"] = adventures[difficulty][adventure_id]['entity_definitions']  # game parameters
-                game_instance["domain_definitions"] = adventures[difficulty][adventure_id]['domain_definitions']  # game parameters
+                game_instance["optimal_turns"] = adventures[difficulty][adventure_id][
+                    'optimal_turns']  # game parameters
+                game_instance["optimal_solution"] = adventures[difficulty][adventure_id][
+                    'optimal_solution']  # game parameters
+                game_instance["optimal_commands"] = adventures[difficulty][adventure_id][
+                    'optimal_commands']  # game parameters
+                game_instance["action_definitions"] = adventures[difficulty][adventure_id][
+                    'action_definitions']  # game parameters
+                game_instance["room_definitions"] = adventures[difficulty][adventure_id][
+                    'room_definitions']  # game parameters
+                game_instance["entity_definitions"] = adventures[difficulty][adventure_id][
+                    'entity_definitions']  # game parameters
+                game_instance["domain_definitions"] = adventures[difficulty][adventure_id][
+                    'domain_definitions']  # game parameters
 
             # PLANNING
 
@@ -100,13 +105,20 @@ class AdventureGameInstanceGenerator(GameInstanceGenerator):
                 game_instance["initial_state"] = initial_state  # game parameters
                 game_instance["goal_state"] = goal_state  # game parameters
                 game_instance["max_turns"] = adventures[difficulty][adventure_id]['bench_turn_limit']  # game parameters
-                game_instance["optimal_turns"] = adventures[difficulty][adventure_id]['optimal_turns']  # game parameters
-                game_instance["optimal_solution"] = adventures[difficulty][adventure_id]['optimal_solution']  # game parameters
-                game_instance["optimal_commands"] = adventures[difficulty][adventure_id]['optimal_commands']  # game parameters
-                game_instance["action_definitions"] = adventures[difficulty][adventure_id]['action_definitions']  # game parameters
-                game_instance["room_definitions"] = adventures[difficulty][adventure_id]['room_definitions']  # game parameters
-                game_instance["entity_definitions"] = adventures[difficulty][adventure_id]['entity_definitions']  # game parameters
-                game_instance["domain_definitions"] = adventures[difficulty][adventure_id]['domain_definitions']  # game parameters
+                game_instance["optimal_turns"] = adventures[difficulty][adventure_id][
+                    'optimal_turns']  # game parameters
+                game_instance["optimal_solution"] = adventures[difficulty][adventure_id][
+                    'optimal_solution']  # game parameters
+                game_instance["optimal_commands"] = adventures[difficulty][adventure_id][
+                    'optimal_commands']  # game parameters
+                game_instance["action_definitions"] = adventures[difficulty][adventure_id][
+                    'action_definitions']  # game parameters
+                game_instance["room_definitions"] = adventures[difficulty][adventure_id][
+                    'room_definitions']  # game parameters
+                game_instance["entity_definitions"] = adventures[difficulty][adventure_id][
+                    'entity_definitions']  # game parameters
+                game_instance["domain_definitions"] = adventures[difficulty][adventure_id][
+                    'domain_definitions']  # game parameters
 
             # BASIC INVENTORY LIMIT
 
@@ -135,14 +147,19 @@ class AdventureGameInstanceGenerator(GameInstanceGenerator):
                 game_instance["initial_state"] = initial_state  # game parameters
                 game_instance["goal_state"] = goal_state  # game parameters
                 game_instance["max_turns"] = adventures[difficulty][adventure_id]['bench_turn_limit']  # game parameters
-                game_instance["optimal_turns"] = adventures[difficulty][adventure_id]['optimal_turns']  # game parameters
-                game_instance["optimal_solution"] = adventures[difficulty][adventure_id]['optimal_solution']  # game parameters
-                game_instance["optimal_commands"] = adventures[difficulty][adventure_id]['optimal_commands']  # game parameters
+                game_instance["optimal_turns"] = adventures[difficulty][adventure_id][
+                    'optimal_turns']  # game parameters
+                game_instance["optimal_solution"] = adventures[difficulty][adventure_id][
+                    'optimal_solution']  # game parameters
+                game_instance["optimal_commands"] = adventures[difficulty][adventure_id][
+                    'optimal_commands']  # game parameters
 
                 game_instance["action_definitions"] = ["basic_actions_v2_invlimit.json"]  # game parameters
 
-                game_instance["room_definitions"] = adventures[difficulty][adventure_id]['room_definitions']  # game parameters
-                game_instance["entity_definitions"] = adventures[difficulty][adventure_id]['entity_definitions']  # game parameters
+                game_instance["room_definitions"] = adventures[difficulty][adventure_id][
+                    'room_definitions']  # game parameters
+                game_instance["entity_definitions"] = adventures[difficulty][adventure_id][
+                    'entity_definitions']  # game parameters
 
                 game_instance["domain_definitions"] = ["home_domain_invlimit.json"]  # game parameters
 
@@ -192,4 +209,4 @@ class AdventureGameInstanceGenerator(GameInstanceGenerator):
 
 if __name__ == '__main__':
     # The resulting instances.json is automatically saved to the "in" directory of the game folder
-    AdventureGameInstanceGenerator().generate(raw_adventures_file="curated_home_deliver_three_adventures_v2")
+    AdventureGameInstanceGenerator().generate(seed=42, raw_adventures_file="curated_home_deliver_three_adventures_v2")

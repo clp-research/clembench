@@ -2,10 +2,10 @@
   "game_name": "adventuregame",
   "description": "Interactive Fiction clemgame",
   "main_game": "adventuregame",
-  "players": "one",
+  "players": 1,
   "image": "none",
   "languages": ["en"],
-  "benchmark": ["v2"],
+  "benchmark": ["2.0"],
   "regression": "large",
   "roles": ["Adventurer"]
 }

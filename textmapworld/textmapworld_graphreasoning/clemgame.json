@@ -2,7 +2,7 @@
   "game_name": "textmapworld_graphreasoning",
   "description": "Exhaustively exploring a map with graph reasoning.",
   "main_game": "textmapworld",
-  "players": "one",
+  "players": 1,
   "image": "none",
   "languages": ["en"],
   "benchmark": ["2.0"],

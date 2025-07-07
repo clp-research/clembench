@@ -7,11 +7,9 @@ Creates files in ./instances and ./requests
 import os
 from random import randint
 import logging
-import random
 
 from clemcore.clemgame import GameInstanceGenerator
 
-random.seed(123)
 N_INSTANCES = 30
 
 logger = logging.getLogger(__name__)
@@ -103,7 +101,7 @@ class ImageGameInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
         super().__init__(os.path.dirname(__file__))
 
-    def on_generate(self):
+    def on_generate(self, seed: int, **kwargs):
 
         player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_header.template")
         player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_header.template")
@@ -158,4 +156,4 @@ class ImageGameInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == '__main__':
-    ImageGameInstanceGenerator().generate()
+    ImageGameInstanceGenerator().generate(seed=123)

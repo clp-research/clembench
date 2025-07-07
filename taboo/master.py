@@ -82,8 +82,8 @@ class Taboo(DialogueGameMaster):
     word or related words in their explanation. Morphology is checked in check_clue().
     """
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
         self.max_rounds: int = experiment["max_turns"]
 
     def _on_setup(self, **game_instance):
@@ -203,6 +203,12 @@ class TabooScorer(GameScorer):
         super().__init__(game_name, experiment, game_instance)
 
     def compute_scores(self, episode_interactions: Dict) -> None:
+        if "meta" in episode_interactions:  # if given, copy over meta info
+            self.scores["meta"] = episode_interactions["meta"]
+        if "player_models" in episode_interactions:  # if given, copy over players info
+            self.scores["player_models"] = episode_interactions["player_models"]
+        if "players" in episode_interactions:  # if given, copy over players info
+            self.scores["players"] = episode_interactions["players"]
         """ Episode level scores"""
         turn_scores = []
         prev_guess = None
@@ -291,7 +297,7 @@ class TabooGameBenchmark(GameBenchmark):
         # TODO: experiment could also be set through GameSpec
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return Taboo(self.game_name, self.game_path, experiment, player_models)
+        return Taboo(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return TabooScorer(self.game_name, experiment, game_instance)

@@ -6,70 +6,53 @@ python3 instancegenerator.py
 Creates instance.json file in ./in
 
 """
-import json
 import os
 import random
 import logging
 import openai
 import requests
-import spacy
 import argparse
 
 import nltk
 
 from clemcore.clemgame import GameInstanceGenerator
 
-from utils.select_taboo_words import is_function_word
-
 N_INSTANCES = 20  # how many different target words
 N_GUESSES = 3  # how many tries the guesser will have
 N_RELATED_WORDS = 3
-LANGUAGE = "en"
 VERSION = "v2.0"
 
-WORD_LISTS = f"resources/target_words/{LANGUAGE}/taboo_word_lists.json"
+WORD_LISTS = "resources/target_words/{}/taboo_word_lists.json"
 
 logger = logging.getLogger(__name__)
 
+
 # Seed for reproducibility
 # random.seed(87326423)  # v1 seed
-random.seed(73128361)  # v2.0 seed
-
-# Set up OpenAI API key if using openai
-OPENAI_API_KEY = ""  # Insert your OpenAI API key
-
+# random.seed(73128361)  # v2.0 seed
 
 class TabooGameInstanceGenerator(GameInstanceGenerator):
 
     def __init__(self):
         super().__init__(os.path.dirname(__file__))
         self.n = N_RELATED_WORDS
-        self.language = LANGUAGE
         # Variable for storing spaCy model (only loaded if conceptnet is used)
         self.tagger = None
         # Using nltk Snowball stemmer:
         self.stemmer = nltk.stem.SnowballStemmer('english')
 
-    def on_generate(self, mode):
+    def on_generate(self, seed: int, **kwargs):
         # prepare related word generation
-        if mode == "conceptnet":
-            # this is currently the default
-            self.filename = f"instances_{VERSION}_{LANGUAGE}.json"
-            # Load spaCy model for filtering nouns
-            self.tagger = spacy.load("en_core_web_sm")
-            generator_function = self.get_related_words_from_conceptnet
-        else:
-            self.filename = f"instances_{VERSION}_{LANGUAGE}_{mode}.json"
-            if mode == "openai":
-                openai.api_key = OPENAI_API_KEY
-                generator_function = self.generate_related_words_from_openai
+        lang = kwargs["lang"]
+        mode = kwargs["mode"]
+        assert mode == "manual", "Only support manual related word selection for now"
 
-        taboo_words = self.load_json(file_name=WORD_LISTS)
+        taboo_words = self.load_json(WORD_LISTS.format(lang))
 
         for frequency in ["high", "medium", "low"]:
             print("\nSampling from freq:", frequency)
 
-            experiment = self.add_experiment(f"{frequency}_{LANGUAGE}")
+            experiment = self.add_experiment(f"{frequency}_{lang}")
             experiment["max_turns"] = N_GUESSES
             experiment["describer_initial_prompt"] = self.load_template("resources/initial_prompts/initial_describer")
             experiment["guesser_initial_prompt"] = self.load_template("resources/initial_prompts/initial_guesser")
@@ -88,11 +71,12 @@ class TabooGameInstanceGenerator(GameInstanceGenerator):
                     continue
 
                 # Generate related words
-                print(f"Retrieving related words for '{target}'")
                 related_words = []
                 if mode == "conceptnet":
+                    print(f"Retrieving related words for '{target}'")
                     related_words = self.get_related_words_from_conceptnet(target)
                 elif mode == "openai":
+                    print(f"Retrieving related words for '{target}'")
                     related_words = self.generate_related_words_from_openai(target)
 
                 if len(related_words) < N_RELATED_WORDS and not mode == "manual":
@@ -116,6 +100,14 @@ class TabooGameInstanceGenerator(GameInstanceGenerator):
         """
         Fetch related words from ConceptNet and filter for nouns.
         """
+        REMOVE = (
+            "IN", "UH", "WRB", "DT", "PRP", "CD", "FW", ".", "WP$", "CC", "WDT", "WP",
+            "TO", "LS", "ADD", "EX", "XX", ":", "NFP", "``", ",", "PDT", "PRP$"
+        )
+
+        def is_function_word(tag):
+            return tag in REMOVE
+
         try:
             url = f"http://api.conceptnet.io/c/{self.language}/{word}/"
             response = requests.get(url)
@@ -198,4 +190,4 @@ if __name__ == '__main__':
     parser.add_argument("-m", "--mode", choices=["manual", "conceptnet", "openai"], default="conceptnet",
                         help="Choose whether to use ConceptNet or OpenAI.")
     args = parser.parse_args()
-    TabooGameInstanceGenerator().generate(mode=args.mode)
+    TabooGameInstanceGenerator().generate(seed=73128361, mode=args.mode)

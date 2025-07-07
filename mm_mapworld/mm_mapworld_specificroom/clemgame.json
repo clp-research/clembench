@@ -2,10 +2,10 @@
   "game_name": "mm_mapworld_specificroom",
   "description": "In this game an agent is placed on a graph and needs to navigate through it by reasoning about past steps taken",
   "main_game": "mm_mapworld_main",
-  "players": "two",
+  "players": 2,
   "image": "single",
   "languages": ["en"],
-  "benchmark": ["1.6", "1.6.5", "2.0"],
-  "regression": "large",
+  "benchmark": ["multimodal_1.6", "multimodal_1.6.5", "multimodal_2.0"],
+  "regression": "large"
   "roles": ["Describer", "Walker"]
 }

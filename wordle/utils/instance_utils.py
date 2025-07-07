@@ -47,7 +47,7 @@ class InstanceUtils(GameResourceLocator):
 
         print("Downloading nytcrosswords...")
 
-        fp = f"resources/target_words/{self.language}/"
+        fp = f"{self.game_path}/resources/target_words/{self.language}/"
 
         from kaggle.api.kaggle_api_extended import KaggleApi
         api = KaggleApi()

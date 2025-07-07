@@ -2,7 +2,7 @@
   "game_name": "textmapworld_specificroom",
   "description": "Exploring a map to find a specific room.",
   "main_game": "textmapworld",
-  "players": "one",
+  "players": 1,
   "image": "none",
   "languages": ["en"],
   "benchmark": ["2.0"],

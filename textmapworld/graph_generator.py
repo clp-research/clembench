@@ -1,10 +1,10 @@
+import os.path
+
 import numpy as np
 import random
-from os.path import exists
 import matplotlib.pyplot as plt
 import time
 import networkx as nx
-import os
 
 class SaveGraphInfo:
 
@@ -65,7 +65,7 @@ class SaveGraphInfo:
 
 class GraphGenerator:
     
-    def __init__(self, graph_type, n, m, n_rooms, cycle, ambiguity, game_name):
+    def __init__(self, graph_type, n, m, n_rooms, cycle, ambiguity, game_name, game_path):
         self.n = n
         self.m = m
         self.n_rooms = n_rooms
@@ -74,6 +74,7 @@ class GraphGenerator:
         self.graph_type = graph_type
         self.ambiguity = ambiguity
         self.game_name = game_name
+        self.game_path = game_path
 
         if self.cycle!= "adding_cycle":
             self.G = nx.Graph()
@@ -185,8 +186,7 @@ class GraphGenerator:
         paths= []
         # check the cycle variable
         cycle_types=["cycle_true", "cycle_false", "random", "adding_cycle"]
-        if self.cycle not in cycle_types:
-            return "The cycle variable is not valid"
+        assert self.cycle in cycle_types, "The cycle variable is not valid"
         while self.G.number_of_nodes() < self.n_rooms :
             # Prevent diagonal moves when cycle is set to "random"
             random_dir = np.random.choice(list(dir2delta.keys()))
@@ -262,17 +262,16 @@ class GraphGenerator:
         self.random_room = random.choice(list(self.G.nodes()))
         
         "--------------Graph type control--------------"
-        if self.graph_type not in graph_types:
-            return "The graph_type variable is not valid"
-        
+        assert self.graph_type in graph_types, "The graph_type variable is not valid"
+
         if self.graph_type=="named_graph":
 
             def assign_types(ambiguity, graph):
 
-                rooms = ["Bedroom", "Living room", "Kitchen", "Bathroom", "Dining room", "Study room", "Guest room", "Game room", "Home office", "Laundry room", "Pantry", "Attic", 
-                                "Basement", "Garage", "Sunroom", "Mudroom", "Closet", "Library", "Foyer", "Nursery", "Home gym", "Media room", "Home theater", "Playroom", "Utility room", "Workshop", 
+                rooms = ["Bedroom", "Living room", "Kitchen", "Bathroom", "Dining room", "Study room", "Guest room", "Game room", "Home office", "Laundry room", "Pantry", "Attic",
+                                "Basement", "Garage", "Sunroom", "Mudroom", "Closet", "Library", "Foyer", "Nursery", "Home gym", "Media room", "Home theater", "Playroom", "Utility room", "Workshop",
                                 "Conservatory", "Craft room", "Music room", "Gallery", "Sauna", "Billiard room", "Bar", "Wine cellar", "Cellar", "Exercise room", "Studio", "Recreation room", "Solarium", "Balcony"]
-                graph_unnamed_nodes = list(graph.nodes()) 
+                graph_unnamed_nodes = list(graph.nodes())
                 total_nodes = len(graph.nodes())
 
                 repetition_rooms, repetition_times = ambiguity[:2] if ambiguity!= None else (0, 0)
@@ -304,7 +303,7 @@ class GraphGenerator:
                             if self.ambiguity != None:
                                 self.random_room = f"{mapping[self.random_room]}_{self.random_room}"
                             else:
-                                self.random_room = mapping[self.random_room]            
+                                self.random_room = mapping[self.random_room]
                     return mapping
             
 
@@ -312,12 +311,6 @@ class GraphGenerator:
 
             picture_number = random.randint(0, 10000)
             picture_name = "graph_" + str(picture_number) + ".png"
-            # get the current working directory
-            current_working_directory = os.path.join("..", "clemgames", "textmapworld", self.game_name, "resources", "images")
-            file_exists = exists(os.path.join(current_working_directory, picture_name))
-            
-            if file_exists:
-                picture_name = "graph_" + str(picture_number + 1) + ".png"
 
             if  self.graph_type=="unnamed_graph":
                 nx.draw_networkx(graph, pos={n: n for n in graph.nodes()})
@@ -334,7 +327,7 @@ class GraphGenerator:
                 nx.draw_networkx(G_copy, pos={n: n for n in G_copy.nodes()}, labels=labels, with_labels=True)
 
             # Display the graph
-            plt.savefig(current_working_directory + picture_name)
+            plt.savefig(os.path.join(self.game_path, "generated", "images", picture_name))
             plt.clf()
 
             return picture_name

@@ -2,7 +2,7 @@ from typing import List, Dict
 import logging
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameMaster, DialogueGameMaster, GameBenchmark, GameScorer, metrics, Player
+from clemcore.clemgame import GameMaster, DialogueGameMaster, GameBenchmark, GameScorer, metrics, Player, GameSpec
 from evaluator import evaluate, calculate_flipped_pixels
 
 import re
@@ -43,10 +43,11 @@ class ImageGame:
         self.max_rounds = self.grid_dimension * self.grid_dimension * 2
         self.terminate = False
 
+
 class ImageGameMaster(DialogueGameMaster):
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
 
     def _on_setup(self, **game_instance):
         self.request_count = 0
@@ -332,7 +333,7 @@ class ImageGameScorer(GameScorer):
 class ImageGameBenchmark(GameBenchmark):
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return ImageGameMaster(self.game_name, self.game_path, experiment, player_models)
+        return ImageGameMaster(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return ImageGameScorer(self.game_name, experiment, game_instance)

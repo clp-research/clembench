@@ -24,8 +24,8 @@ class CodenamesGame(DialogueGameMaster):
     which player B has to guess from the given clue.
     """
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[backends.Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[backends.Model]):
+        super().__init__(game_spec, experiment, player_models)
         self.experiment = experiment
         self.opponent_difficulty: bool = experiment[OPPONENT_DIFFICULTY]
 
@@ -56,8 +56,7 @@ class CodenamesGame(DialogueGameMaster):
 
     def _get_cluegiver_prompt(self, initial=False) -> str:
         folder = "initial_prompts" if initial else "intermittent_prompts"
-        path = f"{GAME_PATH}/resources/{folder}/prompt_cluegiver"
-        prompt_cluegiver = self.load_template(path)
+        prompt_cluegiver = self.load_template(f"resources/{folder}/prompt_cluegiver")
 
         team_words = ", ".join(self.board.get_hidden_words(TEAM))
         opponent_words = ", ".join(self.board.get_hidden_words(OPPONENT))
@@ -77,8 +76,7 @@ class CodenamesGame(DialogueGameMaster):
         return self._get_guesser_prompt("intermittent_prompts")
 
     def _get_guesser_prompt(self, folder) -> str:
-        path = f"{GAME_PATH}/resources/{folder}/prompt_guesser"
-        prompt_guesser = self.load_template(path)
+        prompt_guesser = self.load_template(f"resources/{folder}/prompt_guesser")
 
         board = ", ".join(self.board.get_all_hidden_words())
         instance_prompt_guesser = Template(prompt_guesser).substitute(board=board,
@@ -278,7 +276,7 @@ class CodenamesGameBenchmark(GameBenchmark):
         random.seed(SEED)
 
     def create_game_master(self, experiment: Dict, player_models: List[backends.Model]) -> DialogueGameMaster:
-        return CodenamesGame(self.game_name, self.game_path, experiment, player_models)
+        return CodenamesGame(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment_config, game_instance) -> GameScorer:
         return CodenamesScorer(self.game_name, experiment_config, game_instance)

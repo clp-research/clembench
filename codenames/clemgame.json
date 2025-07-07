@@ -2,7 +2,7 @@
   "game_name": "codenames",
   "description": "Codenames game between a cluegiver and a guesser",
   "main_game": "codenames",
-  "players": "two",
+  "players": 2,
   "image": "none",
   "languages": ["en"],
   "benchmark": ["2.0"],

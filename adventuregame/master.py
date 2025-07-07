@@ -33,9 +33,9 @@ class AdventureGameMaster(DialogueGameMaster):
     Handles prompted format adherence checks and creates episode records.
     """
 
-    def __init__(self, game_name: str, game_path: str, experiment: Dict, player_models: List[Model]):
-        super().__init__(game_name, game_path, experiment, player_models)
-        self.game_path = game_path
+    def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        super().__init__(game_spec, experiment, player_models)
+        self.game_path = game_spec.game_path
         self.success = True
         self.invalid_format: str = ""  # to track responses with invalid format
         self.finished: bool = False  # game finished successfully
@@ -533,7 +533,7 @@ class AdventureGameBenchmark(GameBenchmark):
         return "Interactive Fiction clemgame"
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return AdventureGameMaster(self.game_name, self.game_path, experiment, player_models)
+        return AdventureGameMaster(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return AdventureGameScorer(self.game_name, experiment, game_instance)

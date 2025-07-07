@@ -2,10 +2,10 @@
   "game_name": "matchit",
   "description": "A simple game in which two players have to decide whether they see the same image or not.",
   "main_game": "matchit",
-  "players": "two",
+  "players": 2,
   "image": "single",
   "languages": ["en"],
-  "benchmark": ["1.6", "1.6.5", "2.0"],
+  "benchmark": ["multimodal_1.6", "multimodal_1.6.5", "multimodal_2.0"],
   "regression": "large",
   "roles": ["Player A", "Player B"]
 }

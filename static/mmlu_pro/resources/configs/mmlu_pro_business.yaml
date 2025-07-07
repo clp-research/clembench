@@ -1,0 +1,5 @@
+description: "The following are multiple choice questions (with answers) about business. Answer only with \"The answer is (X)\" where X is the correct letter choice.\n"
+include: "_default_template_yaml"
+task: "playschool_mmlu_pro_business"
+task_alias: "business"
+process_docs: utils.process_business

@@ -1,5 +1,0 @@
-description: "The following are multiple choice questions (with answers) about history. Answer only with \"The answer is (X)\" where X is the correct letter choice.\n"
-include: "_default_template_yaml"
-task: "playschool_mmlu_pro_history"
-task_alias: "history"
-process_docs: !function utils.process_history

@@ -1,5 +1,0 @@
-description: "The following are multiple choice questions (with answers) about physics. Answer only with \"The answer is (X)\" where X is the correct letter choice.\n"
-include: "_default_template_yaml"
-task: "playschool_mmlu_pro_physics"
-task_alias: "physics"
-process_docs: !function utils.process_physics

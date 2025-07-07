@@ -6,6 +6,6 @@
   "image": "multi",
   "languages": ["en"],
   "benchmark": ["multimodal_1.6", "multimodal_1.6.5", "multimodal_2.0"],
-  "regression": "large"
+  "regression": "large",
   "roles": ["Instruction Giver", "Instruction Follower"]
 }

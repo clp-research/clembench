@@ -1,3 +1,0 @@
-task: playschool_glue_diagnostics_predicate_argument_structure
-dataset_name: predicate_argument_structure
-include: _glue_diagnostics_template

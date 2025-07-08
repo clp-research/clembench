@@ -8,6 +8,7 @@ from clemcore.backends import Model
 from clemcore.clemgame import Player, DialogueGameMaster, GameBenchmark, GameMaster, ParseError
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, GameScorer, BENCH_SCORE
+from clemcore.utils import string_utils
 from jinja2 import Template
 
 
@@ -20,16 +21,21 @@ class Answerer(Player):
     def _custom_response(self, context: Dict) -> str:
         r = random.random()  # float from 0 to 1
         if r < 1 / 3:  # correct answer (SUCCESS)
-            return self.target
+            return f"{self.target}, because this is the correct answer."
         if r < 2 / 3:  # wrong answer (LOSE)
             possible_choices = self.choices.copy()
             possible_choices.remove(self.target)
-            return random.choice(possible_choices)
+            random_target = random.choice(possible_choices)
+            return f"{random_target}, because this is the correct answer."
         return "I don't know"  # ABORT
 
 
 def parse_response(response: str, choices: List) -> str:
-    parsed_response = response.split(" ")[0]
+    response = response.strip()
+    if len(response) == 0:
+        raise ParseError(f"The response doesn't start with one of the required word {choices}, but is empty")
+    parsed_response = response.split(" ")[0]  # take the first word with punctuation
+    parsed_response = string_utils.remove_punctuation(parsed_response)
     if parsed_response.lower() not in choices:
         raise ParseError(f"The response doesn't start with one of the required word {choices}, but {parsed_response}")
     return parsed_response

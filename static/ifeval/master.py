@@ -1,3 +1,4 @@
+import logging
 from dataclasses import dataclass
 from typing import Dict, List
 from clemcore import backends
@@ -7,6 +8,8 @@ from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCES
     METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, BENCH_SCORE
 
 import instructions_registry
+
+logger = logging.getLogger(__name__)
 
 
 class InstructionFollower(Player):
@@ -44,7 +47,16 @@ class IFEvalGameMaster(DialogueGameMaster):
         self.state = GameState(instance["target"], instance["input"])
 
         # Setup player
-        self.follower = InstructionFollower(self.player_models[0])
+        required_max_tokens = self.experiment["meta"]["generation_kwargs"]["max_gen_toks"]
+        model = self.player_models[0]
+        self.initial_max_tokens = model.max_tokens
+        if model.max_tokens < required_max_tokens:
+            logger.info(f"_on_setup(): "
+                        f"Increase max_tokens={required_max_tokens}, "
+                        f"because the current value '{model.max_tokens}' "
+                        f"is lower than the required value for the task.")
+            model.set_gen_arg("max_tokens", required_max_tokens)
+        self.follower = InstructionFollower(model)
         self.add_player(self.follower, initial_context=self.state.initial_prompt)
 
         # Setup game specific logging
@@ -63,10 +75,10 @@ class IFEvalGameMaster(DialogueGameMaster):
     def _on_valid_player_response(self, player: Player, parsed_response: str):
         self.log_to_self("target", self.state.target)
         if is_successful(parsed_response, self.state.target):
-            self.log_to_self("correct label", "game_result = WIN")
+            self.log_to_self("followed all instructions", "game_result = WIN")
             self.state.success = True
         else:
-            self.log_to_self("wrong label", "game_result = LOSE")
+            self.log_to_self("followed not all instructions", "game_result = LOSE")
             self.state.failure = True
 
     def _on_after_game(self):
@@ -77,6 +89,9 @@ class IFEvalGameMaster(DialogueGameMaster):
         self.log_key(METRIC_REQUEST_COUNT, self.request_counts)
         self.log_key(METRIC_REQUEST_COUNT_PARSED, self.parsed_request_counts)
         self.log_key(METRIC_REQUEST_COUNT_VIOLATED, self.violated_request_counts)
+
+        logger.info(f"_on_after_game(): Reset max_tokens={self.initial_max_tokens} to the initial value.")
+        self.player_models[0].set_gen_arg("max_tokens", self.initial_max_tokens)
 
 
 class IFEvalGameScorer(GameScorer):

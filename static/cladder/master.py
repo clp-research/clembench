@@ -21,12 +21,12 @@ class Answerer(Player):
     def _custom_response(self, context: Dict) -> str:
         r = random.random()  # float from 0 to 1
         if r < 1 / 3:  # correct answer (SUCCESS)
-            return f"{self.target}, because this is the correct answer."
+            return f"{self.target.capitalize()}, because this is the correct answer."
         if r < 2 / 3:  # wrong answer (LOSE)
             possible_choices = self.choices.copy()
             possible_choices.remove(self.target)
             random_target = random.choice(possible_choices)
-            return f"{random_target}, because this is the correct answer."
+            return f"{random_target.capitalize()}, because this is the correct answer."
         return "I don't know"  # ABORT
 
 
@@ -34,7 +34,7 @@ def parse_response(response: str, choices: List) -> str:
     response = response.strip()
     if len(response) == 0:
         raise ParseError(f"The response doesn't start with one of the required word {choices}, but is empty")
-    parsed_response = response.split(" ")[0]  # take the first word with punctuation
+    parsed_response = response.split()[0]  # take the first word with punctuation
     parsed_response = string_utils.remove_punctuation(parsed_response)
     if parsed_response.lower() not in choices:
         raise ParseError(f"The response doesn't start with one of the required word {choices}, but {parsed_response}")
@@ -56,7 +56,7 @@ class CLadderGameMaster(DialogueGameMaster):
     def _on_setup(self, **instance):
         # Setup game state (arguments in same order as above)
         initial_prompt = Template(self.experiment["initial_prompt"]).render(prompt=instance["input"])
-        self.state = GameState(instance["target"].lower(), initial_prompt, self.experiment["choices"])
+        self.state = GameState(instance["target"], initial_prompt, self.experiment["choices"])
 
         # Setup player
         self.answerer = Answerer(self.player_models[0], self.state.target, self.state.choices)
@@ -87,7 +87,7 @@ class CLadderGameMaster(DialogueGameMaster):
 
     def _on_valid_player_response(self, player: Player, parsed_response: str):
         self.log_to_self("target", self.state.target)
-        if self.state.parsed_response == self.state.target:
+        if self.state.parsed_response.lower() == self.state.target.lower():
             self.log_to_self("correct label", "game_result = WIN")
             self.state.success = True
         else:

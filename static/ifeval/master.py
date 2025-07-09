@@ -100,7 +100,7 @@ class IFEvalGameScorer(GameScorer):
         pass  # single-turn
 
     def log_main_score(self, episode_interactions: Dict):
-        accuracy = 1.0 if episode_interactions[METRIC_SUCCESS] else 0.0
+        accuracy = 100 if episode_interactions[METRIC_SUCCESS] else 0
         self.log_episode_score(BENCH_SCORE, accuracy)
 
 

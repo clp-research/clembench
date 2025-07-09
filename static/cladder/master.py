@@ -113,7 +113,7 @@ class CLadderGameScorer(GameScorer):
         if episode_interactions[METRIC_ABORTED]:
             self.log_episode_score(BENCH_SCORE, np.nan)
             return
-        accuracy = 1.0 if episode_interactions[METRIC_SUCCESS] else 0.0
+        accuracy = 100 if episode_interactions[METRIC_SUCCESS] else 0
         self.log_episode_score(BENCH_SCORE, accuracy)
 
 

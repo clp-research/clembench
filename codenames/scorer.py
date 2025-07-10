@@ -1,7 +1,7 @@
 import statistics, math
 
-from clemcore.clemgame import GameScorer
-from clemcore.clemgame.metrics import BENCH_SCORE, METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS
+from clemcore.clemgame.legacy.scorer import GameScorer
+from clemcore.clemgame.metrics import BENCH_SCORE, METRIC_ABORTED, METRIC_SUCCESS
 
 from constants import *
 

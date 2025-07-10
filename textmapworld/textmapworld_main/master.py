@@ -1,9 +1,11 @@
 from clemcore.backends import Model, CustomResponseModel
-from clemcore.clemgame import GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import GameMaster, GameBenchmark, Player, GameSpec
+from clemcore.clemgame.legacy.scorer import GameScorer
+from clemcore.clemgame.legacy.master import DialogueGameMaster
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
 from clemcore.utils import file_utils, string_utils
 
-from typing import Dict, Tuple, List
+from typing import Dict, List
 import json
 import numpy as np
 import re

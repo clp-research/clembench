@@ -7,8 +7,10 @@ import logging
 import numpy as np
 
 import clemcore.clemgame.metrics as ms
-from clemcore.clemgame import GameBenchmark, DialogueGameMaster, GameScorer, GameSpec, GameRecorder
+from clemcore.clemgame import GameBenchmark, GameSpec
 from clemcore.clemgame import Player
+from clemcore.clemgame.legacy.scorer import GameScorer
+from clemcore.clemgame.legacy.master import DialogueGameMaster
 
 from clemcore.backends import Model, CustomResponseModel
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE, METRIC_REQUEST_COUNT, \

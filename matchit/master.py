@@ -1,4 +1,6 @@
-from clemcore.clemgame import Player, GameMaster, GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import Player, GameMaster, GameBenchmark, GameSpec
+from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame import metrics as ms
 from clemcore.backends import Model
 from clemcore.utils import file_utils
@@ -194,14 +196,12 @@ class MatchIt(DialogueGameMaster):
             other_player = self.player_a if player == self.player_b else self.player_b
 
             if player.answer != "" and player.question != "":
-                # self.log_to_self("note", "a+q -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
                 self.set_context_for(other_player, player.answer + "\n" + player.question + self.a_request)
                 player.description = ""
                 player.question = ""
                 player.answer = ""
                 player.decision = ""
             elif player.decision != "" and player.question != "":
-                # self.log_to_self("note", "a+d -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
                 self.set_context_for(other_player, player.decision + "\n" + player.question)
                 player.description = ""
                 player.question = ""

@@ -11,8 +11,9 @@ from sklearn.metrics import cohen_kappa_score
 
 import clemcore.clemgame.metrics as ms
 from clemcore.backends import Model, CustomResponseModel
-from clemcore.clemgame import GameSpec, Player
-from clemcore.clemgame import DialogueGameMaster, GameBenchmark, GameScorer
+from clemcore.clemgame import GameSpec, Player, GameBenchmark
+from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.legacy.scorer import GameScorer
 import logging
 
 from constants import (
@@ -133,7 +134,7 @@ class PrivateShared(DialogueGameMaster):
 
         self.add_player(self.answerer)
         self.add_player(self.questioner, initial_context=dict(role="user", content=self.words.dummy_prompt))
-        self.current_player_idx = 1 # start with the questioner
+        self._current_player_idx = 1  # start with the questioner
 
     def _on_before_game(self):
         self.set_context_for(self.questioner, self.words.dummy_prompt)
@@ -165,7 +166,7 @@ class PrivateShared(DialogueGameMaster):
         Rreturns:
             True, when to start a new round
         """
-        return self.current_player_idx == 1
+        return self._current_player_idx == 1
     
     def _does_game_proceed(self) -> bool:
         """Check if the game can continue, i.e. not all slots are filled and the game wasn't aborted."""
@@ -450,7 +451,7 @@ class PrivateSharedScorer(GameScorer):
         self.log_episode_score(ms.METRIC_REQUEST_COUNT, reqs)
         self.log_episode_score(ms.METRIC_REQUEST_COUNT_PARSED, parsed_reqs)
         self.log_episode_score(ms.METRIC_REQUEST_COUNT_VIOLATED, violated_reqs)
-        self.log_episode_score(ms.METRIC_REQUEST_SUCCESS, parsed_reqs / reqs)
+        self.log_episode_score(ms.METRIC_REQUEST_SUCCESS_RATIO, parsed_reqs / reqs)
 
     def _get_gold_pred(self, turns: List) -> Tuple[List, List]:
         """Retrieve the gold standard and the predictions for all turns."""

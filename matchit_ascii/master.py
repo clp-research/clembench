@@ -3,7 +3,9 @@ from typing import List, Dict, Tuple
 import numpy as np
 
 from clemcore.backends import Model
-from clemcore.clemgame import Player, GameMaster, GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import Player, GameMaster, GameBenchmark, GameSpec
+from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame import metrics as ms
 
 logger = logging.getLogger(__name__)
@@ -55,7 +57,6 @@ class MatchItAscii(DialogueGameMaster):
         self.success_a: bool = True
         self.success_b: bool = True
         self.aborted: bool = False
-
 
     def _on_setup(self, **game_instance):
         self.game_instance = game_instance
@@ -192,14 +193,12 @@ class MatchItAscii(DialogueGameMaster):
             other_player = self.player_a if player == self.player_b else self.player_b
 
             if player.answer != "" and player.question != "":
-                # self.log_to_self("note", "a+q -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
                 self.set_context_for(other_player, player.answer + "\n" + player.question + self.a_request)
                 player.description = ""
                 player.question = ""
                 player.answer = ""
                 player.decision = ""
             elif player.decision != "" and player.question != "":
-                # self.log_to_self("note", "a+d -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
                 self.set_context_for(other_player, player.decision + "\n" + player.question)
                 player.description = ""
                 player.question = ""
@@ -321,11 +320,8 @@ class MatchItBenchmark(GameBenchmark):
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
 
-    def create_game_master(self,
-                           experiment: Dict,
-                           player_backends: List[str]
-                           ) -> GameMaster:
-        return MatchItAscii(self.game_spec, experiment, player_backends)
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
+        return MatchItAscii(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return MatchItScorer(self.game_name, experiment, game_instance)

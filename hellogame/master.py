@@ -2,7 +2,8 @@ import string
 from typing import Dict, List
 
 from clemcore.backends import Model, CustomResponseModel
-from clemcore.clemgame import GameBenchmark, Player, DialogueGameMaster, GameSpec, GameRecorder
+from clemcore.clemgame import GameBenchmark, Player, GameSpec
+from clemcore.clemgame.legacy.master import DialogueGameMaster
 import logging
 
 logger = logging.getLogger(__name__)

@@ -1,13 +1,14 @@
-import os.path
 from typing import Dict, Tuple, List, Union
 import logging
 import numpy as np
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, GameRecorder
+from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player
+from clemcore.clemgame.legacy.scorer import GameScorer
+from clemcore.clemgame.legacy.master import DialogueGameMaster
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
-    METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS, BENCH_SCORE
-from clemcore.utils import file_utils, string_utils
+    METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_SUCCESS_RATIO, BENCH_SCORE
+from clemcore.utils import string_utils
 
 import nltk
 from nltk.corpus import stopwords
@@ -259,7 +260,7 @@ class TabooScorer(GameScorer):
         request_count = sum([turn["request_count"] for turn in turn_scores])
         self.log_episode_score(METRIC_REQUEST_COUNT, request_count)
 
-        self.log_episode_score(METRIC_REQUEST_SUCCESS, parsed_request_count / request_count)
+        self.log_episode_score(METRIC_REQUEST_SUCCESS_RATIO, parsed_request_count / request_count)
         # checking the last guess (could be None) is ok,
         # b.c. the game ends only successfully, when there is a correct guess
 
@@ -294,25 +295,9 @@ class TabooGameBenchmark(GameBenchmark):
 
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
-        # TODO: experiment could also be set through GameSpec
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
         return Taboo(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return TabooScorer(self.game_name, experiment, game_instance)
-
-
-def main():
-    # select one experiment and instance
-    game_path = os.path.dirname(os.path.abspath(__file__))
-    experiments = file_utils.load_json("in/instances.json", game_path)
-    experiment_1 = experiments["experiments"][0]
-    game_1 = experiment_1["game_instances"][0]
-    master = Taboo("taboo", experiment_1, ["mock", "mock"])
-    master.setup(**game_1)
-    master.play()
-
-
-if __name__ == '__main__':
-    main()

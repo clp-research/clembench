@@ -5,9 +5,10 @@ import re
 import logging
 
 from clemcore.backends import Model
-from clemcore.utils import file_utils
 from clemcore.clemgame import metrics, Player
-from clemcore.clemgame import DialogueGameMaster, GameBenchmark, GameScorer, GameSpec
+from clemcore.clemgame import GameBenchmark, GameSpec
+from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.legacy.scorer import GameScorer
 
 logger = logging.getLogger(__name__)
 
@@ -61,10 +62,10 @@ class MultimodalReferenceGameMaster(DialogueGameMaster):
                                                         name="Player 2",
                                                         game_recorder=self.game_recorder)
         p1_initial_context = dict(role="user",
-                       content=self.game.player_1_prompt_header,
-                       image=[self.game.player_1_first_image,
-                              self.game.player_1_second_image,
-                              self.game.player_1_third_image])
+                                  content=self.game.player_1_prompt_header,
+                                  image=[self.game.player_1_first_image,
+                                         self.game.player_1_second_image,
+                                         self.game.player_1_third_image])
         self.add_player(self.instruction_giver, initial_context=p1_initial_context)
         self.add_player(self.instruction_follower)
         self.terminate = False
@@ -143,8 +144,8 @@ class MultimodalReferenceGameMaster(DialogueGameMaster):
                      self.game.player_2_second_image,
                      self.game.player_2_third_image]
             self.set_context_for(self.instruction_follower,
-                                 content = content,
-                                 image = image)
+                                 content=content,
+                                 image=image)
         else:
             if parsed_response in self.game.target_image_name:
                 self.log_to_self('parse_correct', parsed_response)
@@ -165,10 +166,10 @@ class MultimodalReferenceGameScorer(GameScorer):
         self.player_2_response_pattern = game_instance["player_2_response_pattern"]
 
     def compute_scores(self, episode_interactions: Dict) -> None:
-        '''
+        """
         Compute and log scores for one episode of referencegame.
         :param episode_interactions: the game episode interactions log
-        '''
+        """
 
         # For referencegame, there is just one turn (one exchange of p1-p2 is logged as one turn)
         turn = episode_interactions["turns"][0]
@@ -266,7 +267,7 @@ class MultimodalReferenceGameScorer(GameScorer):
         self.log_episode_score(metrics.BENCH_SCORE, bench_score)
 
         request_success_ratio = round(episode_parsed_request_count / float(episode_request_count), 4)
-        self.log_episode_score(metrics.METRIC_REQUEST_SUCCESS, request_success_ratio)
+        self.log_episode_score(metrics.METRIC_REQUEST_SUCCESS_RATIO, request_success_ratio)
 
 
 class MultimodalReferenceGameBenchmark(GameBenchmark):

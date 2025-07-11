@@ -6,9 +6,9 @@ import logging
 import os
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameSpec, Player
-from clemcore.clemgame import metrics
-from clemcore.clemgame import DialogueGameMaster, GameBenchmark, GameScorer
+from clemcore.clemgame import GameSpec, Player, GameBenchmark, metrics
+from clemcore.clemgame.legacy.scorer import GameScorer
+from clemcore.clemgame.legacy.master import DialogueGameMaster
 
 import re
 
@@ -88,7 +88,8 @@ class ReferenceGameMaster(DialogueGameMaster):
             # Player 1 response validation
             p1_match = re.compile(self.game.player_1_response_pattern, re.IGNORECASE).match(response)
             if p1_match:
-                if self.game.p1_mode == "liberal" or (self.game.p1_mode == "strict" and p1_match.group('remainder') == ""):
+                if (self.game.p1_mode == "liberal"
+                        or (self.game.p1_mode == "strict" and p1_match.group('remainder') == "")):
                     # in liberal mode, we don't care how much more the model generated
                     # in strict mode, the model should not produce more than one paragraph
                     return True
@@ -101,7 +102,8 @@ class ReferenceGameMaster(DialogueGameMaster):
             # Player 2 response validation
             p2_match = re.compile(self.game.player_2_response_pattern, re.IGNORECASE).match(response)
             if p2_match:
-                if self.game.p2_mode == "liberal" or (self.game.p2_mode == "strict" and p2_match.group('remainder') == ""):
+                if (self.game.p2_mode == "liberal"
+                        or (self.game.p2_mode == "strict" and p2_match.group('remainder') == "")):
                     # in liberal mode, we don't care how much more the model generated (like "grid" or punctuation)
                     # in strict mode, the model should only produce the label
                     return True
@@ -153,6 +155,7 @@ class ReferenceGameMaster(DialogueGameMaster):
         if self.game.terminate:
             return False
         return True
+
 
 class ReferenceGameScorer(GameScorer):
 
@@ -252,7 +255,7 @@ class ReferenceGameScorer(GameScorer):
         self.log_episode_score(metrics.BENCH_SCORE, bench_score)
 
         request_success_ratio = round(episode_parsed_request_count / float(episode_request_count), 4)
-        self.log_episode_score(metrics.METRIC_REQUEST_SUCCESS, request_success_ratio)
+        self.log_episode_score(metrics.METRIC_REQUEST_SUCCESS_RATIO, request_success_ratio)
 
 
 class ReferenceGameBenchmark(GameBenchmark):

@@ -13,7 +13,9 @@ import networkx as nx
 
 import mm_mapworld_utils as utils
 from clemcore.backends import Model, CustomResponseModel
-from clemcore.clemgame import GameMaster, GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import GameMaster, GameBenchmark, GameSpec
+from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame import Player
 from clemcore.utils import file_utils
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE

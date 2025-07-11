@@ -1,4 +1,4 @@
-from typing import List, Dict, Tuple
+from typing import List, Dict
 import re
 import os
 import json
@@ -12,7 +12,9 @@ import logging
 
 import mm_mapworld_utils as utils
 from clemcore.backends import Model, CustomResponseModel
-from clemcore.clemgame import GameMaster, GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import GameMaster, GameBenchmark, GameSpec
+from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame import Player
 from clemcore.utils import file_utils
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
@@ -177,7 +179,7 @@ class MmMapWorld(DialogueGameMaster):
         })
         self.set_context_for(self.describer, begin_message)
 
-    def _on_before_turn(self, turn_idx: int):
+    def _on_before_round(self):
         img_path = 'games/mm_mapworld/resources/images/'
         value = {
             "image": [img_path + os.path.split(self.imgs[self.current_room])[1]]
@@ -509,10 +511,7 @@ class MmMapWorldBenchmark(GameBenchmark):
         super().__init__(game_spec)
 
     # copy this, replacing the name of the game master in the return statement
-    def create_game_master(self,
-                           experiment: Dict,
-                           player_models: List[Model]
-                           ) -> GameMaster:
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
         return MmMapWorld(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:

@@ -3,7 +3,9 @@ from typing import List, Dict, Tuple
 import numpy as np
 
 from clemcore.backends import Model
-from clemcore.clemgame import Player, GameMaster, GameBenchmark, DialogueGameMaster, GameScorer, GameSpec
+from clemcore.clemgame import Player, GameMaster, GameBenchmark, GameSpec
+from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame import metrics as ms
 
 logger = logging.getLogger(__name__)
@@ -17,8 +19,15 @@ class MatchItPlayer(Player):
         self.question: str = ""
         self.answer: str = ""
         self.decision: str = ""
-
+        self.response_counter: int = 0  # count turns per round
         self.had_success: bool = False
+
+    def reset(self):
+        self.description = ""
+        self.question = ""
+        self.answer = ""
+        self.decision = ""
+        self.response_counter = 0
 
     def _custom_response(self, context) -> str:
         last_message = context["content"]
@@ -36,6 +45,31 @@ class MatchItPlayer(Player):
 
 
 class MatchItAscii(DialogueGameMaster):
+    """ A game where both players must decide whether looking at the same or a different grid.
+    The round pattern is as follows:
+    ------ Round 0
+    DESC A <- PROMPT A
+    DESC B <- PROMPT B
+    QEST B <- DESC A
+    ------ Round 1
+    ANSW A <- DESC B + QUEST B
+    QEST A
+    ANSW B <- ANSW A + QUEST A
+    QEST B
+    ------ Round 2
+    ANSW A <- ANSW B + QUEST B
+    QEST A
+    ANSW B <- ANSW A + QUEST A
+    QEST B
+    ------ Round 3
+    ANSW A <- ANSW B + QUEST B
+    QEST A
+    ANSW B <- ANSW A + QUEST A
+    DECI B
+    ------ Round 4
+    DECI A <- ANSW B
+    """
+
     def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
         super().__init__(game_spec, experiment, player_models)
 
@@ -56,7 +90,6 @@ class MatchItAscii(DialogueGameMaster):
         self.success_b: bool = True
         self.aborted: bool = False
 
-
     def _on_setup(self, **game_instance):
         self.game_instance = game_instance
         self.grid_a: str = game_instance["grid_a"]
@@ -69,92 +102,98 @@ class MatchItAscii(DialogueGameMaster):
         self.player_a: MatchItPlayer = MatchItPlayer(self.player_models[0], "A")
         self.player_b: MatchItPlayer = MatchItPlayer(self.player_models[1], "B")
 
-        self.add_player(self.player_a)
-        self.add_player(self.player_b)
+        self.add_player(self.player_a, initial_context=self.prompt_a)
+        self.add_player(self.player_b, initial_context=self.prompt_b)
 
-        self.answer_counter: int = 0  # counts how many answers a player has given per turn -> for reprompting
+    @property
+    def current_player(self) -> MatchItPlayer:
+        return self._current_player
 
-    def _on_before_game(self):
-        # add prompt to Player A
-        self.set_context_for(self.player_a, self.prompt_a)
+    def _on_after_game(self):
+        print("###### GAME END")
+
+    def _on_before_round(self):
+        print("----- NEXT ROUND")
+        self.player_a.reset()
+        self.player_b.reset()
 
     def _does_game_proceed(self) -> bool:
         if self.aborted:
             self.log_to_self("Game over", "Aborted")
             return False
-        elif self.final_decision:
+        if self.final_decision:
             return False
-        else:
-            return True
+        return True
 
-    def check_flag(self, first_word: str, flag: str):
+    def check_flag(self, first_word: str, flag: str) -> bool:
         if first_word == flag:
             self.log_to_self("valid format", "continue")
             return True
-        else:
-            self.log_to_self("invalid format", f"abort, first word: {first_word}")
-            self.aborted = True
-            return False
+        self.log_to_self("invalid format", f"abort, first word: {first_word}, but expected {flag}")
+        self.aborted = True
+        return False
 
     def _validate_player_response(self, player: MatchItPlayer, utterance: str) -> bool:
+        player.response_counter += 1
+
         if not utterance.strip():  # check for empty message
             self.log_to_self("invalid content", "abort, empty message")
             self.aborted = True
             return False
 
-        utt_parts = list(
-            filter(None, utterance.strip().split("\n")))  # filter to be sure that there are no empty strings
+        # filter to be sure that there are no empty strings
+        utt_parts = list(filter(None, utterance.strip().split("\n")))
         first_word = utt_parts[0].split(" ")[0]
-        # logger.info("first word = " + first_word)
-        # logger.info("utterance = " + utterance)
 
-        # first turn
+        # first round
         if self.current_round == 0:
-            if self.answer_counter == 1:
-                return self.check_flag(first_word, self.flags["question"])
-            else:
+            if self.current_player.response_counter == 1:  # first response should be a description
                 return self.check_flag(first_word, self.flags["description"])
-        # decision turn
-        elif self.current_round == self.decision_turn and player == self.player_b:
-            if self.answer_counter == 1:
-                if self.check_flag(first_word, self.flags["decision"]):
-                    if utterance.lower().strip(".\n") == (self.flags["decision"] + " " + self.solution).lower():
-                        player.success = True
-                        self.log_to_self(f"Decision Player {player.role}", "success")
-                    elif utterance.lower().strip(".\n") == (self.flags["decision"] + " " + self.wrong_solution).lower():
-                        player.success = False
-                        self.log_to_self(f"Decision Player {player.role}", "loss")
-                    else:
-                        self.log_to_self("invalid content", "abort, wrong message content.")
-                        self.aborted = True
-                        return False
-                    return True
-                else:
-                    return False
-            else:
+            return self.check_flag(first_word, self.flags["question"])  # only relevant for player B
+
+        # decision round
+        if self.current_round == self.decision_turn and player == self.player_b:
+            if self.player_b.response_counter == 1:
                 return self.check_flag(first_word, self.flags["answer"])
-        # last turn, only for Player A's decision
-        elif self.current_round == self.decision_turn + 1:
-            self.final_decision = True
-            if self.check_flag(first_word, self.flags["decision"]):
+            if self.player_b.response_counter == 2:
+                if not self.check_flag(first_word, self.flags["decision"]):
+                    return False
                 if utterance.lower().strip(".\n") == (self.flags["decision"] + " " + self.solution).lower():
                     player.success = True
                     self.log_to_self(f"Decision Player {player.role}", "success")
+                    return True
                 elif utterance.lower().strip(".\n") == (self.flags["decision"] + " " + self.wrong_solution).lower():
                     player.success = False
                     self.log_to_self(f"Decision Player {player.role}", "loss")
+                    return True
                 else:
                     self.log_to_self("invalid content", "abort, wrong message content.")
                     self.aborted = True
                     return False
+
+        # last turn, only for Player A's decision
+        if self.current_round == self.decision_turn + 1:
+            self.final_decision = True
+            if not self.check_flag(first_word, self.flags["decision"]):
+                return False
+            if utterance.lower().strip(".\n") == (self.flags["decision"] + " " + self.solution).lower():
+                player.success = True
+                self.log_to_self(f"Decision Player {player.role}", "success")
                 return True
+            elif utterance.lower().strip(".\n") == (self.flags["decision"] + " " + self.wrong_solution).lower():
+                player.success = False
+                self.log_to_self(f"Decision Player {player.role}", "loss")
+                return True
+            else:
+                self.log_to_self("invalid content", "abort, wrong message content.")
+                self.aborted = True
+                return False
 
         # all other turns
-        else:
-            if self.answer_counter == 0:
-                return self.check_flag(first_word, self.flags["answer"])
-            else:
-                return self.check_flag(first_word, self.flags["question"])
+        if self.current_player.response_counter == 1:
+            return self.check_flag(first_word, self.flags["answer"])
+        else:  # second response should be a question
+            return self.check_flag(first_word, self.flags["question"])
 
     def _parse_response(self, player: MatchItPlayer, utterance: str) -> str:
         utterance = utterance.strip()
@@ -166,66 +205,53 @@ class MatchItAscii(DialogueGameMaster):
             player.answer = utterance
         elif utterance.startswith(self.flags["decision"]):
             player.decision = utterance
-
-        self.answer_counter += 1
-
         return utterance
 
     def _on_valid_player_response(self, player: MatchItPlayer, utterance: str):
-        # first turn
-        if self.current_round == 0:
-            if player == self.player_a:
-                self.set_context_for(self.player_b, self.prompt_b)
-            elif player == self.player_b:
-                if self.player_b.description != "" and self.player_b.question != "":
-                    self.set_context_for(self.player_a,
-                                         self.desc_intro + self.player_b.description + "\n" + self.player_b.question + self.a_request)
-                    self.player_b.question = ""
-                else:
-                    logger.info(
-                        f"Warning for first turn, Player B DESC = {self.player_b.description}; QUES = {self.player_b.question}")
-        # decision turn
-        elif self.current_round == self.decision_turn and player == self.player_b and self.answer_counter == 1:
-            self.set_context_for(self.player_a, player.answer + "\n" + self.d_reprompt)
-        # all other turns
-        else:
-            other_player = self.player_a if player == self.player_b else self.player_b
+        if self.current_round == 0:  # special handling for first round
+            if player == self.player_b:
+                if player.response_counter == 1:  # after the description, ask for a question
+                    content = (self.desc_intro + self.player_a.description + "\n"
+                               + self.q_reprompt)
+                    self.set_context_for(self.player_b, content)
+                    return
+                if player.response_counter == 2:  # after the question, set context for A using player B's question
+                    content = (self.desc_intro + self.player_b.description + "\n"
+                               + self.player_b.question + self.a_request)
+                    self.set_context_for(self.player_a, content)
+                    return
 
-            if player.answer != "" and player.question != "":
-                # self.log_to_self("note", "a+q -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
-                self.set_context_for(other_player, player.answer + "\n" + player.question + self.a_request)
-                player.description = ""
-                player.question = ""
-                player.answer = ""
-                player.decision = ""
-            elif player.decision != "" and player.question != "":
-                # self.log_to_self("note", "a+d -> A:" + player.answer + " ,Q:" + player.question + " ,D:" + player.decision )
-                self.set_context_for(other_player, player.decision + "\n" + player.question)
-                player.description = ""
-                player.question = ""
-                player.answer = ""
-                player.decision = ""
+        if self.current_round == self.decision_turn:  # special handling for decision round
+            if player == self.player_b:
+                if self.player_b.response_counter == 1:  # after last answer, ask for a decision
+                    self.set_context_for(self.player_b, self.d_reprompt)
+                    return
+                if self.player_b.response_counter == 2:  # give last answer of B to player A and ask for decision
+                    self.set_context_for(self.player_a, self.player_b.answer + "\n" + self.d_reprompt)
+                    return
+
+        # all other turns
+        if player.response_counter == 1:  # after answer, ask for a question
+            self.set_context_for(player, self.q_reprompt)
+        if player.response_counter == 2:  # after question, ask the other for an answer
+            other_player = self.player_a if player == self.player_b else self.player_b
+            self.set_context_for(other_player, player.answer + "\n" + player.question + self.a_request)
+
+    def _start_next_round(self):
+        next_round = self.player_b.response_counter == 2
+        return next_round
 
     def _should_pass_turn(self):
-        while self._does_game_proceed():
-            if self.current_round == 0 and self.current_player == self.player_a:
-                self.answer_counter = 0
-                return True
-            elif self.current_round == self.decision_turn + 1:
-                return True
-            if self.answer_counter > 1:
-                self.answer_counter = 0
-                return True
-
-            if self.current_round == self.decision_turn and self.current_player == self.player_b:
-                self.set_context_for(self.current_player, self.d_reprompt)
-            elif self.current_round == 0:
-                self.set_context_for(self.current_player,
-                                     self.desc_intro + self.player_a.description + "\n" + self.q_reprompt)
-            else:
-                self.set_context_for(self.current_player, self.q_reprompt)
-            return False
-        return True
+        # special case: pass turn after initial description of player a
+        if self.current_round == 0 and self.current_player == self.player_a:
+            print(self.current_player.role, "passes turn")
+            return True
+        # pass turn if single player has given two responses, e.g., question and description
+        if self.current_player.response_counter == 2:
+            print(self.current_player.role, "passes turn")
+            return True
+        print(self.current_player.role, "keeps turn")
+        return False
 
 
 class MatchItScorer(GameScorer):
@@ -321,11 +347,8 @@ class MatchItBenchmark(GameBenchmark):
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
 
-    def create_game_master(self,
-                           experiment: Dict,
-                           player_backends: List[str]
-                           ) -> GameMaster:
-        return MatchItAscii(self.game_spec, experiment, player_backends)
+    def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
+        return MatchItAscii(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
         return MatchItScorer(self.game_name, experiment, game_instance)

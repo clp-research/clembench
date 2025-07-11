@@ -3,7 +3,9 @@ from dataclasses import dataclass
 from typing import Dict, List
 from clemcore import backends
 from clemcore.backends import Model
-from clemcore.clemgame import Player, DialogueGameMaster, GameBenchmark, GameMaster, GameScorer, ParseError
+from clemcore.clemgame import Player, GameBenchmark, GameMaster
+from clemcore.clemgame.legacy.scorer import GameScorer
+from clemcore.clemgame.legacy.master import DialogueGameMaster
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, BENCH_SCORE
 

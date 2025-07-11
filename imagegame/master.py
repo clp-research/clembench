@@ -2,7 +2,9 @@ from typing import List, Dict
 import logging
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameMaster, DialogueGameMaster, GameBenchmark, GameScorer, metrics, Player, GameSpec
+from clemcore.clemgame import GameMaster, GameBenchmark, metrics, Player, GameSpec
+from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.legacy.scorer import GameScorer
 from evaluator import evaluate, calculate_flipped_pixels
 
 import re
@@ -324,10 +326,10 @@ class ImageGameScorer(GameScorer):
 
         # request success ratio
         if episode_request_count == 0:
-            self.log_episode_score(metrics.METRIC_REQUEST_SUCCESS, 0)
+            self.log_episode_score(metrics.METRIC_REQUEST_SUCCESS_RATIO, 0)
         else:
             request_success_ratio = round(episode_parsed_request_count / float(episode_request_count), 4)
-            self.log_episode_score(metrics.METRIC_REQUEST_SUCCESS, request_success_ratio)
+            self.log_episode_score(metrics.METRIC_REQUEST_SUCCESS_RATIO, request_success_ratio)
 
 
 class ImageGameBenchmark(GameBenchmark):

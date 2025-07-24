@@ -2,7 +2,7 @@ from typing import Dict, List
 import re, random, nltk
 
 from clemcore import backends
-from clemcore.clemgame import Player, GameRecorder
+from clemcore.clemgame import Player
 
 from constants import *
 from validation_errors import *

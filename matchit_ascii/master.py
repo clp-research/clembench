@@ -73,7 +73,6 @@ class MatchItAscii(DialogueGameMaster):
     def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
         super().__init__(game_spec, experiment, player_models)
 
-        self.experiment: str = experiment["name"]
         self.flags: dict[str, str] = experiment["flags"]
 
         self.initial_prompt: str = experiment["initial_prompt"]
@@ -109,11 +108,7 @@ class MatchItAscii(DialogueGameMaster):
     def current_player(self) -> MatchItPlayer:
         return self._current_player
 
-    def _on_after_game(self):
-        print("###### GAME END")
-
     def _on_before_round(self):
-        print("----- NEXT ROUND")
         self.player_a.reset()
         self.player_b.reset()
 
@@ -244,13 +239,10 @@ class MatchItAscii(DialogueGameMaster):
     def _should_pass_turn(self):
         # special case: pass turn after initial description of player a
         if self.current_round == 0 and self.current_player == self.player_a:
-            print(self.current_player.role, "passes turn")
             return True
         # pass turn if single player has given two responses, e.g., question and description
         if self.current_player.response_counter == 2:
-            print(self.current_player.role, "passes turn")
             return True
-        print(self.current_player.role, "keeps turn")
         return False
 
 

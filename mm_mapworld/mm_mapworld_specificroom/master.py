@@ -121,7 +121,6 @@ class MmMapWorld(DialogueGameMaster):
         self.stop: bool = False
         self.need_reprompt: bool = False
         self.did_reprompt: bool = False
-        self.experiment = experiment['name']
 
     def get_available_moves(self, node):
         return [edge for edge in self.edges if node == edge[0]]

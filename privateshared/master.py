@@ -34,8 +34,8 @@ class Words:
 
 
 class Answerer(Player):
-    def __init__(self, model: Model, name, game_recorder, words: Words):
-        super().__init__(model, name, game_recorder=game_recorder)
+    def __init__(self, model: Model, words: Words):
+        super().__init__(model)
         self.words = words
 
     def _custom_response(self, context: Dict) -> str:
@@ -61,9 +61,8 @@ class Answerer(Player):
 class Questioner(Player):
     """Programmatic realisation of the Questioner player."""
 
-    def __init__(self, name, game_recorder,
-                 question_order: List[str], requests: Dict[str, int], request_strings: Dict):
-        super().__init__(CustomResponseModel(), name, game_recorder=game_recorder)
+    def __init__(self, question_order: List[str], requests: Dict[str, int], request_strings: Dict):
+        super().__init__(CustomResponseModel())
         self.question_order = question_order
         self.question_type = None
         self.requests = requests
@@ -121,10 +120,8 @@ class PrivateShared(DialogueGameMaster):
         self.initial_prompt = game_instance['initial_prompt']
         self.all_probes: List[List[Dict]] = []
         
-        self.answerer: Answerer = Answerer(self.player_models[0], "Player 1",
-                                           self.game_recorder, self.words)
-        self.questioner: Questioner = Questioner("Player 2", self.game_recorder,
-                                                 game_instance['request_order'],
+        self.answerer: Answerer = Answerer(self.player_models[0], self.words)
+        self.questioner: Questioner = Questioner(game_instance['request_order'],
                                                  game_instance['requests'], request_strings)
         
         # initialise turn counters for common metrics
@@ -189,7 +186,7 @@ class PrivateShared(DialogueGameMaster):
             return True
         if (not response.startswith(self.words.answer.strip())
                 or self._has_continuation(response)):
-            logger.warning(f"Game round {str(self.current_round)}: {NOT_PARSED}")
+            logger.debug(f"Game round {str(self.current_round)}: {NOT_PARSED}")
             self.violated_request_counts[self.current_round] += 1
             return False
         self.parsed_request_counts[self.current_round] += 1

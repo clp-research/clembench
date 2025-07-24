@@ -53,7 +53,7 @@ class IFEvalGameMaster(DialogueGameMaster):
         model = self.player_models[0]
         self.initial_max_tokens = model.max_tokens
         if model.max_tokens < required_max_tokens:
-            logger.info(f"_on_setup(): "
+            logger.debug(f"_on_setup(): "
                         f"Increase max_tokens={required_max_tokens}, "
                         f"because the current value '{model.max_tokens}' "
                         f"is lower than the required value for the task.")
@@ -92,7 +92,7 @@ class IFEvalGameMaster(DialogueGameMaster):
         self.log_key(METRIC_REQUEST_COUNT_PARSED, self.parsed_request_counts)
         self.log_key(METRIC_REQUEST_COUNT_VIOLATED, self.violated_request_counts)
 
-        logger.info(f"_on_after_game(): Reset max_tokens={self.initial_max_tokens} to the initial value.")
+        logger.debug(f"_on_after_game(): Reset max_tokens={self.initial_max_tokens} to the initial value.")
         self.player_models[0].set_gen_arg("max_tokens", self.initial_max_tokens)
 
 

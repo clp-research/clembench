@@ -46,7 +46,6 @@ class MatchIt(DialogueGameMaster):
     def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
         super().__init__(game_spec, experiment, player_models)
 
-        self.experiment: str = experiment["name"]
         self.flags: dict[str, str] = experiment["flags"]
 
         self.initial_prompt: str = experiment["initial_prompt"]

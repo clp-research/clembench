@@ -55,12 +55,8 @@ class MultimodalReferenceGameMaster(DialogueGameMaster):
 
     def _on_setup(self, **game_instance):
         self.game = MultimodalReferenceGame(game_instance)
-        self.instruction_giver = InstructionGiver(self.player_models[0],
-                                                  name="Player 1",
-                                                  game_recorder=self.game_recorder)
-        self.instruction_follower = InstructionFollower(self.player_models[1],
-                                                        name="Player 2",
-                                                        game_recorder=self.game_recorder)
+        self.instruction_giver = InstructionGiver(self.player_models[0])
+        self.instruction_follower = InstructionFollower(self.player_models[1])
         p1_initial_context = dict(role="user",
                                   content=self.game.player_1_prompt_header,
                                   image=[self.game.player_1_first_image,

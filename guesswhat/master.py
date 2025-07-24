@@ -105,7 +105,6 @@ class GuessWhat(DialogueGameMaster):
         return errors
 
     def _on_setup(self, **game_instance):
-        logger.info("_on_setup")
         self.game_instance = game_instance
 
         self.target_word = game_instance["target_word"]

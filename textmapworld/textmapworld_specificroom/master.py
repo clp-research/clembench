@@ -13,9 +13,6 @@ from queue import Queue
 from copy import deepcopy
 import re
 import random
-from logging import getLogger
-
-logger = getLogger(__name__)
 
 from textmapworld_utils import loop_identification, get_directions, string_available_directions, have_common_element, \
     get_nextnode_label
@@ -133,7 +130,6 @@ class textmapworld_specificroom(DialogueGameMaster):
         self.limit_reached = False
 
     def _on_setup(self, **game_instance):
-        logger.info("_on_setup")
         self.graph_type = game_instance['Game_Type']
         self.initial_position = game_instance["Current_Position"]
         self.playerA_initial_prompt = game_instance["Prompt"]

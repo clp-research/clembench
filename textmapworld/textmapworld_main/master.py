@@ -13,9 +13,6 @@ import ast
 from queue import Queue
 from copy import deepcopy
 import random
-from logging import getLogger
-
-logger = getLogger(__name__)
 
 from textmapworld_utils import loop_identification, get_directions_main, string_available_directions, \
     have_common_element, get_nextnode_label
@@ -136,7 +133,6 @@ class Textmapworld(DialogueGameMaster):
         self.limit_reached = False
 
     def _on_setup(self, **game_instance):
-        logger.info("_on_setup")
         self.graph_type = game_instance['Game_Type']
         self.initial_position = game_instance[
             "Current_Position"] if self.graph_type == "named_graph" else ast.literal_eval(

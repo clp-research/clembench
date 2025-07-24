@@ -163,7 +163,7 @@ class AdventureGameMaster(DialogueGameMaster):
         # logger.info(f"Raw last message:\n{last_action}")
         # strip player action to IF input; only first line action command is used:
         if_input: str = parsed_response[1:].split("\n")[0].strip()
-        logger.info(f"Stripped IF input: {if_input}")
+        logger.debug("Stripped IF input: %s", if_input)
 
         # count achieved goals:
         prior_goal_count = len(self.goals_achieved)
@@ -172,7 +172,7 @@ class AdventureGameMaster(DialogueGameMaster):
         goals_achieved, if_response, action_info = self.if_interpreter.process_action(if_input)
         # IF interpreter returns: set of achieved goal states in string form,
         # textual feedback response, failure/action info dict
-        logger.info(f"IF response: {if_response}")
+        logger.debug("IF response: %s", if_response)
 
         if 'fail_type' in action_info:
             # record failure dict for scoring:
@@ -182,7 +182,7 @@ class AdventureGameMaster(DialogueGameMaster):
 
         # catch DONE action to end game after this turn:
         if 'done_action' in action_info:
-            logger.info(f"model_done: {action_info['done_action']}")
+            logger.debug("model_done: %s", action_info['done_action'])
             # self.log_to_self("model_done", if_input)
             self.model_done = True
 
@@ -315,7 +315,7 @@ class AdventureGameScorer(GameScorer):
                 if action["type"] == "action_fail":
                     # check for unlisted fail type:
                     if action['content']['fail_type'] not in fail_types:
-                        logger.info(f"Unlisted fail type: {action['content']['fail_type']}")
+                        logger.debug(f"Unlisted fail type: {action['content']['fail_type']}")
                     # record IF interaction fail phase:
                     turn_fail[action['content']['phase']] = 1
                     # record IF interaction fail type:
@@ -324,7 +324,7 @@ class AdventureGameScorer(GameScorer):
                 # get exploration values:
                 if action["type"] == "action_info" or action["type"] == "action_fail":
                     exploration_info = action['content']['exploration_info']
-                    logger.info(f"exploration_info: {exploration_info}")
+                    logger.debug("exploration_info: %", exploration_info)
                     if exploration_info['action_epistemic']:
                         turn_exploration['epistemic_action'] = 1
                     else:

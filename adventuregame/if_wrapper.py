@@ -1092,12 +1092,12 @@ class AdventureIFInterpreter(GameResourceLocator):
             inst_type: str = self.room_to_type_dict[inst]
         else:  # fallback for potential edge cases
             # TODO: retrace why this can fail
-            logger.info(f"_get_inst_str got {inst}, which is not in the _to_type dicts! "
+            logger.debug(f"_get_inst_str got {inst}, which is not in the _to_type dicts! "
                         f"Heuristically culling numbers from inst string end as fallback...")
             inst_type = deepcopy(inst)
             while inst_type.endswith(("0","1","2","3","4","5","6","7","8","9")):
                 inst_type = inst_type[:-1]
-            logger.info(f"inst_type after heuristic culling: {inst_type}")
+            logger.debug(f"inst_type after heuristic culling: {inst_type}")
         # get surface string for instance type:
         if inst_type in self.entity_types:
             inst_str: str = self.entity_types[inst_type]['repr_str']
@@ -1561,13 +1561,13 @@ class AdventureIFInterpreter(GameResourceLocator):
         # lower for proper parsing:
         action_input = action_input.lower()
 
-        logger.info(f"Cleaned action input: {action_input}")
+        logger.debug(f"Cleaned action input: {action_input}")
 
         # try parsing input, return lark_exception failure if parsing fails:
         try:
             parsed_command = self.act_parser.parse(action_input)
         except Exception as exception:
-            logger.info(f"Parsing lark exception")
+            logger.debug(f"Parsing lark exception")
             fail_dict: dict = {'phase': "parsing", 'fail_type': "lark_exception", 'arg': str(exception)}
             return False, f"I don't know what you mean.", fail_dict
         action_dict = self.act_transformer.transform(parsed_command)
@@ -1575,21 +1575,21 @@ class AdventureIFInterpreter(GameResourceLocator):
         # catch 'unknown' action parses:
         if action_dict['type'] == "unknown":
             if action_dict['arg1'] in self.action_types:
-                logger.info(f"Parsing unknown action with defined verb")
+                logger.debug(f"Parsing unknown action with defined verb")
                 fail_dict: dict = {'phase': "parsing", 'fail_type': "malformed_command", 'arg': str(action_dict)}
                 return False, f"I don't know what you mean.", fail_dict
 
         if action_dict['type'] not in self.action_types:
             if 'arg1' in action_dict:
-                logger.info(f"Parsing undefined action with undefined verb")
+                logger.debug(f"Parsing undefined action with undefined verb")
                 fail_dict: dict = {'phase': "parsing", 'fail_type': "undefined_action_verb", 'arg': action_dict['arg1']}
                 return False, f"I don't know how to interpret this '{action_dict['arg1']}' action.", fail_dict
             else:
-                logger.info(f"Parsing undefined action without verb")
+                logger.debug(f"Parsing undefined action without verb")
                 fail_dict: dict = {'phase': "parsing", 'fail_type': "undefined_action", 'arg': action_input}
                 return False, f"I don't know what you mean.", fail_dict
 
-        logger.info(f"current parsed action_dict: {action_dict}")
+        logger.debug(f"current parsed action_dict: {action_dict}")
 
         if action_dict['type'] == "done":
             return True, action_dict, {}
@@ -1605,11 +1605,11 @@ class AdventureIFInterpreter(GameResourceLocator):
         # TODO?: Remove action-type specific hardcode below?; should be handled by PDDL-based resolution now
 
         if action_dict['arg1'] not in self.entity_types:
-            logger.info(f"Action arg1 '{action_dict['arg1']}' is not an entity")
+            logger.debug(f"Action arg1 '{action_dict['arg1']}' is not an entity")
             # handle manipulating rooms, ie "> take from kitchen":
             if action_dict['arg1'] in self.room_types:
                 if action_dict['type'] in ["take", "put", "open", "close"]:
-                    logger.info(f"Action type is '{action_dict['type']}', manipulating room")
+                    logger.debug(f"Action type is '{action_dict['type']}', manipulating room")
                     fail_dict: dict = {'phase': "parsing", 'fail_type': "manipulating_room", 'arg': action_dict['arg1']}
                     if action_dict['type'] == "take":
                         fail_response = f"You can't {action_dict['type']} the '{action_dict['arg1']}'."
@@ -1621,7 +1621,7 @@ class AdventureIFInterpreter(GameResourceLocator):
                         fail_response = f"You can't {action_dict['type']} the '{action_dict['arg1']}'."
                     return False, fail_response, fail_dict
             else:
-                logger.info(f"Action arg1 {action_dict['arg1']} is not a room either")
+                logger.debug(f"Action arg1 {action_dict['arg1']} is not a room either")
                 fail_dict: dict = {'phase': "parsing", 'fail_type': "undefined_argument_type", 'arg': action_dict['arg1']}
                 return False, f"I don't know what a '{action_dict['arg1']}' is.", fail_dict
 
@@ -1632,7 +1632,7 @@ class AdventureIFInterpreter(GameResourceLocator):
                     # TODO: remove 'taking from inventory', now handled via PDDL precondition
                     #  but PDDL handling does it via precondition (not (in <item> inventory)), not by checking for the
                     #  second argument, so check if this handling here might still be useful
-                    logger.info("Taking from inventory")
+                    logger.debug("Taking from inventory")
                     # get inventory content:
                     inventory_content = self.get_inventory_content()
                     for inventory_item in inventory_content:
@@ -2225,7 +2225,7 @@ class AdventureIFInterpreter(GameResourceLocator):
                 arg1_function_list.append(effect['arg1']['function_id'])
                 arg1_function_var = effect['arg1']['function_variable']['variable']
                 arg1_function_object = variable_map[arg1_function_var]
-                logger.info(f"num_comp condition arg1 function object: {arg1_function_object}")
+                logger.debug(f"num_comp condition arg1 function object: {arg1_function_object}")
                 arg1_function_list.append(arg1_function_object)
 
             if not arg1_is_number:
@@ -2249,7 +2249,7 @@ class AdventureIFInterpreter(GameResourceLocator):
                 arg2_function_list.append(effect['arg2']['function_id'])
                 arg2_function_var = effect['arg2']['function_variable']['variable']
                 arg2_function_object = variable_map[arg2_function_var]
-                logger.info(f"num_comp condition arg2 function object: {arg2_function_object}")
+                logger.debug(f"num_comp condition arg2 function object: {arg2_function_object}")
                 arg2_function_list.append(arg2_function_object)
 
             if not arg2_is_number:
@@ -2446,15 +2446,15 @@ class AdventureIFInterpreter(GameResourceLocator):
 
         # if checked_conditions:
         if self.precon_trace[-1]['fulfilled']:
-            logger.info("Preconditions fulfilled!")
+            logger.debug("Preconditions fulfilled!")
             pass
         else:
-            logger.info("Preconditions not fulfilled!")
+            logger.debug("Preconditions not fulfilled!")
 
             # NOTE: The first precondition fact that does not check out is used for feedback. This means that the order
             # of predicates (and clauses) in the precondition PDDL for the action determines feedback priority!
 
-            logger.info(f"precon_trace: {self.precon_trace}")
+            logger.debug(f"precon_trace: {self.precon_trace}")
 
             def feedback_idx_from_precon_trace(precon_trace):
                 # iterate over precon trace:
@@ -2505,7 +2505,7 @@ class AdventureIFInterpreter(GameResourceLocator):
             # TODO?: Make feedback_idx extraction from precon_trace recursive for optimal robustness?
 
             feedback_idx, failed_precon_predicate = feedback_idx_from_precon_trace(self.precon_trace)
-            logger.info(f"Precondition fail feedback_idx: {feedback_idx}")
+            logger.debug(f"Precondition fail feedback_idx: {feedback_idx}")
 
             # get textual failure feedback template:
             feedback_template = cur_action_def['failure_feedback']['precondition'][feedback_idx][0]
@@ -2564,8 +2564,8 @@ class AdventureIFInterpreter(GameResourceLocator):
         post_world_state = deepcopy(self.world_state)
         post_resolution_changes = post_world_state.difference(prior_world_state)
         if prior_world_state == self.world_state_history[-2]:
-            logger.info(f"Prior world state matches second to last world state in history")
-        logger.info(f"Resolution world state changes: {post_resolution_changes}")
+            logger.debug(f"Prior world state matches second to last world state in history")
+        logger.debug(f"Resolution world state changes: {post_resolution_changes}")
 
 
         # SUCCESS FEEDBACK
@@ -2637,15 +2637,15 @@ class AdventureIFInterpreter(GameResourceLocator):
 
         epistemic_gain_removed = self.exploration_history[-2].difference(self.exploration_state)
         epistemic_gain_added = self.exploration_state.difference(self.exploration_history[-2])
-        logger.info(f"Epistemic gain; Added: {epistemic_gain_added}; Removed: {epistemic_gain_removed}")
+        logger.debug(f"Epistemic gain; Added: {epistemic_gain_added}; Removed: {epistemic_gain_removed}")
 
         if exploration_info['action_epistemic']:
             effective_epistemic_gain = epistemic_gain_added
             effective_epistemic_gain_amount = len(effective_epistemic_gain)
             if action_type:
-                logger.info(f"Epistemic action '{action_type}' resulted in effective epistemic gain: {effective_epistemic_gain}")
+                logger.debug(f"Epistemic action '{action_type}' resulted in effective epistemic gain: {effective_epistemic_gain}")
             exploration_info['effective_epistemic_gain_facts'] = list(effective_epistemic_gain)
-            logger.info(f"Epistemic gain amount: {effective_epistemic_gain_amount}")
+            logger.debug(f"Epistemic gain amount: {effective_epistemic_gain_amount}")
             exploration_info['effective_epistemic_gain_amount'] = effective_epistemic_gain_amount
         else:
             exploration_info['effective_epistemic_gain_amount'] = 0
@@ -2661,11 +2661,11 @@ class AdventureIFInterpreter(GameResourceLocator):
         for fact in self.exploration_state:
             if fact[0] == "at":
                 known_entities.add(fact)
-        logger.info(f"Known entities: {known_entities}")
+        logger.debug(f"Known entities: {known_entities}")
         exploration_info['known_entities'] = list(known_entities)
 
         known_entities_ratio = len(known_entities) / len(all_entities)
-        logger.info(f"Known entities ratio: {known_entities_ratio}")
+        logger.debug(f"Known entities ratio: {known_entities_ratio}")
         exploration_info['known_entities_ratio'] = known_entities_ratio
 
         # all rooms:
@@ -2680,11 +2680,11 @@ class AdventureIFInterpreter(GameResourceLocator):
             for exploration_fact in exploration_state:
                 if exploration_fact[0] == 'at' and exploration_fact[1] == 'player1':
                     visited_rooms.add(exploration_fact[2])
-        logger.info(f"Visited rooms: {visited_rooms}")
+        logger.debug(f"Visited rooms: {visited_rooms}")
         exploration_info['visited_rooms'] = list(visited_rooms)
 
         visited_rooms_ratio = len(visited_rooms) / len(all_rooms)
-        logger.info(f"Visited rooms ratio: {visited_rooms_ratio}")
+        logger.debug(f"Visited rooms ratio: {visited_rooms_ratio}")
         exploration_info['visited_rooms_ratio'] = visited_rooms_ratio
 
         # get goal entitiy set:
@@ -2692,7 +2692,7 @@ class AdventureIFInterpreter(GameResourceLocator):
         for goal_fact in self.goal_state:
             goal_entities.add(goal_fact[1])
             goal_entities.add(goal_fact[2])
-        logger.info(f"Goal entities: {goal_entities}")
+        logger.debug(f"Goal entities: {goal_entities}")
 
         # check which goal-relevant entities are known:
         known_goal_entities = set()
@@ -2700,12 +2700,12 @@ class AdventureIFInterpreter(GameResourceLocator):
             for known_entity in known_entities:
                 if known_entity[1] in goal_fact:
                     known_goal_entities.add(known_entity)
-        logger.info(f"Known goal entities: {known_goal_entities}")
+        logger.debug(f"Known goal entities: {known_goal_entities}")
         exploration_info['known_goal_entities'] = list(known_goal_entities)
 
         # ratio of known goal-relevant entities:
         known_goal_entities_ratio = len(known_goal_entities) / len(goal_entities)
-        logger.info(f"Known goal entities ratio: {known_goal_entities_ratio}")
+        logger.debug(f"Known goal entities ratio: {known_goal_entities_ratio}")
         exploration_info['known_goal_entities_ratio'] = known_goal_entities_ratio
 
         return exploration_info
@@ -2740,7 +2740,7 @@ class AdventureIFInterpreter(GameResourceLocator):
                 # logger.info(f"itemcount 0 in world state post-process_action: {('itemcount', 'inventory', 0) in self.world_state}")
                 return self.goals_achieved, resolution_result, fail
             else:
-                logger.info(f"Resolution result: {resolution_result}")
+                logger.debug(f"Resolution result: {resolution_result}")
                 base_result_str = resolution_result
 
                 # check goal achievement:
@@ -2750,7 +2750,7 @@ class AdventureIFInterpreter(GameResourceLocator):
                 for goal_state_idx, goal_state in enumerate(goals_achieved_response):
                     goals_achieved_response[goal_state_idx] = fact_tuple_to_str(goal_state)
                 goals_achieved_response = set(goals_achieved_response)
-                logger.info(f"Achieved goal states: {goals_achieved_response}")
+                logger.debug(f"Achieved goal states: {goals_achieved_response}")
 
                 # EXPLORATION TRACKING
                 self.track_exploration(fail['world_state_effects'])
@@ -2788,7 +2788,7 @@ class AdventureIFInterpreter(GameResourceLocator):
         Used for plan logging and evaluation.
         Returns a list of action processing results including first failed plan action.
         """
-        logger.info(f"Plan command sequence: {command_sequence}")
+        logger.debug(f"Plan command sequence: {command_sequence}")
         # deepcopy world state before plan execution to assure proper reversion:
         pre_plan_world_state = deepcopy(self.world_state)
         pre_plan_exploration_state = deepcopy(self.exploration_state)
@@ -2796,7 +2796,7 @@ class AdventureIFInterpreter(GameResourceLocator):
         result_sequence: list = list()
         world_state_change_count: int = 0
         for cmd_idx, command in enumerate(command_sequence):
-            logger.info(f"Resolving plan action {cmd_idx}: {command}")
+            logger.debug(f"Resolving plan action {cmd_idx}: {command}")
             # get result as list for mutability:
             result = list(self.process_action(command))
             # convert result goals achieved to list for JSON dumping:
@@ -2807,53 +2807,53 @@ class AdventureIFInterpreter(GameResourceLocator):
             # if result[2]:
             if 'fail_type' in result[2]:
                 # stop executing commands at the first failure
-                logger.info(f"Plan sequence failed at step {cmd_idx}")
-                logger.info(f"Plan sequence fail dict: {result[2]}")
-                logger.info(f"Plan world state change count at failure: {world_state_change_count}")
+                logger.debug(f"Plan sequence failed at step {cmd_idx}")
+                logger.debug(f"Plan sequence fail dict: {result[2]}")
+                logger.debug(f"Plan world state change count at failure: {world_state_change_count}")
                 break
             else:
                 world_state_change_count += 1
-                logger.info(f"New plan world state change count: {world_state_change_count}")
+                logger.debug(f"New plan world state change count: {world_state_change_count}")
 
         # revert the world state to before plan execution if it changed:
         if world_state_change_count:
-            logger.info(f"Plan world state change count: {world_state_change_count}; reverting changes")
+            logger.debug(f"Plan world state change count: {world_state_change_count}; reverting changes")
             # deepcopy world state after plan execution to prevent reference issues:
             post_plan_world_state = deepcopy(self.world_state)
             post_plan_exploration_state = deepcopy(self.exploration_state)
             # logger.info(f"World state history before reverting: {self.world_state_history}")
-            logger.info(f"World state history length before reverting: {len(self.world_state_history)}")
-            logger.info(f"Exploration history length before reverting: {len(self.exploration_history)}")
+            logger.debug(f"World state history length before reverting: {len(self.world_state_history)}")
+            logger.debug(f"Exploration history length before reverting: {len(self.exploration_history)}")
             # reset world state history to before executed plan:
             self.world_state_history = self.world_state_history[:-world_state_change_count]
             self.exploration_history = self.exploration_history[:-world_state_change_count]
             # logger.info(f"World state history after reverting: {self.world_state_history}")
-            logger.info(f"World state history length after reverting: {len(self.world_state_history)}")
-            logger.info(f"Exploration history length after reverting: {len(self.exploration_history)}")
+            logger.debug(f"World state history length after reverting: {len(self.world_state_history)}")
+            logger.debug(f"Exploration history length after reverting: {len(self.exploration_history)}")
             # check that world state has been properly reset:
             if self.world_state_history[-1] == pre_plan_world_state:
-                logger.info(f"Last world state history item matches pre-plan world state")
+                logger.debug(f"Last world state history item matches pre-plan world state")
             else:
-                logger.info(f"Last world state history item DOES NOT match pre-plan world state")
+                logger.debug(f"Last world state history item DOES NOT match pre-plan world state")
             if self.world_state_history[-1] == post_plan_world_state:
-                logger.info(f"Last world state history item DOES match post-plan world state")
+                logger.debug(f"Last world state history item DOES match post-plan world state")
             else:
-                logger.info(f"Last world state history item does not match post-plan world state")
+                logger.debug(f"Last world state history item does not match post-plan world state")
             # reset world state to before plan execution:
             self.world_state = deepcopy(self.world_state_history[-1])
             self.exploration_state = deepcopy(self.exploration_history[-1])
             # double-check that world state has been reset properly:
             if self.world_state == pre_plan_world_state:
-                logger.info(f"Pre-plan world state matches reverted post-plan world state")
+                logger.debug(f"Pre-plan world state matches reverted post-plan world state")
             else:
-                logger.info(f"Pre-plan world state does not match reverted post-plan world state")
+                logger.debug(f"Pre-plan world state does not match reverted post-plan world state")
             # log specific reverted fact changes from plan:
             post_plan_changes = post_plan_world_state.difference(self.world_state)
-            logger.info(f"Reverted plan world state changes: {post_plan_changes}")
+            logger.debug(f"Reverted plan world state changes: {post_plan_changes}")
         else:
-            logger.info(f"Plan world state change count: {world_state_change_count}; no changes to revert")
+            logger.debug(f"Plan world state change count: {world_state_change_count}; no changes to revert")
 
-        logger.info(f"Plan result sequence: {result_sequence}")
+        logger.debug(f"Plan result sequence: {result_sequence}")
 
         return result_sequence
 

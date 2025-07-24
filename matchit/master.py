@@ -81,7 +81,7 @@ class MatchIt(DialogueGameMaster):
     def _on_before_game(self):
         # add prompt to Player A message history
         self.set_context_for(self.player_a, self.initial_prompt, image=[self.image_a])
-        logger.info("Added Prompt A")
+        logger.debug("Added Prompt A")
 
     def _does_game_proceed(self) -> bool:
         if self.aborted:
@@ -186,7 +186,7 @@ class MatchIt(DialogueGameMaster):
                                          self.desc_intro + self.player_b.description + "\n" + self.player_b.question + self.a_request)
                     self.player_b.question = ""
                 else:
-                    logger.info(
+                    logger.warning(
                         f"Warning for first turn, Player B DESC = {self.player_b.description}; QUES = {self.player_b.question}")
         # decision turn
         elif self.current_round == self.decision_turn and player == self.player_b and self.answer_counter == 1:

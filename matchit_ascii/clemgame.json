@@ -7,5 +7,5 @@
   "languages": ["en"],
   "benchmark": ["2.0"],
   "regression": "large",
-  "roles": ["Player A", "Player B"]
+  "roles": [{"name": "Player A", "prefix": ["DESCRIPTION:", "QUESTION:", "ANSWER:", "DECISION:"]}, {"name": "Player B", "prefix": ["DESCRIPTION:", "QUESTION:", "ANSWER:", "DECISION:"]}]
 }

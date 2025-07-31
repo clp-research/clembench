@@ -7,5 +7,5 @@
   "languages": ["en"],
   "benchmark": ["2.0"],
   "regression": "large",
-  "roles": ["Adventurer"]
+  "roles": [{"name": "Adventurer", "prefix": ">"}]
 }

@@ -7,5 +7,5 @@
   "languages": ["en"],
   "benchmark": ["2.0"],
   "regression": "large",
-  "roles": ["Guesser", "Answerer"]
+  "roles": [{"name": "Guesser", "prefix": ["QUESTION:", "GUESS:"]}, {"name": "Answerer", "prefix": "ANSWER:"}]
 }

@@ -1,0 +1,448 @@
+{
+  "experiments": [
+    {
+      "name": "high_en",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "advance",
+          "related_word": [],
+          "target_word_stem": "advanc",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 1,
+          "target_word": "away",
+          "related_word": [],
+          "target_word_stem": "away",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 2,
+          "target_word": "april",
+          "related_word": [],
+          "target_word_stem": "april",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 3,
+          "target_word": "respect",
+          "related_word": [],
+          "target_word_stem": "respect",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 4,
+          "target_word": "december",
+          "related_word": [],
+          "target_word_stem": "decemb",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 5,
+          "target_word": "agriculture",
+          "related_word": [],
+          "target_word_stem": "agricultur",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 6,
+          "target_word": "abuse",
+          "related_word": [],
+          "target_word_stem": "abus",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 7,
+          "target_word": "link",
+          "related_word": [],
+          "target_word_stem": "link",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 8,
+          "target_word": "future",
+          "related_word": [],
+          "target_word_stem": "futur",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 9,
+          "target_word": "soon",
+          "related_word": [],
+          "target_word_stem": "soon",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 10,
+          "target_word": "band",
+          "related_word": [],
+          "target_word_stem": "band",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 11,
+          "target_word": "suggest",
+          "related_word": [],
+          "target_word_stem": "suggest",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 12,
+          "target_word": "var",
+          "related_word": [],
+          "target_word_stem": "var",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 13,
+          "target_word": "western",
+          "related_word": [],
+          "target_word_stem": "western",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 14,
+          "target_word": "tea",
+          "related_word": [],
+          "target_word_stem": "tea",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 15,
+          "target_word": "reach",
+          "related_word": [],
+          "target_word_stem": "reach",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 16,
+          "target_word": "exactly",
+          "related_word": [],
+          "target_word_stem": "exact",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 17,
+          "target_word": "nature",
+          "related_word": [],
+          "target_word_stem": "natur",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 18,
+          "target_word": "daily",
+          "related_word": [],
+          "target_word_stem": "daili",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 19,
+          "target_word": "success",
+          "related_word": [],
+          "target_word_stem": "success",
+          "related_word_stem": []
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "You are playing a collaborative word guessing game in which you have to describe a target word for another player to guess.\n\nRules:\n(a) You have to reply in the form: CLUE: <some text>. Guesses from the other player will start with GUESS.\n(b) You cannot use the target word itself, parts or morphological variants of it in your description.\n(c) In addition, the same rules apply for related words which are provided below.\n\nEnd conditions:\n(i) If you use the target word or a related word in your description, then you lose.\n(ii) If the other player can guess the target word in $N$ tries, you both win.\n\nLet us start.\n\nThis is the target word that you need to describe and that the other player needs to guess:\n\n$TARGET_WORD$\n\nRelated words are:\n\n$REL_WORD$\n\nImportant: You are under time pressure, give short descriptions that are to the point!",
+      "guesser_initial_prompt": "You are playing a collaborative word guessing game in which you have to guess a target word that another player describes to you.\n\nYou can make one guess at each trial. You win when you guess the target word. You lose when you cannot guess it in $N$ tries.\n\nAfter each trial you will get a new hint from the other player which starts with CLUE.\n\nMake your guesses by just saying the word using the following form: GUESS: <a word>\n\nLet us start.\n"
+    },
+    {
+      "name": "medium_en",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "clay",
+          "related_word": [],
+          "target_word_stem": "clay",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 1,
+          "target_word": "harrison",
+          "related_word": [],
+          "target_word_stem": "harrison",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 2,
+          "target_word": "semi",
+          "related_word": [],
+          "target_word_stem": "semi",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 3,
+          "target_word": "statistical",
+          "related_word": [],
+          "target_word_stem": "statist",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 4,
+          "target_word": "slope",
+          "related_word": [],
+          "target_word_stem": "slope",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 5,
+          "target_word": "fraction",
+          "related_word": [],
+          "target_word_stem": "fraction",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 6,
+          "target_word": "pee",
+          "related_word": [],
+          "target_word_stem": "pee",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 7,
+          "target_word": "furnish",
+          "related_word": [],
+          "target_word_stem": "furnish",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 8,
+          "target_word": "royalty",
+          "related_word": [],
+          "target_word_stem": "royalti",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 9,
+          "target_word": "nelson",
+          "related_word": [],
+          "target_word_stem": "nelson",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 10,
+          "target_word": "grab",
+          "related_word": [],
+          "target_word_stem": "grab",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 11,
+          "target_word": "muslim",
+          "related_word": [],
+          "target_word_stem": "muslim",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 12,
+          "target_word": "der",
+          "related_word": [],
+          "target_word_stem": "der",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 13,
+          "target_word": "colleague",
+          "related_word": [],
+          "target_word_stem": "colleagu",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 14,
+          "target_word": "fusion",
+          "related_word": [],
+          "target_word_stem": "fusion",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 15,
+          "target_word": "syndrome",
+          "related_word": [],
+          "target_word_stem": "syndrom",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 16,
+          "target_word": "rocky",
+          "related_word": [],
+          "target_word_stem": "rocki",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 17,
+          "target_word": "clark",
+          "related_word": [],
+          "target_word_stem": "clark",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 18,
+          "target_word": "commonwealth",
+          "related_word": [],
+          "target_word_stem": "commonwealth",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 19,
+          "target_word": "fitting",
+          "related_word": [],
+          "target_word_stem": "fit",
+          "related_word_stem": []
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "You are playing a collaborative word guessing game in which you have to describe a target word for another player to guess.\n\nRules:\n(a) You have to reply in the form: CLUE: <some text>. Guesses from the other player will start with GUESS.\n(b) You cannot use the target word itself, parts or morphological variants of it in your description.\n(c) In addition, the same rules apply for related words which are provided below.\n\nEnd conditions:\n(i) If you use the target word or a related word in your description, then you lose.\n(ii) If the other player can guess the target word in $N$ tries, you both win.\n\nLet us start.\n\nThis is the target word that you need to describe and that the other player needs to guess:\n\n$TARGET_WORD$\n\nRelated words are:\n\n$REL_WORD$\n\nImportant: You are under time pressure, give short descriptions that are to the point!",
+      "guesser_initial_prompt": "You are playing a collaborative word guessing game in which you have to guess a target word that another player describes to you.\n\nYou can make one guess at each trial. You win when you guess the target word. You lose when you cannot guess it in $N$ tries.\n\nAfter each trial you will get a new hint from the other player which starts with CLUE.\n\nMake your guesses by just saying the word using the following form: GUESS: <a word>\n\nLet us start.\n"
+    },
+    {
+      "name": "low_en",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "physiology",
+          "related_word": [],
+          "target_word_stem": "physiolog",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 1,
+          "target_word": "charming",
+          "related_word": [],
+          "target_word_stem": "charm",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 2,
+          "target_word": "apnic",
+          "related_word": [],
+          "target_word_stem": "apnic",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 3,
+          "target_word": "dryer",
+          "related_word": [],
+          "target_word_stem": "dryer",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 4,
+          "target_word": "motivation",
+          "related_word": [],
+          "target_word_stem": "motiv",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 5,
+          "target_word": "distortion",
+          "related_word": [],
+          "target_word_stem": "distort",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 6,
+          "target_word": "walnut",
+          "related_word": [],
+          "target_word_stem": "walnut",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 7,
+          "target_word": "colin",
+          "related_word": [],
+          "target_word_stem": "colin",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 8,
+          "target_word": "gsm",
+          "related_word": [],
+          "target_word_stem": "gsm",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 9,
+          "target_word": "carroll",
+          "related_word": [],
+          "target_word_stem": "carrol",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 10,
+          "target_word": "fwd",
+          "related_word": [],
+          "target_word_stem": "fwd",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 11,
+          "target_word": "trauma",
+          "related_word": [],
+          "target_word_stem": "trauma",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 12,
+          "target_word": "peanut",
+          "related_word": [],
+          "target_word_stem": "peanut",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 13,
+          "target_word": "loud",
+          "related_word": [],
+          "target_word_stem": "loud",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 14,
+          "target_word": "savannah",
+          "related_word": [],
+          "target_word_stem": "savannah",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 15,
+          "target_word": "ripe",
+          "related_word": [],
+          "target_word_stem": "ripe",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 16,
+          "target_word": "mattress",
+          "related_word": [],
+          "target_word_stem": "mattress",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 17,
+          "target_word": "wheat",
+          "related_word": [],
+          "target_word_stem": "wheat",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 18,
+          "target_word": "trio",
+          "related_word": [],
+          "target_word_stem": "trio",
+          "related_word_stem": []
+        },
+        {
+          "game_id": 19,
+          "target_word": "ellen",
+          "related_word": [],
+          "target_word_stem": "ellen",
+          "related_word_stem": []
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "You are playing a collaborative word guessing game in which you have to describe a target word for another player to guess.\n\nRules:\n(a) You have to reply in the form: CLUE: <some text>. Guesses from the other player will start with GUESS.\n(b) You cannot use the target word itself, parts or morphological variants of it in your description.\n(c) In addition, the same rules apply for related words which are provided below.\n\nEnd conditions:\n(i) If you use the target word or a related word in your description, then you lose.\n(ii) If the other player can guess the target word in $N$ tries, you both win.\n\nLet us start.\n\nThis is the target word that you need to describe and that the other player needs to guess:\n\n$TARGET_WORD$\n\nRelated words are:\n\n$REL_WORD$\n\nImportant: You are under time pressure, give short descriptions that are to the point!",
+      "guesser_initial_prompt": "You are playing a collaborative word guessing game in which you have to guess a target word that another player describes to you.\n\nYou can make one guess at each trial. You win when you guess the target word. You lose when you cannot guess it in $N$ tries.\n\nAfter each trial you will get a new hint from the other player which starts with CLUE.\n\nMake your guesses by just saying the word using the following form: GUESS: <a word>\n\nLet us start.\n"
+    }
+  ]
+}

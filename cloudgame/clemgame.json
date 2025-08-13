@@ -7,5 +7,5 @@
   "languages": ["en"],
   "benchmark": [],
   "regression": "large",
-  "roles": ["Judge", "Speaker"]
+  "roles": [{"name": "Judge", "prefix":  []}, {"name": "Speaker", "prefix": []}]
 }

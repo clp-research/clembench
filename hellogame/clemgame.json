@@ -7,5 +7,5 @@
   "languages": ["en"],
   "benchmark": [],
   "regression": "never",
-  "roles": ["Greeter"]
+  "roles": [{"name": "Greeter", "prefix":  []}]
 }

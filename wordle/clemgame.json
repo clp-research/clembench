@@ -8,7 +8,7 @@
     "languages": ["en"],
     "benchmark": ["2.0"],
     "regression": "small",
-    "roles": [{"name": "Guesser", "prefix": ["explanation:", "guess:"]}]
+    "roles": [{"name": "Word Guesser", "prefix": ["explanation:", "guess:"]}]
   },
   {
     "game_name": "wordle_withclue",
@@ -20,7 +20,7 @@
     "languages": ["en"],
     "benchmark": ["2.0"],
     "regression": "large",
-    "roles": [{"name": "Guesser", "prefix": ["explanation:", "guess:"]}]
+    "roles": [{"name": "Word Guesser", "prefix": ["explanation:", "guess:"]}, {"name": "Word Critic", "prefix": []}]
   },
   {
     "game_name": "wordle_withcritic",
@@ -32,6 +32,6 @@
     "languages": ["en"],
     "benchmark": ["2.0"],
     "regression": "large",
-    "roles": [{"name": "Guesser", "prefix": ["explanation:", "guess:"]}, {"name": "Clue Giver", "prefix": ["explanation:", "agreement:"]}]
+    "roles": [{"name": "Word Guesser", "prefix": ["explanation:", "guess:"]}, {"name": "Word Critic", "prefix": ["explanation:", "agreement:"]}]
   }
 ]

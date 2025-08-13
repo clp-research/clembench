@@ -6,5 +6,5 @@
   "image": "none",
   "languages": ["en"],
   "benchmark": [],
-  "roles": ["Answerer"]
+  "roles": [{"name": "Answerer", "prefix": []}]
 }

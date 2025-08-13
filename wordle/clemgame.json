@@ -32,6 +32,6 @@
     "languages": ["en"],
     "benchmark": ["2.0"],
     "regression": "large",
-    "roles": [{"name": "Guesser", "prefix": ["explanation:", "guess:"]}, {"name": "Clue Giver", "prefix": ["explanation:", "agreement:"]}]
+    "roles": [{"name": "Guesser", "prefix": ["explanation:", "guess:"]}, {"name": "Word Critic", "prefix": ["explanation:", "agreement:"]}]
   }
 ]

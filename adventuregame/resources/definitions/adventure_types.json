@@ -1,5 +1,6 @@
 {
   "home_deliver_two": {
+    "use_premade_definitions": true,
     "action_definitions": ["basic_actions.json"],
     "room_definitions": ["home_rooms.json"],
     "entity_definitions": ["home_entities.json"],
@@ -18,6 +19,7 @@
     "bench_turn_limit": 50
   },
   "home_deliver_three": {
+    "use_premade_definitions": true,
     "action_definitions": ["basic_actions_v2.json"],
     "room_definitions": ["home_rooms.json"],
     "entity_definitions": ["home_entities.json"],
@@ -34,6 +36,112 @@
     "optimal_solver_turn_limit": 50,
     "min_optimal_turns": 5,
     "max_optimal_turns": 30,
+    "bench_turn_limit": 50,
+    "prompt_template_set": "home_delivery"
+  },
+  "new-words_home-delivery_easy": {
+    "use_premade_definitions": false,
+    "definition_method": "replace",
+    "replace_counts": {
+      "rooms": 1,
+      "entities": 3,
+      "actions": 1
+    },
+    "add_basic_actions": true,
+    "action_definitions": ["home_core_actions_v2-2.json"],
+    "initial_state_config": {
+      "entity_adjectives": "none",
+      "add_floors_to_rooms": true,
+      "assign_mutable_states_from_set": false
+    },
+    "task_config": {
+      "task": "new-words_deliver",
+      "deliver_to_floor": false
+    },
+    "prompt_template_set": "new-words_replace_explanation",
+    "mutable_fact_types": ["at", "in", "on", "closed", "open"],
+    "difficulty": "easy",
+    "goal_count": 3,
+    "optimal_solver_turn_limit": 50,
+    "min_optimal_turns": 5,
+    "max_optimal_turns": 30,
     "bench_turn_limit": 50
+  },
+  "new-words_home-delivery_medium": {
+    "use_premade_definitions": false,
+    "definition_method": "replace",
+    "replace_counts": {
+      "rooms": 3,
+      "entities": 9,
+      "actions": 3
+    },
+    "add_basic_actions": true,
+    "action_definitions": ["home_core_actions_v2-2.json"],
+    "initial_state_config": {
+      "entity_adjectives": "none",
+      "add_floors_to_rooms": true,
+      "assign_mutable_states_from_set": false
+    },
+    "task_config": {
+      "task": "new-words_deliver",
+      "deliver_to_floor": false
+    },
+    "prompt_template_set": "new-words_replace_no_explanation",
+    "mutable_fact_types": ["at", "in", "on", "closed", "open"],
+    "difficulty": "medium",
+    "goal_count": 3,
+    "optimal_solver_turn_limit": 50,
+    "min_optimal_turns": 5,
+    "max_optimal_turns": 30,
+    "bench_turn_limit": 50
+  },
+  "new-words_created": {
+    "use_premade_definitions": false,
+    "definition_method": "create",
+    "add_basic_actions": true,
+    "action_definitions": ["simple_core_actions_v2-2.json"],
+    "clingo_templates": "clingo_templates_simple_actions.json",
+    "initial_state_config": {
+      "entity_adjectives": "none",
+      "add_floors_to_rooms": false,
+      "assign_mutable_states_from_set": true
+    },
+    "task_config": {
+      "task": "new-word_states",
+      "deliver_to_floor": false
+    },
+    "prompt_template_set": "new-words_created",
+    "difficulty": "hard",
+    "goal_count": 3,
+    "optimal_solver_turn_limit": 50,
+    "min_optimal_turns": 5,
+    "max_optimal_turns": 30,
+    "bench_turn_limit": 50
+  },
+  "potion_brewing": {
+    "use_premade_definitions": true,
+    "action_definitions": ["witch_actions_core.json"],
+    "room_definitions": ["witch_rooms.json"],
+    "entity_definitions": ["witch_entities.json"],
+    "domain_definitions": ["witch_domain_core.json"],
+    "event_definitions": ["witch_events_core.json"],
+    "initial_state_config": {
+      "entity_adjectives": "none",
+      "add_floors_to_rooms": true,
+      "unpaired_exits": true,
+      "constant_start_room": "bedroom1",
+      "add_ceiling_rooms": ["workshop"]
+    },
+    "task_config": {
+      "task": "potion",
+      "no_pre_explore": true
+    },
+    "goal_count": 1,
+    "mutable_fact_types": ["open", "closed", "at", "in", "on", "cold", "hot"],
+    "optimal_solver_turn_limit": 50,
+    "min_optimal_turns": 5,
+    "max_optimal_turns": 30,
+    "bench_turn_limit": 50,
+    "prompt_template_set": "potion_brewing"
   }
 }

@@ -1,0 +1,3 @@
+{
+  "pddl_domain": "(define\n    (domain new_words)\n    (:types\n        unree iness uness cally - room\n        player inventory floor subst scont diale sness mical eness pante inat enticed decte - entity\n        subst scont diale mical inat enticed - dented-able\n        diale sness mical eness pante enticed - unsust-able\n        sness inat decte - mateny-able\n        )\n    (:predicates\n        (dented ?e - dented-able)\n        (unsust ?e - unsust-able)\n        (exper ?e - unsust-able)\n        (mateny ?e - mateny-able)\n        (stord ?e - mateny-able)\n        (aphoned ?e - mateny-able)\n        )\n    )"
+}

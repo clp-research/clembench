@@ -10,20 +10,20 @@
     "repr_str": "inventory",
     "hidden": true,
     "container": true,
-    "traits": ["container"]
+    "traits": ["container", "receptacle"]
   },
   {
     "type_name": "floor",
     "repr_str": "floor",
     "hidden": true,
     "support": true,
-    "traits": ["support"]
+    "traits": ["support", "receptacle"]
   },
   {
     "type_name": "table",
     "repr_str": "table",
     "support": true,
-    "traits": ["support"],
+    "traits": ["support", "receptacle"],
     "possible_adjs": ["wooden", "metal", "low", "high"],
     "standard_locations": ["kitchen", "livingroom"]
   },
@@ -31,7 +31,7 @@
     "type_name": "sidetable",
     "repr_str": "side table",
     "support": true,
-    "traits": ["support"],
+    "traits": ["support", "receptacle"],
     "possible_adjs": ["wooden", "metal", "small"],
     "standard_locations": ["livingroom", "bedroom"]
   },
@@ -39,7 +39,7 @@
     "type_name": "counter",
     "repr_str": "counter",
     "support": true,
-    "traits": ["support"],
+    "traits": ["support", "receptacle"],
     "possible_adjs": ["wooden", "metal", "low", "high"],
     "standard_locations": ["kitchen"]
   },
@@ -48,7 +48,7 @@
     "repr_str": "refrigerator",
     "container": true,
     "openable": true,
-    "traits": ["container", "openable"],
+    "traits": ["container", "openable", "receptacle"],
     "possible_adjs": ["large", "fancy"],
     "standard_locations": ["kitchen", "pantry"]
   },
@@ -57,7 +57,7 @@
     "repr_str": "cupboard",
     "container": true,
     "openable": true,
-    "traits": ["container", "openable"],
+    "traits": ["container", "openable", "receptacle"],
     "possible_adjs": ["wooden", "metal","large", "fancy"],
     "standard_locations": ["kitchen"]
   },
@@ -66,7 +66,7 @@
     "repr_str": "wardrobe",
     "container": true,
     "openable": true,
-    "traits": ["container", "openable"],
+    "traits": ["container", "openable", "receptacle"],
     "possible_adjs": ["wooden", "large", "fancy"],
     "standard_locations": ["bedroom"]
   },
@@ -74,7 +74,7 @@
     "type_name": "shelf",
     "repr_str": "shelf",
     "support": true,
-    "traits": ["support"],
+    "traits": ["support", "receptacle"],
     "possible_adjs": ["wooden", "metal", "low", "high"],
     "standard_locations": ["kitchen", "pantry", "livingroom"]
   },
@@ -83,7 +83,7 @@
     "repr_str": "freezer",
     "container": true,
     "openable": true,
-    "traits": ["container", "openable"],
+    "traits": ["container", "openable", "receptacle"],
     "possible_adjs": ["large", "deep"],
     "standard_locations": ["pantry"]
   },
@@ -101,7 +101,7 @@
     "type_name": "chair",
     "repr_str": "chair",
     "support": true,
-    "traits": ["support"],
+    "traits": ["support", "receptacle"],
     "possible_adjs": ["comfy", "wooden", "padded"],
     "standard_locations": ["livingroom"]
   },
@@ -109,7 +109,7 @@
     "type_name": "bed",
     "repr_str": "bed",
     "support": true,
-    "traits": ["support"],
+    "traits": ["support", "receptacle"],
     "possible_adjs": ["comfy", "wooden"],
     "standard_locations": ["bedroom"]
   },
@@ -117,7 +117,7 @@
     "type_name": "couch",
     "repr_str": "couch",
     "support": true,
-    "traits": ["support"],
+    "traits": ["support", "receptacle"],
     "possible_adjs": ["comfy", "wooden", "padded"],
     "standard_locations": ["livingroom"]
   },

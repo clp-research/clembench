@@ -1,0 +1,13 @@
+{
+  "initial_state": [
+            "room(kitchen1,kitchen)",
+    "room(pantry1,pantry)", "room(hallway1,hallway)", "room(broomcloset1,broomcloset)", "room(bedroom1,bedroom)", "room(storage1,storage)",
+    "room(readingroom1,readingroom)", "room(workshop1,workshop)", "room(cellar1,cellar)", "room(conservatory1,conservatory)", "room(garden1,garden)", "room(outhouse1,outhouse)",
+
+"exit(kitchen1,conservatory1)",  "exit(pantry1,kitchen1)", "exit(hallway1,broomcloset1)", "exit(broomcloset1,hallway1)", "exit(bedroom1,readingroom1)", "exit(storage1,conservatory1)",
+    "exit(readingroom1,bedroom1)", "exit(workshop1,kitchen1)", "exit(cellar1,storage1)", "exit(conservatory1,storage1)", "exit(garden1,outhouse1)", "exit(outhouse1,garden1)"
+          ],
+          "goal_state": [
+            "dented(subst1)", "unsust(diale1)", "mateny(inat1)"
+          ]
+}

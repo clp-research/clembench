@@ -21,7 +21,7 @@ def split_state_string(state_string: str, value_delimiter: str = "(", value_sepa
 
 
 # adventure source file with initial state and goals:
-source_file_path = "adv_source.json"
+source_file_path = "layout_source2.json"
 # load initial state facts:
 with open(source_file_path, 'r', encoding='utf-8') as source_file:
     adventure_source = json.load(source_file)
@@ -34,44 +34,50 @@ split_goals = [split_state_string(goal) for goal in adventure_goals]
 # directed graph:
 dot = graphviz.Digraph('room_layout', format='png')
 
-dot.attr('node', shape='house')
+# dot.attr('node', shape='house')
+dot.attr('node', shape='box')
 
 for fact in split_facts:
     if fact[0] == "room":
         dot.node(fact[1], fact[1])
 
 dot.attr('node', shape='box')
-
+"""
 for fact in split_facts:
     if fact[0] == "type":
         for fact2 in split_facts:
             if fact2[1] == fact[1]:
                 if fact2[0] == "container" or fact2[0] == "support":
                     dot.node(fact[1], fact[1])
-
+"""
 dot.attr('node', shape='ellipse')
 
 for fact in split_facts:
+    """
     if fact[0] == "type":
         for fact2 in split_facts:
             if fact2[1] == fact[1]:
                 if fact2[0] not in ["container", "support"]:
                     dot.node(fact[1], fact[1])
+    """
     if fact[0] == "exit":
         dot.edge(fact[1], fact[2])
+    """
     if fact[0] == "at":
         dot.edge(fact[1], fact[2], "at")
+    
     if fact[0] == "on":
         dot.edge(fact[1], fact[2], "on")
     if fact[0] == "in":
         dot.edge(fact[1], fact[2], "in")
+    """
 
 dot.attr('edge', style='dashed')
-
+"""
 for goal in split_goals:
     if goal[0] == "on":
         dot.edge(goal[1], goal[2], "on")
     if goal[0] == "in":
         dot.edge(goal[1], goal[2], "in")
-
+"""
 dot.render()

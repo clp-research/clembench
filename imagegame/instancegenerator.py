@@ -10,7 +10,7 @@ import logging
 
 from clemcore.clemgame import GameInstanceGenerator
 
-N_INSTANCES = 30
+N_INSTANCES = 20
 
 logger = logging.getLogger(__name__)
 
@@ -106,7 +106,7 @@ class ImageGameInstanceGenerator(GameInstanceGenerator):
         player_a_prompt_header = self.load_template(f"resources/initial_prompts/player_a_prompt_header.template")
         player_b_prompt_header = self.load_template(f"resources/initial_prompts/player_b_prompt_header.template")
         prompt_question = self.load_template(f"resources/initial_prompts/prompt_question.template")
-        initial_grids = self.load_json("resources/grids_v2.0.json")
+        initial_grids = self.load_json("resources/grids_v3.0.json")
 
         compact_grids = []
         random_grids = []

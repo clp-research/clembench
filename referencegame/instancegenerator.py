@@ -18,8 +18,8 @@ from referencegame.resources.localization_utils import MULTILINGUAL_PATTERNS
 
 logger = logging.getLogger(__name__)
 
-VERSION = "v2.0"
-GRIDS = "resources/grids_v2.0.json"
+VERSION = "v3.0"
+GRIDS = "resources/grids_v3.0.json"
 P1_MODE = "strict"  # "liberal"
 P2_MODE = "strict"  # "liberal"
 # modes relate to regex parsing:

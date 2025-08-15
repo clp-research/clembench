@@ -1,0 +1,38 @@
+[
+  {
+    "type_name": "unree",
+    "repr_str": "unree",
+    "exit_targets": [
+      "uness",
+      "iness"
+    ],
+    "max_connections": 1
+  },
+  {
+    "type_name": "iness",
+    "repr_str": "iness",
+    "exit_targets": [
+      "unree"
+    ],
+    "max_connections": 3
+  },
+  {
+    "type_name": "uness",
+    "repr_str": "uness",
+    "exit_targets": [
+      "iness",
+      "cally"
+    ],
+    "max_connections": 2
+  },
+  {
+    "type_name": "cally",
+    "repr_str": "cally",
+    "exit_targets": [
+      "uness",
+      "iness",
+      "unree"
+    ],
+    "max_connections": 2
+  }
+]

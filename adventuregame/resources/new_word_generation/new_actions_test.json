@@ -1,0 +1,298 @@
+[
+  {
+    "type_name": "mator",
+    "lark": "mator: MATOR thing\nMATOR.1: \"mator\" WS",
+    "pddl": "(:action MATOR\n    :parameters (?e - dented-able ?r - room ?p - player)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n)\n    :effect (and\n        (dented ?e)\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?e": [
+        "arg1"
+      ],
+      "?r": [
+        "current_player_room"
+      ],
+      "?p": [
+        "player"
+      ]
+    },
+    "failure_feedback": {
+      "parameters": [
+        [
+          "{{ e }} is not dented-able.",
+          "domain_trait_type_mismatch"
+        ],
+        [
+          "{{ r }} is not a room. (This should not occur.)",
+          "domain_type_discrepancy"
+        ],
+        [
+          "{{ p }} is not a player. (This should not occur.)",
+          "domain_type_discrepancy"
+        ]
+      ],
+      "precondition": [
+        [
+          "You are not where you are! (This should not occur.)",
+          "world_state_discrepancy"
+        ],
+        [
+          "You can't see a {{ e }} here.",
+          "entity_not_accessible"
+        ]
+      ]
+    },
+    "success_feedback": "The {{ e }} is now dented.",
+    "epistemic": false,
+    "pragmatic": true,
+    "explanation": "To mator is to make something dented-able dented."
+  },
+  {
+    "type_name": "unbal",
+    "lark": "unbal: UNBAL thing\nUNBAL.1: \"unbal\" WS",
+    "pddl": "(:action UNBAL\n    :parameters (?e - unsust-able ?r - room ?p - player)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n        (unsust ?e)\n        )\n    :effect (and\n        (exper ?e)\n        (not (unsust ?e))\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?e": [
+        "arg1"
+      ],
+      "?r": [
+        "current_player_room"
+      ],
+      "?p": [
+        "player"
+      ]
+    },
+    "failure_feedback": {
+      "parameters": [
+        [
+          "{{ e }} is not unsust-able.",
+          "domain_trait_type_mismatch"
+        ],
+        [
+          "{{ r }} is not a room. (This should not occur.)",
+          "domain_type_discrepancy"
+        ],
+        [
+          "{{ p }} is not a player. (This should not occur.)",
+          "domain_type_discrepancy"
+        ]
+      ],
+      "precondition": [
+        [
+          "You are not where you are! (This should not occur.)",
+          "world_state_discrepancy"
+        ],
+        [
+          "You can't see a {{ e }} here.",
+          "entity_not_accessible"
+        ],
+        [
+          "The {{ e }} is not unsust.",
+          "entity_state_mismatch"
+        ]
+      ]
+    },
+    "success_feedback": "The {{ e }} is now exper.",
+    "epistemic": false,
+    "pragmatic": true,
+    "explanation": "To unbal is to make something unsust-able and unsust be exper."
+  },
+  {
+    "type_name": "gatic",
+    "lark": "gatic: GATIC thing\nGATIC.1: \"gatic\" WS",
+    "pddl": "(:action GATIC\n    :parameters (?e - unsust-able ?r - room ?p - player)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n        (exper ?e)\n        )\n    :effect (and\n        (unsust ?e)\n        (not (exper ?e))\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?e": [
+        "arg1"
+      ],
+      "?r": [
+        "current_player_room"
+      ],
+      "?p": [
+        "player"
+      ]
+    },
+    "failure_feedback": {
+      "parameters": [
+        [
+          "{{ e }} is not unsust-able.",
+          "domain_trait_type_mismatch"
+        ],
+        [
+          "{{ r }} is not a room. (This should not occur.)",
+          "domain_type_discrepancy"
+        ],
+        [
+          "{{ p }} is not a player. (This should not occur.)",
+          "domain_type_discrepancy"
+        ]
+      ],
+      "precondition": [
+        [
+          "You are not where you are! (This should not occur.)",
+          "world_state_discrepancy"
+        ],
+        [
+          "You can't see a {{ e }} here.",
+          "entity_not_accessible"
+        ],
+        [
+          "The {{ e }} is not exper.",
+          "entity_state_mismatch"
+        ]
+      ]
+    },
+    "success_feedback": "The {{ e }} is now unsust.",
+    "epistemic": false,
+    "pragmatic": true,
+    "explanation": "To gatic is to make something unsust-able and exper be unsust."
+  },
+  {
+    "type_name": "ratic",
+    "lark": "ratic: RATIC thing\nRATIC.1: \"ratic\" WS",
+    "pddl": "(:action RATIC\n    :parameters (?e - mateny-able ?r - room ?p - player)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n        (mateny ?e)\n        )\n    :effect (and\n        (stord ?e)\n        (not (mateny ?e))\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?e": [
+        "arg1"
+      ],
+      "?r": [
+        "current_player_room"
+      ],
+      "?p": [
+        "player"
+      ]
+    },
+    "failure_feedback": {
+      "parameters": [
+        [
+          "{{ e }} is not mateny-able.",
+          "domain_trait_type_mismatch"
+        ],
+        [
+          "{{ r }} is not a room. (This should not occur.)",
+          "domain_type_discrepancy"
+        ],
+        [
+          "{{ p }} is not a player. (This should not occur.)",
+          "domain_type_discrepancy"
+        ]
+      ],
+      "precondition": [
+        [
+          "You are not where you are! (This should not occur.)",
+          "world_state_discrepancy"
+        ],
+        [
+          "You can't see a {{ e }} here.",
+          "entity_not_accessible"
+        ],
+        [
+          "The {{ e }} is not mateny.",
+          "entity_state_mismatch"
+        ]
+      ]
+    },
+    "success_feedback": "The {{ e }} is now stord.",
+    "epistemic": false,
+    "pragmatic": true,
+    "explanation": "To ratic is to make something mateny-able and mateny be stord."
+  },
+  {
+    "type_name": "remic",
+    "lark": "remic: REMIC thing\nREMIC.1: \"remic\" WS",
+    "pddl": "(:action REMIC\n    :parameters (?e - mateny-able ?r - room ?p - player)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n        (stord ?e)\n        )\n    :effect (and\n        (aphoned ?e)\n        (not (stord ?e))\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?e": [
+        "arg1"
+      ],
+      "?r": [
+        "current_player_room"
+      ],
+      "?p": [
+        "player"
+      ]
+    },
+    "failure_feedback": {
+      "parameters": [
+        [
+          "{{ e }} is not mateny-able.",
+          "domain_trait_type_mismatch"
+        ],
+        [
+          "{{ r }} is not a room. (This should not occur.)",
+          "domain_type_discrepancy"
+        ],
+        [
+          "{{ p }} is not a player. (This should not occur.)",
+          "domain_type_discrepancy"
+        ]
+      ],
+      "precondition": [
+        [
+          "You are not where you are! (This should not occur.)",
+          "world_state_discrepancy"
+        ],
+        [
+          "You can't see a {{ e }} here.",
+          "entity_not_accessible"
+        ],
+        [
+          "The {{ e }} is not stord.",
+          "entity_state_mismatch"
+        ]
+      ]
+    },
+    "success_feedback": "The {{ e }} is now aphoned.",
+    "epistemic": false,
+    "pragmatic": true,
+    "explanation": "To remic is to make something mateny-able and stord be aphoned."
+  },
+  {
+    "type_name": "proar",
+    "lark": "proar: PROAR thing\nPROAR.1: \"proar\" WS",
+    "pddl": "(:action PROAR\n    :parameters (?e - mateny-able ?r - room ?p - player)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n        (aphoned ?e)\n        )\n    :effect (and\n        (mateny ?e)\n        (not (aphoned ?e))\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?e": [
+        "arg1"
+      ],
+      "?r": [
+        "current_player_room"
+      ],
+      "?p": [
+        "player"
+      ]
+    },
+    "failure_feedback": {
+      "parameters": [
+        [
+          "{{ e }} is not mateny-able.",
+          "domain_trait_type_mismatch"
+        ],
+        [
+          "{{ r }} is not a room. (This should not occur.)",
+          "domain_type_discrepancy"
+        ],
+        [
+          "{{ p }} is not a player. (This should not occur.)",
+          "domain_type_discrepancy"
+        ]
+      ],
+      "precondition": [
+        [
+          "You are not where you are! (This should not occur.)",
+          "world_state_discrepancy"
+        ],
+        [
+          "You can't see a {{ e }} here.",
+          "entity_not_accessible"
+        ],
+        [
+          "The {{ e }} is not aphoned.",
+          "entity_state_mismatch"
+        ]
+      ]
+    },
+    "success_feedback": "The {{ e }} is now mateny.",
+    "epistemic": false,
+    "pragmatic": true,
+    "explanation": "To proar is to make something mateny-able and aphoned be mateny."
+  }
+]

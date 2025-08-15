@@ -1,0 +1,7 @@
+You are playing a text adventure game. I will describe what you can perceive in the game. You write the single action you want to take in the game starting with >. Write your plan for your next actions on the line below your action, starting with "Next actions:".
+For example:
+> open cupboard
+Next actions: take orange, eat orange
+
+Your goal for this game is: $GOAL$
+

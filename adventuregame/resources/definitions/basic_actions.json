@@ -1,0 +1,66 @@
+[
+  {
+    "type_name": "open",
+    "lark": "open: OPEN thing\nOPEN.1: \"open\" WS",
+    "object_req_attribute": "openable",
+    "object_pre_state": ["closed"],
+    "object_post_state": "open(THING)",
+    "state_changes": [
+      {"pre_state": "closed(THING)", "conditions": ["closed(THING)"], "post_state": "open(THING)"}
+    ],
+    "feedback_template": "The {{ thing }} is now open.",
+    "asp": "{ action_t(TURN,open,THING):at_t(TURN,THING,ROOM),closed_t(TURN,THING) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nopen_t(TURN+1,THING) :- action_t(TURN,open,THING).\nopen_t(TURN+1,THING) :- turn(TURN), open_t(TURN,THING), not action_t(TURN,close,THING)."
+  },
+  {
+    "type_name": "close",
+    "lark": "close: CLOSE thing\nCLOSE.1: \"close\" WS",
+    "object_req_attribute": "openable",
+    "object_pre_state": ["open"],
+    "object_post_state": "closed(THING)",
+    "state_changes": [
+      {"pre_state": "open(THING)", "conditions": ["open(THING)"], "post_state": "closed(THING)"}
+    ],
+    "feedback_template": "The {{ thing }} is now closed.",
+    "asp": "{ action_t(TURN,close,THING):at_t(TURN,THING,ROOM),open_t(TURN,THING) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nclosed_t(TURN+1,THING) :- action_t(TURN,close,THING).\nclosed_t(TURN+1,THING) :- turn(TURN), closed_t(TURN,THING), not action_t(TURN,open,THING)."
+  },
+  {
+    "type_name": "take",
+    "lark": "take: TAKE PREP* thing (PREP thing)*\nTAKE.1: (\"take\" | \"grab\" | \"pick\" | \"get\") WS",
+    "object_req_attribute": "takeable",
+    "object_pre_state": ["in", "on"],
+    "object_post_state": "in(THING,inventory)",
+    "state_changes": [
+      {"pre_state": "on(THING,ANY)", "conditions": ["takeable(THING)"], "post_state": "in(THING,inventory)"},
+      {"pre_state": "in(THING,ANY)", "conditions": ["takeable(THING)"], "post_state": "in(THING,inventory)"}
+    ],
+    "feedback_template": "You take the {{ thing }}. {{ inventory_desc }}",
+    "asp": "{ action_t(TURN,take,THING):at_t(TURN,THING,ROOM),takeable(THING),in_t(TURN,THING,CONTAINER),open_t(TURN,CONTAINER),at_t(TURN,player1,ROOM);action_t(TURN,take,THING):at_t(TURN,THING,ROOM),takeable(THING),on_t(TURN,THING,SUPPORT),support(SUPPORT),at_t(TURN,player1,ROOM) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nin_t(TURN+1,THING,inventory) :- action_t(TURN,take,THING).\nin_t(TURN+1,THING,TARGET) :- turn(TURN), in_t(TURN,THING,TARGET), not action_t(TURN,take,THING), TARGET != inventory.\non_t(TURN+1,THING,TARGET) :- turn(TURN), on_t(TURN,THING,TARGET), not action_t(TURN,take,THING)."
+  },
+  {
+    "type_name": "put",
+    "lark": "put: PUT thing (\"back\" WS)* PREP* thing\nPUT.1: (\"put\" | \"leave\" | \"place\" | \"drop\") WS",
+    "object_req_attribute": "movable",
+    "object_pre_state": ["in", "on"],
+    "object_post_state": "PREP(THING,TARGET)",
+    "state_changes": [
+      {"pre_state": "on(THING,ANY)", "conditions": ["movable(THING)", "support(TARGET)"], "post_state": "on(THING,TARGET)"},
+      {"pre_state": "on(THING,ANY)", "conditions": ["movable(THING)", "container(TARGET)"], "post_state": "in(THING,TARGET)"},
+      {"pre_state": "in(THING,ANY)", "conditions": ["movable(THING)", "support(TARGET)"], "post_state": "on(THING,TARGET)"},
+      {"pre_state": "in(THING,ANY)", "conditions": ["movable(THING)", "container(TARGET)"], "post_state": "in(THING,TARGET)"}
+    ],
+    "feedback_template": "You put the {{ thing }} {{ prep }} the {{ target }}.",
+    "asp": "{ action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),at_t(TURN,SOURCE,ROOM),movable(THING),container(SOURCE),in_t(TURN,THING,SOURCE),open_t(TURN,SOURCE),container(TARGET),open_t(TURN,TARGET);action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),at_t(TURN,SOURCE,ROOM),movable(THING),container(SOURCE),in_t(TURN,THING,SOURCE),open_t(TURN,SOURCE),support(TARGET);action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),support(TARGET),movable(THING),on_t(TURN,THING,SOURCE),support(SOURCE);action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),movable(THING),in_t(TURN,THING,inventory),container(TARGET),open_t(TURN,TARGET);action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),movable(THING),in_t(TURN,THING,inventory),support(TARGET) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nin_t(TURN+1,THING,TARGET) :- turn(TURN), action_t(TURN,put,THING,TARGET), container(TARGET).\non_t(TURN+1,THING,TARGET) :- turn(TURN), action_t(TURN,put,THING,TARGET), support(TARGET).\nin_t(TURN+1,THING,inventory) :- turn(TURN), in_t(TURN,THING,inventory), not action_t(TURN,put,THING,_)."
+  },
+  {
+    "type_name": "go",
+    "lark": "go: GO (\"back\" WS)* (\"to\" WS)* thing\nGO.1: (\"go\" | \"enter\" | \"return\" | \"proceed\" | \"move\") WS",
+    "object_pre_state": ["at"],
+    "object_post_state": "at(PLAYER,TARGET)",
+    "state_changes": [
+      {"pre_state": "at(PLAYER,HERE)", "conditions": ["exit(HERE,TARGET)"], "post_state": "at(PLAYER,TARGET)"},
+      {"pre_state": "at(THING,HERE)", "conditions": ["in(THING,inventory)"], "post_state": "at(THING,TARGET)"}
+    ],
+    "feedback_template": "{{ room_desc }}",
+    "asp": "{ action_t(TURN,go,TARGET):exit(ROOM,TARGET) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nat_t(TURN+1,player1,TARGET) :- action_t(TURN,go,TARGET).\nat_t(TURN+1,player1,ROOM) :- turn(TURN), at_t(TURN,player1,ROOM), not action_t(TURN,go,_).\nat_t(TURN+1,THING,TARGET) :- action_t(TURN,go,TARGET), in_t(TURN,THING,inventory).\nat_t(TURN+1,THING,ROOM) :- turn(TURN), at_t(TURN,THING,ROOM), not in_t(TURN,THING,inventory), not turn_limit(TURN), THING != player1."
+  }
+]

@@ -9,14 +9,6 @@ WORDP: WORD (DASH | UNDERSCORE | WORD | NUMBER)*
 type_list: "(" type_list_element+ ")"
 type_list_element: (var WS | WORDP WS)+ DASH WS WORDP WS*
 
-
-define: DEFINEL WS+ domain_id WS+ types WS* (predicates WS*)* (functions WS*)* (event WS*)* WS* ")"
-DEFINEL.1: "(define"
-
-
-domain_id: DOMAINIDL WS+ WORDP WS* ")"
-DOMAINIDL.1: "(domain"
-
 types: TYPESL WS+ (type_list_element WS+)+ WS* ")"
 TYPESL.1: "(:types"
 

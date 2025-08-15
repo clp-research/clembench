@@ -1,4 +1,4 @@
 {
   "grammar_head": "%import common.WORD\n%import common.WS\n",
-  "grammar_foot": "PREP.1: (\"on\" | \"in\" | \"from\" | \"out of\" | \"out\" | \"into\" | \"up\") WS\nDET.1: (\"the\" | \"a\" | \"an\") WS\nthing: DET? ( ADJ+ WORD | ADJ+ WORD WS WORD | WORD WS WORD | WORD ) WS?\nunknown.-1: (WORD WS*)+"
+  "grammar_foot": "PREP.1: (\"on\" | \"in\" | \"from\" | \"out of\" | \"out\" | \"into\" | \"up\") WS\nDET.1: (\"the\" | \"a\" | \"an\") WS\nthing: DET? ( WORD | ADJ+ WORD | ADJ+ WORD WS WORD | WORD WS WORD | WORD WS WORD WS WORD | WORD WS WORD WS WORD WS WORD | WORD \"'s\" WS WORD ) WS?\nunknown.-1: (WORD WS*)+"
 }

@@ -1,0 +1,8 @@
+{
+  "turns": "turn_limit($TURNLIMIT$).\nturn(0).\n{ turn(TURN+1) } 1 :- turn(TURN), not turn_limit(TURN).\npost_turn(TURN+1) :- turn(TURN), not turn(TURN+1).",
+  "action_limits": ":- { action_t(TURN,_,_) } > 1, turn(TURN).\n:- { action_t(TURN,_,_) } = 0, turn(TURN).",
+  "goal_1": ":- post_turn(POST), not $PREDICATE$_t(POST,$THING$).",
+  "goal_2": ":- post_turn(POST), not $PREDICATE$_t(POST,$THING$,$TARGET$).",
+  "minimize": "#minimize{1,X:turn(X)}.",
+  "return_only_actions": "#show action_t/3."
+}

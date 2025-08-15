@@ -1,0 +1,112 @@
+[
+  {
+    "type_name": "subst",
+    "repr_str": "subst",
+    "traits": [
+      "dented-able"
+    ],
+    "standard_locations": [
+      "iness",
+      "cally"
+    ]
+  },
+  {
+    "type_name": "scont",
+    "repr_str": "scont",
+    "traits": [
+      "dented-able"
+    ],
+    "standard_locations": [
+      "unree"
+    ]
+  },
+  {
+    "type_name": "diale",
+    "repr_str": "diale",
+    "traits": [
+      "unsust-able",
+      "dented-able"
+    ],
+    "standard_locations": [
+      "cally",
+      "uness"
+    ]
+  },
+  {
+    "type_name": "sness",
+    "repr_str": "sness",
+    "traits": [
+      "unsust-able",
+      "mateny-able"
+    ],
+    "standard_locations": [
+      "cally"
+    ]
+  },
+  {
+    "type_name": "mical",
+    "repr_str": "mical",
+    "traits": [
+      "unsust-able",
+      "dented-able"
+    ],
+    "standard_locations": [
+      "cally",
+      "iness"
+    ]
+  },
+  {
+    "type_name": "eness",
+    "repr_str": "eness",
+    "traits": [
+      "unsust-able"
+    ],
+    "standard_locations": [
+      "unree",
+      "cally"
+    ]
+  },
+  {
+    "type_name": "pante",
+    "repr_str": "pante",
+    "traits": [
+      "unsust-able"
+    ],
+    "standard_locations": [
+      "cally"
+    ]
+  },
+  {
+    "type_name": "inat",
+    "repr_str": "inat",
+    "traits": [
+      "mateny-able",
+      "dented-able"
+    ],
+    "standard_locations": [
+      "cally"
+    ]
+  },
+  {
+    "type_name": "enticed",
+    "repr_str": "enticed",
+    "traits": [
+      "dented-able",
+      "unsust-able"
+    ],
+    "standard_locations": [
+      "iness"
+    ]
+  },
+  {
+    "type_name": "decte",
+    "repr_str": "decte",
+    "traits": [
+      "mateny-able"
+    ],
+    "standard_locations": [
+      "unree",
+      "uness"
+    ]
+  }
+]

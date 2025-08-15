@@ -6,5 +6,5 @@
   "image": "none",
   "languages": ["en"],
   "benchmark": ["static_1.0", "diagnostic_1.0"],
-  "roles": ["Instruction Follower"]
+  "roles": [{"name": "Instruction Follower", "prefix": []}]
 }

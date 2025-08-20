@@ -7,5 +7,5 @@
   "languages": ["en"],
   "benchmark": ["multimodal_1.6", "multimodal_1.6.5", "multimodal_2.0"],
   "regression": "large",
-  "roles": ["Player A", "Player B"]
+  "roles": [{"name": "MatchItPlayer A", "prefix":  []}, {"name": "MatchItPlayer B", "prefix":  []}]
 }

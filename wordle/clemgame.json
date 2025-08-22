@@ -6,7 +6,7 @@
     "players": 1,
     "image": "none",
     "languages": ["en"],
-    "benchmark": ["2.0"],
+    "benchmark": ["2.0", "3.0"],
     "regression": "small",
     "roles": ["Guesser"]
   },
@@ -18,7 +18,7 @@
     "players": 2,
     "image": "none",
     "languages": ["en"],
-    "benchmark": ["2.0"],
+    "benchmark": ["2.0", "3.0"],
     "regression": "large",
     "roles": ["Guesser", "Clue Giver"]
   },
@@ -30,7 +30,7 @@
     "players": 2,
     "image": "none",
     "languages": ["en"],
-    "benchmark": ["2.0"],
+    "benchmark": ["2.0", "3.0"],
     "regression": "large",
     "roles": ["Guesser", "Clue Giver"]
   }

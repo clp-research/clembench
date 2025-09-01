@@ -1,0 +1,988 @@
+{
+  "experiments": [
+    {
+      "name": "Level_1",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "Center",
+          "candidate_list": [
+            "White",
+            "Silver",
+            "Hutch",
+            "Chair",
+            "Sweatshirt",
+            "Shoes",
+            "Punter",
+            "Center"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "Private",
+          "candidate_list": [
+            "Private",
+            "Cadet",
+            "Mesa",
+            "Rock",
+            "Legos",
+            "Train",
+            "Dinero",
+            "Dime"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "Plant",
+          "candidate_list": [
+            "Documents",
+            "Self",
+            "Bush",
+            "Plant",
+            "Mushrooms",
+            "PCP",
+            "President",
+            "Mayor"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "Mailman",
+          "candidate_list": [
+            "Semi",
+            "Sled",
+            "Mailman",
+            "Scientist",
+            "Clover",
+            "Broccoli",
+            "Foyer",
+            "Garage"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "Mosquito",
+          "candidate_list": [
+            "Mosquito",
+            "Bee",
+            "Disco",
+            "Blues",
+            "Fog",
+            "Hurricane",
+            "Cannabis",
+            "Pepper"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "Blouse",
+          "candidate_list": [
+            "Topaz",
+            "Sapphire",
+            "Blouse",
+            "Glasses",
+            "Tuba",
+            "Alarm",
+            "Burglary",
+            "Rape"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "Mamba",
+          "candidate_list": [
+            "Foot",
+            "Millimeter",
+            "Mamba",
+            "King",
+            "Tricycle",
+            "Dollhouse",
+            "Sauce",
+            "Garlic"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "Chrysanthemum",
+          "candidate_list": [
+            "Chrysanthemum",
+            "Dandelion",
+            "Sturgeon",
+            "Trout",
+            "Seeds",
+            "Edger",
+            "Rosemary",
+            "Chives"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "Cinnamon",
+          "candidate_list": [
+            "Cinnamon",
+            "Basil",
+            "Dog",
+            "Child",
+            "Latin",
+            "Classical",
+            "Coke",
+            "Lemonade"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "Running",
+          "candidate_list": [
+            "Running",
+            "Track",
+            "Cornerback",
+            "Coach",
+            "Scarf",
+            "Gloves",
+            "Heirlooms",
+            "Clothes"
+          ]
+        }
+      ],
+      "max_turns": 8,
+      "question_tag": "QUESTION:",
+      "answer_tag": "ANSWER:",
+      "guess_tag": "GUESS:",
+      "answer_variations": [
+        "ANSWER: yes",
+        "ANSWER: no",
+        "ANSWER: Yes.",
+        "ANSWER: Yes",
+        "ANSWER: No.",
+        "ANSWER: No"
+      ],
+      "letter_based_pattern": "(does the target word (start with the letter|contain the letter)|does the target word have the letter\\s*[a-z]|is the (first|second|third|fourth|fifth) letter of the target word [a-z])",
+      "direct_guess_pattern": "^is the target word\\s*(['\"])[^'\"]+?\u0001\\s*\\?",
+      "length_question_pattern": "does the target word (have|contain) (more|less|exactly) \\d+ (letters|letter)",
+      "syllable_question_pattern": "does the target word (have|contain) (more than|less than|exactly) (one|two|three|four|five|six|seven|eight|nine|ten|\\d+) (syllable|syllables)",
+      "pos_question_pattern": "^is the target word (a|an)\\s+(noun|verb|adjective|adverb|pronoun|preposition|conjunction|interjection)\\s*\\?",
+      "answerer_initial_prompt": "Let’s play a guessing game! Your task is to answer the other player's questions. Based on your knowledge of the word: $TARGET WORD$, respond to the following questions or guesses. Limit your response to only 'yes' or 'no' with no explanation or other words. Never reveal the answer in your response.\n\nYou must reply using the format below and DO NOT ADD ANY TEXT OTHER THAN THIS:\n\nANSWER: <some text>\n\nTarget Word: $TARGET WORD$",
+      "guesser_initial_prompt": "Let's play a guessing game. Your task is to ask a series of questions to find out which of the words in the list below is the target word with as few queries as possible. The maximum number of questions you can ask to help you narrow down the options is $N$. Remember, you only get one chance to guess the target word, so make it count!\n\nThe rules of the game are: \n\n1. Only ask one question per turn. DO NOT ASK MORE THAN ONE QUESTION.\n\n2. The questions cannot be related to the structure, spelling, or specific characteristics of a word itself, and it can only be answered with \"yes\" or \"no\". \n\n3. Use the following format for asking questions and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nQUESTION: <your question>\n\n4. You have only one opportunity to guess the target word. To make your guess, use the following format and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nGUESS: <target word>\n\nRemember you cannot ask for a hint. Make your question brief. Let’s start!\n\nList of candidate words: $LIST$"
+    },
+    {
+      "name": "Level_2",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "Centimeter",
+          "candidate_list": [
+            "Cave",
+            "Cliff",
+            "Waterfall",
+            "Ocean",
+            "Kilometer",
+            "Centimeter",
+            "Furlong",
+            "Yard"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "Flounder",
+          "candidate_list": [
+            "Minnow",
+            "Goldfish",
+            "Halibut",
+            "Flounder",
+            "Exclamation",
+            "Speaking",
+            "Adverb",
+            "Verb"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "Lieutenant",
+          "candidate_list": [
+            "Propane",
+            "Kerosene",
+            "Petroleum",
+            "Coal",
+            "Major",
+            "Lieutenant",
+            "Corporal",
+            "Sergeant"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "Oboe",
+          "candidate_list": [
+            "Lettuce",
+            "Kale",
+            "Avocado",
+            "Grape",
+            "Bassoon",
+            "Oboe",
+            "Clarinet",
+            "Saxophone"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "Salesperson",
+          "candidate_list": [
+            "Lawyer",
+            "Attorney",
+            "Clerk",
+            "Salesperson",
+            "Screwdriver",
+            "Awl",
+            "Knife",
+            "Axe"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "Tequila",
+          "candidate_list": [
+            "Spoon",
+            "Cup",
+            "Bowl",
+            "Ladle",
+            "Tequila",
+            "Brandy",
+            "Margarita",
+            "Martini"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "Typhoon",
+          "candidate_list": [
+            "Canoe",
+            "Skiff",
+            "Battleship",
+            "Destroyer",
+            "Flood",
+            "Earthquake",
+            "Typhoon",
+            "Tornado"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "Millipede",
+          "candidate_list": [
+            "Gardenia",
+            "Lilac",
+            "Pansy",
+            "Violet",
+            "Bee",
+            "Ant",
+            "Centipede",
+            "Millipede"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "Noisemaker",
+          "candidate_list": [
+            "Asparagus",
+            "Celery",
+            "Spinach",
+            "Artichoke",
+            "Television",
+            "Radio",
+            "Noisemaker",
+            "Fan"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "Lion",
+          "candidate_list": [
+            "Beech",
+            "Willow",
+            "Cedar",
+            "Pine",
+            "Lion",
+            "Jaguar",
+            "Deer",
+            "Giraffe"
+          ]
+        }
+      ],
+      "max_turns": 8,
+      "question_tag": "QUESTION:",
+      "answer_tag": "ANSWER:",
+      "guess_tag": "GUESS:",
+      "answer_variations": [
+        "ANSWER: yes",
+        "ANSWER: no",
+        "ANSWER: Yes.",
+        "ANSWER: Yes",
+        "ANSWER: No.",
+        "ANSWER: No"
+      ],
+      "letter_based_pattern": "(does the target word (start with the letter|contain the letter)|does the target word have the letter\\s*[a-z]|is the (first|second|third|fourth|fifth) letter of the target word [a-z])",
+      "direct_guess_pattern": "^is the target word\\s*(['\"])[^'\"]+?\u0001\\s*\\?",
+      "length_question_pattern": "does the target word (have|contain) (more|less|exactly) \\d+ (letters|letter)",
+      "syllable_question_pattern": "does the target word (have|contain) (more than|less than|exactly) (one|two|three|four|five|six|seven|eight|nine|ten|\\d+) (syllable|syllables)",
+      "pos_question_pattern": "^is the target word (a|an)\\s+(noun|verb|adjective|adverb|pronoun|preposition|conjunction|interjection)\\s*\\?",
+      "answerer_initial_prompt": "Let’s play a guessing game! Your task is to answer the other player's questions. Based on your knowledge of the word: $TARGET WORD$, respond to the following questions or guesses. Limit your response to only 'yes' or 'no' with no explanation or other words. Never reveal the answer in your response.\n\nYou must reply using the format below and DO NOT ADD ANY TEXT OTHER THAN THIS:\n\nANSWER: <some text>\n\nTarget Word: $TARGET WORD$",
+      "guesser_initial_prompt": "Let's play a guessing game. Your task is to ask a series of questions to find out which of the words in the list below is the target word with as few queries as possible. The maximum number of questions you can ask to help you narrow down the options is $N$. Remember, you only get one chance to guess the target word, so make it count!\n\nThe rules of the game are: \n\n1. Only ask one question per turn. DO NOT ASK MORE THAN ONE QUESTION.\n\n2. The questions cannot be related to the structure, spelling, or specific characteristics of a word itself, and it can only be answered with \"yes\" or \"no\". \n\n3. Use the following format for asking questions and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nQUESTION: <your question>\n\n4. You have only one opportunity to guess the target word. To make your guess, use the following format and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nGUESS: <target word>\n\nRemember you cannot ask for a hint. Make your question brief. Let’s start!\n\nList of candidate words: $LIST$"
+    },
+    {
+      "name": "Level_3",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "Cymbal",
+          "candidate_list": [
+            "Banjo",
+            "Guitar",
+            "Drum",
+            "Cymbal",
+            "Bugle",
+            "Trombone",
+            "Mandolin",
+            "Harp"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "Pansy",
+          "candidate_list": [
+            "Gardenia",
+            "Lilac",
+            "Tulip",
+            "Lily",
+            "Pansy",
+            "Violet",
+            "Marigold",
+            "Petunia"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "Husband",
+          "candidate_list": [
+            "Nephew",
+            "Uncle",
+            "Grandfather",
+            "Grandmother",
+            "Father",
+            "Mother",
+            "Wife",
+            "Husband"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "Ant",
+          "candidate_list": [
+            "Bug",
+            "Termite",
+            "Ant",
+            "Bee",
+            "Gnat",
+            "Mosquito",
+            "Butterfly",
+            "Moth"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "Mango",
+          "candidate_list": [
+            "Pineapple",
+            "Banana",
+            "Melon",
+            "Pear",
+            "Lemon",
+            "Orange",
+            "Apricot",
+            "Mango"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "Topaz",
+          "candidate_list": [
+            "Turquoise",
+            "Opal",
+            "Topaz",
+            "Amethyst",
+            "Pearl",
+            "Ruby",
+            "Aquamarine",
+            "Emerald"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "Scarf",
+          "candidate_list": [
+            "Stockings",
+            "Tights",
+            "Scarf",
+            "Shirt",
+            "Panties",
+            "Pants",
+            "Underwear",
+            "Bra"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "Pontoon",
+          "candidate_list": [
+            "Canoe",
+            "Dinghy",
+            "Battleship",
+            "Destroyer",
+            "Tugboat",
+            "Ferry",
+            "Pontoon",
+            "Houseboat"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "Reverend",
+          "candidate_list": [
+            "Reverend",
+            "Rabbi",
+            "Nun",
+            "Monk",
+            "Minister",
+            "Pastor",
+            "Archbishop",
+            "Cardinal"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "Flounder",
+          "candidate_list": [
+            "Halibut",
+            "Flounder",
+            "Carp",
+            "Catfish",
+            "Grouper",
+            "Mackerel",
+            "Minnow",
+            "Goldfish"
+          ]
+        }
+      ],
+      "max_turns": 8,
+      "question_tag": "QUESTION:",
+      "answer_tag": "ANSWER:",
+      "guess_tag": "GUESS:",
+      "answer_variations": [
+        "ANSWER: yes",
+        "ANSWER: no",
+        "ANSWER: Yes.",
+        "ANSWER: Yes",
+        "ANSWER: No.",
+        "ANSWER: No"
+      ],
+      "letter_based_pattern": "(does the target word (start with the letter|contain the letter)|does the target word have the letter\\s*[a-z]|is the (first|second|third|fourth|fifth) letter of the target word [a-z])",
+      "direct_guess_pattern": "^is the target word\\s*(['\"])[^'\"]+?\u0001\\s*\\?",
+      "length_question_pattern": "does the target word (have|contain) (more|less|exactly) \\d+ (letters|letter)",
+      "syllable_question_pattern": "does the target word (have|contain) (more than|less than|exactly) (one|two|three|four|five|six|seven|eight|nine|ten|\\d+) (syllable|syllables)",
+      "pos_question_pattern": "^is the target word (a|an)\\s+(noun|verb|adjective|adverb|pronoun|preposition|conjunction|interjection)\\s*\\?",
+      "answerer_initial_prompt": "Let’s play a guessing game! Your task is to answer the other player's questions. Based on your knowledge of the word: $TARGET WORD$, respond to the following questions or guesses. Limit your response to only 'yes' or 'no' with no explanation or other words. Never reveal the answer in your response.\n\nYou must reply using the format below and DO NOT ADD ANY TEXT OTHER THAN THIS:\n\nANSWER: <some text>\n\nTarget Word: $TARGET WORD$",
+      "guesser_initial_prompt": "Let's play a guessing game. Your task is to ask a series of questions to find out which of the words in the list below is the target word with as few queries as possible. The maximum number of questions you can ask to help you narrow down the options is $N$. Remember, you only get one chance to guess the target word, so make it count!\n\nThe rules of the game are: \n\n1. Only ask one question per turn. DO NOT ASK MORE THAN ONE QUESTION.\n\n2. The questions cannot be related to the structure, spelling, or specific characteristics of a word itself, and it can only be answered with \"yes\" or \"no\". \n\n3. Use the following format for asking questions and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nQUESTION: <your question>\n\n4. You have only one opportunity to guess the target word. To make your guess, use the following format and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nGUESS: <target word>\n\nRemember you cannot ask for a hint. Make your question brief. Let’s start!\n\nList of candidate words: $LIST$"
+    },
+    {
+      "name": "Abs_Level_1",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "actor",
+          "candidate_list": [
+            "postman",
+            "actor",
+            "flatmate",
+            "bos",
+            "dietician",
+            "nurse",
+            "name",
+            "infinitive"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "magistrate",
+          "candidate_list": [
+            "polygon",
+            "crescent",
+            "lawyer",
+            "magistrate",
+            "bowl",
+            "tube",
+            "relay",
+            "soccer"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "stepbrother",
+          "candidate_list": [
+            "son",
+            "stepbrother",
+            "fever",
+            "sty",
+            "windsurfing",
+            "paragliding",
+            "optician",
+            "neurosurgeon"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "paganism",
+          "candidate_list": [
+            "lunchtime",
+            "evening",
+            "fainting",
+            "swelling",
+            "paganism",
+            "wiccan",
+            "knight",
+            "sir"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "wet",
+          "candidate_list": [
+            "wet",
+            "dry",
+            "lady",
+            "duke",
+            "anniversary",
+            "prom",
+            "democrat",
+            "idealism"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "lying",
+          "candidate_list": [
+            "schizophrenia",
+            "sociopath",
+            "acquaintance",
+            "employee",
+            "parsec",
+            "pitch",
+            "lying",
+            "annoying"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "afternoon",
+          "candidate_list": [
+            "birthday",
+            "marriage",
+            "laud",
+            "afternoon",
+            "optometrist",
+            "podiatry",
+            "spot",
+            "sweating"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "one",
+          "candidate_list": [
+            "outlier",
+            "datum",
+            "psychotic",
+            "greed",
+            "league",
+            "knot",
+            "one",
+            "twenty-nine"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "cannibalism",
+          "candidate_list": [
+            "trespassing",
+            "urination",
+            "infanticide",
+            "cannibalism",
+            "intrigued",
+            "smiling",
+            "twenty-seven",
+            "nine"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "pleasure",
+          "candidate_list": [
+            "enemy",
+            "fiance",
+            "pleasure",
+            "cheering",
+            "reference",
+            "reality",
+            "percent",
+            "seventh"
+          ]
+        }
+      ],
+      "max_turns": 8,
+      "question_tag": "QUESTION:",
+      "answer_tag": "ANSWER:",
+      "guess_tag": "GUESS:",
+      "answer_variations": [
+        "ANSWER: yes",
+        "ANSWER: no",
+        "ANSWER: Yes.",
+        "ANSWER: Yes",
+        "ANSWER: No.",
+        "ANSWER: No"
+      ],
+      "letter_based_pattern": "(does the target word (start with the letter|contain the letter)|does the target word have the letter\\s*[a-z]|is the (first|second|third|fourth|fifth) letter of the target word [a-z])",
+      "direct_guess_pattern": "^is the target word\\s*(['\"])[^'\"]+?\u0001\\s*\\?",
+      "length_question_pattern": "does the target word (have|contain) (more|less|exactly) \\d+ (letters|letter)",
+      "syllable_question_pattern": "does the target word (have|contain) (more than|less than|exactly) (one|two|three|four|five|six|seven|eight|nine|ten|\\d+) (syllable|syllables)",
+      "pos_question_pattern": "^is the target word (a|an)\\s+(noun|verb|adjective|adverb|pronoun|preposition|conjunction|interjection)\\s*\\?",
+      "answerer_initial_prompt": "Let’s play a guessing game! Your task is to answer the other player's questions. Based on your knowledge of the word: $TARGET WORD$, respond to the following questions or guesses. Limit your response to only 'yes' or 'no' with no explanation or other words. Never reveal the answer in your response.\n\nYou must reply using the format below and DO NOT ADD ANY TEXT OTHER THAN THIS:\n\nANSWER: <some text>\n\nTarget Word: $TARGET WORD$",
+      "guesser_initial_prompt": "Let's play a guessing game. Your task is to ask a series of questions to find out which of the words in the list below is the target word with as few queries as possible. The maximum number of questions you can ask to help you narrow down the options is $N$. Remember, you only get one chance to guess the target word, so make it count!\n\nThe rules of the game are: \n\n1. Only ask one question per turn. DO NOT ASK MORE THAN ONE QUESTION.\n\n2. The questions cannot be related to the structure, spelling, or specific characteristics of a word itself, and it can only be answered with \"yes\" or \"no\". \n\n3. Use the following format for asking questions and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nQUESTION: <your question>\n\n4. You have only one opportunity to guess the target word. To make your guess, use the following format and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nGUESS: <target word>\n\nRemember you cannot ask for a hint. Make your question brief. Let’s start!\n\nList of candidate words: $LIST$"
+    },
+    {
+      "name": "Abs_Level_2",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "extrovert",
+          "candidate_list": [
+            "hurdle",
+            "fencing",
+            "surfing",
+            "swimming",
+            "hostile",
+            "friendly",
+            "leader",
+            "extrovert"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "dermatology",
+          "candidate_list": [
+            "pathology",
+            "radiology",
+            "oncology",
+            "dermatology",
+            "gp",
+            "surgeon",
+            "dentist",
+            "physician"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "technology",
+          "candidate_list": [
+            "french",
+            "spanish",
+            "technology",
+            "engineering",
+            "twenty-three",
+            "eleven",
+            "one",
+            "seven"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "sociopath",
+          "candidate_list": [
+            "lunchtime",
+            "suppertime",
+            "breakfast",
+            "teatime",
+            "anorexia",
+            "bulimia",
+            "sociopath",
+            "psychopath"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "buddhism",
+          "candidate_list": [
+            "half",
+            "quarter",
+            "sixteenth",
+            "ninth",
+            "taoism",
+            "jainism",
+            "scientology",
+            "buddhism"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "third",
+          "candidate_list": [
+            "sixth",
+            "fourth",
+            "third",
+            "tenth",
+            "name",
+            "word",
+            "verb",
+            "adverb"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "king",
+          "candidate_list": [
+            "tsar",
+            "king",
+            "princes",
+            "prince",
+            "noon",
+            "dusk",
+            "afternoon",
+            "evening"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "decahedron",
+          "candidate_list": [
+            "grandson",
+            "granddaughter",
+            "mother-in-law",
+            "sister-in-law",
+            "trapezium",
+            "parallelogram",
+            "decahedron",
+            "dodecahedron"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "hairdresser",
+          "candidate_list": [
+            "nanometre",
+            "centimetre",
+            "mile",
+            "fathom",
+            "hairdresser",
+            "plumber",
+            "author",
+            "presenter"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "drawing",
+          "candidate_list": [
+            "shoplifting",
+            "robbery",
+            "stealing",
+            "burglary",
+            "building",
+            "monument",
+            "illustration",
+            "drawing"
+          ]
+        }
+      ],
+      "max_turns": 8,
+      "question_tag": "QUESTION:",
+      "answer_tag": "ANSWER:",
+      "guess_tag": "GUESS:",
+      "answer_variations": [
+        "ANSWER: yes",
+        "ANSWER: no",
+        "ANSWER: Yes.",
+        "ANSWER: Yes",
+        "ANSWER: No.",
+        "ANSWER: No"
+      ],
+      "letter_based_pattern": "(does the target word (start with the letter|contain the letter)|does the target word have the letter\\s*[a-z]|is the (first|second|third|fourth|fifth) letter of the target word [a-z])",
+      "direct_guess_pattern": "^is the target word\\s*(['\"])[^'\"]+?\u0001\\s*\\?",
+      "length_question_pattern": "does the target word (have|contain) (more|less|exactly) \\d+ (letters|letter)",
+      "syllable_question_pattern": "does the target word (have|contain) (more than|less than|exactly) (one|two|three|four|five|six|seven|eight|nine|ten|\\d+) (syllable|syllables)",
+      "pos_question_pattern": "^is the target word (a|an)\\s+(noun|verb|adjective|adverb|pronoun|preposition|conjunction|interjection)\\s*\\?",
+      "answerer_initial_prompt": "Let’s play a guessing game! Your task is to answer the other player's questions. Based on your knowledge of the word: $TARGET WORD$, respond to the following questions or guesses. Limit your response to only 'yes' or 'no' with no explanation or other words. Never reveal the answer in your response.\n\nYou must reply using the format below and DO NOT ADD ANY TEXT OTHER THAN THIS:\n\nANSWER: <some text>\n\nTarget Word: $TARGET WORD$",
+      "guesser_initial_prompt": "Let's play a guessing game. Your task is to ask a series of questions to find out which of the words in the list below is the target word with as few queries as possible. The maximum number of questions you can ask to help you narrow down the options is $N$. Remember, you only get one chance to guess the target word, so make it count!\n\nThe rules of the game are: \n\n1. Only ask one question per turn. DO NOT ASK MORE THAN ONE QUESTION.\n\n2. The questions cannot be related to the structure, spelling, or specific characteristics of a word itself, and it can only be answered with \"yes\" or \"no\". \n\n3. Use the following format for asking questions and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nQUESTION: <your question>\n\n4. You have only one opportunity to guess the target word. To make your guess, use the following format and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nGUESS: <target word>\n\nRemember you cannot ask for a hint. Make your question brief. Let’s start!\n\nList of candidate words: $LIST$"
+    },
+    {
+      "name": "Abs_Level_3",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "monster",
+          "candidate_list": [
+            "troll",
+            "minotaur",
+            "psychic",
+            "witch",
+            "monster",
+            "unicorn",
+            "vampire",
+            "goblin"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "corporal",
+          "candidate_list": [
+            "gunner",
+            "officer",
+            "corporal",
+            "sergeant",
+            "captain",
+            "major",
+            "general",
+            "brigadier"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "teaspoon",
+          "candidate_list": [
+            "ton",
+            "pound",
+            "microgram",
+            "milligram",
+            "millilitre",
+            "litre",
+            "tablespoon",
+            "teaspoon"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "parallelogram",
+          "candidate_list": [
+            "oblong",
+            "semicircle",
+            "nonagon",
+            "heptagon",
+            "trapezium",
+            "parallelogram",
+            "dodecahedron",
+            "decahedron"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "butcher",
+          "candidate_list": [
+            "baker",
+            "butcher",
+            "accountant",
+            "businessman",
+            "musician",
+            "dancer",
+            "hairdresser",
+            "plumber"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "afternoon",
+          "candidate_list": [
+            "midday",
+            "sunrise",
+            "suppertime",
+            "lunchtime",
+            "afternoon",
+            "evening",
+            "breakfast",
+            "brunch"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "chiropractor",
+          "candidate_list": [
+            "technician",
+            "optician",
+            "psychotherapist",
+            "chiropractor",
+            "surgeon",
+            "gp",
+            "nurse",
+            "pharmacist"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "taoism",
+          "candidate_list": [
+            "hinduism",
+            "scientology",
+            "taoism",
+            "jainism",
+            "christianity",
+            "sikhism",
+            "protestant",
+            "quaker"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "canoeing",
+          "candidate_list": [
+            "sledding",
+            "cycling",
+            "football",
+            "boxing",
+            "swimming",
+            "surfing",
+            "canoeing",
+            "kayaking"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "herpes",
+          "candidate_list": [
+            "cholera",
+            "herpes",
+            "smallpox",
+            "chickenpox",
+            "chlamydia",
+            "gonorrhoea",
+            "depression",
+            "anxiety"
+          ]
+        }
+      ],
+      "max_turns": 8,
+      "question_tag": "QUESTION:",
+      "answer_tag": "ANSWER:",
+      "guess_tag": "GUESS:",
+      "answer_variations": [
+        "ANSWER: yes",
+        "ANSWER: no",
+        "ANSWER: Yes.",
+        "ANSWER: Yes",
+        "ANSWER: No.",
+        "ANSWER: No"
+      ],
+      "letter_based_pattern": "(does the target word (start with the letter|contain the letter)|does the target word have the letter\\s*[a-z]|is the (first|second|third|fourth|fifth) letter of the target word [a-z])",
+      "direct_guess_pattern": "^is the target word\\s*(['\"])[^'\"]+?\u0001\\s*\\?",
+      "length_question_pattern": "does the target word (have|contain) (more|less|exactly) \\d+ (letters|letter)",
+      "syllable_question_pattern": "does the target word (have|contain) (more than|less than|exactly) (one|two|three|four|five|six|seven|eight|nine|ten|\\d+) (syllable|syllables)",
+      "pos_question_pattern": "^is the target word (a|an)\\s+(noun|verb|adjective|adverb|pronoun|preposition|conjunction|interjection)\\s*\\?",
+      "answerer_initial_prompt": "Let’s play a guessing game! Your task is to answer the other player's questions. Based on your knowledge of the word: $TARGET WORD$, respond to the following questions or guesses. Limit your response to only 'yes' or 'no' with no explanation or other words. Never reveal the answer in your response.\n\nYou must reply using the format below and DO NOT ADD ANY TEXT OTHER THAN THIS:\n\nANSWER: <some text>\n\nTarget Word: $TARGET WORD$",
+      "guesser_initial_prompt": "Let's play a guessing game. Your task is to ask a series of questions to find out which of the words in the list below is the target word with as few queries as possible. The maximum number of questions you can ask to help you narrow down the options is $N$. Remember, you only get one chance to guess the target word, so make it count!\n\nThe rules of the game are: \n\n1. Only ask one question per turn. DO NOT ASK MORE THAN ONE QUESTION.\n\n2. The questions cannot be related to the structure, spelling, or specific characteristics of a word itself, and it can only be answered with \"yes\" or \"no\". \n\n3. Use the following format for asking questions and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nQUESTION: <your question>\n\n4. You have only one opportunity to guess the target word. To make your guess, use the following format and DO NOT ADD ANY TEXT OTHER THAN THIS: \n\nGUESS: <target word>\n\nRemember you cannot ask for a hint. Make your question brief. Let’s start!\n\nList of candidate words: $LIST$"
+    }
+  ]
+}

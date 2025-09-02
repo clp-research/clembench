@@ -614,8 +614,8 @@ class AdventureIFInterpreter(GameResourceLocator):
         self.domain = dict()
         self.initialize_domain()
 
+        self.event_types = dict()
         if "event_definitions" in game_instance:
-            self.event_types = dict()
             self.initialize_event_types()
 
         self.world_state: set = set()

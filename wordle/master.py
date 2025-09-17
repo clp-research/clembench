@@ -246,15 +246,58 @@ class Wordle(DialogueGameMaster):
         self.guesser_explanations: List[str] = []
         self.guesser_feedbacks: List[str] = []
 
+    def _prepare_older_version_words(self, experiment_details):
+        words_dict = {}
+        words_dict["max_word_length"] = experiment_details["common_config"]["max_word_length"]
+        words_dict["official_words_list"] = experiment_details["english_words"]
+        words_dict["clue_lang"] = "clue:"
+        words_dict["guess_lang"] = "guess:"
+        words_dict["guess_word_lang"] = "word"
+        words_dict["explanation_lang"] = "explanation:"
+        words_dict["explanataion_details_lang"] = "details"
+        words_dict["guess_feedback_lang"] = "guess_feedback:"
+        words_dict["agreement_lang"] = "agreement:"
+        words_dict["agreement_word_lang"] = "yes or no"
+        words_dict["guess_agreement_lang"] = "guess_agreement:"
+        words_dict["agreement_explanation_lang"] = "agreement_explanation:"
+        words_dict["agreement_match_keywords_lang"] = ["yes", "no"]
+        words_dict["official_recognized_words_file_url"] = "https://raw.githubusercontent.com/3b1b/videos/master/_2022/wordle/data/allowed_words.txt"
+        words_dict["word_clues_file_url"] = "https://www.kaggle.com/datasets/darinhawley/new-york-times-crossword-clues-answers-19932021?select=nytcrosswords.csv"
+        words_dict["error_prompt_text"] = {
+            "INVALID_WORD_LENGTH": "The guess should have exactly 5 letters.",
+            "INVALID_WORD": "The guess should contain only letters.",
+            "NOT_VALID_WORD_FOR_GAME": "Your guess is not a valid word for this game.",
+            "INVALID_FORMAT": "Provide your response only in this format.",
+            "OTHER_ERROR": "Guess an English five-letter word.",
+            "OTHER_DETAILS": "Do not generate any other text. Please try again.",
+            "ERROR_RESPONSE_FORMAT": "Guess does not conform to the format rules",
+            "ERROR_GAME_FORMAT": "Guess does not conform to the game rules.",
+            "RETRY": "Please try again."
+
+        }
+        return words_dict
+
     def _on_setup(self, **game_instance):
         self.state = WordleGameState(
             target_word=game_instance["target_word"].strip().lower(),
-            words=self.experiment["lang_keywords"],
-            max_rounds=self.experiment["common_config"]["n_turns"],
+            words=self.experiment.get("lang_keywords"),
+            max_rounds=self.experiment["common_config"].get("n_turns"),
             # NOT_VALID_WORD_FOR_GAME is the only entry in the dict; we only handle this case in the game for now
-            max_retry_per_error=self.experiment["common_config"]["max_retry_per_error"]["NOT_VALID_WORD_FOR_GAME"],
+            max_retry_per_error=self.experiment["common_config"].get("max_retry_per_error"),
             guesser_initial_prompt=self.experiment["guesser_prompt"]
-        )
+        )        
+
+        # Handle older version fallbacks
+        if not self.state.words:
+            self.state.words = self._prepare_older_version_words(self.experiment)
+        if not self.state.max_rounds:
+            self.state.max_rounds = self.experiment["common_config"]["max_attempts_per_game"]
+        if isinstance(self.state.max_retry_per_error, dict):
+            self.state.max_retry_per_error = self.state.max_retry_per_error["NOT_VALID_WORD_FOR_GAME"]
+        if isinstance(self.state.guesser_initial_prompt, list):
+            self.state.guesser_initial_prompt = self.state.guesser_initial_prompt[0]["content"]
+
+
         self.guess_validator = GuessValidator(self.state.target_word)
         self.formatter = ResponseFormatter(self.state.words)
         self._add_players()
@@ -402,9 +445,14 @@ class WordleWithCritic(WordleWithClue):
         super().__init__(game_spec, experiment, player_models)
         self.critics_judgements: List[str] = []
 
+    def _prepare_older_version_prompt(self, guesser_critic_prompt):
+        if isinstance(guesser_critic_prompt, str):
+            return guesser_critic_prompt
+        return guesser_critic_prompt[0]["content"]
+
     def _on_setup(self, **game_instance):
         super()._on_setup(**game_instance)  # this calls _add_players()
-        self.state.critic_initial_prompt = self.experiment["guesser_critic_prompt"]
+        self.state.critic_initial_prompt = self._prepare_older_version_prompt(self.experiment["guesser_critic_prompt"])
         self.state.awaiting_critic = True  # whether the critic has already been consulted
         self.state.commit_guess = False  # guesser has an initial and a final guess (to commit == end the round)
 
@@ -416,7 +464,7 @@ class WordleWithCritic(WordleWithClue):
         critic_model = self.player_models[1] if len(self.player_models) > 1 else guesser_model
         self.critic = WordCritic(critic_model, self.state.words)
         # set initial prompt from self.experiment because self.state.critic_initial_prompt is not yet set
-        self.add_player(self.critic, initial_prompt=self.experiment["guesser_critic_prompt"])
+        self.add_player(self.critic, initial_prompt=self.state.critic_initial_prompt)
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         if player == self.guesser:

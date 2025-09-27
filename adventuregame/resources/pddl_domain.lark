@@ -10,7 +10,7 @@ type_list: "(" type_list_element+ ")"
 type_list_element: (var WS | WORDP WS)+ DASH WS WORDP WS*
 
 
-define: DEFINEL WS+ domain_id WS+ types WS* (functions WS*)* (event WS*)* WS* ")"
+define: DEFINEL WS+ domain_id WS+ types WS* (predicates WS*)* (functions WS*)* (event WS*)* WS* ")"
 DEFINEL.1: "(define"
 
 
@@ -19,6 +19,9 @@ DOMAINIDL.1: "(domain"
 
 types: TYPESL WS+ (type_list_element WS+)+ WS* ")"
 TYPESL.1: "(:types"
+
+predicates: PREDICATESL WS+ (predicate WS+)+ WS* ")"
+PREDICATESL.1: "(:predicates"
 
 functions: FUNCTIONSL WS+ (function_list_element WS+)+ WS* ")"
 FUNCTIONSL.1: "(:functions"
@@ -33,6 +36,8 @@ effect: ":effect" WS andp WS+
 
 function_list: "(" function_list_element+ ")"
 function_list_element: "(" WORDP WS var WS DASH WS WORDP ")" WS*
+
+predicate: "(" WORDP WS var WS DASH WS WORDP ")" WS*
 
 andp: ANDL WS+ ((type_list | pred | notp | forall | equal | orp | when | equal | less | leq | greater | greq) WS*)+ ")" WS*
 ANDL.1: "(and"

@@ -1,0 +1,129 @@
+[
+  {
+    "type_name": "open",
+    "lark": "open: OPEN thing\nOPEN.1: \"open\" WS",
+    "pddl": "(:action OPEN\n    :parameters (?e - openable ?r - room ?p - player)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n        (closed ?e)\n        )\n    :effect (and\n        (open ?e)\n        (not (closed ?e))\n        (forall (?c - takeable)\n            (when\n                (in ?c ?e)\n                (and\n                    (accessible ?c)\n                )\n            )\n        )\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?e": ["arg1"],
+      "?r": ["current_player_room"],
+      "?p": ["player"]
+    },
+    "failure_feedback": {
+      "parameters": [
+        ["{{ e }} is not openable.", "domain_trait_type_mismatch"],
+        ["{{ r }} is not a room. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ p }} is not a player. (This should not occur.)", "domain_type_discrepancy"]
+      ],
+      "precondition": [
+        ["You are not where you are! (This should not occur.)", "world_state_discrepancy"],
+        ["You can't see a {{ e }} here.", "entity_not_accessible"],
+        ["The {{ e }} is not closed.", "entity_state_mismatch"]
+      ]
+    },
+    "success_feedback": "The {{ e }} is now open. {{ container_content }}",
+    "asp": "{ action_t(TURN,open,THING):at_t(TURN,THING,ROOM),closed_t(TURN,THING) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nopen_t(TURN+1,THING) :- action_t(TURN,open,THING).\nopen_t(TURN+1,THING) :- turn(TURN), open_t(TURN,THING), not action_t(TURN,close,THING).",
+    "epistemic": true,
+    "pragmatic": true,
+    "explanation": "To VERB is to make something physically unobstructed and uncovered, and make its contents available for use or interaction."
+  },
+  {
+    "type_name": "close",
+    "lark": "close: CLOSE thing\nCLOSE.1: \"close\" WS",
+    "pddl": "(:action CLOSE\n    :parameters (?e - openable ?r - room ?p - player)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n        (open ?e)\n        )\n    :effect (and\n        (closed ?e)\n        (not (open ?e))\n        (forall (?i - takeable)\n            (when\n                (in ?i ?e)\n                (and\n                    (not (accessible ?i))\n                )\n            )\n        )\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?e": ["arg1"],
+      "?r": ["current_player_room"],
+      "?p": ["player"]
+    },
+    "failure_feedback": {
+      "parameters": [
+        ["{{ e }} is not openable.", "domain_trait_type_mismatch"],
+        ["{{ r }} is not a room. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ p }} is not a player. (This should not occur.)", "domain_type_discrepancy"]
+      ],
+      "precondition": [
+        ["You are not where you are! (This should not occur.)", "world_state_discrepancy"],
+        ["You can't see a {{ e }} here.", "entity_not_accessible"],
+        ["The {{ e }} is not open.", "entity_state_mismatch"]
+      ]
+    },
+    "success_feedback": "The {{ e }} is now closed.",
+    "asp": "{ action_t(TURN,close,THING):at_t(TURN,THING,ROOM),open_t(TURN,THING) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nclosed_t(TURN+1,THING) :- action_t(TURN,close,THING).\nclosed_t(TURN+1,THING) :- turn(TURN), closed_t(TURN,THING), not action_t(TURN,open,THING).",
+    "epistemic": false,
+    "pragmatic": false,
+    "explanation": "To VERB is to remove or block an opening of something, and make its contents unavailable for use or interaction."
+  },
+  {
+    "type_name": "take",
+    "lark": "take: TAKE PREP* thing (PREP thing)*\nTAKE.1: (\"take\" | \"grab\" | \"pick\" | \"get\") WS",
+    "pddl": "(:action TAKE\n    :parameters (?e - takeable ?s - receptacle ?p - player ?i - inventory ?r - room)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n        (not (in ?e inventory))\n        (at ?s ?r)\n        (accessible ?e)\n        (< (itemcount ?i) 2)\n        (or\n            (and\n                (on ?e ?s)\n                (support ?s)\n                )\n            (and\n                (open ?s)\n                (container ?s)\n                (in ?e ?s)\n                )\n            )\n        )\n    :effect (and\n        (in ?e ?i)\n        (increase (itemcount ?i) 1)\n        (when\n            (and\n                (support ?s)\n                (on ?e ?s)\n                )\n            (not (on ?e ?s))\n            )\n        (when\n            (and\n                (container ?s)\n                (in ?e ?s)\n                )\n            (not (in ?e ?s))\n            )\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?e": ["arg1"],
+      "?s": ["arg2", "arg1_receptacle"],
+      "?p": ["player"],
+      "?i": ["inventory"],
+      "?r": ["current_player_room"]
+    },
+    "failure_feedback": {
+      "parameters": [
+        ["{{ e }} is not takeable.", "domain_trait_type_mismatch"],
+        ["{{ s }} is not a receptacle.", "domain_trait_type_mismatch"],
+        ["{{ p }} is not a player. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ i }} is not an inventory. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ r }} is not a room. (This should not occur.)", "domain_type_discrepancy"]
+      ],
+      "precondition": [
+        ["You are not where you are! (This should not occur.)", "world_state_discrepancy"],
+        ["You can't see a {{ e }} here.", "entity_not_accessible"],
+        ["The {{ e }} is already in your inventory.", "entity_already_inventory"],
+        ["You can't see a {{ s }} here.", "entity_not_accessible"],
+        ["You can't see a {{ e }} here.", "entity_not_accessible"],
+        ["Your inventory can not hold more than two objects at the same time.", "inventory_limit_exceeded"],
+        ["The {{ e }} is not on the {{ s }}.", "entity_state_mismatch"],
+        ["The {{ s }} is not a support.", "entity_trait_mismatch"],
+        ["The {{ s }} is not open.", "entity_state_mismatch"],
+        ["The {{ s }} is not a container.", "entity_trait_mismatch"],
+        ["The {{ e }} is not in the {{ s }}.", "entity_state_mismatch"]
+      ]
+    },
+    "success_feedback": "You take the {{ e }}. {{ inventory_desc }}",
+    "asp": "{ action_t(TURN,take,THING):at_t(TURN,THING,ROOM),takeable(THING),in_t(TURN,THING,CONTAINER),open_t(TURN,CONTAINER),at_t(TURN,player1,ROOM);action_t(TURN,take,THING):at_t(TURN,THING,ROOM),takeable(THING),on_t(TURN,THING,SUPPORT),support(SUPPORT),at_t(TURN,player1,ROOM) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nin_t(TURN+1,THING,inventory) :- action_t(TURN,take,THING).\nin_t(TURN+1,THING,TARGET) :- turn(TURN), in_t(TURN,THING,TARGET), not action_t(TURN,take,THING), TARGET != inventory.\non_t(TURN+1,THING,TARGET) :- turn(TURN), on_t(TURN,THING,TARGET), not action_t(TURN,take,THING).",
+    "epistemic": false,
+    "pragmatic": true,
+    "explanation": "To VERB is to get something into one's hands, possession or control."
+  },
+  {
+    "type_name": "put",
+    "lark": "put: PUT thing (\"back\" WS)* PREP* thing\nPUT.1: (\"put\" | \"leave\" | \"place\" | \"drop\") WS",
+    "pddl": "(:action PUT\n    :parameters (?e - movable ?t - receptacle ?p - player ?i - inventory ?r - room)\n    :precondition (and\n        (at ?p ?r)\n        (at ?e ?r)\n        (at ?t ?r)\n        (or\n            (and\n                (container ?t)\n                (open ?t)\n                )\n            (support ?t)\n            )\n        )\n    :effect (and\n        (when\n            (in ?e ?i)\n            (decrease (itemcount ?i) 1)\n            )\n        (not (in ?e ?i))\n        (when\n            (support ?t)\n            (on ?e ?t)\n            )\n        (when\n            (container ?t)\n            (in ?e ?t)\n            )\n        )\n)",
+    "pddl_parameter_mapping": {
+      "?e": ["arg1"],
+      "?t": ["arg2"],
+      "?p": ["player"],
+      "?i": ["inventory"],
+      "?r": ["current_player_room"]
+    },
+    "failure_feedback": {
+      "parameters": [
+        ["{{ e }} is not moveable.", "domain_trait_type_mismatch"],
+        ["{{ t }} is not a receptacle.", "domain_trait_type_mismatch"],
+        ["{{ p }} is not a player. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ i }} is not an inventory. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ r }} is not a room. (This should not occur.)", "domain_type_discrepancy"]
+      ],
+      "precondition": [
+        ["You are not where you are! (This should not occur.)", "world_state_discrepancy"],
+        ["You can't see a {{ e }} here.", "entity_not_accessible"],
+        ["You can't see a {{ t }} here.", "entity_not_accessible"],
+        ["The {{ t }} is not a container.", "entity_trait_mismatch"],
+        ["The {{ t }} is not open.", "entity_state_mismatch"],
+        ["The {{ t }} is not a support.", "entity_trait_mismatch"]
+      ]
+    },
+    "success_feedback": "You put the {{ e }} {{ prep }} the {{ t }}.",
+    "asp": "{ action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),at_t(TURN,SOURCE,ROOM),movable(THING),container(SOURCE),in_t(TURN,THING,SOURCE),open_t(TURN,SOURCE),container(TARGET),open_t(TURN,TARGET);action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),at_t(TURN,SOURCE,ROOM),movable(THING),container(SOURCE),in_t(TURN,THING,SOURCE),open_t(TURN,SOURCE),support(TARGET);action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),support(TARGET),movable(THING),on_t(TURN,THING,SOURCE),support(SOURCE);action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),movable(THING),in_t(TURN,THING,inventory),container(TARGET),open_t(TURN,TARGET);action_t(TURN,put,THING,TARGET):at_t(TURN,THING,ROOM),at_t(TURN,player1,ROOM),at_t(TURN,TARGET,ROOM),movable(THING),in_t(TURN,THING,inventory),support(TARGET) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nin_t(TURN+1,THING,TARGET) :- turn(TURN), action_t(TURN,put,THING,TARGET), container(TARGET).\non_t(TURN+1,THING,TARGET) :- turn(TURN), action_t(TURN,put,THING,TARGET), support(TARGET).\nin_t(TURN+1,THING,inventory) :- turn(TURN), in_t(TURN,THING,inventory), not action_t(TURN,put,THING,_).",
+    "epistemic": false,
+    "pragmatic": true,
+    "explanation": "To VERB is to physically place something somewhere."
+  }
+]

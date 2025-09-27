@@ -212,6 +212,9 @@ class PrivateShared(DialogueGameMaster):
             self.set_context_for(self.answerer, f"{self.questioner_tag}{parsed_response}")
         else:
             # Check if the answer was correct
+            # TODO: make this robust to outputs with linebreaks and extraneous text - currently these lead to empty filled_slots!
+            #   this is also currently not recording any 'false' values, only true ones
+            #   but in those cases, the metadata recording about slot filling also doesn't work
             slot_filled = self._is_slot_filled(parsed_response)
             self.filled_slots.append(slot_filled)
             self.log_to_self("metadata", f"Slot filled: {slot_filled}")
@@ -426,6 +429,8 @@ class PrivateSharedScorer(GameScorer):
         # we truncate kappa to be between 0 and 1
         trunc_kappa = max(0, kappa) if not aborted else np.nan
         filled = logs['Filled Slots']
+        # TODO: update proper game code to not produce empty 'Filled Slots' in the first place (see TODO above)
+        # abort fallback above assures that the following line does not lead to exceptions
         sf_acc = sum(filled) / len(filled) if not aborted else np.nan
         bench_score = PrivateSharedScorer.compute_bench_score(sf_acc, trunc_kappa)
 

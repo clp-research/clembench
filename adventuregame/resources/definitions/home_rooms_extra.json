@@ -1,0 +1,9 @@
+[
+  {
+    "type_name": "bedroom",
+    "repr_str": "bedroom",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["livingroom", "hallway"],
+    "max_connections": 1
+  }
+]

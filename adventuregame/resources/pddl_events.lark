@@ -1,0 +1,78 @@
+%import common.WORD
+%import common.WS
+%import common.NUMBER
+
+DASH: "-"
+UNDERSCORE: "_"
+WORDP: WORD (DASH | UNDERSCORE | WORD | NUMBER)*
+
+type_list: "(" type_list_element+ ")"
+type_list_element: (var WS | WORDP WS)+ DASH WS WORDP WS*
+
+types: TYPESL WS+ (type_list_element WS+)+ WS* ")"
+TYPESL.1: "(:types"
+
+predicates: PREDICATESL WS+ (predicate WS+)+ WS* ")"
+PREDICATESL.1: "(:predicates"
+
+functions: FUNCTIONSL WS+ (function_list_element WS+)+ WS* ")"
+FUNCTIONSL.1: "(:functions"
+
+event: EVENTL WS WORDP WS+ parameters precondition effect ")"
+EVENTL.1: "(:event"
+
+
+parameters: ":parameters" WS (type_list | pred) WS+
+precondition: ":precondition" WS (andp | orp) WS+
+effect: ":effect" WS andp WS+
+
+function_list: "(" function_list_element+ ")"
+function_list_element: "(" WORDP WS var WS DASH WS WORDP ")" WS*
+
+predicate: "(" WORDP WS var WS DASH WS WORDP ")" WS*
+
+andp: ANDL WS+ ((type_list | pred | notp | forall | equal | orp | when | equal | less | leq | greater | greq) WS*)+ ")" WS*
+ANDL.1: "(and"
+
+orp: ORL WS+ ((type_list | pred | notp | forall | equal | andp | when | equal | less | leq | greater | greq) WS*)+ ")" WS*
+ORL.1: "(or"
+
+notp: NOTL WS+ pred ")"
+NOTL.1: "(not"
+
+forall: FORALLL WS+ (type_list | pred)+ WS* (when | andp) ")"
+FORALLL.1: "(forall"
+
+when: WHENL WS+ (type_list | pred | notp | forall | equal | andp) WS+ (type_list | pred | notp | forall | equal | andp) WS* ")" WS*
+WHENL.1: "(when"
+
+var: "?" WORDP
+pred: "(" (WORDP | var) WS* (WORDP WS* | var WS*)* ")"
+
+
+function: ("(" WORDP WS var ")" | NUMBER)
+
+increase: INCREASEL WS function WS function WS* ")"
+INCREASEL.1: "(increase"
+
+decrease: DECREASEL WS function WS function WS* ")"
+DECREASEL.1: "(decrease"
+
+assign: ASSIGNL WS function WS function WS* ")"
+ASSIGNL.1: "(assign"
+
+
+equal: EQL WS function WS function ")"
+EQL.1: "(="
+
+less: LESSL WS function WS function ")"
+LESSL.1: "(<"
+
+leq: LEQL WS function WS function ")"
+LEQL.1: "(<="
+
+greater: GREATERL WS function WS function ")"
+GREATERL.1: "(>"
+
+greq: GREQL WS function WS function ")"
+GREQL.1: "(>="

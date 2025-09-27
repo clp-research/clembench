@@ -1,0 +1,103 @@
+[
+  {
+    "type_name": "go",
+    "lark": "go: GO (\"back\" WS)* (\"to\" WS)* thing\nGO.1: (\"go\" | \"enter\" | \"return\" | \"proceed\" | \"move\") WS",
+    "pddl": "(:action GO\n    :parameters (?c ?d - room ?p - player)\n    :precondition (and\n        (at ?p ?c)\n        (exit ?c ?d)\n        (not (at ?p ?d))\n        )\n    :effect (and\n        (at ?p ?d)\n        (not (at ?p ?c))\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?c": ["current_player_room"],
+      "?d": ["arg1"],
+      "?p": ["player"]
+    },
+    "failure_feedback": {
+      "parameters": [
+        ["{{ c }} is not a room.", "domain_trait_type_mismatch"],
+        ["{{ d }} is not a room.", "domain_trait_type_mismatch"],
+        ["{{ p }} is not a player. (This should not occur.)", "domain_type_discrepancy"]
+      ],
+      "precondition": [
+        ["You are not where you are! (This should not occur.)", "world_state_discrepancy"],
+        ["You are already in the {{ d }}.", "going_to_current_room"],
+        ["You can't go to a {{ d }} from here.", "no_exit_to"]
+      ]
+    },
+    "success_feedback": "{{ room_desc }}",
+    "asp": "{ action_t(TURN,go,TARGET):exit(ROOM,TARGET) } 1 :- turn(TURN), at_t(TURN,player1,ROOM), not turn_limit(TURN).\nat_t(TURN+1,player1,TARGET) :- action_t(TURN,go,TARGET).\nat_t(TURN+1,player1,ROOM) :- turn(TURN), at_t(TURN,player1,ROOM), not action_t(TURN,go,_).\nat_t(TURN+1,THING,ROOM) :- turn(TURN), at_t(TURN,THING,ROOM).",
+    "epistemic": true,
+    "pragmatic": true,
+    "explanation": "To VERB is to move through space, especially to a place."
+  },
+  {
+    "type_name": "done",
+    "lark": "done: DONE\nDONE.1: (\"done\" | \"quit\" | \"finish\") WS*",
+    "pddl": "(:action DONE\n    :parameters (?p - player ?r - room)\n    :precondition (and\n        (at ?p ?r)\n        )\n    :effect (and\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?p": ["player"],
+      "?r": ["current_player_room"]
+    },
+    "failure_feedback": {
+      "parameters": [
+        ["{{ p }} is not a player. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ r }} is not a room. (This should not occur.)", "domain_type_discrepancy"]
+      ],
+      "precondition": [
+        ["You are not where you are! (This should not occur.)", "world_state_discrepancy"]
+      ]
+    },
+    "success_feedback": "You consider yourself done.",
+    "asp": "",
+    "epistemic": false,
+    "pragmatic": true,
+    "explanation": "To VERB is to end the game."
+  },
+  {
+    "type_name": "examine",
+    "lark": "examine: EXAMINE thing\nEXAMINE.1: (\"examine\" | \"check\" | \"inspect\" | \"search\") WS",
+    "pddl": "(:action EXAMINE\n    :parameters (?p - player ?r - room ?e - entity)\n    :precondition (and\n        (at ?p ?r)\n        (or\n            (at ?e ?r)\n            (type ?e inventory)\n            )\n        (accessible ?e)\n            )\n    :effect (and\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?p": ["player"],
+      "?r": ["current_player_room"],
+      "?e": ["arg1"]
+    },
+    "failure_feedback": {
+      "parameters": [
+        ["{{ p }} is not a player. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ r }} is not a room. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ e }} is not an entity. (This should not occur.)", "domain_type_discrepancy"]
+      ],
+      "precondition": [
+        ["You are not where you are! (This should not occur.)", "world_state_discrepancy"],
+        ["You can't see a {{ e }} here.", "entity_not_accessible"],
+        ["Your inventory is not an entity. (This should not occur.)", "world_state_discrepancy"],
+        ["You can't see a {{ e }} here.", "entity_not_accessible"]
+      ]
+    },
+    "success_feedback": "{{ arg1_desc }}",
+    "asp": "",
+    "epistemic": true,
+    "pragmatic": false,
+    "explanation": "To VERB is to observe or inspect carefully."
+  },
+  {
+    "type_name": "look",
+    "lark": "look: LOOK (\"at\"* ( thing | \"around\" | \"room\" ) )\nLOOK.1: (\"look\" | \"examine\" | \"check\" | \"inspect\" | \"search\") WS",
+    "pddl": "(:action LOOK\n    :parameters (?p - player ?r - room)\n    :precondition (and\n        (at ?p ?r)\n            )\n    :effect (and\n    )\n)",
+    "pddl_parameter_mapping": {
+      "?p": ["player"],
+      "?r": ["current_player_room"]
+    },
+    "failure_feedback": {
+      "parameters": [
+        ["{{ p }} is not a player. (This should not occur.)", "domain_type_discrepancy"],
+        ["{{ r }} is not a room. (This should not occur.)", "domain_type_discrepancy"]
+      ],
+      "precondition": [
+        ["You are not where you are! (This should not occur.)", "world_state_discrepancy"]
+      ]
+    },
+    "success_feedback": "{{ room_desc }}",
+    "asp": "",
+    "epistemic": true,
+    "pragmatic": false,
+    "explanation": "To VERB is to inspect a room."
+  }
+]

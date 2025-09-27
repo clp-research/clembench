@@ -4,5 +4,8 @@
   "goal_1": ":- post_turn(POST), not $PREDICATE$_t(POST,$THING$).",
   "goal_2": ":- post_turn(POST), not $PREDICATE$_t(POST,$THING$,$TARGET$).",
   "minimize": "#minimize{1,X:turn(X)}.",
-  "return_only_actions": "#show action_t/3.\n#show action_t/4."
+  "return_only_actions": "#show action_t/3.\n#show action_t/4.",
+  "pre_explore_visited": "visited(ROOM) :- at_t(TURN, player1, ROOM).",
+  "pre_explore_goals": ":- post_turn(POST), at_t(0,$THING$,ROOM), not visited(ROOM).",
+  "pre_explore_all": ":- post_turn(POST), room(ROOM,_), not visited(ROOM)."
 }

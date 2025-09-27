@@ -2,7 +2,8 @@
   {
     "type_name": "player",
     "repr_str": "you",
-    "hidden": true
+    "hidden": true,
+    "traits": []
   },
   {
     "type_name": "inventory",

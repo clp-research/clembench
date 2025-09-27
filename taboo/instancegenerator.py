@@ -190,4 +190,4 @@ if __name__ == '__main__':
     parser.add_argument("-m", "--mode", choices=["manual", "conceptnet", "openai"], default="conceptnet",
                         help="Choose whether to use ConceptNet or OpenAI.")
     args = parser.parse_args()
-    TabooGameInstanceGenerator().generate(seed=73128361, mode=args.mode)
+    TabooGameInstanceGenerator().generate(seed=4723848, mode=args.mode)

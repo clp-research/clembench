@@ -1,0 +1,31 @@
+[
+  {
+    "type_name": "workshop_antigravity_objects",
+    "pddl": "(:event ANTIGRAVITY_OBJECTS\n    :parameters (?e - entity ?h - receptacle ?c - ceiling ?r - room ?p - player)\n    :precondition (and\n        (room ?r workshop)\n        (at ?e ?r)\n        (at ?p ?r)\n        (not (type ?h ceiling))\n        (or\n            (on ?e ?h)\n            (and\n                (in ?e ?h)\n                (open ?h)\n                )\n            )\n        (type ?c ceiling)\n        )\n    :effect (and\n        (when\n            (and\n                (in ?e ?h)\n                (open ?h)\n                )\n            (and\n                (not (in ?e ?h))\n                (on ?e ?c)\n                )\n            )\n        (when\n            (on ?e ?h)\n            (and\n                (not (on ?e ?h))\n                (on ?e ?c)\n                )\n            )\n        )\n    )",
+    "event_feedback": "The {{ e }} floats up to the ceiling.",
+    "asp": ""
+  },
+  {
+    "type_name": "workshop_antigravity_player_float_start",
+    "pddl": "(:event ANTIGRAVPLAYERSTART\n    :parameters (?r - room ?p - player)\n    :precondition (and\n        (room ?r workshop)\n        (at ?p ?r)\n        (not (floating ?p))\n        )\n    :effect (and\n        (floating ?p)\n        )\n    )",
+    "event_feedback": "Magical experiments have reversed and dampened gravity in this room. You begin to float in the air.",
+    "asp": ""
+  },
+  {
+    "type_name": "workshop_antigravity_player_float_stop",
+    "pddl": "(:event ANTIGRAVPLAYERSTOP\n    :parameters (?r - room ?p - player)\n    :precondition (and\n        (not (room ?r workshop))\n        (at ?p ?r)\n        (floating ?p)\n        )\n    :effect (and\n        (not (floating ?p))\n        )\n    )",
+    "event_feedback": "Gravity behaves normally in this room. You stop floating in the air.",
+    "asp": ""
+  },
+  {
+    "type_name": "outhouse_teleport",
+    "pddl": "(:event OUTHOUSETELEPORT\n    :parameters (?r - room ?p - player)\n    :precondition (and\n        (room ?r outhouse)\n        (at ?p ?r)\n        )\n    :effect (and\n        (at ?p kitchen1)\n        (not (at ?p ?r))\n        (forall (?e - takeable)\n            (when\n                (in ?e inventory)\n                (and\n                    (at ?e kitchen1)\n                    (not (at ?e ?r))\n                )\n            )\n        )\n    )\n)",
+    "event_feedback": "The world twists around you, and you suddenly find yourself elsewhere. {{ room_desc }}",
+    "asp": "",
+    "randomize": {
+      "initial_value": "kitchen1",
+      "replace_type": "room",
+      "not_replacer": ["outhouse1"]
+    }
+  }
+]

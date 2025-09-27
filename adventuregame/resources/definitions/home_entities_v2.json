@@ -1,0 +1,220 @@
+[
+  {
+    "type_name": "player",
+    "repr_str": "you",
+    "hidden": true,
+    "traits": []
+  },
+  {
+    "type_name": "inventory",
+    "repr_str": "inventory",
+    "hidden": true,
+    "container": true,
+    "traits": ["container", "receptacle"]
+  },
+  {
+    "type_name": "floor",
+    "repr_str": "floor",
+    "hidden": true,
+    "support": true,
+    "traits": ["support", "receptacle"]
+  },
+  {
+    "type_name": "table",
+    "repr_str": "table",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["kitchen", "livingroom"]
+  },
+  {
+    "type_name": "sidetable",
+    "repr_str": "side table",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "small"],
+    "standard_locations": ["livingroom", "bedroom"]
+  },
+  {
+    "type_name": "counter",
+    "repr_str": "counter",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["kitchen"]
+  },
+  {
+    "type_name": "refrigerator",
+    "repr_str": "refrigerator",
+    "container": true,
+    "openable": true,
+    "traits": ["container", "openable", "receptacle"],
+    "possible_adjs": ["large", "fancy"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "cupboard",
+    "repr_str": "cupboard",
+    "container": true,
+    "openable": true,
+    "traits": ["container", "openable", "receptacle"],
+    "possible_adjs": ["wooden", "metal","large", "fancy"],
+    "standard_locations": ["kitchen"]
+  },
+  {
+    "type_name": "wardrobe",
+    "repr_str": "wardrobe",
+    "container": true,
+    "openable": true,
+    "traits": ["container", "openable", "receptacle"],
+    "possible_adjs": ["wooden", "large", "fancy"],
+    "standard_locations": ["bedroom"]
+  },
+  {
+    "type_name": "shelf",
+    "repr_str": "shelf",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["kitchen", "pantry", "livingroom"]
+  },
+  {
+    "type_name": "freezer",
+    "repr_str": "freezer",
+    "container": true,
+    "openable": true,
+    "traits": ["container", "openable", "receptacle"],
+    "possible_adjs": ["large", "deep"],
+    "standard_locations": ["pantry"]
+  },
+  {
+    "type_name": "pottedplant",
+    "repr_str": "potted plant",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support"],
+    "possible_adjs": ["large", "small"],
+    "standard_locations": ["livingroom", "hallway", "bedroom"]
+  },
+  {
+    "type_name": "chair",
+    "repr_str": "chair",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["comfy", "wooden", "padded"],
+    "standard_locations": ["livingroom"]
+  },
+  {
+    "type_name": "bed",
+    "repr_str": "bed",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["comfy", "wooden"],
+    "standard_locations": ["bedroom"]
+  },
+  {
+    "type_name": "couch",
+    "repr_str": "couch",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["comfy", "wooden", "padded"],
+    "standard_locations": ["livingroom"]
+  },
+  {
+    "type_name": "broom",
+    "repr_str": "broom",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["broomcloset"]
+  },
+  {
+    "type_name": "mop",
+    "repr_str": "mop",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["broomcloset"]
+  },
+  {
+    "type_name": "sandwich",
+    "repr_str": "sandwich",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "apple",
+    "repr_str": "apple",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "banana",
+    "repr_str": "banana",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["ripe", "jelly"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "orange",
+    "repr_str": "orange",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["ripe", "fresh"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "peach",
+    "repr_str": "peach",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["ripe", "fresh"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "plate",
+    "repr_str": "plate",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["ceramic", "glass"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["kitchen"]
+  },
+  {
+    "type_name": "book",
+    "repr_str": "book",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["old", "thin"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["livingroom", "bedroom"]
+  },
+  {
+    "type_name": "pillow",
+    "repr_str": "pillow",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["down", "small"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["bedroom"]
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "type_name": "kitchen",
+    "repr_str": "kitchen",
+    "standard_content": ["cauldron", "counter", "table"],
+    "exit_targets": ["pantry", "hallway", "garden", "conservatory"],
+    "max_connections": 3
+  },
+  {
+    "type_name": "pantry",
+    "repr_str": "pantry",
+    "standard_content": ["icebox", "shelf", "barrel"],
+    "exit_targets": ["kitchen", "hallway"],
+    "max_connections": 1
+  },
+  {
+    "type_name": "hallway",
+    "repr_str": "hallway",
+    "standard_content": ["pottedplant"],
+    "exit_targets": ["kitchen", "pantry", "readingroom", "broomcloset", "conservatory", "garden", "storage", "bedroom", "workshop"],
+    "max_connections": 4
+  },
+  {
+    "type_name": "broomcloset",
+    "repr_str": "broom closet",
+    "standard_content": ["broom"],
+    "exit_targets": ["hallway"],
+    "max_connections": 1
+  },
+  {
+    "type_name": "bedroom",
+    "repr_str": "bedroom",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["readingroom", "hallway", "garden", "workshop"],
+    "max_connections": 1
+  },
+  {
+    "type_name": "storage",
+    "repr_str": "storage room",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["readingroom", "hallway", "kitchen", "cellar", "conservatory"],
+    "max_connections": 2
+  },
+  {
+    "type_name": "readingroom",
+    "repr_str": "reading room",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["hallway", "kitchen", "bedroom", "conservatory", "garden"],
+    "max_connections": 2
+  },
+  {
+    "type_name": "workshop",
+    "repr_str": "magic workshop",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["hallway", "kitchen", "bedroom", "readingroom", "conservatory", "garden"],
+    "max_connections": 2
+  },
+  {
+    "type_name": "cellar",
+    "repr_str": "cellar",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["hallway", "storage"],
+    "max_connections": 2
+  },
+  {
+    "type_name": "conservatory",
+    "repr_str": "conservatory",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["hallway", "storage", "garden"],
+    "max_connections": 3
+  },
+  {
+    "type_name": "garden",
+    "repr_str": "garden",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["hallway", "storage", "conservatory", "outhouse"],
+    "max_connections": 2
+  },
+  {
+    "type_name": "outhouse",
+    "repr_str": "outhouse",
+    "standard_content": ["bed", "wardrobe"],
+    "exit_targets": ["garden"],
+    "max_connections": 1
+  }
+]

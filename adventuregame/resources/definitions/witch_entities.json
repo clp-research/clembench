@@ -1,0 +1,564 @@
+[
+  {
+    "type_name": "player",
+    "repr_str": "you",
+    "hidden": true,
+    "traits": []
+  },
+  {
+    "type_name": "inventory",
+    "repr_str": "your inventory",
+    "hidden": true,
+    "container": true,
+    "traits": ["container", "receptacle"]
+  },
+  {
+    "type_name": "floor",
+    "repr_str": "floor",
+    "hidden": true,
+    "support": true,
+    "traits": ["support", "receptacle"]
+  },
+  {
+    "type_name": "ceiling",
+    "repr_str": "ceiling",
+    "hidden": true,
+    "support": true,
+    "traits": ["support", "receptacle"]
+  },
+  {
+    "type_name": "table",
+    "repr_str": "table",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["kitchen", "readingroom"]
+  },
+  {
+    "type_name": "sidetable",
+    "repr_str": "side table",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "small"],
+    "standard_locations": ["readingroom", "bedroom"]
+  },
+  {
+    "type_name": "counter",
+    "repr_str": "counter",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["kitchen"]
+  },
+  {
+    "type_name": "icebox",
+    "repr_str": "ice box",
+    "container": true,
+    "openable": true,
+    "traits": ["container", "openable", "receptacle"],
+    "possible_adjs": ["large", "fancy"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "cupboard",
+    "repr_str": "cupboard",
+    "container": true,
+    "openable": true,
+    "traits": ["container", "openable", "receptacle"],
+    "possible_adjs": ["wooden", "metal","large", "fancy"],
+    "standard_locations": ["kitchen"]
+  },
+  {
+    "type_name": "wardrobe",
+    "repr_str": "wardrobe",
+    "container": true,
+    "openable": true,
+    "traits": ["container", "openable", "receptacle"],
+    "possible_adjs": ["wooden", "large", "fancy"],
+    "standard_locations": ["bedroom"]
+  },
+  {
+    "type_name": "shelf",
+    "repr_str": "shelf",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["kitchen", "pantry", "readingroom"]
+  },
+  {
+    "type_name": "workbench",
+    "repr_str": "workbench",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["workshop"]
+  },
+  {
+    "type_name": "gardenbench",
+    "repr_str": "garden bench",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["garden"]
+  },
+  {
+    "type_name": "plantingtable",
+    "repr_str": "planting table",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["conservatory"]
+  },
+  {
+    "type_name": "utilityshelf",
+    "repr_str": "utility shelf",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["broomcloset"]
+  },
+  {
+    "type_name": "ingredientrack",
+    "repr_str": "ingredient rack",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["pantry"]
+  },
+  {
+    "type_name": "orrery",
+    "repr_str": "orrery",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["workshop"]
+  },
+  {
+    "type_name": "crate",
+    "repr_str": "crate",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["wooden", "metal", "low", "high"],
+    "standard_locations": ["storage"]
+  },
+  {
+    "type_name": "chair",
+    "repr_str": "chair",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["comfy", "wooden", "padded"],
+    "standard_locations": ["readingroom"]
+  },
+  {
+    "type_name": "bed",
+    "repr_str": "bed",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["comfy", "wooden"],
+    "standard_locations": ["bedroom"]
+  },
+  {
+    "type_name": "couch",
+    "repr_str": "couch",
+    "support": true,
+    "traits": ["support", "receptacle"],
+    "possible_adjs": ["comfy", "wooden", "padded"],
+    "standard_locations": ["readingroom"]
+  },
+  {
+    "type_name": "broom",
+    "repr_str": "broom",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["broomcloset"]
+  },
+  {
+    "type_name": "mop",
+    "repr_str": "mop",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["broomcloset"]
+  },
+  {
+    "type_name": "sandwich",
+    "repr_str": "sandwich",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "apple",
+    "repr_str": "apple",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "banana",
+    "repr_str": "banana",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["ripe", "jelly"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "orange",
+    "repr_str": "orange",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["ripe", "fresh"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "peach",
+    "repr_str": "peach",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["ripe", "fresh"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["kitchen", "pantry"]
+  },
+  {
+    "type_name": "plate",
+    "repr_str": "plate",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["ceramic", "glass"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["kitchen"]
+  },
+  {
+    "type_name": "book",
+    "repr_str": "book",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["old", "thin"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["readingroom", "bedroom"]
+  },
+  {
+    "type_name": "pillow",
+    "repr_str": "pillow",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["down", "small"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["bedroom"]
+  },
+  {
+    "type_name": "toad",
+    "repr_str": "toad",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["warty", "hypnotic"],
+    "traits": ["takeable", "movable", "needs_support"],
+    "standard_locations": ["bedroom", "kitchen", "pantry"]
+  },
+  {
+    "type_name": "greenbeetle",
+    "repr_str": "green beetle",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["shiny", "spiny"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["garden", "cellar"]
+  },
+  {
+    "type_name": "redbeetle",
+    "repr_str": "red beetle",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["shiny", "spiny"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["garden", "cellar"]
+  },
+  {
+    "type_name": "eyeofnewt",
+    "repr_str": "eye of newt",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["smelly", "fresh"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["pantry"]
+  },
+  {
+    "type_name": "plinklecrystal",
+    "repr_str": "plinkle crystal",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["smelly", "fresh"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["storage"]
+  },
+  {
+    "type_name": "plonklecrystal",
+    "repr_str": "plonkle crystal",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["smelly", "fresh"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["storage"]
+  },
+  {
+    "type_name": "plunklecrystal",
+    "repr_str": "plunkle crystal",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["smelly", "fresh"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["storage"]
+  },
+  {
+    "type_name": "spider",
+    "repr_str": "spider",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["smelly", "fresh"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["cellar"]
+  },
+  {
+    "type_name": "spiderweb",
+    "repr_str": "spiderweb",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["smelly", "fresh"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["cellar"]
+  },
+  {
+    "type_name": "spideregg",
+    "repr_str": "spider egg",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["smelly", "fresh"],
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "standard_locations": ["cellar"]
+  },
+  {
+    "type_name": "lilyofthevalley",
+    "repr_str": "lily of the valley",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "possible_adjs": ["large", "small"],
+    "standard_locations": ["conservatory", "garden"]
+  },
+  {
+    "type_name": "nightshade",
+    "repr_str": "nightshade",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "possible_adjs": ["large", "small"],
+    "standard_locations": ["conservatory", "garden"]
+  },
+  {
+    "type_name": "pricklypear",
+    "repr_str": "prickly pear",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support", "ingredient"],
+    "possible_adjs": ["large", "small"],
+    "standard_locations": ["conservatory"]
+  },
+  {
+    "type_name": "waterbucket",
+    "repr_str": "bucket of water",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support", "ingredient", "bucket"],
+    "possible_adjs": ["large", "small"],
+    "standard_locations": ["conservatory", "garden"],
+    "produced_entity_type": "water"
+  },
+  {
+    "type_name": "water",
+    "repr_str": "water",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["needs_support", "ingredient"],
+    "possible_adjs": ["clear", "fresh"],
+    "standard_locations": [],
+    "omit_from_initial_state": true
+  },
+  {
+    "type_name": "plasmbucket",
+    "repr_str": "bucket of ectoplasm",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["takeable", "movable", "needs_support", "ingredient", "bucket"],
+    "possible_adjs": ["large", "small"],
+    "standard_locations": ["cellar", "broomcloset"],
+    "produced_entity_type": "ectoplasm"
+  },
+  {
+    "type_name": "ectoplasm",
+    "repr_str": "ectoplasm",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "traits": ["needs_support", "ingredient"],
+    "possible_adjs": ["gooey", "fresh"],
+    "standard_locations": [],
+    "omit_from_initial_state": true
+  },
+  {
+    "type_name": "cauldron",
+    "repr_str": "cauldron",
+    "container": true,
+    "traits": ["needs_support", "container", "receptacle"],
+    "possible_adjs": ["copper", "iron", "earthen"],
+    "standard_locations": ["kitchen"]
+  },
+  {
+    "type_name": "ladle",
+    "repr_str": "ladle",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["rusty", "copper"],
+    "traits": ["takeable", "movable", "needs_support", "tool"],
+    "standard_locations": ["pantry", "kitchen", "storage"],
+    "applied_predicate": "ladlestirred"
+  },
+  {
+    "type_name": "whisk",
+    "repr_str": "whisk",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["rusty", "copper"],
+    "traits": ["takeable", "movable", "needs_support", "tool"],
+    "standard_locations": ["pantry", "kitchen", "storage"],
+    "applied_predicate": "whisked"
+  },
+  {
+    "type_name": "spoon",
+    "repr_str": "spoon",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["rusty", "copper"],
+    "traits": ["takeable", "movable", "needs_support", "tool"],
+    "standard_locations": ["pantry", "kitchen", "storage"],
+    "applied_predicate": "spoonstirred"
+  },
+  {
+    "type_name": "borpulus",
+    "repr_str": "borpulus",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["rusty", "copper"],
+    "traits": ["takeable", "movable", "needs_support", "tool"],
+    "standard_locations": ["pantry", "kitchen", "storage"],
+    "applied_predicate": "borpulusstirred"
+  },
+  {
+    "type_name": "firewand",
+    "repr_str": "fire wand",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["rusty", "copper"],
+    "traits": ["takeable", "movable", "needs_support", "tool"],
+    "standard_locations": ["workshop"],
+    "applied_predicate": "hot"
+  },
+  {
+    "type_name": "icewand",
+    "repr_str": "ice wand",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["rusty", "copper"],
+    "traits": ["takeable", "movable", "needs_support", "tool"],
+    "standard_locations": ["workshop"],
+    "applied_predicate": "cold"
+  },
+  {
+    "type_name": "fairywand",
+    "repr_str": "fairy wand",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["rusty", "copper"],
+    "traits": ["takeable", "movable", "needs_support", "tool"],
+    "standard_locations": ["workshop"],
+    "applied_predicate": "glittery"
+  },
+  {
+    "type_name": "zulpowand",
+    "repr_str": "zulpowand",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": ["rusty", "copper"],
+    "traits": ["takeable", "movable", "needs_support", "tool"],
+    "standard_locations": ["workshop"],
+    "applied_predicate": "zulponated"
+  },
+  {
+    "type_name": "liquid",
+    "repr_str": "liquid",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": [],
+    "traits": [],
+    "standard_locations": []
+  },
+  {
+    "type_name": "potion",
+    "repr_str": "finished potion",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": [],
+    "traits": [],
+    "standard_locations": []
+  },
+  {
+    "type_name": "potionrecipe",
+    "repr_str": "potion recipe",
+    "takeable": true,
+    "movable": true,
+    "supported": true,
+    "possible_adjs": [],
+    "traits": ["takeable", "movable", "readable", "needs_support"],
+    "standard_locations": ["bedroom"]
+  }
+]

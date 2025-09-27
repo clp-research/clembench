@@ -9,37 +9,37 @@
     "variables": {
         "Risk": {
             "experiments": {
-                "low": {
+                "risk_low": {
                     "assignments": {"team": 9, "opponent": 8, "innocent": 8, "assassin": 0}},
-                "high" : {
+                "risk_high" : {
                     "assignments": {"team": 9, "opponent": 8, "innocent": 3, "assassin": 5}}
             }
         },
         "Word Assignments": {
             "experiments": {
-                "easy": {
+                "association_easy": {
                     "generator": "easy word assignments",
                     "wordlist": "categories.json"},
-                "difficult": {
+                "association_difficult": {
                     "generator": "difficult word assignments",
                     "wordlist": "categories.json"}
             }
         },
         "Opponent Difficulty": {
             "experiments": {
-                "none": {
+                "opponent_none": {
                     "opponent difficulty": 0},
-                "easy": {
+                "opponent_easy": {
                     "opponent difficulty": 1},
-                "difficult": {
+                "opponent_difficult": {
                     "opponent difficulty": 2}
             }
         },
         "Word Frequency": {
             "experiments": {
-                "low": {
+                "frequency_low": {
                     "wordlist": "low_frequency.json"},
-                "high": {
+                "frequency_high": {
                     "wordlist": "high_frequency.json"}
             }
         },

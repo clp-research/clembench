@@ -1,0 +1,100 @@
+{
+  "experiments": [
+    {
+      "name": "tictactoe_standard",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        },
+        {
+          "game_id": 1,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        },
+        {
+          "game_id": 2,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        },
+        {
+          "game_id": 3,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        },
+        {
+          "game_id": 4,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        },
+        {
+          "game_id": 5,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        },
+        {
+          "game_id": 6,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        },
+        {
+          "game_id": 7,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        },
+        {
+          "game_id": 8,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        },
+        {
+          "game_id": 9,
+          "game_name": "tictactoegame",
+          "prompt": "You are playing a TicTacToe game. TicTacToe is a two-player game played on a 3x3 grid. Players take turns placing their marks (X or O) in empty cells. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins. If all cells are filled and no player has won, the game is a draw. See the board below. Make your move by specifying the row and column where you want to place your mark. Answer in the following format: '<row> <col>', example: '0 2' for the upper right cell. Return nothing but the '<row> <col>', otherwise the parsing won't work.",
+          "render_as": "human-readable",
+          "width": 3,
+          "height": 3,
+          "max_moves": 10
+        }
+      ],
+      "language": "en"
+    }
+  ]
+}

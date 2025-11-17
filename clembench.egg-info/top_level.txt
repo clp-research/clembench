@@ -1,0 +1,15 @@
+adventuregame
+chatgame
+cloudgame
+codenames
+guesswhat
+hellogame
+imagegame
+multimodal_referencegame
+portalgame
+privateshared
+referencegame
+sudokugame
+taboo
+tictactoegame
+wordle

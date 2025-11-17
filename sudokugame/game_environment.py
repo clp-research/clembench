@@ -11,8 +11,6 @@ from clemcore.clemgame import (
     Observation,
     Player,
 )
-from sudoku import Sudoku
-
 
 class SudokuPlayer(Player):
 

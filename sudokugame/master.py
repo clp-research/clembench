@@ -13,7 +13,7 @@ from clemcore.clemgame import (
 )
 from clemcore.clemgame.metrics import BENCH_SCORE, METRIC_ABORTED, METRIC_SUCCESS
 
-from sudokugame.game_environment import SudokuAction, SudokuEnvironment, SudokuPlayer
+from game_environment import SudokuAction, SudokuEnvironment, SudokuPlayer
 
 
 class SudokuGame(EnvGameMaster):

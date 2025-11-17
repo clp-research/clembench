@@ -12,7 +12,7 @@ from clemcore.clemgame.metrics import (
     METRIC_SUCCESS,
 )
 
-from portalgame.game_environment import PortalAction, PortalGameEnvironment
+from game_environment import PortalAction, PortalGameEnvironment
 
 
 class PortalPlayer(Player):

@@ -2,7 +2,7 @@ from typing import Dict, Literal, Tuple
 
 from clemcore.clemgame import Action, InclusiveGridEnvironment, Player
 
-from portalgame.objects import Door, Portal, Switch, Wall
+from objects import Door, Portal, Switch, Wall
 
 
 class PortalAction(Action):

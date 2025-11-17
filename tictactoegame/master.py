@@ -12,7 +12,7 @@ from clemcore.clemgame import (
 )
 from clemcore.clemgame.metrics import BENCH_SCORE, METRIC_ABORTED, METRIC_SUCCESS
 
-from tictactoegame.game_environment import (
+from game_environment import (
     TicTacToeAction,
     TicTacToeEnvironment,
     TicTacToePlayer,

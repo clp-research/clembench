@@ -1,0 +1,47 @@
+Here are the details about the environment:
+The environment is an 8x8 grid allowing shape placement and stacking. A shape can be placed in any cell, while stacking involves adding multiple shapes to the same cell, increasing its depth. Shapes typically occupy a single cell, except for the "bridge," which spans two cells and requires two other shapes for stacking. Horizontal bridges span adjacent columns (left and right), and vertical ones span consecutive rows (top and bottom). Stacking is only possible if the shapes have matching depths.
+
+In the grid, columns align with the x-axis and rows with the y-axis. Python indexing is used to identify each cell.
+
+- Use the shape name 'bridge-h' if a bridge is placed horizontally
+- Use the shape name 'bridge-v' if a bridge is placed vertically
+
+The following functions are already defined; therefore, do not write additional code for it
+- Use `put(board: np.ndarray, shape: string, color: string, x: int, y: int) to place a shape on the board
+  * x: indicates the row value (use python indexing; If row = 3 then use x = 2)
+  * y: indicates the column value (use python indexing; If column = 1 then use y = 0)
+- Use `move(board: np.ndarray, x1: int, y1: int, x2: int, y2:int, shapes_list: List = None) to move a shape (or stack of shapes) from (x1, y1) to (x2, y2) on the board
+  * x1, x2: Row indices (python indexing-based; e.g., row 3 → x = 2)
+  * y1, y2: Column indices (python indexing-base; e.g., column 1 → y = 0)
+  * shape_list: (List, optional): List of shapes from bottom → top to move. If None, only the topmost shape in the stack is moved.
+- Use `clear(board: np.ndarray) to clear all the shapes on the board
+- Use `undo(board: np.ndarray) to undo last placement action(s) on the board
+  * If multiple shapes were placed as part of the previous operation, all of them will be cleared from the board.
+
+TASK:
+For each instruction labeled INSTRUCTION please respond with code.
+
+
+INSTRUCTIONS:
+1. Use `put(board: np.ndarray, shape: string, color: string, x: int, y: int) to place a shape on the board.
+2. You must always use Python indexing (0-based indexing).
+3. If there are multiple shapes to be placed, use loops wherever necessary.
+3. Generate code strictly based on the user's instructions.
+4. Do not assume any details; always ask the user for clarification when necessary.
+
+
+OUTPUT FORMAT:
+1. If the user input is unclear, incomplete, or needs clarification, ask for more information.
+2. Your response should either be a "clarification question" or "code" but not both at the same time.
+3. Ensure your code can be executed by Python `exec()`, e.g.: no trailing commas, no periods, etc.
+4. If there are errors in execution, you will receive error information labeled $ERROR_FEEDBACK. If the code is executed successfully, you will see None under that.
+5. Do not generate any other text/explanations.
+
+
+Lets begin
+
+ERROR FEEDBACK:
+$ERROR_FEEDBACK
+
+USER INSTRUCTION:
+$INSTRUCTION

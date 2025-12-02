@@ -1,0 +1,75 @@
+{
+    "max_turns": 10,
+    "use_sandbox_llm": false,
+    "sandbox_llm": {
+        "sandbox_lang": "python",
+        "sandbox_docker_image": "sandbox_llm",
+        "skip_docker_env_setup": true
+    },
+    "use_dspy_reconst": false,
+    "use_dspy_history": false,
+    "use_diff_human_prompts": false,    
+    "use_reconst_retry": true,
+    "num_reconst_retry": 3,
+    "cobot_clarification": true,
+    "board": {
+        "rows": 8,
+        "cols": 8
+    },
+    "boards": ["sb"],
+    "_boards": ["sb", "rb"],
+    "sb": {
+        "objects": ["so"],
+        "_objects": ["so", "co"],    
+        "so": {
+            "variants": ["multi_turn"],
+            "_variants": ["single_turn", "multi_turn", "single_turn_sc", "single_turn_mg"],
+            "multi_turn": {
+                "_TRAIN_DATA_FILE_NAME": "train_data_skilltest_5.json",
+                "_TEST_DATA_FILE_NAME": "test_data_skilltest_5.json",
+                "TRAIN_DATA_FILE_NAME": "sb_so_train.json",
+                "TEST_DATA_FILE_NAME": "sb_so_test.json",
+                "STATIC_INCONTEXT_SAMPLES": "sb_so_mt_static_incontext.txt",
+                "NUM_INCONTEXT_SAMPLES": 0
+            }          
+        }
+    },
+    "rb": {
+        "objects": ["so"],
+        "_objects": ["so", "cho", "co"],    
+        "so": {
+            "variants": ["multi_turn"],
+            "multi_turn": {
+                "TRAIN_DATA_FILE_NAME": "rb_so_train.json",
+                "TEST_DATA_FILE_NAME": "rb_so_val.json",
+                "STATIC_INCONTEXT_SAMPLES": "rb_so_rg_static_incontext.txt",
+                "NUM_INCONTEXT_SAMPLES": 0,
+                "fill_labels": {
+                    "INSTRUCTION_LABEL": "Instruction",
+                    "OUTPUT_LABEL": "Output",
+                    "OUTPUT_LABEL_HORDER": "",
+                    "OUTPUT_LABEL_HORDER_USAGE": "",
+                    "INCONTEXT_SAMPLES": "To be filled during instance creation",
+                    "TEST_INSTRUCTION": "To be filled during instance creation"
+                }
+            }       
+        },
+        "cho": {
+            "variants": ["regular_hai"],
+            "regular": {
+                "TRAIN_DATA_FILE_NAME": "samples/rb_cho_train.json",
+                "TEST_DATA_FILE_NAME": "samples/rb_cho_val.json",
+                "STATIC_INCONTEXT_SAMPLES": "samples/rb_cho_rg_static_incontext.txt",
+                "NUM_INCONTEXT_SAMPLES": 5,
+                "fill_labels": {
+                    "INSTRUCTION_LABEL": "Instruction",
+                    "OUTPUT_LABEL": "Output",
+                    "OUTPUT_LABEL_HORDER": "",
+                    "OUTPUT_LABEL_HORDER_USAGE": "",
+                    "INCONTEXT_SAMPLES": "To be filled during instance creation",
+                    "TEST_INSTRUCTION": "To be filled during instance creation"
+                }
+            }                   
+        }        
+    }    
+}

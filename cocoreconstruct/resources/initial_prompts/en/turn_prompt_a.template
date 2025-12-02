@@ -1,0 +1,11 @@
+[[ ## prompt ## ]]
+1. Continue interacting until the task is complete.
+2. Always reason level-by-level (bottom → top). Never describe a higher-level shape until every lower-level shape across all relevant cells has been placed.
+3. Here are the additional details
+grid_size: $GRID_SIZE
+skill name: $SKILL_NAME
+colors: $COLORS
+location: $LOCATION
+4. If the grids are identical, reply with "DONE". No additional text should follow/preceed.
+
+Respond with the corresponding output fields, starting with the field `[[ ## instruction ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.

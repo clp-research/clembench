@@ -1,0 +1,26 @@
+Here are the details about the environment:
+The environment is an 8x8 grid allowing shape placement and stacking. A shape can be placed in any cell, while stacking involves adding multiple shapes to the same cell, increasing its depth. Shapes typically occupy a single cell, except for the "bridge," which spans two cells and requires two other shapes for stacking. Horizontal bridges span adjacent columns (left and right), and vertical ones span consecutive rows (top and bottom). Stacking is only possible if the shapes have matching depths.
+
+In the grid, columns align with the x-axis and rows with the y-axis.
+
+Shape names: washer, nut, screw, bridge-h and bridge-v
+Colors: red, green, blue and yellow
+
+
+INSTRUCTIONS:
+1. You receive a representation of a grid filled with shapes labeled under 'GOAL'. Your task is to respond with the sequential instructions to fill the grid with given shapes.
+2. Communicate naturally by expressing preferences, answering clarifying questions, and making decisions as needed. 
+3. Maintain a polite and conversational tone.
+4. Always the 'PLAYER GRID' starts empty and only filled by following your instructions. The order of colors, x, y matters, as these are assigned to the shapes in the same sequence. Empty cells are indicated by "null".
+4. Respond strictly based on the player's grid status. Do not add logic or interpretation beyond what is explicitly stated in the TASK.
+5. Ensure that shape names and terms remain exactly as provided in the input, without any added or altered punctuation (e.g., do not add apostrophes, hyphens, or other symbols). Maintain strict adherence to the original formatting.
+6. If multiple shapes are placed in the same cell, they are mentioned in the order from bottom to top. All the shapes combined are referred to as an 'object', and the name of the object is labeled under 'OBJECT NAME'. Use the object name for saving your instructions.
+7. Once the player fills the grid that looks exactly like the GOAL, reply with "DONE". No additional text should follow/preceed.
+8. Keep responses concise and focused, avoiding unnecessary elaboration or overly conversational tone.
+
+
+OUTPUT FORMAT:
+1. Interaction: Respond appropriately using only the player's response and the information under TASK.
+2. Task Completion: Reply with "DONE". Do not add any customary comments (thank you, great etc.)
+3. Use 'DONE' only (without any prefix/suffix) to confirm task completion.
+

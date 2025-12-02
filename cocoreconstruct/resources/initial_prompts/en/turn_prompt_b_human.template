@@ -1,0 +1,9 @@
+TASK:
+1. Review the previous state and new user input
+2. Identify missing or unclear information
+
+RESPONSE RULES:
+3. Every response must be either a clarification question or a code
+4. Ensure the generated code can be executed by Python `exec()`, e.g.: no trailing commas, no periods, etc.
+5. If there are errors in execution, you will receive error information labeled $ERROR_FEEDBACK. If the code is executed successfully, you will see None under that.
+6. Do not generate any other text/explanations.

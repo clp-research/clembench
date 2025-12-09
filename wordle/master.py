@@ -146,11 +146,6 @@ def parse_response(player: Player, response: str, words: Dict) -> Tuple[str, str
                          key="INVALID_START_WORD")
 
     response = response.strip()
-    lines = response.split("\n")
-    if len(lines) > 2:
-        raise ParseError(f"The response should contain only the '{words['guess_lang']}' and "
-                         f"'{words['explanation_lang']}' keywords and associated information.",
-                         key="UNKNOWN_TAGS")
 
     # Extract explanation and guess
     explanation_pattern = re.compile(rf"{words['explanation_lang']}([^\n]*)", re.IGNORECASE)

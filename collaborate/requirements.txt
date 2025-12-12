@@ -1,1 +1,6 @@
 dspy
+matplotlib
+numpy
+json
+base64
+llm-sandbox

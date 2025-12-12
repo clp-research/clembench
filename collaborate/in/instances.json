@@ -1,0 +1,288 @@
+{
+  "experiments": [
+    {
+      "name": "collaborate_zs",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "data": {
+            "simple_boards": {
+              "bvws": [
+                {
+                  "combo_name": "bvws",
+                  "shapes": [
+                    "bridge-v",
+                    "washer",
+                    "screw"
+                  ],
+                  "colors": [
+                    "blue",
+                    "yellow",
+                    "blue"
+                  ],
+                  "x": [
+                    5,
+                    5,
+                    5
+                  ],
+                  "y": [
+                    6,
+                    6,
+                    6
+                  ],
+                  "orientations": [
+                    "vertical",
+                    null,
+                    null
+                  ],
+                  "rows": 8,
+                  "cols": 8,
+                  "min_rows": 2,
+                  "min_cols": 2,
+                  "code": {
+                    "multi_turn": {
+                      "total_code": "board = init_board(8, 8)\nput(board, 'bridge-v', 'blue', 5, 6)\nput(board, 'washer', 'yellow', 5, 6)\nput(board, 'screw', 'blue', 5, 6)",
+                      "output": [
+                        "put(board, 'bridge-v', 'blue', 5, 6)",
+                        "put(board, 'washer', 'yellow', 5, 6)",
+                        "put(board, 'screw', 'blue', 5, 6)"
+                      ],
+                      "error": null
+                    },
+                    "single_turn": {
+                      "total_code": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)\nboard = init_board(8, 8)\nbvws(board, ('blue', 'yellow', 'blue'), 5, 6)",
+                      "function": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)",
+                      "usage": "bvws(board, ('blue', 'yellow', 'blue'), 5, 6)",
+                      "error": null
+                    },
+                    "single_turn_sc": {
+                      "total_code": "def bvws(board, colors, x, y):\n    put(board, 'bridge-v', 'blue', x=5, y=6)\n    put(board, 'washer', 'yellow', x=5, y=6)\n    put(board, 'screw', 'blue', x=5, y=6)\nboard = init_board(8, 8)\nbvws(board, ['blue', 'yellow', 'blue'], 5, 6)",
+                      "function": "def bvws(board, colors, x, y):\n    put(board, 'bridge-v', 'blue', x=5, y=6)\n    put(board, 'washer', 'yellow', x=5, y=6)\n    put(board, 'screw', 'blue', x=5, y=6)",
+                      "usage": "bvws(board, ['blue', 'yellow', 'blue'], 5, 6)",
+                      "error": null
+                    }
+                  },
+                  "quadrant": "br",
+                  "seed_template": {
+                    "multi_turn": "templates/code/simple/threeshapes_seed1_multi.j2",
+                    "single_turn": "templates/code/simple/threeshapes_seed1.j2",
+                    "single_turn_sc": "templates/code/simple/fc_subset.j2"
+                  },
+                  "dialogues": {
+                    "single_turn": {
+                      "template": "templates/instructions/simple/singleturn.j2",
+                      "instructions": [
+                        {
+                          "<Programmer>": "These are the instructions to build bvws. Place a blue bridge vertically in the 5th row, 6th column. Place a yellow washer in the 5th row, 6th column. Place a blue screw in the 5th row, 6th column.",
+                          "<Editor>": {
+                            "total_code": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)\nboard = init_board(8, 8)\nbvws(board, ('blue', 'yellow', 'blue'), 5, 6)",
+                            "function": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)",
+                            "usage": "bvws(board, ('blue', 'yellow', 'blue'), 5, 6)",
+                            "error": null
+                          }
+                        }
+                      ]
+                    },
+                    "multi_turn": {
+                      "template": "templates/instructions/simple/multiturn.j2",
+                      "instructions": [
+                        {
+                          "<Programmer>": "These are the step-by-step instructions to build bvws. place a blue bridge vertically in the 5th row, 6th column",
+                          "<Editor>": "put(board, 'bridge-v', 'blue', 5, 6)"
+                        },
+                        {
+                          "<Programmer>": "place a yellow washer in the 5th row, 6th column",
+                          "<Editor>": "put(board, 'washer', 'yellow', 5, 6)"
+                        },
+                        {
+                          "<Programmer>": "place a blue screw in the 5th row, 6th column",
+                          "<Editor>": "put(board, 'screw', 'blue', 5, 6)"
+                        }
+                      ]
+                    },
+                    "single_turn_sc": {
+                      "template": "templates/instructions/simple/singleturn.j2",
+                      "instructions": [
+                        {
+                          "<Programmer>": "These are the instructions to build bvws. Place a blue bridge vertically in the 5th row, 6th column. Place a yellow washer in the 5th row, 6th column. Place a blue screw in the 5th row, 6th column.",
+                          "<Editor>": {
+                            "total_code": "def bvws(board, colors, x, y):\n    put(board, 'bridge-v', 'blue', x=5, y=6)\n    put(board, 'washer', 'yellow', x=5, y=6)\n    put(board, 'screw', 'blue', x=5, y=6)\nboard = init_board(8, 8)\nbvws(board, ['blue', 'yellow', 'blue'], 5, 6)",
+                            "function": "def bvws(board, colors, x, y):\n    put(board, 'bridge-v', 'blue', x=5, y=6)\n    put(board, 'washer', 'yellow', x=5, y=6)\n    put(board, 'screw', 'blue', x=5, y=6)",
+                            "usage": "bvws(board, ['blue', 'yellow', 'blue'], 5, 6)",
+                            "error": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "regular_boards": {
+              "bvws": [
+                {
+                  "combo_name": "bvws",
+                  "shapes": [
+                    "bridge-v",
+                    "washer",
+                    "screw"
+                  ],
+                  "colors": [
+                    "green",
+                    "blue",
+                    "red"
+                  ],
+                  "code": {
+                    "function": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)",
+                    "output": "for row in [0, 4]:\n    for col in [0, 4]:\n        bvws(board, colors=['green', 'blue', 'red'], x=row+1, y=col+1)",
+                    "total_code": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)\nboard = init_board(8, 8)\nfor row in [0, 4]:\n    for col in [0, 4]:\n        bvws(board, colors=['green', 'blue', 'red'], x=row+1, y=col+1)"
+                  },
+                  "quadrant": "tl",
+                  "seed_template": "templates/code/regular/regular_seed16.j2",
+                  "occupied_rows": 2,
+                  "occupied_cols": 1,
+                  "relative_positions": [
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      1,
+                      0
+                    ]
+                  ],
+                  "repeat_locations": [
+                    [
+                      1,
+                      1
+                    ],
+                    [
+                      1,
+                      5
+                    ],
+                    [
+                      5,
+                      1
+                    ],
+                    [
+                      5,
+                      5
+                    ]
+                  ],
+                  "dialogues": {
+                    "regular": {
+                      "template": "templates/instructions/regular/regular_template16.j2",
+                      "instructions": [
+                        {
+                          "<Programmer>": "Place a 'bvws' object in the first, and fifth columns of the first row. Then, repeat this placement pattern in the fifth row.  Use only these colors: ['green', 'blue', 'red'] for the 'bvws' object.",
+                          "<Editor>": {
+                            "function": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)",
+                            "output": "for row in [0, 4]:\n    for col in [0, 4]:\n        bvws(board, colors=['green', 'blue', 'red'], x=row+1, y=col+1)",
+                            "total_code": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)\nboard = init_board(8, 8)\nfor row in [0, 4]:\n    for col in [0, 4]:\n        bvws(board, colors=['green', 'blue', 'red'], x=row+1, y=col+1)"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "combo_name": "bvws",
+                  "shapes": [
+                    "bridge-v",
+                    "washer",
+                    "screw"
+                  ],
+                  "colors": [
+                    "yellow",
+                    "blue",
+                    "red"
+                  ],
+                  "code": {
+                    "function": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)",
+                    "output": "for row in [0, 4]:\n    for col in [0, 4]:\n        bvws(board, colors=['yellow', 'blue', 'red'], x=row+1, y=col+1)",
+                    "total_code": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)\nboard = init_board(8, 8)\nfor row in [0, 4]:\n    for col in [0, 4]:\n        bvws(board, colors=['yellow', 'blue', 'red'], x=row+1, y=col+1)"
+                  },
+                  "quadrant": "tl",
+                  "seed_template": "templates/code/regular/regular_seed16.j2",
+                  "occupied_rows": 2,
+                  "occupied_cols": 1,
+                  "relative_positions": [
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      1,
+                      0
+                    ]
+                  ],
+                  "repeat_locations": [
+                    [
+                      1,
+                      1
+                    ],
+                    [
+                      1,
+                      5
+                    ],
+                    [
+                      5,
+                      1
+                    ],
+                    [
+                      5,
+                      5
+                    ]
+                  ],
+                  "dialogues": {
+                    "regular": {
+                      "template": "templates/instructions/regular/regular_template16.j2",
+                      "instructions": [
+                        {
+                          "<Programmer>": "Place a 'bvws' object in the first, and fifth columns of the first row. Then, repeat this placement pattern in the fifth row.  Use only these colors: ['yellow', 'blue', 'red'] for the 'bvws' object.",
+                          "<Editor>": {
+                            "function": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)",
+                            "output": "for row in [0, 4]:\n    for col in [0, 4]:\n        bvws(board, colors=['yellow', 'blue', 'red'], x=row+1, y=col+1)",
+                            "total_code": "def bvws(board, colors, x, y):\n    shapes = ['bridge-v', 'washer', 'screw']\n    for shape, color in zip(shapes, colors):\n            put(board, shape, color, x, y)\nboard = init_board(8, 8)\nfor row in [0, 4]:\n    for col in [0, 4]:\n        bvws(board, colors=['yellow', 'blue', 'red'], x=row+1, y=col+1)"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "metadata": {
+              "board_type": "regular",
+              "num_simple_boards": 1,
+              "num_regular_boards": 2
+            },
+            "max_boards_sb": 1,
+            "max_boards_rb": 2,
+            "use_error_feedback": true,
+            "use_simple_reuse": false,
+            "use_regular_challenging": false,
+            "use_regular": true,
+            "use_dspy_collab": false,
+            "use_dspy_collab_history": false,
+            "use_dspy_collab_retry": false,
+            "num_dspy_collab_retry": 0,
+            "use_sandbox_llm": false,
+            "num_collab_retry": 3,
+            "num_collab_optim_turns": 5,
+            "n_turns": 20,
+            "prompts_dict": {
+              "prompt_a": "Your input fields are:\n1. `prompt` (str): Prompt with grid_size, skillname, difference_grid\nYour output fields are:\n1. `instruction` (str): Natural-language instruction for Player 2\nAll interactions will be structured in the following way, with the appropriate values filled in.\n\n[[ ## prompt ## ]]\n{prompt}\n\n[[ ## instruction ## ]]\n{instruction}\n\n[[ ## completed ## ]]\nIn adhering to this structure, your objective is: \n\n        You are the describer.\n        Your job is to guide a player to reconstruct the target grid step by step.\n        \n        ---\n        STACKING RULES\n        • A single cell can contain multiple shapes stacked vertically.\n        • Stacking is only allowed if all shapes share the **same depth**.\n        • Since the shapes can be stacked, multiple shapes may occupy the same cell. You do not need to remove an existing shape to stack a new one in the same cell.\n        • The list of shapes in the target grid is ordered from **bottom → top**.\n          - The **first** shape in the list should be placed **first** (at the bottom).\n          - The **last** shape in the list will appear **on top**.\n        • Build the grid layer by layer from the bottom upward, not cell by cell.   \n          - When giving instructions: Always describe placements in bottom-to-top order.   \n          - Always complete the entire lower layer across all necessary cells before giving instructions for the layer above it.\n          - When moving to a higher layer, explicitly state that the new pieces are being placed on top of (stacked upon) the completed lower layer. You do not need to name levels numerically; just mention that the new instructions involve stacking on the previous shapes.\n        \n        Example:\n            Target\n        \n            Level 1:\n            row 1, col 3: {\"shapes\": [\"washer\", \"nut\"], \"colors\": [\"red\", \"green\"]}\n        \n            ⇒ Place the washer first (bottom), then place the nut on top.\n        \n              Wrong:\n                \"Place nut and washer at (1,3).\"   ← misses the stacking order\n        \n            Target\n        \n            Level 1:\n            row 5, col 6: {\"shapes\": [\"washer\"], \"colors\": [\"red\"]}\n            row 5, col 7: {\"shapes\": [\"nut\"], \"colors\": [\"green\"]}\n        \n            Level 2:\n            row 5, col 6: {\"shapes\": [\"bridge-h-left\"], \"colors\": [\"blue\"]}\n            row 5, col 7: {\"shapes\": [\"bridge-h-right\"], \"colors\": [\"blue\"]}\n        \n        \n            ⇒ Place the washer and nut first (bottom), then place the bridge-h on top.    \n        \n              Wrong:\n                \"Place washer and bridge at (5,6).\"   ← mixes layers within one cell.        \n        \n            Target:\n        \n            Level 1:\n            row 4, col 6: {\"shapes\": [\"nut\"], \"colors\": [\"green\"]}\n            row 4, col 7: {\"shapes\": [\"washer\"], \"colors\": [\"red\"]}\n        \n            Level 2:\n            row 4, col 6: {\"shapes\": [\"bridge-h-left\"], \"colors\": [\"yellow\"]}\n            row 4, col 7: {\"shapes\": [\"bridge-h-right\"], \"colors\": [\"yellow\"]}\n        \n            Level 3:\n            row 4, col 7: {\"shapes\": [\"nut\"], \"colors\": [\"blue\"]}\n        \n            ⇒ Place the nut and washer first (bottom), then place the bridge-h on top of both cells, then place the blue nut on top of (4,7).\n        \n              Wrong:\n                \"Place washer, bridge-h and nut at (4,7).\"   ← mixes layers within one cell. \n        ---    \n        \n        ---\n        BRIDGE REPRESENTATION RULES\n          • Bridges span two cells and appear in the target grid as:\n              - bridge-v-top / bridge-v-bottom  → one vertical bridge\n              - bridge-h-left / bridge-h-right  → one horizontal bridge\n              - 'bridge-h-left' and 'bridge-h-right' are display labels representing the two halves of a single horizontal bridge (bridge-h). A horizontal bridge always occupies two adjacent cells in the same row. When issuing instructions or interpreting grid , always refer to the shape as bridge-h, not the left/right variants.\n              - Similarly 'bridge-v-top' and 'bridge-v-bottom' are display labels representing the two halves of a single vertical bridge 'bridge-v'. A vertical bridge always occupies two adjacent cells in the same column. When issuing instructions or interpreting grid , always refer to the shape as bridge-v, not the top/bottom variants.              \n          • These part labels are for representation only.\n            - Do **not** instruct Player 2 to \"place a bridge-v-top\" or \"bridge-v-bottom\".\n            - Instead, say **\"place a vertical bridge\"** or **\"place a horizontal bridge\"**.\n          • Example:\n              Target cells:\n                (2, 8): bridge-v-top, blue\n                (3, 8): bridge-v-bottom, blue\n              → Instruction: \"Place a blue vertical bridge at (2, 8)\"\n        \n        COLOR RULES\n          • Every shape has a specific color listed in the target grid.\n          • When giving instructions, always mention both the shape and its color.\n            Example:\n              Wrong:  \"Place a bridge in cells (2, 8).\"\n              Correct: \"Place a blue vertical bridge in cells (2, 8).\"\n          • Never omit colors, even for bridges or repeated shapes.          \n        \n        ---   \n        \n        ---   \n        \n            DIFF GRID INTERPRETATION RULES\n            • The Diff grid lists only the differences between the current and target grids.\n            • Each cell may be marked as one of:\n                - \"Identical\": The cell in the current grid already matches the target grid.\n                                → No action needed.\n                - \"Missing\":   The target grid has one or more shapes here that are not yet\n                                present in the current grid.\n                                → You must instruct Player (the follower) to place these missing shapes.\n                - \"Extra\":     The current grid contains shapes that should not be there.\n                                → You must instruct Player (the follower) to remove those extra shapes.\n        \n            • Always handle corrections in this order:\n                1. Remove any \"Extra\" shapes first.\n                2. Then place any \"Missing\" shapes.\n                3. Ignore \"Identical\" cells completely.\n        \n            • Only work on the lowest non-empty Level in the Diff grid.\n            • If the Diff grid says \"Identical\" for all cells (grids_equal=True),\n                reply only with \"Done\".    \n        ---   \n        \n        ---\n        INTERACTION RULES\n          • Player (the follower) may misunderstand or make mistakes when following your instructions.\n            - If Player (the follower)'s updated grid does **not** match your expected change,\n              respond with a **correction**.\n              You must first say that it is wrong, then explain exactly how to correct it.\n              Example:\n                \"You placed the nut in the wrong cell. It should be in cell (1, 3).\"\n          • Player (the follower) may ask **clarification questions** about your instructions.\n            - Respond patiently with precise clarification, never new unrelated actions.\n              Example:\n                Player (the follower): \"Which color washer should I use?\"\n                Player (the describer): \"Use the green washer.\"\n\n                Player (the follower): \"The cell (1,4) already has a washer. Do I need to place nut in the same cell?\"\n                Player (the describer): \"Yes, stack it\"\n            - If the question is about stacking different shapes in same cell, explicitly state that the new shape is stacked on top.\n          • Make sure to stick to the target grid shapes and their occupancy requirements.\n        ---    \n        \n        \n        Inputs:\n        \n            - prompt: Prompt with the following details:\n                - grid_size: The grid is of size {grid_size}.\n                - target_grid: The goal configuration of the grid            \n                - difference_grid: The difference between the grid filled by Player and target grid\n                - clarification: Optional question or message received from Player 2; may be empty.\n                - reconstruction_status: True if the current grid matches the target grid, False otherwise.\n        \n        Rules:\n            • Use the difference_grid to identify the lowest Level that still has unplaced shapes.\n            • Focus your instructions on completing that Level across all relevant cells before moving to the next Level.\n            • If a level is marked as identical in the difference_grid, do not mention it in your instructions.\n            • If the clarification input is non-empty, address it directly and clearly in your response.\n            • If all levels of the difference grid are identical and the grid reconstruction_status is True, reply only with the word **\"DONE\"**.\n            • Otherwise, describe a clear next action for Player (the follower), such as:\n                \"Place a washer and nut (green and blue) in cell (1, 8).\"\n            • Always output either a single instruction or \"DONE\" — nothing else.    \n\nInputs:\n\n    - prompt: Prompt with the following details:\n        - grid_size: The grid is of size {grid_size}.\n        - target_grid: The goal configuration of the grid            \n        - difference_grid: The difference between the grid filled by Player and target grid\n        - clarification: Optional question or message received from Player 2; may be None.\n        - acknowledgement: Optional message received from Player 2; may be None.        \n        - reconstruction_status: True if the current grid matches the target grid, False otherwise.\n\nRules:\n    • Use the difference_grid to identify the lowest Level that still has unplaced shapes.\n    • Focus your instructions on completing that Level across all relevant cells before moving to the next Level.\n    • If a level is marked as identical in the difference_grid, do not mention it in your instructions.\n    • If the clarification input is non-empty, address it directly and clearly in your response.\n    • If all levels of the difference grid are identical and the grid reconstruction_status is True, reply only with the word **\"DONE\"**.\n    • Otherwise, describe a clear next action for Player (the follower), such as:\n        \"Place a washer and nut (green and blue) in cell (1, 8).\"\n    • Always output either a single instruction or \"DONE\" — nothing else.\n\nRespond with the corresponding output fields, starting with the field `[[ ## instruction ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.                \n\n",
+              "turn_prompt_a": "[[ ## prompt ## ]]\n1. Continue interacting until the task is complete.\n2. Always reason level-by-level (bottom → top). Never describe a higher-level shape until every lower-level shape across all relevant cells has been placed.\n3. If the grids are identical, reply with \"DONE\". No additional text should follow/preceed.\n\nRespond with the corresponding output fields, starting with the field `[[ ## instruction ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.",
+              "prompt_b": "Your input fields are:\n1. `prompt` (str): Prompt with Instruction from User and current grid state\nYour output fields are:\n1. `player_response` (str): A JSON object with keys 'status' and 'details' as described above\nAll interactions will be structured in the following way, with the appropriate values filled in.\n\n[[ ## prompt ## ]]\n{prompt}\n\n[[ ## player_response ## ]]\n{player_response}\n\n[[ ## completed ## ]]\nIn adhering to this structure, your objective is: \n        You are Player (the follower) in a cooperative grid-filling game.\n        \n        Available APIs:\n        - put(board: np.ndarray, shape: str, color: str, x: int, y: int)\n            • Places a shape of a given color on the board at coordinates (x, y).\n                - If the human says \"row = 3\", then use x = 3\n                - If the human says \"column = 1\", then use y = 1\n        - move(board: np.ndarray, x1: int, y1: int, x2: int, y2:int, shapes_list: List = None)\n            • To move a shape (or stack of shapes) from (x1, y1) to (x2, y2) on the board\n            • Do not use same coordinates for source and destination\n            • Do not use this function to remove shapes from the board, use removeshape instead\n            • Use x1, y1 as source coordinates and x2, y2 as destination coordinates\n            • Use x1, y1, x2 and y2 do not use same names for source and destination\n            • x1, x2: Row indices (If the human says \"row = 3\", then use x = 3)\n            • y1, y2: Column indices (If the human says \"column = 1\", then use y = 1)\n            • If human says move it from 3rd to next row, then x1=2, x2=4\n            • If human says move it from 7th column to 8th column, then y1=7, y2=8\n            • If human says move it to 8th column, then y2=8\n            • If human says move it from 1st column to last column in the 5th row then x1=5, y1=1, x2=5, y2=grid_size\n            • shape_list: (List, optional): List of shapes from bottom → top to move. If None, only the topmost shape in the stack is moved.\n        \n        - removeshape(board: np.ndarray, x: int, y: int, shape, color)\n            • To remove a shape from (x1, y1) on the board\n            • Do not use this function to move shapes, use move instead            \n            • Use this function only when there is a placement error. If a shape already exists in the target cell, ask whether it should be removed before placing a new one. In most cases, you will be stacking a new shape in the same cell, which doesn’t require removeShape();just call put() for the new shape.\n            • The shape and color must match the topmost shape in the stack at (x, y)                \n            • x: Row (If the human says \"row = 3\", then use x = 3)\n            • y: Column  (If the human says \"column = 1\", then use y = 1)\n            • If human says remove it from 6th row, then x=6\n            • If human says remove it from 1st column, then y=1\n            • shape_list: (List, optional): List of shapes from bottom → top to move. If None, only the topmost shape in the stack is moved.\n\n        - clear(board: np.ndarray)\n            • To clear all the shapes on the board\n\n        - undo(board: np.ndarray)\n            • To undo last placement action(s) on the board\n            • If multiple shapes were placed as part of the previous operation, all of them will be cleared from the board.            \n        \n        You receive an instruction such as:\n            \"Place a washer and nut (green and blue) in cell (1, 8).\"\n        \n        ---\n        AVAILABLE SHAPES\n          - washer\n          - nut\n          - screw\n          - bridge (vertical, horizontal)  ← special shape\n             • Use **'bridge-h'** for horizontal bridges and **'bridge-v'** for vertical ones.      \n        \n        AVAILABLE COLORS\n          - green\n          - red\n          - blue\n          - yellow\n        \n        \n        SHAPE OCCUPANCY\n          • All shapes occupy **exactly one cell**, **except the \"bridge\"**.\n          • A **bridge** spans **two adjacent cells**:\n              - *Horizontal bridge*: spans consecutive **columns** in the same row.\n              - *Vertical bridge*: spans consecutive **rows** in the same column.\n          • A bridge **requires two other shapes** underneath it for support while stacking,\n            one under each end of the bridge.\n\n        BRIDGE REPRESENTATION RULES\n          • Bridges span two cells and appear in the target grid as:\n              - bridge-v-top / bridge-v-bottom  → one vertical bridge\n              - bridge-h-left / bridge-h-right  → one horizontal bridge\n              - 'bridge-h-left' and 'bridge-h-right' are display labels representing the two halves of a single horizontal bridge (bridge-h). A horizontal bridge always occupies two adjacent cells in the same row. When generating code or interpreting grid , always refer to the shape as bridge-h, not the left/right variants.\n              - Similarly 'bridge-v-top' and 'bridge-v-bottom' are display labels representing the two halves of a single vertical bridge 'bridge-v'. A vertical bridge always occupies two adjacent cells in the same column. When generating code or interpreting grid , always refer to the shape as bridge-v, not the top/bottom variants.\n          • Example:\n              Instruction: Place a green horizintal bridge at (5,6)\n              → Code: put(board, 'bridge-h', 'green', 5, 6)\n              → Current-Grid would become:\n                Grid levels (bottom to top):\n                Level 1:\n                row: 5, col: 6: {'shapes': ['bridge-h-left'], 'colors': ['green']}\n                row: 5, col: 7: {'shapes': ['bridge-h-right'], 'colors': ['green']}\n              → To remove this shape: removeshape(board, x=5, y=6, shape='bridge-h', color='green')\n\n              Instruction: Place a blue vertical bridge at (2,8)\n              → Code: put(board, 'bridge-v', 'blue', 2, 8)\n              → Current-Grid would become:\n                Grid levels (bottom to top):\n                Level 1:\n                row: 2, col: 8: {'shapes': ['bridge-v-top'], 'colors': ['blue']}\n                row: 3, col: 8: {'shapes': ['bridge-v-bottom'], 'colors': ['blue']} \n              → To remove this shape: removeshape(board, x=2, y=8, shape='bridge-v', color='blue')                                              \n        \n        STACKING & DEPTH RULES\n          • Shapes can be stacked vertically within the same cell.\n          • Stacking is only allowed if all shapes share the **same depth**.\n          • Since the shapes can be stacked, multiple shapes may occupy the same cell. If you have any questions about stacking different shapes in one cell, feel free to ask for clarification. You do not need to remove an existing shape to stack a new one in the same cell.\n            Example:\n            Instruction: Place a red washer in (1,1)\n                Correct: put(board, shape='washer', color='red', x=1, y=1)\n            Instruction: Place a green nut in (1,1)\n                Correct: put(board, shape='nut', color='green', x=1, y=1)\n\n                Incorrect: put(board, shape='washer', color='red', x=1, y=1)\n                           removeshape(board, x=1, y=1, shape='washer', color='red')\n                           put(board, shape='nut', color='green', x=1, y=1)\n\n            Instruction: Place a blue horizontal bridge in (7,5)\n                Correct: put(board, shape='bridge-h', color='blue', x=7, y=5)\n            Instruction: Place a yellow screw in (7,5)\n                Correct: put(board, shape='screw', color='yellow', x=7, y=5)\n\n                Incorrect: put(board, shape='bridge-h', color='blue', x=7, y=5)\n                           removeshape(board, x=7, y=5, shape='bridge-h', color='blue')\n                           put(board, shape='screw', color='yellow', x=7, y=5)   \n\n            Instruction: Place a yellow vertical bridge in (4,8)\n                Correct: put(board, shape='bridge-v', color='yellow', x=4, y=8)\n            Instruction: Place a green washer in (4,8)\n                Correct: put(board, shape='washer', color='green', x=4, y=8)\n\n                Incorrect: put(board, shape='bridge-v', color='yellow', x=4, y=8)\n                           removeshape(board, x=4, y=8, shape='bridge-v', color='yellow')\n                           put(board, shape='washer', color='green', x=4, y=8)                                                     \n\n          • When multiple shapes are placed in a single cell:\n              - The **first mentioned shape** is placed **at the bottom**.\n              - Later shapes stack **on top**.\n          • Do not stack same shapes in the same cell.\n            Example:\n                Correct: put(board, shape='washer', color='red', x=1, y=1)\n                         put(board, shape='nut', color='green', x=1, y=1)\n                Incorrect: put(board, shape='washer', color='red', x=1, y=1)\n                           put(board, shape='washer', color='green', x=1, y=1)                           \n        \n        ---\n        IMPLEMENTATION DETAILS\n          • When placing **multiple shapes**, use **loops** or repeated `put` calls as needed.\n            Example:\n                for row in [1,4]:\n                    put(board, shape, color, row, y)\n        \n                for col in [2,5]:\n                    put(board, shape, color, x, col)\n        \n                for row in [1,3]:\n                    for col in [1,4]:\n                        put(board, shape, color, row, col)\n        \n          • **Do not assume** any unspecified details (e.g., color, orientation, or position).\n            If an instruction is ambiguous, **ask Player 1 for clarification** instead of guessing.\n        \n        ---            \n\n        ---\n        CURRENT GRID\n          • The current grid lists the current status of reconstruction\n          • Each cell may be marked as one of the shapes: 'washer', 'nut', 'screw', 'bridge-h-left', 'bridge-h-right', 'bridge-v-top', and 'bridge-h-bottom'\n            - 'bridge-h-left' and 'bridge-h-right' are display labels representing the two halves of a single horizontal bridge (bridge-h). A horizontal bridge always occupies two adjacent cells in the same row. When interpreting instructions/current grid/interpreting actions (put / remove / move), always refer to the shape as bridge-h, not the left/right variants.\n            - Similarly 'bridge-v-top' and 'bridge-v-bottom' are display labels representing the two halves of a single vertical bridge 'bridge-v'. A vertical bridge always occupies two adjacent cells in the same column. When interpreting instructions/current grid/interpreting actions (put / remove / move), always refer to the shape as bridge-v, not the top/bottom variants.\n          • **Do not assume** any unspecified details (e.g., color, orientation, or position).\n            If an instruction is ambiguous, **ask Player 1 for clarification** instead of guessing.\n          • Since the shapes can be stacked, **multiple shapes may occupy the same cell**. If you have any questions about stacking different shapes in one cell, feel free to ask for clarification. You do not need to remove an existing shape to stack a new one in the same cell. \n          • If you want to acknowledge a certain instruction, respond with \"acknowledgement\"                     \n        \n        ---               \n        \n        \n        Given:\n        - prompt: Prompt with the following details:\n            - grid_size: The grid is of size {grid_size}.\n            - The instruction text from Player 1 describing what to do\n            - current_grid: The current filled cells of the grid, None if empty\n        \n        \n        \n        Produce:\n        - Respond with a JSON object:\n          Format:\n          {\n            \"status\": \"<string>\",       # e.g. \"clarification\", \"acknowledgement\" or \"code\"\n            \"details\": \"<string>\",     # Python code when status=\"code\", or plain text when status=\"clarification\" or \"acknowledgement\"\n          }\n        \n          If clarification needed:\n          {\n            \"status\": \"clarification\",\n            \"details\": \"Which color washer should I use?\"\n          }\n\n          If providing acknowledgement:\n          {\n            \"status\": \"acknowledgement\",\n            \"details\": \"Yes, I know\"\n          }          \n        \n          If executing code:\n          {\n               \"status\": \"code\",\n               \"details\": \"put(board, 'washer', 'green', x=1, y=1)\"\n         }      \n        \n        Make sure the JSON is valid and parsable by Python json.loads().\nRespond with the corresponding output fields, starting with the field `[[ ## player_response ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.",
+              "prompt_b_optim": "Your input fields are:\n1. `prompt` (str): Prompt with function name, usage, instruction-code pairs, and optional error feedback.\nYour output fields are:\n1. `optimized_function` (str): A single optimized Python function as a string.\nAll interactions will be structured in the following way, with the appropriate values filled in.\n\n[[ ## prompt ## ]]\n{prompt}\n\n[[ ## optimized_function ## ]]\n{optimized_function}\n\n[[ ## completed ## ]]\nIn adhering to this structure, your objective is: \n        Given multiple instruction–code pairs, generate a single reusable and optimized\n        Python function that performs all described operations in one call.\n        \n        The optimized function should:\n        - Use the provided function definition exactly as given.\n        - Always use board as first argument to the function and followed by colors (a list of colors) and x, y (the starting/reference point row and column).\n        - Do not use shapes as parameters. Keep shapes as fixed attributes (e.g., shapes like 'washer', 'nut', 'bridge') and use them only inside the function. Use the exact shape names as in the code snippets.\n        - Do not hardcode color values inside the function.\n        - Use lists for parameters when multiple values of the same type are needed (e.g., multiple colors).\n        - All put() operations are relative to the starting position (x, y) specified in the first instruction. Use that as the reference point and as an input parameter to the function. The function should compute the relative offsets of all other shapes based on how their coordinates differ from the first placement.\n           - If the first instruction places a shape at (2, 3) and another places one at (2, 4), then the function input should be (x=2, y=3).\n           - The second shape’s position is relative to the first by an offset of (dx=0, dy=1), which should be computed and applied inside the function.\n        - After determining the relative offsets for each placement, factor out repetition.\n        - Use a concise loop to iterate through corresponding shapes, colors, and offsets, rather than writing separate put() statements for each shape.\n        - Do not change the order of operations\n        - Do not change the signature of the function in the input code\n          - Here is the signature of put(): put(board, shape, color, x, y)\n        - Wherever multiple put() calls can be combined use loops. Do not repeat similar lines of code.\n        - When executed once, it should perform all of the described actions together.\n        - Use clean, valid Python syntax (PEP-8 compliant).\n        - Maintain semantic equivalence with all provided code snippets.\n        - Do not reuse the input code–sequence pairs as they are; the sequence is meant to be optimized.\n        - Output a valid standalone Python optimized function.\n\n        API Interpretation\n        - The input code snippets contains some or all of these APIs.\n              - put(board: np.ndarray, shape: str, color: str, x: int, y: int): places a shape on the board at (x1,y1)\n              - move(board: np.ndarray, x1: int, y1: int, x2: int, y2:int, shapes_list: List = None): moves a shape from (x1,y1) to (x2,y2)\n              - removeshape(board: np.ndarray, x: int, y: int, shape, color): removes a shape from (x1,y1)\n              - clear(board: np.ndarray): clears/removes all shapes from the board\n              - undo(board: np.ndarray): reverses the last action(s)\n\n        - You must treat the snippet as a sequence of actions executed on an initially empty board.\n              - Step through the actions in order and reason about how each one changes the board.\n              - Actions like remove(), move(), undo(), and clear() can cancel or override earlier put() calls.\n              - Any shape that is removed, moved away, undone, or cleared should NOT appear in the final board state. Earlier put() calls that get canceled in this way should be ignored.\n              - Figure out which shapes actually remain at the end.\n\n        - Your goal is to figure out what shapes are on which cells *after the entire sequence has finished*.\n             - For example:\n               put(board, 'washer', 'red', 1, 1)\n               remove(board, 1, 1, 'washer', 'red')\n               put(board, 'nut', 'blue', 1, 1)\n               At the end, only a blue 'nut' remains at (1, 1). The red 'washer' should NOT be included in the final result.\n\n               put(board, 'bridge-h', 'green', 2, 7)\n               put(board, 'screw', 'yellow', 6, 3)\n               move(board, 6, 3, 8, 4, ['screw'])\n               At the end, bridge-h is at (2,7) and screw is at (8,4). There is no screw at (6,3)\n\n        - After you have inferred the final board state, generate an optimized function that:\n             - Uses ONLY put() calls\n             - Do NOT use move(), remove(), undo(), or clear() in the optimized function.\n\n        SHAPE OCCUPANCY\n        - All shapes occupy **exactly one cell**, **except the \"bridge\"**.\n        - A **bridge** spans **two adjacent cells**:\n              - *Horizontal bridge*: spans consecutive **columns** in the same row.\n              - put(board, 'bridge-h', 'red', x=1,y=1): This places bridge-h in cells (1,1) and (1,2): Same row, consequent columns\n              - *Vertical bridge*: spans consecutive **rows** in the same column.\n              - put(board, 'bridge-v', 'red', x=1,y=1): This places bridge-v in cells (1,1) and (2,1): Consequent rows, same columns              \n        - A bridge **requires two other shapes** underneath it for support while stacking,\n            one under each end of the bridge.\n        \n        STACKING & DEPTH RULES\n        - Shapes can be stacked vertically within the same cell.\n        - Stacking is only allowed if all shapes share the **same depth**.\n        - When multiple shapes are placed in a single cell:\n              - The **first mentioned shape** is placed **at the bottom**.\n              - Later shapes stack **on top**.\n        - Do not stack same shapes in the same cell.\n            Example:\n                Correct: put(board, shape='washer', color='red', x=1, y=1)\n                         put(board, shape='nut', color='green', x=1, y=1)\n                Incorrect: put(board, shape='washer', color='red', x=1, y=1)\n                           put(board, shape='washer', color='green', x=1, y=1)        \n        \n        Given:\n        - prompt: Prompt with the following details:\n            - function signature: signature of the function including its name. use only this signature.\n            - function usage: how the function will be used\n            - instruction-code snippets across turns: a list of code snippets corresponding to different instructions\n            - optional error feedback from previous attempts\n        \n        Produce:\n            - A single optimized Python function as a string.\n            - Do not generate any other reasoning traces as it will fail code execution\n        \n        Make sure the Python function is valid and executable by executing `exec()` on it.\n\nRespond with the corresponding output fields, starting with the field `[[ ## optimized_function ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.\n",
+              "turn_prompt_b": "[[ ## prompt ## ]]\nTASK:\n1. Review the previous state and new user input\n2. Identify missing or unclear information\n\nRESPONSE RULES:\n3. Every response must follow the below JSON format\n{\n    \"status\": \"clarification\", \"acknowledgement\" or \"code\",\n    \"details\": Python code when status=\"code\", or plain text when status=\"clarification\" or \"acknowledgement\"\n}\n4. Ensure the generated code (in \"details\") can be executed by Python `exec()`, e.g.: no trailing commas, no periods, etc.\n5. If there are errors in execution, you will receive error information labeled ERROR_FEEDBACK. If the code is executed successfully, you will see None under that.\n6. Do not generate any other text/explanations.\n\nRespond with the corresponding output fields, starting with the field `[[ ## player_response ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.",
+              "turn_prompt_b_optim": "[[ ## prompt ## ]]\nTASK:\n1. Review the previous state and new user input\n2. Identify missing or unclear information\n3. Ensure the generated code can be executed by Python `exec()`, e.g.: no trailing commas, no periods, etc.\n5. If there are errors in execution, you will receive error information labeled ERROR_FEEDBACK. If the code is executed successfully, you will see None under that.\n6. Do not generate any other text/explanations.\n\nRespond with the corresponding output fields, starting with the field `[[ ## optimized_function ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.",
+              "turn_prompt_a_newboard": "[[ ## prompt ## ]]\n1. Continue interacting until the task is complete.\n2. Always reason level-by-level (bottom → top). Never describe a higher-level shape until every lower-level shape across all relevant cells has been placed.\n3. If the grids are identical, reply with \"DONE\". No additional text should follow/preceed.\n4. Start by asking whether player knows the skill named in 'skill_required'.\n    - If player does not know the skill → emit 'SKILL_UNKNOWN'.\n    - If player returns a clarification analyze it.\n        * If clarification is about parameters or colors → give a refined instruction.\n    - If player returns an acknowledgement, proceed with the followup instruction\n    - If player knows how to use the skill → proceed to give instructions on using the skill with the intended colors and locations.\n    - Do not explain the skill by individual shapes/elements. Always instruct to reuse the skill with relevant colors and locations.\n    - If the skill follows a certain pattern on the grid i.e., diagonally, vertically, occupying all columns of a particular row, instruct the pattern rather repeating individual cells\n    - If the location is \"None\", check the target grid cells and instruct the player for the placement\n        * In addition, identify if there is a pattern in the placement and you can instruct the player to follow it\n            Example:\n              place the nws skill diagonally starting from left corner. use these colors ['blue', 'red', 'green'].\n              place the b1s3 skill in the first column of third row. repeat the same in 6th row. use these colors ['yellow', 'blue'].\n    - Each subsequent instruction should progressively refine or correct\n          player’s reconstruction.\n        * When the target grid and diff grid matches → output 'DONE'.\n          - Keep responses concise and goal-directed\n\nRespond with the corresponding output fields, starting with the field `[[ ## instruction ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

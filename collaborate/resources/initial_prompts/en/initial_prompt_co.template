@@ -1,0 +1,105 @@
+Your input fields are:
+1. `prompt` (str): Prompt with function name, usage, instruction-code pairs, and optional error feedback.
+Your output fields are:
+1. `optimized_function` (str): A single optimized Python function as a string.
+All interactions will be structured in the following way, with the appropriate values filled in.
+
+[[ ## prompt ## ]]
+{prompt}
+
+[[ ## optimized_function ## ]]
+{optimized_function}
+
+[[ ## completed ## ]]
+In adhering to this structure, your objective is: 
+        Given multiple instruction–code pairs, generate a single reusable and optimized
+        Python function that performs all described operations in one call.
+        
+        The optimized function should:
+        - Use the provided function definition exactly as given.
+        - Always use board as first argument to the function and followed by colors (a list of colors) and x, y (the starting/reference point row and column).
+        - Do not use shapes as parameters. Keep shapes as fixed attributes (e.g., shapes like 'washer', 'nut', 'bridge') and use them only inside the function. Use the exact shape names as in the code snippets.
+        - Do not hardcode color values inside the function.
+        - Use lists for parameters when multiple values of the same type are needed (e.g., multiple colors).
+        - All put() operations are relative to the starting position (x, y) specified in the first instruction. Use that as the reference point and as an input parameter to the function. The function should compute the relative offsets of all other shapes based on how their coordinates differ from the first placement.
+           - If the first instruction places a shape at (2, 3) and another places one at (2, 4), then the function input should be (x=2, y=3).
+           - The second shape’s position is relative to the first by an offset of (dx=0, dy=1), which should be computed and applied inside the function.
+        - After determining the relative offsets for each placement, factor out repetition.
+        - Use a concise loop to iterate through corresponding shapes, colors, and offsets, rather than writing separate put() statements for each shape.
+        - Do not change the order of operations
+        - Do not change the signature of the function in the input code
+          - Here is the signature of put(): put(board, shape, color, x, y)
+        - Wherever multiple put() calls can be combined use loops. Do not repeat similar lines of code.
+        - When executed once, it should perform all of the described actions together.
+        - Use clean, valid Python syntax (PEP-8 compliant).
+        - Maintain semantic equivalence with all provided code snippets.
+        - Do not reuse the input code–sequence pairs as they are; the sequence is meant to be optimized.
+        - Output a valid standalone Python optimized function.
+
+        API Interpretation
+        - The input code snippets contains some or all of these APIs.
+              - put(board: np.ndarray, shape: str, color: str, x: int, y: int): places a shape on the board at (x1,y1)
+              - move(board: np.ndarray, x1: int, y1: int, x2: int, y2:int, shapes_list: List = None): moves a shape from (x1,y1) to (x2,y2)
+              - removeshape(board: np.ndarray, x: int, y: int, shape, color): removes a shape from (x1,y1)
+              - clear(board: np.ndarray): clears/removes all shapes from the board
+              - undo(board: np.ndarray): reverses the last action(s)
+
+        - You must treat the snippet as a sequence of actions executed on an initially empty board.
+              - Step through the actions in order and reason about how each one changes the board.
+              - Actions like remove(), move(), undo(), and clear() can cancel or override earlier put() calls.
+              - Any shape that is removed, moved away, undone, or cleared should NOT appear in the final board state. Earlier put() calls that get canceled in this way should be ignored.
+              - Figure out which shapes actually remain at the end.
+
+        - Your goal is to figure out what shapes are on which cells *after the entire sequence has finished*.
+             - For example:
+               put(board, 'washer', 'red', 1, 1)
+               remove(board, 1, 1, 'washer', 'red')
+               put(board, 'nut', 'blue', 1, 1)
+               At the end, only a blue 'nut' remains at (1, 1). The red 'washer' should NOT be included in the final result.
+
+               put(board, 'bridge-h', 'green', 2, 7)
+               put(board, 'screw', 'yellow', 6, 3)
+               move(board, 6, 3, 8, 4, ['screw'])
+               At the end, bridge-h is at (2,7) and screw is at (8,4). There is no screw at (6,3)
+
+        - After you have inferred the final board state, generate an optimized function that:
+             - Uses ONLY put() calls
+             - Do NOT use move(), remove(), undo(), or clear() in the optimized function.
+
+        SHAPE OCCUPANCY
+        - All shapes occupy **exactly one cell**, **except the "bridge"**.
+        - A **bridge** spans **two adjacent cells**:
+              - *Horizontal bridge*: spans consecutive **columns** in the same row.
+              - put(board, 'bridge-h', 'red', x=1,y=1): This places bridge-h in cells (1,1) and (1,2): Same row, consequent columns
+              - *Vertical bridge*: spans consecutive **rows** in the same column.
+              - put(board, 'bridge-v', 'red', x=1,y=1): This places bridge-v in cells (1,1) and (2,1): Consequent rows, same columns              
+        - A bridge **requires two other shapes** underneath it for support while stacking,
+            one under each end of the bridge.
+        
+        STACKING & DEPTH RULES
+        - Shapes can be stacked vertically within the same cell.
+        - Stacking is only allowed if all shapes share the **same depth**.
+        - When multiple shapes are placed in a single cell:
+              - The **first mentioned shape** is placed **at the bottom**.
+              - Later shapes stack **on top**.
+        - Do not stack same shapes in the same cell.
+            Example:
+                Correct: put(board, shape='washer', color='red', x=1, y=1)
+                         put(board, shape='nut', color='green', x=1, y=1)
+                Incorrect: put(board, shape='washer', color='red', x=1, y=1)
+                           put(board, shape='washer', color='green', x=1, y=1)        
+        
+        Given:
+        - prompt: Prompt with the following details:
+            - function signature: signature of the function including its name. use only this signature.
+            - function usage: how the function will be used
+            - instruction-code snippets across turns: a list of code snippets corresponding to different instructions
+            - optional error feedback from previous attempts
+        
+        Produce:
+            - A single optimized Python function as a string.
+            - Do not generate any other reasoning traces as it will fail code execution
+        
+        Make sure the Python function is valid and executable by executing `exec()` on it.
+
+Respond with the corresponding output fields, starting with the field `[[ ## optimized_function ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.

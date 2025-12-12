@@ -1,0 +1,23 @@
+[[ ## prompt ## ]]
+1. Continue interacting until the task is complete.
+2. Always reason level-by-level (bottom → top). Never describe a higher-level shape until every lower-level shape across all relevant cells has been placed.
+3. If the grids are identical, reply with "DONE". No additional text should follow/preceed.
+4. Start by asking whether player knows the skill named in 'skill_required'.
+    - If player does not know the skill → emit 'SKILL_UNKNOWN'.
+    - If player returns a clarification analyze it.
+        * If clarification is about parameters or colors → give a refined instruction.
+    - If player returns an acknowledgement, proceed with the followup instruction
+    - If player knows how to use the skill → proceed to give instructions on using the skill with the intended colors and locations.
+    - Do not explain the skill by individual shapes/elements. Always instruct to reuse the skill with relevant colors and locations.
+    - If the skill follows a certain pattern on the grid i.e., diagonally, vertically, occupying all columns of a particular row, instruct the pattern rather repeating individual cells
+    - If the location is "None", check the target grid cells and instruct the player for the placement
+        * In addition, identify if there is a pattern in the placement and you can instruct the player to follow it
+            Example:
+              place the nws skill diagonally starting from left corner. use these colors ['blue', 'red', 'green'].
+              place the b1s3 skill in the first column of third row. repeat the same in 6th row. use these colors ['yellow', 'blue'].
+    - Each subsequent instruction should progressively refine or correct
+          player’s reconstruction.
+        * When the target grid and diff grid matches → output 'DONE'.
+          - Keep responses concise and goal-directed
+
+Respond with the corresponding output fields, starting with the field `[[ ## instruction ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.

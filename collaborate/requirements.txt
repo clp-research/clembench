@@ -4,3 +4,7 @@ numpy
 json
 base64
 llm-sandbox
+ast
+pathlib
+html
+

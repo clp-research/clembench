@@ -19,10 +19,6 @@ gymnasium # escapegame
 pygame # escapegame
 dspy # ccbtsgame
 matplotlib # ccbtsgame
-base64 # ccbtsgame
-llm-sandbox # ccbtsgame
-ast # ccbtsgame
-pathlib # ccbtsgame
-html # ccbtsgame
+llm-sandbox==0.3.27 # ccbtsgame
 
 

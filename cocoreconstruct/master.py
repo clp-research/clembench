@@ -15,7 +15,7 @@ from clemcore.backends import Model
 
 from players import InstructionGiver, InstructionFollower
 from utils.prepareasciirep import PrepareASCIIRep
-from utils.preparellmsandbox import PrepareLLMSandBox
+#from utils.preparellmsandbox import PrepareLLMSandBox
 
 
 import logging

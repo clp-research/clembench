@@ -17,4 +17,13 @@ Levenshtein # referencegame instance generation
 kaggle # wordle instance generation
 gymnasium # escapegame
 pygame # escapegame
+dspy # ccbtsgame
+matplotlib # ccbtsgame
+json # ccbtsgame
+base64 # ccbtsgame
+llm-sandbox # ccbtsgame
+ast # ccbtsgame
+pathlib # ccbtsgame
+html # ccbtsgame
+
 

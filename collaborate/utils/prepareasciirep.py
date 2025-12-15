@@ -55,7 +55,8 @@ class PrepareASCIIRep:
         try:
             exec(gt_exec_code)
         except Exception as e:
-            print(f"Error executing code: {e}")
+            #print(f"Error executing code: {e}")
+            logger.error(f"Error executing code: {e}")
             return None
         return board
     
@@ -260,7 +261,7 @@ class PrepareASCIIRep:
             return None
 
         occupied_cells = self._list_occupied_cells_with_details(board)
-        print(occupied_cells)
+        #print(occupied_cells)
         layer_rep = self.get_layer_representation(occupied_cells)
         return layer_rep, board
         ascii_representation = "[\n"
@@ -492,7 +493,7 @@ class PrepareASCIIRep:
     def get_layer_representation(self, occupied_cells, optim=False):
         """Generate a layer-wise ASCII representation from the occupied cells."""
         if not occupied_cells:
-            print(f"No occupied cells provided.")
+            #print(f"No occupied cells provided.")
             return None
         
 
@@ -608,8 +609,10 @@ class PrepareASCIIRep:
         for location in repeat_locations:
             row, col = location[0]-1, location[1]-1
             if f"{row}:{col}" in occupied_cells:
-                print(f"Multiple objects at location {row},{col} for combo {combo_name}")
-                input()
+                #print(f"Multiple objects at location {row},{col} for combo {combo_name}")
+                #input()
+                logger.error(f"Multiple objects at location {row},{col} for combo {combo_name}, skipping")
+                continue
             occupied_cells[f"{row}:{col}"] = [(combo_name, f"{colors}")]
         return occupied_cells 
 

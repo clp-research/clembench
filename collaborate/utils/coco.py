@@ -384,7 +384,7 @@ def _validate_shapes(board, x, y, shapes_list, start_range, end_range):
 
         color_formatted = long_to_short_color[color.lower()]
 
-        print(f"Validating shape at layer {layer}, expected: ({shape}, {color_formatted}), found: ({short_to_long[board_shape]}, {board_color})")
+        #print(f"Validating shape at layer {layer}, expected: ({shape}, {color_formatted}), found: ({short_to_long[board_shape]}, {board_color})")
 
         if short_to_long[board_shape] != shape or board_color != color_formatted:
             raise (ValueError("Shape or color at source location does not match the provided shapes list"))

@@ -75,6 +75,8 @@ class InstructionFollower(Player):
         if self.model is None:
             return None
 
+        return "others"
+
         if isinstance(self.model, backends.CustomResponseModel):
             return "programmatic"
 

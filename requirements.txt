@@ -21,6 +21,7 @@ dspy # ccbtsgame
 matplotlib # ccbtsgame
 docker-py # ccbtsgame
 llm-sandbox==0.3.27 # ccbtsgame
+pettingzoo
 
 
 

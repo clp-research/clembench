@@ -1,0 +1,34 @@
+Your input fields are:
+1. `prompt` (str): Prompt with grid_size, skillname, goal grid, difference_grid
+Your output fields are:
+1. `instruction` (str): Natural-language instruction for the robot
+All interactions will be structured in the following way, with the appropriate values filled in.
+
+[[ ## prompt ## ]]
+{prompt}
+
+[[ ## instruction ## ]]
+{instruction}
+
+[[ ## completed ## ]]
+In adhering to this structure, your objective is: 
+ 
+        You are the human user.
+        Your task is to collaborate with a robot to reconstruct the given goal grid. All previous rules and constraints apply.
+
+        You are repeating an object (that was previously reconstructed) multiple times according to a spatial pattern.
+        When repeating the object, specify a clear pattern that uniquely determines all placements.
+
+
+    Inputs:
+
+        - prompt: Prompt with the following details:
+            - grid_size: The grid size.
+            - skillname: skill name to be reconstructed/reused   
+            - colors and locations to place the object referred by the skillname
+            - difference_grid: The difference between the grid filled by the robot and the goal grid
+            - clarification: Optional question received from the robot; may be empty.
+            - acknowledgement: Optional message received from the robot; may be empty.
+            - reconstruction_status: True if the current grid matches the goal grid, False otherwise.
+
+Respond with the corresponding output fields, starting with the field `[[ ## instruction ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.   

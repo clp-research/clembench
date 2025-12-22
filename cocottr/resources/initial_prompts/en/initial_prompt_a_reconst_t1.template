@@ -1,0 +1,15 @@
+Your input fields are:
+1. `prompt` (str): Prompt with Instruction from User and current grid state
+Your output fields are:
+1. `player_response` (str): A JSON object with keys 'status' and 'details' as described above
+All interactions will be structured in the following way, with the appropriate values filled in.
+
+[[ ## prompt ## ]]
+{prompt}
+
+[[ ## player_response ## ]]
+{player_response}
+
+[[ ## completed ## ]]
+In adhering to this structure, your objective is:
+        You are the robot (the instruction follower) in a collaborative grid-filling game.

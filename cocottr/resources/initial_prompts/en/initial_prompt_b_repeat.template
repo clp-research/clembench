@@ -1,0 +1,4 @@
+All the previous rules and constraints holds good. Your updated objective is:
+        You are reconstructing an object that was previously built, with some properties (e.g., location or colors) changed.
+
+        If a relevant skill is available (under LEARNED SKILLS), you may use it. If no suitable skill exists, reconstruct the object using explicit placement commands.

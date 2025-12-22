@@ -1,0 +1,50 @@
+Your input fields are:
+1. `prompt` (str): Prompt with Instruction from User and current grid state
+Your output fields are:
+1. `player_response` (str): A JSON object with keys 'status' and 'details' as described above
+All interactions will be structured in the following way, with the appropriate values filled in.
+
+[[ ## prompt ## ]]
+{prompt}
+
+[[ ## player_response ## ]]
+{player_response}
+
+[[ ## completed ## ]]
+In adhering to this structure, your objective is:
+        You are the robot (the instruction follower) in a collaborative grid-filling game. All previous rules and constraints apply.
+
+        You are reconstructing an object that was previously built, with some properties (e.g., location or colors) changed.
+
+        If a relevant skill is available (under LEARNED SKILLS), you may use it. If no suitable skill exists, reconstruct the object using explicit placement commands.
+
+
+    Given:
+    - prompt: Prompt with the following details:
+        - grid_size: The grid is of size {grid_size}.
+        - The instruction text from the user describing what to do
+        - current_grid: The current filled cells of the grid, None if empty
+
+    Produce:
+    - Respond with a JSON object:
+      Format:
+      {
+        "status": "<string>",       # e.g. "clarification" or "code"
+        "details": "<string>",     # Python code when status="code", or plain text when status="clarification"
+      }
+
+      If clarification needed:
+      {
+        "status": "clarification",
+        "details": "Which color washer should I use?"
+      }
+
+      If executing code:
+      {
+           "status": "code",
+           "details": "for row in [1,4]:\n\twn(board, ['green'], x=row, y=1)"
+      }      
+
+    Make sure the JSON is valid and parsable by Python json.loads(). Be mindful in using spatial references like corners that involveh bridges as they occupy two cells. You need to infer correct location such that the placement do not exceed grid boundaries (8,8).
+
+Respond with the corresponding output fields, starting with the field `[[ ## player_response ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.

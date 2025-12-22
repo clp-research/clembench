@@ -1,0 +1,5 @@
+[[ ## prompt ## ]]
+1. Continue interacting until the task is complete.
+2s. If the grids are identical, reply with "DONE". No additional text should follow/preceed.
+
+Respond with the corresponding output fields, starting with the field `[[ ## instruction ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.

@@ -1,0 +1,15 @@
+{
+    "use_error_feedback": true,
+    "use_images_in_human_prompts": false,
+    "num_retry": 3,
+    "num_optim_turns": 0,
+    "use_optimizer": false,
+    "max_turns": 30,
+    "use_sandbox_llm": false,
+    "cocottr": {
+        "TRAIN_DATA_FILE_NAME": "",
+        "TEST_DATA_FILE_NAME": "cocottrdata.json",
+        "STATIC_INCONTEXT_SAMPLES": "reconstruct_so_mt_static_incontext.txt",
+        "NUM_INCONTEXT_SAMPLES": 0
+    }
+}

@@ -6,8 +6,8 @@ immutabledict~=4.2.1 # playschool ifeval
 lark==1.1.9 # adventuregame
 clingo==5.7.1 # adventuregame
 jinja2 # adventuregame
-spacy==3.7.4 # taboo
-nltk==3.8.1 # codenames taboo; pin due to transformers<=4.53.0 requires nltk<=3.8.1
+spacy>=3.7.4,<4.0.0  # taboo
+nltk>=3.9.2,<4.0.0 # codenames taboo; comes in via clemcore (unification mechanism)
 scikit-learn # privateshared
 matplotlib # mm_mapworld textmapworld
 networkx # mm_mapworld textmapworld

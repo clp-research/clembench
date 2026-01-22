@@ -113,9 +113,9 @@ def add_markdown_key(experiment_dir: str):
 
 
 if __name__ == "__main__":
-    clean_up_dirs = find_experiment_dirs("/Users/karlosswald/repositories/clemclass/negotiation-games/results_en", game_name="clean_up")
-    clean_up_dirs += find_experiment_dirs("/Users/karlosswald/repositories/clemclass/negotiation-games/results_de", game_name="clean_up")
-    clean_up_dirs += find_experiment_dirs("/Users/karlosswald/repositories/clemclass/negotiation-games/results_it", game_name="clean_up")
+    clean_up_dirs = find_experiment_dirs("/project/kosswald/benchmark3.0/results", game_name="clean_up")
+    # clean_up_dirs += find_experiment_dirs("/Users/karlosswald/repositories/clemclass/negotiation-games/results_de", game_name="clean_up")
+    # clean_up_dirs += find_experiment_dirs("/Users/karlosswald/repositories/clemclass/negotiation-games/results_it", game_name="clean_up")
     for dir in clean_up_dirs:
         add_grids_to_interactions(dir)
         remove_dev_log(dir)

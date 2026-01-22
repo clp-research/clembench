@@ -420,7 +420,7 @@ class GridState(GameState):
             message: str, message to be passed to the player
             image: None, only used for PicState
         """
-        logger.info(f"Moving object {obj} to ({x}, {y})")
+        logger.debug(f"Moving object {obj} to ({x}, {y})")
         element, x, y = super().move_abs(obj, x, y)
         if element is None:
             return False, Template(self.move_messages["obj_not_found"]).substitute(object=obj), None
@@ -484,8 +484,8 @@ class HybridState(GridState):
         padding = font_size / 3
         img_width = int(width * font_width + padding)
         img_height = int(height * font_size + padding)
-        logger.info(f"width: {width}, height: {height}, font_size: {font_size}, font_width: {font_width}, padding: {padding}")
-        logger.info(f"Drawing HybridState with dimensions: {img_width}x{img_height}")
+        logger.debug(f"width: {width}, height: {height}, font_size: {font_size}, font_width: {font_width}, padding: {padding}")
+        logger.debug(f"Drawing HybridState with dimensions: {img_width}x{img_height}")
         img = Image.new('RGBA', (img_width, img_height), color = (255, 255, 255, 0))
         d = ImageDraw.Draw(img)
         font = ImageFont.truetype("clean_up/resources/game_state/LiberationMono-Regular.ttf", font_size)

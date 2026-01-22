@@ -15,7 +15,7 @@ from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOS
 # from clemcore.utils import file_utils, string_utils
 from resources.game_state.utils import GameObject, png_to_base64
 from resources.game_state.game_state import PicState, GridState, HybridState, SemanticGridState
-from resources.metrics import MetricPreparer, MetricCalculator, END_DISTANCE_SUM, EXPECTED_DISTANCE_SUM, MOVES, INIT_STATES, END_STATES, ingredients_registry, sub_metrics_registry #, validate
+from resources.metrics import MetricPreparer, MetricCalculator, END_DISTANCE_SUM, EXPECTED_DISTANCE_SUM, MOVES, INIT_STATES, END_STATES, ingredients_registry, VALID_MOVES, INVALID_MOVES, PARSE_ERRORS
 
 # Stores the game state class for each modality
 STATE_DICT = {
@@ -25,11 +25,21 @@ STATE_DICT = {
     "semantic_text": SemanticGridState
 }
 
+# These additional metrics provide information about which part of the game a model struggles with
+# Parse Error: model struggles to follow the response format
+# Invalid Move: Format is correct, but the move is invalid according to the game rules. This hints at problems with spatial understanding of the grid.
+# Valid Move: Valid moves made by the model
+MESSAGE_STATS = {
+    "invalid_move": INVALID_MOVES,
+    "valid_move": VALID_MOVES,
+    "parse_error": PARSE_ERRORS
+}
+
 logger = logging.getLogger(__name__)
 
 class Cleaner(Player):
     def __init__(self, model: Model):
-        logger.info(f"Initializing {self.__class__.__name__}")
+        logger.debug(f"Initializing {self.__class__.__name__}")
         super().__init__(model, forget_extras=["image"])
         self._custom_responses = self._prepare_custom_responses()
         self.game_state = None  # This will be set by the game master
@@ -196,6 +206,7 @@ class CleanUpMaster(DialogueGameMaster):
         self.max_rounds = self.game_instance['max_rounds']
 
         self.metric_preparer = MetricPreparer(self, self.player_1, self.player_2)
+        self.message_stats = {v: 0 for v in MESSAGE_STATS.values()}
 
     def add_player(self, player: Player, objects: List[GameObject] = None):
         """
@@ -234,16 +245,19 @@ class CleanUpMaster(DialogueGameMaster):
         tail = match.group('tail')
         if head != '' and tail != '':
             self.log_to_self('parse_error', f"Invalid format: head and tail are not empty\nhead: '{head}'\ntail: '{tail}'")
+            self.message_stats[MESSAGE_STATS['parse_error']] += 1
             raise ParseError(reason=self.parse_errors["head_tail"], response=match.group(0))
         elif head != '':
             self.log_to_self('parse_error', f"Invalid format: head is not empty: '{head}'")
+            self.message_stats[MESSAGE_STATS['parse_error']] += 1
             raise ParseError(reason=self.parse_errors["head"], response=match.group(0))
         elif tail != '':
             self.log_to_self('parse_error', f"Invalid format: tail is not empty: '{tail}")
+            self.message_stats[MESSAGE_STATS['parse_error']] += 1
             raise ParseError(reason=self.parse_errors["tail"], response=match.group(0))
 
     def _parse_response(self, player: Player, response: str) -> str:
-        logger.info(f"{player.name}: {response}")
+        logger.debug(f"{player.name}: {response}")
         self.log_to_self('player_response', response)
         # We just remove backticks
         response = response.replace('`', '').strip()
@@ -251,14 +265,16 @@ class CleanUpMaster(DialogueGameMaster):
         say_matches = list(self.say_pattern.finditer(response))
         if len(move_matches) + len(say_matches) > 1:
             self.log_to_self('parse_error', f"Invalid response format: {response}")
-            logger.warning(f"Response '{response}' contains several commands.")
+            logger.debug(f"Response '{response}' contains several commands.")
+            self.message_stats[MESSAGE_STATS['parse_error']] += 1
             raise ParseError(reason=self.parse_errors["several_commands"], response=response)
         move_match = move_matches[0] if move_matches else None
         say_match = say_matches[0] if say_matches else None
         if player == self.player_1 and self.current_round == 0 and not say_match:
             # In this case, the command needs to be a message
             self.log_to_self('parse_error', f"Invalid response: {response}")
-            logger.warning(f"Response '{response}' is not a valid message, first command must be a message.")
+            logger.debug(f"Response '{response}' is not a valid message, first command must be a message.")
+            self.message_stats[MESSAGE_STATS['parse_error']] += 1
             raise ParseError(reason=self.parse_errors["invalid_start"], response=response)
         if move_match:
             self._check_head_tail(move_match)
@@ -276,16 +292,18 @@ class CleanUpMaster(DialogueGameMaster):
                 if restricted_match:
                     self.pass_turn = False
                     self.log_to_self('rule_violation', f"Response violates restriction: {restricted_pattern}")
+                    self.message_stats[MESSAGE_STATS['parse_error']] += 1
                     raise ParseError(reason=self.parse_errors["restriction"], response=response)
             return response
         else:
             self.log_to_self('parse_error', f"Invalid response format")
+            self.message_stats[MESSAGE_STATS['parse_error']] += 1
             raise ParseError(reason=self.parse_errors["invalid_format"], response=response)
 
     def _on_parse_error(self, error: GameError):
         self.pass_turn = False
         self.penalties += 1
-        logger.warning(f"Parse error: {error}")
+        logger.debug(f"Parse error: {error}")
         message = self._reprompt_message(error.reason)
         self.set_context_for(self._current_player, message)
 
@@ -321,20 +339,22 @@ class CleanUpMaster(DialogueGameMaster):
             success, message, images = player.game_state.move_abs(obj, x, y)
             self.pass_turn = success
             if success:
-                logger.info(f"{player.name} moved {obj} to ({x}, {y}) successfully.")
+                logger.debug(f"{player.name} moved {obj} to ({x}, {y}) successfully.")
                 self.metric_preparer.add_move((player.name, obj))
                 # log the move message to the player and add it to the message history (without response)
-                self.log_to_self('valid move', f'{obj} moved to ({x}, {y})')
+                self.log_to_self('valid_move', f'{obj} moved to ({x}, {y})')
+                self.message_stats[MESSAGE_STATS['valid_move']] += 1
                 player.store_relay_message(message, images=images)
                 # turn is passed to the other player
                 next_player_prompt = self._new_turn_prompt(self.intermittent_prompts["new_turn_move"])
                 self.set_context_for(self._other_player(), next_player_prompt)
             if not success:
-                logger.warning(f"{player.name} failed to move {obj} to ({x}, {y}): {message}")
+                logger.debug(f"{player.name} failed to move {obj} to ({x}, {y}): {message}")
                 # Player is reprompted with a penalty, their turn continues. 
                 self.penalties += 1
                 message = message + "\n" + Template(self.intermittent_prompts['penalty_counter']).substitute(penalty=self.penalties) + self.intermittent_prompts['penalty_reprompt']
-                self.log_to_self('invalid move', message)
+                self.log_to_self('invalid_move', message)
+                self.message_stats[MESSAGE_STATS['invalid_move']] += 1
                 self.set_context_for(player, message)
                 raise RuleViolationError(f"Invalid move: {message}")
         else:
@@ -423,6 +443,7 @@ class CleanUpMaster(DialogueGameMaster):
 
     def _on_after_game(self):
         self._after_game_logs()
+        self.log_key("markdown", True)
         ingredients = self.metric_preparer.compute_ingredients()
         ingredients_string = ""
         for key, val in ingredients.items():
@@ -448,7 +469,10 @@ class CleanUpMaster(DialogueGameMaster):
             self.log_to_self("initial_state", "Initial states:\n" + self.initial_board)
             self.log_to_self("end_state", "End states:\n```\nPlayer 1:\n" + str(self.player_1.game_state) + "\n\nPlayer 2:\n" + str(self.player_2.game_state) + "\n```")
 
-        self.log_to_self('game_finished', f"* success: {self.success}\n* lose: {lose}\n* aborted: {self.aborted}\n-------\n{ingredients_string}")            
+        self.log_to_self('game_finished', f"* success: {self.success}\n* lose: {lose}\n* aborted: {self.aborted}\n-------\n{ingredients_string}") 
+
+        for key, val in self.message_stats.items():
+            self.log_key(key, val)           
         
         # ----------------------------------------------------------
         # dev: also compute sub-metrics and bench score to show on transcript

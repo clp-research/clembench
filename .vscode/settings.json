@@ -1,7 +1,0 @@
-{
-    "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.extraPaths": ["../clemcore"],
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    }
-}

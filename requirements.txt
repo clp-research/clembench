@@ -1,11 +1,10 @@
 clemcore>=3.3.5,<4.0.0
-datasets~=3.5.1 # static benchmarks instance generation
-jinja2~=3.1.6 # static benchmarks instance generation
-langdetect~=1.0.9 # playschool ifeval
-immutabledict~=4.2.1 # playschool ifeval
+datasets>=3.5.1,<5.0.0 # static benchmarks instance generation
+jinja2>=3.1.6,<4.0.0 # adventuregame static benchmarks instance generation
+langdetect>=1.0.9,<2.0.0 # playschool ifeval
+immutabledict>=4.2.1,<5.0.0 # playschool ifeval
 lark==1.1.9 # adventuregame
 clingo==5.7.1 # adventuregame
-jinja2 # adventuregame
 spacy>=3.7.4,<4.0.0  # taboo
 nltk>=3.9.2,<4.0.0 # codenames taboo; comes in via clemcore (unification mechanism)
 scikit-learn # privateshared

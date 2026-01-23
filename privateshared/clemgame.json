@@ -7,5 +7,6 @@
   "languages": ["en"],
   "benchmark": ["0.9", "1.0", "1.5", "2.0"],
   "regression": "small",
-  "roles": ["Questioner", "Answerer"]
+  "roles": [{"name": "Answerer", "prefix": ["ASIDE:", "ANSWER:"]}]
+
 }

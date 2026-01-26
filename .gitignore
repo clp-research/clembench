@@ -23,3 +23,6 @@ mapworld/escapegame/resources/images
 
 # ipynb checkpoints
 .ipynb_checkpoints
+
+# manually configure logging
+logging.yaml

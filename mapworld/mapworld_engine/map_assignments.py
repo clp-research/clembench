@@ -8,7 +8,7 @@ import logging
 import numpy as np
 import networkx as nx
 
-import mapworld.engine.map_utils as map_utils
+import map_utils as map_utils
 
 logger = logging.getLogger(__name__)
 # Categories.json/images.json Paths
@@ -38,6 +38,7 @@ def _assign_node_degree(nx_graph: nx.Graph, node: Tuple):
         degree_category = "indoor"
     return degree_category
 
+
 def _split_nodes(nx_graph: nx.Graph) -> Tuple[List, List]:
     """
     Split nodes of the graph into indoors and outdoors based on degree of the node
@@ -52,6 +53,7 @@ def _split_nodes(nx_graph: nx.Graph) -> Tuple[List, List]:
             indoor_nodes.append(node)
 
     return indoor_nodes, outdoor_nodes
+
 
 def _set_categories_and_nodes(nx_graph: nx.Graph, ambiguity: List, ambiguity_area: str, categories: Dict):
     """
@@ -85,20 +87,17 @@ def _set_categories_and_nodes(nx_graph: nx.Graph, ambiguity: List, ambiguity_are
     if len(nodes_available) < sum(ambiguity):
         raise map_utils.NodesExhaustedError(nodes_available, ambiguity, ambiguity_area)
 
-
-
     return category_list, nodes_available
 
 
-
 def _assign_non_ambiguous_room_categories(
-       nx_graph: nx.Graph,
-       category_list: List,
-       nodes_assigned: List,
-       nodes_available: List,
-       room_categories_assigned: List,
-       rng: np.random.default_rng
-)-> None:
+        nx_graph: nx.Graph,
+        category_list: List,
+        nodes_assigned: List,
+        nodes_available: List,
+        room_categories_assigned: List,
+        rng: np.random.default_rng
+) -> None:
     """
     Args:
         nx_graph: A networkx graph with exactly 1 connected component
@@ -113,20 +112,21 @@ def _assign_non_ambiguous_room_categories(
     for node in nodes_available:
         degree_category = _assign_node_degree(nx_graph, node)
         random_room_type = map_utils.select_random_type(room_categories_assigned, category_list, rng)
-        nodes_assigned.append(node) # Update state for later checks
+        nodes_assigned.append(node)  # Update state for later checks
         nx_graph.nodes[node]['base_type'] = degree_category
         nx_graph.nodes[node]['room_type'] = random_room_type
         nx_graph.nodes[node]['ambiguous'] = False
         logger.info(f"Assigned node - {node} with degree {degree_category} as {random_room_type} (non-ambiguous)")
 
+
 def _assign_ambiguous_room_categories(
-    nx_graph: nx.Graph,
-    category_list: List,
-    nodes_assigned: List,
-    nodes_available: List,
-    room_categories_assigned: List,
-    rng: np.random.default_rng,
-    ambiguity: List,
+        nx_graph: nx.Graph,
+        category_list: List,
+        nodes_assigned: List,
+        nodes_available: List,
+        room_categories_assigned: List,
+        rng: np.random.default_rng,
+        ambiguity: List,
 ):
     """
      Args:
@@ -157,14 +157,13 @@ def _assign_ambiguous_room_categories(
             logger.info(f"Assigned node - {node_picked} with degree {node_degree} as {random_room_type} (ambiguous)")
 
 
-
 def _assign_room_categories(
-    nx_graph: nx.Graph,
-    ambiguity: list[int] = None,
-    ambiguity_region: str = "random",
-    categories: Dict = None,
-    use_outdoor_categories: bool = False,
-    rng: np.random.default_rng = None
+        nx_graph: nx.Graph,
+        ambiguity: list[int] = None,
+        ambiguity_region: str = "random",
+        categories: Dict = None,
+        use_outdoor_categories: bool = False,
+        rng: np.random.default_rng = None
 ):
     """
     Assign room categories and room type to the nodes in the generated graph.
@@ -191,12 +190,12 @@ def _assign_room_categories(
 
     category_list, nodes_available = _set_categories_and_nodes(nx_graph, ambiguity, ambiguity_region, categories)
     _assign_ambiguous_room_categories(nx_graph=nx_graph,
-                                 category_list=category_list,
-                                 nodes_assigned=nodes_assigned,
-                                 nodes_available=nodes_available,
-                                 room_categories_assigned=room_categories_assigned,
-                                 rng=rng,
-                                 ambiguity=ambiguity)
+                                      category_list=category_list,
+                                      nodes_assigned=nodes_assigned,
+                                      nodes_available=nodes_available,
+                                      room_categories_assigned=room_categories_assigned,
+                                      rng=rng,
+                                      ambiguity=ambiguity)
 
     nodes_available = list(set(nx_graph.nodes()) - set(nodes_assigned))
     logger.info(f"Nodes available after setting ambiguous nodes: {nodes_available}")
@@ -209,7 +208,7 @@ def _assign_room_categories(
                     f"To avoid this behaviour set use_outdoor_categories to False.")
         category_list = categories[CATEGORY_OUTDOORS]
     else:
-        category_list = categories[CATEGORY_TARGETS]+categories[CATEGORY_DISTRACTORS]
+        category_list = categories[CATEGORY_TARGETS] + categories[CATEGORY_DISTRACTORS]
 
     _assign_non_ambiguous_room_categories(nx_graph=nx_graph,
                                           category_list=category_list,
@@ -224,12 +223,12 @@ def _assign_room_categories(
 
 
 def assign_room_categories(
-    nx_graph: nx.Graph,
-    ambiguity: list[int] = None,
-    ambiguity_region: str = "random",
-    use_outdoor_categories: bool = False,
-    json_path: str = CATEGORIES_PATH,
-    rng: np.random.default_rng = None
+        nx_graph: nx.Graph,
+        ambiguity: list[int] = None,
+        ambiguity_region: str = "random",
+        use_outdoor_categories: bool = False,
+        json_path: str = CATEGORIES_PATH,
+        rng: np.random.default_rng = None
 ):
     """
     Assign room categories and room type to the nodes in the generated graph.
@@ -267,7 +266,7 @@ def assign_room_categories(
 
     categories = map_utils.load_json(json_path)
     total_categories = 0
-    for k,v in categories.items():
+    for k, v in categories.items():
         total_categories += len(v)
 
     required_categories = num_nodes - sum(ambiguity) + len(ambiguity)
@@ -278,11 +277,11 @@ def assign_room_categories(
                          f"\nIncrease number of nodes, decrease ambiguity, or provide more categories\n")
 
     _assign_room_categories(nx_graph=nx_graph,
-                       ambiguity=ambiguity,
-                       ambiguity_region=ambiguity_region,
-                       categories=categories,
-                       use_outdoor_categories=use_outdoor_categories,
-                       rng=rng)
+                            ambiguity=ambiguity,
+                            ambiguity_region=ambiguity_region,
+                            categories=categories,
+                            use_outdoor_categories=use_outdoor_categories,
+                            rng=rng)
 
     logger.info(f"Successfully assigned room categories for the required config")
 

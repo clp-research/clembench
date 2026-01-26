@@ -1,13 +1,12 @@
 from typing import Any
 import logging
 
-import numpy as np
-
-from mapworld.engine.graphs import BaseGraph
-from mapworld.engine.map_assignments import assign_images, assign_room_categories
-from mapworld.engine.map_utils import select_random_room, find_distance
+from graphs import BaseGraph
+from map_assignments import assign_images, assign_room_categories
+from map_utils import select_random_room, find_distance
 
 logger = logging.getLogger(__name__)
+
 
 class BaseMap(BaseGraph):
 
@@ -29,16 +28,15 @@ class BaseMap(BaseGraph):
         super().__init__(m, n, n_rooms, seed)
         self.graph_type = graph_type
 
-
     def set_positions(
-        self,
-        ambiguous_rooms: list,
-        indoor_rooms: list,
-        outdoor_rooms: list,
-        start_type: str = "random",
-        end_type: str = "random",
-        distance: int = 2,
-        edges: list = None
+            self,
+            ambiguous_rooms: list,
+            indoor_rooms: list,
+            outdoor_rooms: list,
+            start_type: str = "random",
+            end_type: str = "random",
+            distance: int = 2,
+            edges: list = None
     ) -> Any | None:
         """
         Set agent position/target position.
@@ -57,7 +55,7 @@ class BaseMap(BaseGraph):
         Return:
             start_pos, target_pos - in position: (x, y)
         """
-        
+
         all_rooms = ambiguous_rooms + indoor_rooms + outdoor_rooms
         start_pos = None
         logging.info(f"Ambiguous Rooms: {ambiguous_rooms}"
@@ -73,7 +71,7 @@ class BaseMap(BaseGraph):
             else:
                 logging.info(f"No ambiguous rooms available! Setting a random room as target position. "
                              f"Check graph configuration!!")
-                available_rooms = indoor_rooms+outdoor_rooms
+                available_rooms = indoor_rooms + outdoor_rooms
 
         elif end_type == "indoor":
             if indoor_rooms:
@@ -140,14 +138,13 @@ class BaseMap(BaseGraph):
         logging.info(f"Selected start node: {start_pos}, end node: {target_pos} at distance {distance}")
         return start_pos, target_pos
 
-
     def metadata(
-        self,
-        start_type: str = "outdoor",
-        end_type: str = "outdoor",
-        ambiguity: list = None,
-        ambiguity_region: str = "random",
-        distance: int = 2
+            self,
+            start_type: str = "outdoor",
+            end_type: str = "outdoor",
+            ambiguity: list = None,
+            ambiguity_region: str = "random",
+            distance: int = 2
     ) -> dict:
         """
         Generate metadata for the Graph incl. start/end points
@@ -160,15 +157,15 @@ class BaseMap(BaseGraph):
                                 or both
             distance: Distance between start and target node.
         """
-        if self.graph_type=="cycle":
+        if self.graph_type == "cycle":
             nx_graph = self.create_cycle_graph()
-        elif self.graph_type=="tree":
+        elif self.graph_type == "tree":
             nx_graph = self.create_tree_graph()
-        elif self.graph_type=="star":
+        elif self.graph_type == "star":
             nx_graph = self.create_star_graph()
-        elif self.graph_type=="path":
+        elif self.graph_type == "path":
             nx_graph = self.create_path_graph()
-        elif self.graph_type=="ladder":
+        elif self.graph_type == "ladder":
             nx_graph = self.create_ladder_graph()
         else:
             raise ValueError(f"Graph type {self.graph_type} is not supported.")

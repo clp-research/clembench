@@ -3,7 +3,7 @@ import os
 import numpy as np
 from clemcore.clemgame import GameInstanceGenerator
 
-from mapworld.engine.maps import BaseMap
+from mapworld_engine.maps import BaseMap
 
 # CONFIG
 N = 10 # Number of instances per experiment

@@ -1,9 +1,9 @@
 from typing import Any
 import logging
 
-from graphs import BaseGraph
-from map_assignments import assign_images, assign_room_categories
-from map_utils import select_random_room, find_distance
+from .graphs import BaseGraph
+from .map_assignments import assign_images, assign_room_categories
+from .map_utils import select_random_room, find_distance
 
 logger = logging.getLogger(__name__)
 

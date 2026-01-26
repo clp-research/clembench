@@ -3,7 +3,7 @@ import os
 import logging
 import networkx as nx
 
-from mapworld.engine.graphs import BaseGraph
+from mapworld_engine.graphs import BaseGraph
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO,

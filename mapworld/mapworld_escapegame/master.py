@@ -12,9 +12,9 @@ from clemcore.backends import Model
 from clemcore.clemgame.errors import ParseError
 import numpy as np
 
-from mapworld.engine.environment import MapWorldEnv
-from mapworld.engine.map_utils import get_next_node, load_json
-from mapworld.escapegame.scorer import EscapeRoomScorer, is_efficient_move, get_neighbors_str
+from mapworld_engine.environment import MapWorldEnv
+from mapworld_engine.map_utils import get_next_node, load_json
+from mapworld_escapegame.scorer import EscapeRoomScorer, is_efficient_move, get_neighbors_str
 
 logger = logging.getLogger(__name__)
 stdout_logger = logging.getLogger("escapegame.master")

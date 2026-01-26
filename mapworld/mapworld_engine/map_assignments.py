@@ -8,7 +8,7 @@ import logging
 import numpy as np
 import networkx as nx
 
-import map_utils as map_utils
+from . import map_utils
 
 logger = logging.getLogger(__name__)
 # Categories.json/images.json Paths

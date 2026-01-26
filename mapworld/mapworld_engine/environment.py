@@ -15,7 +15,7 @@ import pygame
 import numpy as np
 
 
-from map_utils import load_json
+from .map_utils import load_json
 
 
 RESOURCES_DIR = Path(__file__).resolve().parent / "resources"

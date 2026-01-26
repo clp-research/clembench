@@ -6,9 +6,9 @@ from unittest.mock import patch
 import networkx as nx
 import numpy as np
 
-from engine.map_assignments import assign_room_categories, assign_images
-from engine.map_utils import load_json
-from engine.maps import BaseMap
+from mapworld_engine.map_assignments import assign_room_categories, assign_images
+from mapworld_engine.map_utils import load_json
+from mapworld_engine.maps import BaseMap
 
 class TestRoomAssignments(unittest.TestCase):
     def setUp(self):

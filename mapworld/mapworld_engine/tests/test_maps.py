@@ -2,7 +2,7 @@ import os
 import logging
 import unittest
 
-from engine.maps import BaseMap
+from mapworld_engine.maps import BaseMap
 
 
 logger = logging.getLogger(__name__)

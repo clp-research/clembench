@@ -1,5 +1,5 @@
 import logging
-
+import numpy as np
 from clemcore.utils import file_utils
 
 logger = logging.getLogger(__name__)
@@ -57,12 +57,10 @@ def classify_frequency(freq, mean_freq, std_dev_freq):
 
 def start_word_categorization():
     unigram_freq_file = "unigram_freq.csv"
-    all_possible_wordle_words_files = "wordle_recognized_english_words.txt"
     target_words_file = "wordle_target_words.txt"
     clue_file = "nytcrosswords.csv"
 
     unigram_freq = read_file_contents(unigram_freq_file, file_ext="csv")
-    # all_wordle_words = read_file_contents(all_possible_wordle_words_files)
     target_words = read_file_contents(target_words_file)
     clue_words = read_file_contents(clue_file, file_ext="csv")
 

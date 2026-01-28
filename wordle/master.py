@@ -459,7 +459,7 @@ class WordleWithCritic(WordleWithClue):
         critic_model = self.player_models[1] if len(self.player_models) > 1 else guesser_model
         self.critic = WordCritic(critic_model, self.state.words)
         # set initial prompt from self.experiment because self.state.critic_initial_prompt is not yet set
-        self.add_player(self.critic, initial_prompt=self.state.critic_initial_prompt)
+        self.add_player(self.critic, initial_prompt=self._prepare_older_version_prompt(self.experiment["guesser_critic_prompt"]))
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         if player == self.guesser:

@@ -5,7 +5,7 @@
     "main_game": "wordle",
     "players": 1,
     "image": "none",
-    "languages": ["en"],
+    "languages": ["en", "de"],
     "benchmark": ["2.0", "3.0"],
     "regression": "small",
     "roles": ["Guesser"]
@@ -17,7 +17,7 @@
     "instances": "instances_withclue",
     "players": 2,
     "image": "none",
-    "languages": ["en"],
+    "languages": ["en", "de"],
     "benchmark": ["2.0", "3.0"],
     "regression": "large",
     "roles": ["Guesser", "Clue Giver"]
@@ -29,7 +29,7 @@
     "instances": "instances_withcritic",
     "players": 2,
     "image": "none",
-    "languages": ["en"],
+    "languages": ["en", "de"],
     "benchmark": ["2.0", "3.0"],
     "regression": "large",
     "roles": ["Guesser", "Clue Giver"]

@@ -1,6 +1,7 @@
 import random
 import requests
 import os
+import csv
 
 import zipfile
 
@@ -61,29 +62,26 @@ class InstanceUtils(GameResourceLocator):
 
     def download_allowed_words(self):
         print("Downloading wordle recognized words for EN Language...")
-        url = self.langconfig["official_recognized_words_file_url"]
+        url = self.langconfig["allowed_words_file_url"]
         r = requests.get(url, allow_redirects=True)
         fp = f"resources/target_words/{self.language}/"
-        self.store_file(r.content.decode("utf-8"), "official_recognized_words.txt", fp)
+        self.store_file(r.content.decode("utf-8"), "allowed_words.txt", fp)
         print("Stored the wordle recognized words file", fp)
 
     def read_file_contents(self, filename, file_ext="txt"):
         if file_ext == "csv":
             words_dict = {}
             try:
-                words_list = self.load_csv(f"resources/{filename}")
+                fp = os.path.join(self.game_path, f"resources/{filename}")
+                with open(fp, encoding="utf-8", newline="") as f:
+                    words_list = list(csv.reader(f)) # using standard csv reader
             except FileNotFoundError:
-                # File not available, downloading
-                if filename.endswith("nytcrosswords.csv"):
-                    self.download_nytcrosswords()
-                    words_list = self.load_csv(f"resources/{filename}")
-                else:
-                    print(f"Word clues file {filename} not found, check and download the relevant files")
-                    return []
+                print(f"Word clues file {filename} not found, check and download the relevant files")
+                return []
 
-            if "nytcrosswords.csv" in filename:
+            if "clues.csv" in filename:
                 for word in words_list:
-                    words_dict[word[1].lower().strip()] = word[2].lower().strip()
+                    words_dict[word[0].lower().strip()] = word[1].lower().strip()
                 return words_dict
             else:
                 return words_list
@@ -92,17 +90,13 @@ class InstanceUtils(GameResourceLocator):
             try:
                 words = self.load_file(f"resources/{filename}")
             except FileNotFoundError:
-                if filename.endswith("official_recognized_words.txt"):
-                    self.download_allowed_words()
-                    words = self.load_file(f"resources/{filename}")
-                else:
-                    print(f"File {filename} not found")
-                    return []
+                print(f"File {filename} not found")
+                return []
 
             words = words.strip()
             if words:
                 words_list = words.split("\n")
-                words_list = [word.lower().strip() for word in words_list]
+                words_list = [word.casefold().strip() for word in words_list]
             else:
                 words_list = []
             return words_list
@@ -146,7 +140,7 @@ class InstanceUtils(GameResourceLocator):
         official_words = []
         # officially recognized wordle words are downloaded from
         # https://github.com/3b1b/videos/blob/master/_2022/wordle/data/allowed_words.txt
-        official_words = self.read_file_contents(f"target_words/{self.language}/official_recognized_words.txt")
+        official_words = self.read_file_contents(f"target_words/{self.language}/allowed_words.txt")
 
         # wordle target words are downloaded from
         # https://github.com/3b1b/videos/blob/master/_2022/wordle/data/possible_words.txt
@@ -168,7 +162,7 @@ class InstanceUtils(GameResourceLocator):
         # We are only interested in the word and clue
         # Data cleanup happens inside the read_file_contents function
         word_clues_dict = {}
-        word_clues_dict = self.read_file_contents(f"target_words/{self.language}/nytcrosswords.csv", file_ext="csv")
+        word_clues_dict = self.read_file_contents(f"target_words/{self.language}/clues.csv", file_ext="csv")
 
         # Currently the categorized words are read directly from the files
         #   without doing the categorization during instance generation

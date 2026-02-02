@@ -183,7 +183,7 @@ def validate_guess(guess: str, words: Dict):
         raise RuleViolationError(f"The length of the guessed word is not {words['max_word_length']}.",
                                  key="INVALID_WORD_LENGTH")
 
-    if guess not in words["official_words_list"]:
+    if guess.casefold() not in words["official_words_list"]:
         raise UnknownFiveLetterWordError(f"The guessed word is not a valid word for this game.",
                                          key="NOT_VALID_WORD_FOR_GAME")
 
@@ -261,7 +261,7 @@ class Wordle(DialogueGameMaster):
         words_dict["guess_agreement_lang"] = "guess_agreement:"
         words_dict["agreement_explanation_lang"] = "agreement_explanation:"
         words_dict["agreement_match_keywords_lang"] = ["yes", "no"]
-        words_dict["official_recognized_words_file_url"] = "https://raw.githubusercontent.com/3b1b/videos/master/_2022/wordle/data/allowed_words.txt"
+        words_dict["allowed_words_file_url"] = "https://raw.githubusercontent.com/3b1b/videos/master/_2022/wordle/data/allowed_words.txt"
         words_dict["word_clues_file_url"] = "https://www.kaggle.com/datasets/darinhawley/new-york-times-crossword-clues-answers-19932021?select=nytcrosswords.csv"
         words_dict["error_prompt_text"] = {
             "INVALID_WORD_LENGTH": "The guess should have exactly 5 letters.",

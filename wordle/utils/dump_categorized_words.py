@@ -1,6 +1,8 @@
 import logging
 import numpy as np
 from clemcore.utils import file_utils
+import os
+import csv
 
 logger = logging.getLogger(__name__)
 
@@ -8,10 +10,17 @@ logger = logging.getLogger(__name__)
 def read_file_contents(filename, file_ext="txt"):
     if file_ext == "csv":
         words_dict = {}
-        words_list = file_utils.load_csv(f"resources/{filename}", "wordle")
-        if filename == "nytcrosswords.csv":
+
+        # because clues.csv is now in utf-8 encoding instead of the old
+        # cp1252 format, we can use the standard csv reader
+        fp = os.path.join("resources", filename)
+
+        with open(fp, encoding="utf-8", newline="") as f:
+            words_list = list(csv.reader(f))
+
+        if filename == "clues.csv":
             for word in words_list:
-                words_dict[word[1].lower().strip()] = word[2].lower().strip()
+                words_dict[word[0].lower().strip()] = word[1].lower().strip()
         elif filename == "unigram_freq.csv":
             words_list = words_list[1:]
             for word, freq in words_list:
@@ -58,7 +67,7 @@ def classify_frequency(freq, mean_freq, std_dev_freq):
 def start_word_categorization():
     unigram_freq_file = "unigram_freq.csv"
     target_words_file = "wordle_target_words.txt"
-    clue_file = "nytcrosswords.csv"
+    clue_file = "clues.csv"
 
     unigram_freq = read_file_contents(unigram_freq_file, file_ext="csv")
     target_words = read_file_contents(target_words_file)

@@ -1,0 +1,702 @@
+[
+  {
+    "target_word": "ember",
+    "related_word": [
+      "fajta",
+      "emlősök",
+      "személy"
+    ],
+    "target_word_stem": "ember",
+    "related_word_stem": [
+      "fajta",
+      "emlősök",
+      "személy"
+    ]
+  },
+  {
+    "target_word": "kicsi",
+    "related_word": [
+      "apró",
+      "nagy",
+      "kicsiny"
+    ],
+    "target_word_stem": "kicsi",
+    "related_word_stem": [
+      "apró",
+      "nagy",
+      "kicsiny"
+    ]
+  },
+  {
+    "target_word": "szó",
+    "related_word": [
+      "határozószók",
+      "mondat",
+      "dó"
+    ],
+    "target_word_stem": "szó",
+    "related_word_stem": [
+      "határozószók",
+      "mondat",
+      "dó"
+    ]
+  },
+  {
+    "target_word": "lány",
+    "related_word": [
+      "fiú",
+      "csaj",
+      "ember"
+    ],
+    "target_word_stem": "lány",
+    "related_word_stem": [
+      "fiú",
+      "csaj",
+      "ember"
+    ]
+  },
+  {
+    "target_word": "férfi",
+    "related_word": [
+      "úr",
+      "ember",
+      "ordít"
+    ],
+    "target_word_stem": "férfi",
+    "related_word_stem": [
+      "úr",
+      "ember",
+      "ordít"
+    ]
+  },
+  {
+    "target_word": "fiú",
+    "related_word": [
+      "lány",
+      "csávó",
+      "ember"
+    ],
+    "target_word_stem": "fiú",
+    "related_word_stem": [
+      "lány",
+      "csávó",
+      "ember"
+    ]
+  },
+  {
+    "target_word": "főnök",
+    "related_word": [
+      "séf",
+      "fő",
+      "úr"
+    ],
+    "target_word_stem": "főnök",
+    "related_word_stem": [
+      "séf",
+      "fő",
+      "úr"
+    ]
+  },
+  {
+    "target_word": "nap",
+    "related_word": [
+      "napok",
+      "napsütés",
+      "naponta"
+    ],
+    "target_word_stem": "nap",
+    "related_word_stem": [
+      "napok",
+      "napsütés",
+      "naponta"
+    ]
+  },
+  {
+    "target_word": "gyerek",
+    "related_word": [
+      "gyermek",
+      "ember",
+      "pulya"
+    ],
+    "target_word_stem": "gyerek",
+    "related_word_stem": [
+      "gyermek",
+      "ember",
+      "pulya"
+    ]
+  },
+  {
+    "target_word": "beteg",
+    "related_word": [
+      "abszurd",
+      "egészséges",
+      "ostoba"
+    ],
+    "target_word_stem": "beteg",
+    "related_word_stem": [
+      "abszurd",
+      "egészséges",
+      "ostoba"
+    ]
+  },
+  {
+    "target_word": "víz",
+    "related_word": [
+      "fürdővíz",
+      "folyadék",
+      "ivóvíz"
+    ],
+    "target_word_stem": "víz",
+    "related_word_stem": [
+      "fürdővíz",
+      "folyadék",
+      "ivóvíz"
+    ]
+  },
+  {
+    "target_word": "szerelem",
+    "related_word": [
+      "imádat",
+      "érzelem",
+      "érzés"
+    ],
+    "target_word_stem": "szerelem",
+    "related_word_stem": [
+      "imádat",
+      "érzelem",
+      "érzés"
+    ]
+  },
+  {
+    "target_word": "seggfej",
+    "related_word": [
+      "faszfej",
+      "fej",
+      "segg"
+    ],
+    "target_word_stem": "seggfej",
+    "related_word_stem": [
+      "faszfej",
+      "fej",
+      "segg"
+    ]
+  },
+  {
+    "target_word": "hadnagy",
+    "related_word": [
+      "lajdinánt",
+      "had",
+      "nagy"
+    ],
+    "target_word_stem": "hadnagy",
+    "related_word_stem": [
+      "lajdinánt",
+      "had",
+      "nagy"
+    ]
+  },
+  {
+    "target_word": "hideg",
+    "related_word": [
+      "fagyos",
+      "fizika",
+      "forró"
+    ],
+    "target_word_stem": "hideg",
+    "related_word_stem": [
+      "fagyos",
+      "fizika",
+      "forró"
+    ]
+  },
+  {
+    "target_word": "ezredes",
+    "related_word": [
+      "óbester",
+      "ezer",
+      "ezred"
+    ],
+    "target_word_stem": "ezredes",
+    "related_word_stem": [
+      "óbester",
+      "ezer",
+      "ezred"
+    ]
+  },
+  {
+    "target_word": "történet",
+    "related_word": [
+      "história",
+      "történik",
+      "dolog"
+    ],
+    "target_word_stem": "történet",
+    "related_word_stem": [
+      "história",
+      "történik",
+      "dolog"
+    ]
+  },
+  {
+    "target_word": "őrmester",
+    "related_word": [
+      "strázsamester",
+      "mester",
+      "őr"
+    ],
+    "target_word_stem": "őrmester",
+    "related_word_stem": [
+      "strázsamester",
+      "mester",
+      "őr"
+    ]
+  },
+  {
+    "target_word": "baba",
+    "related_word": [
+      "bébi",
+      "sír",
+      "kisbaba"
+    ],
+    "target_word_stem": "baba",
+    "related_word_stem": [
+      "bébi",
+      "sír",
+      "kisbaba"
+    ]
+  },
+  {
+    "target_word": "csaj",
+    "related_word": [
+      "csávó",
+      "liba",
+      "lány"
+    ],
+    "target_word_stem": "csaj",
+    "related_word_stem": [
+      "csávó",
+      "liba",
+      "lány"
+    ]
+  },
+  {
+    "target_word": "rendőr",
+    "related_word": [
+      "andris",
+      "rend",
+      "zsaru"
+    ],
+    "target_word_stem": "rendőr",
+    "related_word_stem": [
+      "andris",
+      "rend",
+      "zsaru"
+    ]
+  },
+  {
+    "target_word": "üzlet",
+    "related_word": [
+      "bolt",
+      "űz",
+      "butik"
+    ],
+    "target_word_stem": "üzlet",
+    "related_word_stem": [
+      "bolt",
+      "űz",
+      "butik"
+    ]
+  },
+  {
+    "target_word": "ügyvéd",
+    "related_word": [
+      "ügyész",
+      "fiskális",
+      "véd"
+    ],
+    "target_word_stem": "ügyvéd",
+    "related_word_stem": [
+      "ügyész",
+      "fiskális",
+      "véd"
+    ]
+  },
+  {
+    "target_word": "ribanc",
+    "related_word": [
+      "ribizli",
+      "lotyó",
+      "kurva"
+    ],
+    "target_word_stem": "ribanc",
+    "related_word_stem": [
+      "ribizli",
+      "lotyó",
+      "kurva"
+    ]
+  },
+  {
+    "target_word": "gép",
+    "related_word": [
+      "szerkezet",
+      "gépely",
+      "pad"
+    ],
+    "target_word_stem": "gép",
+    "related_word_stem": [
+      "szerkezet",
+      "gépely",
+      "pad"
+    ]
+  },
+  {
+    "target_word": "autó",
+    "related_word": [
+      "autók",
+      "gépkocsi",
+      "kocsi"
+    ],
+    "target_word_stem": "autó",
+    "related_word_stem": [
+      "autók",
+      "gépkocsi",
+      "kocsi"
+    ]
+  },
+  {
+    "target_word": "zene",
+    "related_word": [
+      "szimfónia",
+      "muzsika",
+      "zongoraverseny"
+    ],
+    "target_word_stem": "zene",
+    "related_word_stem": [
+      "szimfónia",
+      "muzsika",
+      "zongoraverseny"
+    ]
+  },
+  {
+    "target_word": "támadás",
+    "related_word": [
+      "attak",
+      "támad",
+      "roham"
+    ],
+    "target_word_stem": "támadás",
+    "related_word_stem": [
+      "attak",
+      "támad",
+      "roham"
+    ]
+  },
+  {
+    "target_word": "bácsi",
+    "related_word": [
+      "bá",
+      "úr",
+      "nagybácsi"
+    ],
+    "target_word_stem": "bácsi",
+    "related_word_stem": [
+      "bá",
+      "úr",
+      "nagybácsi"
+    ]
+  },
+  {
+    "target_word": "fájdalom",
+    "related_word": [
+      "fájdalmas",
+      "kín",
+      "fáj"
+    ],
+    "target_word_stem": "fájdalom",
+    "related_word_stem": [
+      "fájdalmas",
+      "kín",
+      "fáj"
+    ]
+  },
+  {
+    "target_word": "reggeli",
+    "related_word": [
+      "vacsora",
+      "früstök",
+      "reggel"
+    ],
+    "target_word_stem": "reggeli",
+    "related_word_stem": [
+      "vacsora",
+      "früstök",
+      "reggel"
+    ]
+  },
+  {
+    "target_word": "közel",
+    "related_word": [
+      "csaknem",
+      "messze",
+      "távol"
+    ],
+    "target_word_stem": "közel",
+    "related_word_stem": [
+      "csaknem",
+      "messze",
+      "távol"
+    ]
+  },
+  {
+    "target_word": "tanár",
+    "related_word": [
+      "tanító",
+      "tan",
+      "nevelő"
+    ],
+    "target_word_stem": "tanár",
+    "related_word_stem": [
+      "tanító",
+      "tan",
+      "nevelő"
+    ]
+  },
+  {
+    "target_word": "királynő",
+    "related_word": [
+      "vezér",
+      "király",
+      "nő"
+    ],
+    "target_word_stem": "királynő",
+    "related_word_stem": [
+      "vezér",
+      "király",
+      "nő"
+    ]
+  },
+  {
+    "target_word": "felirat",
+    "related_word": [
+      "cédula",
+      "fel",
+      "ferterjesztés"
+    ],
+    "target_word_stem": "felirat",
+    "related_word_stem": [
+      "cédula",
+      "fel",
+      "ferterjesztés"
+    ]
+  },
+  {
+    "target_word": "étel",
+    "related_word": [
+      "eledel",
+      "eszik",
+      "táplálék"
+    ],
+    "target_word_stem": "étel",
+    "related_word_stem": [
+      "eledel",
+      "eszik",
+      "táplálék"
+    ]
+  },
+  {
+    "target_word": "esküvő",
+    "related_word": [
+      "eljegyzés",
+      "nász",
+      "menyasszony"
+    ],
+    "target_word_stem": "esküvő",
+    "related_word_stem": [
+      "eljegyzés",
+      "nász",
+      "menyasszony"
+    ]
+  },
+  {
+    "target_word": "kövér",
+    "related_word": [
+      "dagadt",
+      "sovány",
+      "terebélyes"
+    ],
+    "target_word_stem": "kövér",
+    "related_word_stem": [
+      "dagadt",
+      "sovány",
+      "terebélyes"
+    ]
+  },
+  {
+    "target_word": "vezető",
+    "related_word": [
+      "sofőr",
+      "vezet",
+      "úr"
+    ],
+    "target_word_stem": "vezető",
+    "related_word_stem": [
+      "sofőr",
+      "vezet",
+      "úr"
+    ]
+  },
+  {
+    "target_word": "öröm",
+    "related_word": [
+      "örvend",
+      "kéj",
+      "örül"
+    ],
+    "target_word_stem": "öröm",
+    "related_word_stem": [
+      "örvend",
+      "kéj",
+      "örül"
+    ]
+  },
+  {
+    "target_word": "nagyapa",
+    "related_word": [
+      "nagyapák",
+      "nagypapa",
+      "apa"
+    ],
+    "target_word_stem": "nagyapa",
+    "related_word_stem": [
+      "nagyapák",
+      "nagypapa",
+      "apa"
+    ]
+  },
+  {
+    "target_word": "történelem",
+    "related_word": [
+      "história",
+      "történik",
+      "múlt"
+    ],
+    "target_word_stem": "történelem",
+    "related_word_stem": [
+      "história",
+      "történik",
+      "múlt"
+    ]
+  },
+  {
+    "target_word": "bár",
+    "related_word": [
+      "ám",
+      "söröző",
+      "bárcsak"
+    ],
+    "target_word_stem": "bár",
+    "related_word_stem": [
+      "ám",
+      "söröző",
+      "bárcsak"
+    ]
+  },
+  {
+    "target_word": "macska",
+    "related_word": [
+      "macskák",
+      "cica",
+      "állat"
+    ],
+    "target_word_stem": "macska",
+    "related_word_stem": [
+      "macskák",
+      "cica",
+      "állat"
+    ]
+  },
+  {
+    "target_word": "labda",
+    "related_word": [
+      "labdák",
+      "golyó",
+      "alak"
+    ],
+    "target_word_stem": "labda",
+    "related_word_stem": [
+      "labdák",
+      "golyó",
+      "alak"
+    ]
+  },
+  {
+    "target_word": "tesz",
+    "related_word": [
+      "róla",
+      "cselekszik",
+      "esinál"
+    ],
+    "target_word_stem": "tesz",
+    "related_word_stem": [
+      "róla",
+      "cselekszik",
+      "esinál"
+    ]
+  },
+  {
+    "target_word": "van",
+    "related_word": [
+      "ja",
+      "vagyon",
+      "nincs"
+    ],
+    "target_word_stem": "van",
+    "related_word_stem": [
+      "ja",
+      "vagyon",
+      "nincs"
+    ]
+  },
+  {
+    "target_word": "műsor",
+    "related_word": [
+      "program",
+      "mű",
+      "sor"
+    ],
+    "target_word_stem": "műsor",
+    "related_word_stem": [
+      "program",
+      "mű",
+      "sor"
+    ]
+  },
+  {
+    "target_word": "sör",
+    "related_word": [
+      "ser",
+      "ital",
+      "élelmiszer"
+    ],
+    "target_word_stem": "sör",
+    "related_word_stem": [
+      "ser",
+      "ital",
+      "élelmiszer"
+    ]
+  },
+  {
+    "target_word": "író",
+    "related_word": [
+      "joghurt",
+      "aludttej",
+      "savó"
+    ],
+    "target_word_stem": "író",
+    "related_word_stem": [
+      "joghurt",
+      "aludttej",
+      "savó"
+    ]
+  }
+]

@@ -13,64 +13,80 @@ from clemcore.utils import string_utils
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
+from resources.lang_config import LANG_CONFIG
 
-nltk.download('stopwords', quiet=True)
-EN_STOPWORDS = stopwords.words('english')
-
-EN_STEMMER = SnowballStemmer("english")
 
 logger = logging.getLogger(__name__)
 
 
 class WordGuesser(Player):
 
-    def __init__(self, model: Model):
+    def __init__(self, model: Model, guess_prefix: str):
         super().__init__(model)
+        self.guess_prefix = guess_prefix
         self._custom_responses = ["Apple", "Banana", "Cherry"]
 
     def _custom_response(self, messages):
         word = self._custom_responses.pop(0)
-        return f'GUESS: {word}'
+        return f"{self.guess_prefix}{word}"
 
 
 class WordDescriber(Player):
 
-    def __init__(self, model: Model):
+    def __init__(self, model: Model, clue_prefix: str):
         super().__init__(model)
+        self.clue_prefix = clue_prefix
         self._custom_responses = ["(1) My first clue is ...", "(2) My second clue is ...", "(3) My third clue is ..."]
 
     def _custom_response(self, messages):
         clue = self._custom_responses.pop(0)
-        return f"CLUE: {clue}"
+        return f"{self.clue_prefix}{clue}"
 
 
-def check_clue(clue: str, target_word: str, related_words: List[str],
-               stemmer=EN_STEMMER, return_clue=False) -> Union[Tuple[str, List[Dict]], List[Dict]]:
-    clue = clue.replace("CLUE:", "")
+def check_clue(clue: str, target_word: str, related_words: List[str], clue_prefix: str, return_clue=False, target_stem=None,
+    related_stems=None) -> Union[Tuple[str, List[Dict]], List[Dict]]:
+    clue = clue.replace(clue_prefix, "", 1)
     clue = clue.strip()
     clue = clue.lower()
     clue = string_utils.remove_punctuation(clue)
-    clue_words = clue.split(" ")
-    clue_words = [clue_word for clue_word in clue_words if clue_word not in EN_STOPWORDS]
-    clue_word_stems = [stemmer.stem(clue_word) for clue_word in clue_words]
+    clue_words = clue.split()
+    #clue_words = [clue_word for clue_word in clue_words if clue_word not in EN_STOPWORDS]
+    #clue_word_stems = [stemmer.stem(clue_word) for clue_word in clue_words]
     errors = []
-    target_word_stem = stemmer.stem(target_word)
-    related_word_stems = [stemmer.stem(related_word) for related_word in related_words]
+    #target_word_stem = stemmer.stem(target_word)
+    #related_word_stems = [stemmer.stem(related_word) for related_word in related_words]
+    target_stem = target_stem.lower() if target_stem else None
+    related_stems = [s.lower() for s in (related_stems or [])]
 
-    for clue_word, clue_word_stem in zip(clue_words, clue_word_stems):
-        if target_word_stem == clue_word_stem:
+    target_norm = target_word.lower()
+    related_norms = [w.lower() for w in related_words]
+
+    for clue_word in clue_words:
+        if clue_word == target_norm:
             errors.append({
-                "message": f"Target word '{target_word}' (stem={target_word_stem}) "
-                           f"is similar to clue word '{clue_word}' (stem={clue_word_stem})",
+                "message": f"Target word '{target_word}' is used in clue word '{clue_word}'",
                 "type": 0
             })
-        for related_word, related_word_stem in zip(related_words, related_word_stems):
-            if related_word_stem == clue_word_stem:
+        for rel, rel_norm in zip(related_words, related_norms):
+            if clue_word == rel_norm:
                 errors.append({
-                    "message": f"Related word '{related_word}' (stem={related_word_stem}) "
-                               f"is similar to clue word '{clue_word}' (stem={clue_word_stem})",
+                    "message": f"Related word '{rel}' is used in clue word '{clue_word}'",
                     "type": 1
                 })
+
+        if target_stem and clue_word.startswith(target_stem):
+            errors.append({
+                "message": f"Target stem '{target_stem}' is used in clue word '{clue_word}'",
+                "type": 0
+            })
+
+        for rel, rel_stem in zip(related_words, related_stems):
+            if rel_stem and clue_word.startswith(rel_stem):
+                errors.append({
+                    "message": f"Related stem '{rel}' is used in clue word '{clue_word}'",
+                    "type": 1
+                })
+
     if return_clue:
         return clue, errors
     return errors
@@ -102,8 +118,15 @@ class Taboo(DialogueGameMaster):
         guesser_initial_prompt = self.experiment["guesser_initial_prompt"]
         guesser_initial_prompt = guesser_initial_prompt.replace("$N$", str(self.max_rounds))
 
-        self.describer = WordDescriber(self.player_models[0])
-        self.guesser = WordGuesser(self.player_models[1])
+        try:
+            self.lang = self.experiment["name"].split("_")[-1]
+        except Exception:
+            self.lang = "en"
+
+        self.lang_cfg = LANG_CONFIG.get(self.lang, LANG_CONFIG["en"])
+
+        self.describer = WordDescriber(self.player_models[0], self.lang_cfg["CLUE_PREFIX"])
+        self.guesser = WordGuesser(self.player_models[1], self.lang_cfg["GUESS_PREFIX"])
 
         self.add_player(self.describer, initial_context=describer_initial_prompt)
         self.add_player(self.guesser, initial_prompt=guesser_initial_prompt)
@@ -153,17 +176,17 @@ class Taboo(DialogueGameMaster):
         return self.current_round >= self.max_rounds
 
     def is_success(self):
-        return self.guess_word == self.target_word
+        return self.guess_word == self.target_word.lower()
 
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         if player == self.guesser:
             # validate response format
-            if not utterance.startswith("GUESS:"):
+            if not utterance.startswith(self.lang_cfg["GUESS_PREFIX"]):
                 self.invalid_response = True
                 return False
             self.log_to_self("valid response", "continue")
             # extract guess word
-            guess_word = utterance.replace("GUESS:", "")
+            guess_word = utterance.replace(self.lang_cfg["GUESS_PREFIX"], "", 1)
             guess_word = guess_word.strip()
             guess_word = guess_word.lower()
             guess_word = string_utils.remove_punctuation(guess_word)
@@ -171,12 +194,15 @@ class Taboo(DialogueGameMaster):
             self.log_to_self("valid guess", self.guess_word)
         if player == self.describer:
             # validate response format
-            if not utterance.startswith("CLUE:"):
+            if not utterance.startswith(self.lang_cfg["CLUE_PREFIX"]):
                 self.invalid_response = True
                 return False
             self.log_to_self("valid response", "continue")
             # validate clue
-            clue, errors = check_clue(utterance, self.target_word, self.related_words, return_clue=True)
+            clue, errors = check_clue(utterance, self.target_word, self.related_words, self.lang_cfg["CLUE_PREFIX"], return_clue=True,
+                                      target_stem=self.game_instance.get("target_word_stem"),
+                                      related_stems=self.game_instance.get("related_word_stem", [])
+                                      )
             if errors:
                 error = errors[0]  # highlight single error
                 self.clue_error = error

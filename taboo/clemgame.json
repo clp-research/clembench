@@ -4,7 +4,7 @@
   "main_game": "taboo",
   "players": 2,
   "image": "none",
-  "languages": ["en"],
+  "languages": ["en", "hu"],
   "benchmark": ["0.9", "1.0", "1.5", "2.0", "3.0"],
   "regression": "small",
   "roles": ["Describer", "Guesser"]

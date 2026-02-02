@@ -1,0 +1,702 @@
+[
+  {
+    "target_word": "time",
+    "related_word": [
+      "minute",
+      "clip",
+      "measurement"
+    ],
+    "target_word_stem": "time",
+    "related_word_stem": [
+      "minute",
+      "clip",
+      "measurement"
+    ]
+  },
+  {
+    "target_word": "man",
+    "related_word": [
+      "boy",
+      "a'man",
+      "adult"
+    ],
+    "target_word_stem": "man",
+    "related_word_stem": [
+      "boy",
+      "a'man",
+      "adult"
+    ]
+  },
+  {
+    "target_word": "way",
+    "related_word": [
+      "tao",
+      "path",
+      "course"
+    ],
+    "target_word_stem": "way",
+    "related_word_stem": [
+      "tao",
+      "path",
+      "course"
+    ]
+  },
+  {
+    "target_word": "person",
+    "related_word": [
+      "human",
+      "individual",
+      "name"
+    ],
+    "target_word_stem": "person",
+    "related_word_stem": [
+      "human",
+      "individual",
+      "name"
+    ]
+  },
+  {
+    "target_word": "thing",
+    "related_word": [
+      "assembly",
+      "stuff",
+      "object"
+    ],
+    "target_word_stem": "thing",
+    "related_word_stem": [
+      "assembly",
+      "stuff",
+      "object"
+    ]
+  },
+  {
+    "target_word": "god",
+    "related_word": [
+      "deity",
+      "christ",
+      "concept"
+    ],
+    "target_word_stem": "god",
+    "related_word_stem": [
+      "deity",
+      "christ",
+      "concept"
+    ]
+  },
+  {
+    "target_word": "sir",
+    "related_word": [
+      "dame",
+      "john",
+      "man"
+    ],
+    "target_word_stem": "sir",
+    "related_word_stem": [
+      "dame",
+      "john",
+      "man"
+    ]
+  },
+  {
+    "target_word": "life",
+    "related_word": [
+      "living",
+      "liveliness",
+      "experience"
+    ],
+    "target_word_stem": "life",
+    "related_word_stem": [
+      "living",
+      "liveliness",
+      "experience"
+    ]
+  },
+  {
+    "target_word": "day",
+    "related_word": [
+      "birthday",
+      "daylight",
+      "opportunity"
+    ],
+    "target_word_stem": "day",
+    "related_word_stem": [
+      "birthday",
+      "daylight",
+      "opportunity"
+    ]
+  },
+  {
+    "target_word": "work",
+    "related_word": [
+      "job",
+      "act",
+      "activity"
+    ],
+    "target_word_stem": "work",
+    "related_word_stem": [
+      "job",
+      "act",
+      "activity"
+    ]
+  },
+  {
+    "target_word": "night",
+    "related_word": [
+      "evening",
+      "dark",
+      "day"
+    ],
+    "target_word_stem": "night",
+    "related_word_stem": [
+      "evening",
+      "dark",
+      "day"
+    ]
+  },
+  {
+    "target_word": "home",
+    "related_word": [
+      "nest",
+      "interior",
+      "institution"
+    ],
+    "target_word_stem": "home",
+    "related_word_stem": [
+      "nest",
+      "interior",
+      "institution"
+    ]
+  },
+  {
+    "target_word": "name",
+    "related_word": [
+      "person",
+      "call",
+      "sanction"
+    ],
+    "target_word_stem": "name",
+    "related_word_stem": [
+      "person",
+      "call",
+      "sanction"
+    ]
+  },
+  {
+    "target_word": "guy",
+    "related_word": [
+      "fellow",
+      "bozo",
+      "brace"
+    ],
+    "target_word_stem": "guy",
+    "related_word_stem": [
+      "fellow",
+      "bozo",
+      "brace"
+    ]
+  },
+  {
+    "target_word": "year",
+    "related_word": [
+      "month",
+      "twelvemonth",
+      "day"
+    ],
+    "target_word_stem": "year",
+    "related_word_stem": [
+      "month",
+      "twelvemonth",
+      "day"
+    ]
+  },
+  {
+    "target_word": "money",
+    "related_word": [
+      "bank",
+      "mammon",
+      "currency"
+    ],
+    "target_word_stem": "money",
+    "related_word_stem": [
+      "bank",
+      "mammon",
+      "currency"
+    ]
+  },
+  {
+    "target_word": "father",
+    "related_word": [
+      "dad",
+      "begetter",
+      "parent"
+    ],
+    "target_word_stem": "father",
+    "related_word_stem": [
+      "dad",
+      "begetter",
+      "parent"
+    ]
+  },
+  {
+    "target_word": "lot",
+    "related_word": [
+      "much",
+      "draw",
+      "tract"
+    ],
+    "target_word_stem": "lot",
+    "related_word_stem": [
+      "much",
+      "draw",
+      "tract"
+    ]
+  },
+  {
+    "target_word": "girl",
+    "related_word": [
+      "daughter",
+      "fille",
+      "woman"
+    ],
+    "target_word_stem": "girl",
+    "related_word_stem": [
+      "daughter",
+      "fille",
+      "woman"
+    ]
+  },
+  {
+    "target_word": "kind",
+    "related_word": [
+      "nice",
+      "form",
+      "category"
+    ],
+    "target_word_stem": "kind",
+    "related_word_stem": [
+      "nice",
+      "form",
+      "category"
+    ]
+  },
+  {
+    "target_word": "thanks",
+    "related_word": [
+      "please",
+      "laudits",
+      "aid"
+    ],
+    "target_word_stem": "thanks",
+    "related_word_stem": [
+      "please",
+      "laudits",
+      "aid"
+    ]
+  },
+  {
+    "target_word": "house",
+    "related_word": [
+      "home",
+      "domiciliate",
+      "shelter"
+    ],
+    "target_word_stem": "house",
+    "related_word_stem": [
+      "home",
+      "domiciliate",
+      "shelter"
+    ]
+  },
+  {
+    "target_word": "world",
+    "related_word": [
+      "earth",
+      "domain",
+      "group"
+    ],
+    "target_word_stem": "world",
+    "related_word_stem": [
+      "earth",
+      "domain",
+      "group"
+    ]
+  },
+  {
+    "target_word": "course",
+    "related_word": [
+      "golf",
+      "class",
+      "action"
+    ],
+    "target_word_stem": "course",
+    "related_word_stem": [
+      "golf",
+      "class",
+      "action"
+    ]
+  },
+  {
+    "target_word": "dad",
+    "related_word": [
+      "father",
+      "dada",
+      "mom"
+    ],
+    "target_word_stem": "dad",
+    "related_word_stem": [
+      "father",
+      "dada",
+      "mom"
+    ]
+  },
+  {
+    "target_word": "hell",
+    "related_word": [
+      "helluv",
+      "blaze",
+      "mischief"
+    ],
+    "target_word_stem": "hell",
+    "related_word_stem": [
+      "helluv",
+      "blaze",
+      "mischief"
+    ]
+  },
+  {
+    "target_word": "mother",
+    "related_word": [
+      "parent",
+      "fuss",
+      "inspiration"
+    ],
+    "target_word_stem": "mother",
+    "related_word_stem": [
+      "parent",
+      "fuss",
+      "inspiration"
+    ]
+  },
+  {
+    "target_word": "son",
+    "related_word": [
+      "daughter",
+      "boy",
+      "child"
+    ],
+    "target_word_stem": "son",
+    "related_word_stem": [
+      "daughter",
+      "boy",
+      "child"
+    ]
+  },
+  {
+    "target_word": "today",
+    "related_word": [
+      "news",
+      "nowadays",
+      "day"
+    ],
+    "target_word_stem": "today",
+    "related_word_stem": [
+      "news",
+      "nowadays",
+      "day"
+    ]
+  },
+  {
+    "target_word": "car",
+    "related_word": [
+      "drive",
+      "auto",
+      "vehicle"
+    ],
+    "target_word_stem": "car",
+    "related_word_stem": [
+      "drive",
+      "auto",
+      "vehicle"
+    ]
+  },
+  {
+    "target_word": "care",
+    "related_word": [
+      "love",
+      "aid",
+      "protection"
+    ],
+    "target_word_stem": "care",
+    "related_word_stem": [
+      "love",
+      "aid",
+      "protection"
+    ]
+  },
+  {
+    "target_word": "woman",
+    "related_word": [
+      "lady",
+      "womanhood",
+      "adult"
+    ],
+    "target_word_stem": "woman",
+    "related_word_stem": [
+      "lady",
+      "womanhood",
+      "adult"
+    ]
+  },
+  {
+    "target_word": "baby",
+    "related_word": [
+      "chick",
+      "babe",
+      "undertaking"
+    ],
+    "target_word_stem": "baby",
+    "related_word_stem": [
+      "chick",
+      "babe",
+      "undertaking"
+    ]
+  },
+  {
+    "target_word": "friend",
+    "related_word": [
+      "dog",
+      "acquaintance",
+      "person"
+    ],
+    "target_word_stem": "friend",
+    "related_word_stem": [
+      "dog",
+      "acquaintance",
+      "person"
+    ]
+  },
+  {
+    "target_word": "job",
+    "related_word": [
+      "work",
+      "chore",
+      "duty"
+    ],
+    "target_word_stem": "job",
+    "related_word_stem": [
+      "work",
+      "chore",
+      "duty"
+    ]
+  },
+  {
+    "target_word": "mom",
+    "related_word": [
+      "mother",
+      "ma",
+      "parent"
+    ],
+    "target_word_stem": "mom",
+    "related_word_stem": [
+      "mother",
+      "ma",
+      "parent"
+    ]
+  },
+  {
+    "target_word": "morning",
+    "related_word": [
+      "day",
+      "forenoon",
+      "night"
+    ],
+    "target_word_stem": "morning",
+    "related_word_stem": [
+      "day",
+      "forenoon",
+      "night"
+    ]
+  },
+  {
+    "target_word": "room",
+    "related_word": [
+      "house",
+      "board",
+      "interior"
+    ],
+    "target_word_stem": "room",
+    "related_word_stem": [
+      "house",
+      "board",
+      "interior"
+    ]
+  },
+  {
+    "target_word": "family",
+    "related_word": [
+      "home",
+      "class",
+      "association"
+    ],
+    "target_word_stem": "family",
+    "related_word_stem": [
+      "home",
+      "class",
+      "association"
+    ]
+  },
+  {
+    "target_word": "door",
+    "related_word": [
+      "entrance",
+      "doorway",
+      "room"
+    ],
+    "target_word_stem": "door",
+    "related_word_stem": [
+      "entrance",
+      "doorway",
+      "room"
+    ]
+  },
+  {
+    "target_word": "head",
+    "related_word": [
+      "crown",
+      "caput",
+      "obverse"
+    ],
+    "target_word_stem": "head",
+    "related_word_stem": [
+      "crown",
+      "caput",
+      "obverse"
+    ]
+  },
+  {
+    "target_word": "run",
+    "related_word": [
+      "fast",
+      "bleed",
+      "locomotion"
+    ],
+    "target_word_stem": "run",
+    "related_word_stem": [
+      "fast",
+      "bleed",
+      "locomotion"
+    ]
+  },
+  {
+    "target_word": "idea",
+    "related_word": [
+      "thought",
+      "estimate",
+      "content"
+    ],
+    "target_word_stem": "idea",
+    "related_word_stem": [
+      "thought",
+      "estimate",
+      "content"
+    ]
+  },
+  {
+    "target_word": "brother",
+    "related_word": [
+      "sibling",
+      "buddy",
+      "male"
+    ],
+    "target_word_stem": "brother",
+    "related_word_stem": [
+      "sibling",
+      "buddy",
+      "male"
+    ]
+  },
+  {
+    "target_word": "wife",
+    "related_word": [
+      "lady",
+      "waifu",
+      "spouse"
+    ],
+    "target_word_stem": "wife",
+    "related_word_stem": [
+      "lady",
+      "waifu",
+      "spouse"
+    ]
+  },
+  {
+    "target_word": "phone",
+    "related_word": [
+      "call",
+      "earphone",
+      "device"
+    ],
+    "target_word_stem": "phone",
+    "related_word_stem": [
+      "call",
+      "earphone",
+      "device"
+    ]
+  },
+  {
+    "target_word": "matter",
+    "related_word": [
+      "atom",
+      "affair",
+      "consequence"
+    ],
+    "target_word_stem": "matter",
+    "related_word_stem": [
+      "atom",
+      "affair",
+      "consequence"
+    ]
+  },
+  {
+    "target_word": "tonight",
+    "related_word": [
+      "nudiustertian",
+      "present",
+      "overmorrow"
+    ],
+    "target_word_stem": "tonight",
+    "related_word_stem": [
+      "nudiustertian",
+      "present",
+      "overmorrow"
+    ]
+  },
+  {
+    "target_word": "end",
+    "related_word": [
+      "finish",
+      "cease",
+      "contribution"
+    ],
+    "target_word_stem": "end",
+    "related_word_stem": [
+      "finish",
+      "cease",
+      "contribution"
+    ]
+  },
+  {
+    "target_word": "problem",
+    "related_word": [
+      "trouble",
+      "job",
+      "question"
+    ],
+    "target_word_stem": "problem",
+    "related_word_stem": [
+      "trouble",
+      "job",
+      "question"
+    ]
+  }
+]

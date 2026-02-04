@@ -2,7 +2,7 @@ Adj meg egyetlen, egy szóból álló nyomot, amely kapcsolatban áll a csapatod
 A cél az, hogy a társad a megadott nyomok alapján kitalálja a csapatod összes szavát, mielőtt a másik csapat felfedné a sajátjait. Ha a társad egy „ellenfél” vagy egy „zavaró” szót tippel, a köre véget ér, és az ellenfél csapata következik. Ha a társad egy „gyilkos” szót tippel, a játék azonnal véget ér, és a csapatod azonnal veszít.
 Minél több szóhoz kapcsolódik a nyomod, annál gyorsabban nyerhetsz, de annál nehezebb lehet a társadnak kitalálni az összefüggéseket, ezért válaszd meg bölcsen a nyom szavát. A nyomnak szemantikailag kapcsolódnia kell a célszavakhoz, nem lehet egy a listákban szereplő szavak közül, és nem tartalmazhat azokból részleteket.
 Mindig az alábbi formátumban add meg az egy szóból álló nyomot és a hozzá tartozó, vesszővel elválasztott célszavak listáját, és tartsd a válaszaidat a lehető legrövidebben. Soha ne adj meg más szöveget, csak azt, amit ez a forma megkövetel:
-CLUE: <SZÓ>
+NYOM: <SZÓ>
 CÉLSZAVAK: <CÉLSZAVAK>
 A csapatod szavai: $team_words.
 Az ellenfél csapatának szavai: $opponent_words.

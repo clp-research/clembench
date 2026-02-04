@@ -16,6 +16,7 @@ from validation_errors import *
 from players import ClueGiver, Guesser
 from board import CodenamesBoard
 from scorer import CodenamesScorer
+from resources.messages import MESSAGES, ASSIGNMENT_LABELS
 
 logger = logging.getLogger(__name__)
 
@@ -48,8 +49,9 @@ class CodenamesGame(DialogueGameMaster):
         self.parsed_request_count = 0
         self.violated_request_count = 0
 
-        self.cluegiver: ClueGiver = ClueGiver(self.player_models[0], self.experiment["flags"])
-        self.guesser: Guesser = Guesser(self.player_models[1], self.experiment["flags"])
+        lang = self.experiment.get("language", "en")
+        self.cluegiver: ClueGiver = ClueGiver(self.player_models[0], self.experiment["flags"], lang=lang)
+        self.guesser: Guesser = Guesser(self.player_models[1], self.experiment["flags"], lang=lang)
         self.add_player(self.cluegiver)
         self.add_player(self.guesser)
 
@@ -57,8 +59,9 @@ class CodenamesGame(DialogueGameMaster):
         return word in self.cluegiver.targets
 
     def _get_cluegiver_prompt(self, initial=False) -> str:
+        lang = self.experiment.get("language", "en")
         folder = "initial_prompts" if initial else "intermittent_prompts"
-        prompt_cluegiver = self.load_template(f"resources/{folder}/prompt_cluegiver")
+        prompt_cluegiver = self.load_template(f"resources/{folder}/{lang}/prompt_cluegiver")
 
         team_words = ", ".join(self.board.get_hidden_words(TEAM))
         opponent_words = ", ".join(self.board.get_hidden_words(OPPONENT))
@@ -78,7 +81,8 @@ class CodenamesGame(DialogueGameMaster):
         return self._get_guesser_prompt("intermittent_prompts")
 
     def _get_guesser_prompt(self, folder) -> str:
-        prompt_guesser = self.load_template(f"resources/{folder}/prompt_guesser")
+        lang = self.experiment.get("language", "en")
+        prompt_guesser = self.load_template(f"resources/{folder}/{lang}/prompt_guesser")
 
         board = ", ".join(self.board.get_all_hidden_words())
         instance_prompt_guesser = Template(prompt_guesser).substitute(board=board,
@@ -186,6 +190,9 @@ class CodenamesGame(DialogueGameMaster):
         return True
 
     def _on_valid_player_response(self, player: Union[ClueGiver, Guesser], parsed_response: str):
+        lang = self.experiment.get("language", "en")
+        msg = MESSAGES.get(lang, MESSAGES["en"])
+        labels = ASSIGNMENT_LABELS.get(lang, ASSIGNMENT_LABELS["en"])
         if player == self.cluegiver:
             # score cluegiver precision
             for target in player.targets:
@@ -220,26 +227,25 @@ class CodenamesGame(DialogueGameMaster):
             guess_feedback = ""
             if evaluated_guesses[-1][1] == TEAM:
                 if len(evaluated_guesses) >= 2:
-                    guess_feedback = (f"The words {', '.join([guess for guess, assignment in evaluated_guesses])} "
-                                      f"were guessed correctly. ")
+                    guess_feedback = msg["words_correct"].format(words=", ".join([g for g, _ in evaluated_guesses])) + " "
                 else:
-                    guess_feedback = f"The word {evaluated_guesses[0][0]} was guessed correctly. "
+                    guess_feedback = msg["word_correct"].format(word=evaluated_guesses[0][0]) + " "
             else:
                 correct_guesses = evaluated_guesses[0:-1]
                 incorrect_guess = evaluated_guesses[-1]
                 if len(correct_guesses) >= 2:
-                    guess_feedback += (
-                        f"The words {', '.join([guess for guess, assignment in correct_guesses])} "
-                        f"were guessed correctly. ")
+                    guess_feedback += msg["words_correct"].format(words=", ".join([g for g, _ in correct_guesses])) + " "
                 elif len(correct_guesses) == 1:
-                    guess_feedback += f"The word {correct_guesses[0][0]} was guessed correctly. "
-                guess_feedback += f"The word {incorrect_guess[0]} was guessed but is an {incorrect_guess[1]} word. "
+                    guess_feedback += msg["word_correct"].format(word=correct_guesses[0][0]) + " "
+                assignment_key = incorrect_guess[1]
+                assignment_label = labels[assignment_key]
+                guess_feedback += msg["word_incorrect"].format(word=incorrect_guess[0], assignment=assignment_label) + " "
 
             cluegiver_guess_feedback = copy.copy(guess_feedback)
-            cluegiver_guess_feedback += "Your teammate's turn ended there."
+            cluegiver_guess_feedback += msg["teammate_turn_ended"]
 
             guesser_guess_feedback = copy.copy(guess_feedback)
-            guesser_guess_feedback += "Your turn ended there."
+            guesser_guess_feedback += msg["your_turn_ended"]
 
             # add guess feedback to guesser history
             self.set_context_for(self.guesser, guesser_guess_feedback)

@@ -156,8 +156,9 @@ generators = {'random': generate_random,
 
 
 class CodenamesInstanceGenerator(GameInstanceGenerator):
-    def __init__(self):
+    def __init__(self, lang="en"):
         super().__init__(os.path.dirname(__file__))
+        self.lang = lang
 
     def on_generate(self, seed: int, **kwargs):
         variable_name = kwargs.get('variable_name', None)
@@ -200,15 +201,19 @@ class CodenamesInstanceGenerator(GameInstanceGenerator):
                     wordlist_name = experiments[name]["wordlist"]
                 else:
                     wordlist_name = defaults["wordlist"]
-                wordlist_path = f"resources/cleaned_wordlists/{wordlist_name}"
+                wordlist_path = f"resources/wordlists/{self.lang}/{wordlist_name}"
                 if not os.path.isfile(file_path(wordlist_path, self.game_path)):
                     print(f"> Wordlist {wordlist_name} does not exist, skip {name}.")
                     continue
-                wordlist = self.load_json(wordlist_path)["words"]
+                if wordlist_name == "categories.json":
+                    word_source = self.load_json(wordlist_path)["words"]
+                else:
+                    word_source = self.load_json(wordlist_path)["words"]
 
                 print("Generating instances for experiment: ", name)
                 experiment = self.add_experiment(name)
                 experiment["variable"] = variable_name
+                experiment["language"] = self.lang
                 # set default parameters
                 for parameter in defaults:
                     experiment[parameter] = defaults[parameter]
@@ -232,7 +237,7 @@ class CodenamesInstanceGenerator(GameInstanceGenerator):
                     # choose correct generator function
                     assignments = experiment[ASSIGNMENTS]
                     generator = generators[experiment["generator"]]
-                    instance = generator(wordlist, assignments)
+                    instance = generator(word_source, assignments)
                     self.test_instance_format(instance, assignments)
 
                     # Create a game instance
@@ -308,6 +313,8 @@ if __name__ == '__main__':
     parser.add_argument("-g", "--generous",
                         help="Optional flag to generate generous instances where all flags are set to True.",
                         action="store_true")
+    parser.add_argument("-l", "--lang", type=str, default="en",
+                        help="Language code for wordlists (e.g. en, de)")
     args = parser.parse_args()
     if args.experiment_name and not args.variable_name:
         print("Running a specific experiment requires both the experiment name (-e) and the variable name (-v)!")
@@ -316,7 +323,8 @@ if __name__ == '__main__':
         variable_name = args.variable_name
         experiment_name = args.experiment_name
         generous = args.generous
-        filename = FILENAME
+        base_name = FILENAME.replace(".json", f"_{args.lang}.json")
+        filename = base_name
         if generous:
             filename = f"generous_{filename}"
         if keep:
@@ -326,6 +334,6 @@ if __name__ == '__main__':
                 print(f"Replacing instances for variable {variable_name}.")
             else:
                 print(f"Replacing instances for experiment {experiment_name}.")
-            CodenamesInstanceGenerator().replace_instances(variable_name, experiment_name, filename)
+            CodenamesInstanceGenerator(lang=args.lang).replace_instances(variable_name, experiment_name, filename)
         else:
-            CodenamesInstanceGenerator().generate(filename, seed=SEED, **args)
+            CodenamesInstanceGenerator(lang=args.lang).generate(filename, seed=SEED, **vars(args))

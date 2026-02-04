@@ -1,29 +1,62 @@
 {
     "en": {
-            "max_word_length": 5,
-            "clue_lang": "clue:",
-            "guess_lang": "guess:",
-            "guess_word_lang": "word",
-            "explanation_lang": "explanation:",
-            "explanataion_details_lang": "details",
-            "guess_feedback_lang": "guess_feedback:",
-            "agreement_lang": "agreement:",
-            "agreement_word_lang": "yes or no",
-            "guess_agreement_lang": "guess_agreement:",
-            "agreement_explanation_lang": "agreement_explanation:",
-            "agreement_match_keywords_lang": ["yes", "no"],
-            "official_recognized_words_file_url": "https://raw.githubusercontent.com/3b1b/videos/master/_2022/wordle/data/allowed_words.txt",
-            "word_clues_file_url": "https://www.kaggle.com/datasets/darinhawley/new-york-times-crossword-clues-answers-19932021?select=nytcrosswords.csv",
-            "error_prompt_text": {
-                "INVALID_WORD_LENGTH": "The guess should have exactly 5 letters.",
-                "INVALID_WORD": "The guess should contain only letters.",
-                "NOT_VALID_WORD_FOR_GAME": "Your guess is not a valid word for this game.",
-                "INVALID_FORMAT": "Provide your response only in this format.",
-                "OTHER_ERROR": "Guess an English five-letter word.",
-                "OTHER_DETAILS": "Do not generate any other text. Please try again.",
-                "ERROR_RESPONSE_FORMAT": "Guess does not conform to the format rules",
-                "ERROR_GAME_FORMAT": "Guess does not conform to the game rules.",
-                "RETRY": "Please try again."
-            }
+        "max_word_length": 5,
+        "clue_lang": "clue:",
+        "guess_lang": "guess:",
+        "guess_word_lang": "word",
+        "explanation_lang": "explanation:",
+        "explanataion_details_lang": "details",
+        "guess_feedback_lang": "guess_feedback:",
+        "agreement_lang": "agreement:",
+        "agreement_word_lang": "yes or no",
+        "guess_agreement_lang": "guess_agreement:",
+        "agreement_explanation_lang": "agreement_explanation:",
+        "agreement_match_keywords_lang": [
+            "yes",
+            "no"
+        ],
+        "allowed_words_file_url": "https://raw.githubusercontent.com/3b1b/videos/master/_2022/wordle/data/allowed_words.txt",
+        "word_clues_file_url": "https://www.kaggle.com/datasets/darinhawley/new-york-times-crossword-clues-answers-19932021?select=nytcrosswords.csv",
+        "error_prompt_text": {
+            "INVALID_WORD_LENGTH": "The guess should have exactly 5 letters.",
+            "INVALID_WORD": "The guess should contain only letters.",
+            "NOT_VALID_WORD_FOR_GAME": "Your guess is not a valid word for this game.",
+            "INVALID_FORMAT": "Provide your response only in this format.",
+            "OTHER_ERROR": "Guess an English five-letter word.",
+            "OTHER_DETAILS": "Do not generate any other text. Please try again.",
+            "ERROR_RESPONSE_FORMAT": "Guess does not conform to the format rules",
+            "ERROR_GAME_FORMAT": "Guess does not conform to the game rules.",
+            "RETRY": "Please try again."
+        }
+    },
+    "de": {
+        "max_word_length": 5,
+        "clue_lang": "hinweis:",
+        "guess_lang": "vermutung:",
+        "guess_word_lang": "wort",
+        "explanation_lang": "begründung:",
+        "explanataion_details_lang": "details",
+        "guess_feedback_lang": "rückmeldung_zur_vermutung:",
+        "agreement_lang": "zustimmung:",
+        "agreement_word_lang": "ja oder nein",
+        "guess_agreement_lang": "vermutung_zustimmung:",
+        "agreement_explanation_lang": "zustimmung_erklärung:",
+        "agreement_match_keywords_lang": [
+            "ja",
+            "nein"
+        ],
+        "allowed_words_file_url": "https://raw.githubusercontent.com/3b1b/videos/master/_2022/wordle/data/allowed_words.txt",
+        "word_clues_file_url": "https://www.kaggle.com/datasets/darinhawley/new-york-times-crossword-clues-answers-19932021?select=nytcrosswords.csv",
+        "error_prompt_text": {
+            "INVALID_WORD_LENGTH": "Die Vermutung muss genau 5 Buchstaben haben.",
+            "INVALID_WORD": "Die Vermutung darf nur Buchstaben enthalten.",
+            "NOT_VALID_WORD_FOR_GAME": "Deine Vermutung ist kein gültiges Wort für dieses Spiel.",
+            "INVALID_FORMAT": "Gib deine Antwort nur in diesem Format an.",
+            "OTHER_ERROR": "Gib ein deutsches Wort mit fünf Buchstaben als Vermutung an.",
+            "OTHER_DETAILS": "Generiere keinen weiteren Text. Bitte versuche es erneut.",
+            "ERROR_RESPONSE_FORMAT": "Die Vermutung entspricht nicht den Formatregeln.",
+            "ERROR_GAME_FORMAT": "Die Vermutung entspricht nicht den Spielregeln.",
+            "RETRY": "Bitte versuche es erneut."
+        }
     }
 }

@@ -26,12 +26,12 @@ There are no other requirements than installing Networkx pyhton library
 
 To create new instances, you need to have these files:
 1. graph_generator.py: This file is only a helper function to create and store graphs.
-2. instance_generator.py: This file creates instances depending on several parameters. Two files are generated:
+2. instancegenerator.py: This file creates instances depending on several parameters. Two files are generated:
     - Files with graphs: depending on the parameters, the name of the file is assigned and saved in the `clembech/games/textmapworld_questions/files` directory.
     - Instance.json
 
 
-Parameters applied in the instance_generator.py:
+Parameters applied in the instancegenerator.py:
 **create_new_graphs** Whether you want to create instances.json with already existing graphs or you want to create completely new graph instances, This parameter is helpful when you want to change the meta data of the instance but also want to keep the graph information as it was in the previous instances.json file. Note: If you want to create new instances but already have previous ones, you need to delete the text files with graphs from the `clembech/games/textmapworld_questions/files` directory! Choose: True or False.
 **size**: All of the experiment's graph size will be one .
 **experiments dictionary** You can control how many and what kind of experiments you want in each instance. The key is how the experiment should be called, and the value is a list of integers, that mean how far the target node should be from the iniital node. Example: "close": [1,2].

@@ -1,0 +1,22 @@
+Ich benötige deine Unterstützung bei einem Wortspiel, bei dem wir mithilfe eines Hinweises, einer Vermutung und einer Erklärung zur Vermutung ein Wort mit 5 Buchstaben finden müssen.
+
+Wenn zum Beispiel der Hinweis „snow white“ lautet und die Vermutung „apple“ ist, erhältst du die Informationen wie folgt:
+hinweis: snow white
+erklärung: Im Märchen Schneewittchen isst das Mädchen einen vergifteten Apfel, der aus 5 Buchstaben besteht.
+vermutung: apple
+
+Deine Aufgabe ist es, basierend auf dem gegebenen Hinweis entweder meiner Vermutung zuzustimmen oder ihr zu widersprechen.
+
+Wenn du widersprichst, werde ich eine weitere Vermutung anstellen, und wenn du zustimmst, werde ich im Spiel mit derselben Vermutung fortfahren.
+
+Zu Beginn ist keine guess_feedback verfügbar, aber im Verlauf des Spiels wird sie verfügbar. Die guess_feedback bezieht sich nicht auf die aktuelle Vermutung, sondern ist vielmehr ein Hinweis darauf, welche Buchstaben in der aktuellen Vermutung enthalten sein können. Ein grün hervorgehobener Buchstabe zeigt an, dass es sich um einen korrekten Buchstaben an der richtigen Position handelt, gelb zeigt an, dass es sich um einen korrekten Buchstaben an der falschen Position handelt, und rot zeigt einen falschen Buchstaben an. Zu diesem Zeitpunkt solltest du alle bereitgestellten Informationen verwenden, einschließlich Hinweis, Vermutung, Erklärung und guess_feedback, um zu entscheiden, ob die gegebene Vermutung zum Hinweis passt und ob sie mit der guess_feedback übereinstimmt oder nicht.
+
+Bitte antworte in Kleinbuchstaben und halte dich an dieses Format:
+erklärung: dein grund dafür
+agreement: yes oder no
+
+Bitte beachte, dass du kein Wort basierend auf dem Rätsel-Hinweis erraten darfst und dich beim Antworten strikt an das vorgegebene Format halten musst.
+
+Erzeuge keinen weiteren Text.
+
+Beginnen wir!

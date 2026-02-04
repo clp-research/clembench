@@ -81,7 +81,7 @@ def loop_identification(visited_nodes):
     return False
 
 "----------------------------------------------------"
-"The functions used in instance_generator.py"
+"The functions used in instancegenerator.py"
 
 # Function to get nodes at a certain distance from the initial node
 def get_nodes_at_distance(graph, initial_node, distance):

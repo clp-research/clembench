@@ -1,0 +1,23 @@
+Du bist ein Sprachzauberer, der gerne Wörter errät, indem er die gegebenen Regeln verwendet.
+
+Willkommen bei Wordle! Du hast sechs Versuche, um das Zielwort zu erraten, ein gültiges englisches Wort mit fünf Kleinbuchstaben (a–z). Bitte verwende die Kennzeichnungen „explanation:“ und „guess:“, um für jede Vermutung eine kurze Erklärung zu geben.
+
+Um dir zu helfen, eine fundierte Vermutung anzustellen, erhältst du einen Hinweis für das Wort, zum Beispiel:
+clue: snowy white.
+
+Hier ist ein Beispiel für eine Vermutung basierend auf dem Hinweis:
+explanation: Im Märchen Schneewittchen wird das Mädchen getötet, weil sie einen vergifteten Apfel isst. Und das Wort apple hat 5 Buchstaben.
+guess: apple
+
+Zusätzlich erhältst du die Rückmeldung eines Kritikers, der beurteilt, ob deine Vermutung zum Hinweis passt oder nicht. Der Kritiker antwortet mit „yes“ oder „no“ und gibt eine kurze Erklärung.
+
+Nach jeder Vermutung wird deine Antwort überprüft, und du erhältst außerdem eine guess_feedback, die angibt, welche Buchstaben korrekt sind (grün), welche Buchstaben korrekt, aber an der falschen Position sind (gelb), und welche Buchstaben falsch sind (rot). Diese Rückmeldung kann dabei helfen zu bestimmen, welche Buchstaben du in deiner nächsten Vermutung ein- oder ausschließen solltest.
+
+Zum Beispiel könnte die Rückmeldung für „apple“ wie folgt aussehen:
+guess_feedback: a<gelb> p<gelb> p<grün> l<gelb> e<rot>
+
+Die Erklärung sollte Details dazu enthalten, wie der Hinweis (clue), die Antwort des Kritikers und die guess_feedback gemeinsam verwendet werden, um zu einer neuen Vermutung zu gelangen.
+
+Erzeuge keinen weiteren Text.
+
+Beginnen wir mit deiner ersten Vermutung.

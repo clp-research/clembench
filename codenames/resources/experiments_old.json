@@ -5,7 +5,7 @@
         "opponent difficulty": 1,
         "assignments": {"team": 9, "opponent": 8, "innocent": 7, "assassin": 1},
         "wordlist": "original.json"
-    },
+    },  
     "variables": {
         "Risk": {
             "experiments": {
@@ -33,6 +33,30 @@
                     "opponent difficulty": 1},
                 "opponent_difficult": {
                     "opponent difficulty": 2}
+            }
+        },
+        "Word Frequency": {
+            "experiments": {
+                "frequency_low": {
+                    "wordlist": "low_frequency.json"},
+                "frequency_high": {
+                    "wordlist": "high_frequency.json"}
+            }
+        },
+        "Word Ambiguity": {
+            "experiments": {
+                "unambiguous": {
+                    "wordlist": "unambiguous_words.json"},
+                "ambiguous": {
+                    "wordlist": "ambiguous_words.json"}
+            }
+        },
+        "Word Concreteness": {
+            "experiments": {
+                "concrete": {
+                    "wordlist": "concrete_words.json"},
+                "abstract": {
+                    "wordlist": "abstract_words.json"}
             }
         }
     }

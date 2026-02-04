@@ -6,6 +6,7 @@ from clemcore.clemgame import Player
 
 from constants import *
 from validation_errors import *
+from resources.prefixes import PREFIXES
 
 MOCK_IS_RANDOM = False
 
@@ -24,10 +25,11 @@ def add_space_after_comma(text):
 
 
 class ClueGiver(Player):
-    def __init__(self, model: backends.Model, flags: Dict[str, bool]):
+    def __init__(self, model: backends.Model, flags: Dict[str, bool], lang="en"):
         super().__init__(model)
-        self.clue_prefix: str = "CLUE: "
-        self.target_prefix: str = "TARGETS: "
+        prefixes = PREFIXES.get(lang, PREFIXES["en"])
+        self.clue_prefix = prefixes["clue"]
+        self.target_prefix = prefixes["targets"]
         self.clue: str = 'clue'
         self.number_of_targets: int = 2
         self.targets: List[str] = ['target', 'word']
@@ -160,10 +162,11 @@ class ClueGiver(Player):
 
 
 class Guesser(Player):
-    def __init__(self, model: backends.Model, flags: Dict[str, bool]):
+    def __init__(self, model: backends.Model, flags: Dict[str, bool], lang="en"):
         super().__init__(model)
         self.guesses: List[str] = ['guess', 'word']
-        self.prefix: str = "GUESS: "
+        prefixes = PREFIXES.get(lang, PREFIXES["en"])
+        self.prefix = prefixes["guess"]
         self.retries: int = 0
         self.flags = flags
         self.flags_engaged = {key: 0 for key, value in flags.items()}

@@ -1,25 +1,12 @@
-[
-  {
-    "game_name": "cocottr",
-    "description": "Collaborative grid construction task for two players.",
-    "main_game": "cocottr",
-    "players": 2,
-    "image": "none",
-    "languages": ["en"],
-    "benchmark": [],
-    "regression": "large",
-    "roles": ["Programmer", "Cobot"]
-  },
-  {
-    "game_name": "cocottr_pilot",
-    "description": "Collaborative grid construction task for two players.",
-    "main_game": "cocottr",
-    "instances": "instances_pilot",
-    "players": 2,
-    "image": "none",
-    "languages": ["en"],
-    "benchmark": [],
-    "regression": "large",
-    "roles": ["Programmer", "Cobot"]
-  }
-]
+
+{
+  "game_name": "cocottr",
+  "description": "Collaborative grid construction task for two players.",
+  "main_game": "cocottr",
+  "players": 2,
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": [],
+  "regression": "large",
+  "roles": ["Programmer", "Cobot"]
+}

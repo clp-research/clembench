@@ -76,7 +76,7 @@ class CocoTTRMaster(DialogueGameMaster):
         self.num_optim_turns = data["num_optim_turns"]
 
         # n_turns is multiplied by 3 because each task has n_turns and there are 3 tasks (reconst, reuse, repeat) + x turns for optim
-        self.n_turns = 3 * data["n_turns"] + (self.num_optim_turns if self.use_optimizer else 0)
+        self.n_turns = data["n_turns"]#3 * data["n_turns"] + (self.num_optim_turns if self.use_optimizer else 0)
         self.config_max_turns = data["n_turns"]
         self.max_task_turns: int = 0
         # initialise game variables:
@@ -96,6 +96,13 @@ class CocoTTRMaster(DialogueGameMaster):
         self.optim_success: bool = False
         self.reuse_success: bool = False
         self.repeat_success: bool = False
+        self.ttr_success: bool = False
+
+        self.play_turns_reconst: int = 0
+        self.play_turns_optim: int = 0
+        self.play_turns_reuse: int = 0
+        self.play_turns_repeat: int = 0
+        self.play_turns_total: int = 0
 
         self.reconst_details = {"used_clarification": False, "num_clarifications": 0,
                                 "used_clear": False, "num_clears": 0,
@@ -159,12 +166,25 @@ class CocoTTRMaster(DialogueGameMaster):
 
             "n_turns": self.n_turns,
             "play_turns": None,
+            "use_optimizer": self.use_optimizer,
+            "num_optim_turns": self.num_optim_turns,
+
+            "n_turns_reconst": self.reconst_data["max_task_turns"],
+            "n_turns_optim": self.optim_data["max_task_turns"],
+            "n_turns_reuse": self.reuse_data["max_task_turns"],
+            "n_turns_repeat": self.repeat_data["max_task_turns"],
+
+            "play_turns_reconst": self.play_turns_reconst,
+            "play_turns_optim": self.play_turns_optim,
+            "play_turns_reuse": self.play_turns_reuse,
+            "play_turns_repeat": self.play_turns_repeat,
+            "play_turns_total": self.play_turns_total,
 
             "reconstruction_status": self.reconstruct_success,
             "optim_success": self.optim_success,
             "reuse_success": self.reuse_success,
             "repeat_success": self.repeat_success,
-            "ttr_success": False,
+            "ttr_success": self.ttr_success,
             "loss_reason": None,
         }      
 
@@ -246,22 +266,25 @@ class CocoTTRMaster(DialogueGameMaster):
                 raise GameError("No board info available to start the game.")
             logger.info(f"Starting game with variant: {variant} for the combo_name: {self.board_info['combo_name']}")
 
-            self.max_task_turns = self.config_max_turns
+            #self.max_task_turns = self.config_max_turns
             self.variant = variant
             if variant == "simple":
                 self.current_task = "reconst"
+                self.max_task_turns = self.reconst_data["max_task_turns"]
                 p1_data = self.reconst_data["details"]
             elif variant == "simple_reuse":
                 self.current_task = "reuse"
+                self.max_task_turns = self.reuse_data["max_task_turns"]
                 p1_data = self.prompt_a["reuse"] + "\n" + self.reuse_data["details"]
             elif variant == "regular":
                 self.current_task = "repeat"
+                self.max_task_turns = self.repeat_data["max_task_turns"]
                 p1_data = self.prompt_a["repeat"] + "\n" +self.repeat_data["details"]
             else:
                 raise GameError(f"Unknown variant type: {variant}")
         else:
             self.current_task = "optim"
-            self.max_task_turns = self.num_optim_turns
+            self.max_task_turns = self.optim_data["max_task_turns"]
 
             logger.info(f"Starting Optimization process")
 
@@ -275,7 +298,7 @@ class CocoTTRMaster(DialogueGameMaster):
             else:
                 p1_data = self.optim_data + "\nInstruction-Code Pairs:\n" + inst_code_pairs
 
-        self.current_task_turns = 0
+        #self.current_task_turns = 0
         return p1_data
 
     def _on_before_game(self) -> None:
@@ -304,10 +327,20 @@ class CocoTTRMaster(DialogueGameMaster):
         self.gamedata["genresponse"] = self.genresponse
         #TODO: Check what to log here
         #self.gamedata["genboard"] = self.genboard
-        self.gamedata["play_turns"] = self.current_round
+        self.gamedata["play_turns"] = self.play_turns_total#self.current_round
         self.gamedata["reconstruction_status"] = self.reconstruct_success
         self.gamedata["optim_success"] = self.optim_success
-        self.gamedata["reuse_success"] = self.reuse_success        
+        self.gamedata["reuse_success"] = self.reuse_success
+        self.gamedata["repeat_success"] = self.repeat_success
+        self.gamedata["ttr_success"] = self.ttr_success 
+        self.gamedata["play_turns_reconst"] = self.play_turns_reconst
+        self.gamedata["play_turns_optim"] = self.play_turns_optim
+        self.gamedata["play_turns_reuse"] = self.play_turns_reuse
+        self.gamedata["play_turns_repeat"] = self.play_turns_repeat
+        self.gamedata["play_turns_total"] = self.play_turns_total  
+
+        if self.ttr_success != self.success:
+            logger.error(f"Discrepancy between ttr_success ({self.ttr_success}) and overall success ({self.success})")
         self._log_game_end()       
 
     def _set_pass_turn(self, player: Player, pass_turn) -> None:
@@ -396,7 +429,7 @@ class CocoTTRMaster(DialogueGameMaster):
 
     def _advance_game(self, player: Player, parsed_response: Dict):
         """Advance the game with the parsed response."""
-        logger.info(f"Advancing game with parsed response: player = {player}, parsed_response = {parsed_response}")
+        logger.info(f"Advancing game with parsed response: player = {player}, parsed_response = {parsed_response}, current_turn = {self.current_turn}, current_task_turns = {self.current_task_turns}")
         if player == self.player_a:
             # The validitiy of the generated code can be checked during scoring.
             # If there are no issues in format, the game is considered successful.
@@ -529,15 +562,33 @@ class CocoTTRMaster(DialogueGameMaster):
 
 
         if task_success:
+            """
             if self.current_task == "reconst":
                 self.reconstruct_success = True
                 # TODO:If optimizer is to be used, set the next task to optim and the turn should be passed to Player b
+                self.play_turns_reconst = self.current_task_turns
+                self.play_turns_total += self.current_task_turns
+                logger.info(f"Reconstruction task successful., turns taken: {self.current_task_turns}")
             elif self.current_task == "optim":
                 self.optim_success = True
+                self.play_turns_optim = self.current_task_turns
+                self.play_turns_total += self.current_task_turns
+                logger.info(f"Optimization task successful., turns taken: {self.current_task_turns}")
             elif self.current_task == "reuse":
                 self.reuse_success = True
-            elif self.current_task == "repeat":
-                self.repeat_success = True
+                self.play_turns_reuse = self.current_task_turns
+                self.play_turns_total += self.current_task_turns
+                logger.info(f"Reuse task successful., turns taken: {self.current_task_turns}")
+            el
+            """
+            if self.current_task == "repeat":
+                #self.repeat_success = True
+                #self.play_turns_repeat = self.current_task_turns
+                #self.play_turns_total += self.current_task_turns
+                #logger.info(f"Repeat task successful., turns taken: {self.current_task_turns}")
+
+                if self.reconstruct_success and (not self.use_optimizer or self.optim_success) and self.reuse_success and self.repeat_success:
+                    self.ttr_success = True
 
         elif task_failure:
             use_dict["loss_reason"] = error
@@ -546,6 +597,8 @@ class CocoTTRMaster(DialogueGameMaster):
             use_dict["used_retry"] = True
             use_dict["num_retry"] = self.current_retry
 
+        #self.current_task_turns = 0
+        #self.current_retry = 0
 
     def _set_parsed_req_count(self) -> None:
         # increase the counter of requests that conform to form rules
@@ -679,6 +732,9 @@ class CocoTTRMaster(DialogueGameMaster):
                 parse_a["status"] = "on-going"
                 if self.current_task == "reconst":
                     self.reconstruct_success = True
+                    self.play_turns_reconst = self.current_task_turns
+                    self.play_turns_total += self.current_task_turns
+                    logger.info(f"Reconstruction task successful., turns taken: {self.current_task_turns}")
                     if self.use_optimizer:
                         optim_step=True
                     else:
@@ -686,9 +742,19 @@ class CocoTTRMaster(DialogueGameMaster):
                     p2_prompt = self._set_current_task_context(optim_step)
                 elif self.current_task == "reuse":
                     self.reuse_success = True
+                    self.play_turns_reuse = self.current_task_turns
+                    self.play_turns_total += self.current_task_turns
+                    logger.info(f"Reuse task successful., turns taken: {self.current_task_turns}")
                     p2_prompt = self._set_current_task_context(optim_step=False)
             elif self.current_task == "repeat":
                 parse_a["status"] = "success"
+                self.repeat_success = True
+                self.play_turns_repeat = self.current_task_turns
+                self.play_turns_total += self.current_task_turns
+                logger.info(f"Repeat task successful., turns taken: {self.current_task_turns}")
+
+            self.current_task_turns = 0
+            self.current_retry = 0
 
             return parse_a, p2_prompt
         
@@ -925,7 +991,7 @@ class CocoTTRMaster(DialogueGameMaster):
             self._set_parsed_req_count()  
 
             if user_instruction.upper() == "DONE":
-                logger.info(f"Current turn: {self.current_turn}, Received 'DONE' from player A, validating the game.")
+                logger.info(f"Current turn: {self.current_task_turns}, Received 'DONE' from player A, validating the game.")
                 parse_a, p2_prompt = self._handle_task_completion()
                 logger.info(f"output of task completion: parse_a: {parse_a}")
                 if parse_a["status"] == "on-going":
@@ -942,7 +1008,7 @@ class CocoTTRMaster(DialogueGameMaster):
                     pass
 
             elif user_instruction.upper() == "SKILL_UNKNOWN":
-                logger.info(f"Current turn: {self.current_turn}, Received 'SKILL_UNKNOWN' from player A.")
+                logger.info(f"Current turn: {self.current_task_turns}, Received 'SKILL_UNKNOWN' from player A.")
                 parse_a["status"] = "failure"
                 parse_a["details"] = None
                 parse_a["error"] = "The requested skill is unknown or not available for reuse."
@@ -1085,7 +1151,8 @@ class CocoTTRMaster(DialogueGameMaster):
 
     def _log_game_end(self) -> None:
         """Aux to log variables needed for scoring (firstlast specific)"""
-        self.log_key("Played turns", self.current_turn)
+        #self.log_key("Played turns", self.current_turn)
+        self.log_key("Played turns", self.play_turns_total)
         self.log_key("Complete turns", self.complete_turns)
         self.log_key('Turn scores', self.turn_scores)        
         self.log_key(METRIC_ABORTED, self.aborted)

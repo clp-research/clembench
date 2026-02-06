@@ -3,8 +3,11 @@
     "use_images_in_human_prompts": false,
     "num_retry": 3,
     "num_optim_turns": 0,
+    "num_reconst_turns": 15,
+    "num_reuse_turns": 15,
+    "num_repeat_turns": 30,
     "use_optimizer": false,
-    "max_turns": 30,
+    "max_turns": 60,
     "use_sandbox_llm": false,
     "cocottr": {
         "TRAIN_DATA_FILE_NAME": "",

@@ -1,7 +1,9 @@
 import os
 from typing import Dict
 import re
+import ast
 import base64
+import traceback
 import numpy as np
 from utils.coco import (
 #from coco import (
@@ -56,7 +58,8 @@ class PrepareASCIIRep:
         try:
             exec(gt_exec_code)
         except Exception as e:
-            print(f"Error executing code: {e}")
+            #print(f"Error executing code: {e}")
+            logger.error(f"Error executing code: {e}")
             return None
         return board
     
@@ -73,6 +76,15 @@ class PrepareASCIIRep:
                 logger.info(f"Removing shape {shape} with color {color} at ({row}, {col})")
                 remove(board, row, col, shape, color)
         return board
+    
+    def _save_skills(self, skill_name, skill_code):
+        if skill_name not in self.avail_skills:
+            self.avail_skills[skill_name] = []
+
+        self.avail_skills[skill_name]
+    
+    #def _process_remove_object(self, board: np.ndarray, x, y, shape: str, color: str) -> np.ndarray:
+
 
     def removeshape(self, board: np.ndarray, x, y, shape: str, color: str) -> np.ndarray:
         if shape is None or color is None:
@@ -145,7 +157,57 @@ class PrepareASCIIRep:
         if board is None:
             logger.info(f"Board is None, initializing a new board with the size: {board_size}")
             board = init_board(board_size["rows"], board_size["cols"])
-        out_code = f"{skillfunc_def}\n{response}"
+
+        if "removeshape" in response:
+            response = response.replace("removeshape", "self.removeshape")
+        elif "undo" in response:
+            response = response.replace("undo", "self.undo")
+
+
+        out_code = f"{skillfunc_def}\n{response}"   
+        logger.info(f"Executing response:\n{out_code}")
+
+        """
+        env = {
+            "__builtins__": __builtins__,  # or restrict if you want sandboxing
+            "np": np,
+            "board": board,
+            "board_size": board_size,
+            # coco APIs
+            "init_board": init_board,
+            "put": put,
+            "move": move,
+            "clear": clear,
+        }
+        """        
+        try:
+            #exec(out_code, env, env)
+            exec(out_code)
+            logger.info(f"Response executed successfully.")
+        except Exception as e:
+            logger.error(f"Error executing response: {e}")
+            logger.error("Error type: %s", type(e).__name__)
+            logger.error("Error repr: %r", e)
+            logger.error("Traceback:\n%s", traceback.format_exc())            
+            return None, str(e), None       
+        #board = env.get("board", board)
+        return board, None, None
+
+
+    
+    def execute_generated_response_skill_working(self, response: str, board_size: dict, board: np.ndarray, skillfunc_def) -> np.ndarray:
+        """Execute the generated response code and return the updated board state."""
+        if board is None:
+            logger.info(f"Board is None, initializing a new board with the size: {board_size}")
+            board = init_board(board_size["rows"], board_size["cols"])
+
+        clearfunc_code = """
+def clear(board):
+    board[:, :, :, :] = "0"
+    return board
+"""
+
+        out_code = f"{clearfunc_code}\n{skillfunc_def}\n{response}"
         logger.info(f"Executing response:\n{out_code}")
         try:
             exec(out_code)
@@ -259,8 +321,9 @@ class PrepareASCIIRep:
         for location in repeat_locations:
             row, col = location[0]-1, location[1]-1
             if f"{row}:{col}" in occupied_cells:
-                print(f"Multiple objects at location {row},{col} for combo {combo_name}")
-                input()
+                #print(f"Multiple objects at location {row},{col} for combo {combo_name}")
+                #input()
+                logger.info(f"Multiple objects at location {row},{col} for combo {combo_name}")
             occupied_cells[f"{row}:{col}"] = [(combo_name, f"{colors}")]
         return occupied_cells 
 
@@ -321,7 +384,8 @@ class PrepareASCIIRep:
             return None
 
         occupied_cells = self._list_occupied_cells_with_details(board)
-        print(occupied_cells)
+        #print(occupied_cells)
+        logger.info(f"Occupied cells: {occupied_cells}")
         layer_rep = self.get_layer_representation(occupied_cells)
         return layer_rep, board
         ascii_representation = "[\n"
@@ -364,7 +428,7 @@ class PrepareASCIIRep:
         if board is None or board_size is None or not reuse_skills:
             logger.info(f"Board generation call is None, cannot generate ASCII representation.")
             error = "Invalid input for generating ASCII representation from combo names."
-            return None, error
+            return None, error, None, None
         logger.debug(f"Generating ASCII representation from the board generation call.")
         occupied_cells = self._list_occupied_cells_with_details(board)
 
@@ -378,11 +442,13 @@ class PrepareASCIIRep:
             logger.info(f"Generated occupied cells from reuse skills: {newoccupied_cells}")
 
             if newoccupied_cells != occupied_cells:
+                # TODO: There should be a way to fix this -> check 61 episode
                 logger.error(f"Mismatch in occupied cells from reuse skills and board generation call.")
                 error = "Mismatch in occupied cells from reuse skills and board generation call."
-                return None, error
+                return None, error, None, None
             
 
+            # TODO: Because only the first name, colors are taken, if there are issues in other locations, it is misleading to same values -> Fix this
             combo_name = reuse_skills[0]['name']
             combo_colors = reuse_skills[0]['colors']
             repeat_locations = [[skill['x'],skill['y']] for skill in reuse_skills]
@@ -393,7 +459,7 @@ class PrepareASCIIRep:
         except Exception as e:
             logger.error(f"Error executing reuse skill: {e}")
             error = str(e)
-            return None, error    
+            return None, error, None, None
 
     def get_layer_representation_diff_rb(self, gt_rep_locations, gen_rep_locations):
         """Generate a layer-wise ASCII representation from the occupied cells."""
@@ -416,6 +482,162 @@ class PrepareASCIIRep:
                 diff_rep += f"\trow: {location[0]}, col: {location[1]}: Extra\n"
 
         return diff_rep
+    
+    def _extract_row_col_shape_colors_from_gridrep(self, gridrep):
+        pattern = re.compile(
+            r"row:\s*(\d+),\s*col:\s*(\d+):\s*\{'shapes':\s*'([^']+)',\s*'colors':\s*\"([^\"]+)\"\}"
+        )
+
+        results = []
+
+        for match in pattern.findall(gridrep):
+            row, col, shapes, colors = match
+            results.append({
+                "row": int(row),
+                "col": int(col),
+                "shapes": shapes,
+                "colors": colors
+            })
+
+        for r in results:
+            r["colors"] = ast.literal_eval(r["colors"])
+
+
+        logger.info(f"Extracted row, col, shapes, colors from grid representation:\n{results}")
+        return results    
+    
+    def unusedcomparegrid(self, gtrep, genrep):
+        if gtrep is None or genrep is None:
+            error = f"One of the grid representations is None. GT: {gtrep}, Gen: {genrep}"
+            logger.error(error)
+            return None, error
+
+        gtrep = self._extract_row_col_shape_colors_from_gridrep(gtrep)
+        genrep = self._extract_row_col_shape_colors_from_gridrep(genrep)
+
+        diff_rep = f"Level 1:\n"
+        for index, glitem in enumerate(gtrep):
+            if index < len(genrep):
+                genitem = genrep[index]
+                if glitem["row"] == genitem["row"] and glitem["col"] == genitem["col"]:
+                    if glitem["shapes"] == genitem["shapes"] and glitem["colors"] == genitem["colors"]:
+                        #logger.info(f"Match found for location row: {glitem['row']}, col: {glitem['col']}")
+                        diff_rep += f"\trow: {glitem['row']}, col: {glitem['col']}: Identical\n"
+                    else:
+                        if glitem["shapes"] != genitem["shapes"]:
+                            diff_rep += f"\trow: {glitem['row']}, col: {glitem['col']}: Shape Mismatch (Goal: {glitem['shapes']}, Player: {genitem['shapes']})\n"
+                        elif glitem["colors"] != genitem["colors"]:
+                            if type(glitem["colors"]) != type(genitem["colors"]):
+                                if set(glitem["colors"]) != set(genitem["colors"]):
+                                    diff_rep += f"\trow: {glitem['row']}, col: {glitem['col']}: Color Mismatch (Goal: {glitem['colors']}, Player: {genitem['colors']})\n"
+                                else:
+                                    diff_rep += f"\trow: {glitem['row']}, col: {glitem['col']}: Identical\n"
+
+                            else:
+                                diff_rep += f"\trow: {glitem['row']}, col: {glitem['col']}: Color Mismatch (Goal: {glitem['colors']}, Player: {genitem['colors']})\n"
+                        #logger.info(f"Mismatch found for location row: {glitem['row']}, col: {glitem['col']}")
+                else:
+                    #logger.info(f"Location mismatch between goal and generated representation at index {index}")
+                    diff_rep += f"\trow: {glitem['row']}, col: {glitem['col']}: Missing\n"
+            else:
+                #logger.info(f"No corresponding generated item for goal item at index {index}")
+                diff_rep += f"\trow: {glitem['row']}, col: {glitem['col']}: Missing\n"
+
+        for index, genitem in enumerate(genrep):
+            if index >= len(gtrep):
+                #logger.info(f"Extra generated item at index {index}")
+                diff_rep += f"\trow: {genitem['row']}, col: {genitem['col']}: Extra\n"
+
+        return diff_rep, None
+
+    
+    def comparegridrep(self, gtrep, genrep):
+        if gtrep is None or genrep is None:
+            error = f"One of the grid representations is None. GT: {gtrep}, Gen: {genrep}"
+            logger.error(error)
+            return None, error
+
+        gtrep = self._extract_row_col_shape_colors_from_gridrep(gtrep)
+        genrep = self._extract_row_col_shape_colors_from_gridrep(genrep)
+
+        def _colors_equal(a, b):
+            # Handle list/tuple comparison: convert both to lists for order-dependent comparison
+            if isinstance(a, (list, tuple)) and isinstance(b, (list, tuple)):
+                return list(a) == list(b)
+            return a == b
+
+        gt_map = {(item["row"], item["col"]): item for item in gtrep}
+        gen_map = {(item["row"], item["col"]): item for item in genrep}
+
+        diff_rep = f"Level 1:\n"
+        all_keys = sorted(set(gt_map.keys()).union(gen_map.keys()))
+        for row, col in all_keys:
+            gt_item = gt_map.get((row, col))
+            gen_item = gen_map.get((row, col))
+            if gt_item is None:
+                diff_rep += f"\trow: {row}, col: {col}: Extra\n"
+                continue
+            if gen_item is None:
+                diff_rep += f"\trow: {row}, col: {col}: Missing\n"
+                continue
+
+            if gt_item["shapes"] == gen_item["shapes"] and _colors_equal(gt_item["colors"], gen_item["colors"]):
+                diff_rep += f"\trow: {row}, col: {col}: Identical\n"
+            else:
+                if gt_item["shapes"] != gen_item["shapes"]:
+                    diff_rep += f"\trow: {row}, col: {col}: Shape Mismatch (Goal: {gt_item['shapes']}, Player: {gen_item['shapes']})\n"
+                elif not _colors_equal(gt_item["colors"], gen_item["colors"]):
+                    diff_rep += f"\trow: {row}, col: {col}: Color Mismatch (Goal: {gt_item['colors']}, Player: {gen_item['colors']})\n"
+
+        return diff_rep, None
+
+    def get_layer_representation_diff_rb_withcolorsshapes(self, gt_data, gen_data):
+        """Generate a layer-wise ASCII representation from the occupied cells."""
+
+        if "shapes" not in gt_data or "colors" not in gt_data or "locations" not in gt_data:
+            logger.error(f"GT data is missing required keys: {gt_data}")
+            return None
+        if "shapes" not in gen_data or "colors" not in gen_data or "locations" not in gen_data:
+            logger.error(f"Generated data is missing required keys: {gen_data}")
+            return None
+        
+        if gt_data["shapes"] is None or gt_data["colors"] is None or gt_data["locations"] is None:
+            logger.error(f"GT data has None values: {gt_data}")
+            return None
+        
+        if gen_data["shapes"] is None or gen_data["colors"] is None or gen_data["locations"] is None:
+            logger.error(f"Generated data has None values: {gen_data}")
+            return None
+        
+        gt_rep_locations = gt_data["locations"]
+        gen_rep_locations = gen_data["locations"]
+        
+        if not gt_rep_locations or not gen_rep_locations:
+            logger.error(f"No occupied cells provided.{gt_rep_locations}, {gen_rep_locations}")
+            return None
+        logger.info(f"GT_Rep Locations: {gt_rep_locations}")
+        logger.info(f"Gen_Rep Locations: {gen_rep_locations}")
+
+
+        diff_rep = f"Level 1:\n"
+        for loc_index, location in enumerate(gt_rep_locations):
+            if location not in gen_rep_locations:
+                diff_rep += f"\trow: {location[0]}, col: {location[1]}: Missing\n"
+            else:
+                #Compare shapes and colors
+                if gen_data["shapes"][loc_index] != gt_data["shapes"]:
+                    diff_rep += f"\trow: {location[0]}, col: {location[1]}: Shape Mismatch (Goal: {gt_data['shapes']}, Player: {gen_data['shapes'][loc_index]})\n"
+                elif gen_data["colors"][loc_index] != gt_data["colors"]:
+                    diff_rep += f"\trow: {location[0]}, col: {location[1]}: Color Mismatch (Goal: {gt_data['colors']}, Player: {gen_data['colors'][loc_index]})\n"
+                else:
+                    diff_rep += f"\trow: {location[0]}, col: {location[1]}: Identical\n"
+
+        for location in gen_rep_locations:
+            if location not in gt_rep_locations:
+                diff_rep += f"\trow: {location[0]}, col: {location[1]}: Extra\n"
+
+        return diff_rep
+
 
     def get_func_details(self, repeat_code, combo_name):        
         func_header = f"def {combo_name}(board, colors, x, y):\n\tcoordinates.append((x, y))\n\tcolorslist.append(colors)\n"
@@ -427,7 +649,22 @@ class PrepareASCIIRep:
             "board": board,
             "colorslist": colorslist
             }
-        exec(func_header + repeat_code, ns)
+
+        rcode_lines = repeat_code.strip().split('\n')
+        updatedrcode = []
+        for line in rcode_lines:
+            if line.strip().startswith("clear" + "(") or line.strip().startswith("remove" + "(") or line.strip().startswith("move" + "("):
+                continue
+            else:
+                updatedrcode.append(line)
+        use_repeat_code = '\n'.join(updatedrcode)
+        logger.info(f"Before cleaning repeat code:\n{repeat_code}")
+        logger.info(f"After cleaning repeat code:\n{use_repeat_code}")
+
+
+        outcode = func_header + use_repeat_code
+        logger.info(f"Executing function code:\n{outcode}")
+        exec(outcode, ns)
         if isinstance(coordinates, list) and len(coordinates) == 0:
             logger.info(f"No coordinates found for combo_name: {combo_name}, repeat_code:\n{repeat_code}")
 
@@ -599,7 +836,8 @@ class PrepareASCIIRep:
     def get_layer_representation(self, occupied_cells, optim=False):
         """Generate a layer-wise ASCII representation from the occupied cells."""
         if not occupied_cells:
-            print(f"No occupied cells provided.")
+            #print(f"No occupied cells provided.")
+            logger.info(f"No occupied cells provided.")
             return None
         
 
@@ -799,8 +1037,9 @@ class PrepareASCIIRep:
                     if next_key in occupied_cells:
                         next_elements = occupied_cells[next_key]
                         if index > len(next_elements)-1:
-                            print("Index is not matching for bridge-h-right")
-                            input()
+                            #print("Index is not matching for bridge-h-right")
+                            #input()
+                            logger.info(f"Index is not matching for bridge-h-right at {next_key} for shape L at {key}")
                         else:
                             next_shape, next_color = next_elements[index]
                             if next_shape == "R" and next_color == color:
@@ -809,15 +1048,17 @@ class PrepareASCIIRep:
 
                                 skip_cells[next_key].append(index)
                             else:
-                                print(f"Bridge-h-right not found or color mismatch: {next_shape}, {next_color}")
-                                input()
+                                #print(f"Bridge-h-right not found or color mismatch: {next_shape}, {next_color}")
+                                #input()
+                                logger.info(f"Bridge-h-right not found or color mismatch at {next_key} for shape L at {key}. Found shape: {next_shape}, color: {next_color}")
                 elif shape == "T":
                     next_key = f"{row+1}:{col}"
                     if next_key in occupied_cells:
                         next_elements = occupied_cells[next_key]
                         if index > len(next_elements)-1:
-                            print("Index is not matching for bridge-v-bottom")
-                            input()
+                            #print("Index is not matching for bridge-v-bottom")
+                            #input()
+                            logger.info(f"Index is not matching for bridge-v-bottom at {next_key} for shape T at {key}")
                         else:
                             next_shape, next_color = next_elements[index]
                             if next_shape == "B" and next_color == color:
@@ -826,17 +1067,19 @@ class PrepareASCIIRep:
 
                                 skip_cells[next_key].append(index)
                             else:
-                                print(f"Bridge-v-bottom not found or color mismatch: {next_shape}, {next_color}")
-                                input()   
+                                #print(f"Bridge-v-bottom not found or color mismatch: {next_shape}, {next_color}")
+                                #input()   
+                                logger.info(f"Bridge-v-bottom not found or color mismatch at {next_key} for shape T at {key}. Found shape: {next_shape}, color: {next_color}")
 
                 elif shape in ["R", "B"]:
                     if key in skip_cells and index in skip_cells[key]:
                         #print(f"Skipping shape {shape} at {key} as it's part of a bridge already processed.")
                         continue
                     else:
-                        print(f"Shape {shape} at {key} is not part of a bridge or already processed.")
-                        print(skip_cells)
-                        input()
+                        #print(f"Shape {shape} at {key} is not part of a bridge or already processed.")
+                        #print(skip_cells)
+                        #input()
+                        logger.info(f"Shape {shape} at {key} is not part of a bridge or already processed. Skip cells: {skip_cells}")
                 shapes_dict, shape_str, color_str = self._elaborate_shape_color_optim(shape, color)                             
                 #print(f"Processed shape-color: {shapes_dict}, {shape_str}, {color_str}")
                     

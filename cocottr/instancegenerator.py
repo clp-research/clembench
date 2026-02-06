@@ -81,14 +81,14 @@ class CocoTTRInstanceGenerator(GameInstanceGenerator):
         return board_size, gridsize, colors, location, skill_name
 
 
-    def _prepare_reconst_data(self, data):
+    def _prepare_reconst_data(self, data, max_task_turns):
 
         board_size, gridsize, colors, location, skill_name = self._get_grid_data(data)
         gt_code = data["dialogues"]["single_turn"]["instructions"][0]["<Editor>"]
         ascii_rep_board, _ = self.prepare_ascii_rep.get_ascii_representation(gt_code, board_size)
         
         details = f"Grid size: {gridsize}\nObject name: {skill_name}\nColors: {colors}\nLocation: {location}\nGoal:\n{ascii_rep_board}\n"
-        return {"details": details, "goal": ascii_rep_board, "gt_code": gt_code}
+        return {"details": details, "goal": ascii_rep_board, "gt_code": gt_code, "max_task_turns": max_task_turns}
 
     
     def _prepare_optim_inst_code_pairs(self, data):
@@ -99,7 +99,7 @@ class CocoTTRInstanceGenerator(GameInstanceGenerator):
             inst_code_pairs.append({"instruction": instruction, "code_snippet": code_snippet})
         return inst_code_pairs
 
-    def _prepare_optim_data(self, data):
+    def _prepare_optim_data(self, data, max_task_turns):
         gt_function = data["code"]["single_turn"]["function"]
         gt_usage = data["code"]["single_turn"]["usage"]
         gt_code_st = {"func": gt_function, "usage": gt_usage}
@@ -108,10 +108,10 @@ class CocoTTRInstanceGenerator(GameInstanceGenerator):
         inst_code_pairs = self._prepare_optim_inst_code_pairs(data)
         details = function_signature + "\n"
 
-        return {"details": details, "optim_gt": gt_code_st, "inst_code_pairs": inst_code_pairs}
+        return {"details": details, "optim_gt": gt_code_st, "inst_code_pairs": inst_code_pairs, "max_task_turns": max_task_turns}
     
 
-    def _prepare_reuse_data(self, data):
+    def _prepare_reuse_data(self, data, max_task_turns):
         board_size, gridsize, colors, location, skill_name = self._get_grid_data(data)
 
         gt_code = {"function": data["code"]["single_turn"]["function"], "usage": data["code"]["single_turn"]["function"]}
@@ -121,11 +121,11 @@ class CocoTTRInstanceGenerator(GameInstanceGenerator):
         target_board_rep, *_ = self.prepare_ascii_rep.get_ascii_representation_rb(board_size, gt_code, skill_name, colors, repeat_locations)
 
         details = f"Grid size: {gridsize}\nObject name: {skill_name}\nColors: {colors}\nLocation: {location}\nGoal:\n{target_board_rep}\n"
-        return {"details": details, "goal": target_board_rep, "gt_code": gt_code}
+        return {"details": details, "goal": target_board_rep, "gt_code": gt_code, "max_task_turns": max_task_turns}
 
 
 
-    def _prepare_repeat_data(self, data):
+    def _prepare_repeat_data(self, data, max_task_turns):
         repeat_locations = data["repeat_locations"]
         board_size, gridsize, colors, location, skill_name = self._get_grid_data(data)
 
@@ -135,7 +135,7 @@ class CocoTTRInstanceGenerator(GameInstanceGenerator):
 
         details = f"Grid size: {gridsize}\nObject name: {skill_name}\nColors: {colors}\nLocation: {location}\nGoal:\n{target_board_rep}\nDifference grid: None\nClarification: None"
 
-        return {"details": details, "goal": target_board_rep, "gt_code": gt_code}
+        return {"details": details, "goal": target_board_rep, "gt_code": gt_code, "max_task_turns": max_task_turns}
 
 
 
@@ -188,19 +188,36 @@ class CocoTTRInstanceGenerator(GameInstanceGenerator):
         ic_type = f"fs_{num_ic_samples}" if num_ic_samples > 0 else "zs"
         experiment = self.add_experiment(f"cocottr_{ic_type}")
         samples = self._prepare_samples_labels(config["cocottr"])
+        reconst_turns = config["num_reconst_turns"]
+        reuse_turns = config["num_reuse_turns"]
+        repeat_turns = config["num_repeat_turns"]
+        optim_turns = config["num_optim_turns"]
 
         tot_instances = 0
+
+        # Using SEED: 123
+        #samples_htest1= random.sample(samples["test"][2:], k=10)
+        
+        #Generate 10 more samples that are different from the samples_htest1 set
+        #remaining_samples = [s for s in samples["test"][2:] if s not in samples_htest1]
+        #samples_htest2 = random.sample(remaining_samples, k=10)
+
+        #Generate 10 more samples that are different from the samples_htest1 set
+        #remaining_samples = [s for s in samples["test"][2:] if s not in samples_htest1 and s not in samples_htest2]
+        #samples_htest3 = random.sample(remaining_samples, k=10)        
         for sample in samples["test"]:
+        #for sample in samples["test"][2:]:
+        #for sample in samples_htest2:        
             promptsdict = self._prepare_prompts(samples["prompt_incontext_labels"])
 
-            print(sample.keys())
+            #print(sample.keys())
             instance = self.add_game_instance(experiment, tot_instances)
             instance["data"] = {}
             instance["data"]["boards"] = sample
-            instance["data"]["reconst_data"] = self._prepare_reconst_data(sample["simple"])
-            instance["data"]["optim_data"] = self._prepare_optim_data(sample["simple"])
-            instance["data"]["reuse_data"] = self._prepare_reconst_data(sample["simple_reuse"])#self._prepare_reuse_data(sample["simple_reuse"])
-            instance["data"]["repeat_data"] = self._prepare_repeat_data(sample["regular"])
+            instance["data"]["reconst_data"] = self._prepare_reconst_data(sample["simple"], reconst_turns)
+            instance["data"]["optim_data"] = self._prepare_optim_data(sample["simple"], optim_turns)
+            instance["data"]["reuse_data"] = self._prepare_reuse_data(sample["simple_reuse"], reuse_turns)
+            instance["data"]["repeat_data"] = self._prepare_repeat_data(sample["regular"], repeat_turns)
             instance["data"]["use_error_feedback"] = config["use_error_feedback"]
             instance["data"]["use_images_in_human_prompts"] = config["use_images_in_human_prompts"]
             instance["data"]["use_optimizer"] = config["use_optimizer"]
@@ -211,8 +228,8 @@ class CocoTTRInstanceGenerator(GameInstanceGenerator):
             instance["data"]["prompts_dict"] = promptsdict
             tot_instances += 1
 
-            if tot_instances == 12:
-                break
+            #if tot_instances == 50:
+            #    break
 
         print(f"Generated {tot_instances} instances for experiment cocottr_{ic_type}")
 

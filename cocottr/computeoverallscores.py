@@ -134,14 +134,17 @@ def parse_interactions(interactions: Dict[str, Any]) -> Tuple[Dict[str, Any], in
     combo_name = boardinfo.get("combo_name")
     shapes_list = boardinfo.get("shapes")
     colors_list = boardinfo.get("colors")
-    return code_data, num_turns, total_shapes, play_turns, n_turns, gtcode, boardsize, combo_name, shapes_list, colors_list
+    op_status = {"reconstruction_status": ev.get("reconstruction_status"),
+                 "reuse_success": ev.get("reuse_success"),
+                 "repeat_success": ev.get("repeat_success"),
+                 "ttr_success": ev.get("ttr_success")}
+    return code_data, num_turns, total_shapes, play_turns, n_turns, gtcode, boardsize, combo_name, shapes_list, colors_list, op_status
 
 
 def parse_scores(scores: Dict[str, Any]) -> Tuple[Optional[float], Optional[bool]]:
     es = scores.get("episode scores", {})
-    main = es.get("Main Score")
-    reconst = es.get("reconstruction_status")
-    return main, reconst
+    main_score = es.get("Main Score")
+    return main_score
 
 
 def process_episode(episode_path: str) -> Dict[str, Any]:
@@ -165,7 +168,7 @@ def process_episode(episode_path: str) -> Dict[str, Any]:
 
     if os.path.exists(interactions_path):
         interactions = read_json_file(interactions_path) or {}
-        code_data, num_turns, total_shapes, play_turns, n_turns, gtcode, boardsize, combo_name, shapes_list_gt, colors_list_gt = parse_interactions(interactions)
+        code_data, num_turns, total_shapes, play_turns, n_turns, gtcode, boardsize, combo_name, shapes_list_gt, colors_list_gt, op_status = parse_interactions(interactions)
         stats["code_stats"] = code_data
         stats["dialog_turns"] = num_turns
         stats["total_shapes"] = total_shapes
@@ -175,6 +178,10 @@ def process_episode(episode_path: str) -> Dict[str, Any]:
         stats["combo_name"] = combo_name
         stats["shapes_list_gt"] = shapes_list_gt
         stats["colors_list_gt"] = colors_list_gt
+        stats["reconst_success"] = op_status["reconstruction_status"]
+        stats["reuse_success"] = op_status["reuse_success"]
+        stats["repeat_success"] = op_status["repeat_success"]
+        stats["ttr_success"] = op_status["ttr_success"]
         # Compute number of levels
         if gtcode:
             num_levels = computelevels(gtcode, boardsize)
@@ -182,15 +189,12 @@ def process_episode(episode_path: str) -> Dict[str, Any]:
         else:
             stats["num_levels"] = "unknown"
         # Get reconstruction_status from Evaluation section
-        ev = interactions.get("Evaluation", {})
-        stats["reconstruction_status"] = ev.get("reconstruction_status")
+        #ev = interactions.get("Evaluation", {})
+        #stats["reconstruction_status"] = ev.get("reconstruction_status")
 
     if os.path.exists(scores_path):
         scores = read_json_file(scores_path) or {}
-        main_score, reconst_status_from_scores = parse_scores(scores)
-        # Use reconstruction_status from interactions.json if not already set
-        if stats["reconstruction_status"] is None:
-            stats["reconstruction_status"] = reconst_status_from_scores
+        main_score = parse_scores(scores)
 
         if isinstance(main_score, float) and np.isnan(main_score):
             stats["accuracy_vals"].append(0)
@@ -202,15 +206,15 @@ def process_episode(episode_path: str) -> Dict[str, Any]:
             stats["accuracy_vals"].append(0)
             
             # Determine if episode is conclusive_wrong or non_conclusive (only for failed episodes)
-            reconst_status = stats["reconstruction_status"]
+            reconst_status = stats["reconst_success"]
             play_turns = stats["play_turns"]
             n_turns = stats["n_turns"]
             
             if reconst_status is False:
                 if play_turns is not None and n_turns is not None:
-                    if play_turns == n_turns:
+                    if play_turns == 15:#n_turns: 15 turns for reconstruction
                         stats["outcome"] = "non_conclusive"
-                    elif play_turns < n_turns:
+                    elif play_turns < 15:
                         stats["outcome"] = "conclusive_wrong"
         else:
             stats["accuracy_vals"].append(main_score)
@@ -615,7 +619,7 @@ def compute_scores(base_dir: str, verbose: bool = True) -> Dict[str, Any]:
 
 def main():
     parser = argparse.ArgumentParser(description="Compute overall scores from experiment directories")
-    parser.add_argument("base_dir", nargs="?", default="/home/admin/Desktop/codebase/cocobots/testimageccbts_local/clemnew/clembench/cocottr/r2", help="Base directory containing model results")
+    parser.add_argument("base_dir", nargs="?", default="/home/admin/Desktop/codebase/cocobots/testimageccbts_local/clemnew/clembench/cocottr/rp1", help="Base directory containing model results")
     parser.add_argument("--quiet", action="store_true", help="Suppress verbose printing")
     args = parser.parse_args()
 

@@ -13,6 +13,7 @@ import random
 import json
 from tqdm import tqdm
 from clemcore.clemgame import GameInstanceGenerator
+from resources.lang_config import LANG_CONFIG
 
 # number of words per episode
 num_words = 8
@@ -22,104 +23,66 @@ N_INSTANCES = 10
 
 
 class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
-    def __init__(self):
+    def __init__(self, lang="en"):
         super().__init__(os.path.dirname(__file__))
+        self.lang = lang
+        self.lang_cfg = LANG_CONFIG[lang]["guesswhat"]
+        base_path = os.path.join(os.path.dirname(__file__), "resources", lang)
+
+        category_file_path = os.path.join(base_path, "categories.json")
+        if not os.path.exists(category_file_path):
+            raise FileNotFoundError(f"Missing categories.json for language '{lang}' at {category_file_path}")
+
+        with open(category_file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if "Categories" in data:
+            self.categories = self.categories = {c["Category"]: sum((sub["Members"] for sub in c["Subcategories"]), []) for c in data["Categories"]}
+
+        elif "words" in data:
+            self.categories = data["words"]
+
+        else:
+            raise ValueError(f"Unknown categories.json format in {category_file_path}. Top-level keys: {list(data.keys())}")
 
     def on_generate(self, seed: int, **kwargs):
+        random.seed(seed)
         output_instances = {
             "experiments": []
         }
         self.generate_mix_set(output_instances)
-        self.generate_abstract_set(output_instances)
 
     def generate_mix_set(self, output_instances):
         output_instance_details = {"Level_1": [], "Level_2": [], "Level_3": []}
 
-        category_file_path = os.path.join(os.path.dirname(__file__), "utils", "categories_subcategories.json")
-        with open(category_file_path, 'r') as f:
-            self.categories = json.load(f)["Categories"]
 
         for level in [1, 2, 3]:
             experiment_name = f"Level_{level}"
             experiment = self.add_experiment(experiment_name)
+            cfg = self.lang_cfg
 
             max_turns = num_words
             experiment["max_turns"] = max_turns
-            experiment["question_tag"] = "QUESTION:"
-            experiment["answer_tag"] = "ANSWER:"
-            experiment["guess_tag"] = "GUESS:"
-            experiment["answer_variations"] = ["ANSWER: yes", "ANSWER: no", "ANSWER: Yes.", "ANSWER: Yes",
-                                               "ANSWER: No.", "ANSWER: No"]
-            experiment[
-                "letter_based_pattern"] = "(does the target word (start with the letter|contain the letter)|does the target word have the letter\s*[a-z]|is the (first|second|third|fourth|fifth) letter of the target word [a-z])"
-            experiment["direct_guess_pattern"] = "^is the target word\s*(['\"])[^'\"]+?\1\s*\?"
-            experiment[
-                "length_question_pattern"] = "does the target word (have|contain) (more|less|exactly) \d+ (letters|letter)"
-            experiment[
-                "syllable_question_pattern"] = "does the target word (have|contain) (more than|less than|exactly) (one|two|three|four|five|six|seven|eight|nine|ten|\d+) (syllable|syllables)"
-            experiment[
-                "pos_question_pattern"] = "^is the target word (a|an)\s+(noun|verb|adjective|adverb|pronoun|preposition|conjunction|interjection)\s*\?"
-
-            answerer_prompt = self.load_template("resources/initial_prompts/answerer_prompt")
-            guesser_prompt = self.load_template("resources/initial_prompts/guesser_prompt")
+            experiment["question_tag"] = cfg["QUESTION"]
+            experiment["answer_tag"] = cfg["ANSWER"]
+            experiment["guess_tag"] = cfg["GUESS"]
+            experiment["answer_variations"] = cfg["ANSWER_VARIATIONS"]
+            patterns = cfg["PATTERNS"]
+            experiment["letter_based_pattern"] = patterns["LETTER"]
+            experiment["direct_guess_pattern"] = patterns["DIRECT"]
+            experiment["length_question_pattern"] = patterns["LENGTH"]
+            experiment["syllable_question_pattern"] = patterns["SYLLABLE"]
+            experiment["pos_question_pattern"] = patterns["POS"]
+            answerer_prompt = self.load_template(f"resources/{self.lang}/initial_prompts/answerer_prompt")
+            guesser_prompt = self.load_template(f"resources/{self.lang}/initial_prompts/guesser_prompt")
 
             experiment["answerer_initial_prompt"] = answerer_prompt
             experiment["guesser_initial_prompt"] = guesser_prompt
 
-            used_words = set()
+            #used_words = set()
             game_instances = []
             for game_id in tqdm(range(N_INSTANCES)):
-                instance, instance_details = self.generate_instance(level, used_words)
-                if instance:
-                    game_instance = self.add_game_instance(experiment, game_id)
-                    game_instance["target_word"] = instance["target"]
-                    game_instance["candidate_list"] = instance["items"]
-                    game_instances.append(game_instance)
-
-                    output_instance_details[experiment_name].append(instance_details)
-
-            experiment["game_instances"] = game_instances
-            output_instances["experiments"].append(experiment)
-
-    def generate_abstract_set(self, output_instances):
-
-        category_file_path = os.path.join(os.path.dirname(__file__), "utils", "abstract_categories_subcategories.json")
-        with open(category_file_path, 'r') as f:
-            self.categories = json.load(f)["Categories"]
-
-        output_instance_details = {"Abs_Level_1": [], "Abs_Level_2": [], "Abs_Level_3": []}
-
-        for level in [1, 2, 3]:
-            experiment_name = f"Abs_Level_{level}"
-            experiment = self.add_experiment(experiment_name)
-
-            max_turns = num_words  # max_turns is defined as the number of words in the candidate list
-            experiment["max_turns"] = max_turns
-            experiment["question_tag"] = "QUESTION:"
-            experiment["answer_tag"] = "ANSWER:"
-            experiment["guess_tag"] = "GUESS:"
-            experiment["answer_variations"] = ["ANSWER: yes", "ANSWER: no", "ANSWER: Yes.", "ANSWER: Yes",
-                                               "ANSWER: No.", "ANSWER: No"]
-            experiment[
-                "letter_based_pattern"] = "(does the target word (start with the letter|contain the letter)|does the target word have the letter\s*[a-z]|is the (first|second|third|fourth|fifth) letter of the target word [a-z])"
-            experiment["direct_guess_pattern"] = "^is the target word\s*(['\"])[^'\"]+?\1\s*\?"
-            experiment[
-                "length_question_pattern"] = "does the target word (have|contain) (more|less|exactly) \d+ (letters|letter)"
-            experiment[
-                "syllable_question_pattern"] = "does the target word (have|contain) (more than|less than|exactly) (one|two|three|four|five|six|seven|eight|nine|ten|\d+) (syllable|syllables)"
-            experiment[
-                "pos_question_pattern"] = "^is the target word (a|an)\s+(noun|verb|adjective|adverb|pronoun|preposition|conjunction|interjection)\s*\?"
-
-            answerer_prompt = self.load_template("resources/initial_prompts/answerer_prompt")
-            guesser_prompt = self.load_template("resources/initial_prompts/guesser_prompt")
-
-            experiment["answerer_initial_prompt"] = answerer_prompt
-
-            experiment["guesser_initial_prompt"] = guesser_prompt
-
-            used_words = set()
-            game_instances = []
-            for game_id in tqdm(range(N_INSTANCES)):
+                used_words = set()
                 instance, instance_details = self.generate_instance(level, used_words)
                 if instance:
                     game_instance = self.add_game_instance(experiment, game_id)
@@ -136,9 +99,47 @@ class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
         instance = {"items": [], "target": ""}
         instance_details = {"items": [], "target": ""}
         used_categories = set()
+        categories = list(self.categories.keys())
+        instance = {"items": [], "target": ""}
 
         required_words = num_words
 
+        if level == 1:
+            # 8 categories x 1 word
+            chosen_categories = random.sample(categories, num_words)
+            for cat in chosen_categories:
+                word = random.choice([w for w in self.categories[cat] if w not in used_words] or self.categories[cat])
+                used_words.add(word)
+                instance["items"].append(word)
+
+        elif level == 2:
+            # 4 categories x 2 words
+            chosen_categories = random.sample(categories, 4)
+            for cat in chosen_categories:
+                words = random.sample([w for w in self.categories[cat] if w not in used_words] or self.categories[cat],2)
+                for word in words:
+                    used_words.add(word)
+                    instance["items"].append(word)
+
+        elif level == 3:
+            # 1 category x 8 words
+            cat = random.choice(categories)
+            words = random.sample([w for w in self.categories[cat] if w not in used_words] or self.categories[cat], num_words)
+            for word in words:
+                used_words.add(word)
+                instance["items"].append(word)
+
+        else:
+            return None, None
+
+        if len(instance["items"]) == num_words:
+            instance["target"] = random.choice(instance["items"])
+            instance_details["items"] = instance["items"]
+            instance_details["target"] = instance["target"]
+            return instance, instance_details
+
+        return None, None
+    """
         def find_valid_categories(level):
             if level == 1:
                 return [
@@ -261,7 +262,9 @@ class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
 
         print("Error: Could not generate a valid instance after several attempts.")
         return None, None
+    """
 
 
 if __name__ == '__main__':
-    GuessWhatGameInstanceGenerator().generate(seed=42)
+    for lang in LANG_CONFIG.keys():
+        GuessWhatGameInstanceGenerator(lang=lang).generate(seed=42, filename=f"instances_{lang}.json")

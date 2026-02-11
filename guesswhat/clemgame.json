@@ -4,7 +4,7 @@
   "main_game": "guesswhat",
   "players": 2,
   "image": "none",
-  "languages": ["en"],
+  "languages": ["en", "hu"],
   "benchmark": ["2.0", "3.0"],
   "regression": "large",
   "roles": ["Guesser", "Answerer"]

@@ -50,6 +50,7 @@ class CocoTTRMaster(DialogueGameMaster):
         self.reuse_data = data["reuse_data"]
         self.repeat_data = data["repeat_data"]
         self.prompts_dict = data["prompts_dict"]
+        self.shapes_references_base64 = data["shapes_references_base64"]
 
         self.prompt_a = {"reconst": self.prompts_dict["prompt_a_reconst"],
                          "reuse": self.prompts_dict["prompt_a_reuse"],
@@ -139,6 +140,7 @@ class CocoTTRMaster(DialogueGameMaster):
         self.player_grid_match_status = False
         self.player_grid = None
         self.player_occupied_cells = None
+        self.gen_image_base64 = None
 
         # instantiate players:
         self.player_a = InstructionGiver(self.model_a, "A", )
@@ -226,6 +228,7 @@ class CocoTTRMaster(DialogueGameMaster):
         self.gtcode = None
         self.gt_usage = None
         self.gt_occupied_cells = None
+        self.gen_image_base64 = None
         
         if variant in ["simple", "simple_reuse"]:
             self.gtcode = {"function": self.board_info["code"]["single_turn"]["function"],
@@ -271,14 +274,20 @@ class CocoTTRMaster(DialogueGameMaster):
             if variant == "simple":
                 self.current_task = "reconst"
                 self.max_task_turns = self.reconst_data["max_task_turns"]
+                self.gt_image_base64 = self.reconst_data["gt_image_base64"]
+                self.empty_board_base64 = self.reconst_data["empty_board_base64"]
                 p1_data = self.reconst_data["details"]
             elif variant == "simple_reuse":
                 self.current_task = "reuse"
                 self.max_task_turns = self.reuse_data["max_task_turns"]
+                self.gt_image_base64 = self.reuse_data["gt_image_base64"]
+                self.empty_board_base64 = self.reuse_data["empty_board_base64"]
                 p1_data = self.prompt_a["reuse"] + "\n" + self.reuse_data["details"]
             elif variant == "regular":
                 self.current_task = "repeat"
                 self.max_task_turns = self.repeat_data["max_task_turns"]
+                self.gt_image_base64 = self.repeat_data["gt_image_base64"]
+                self.empty_board_base64 = self.repeat_data["empty_board_base64"]
                 p1_data = self.prompt_a["repeat"] + "\n" +self.repeat_data["details"]
             else:
                 raise GameError(f"Unknown variant type: {variant}")
@@ -306,10 +315,21 @@ class CocoTTRMaster(DialogueGameMaster):
 
         p1_data = self._set_current_task_context(optim_step=False)
 
+        prompt_message = self.prompt_a[self.current_task]+"\n"+str(p1_data)
+
         if self.player_a_type == "human" and self.use_images_in_human_prompts:
-            p1_messages = self.prompt_a[self.current_task]+"\n"
+            #Add GT image filename in html format
+            safe_text = escape(prompt_message+"\n\nReference Images are given below:\n\n")
+            data_uri_shapes = self.shapes_references_base64
+            data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
+            data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
+            #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
+            p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="350" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid (Empty)</figcaption><img src="{data_uri_2}" width="350" height="350" /></figure></div>"""
+
+            #p1_messages = self.prompt_a[self.current_task]+"\n"
         else:
-            p1_messages = self.prompt_a[self.current_task]+"\n"+str(p1_data)
+            #p1_messages = self.prompt_a[self.current_task]+"\n"+str(p1_data)
+            p1_messages = prompt_message
 
         self.set_context_for(self.player_a, p1_messages)
         gt_cells, _ = self.prepare_ascii_rep.get_ascii_representation(self.gtcode, self.board_info["size"])
@@ -739,13 +759,46 @@ class CocoTTRMaster(DialogueGameMaster):
                         optim_step=True
                     else:
                         optim_step=False
-                    p2_prompt = self._set_current_task_context(optim_step)
+                    prompt_message = self._set_current_task_context(optim_step)
+
+                    if not optim_step:
+                        if self.player_a_type == "human" and self.use_images_in_human_prompts:
+                            #Add GT image filename in html format
+                            safe_text = escape(prompt_message+"\n\nReference Images are given below:\n\n")
+                            data_uri_shapes = self.shapes_references_base64
+                            logger.info("Optimizer is not there.. setting data_uri for reuse board")
+                            logger.info(f"GT image base64 string:\n{self.gt_image_base64}")  # Log the beginning of the base64 string for verification
+                            data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
+                            data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
+                            #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
+                            p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="350" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid (Empty)</figcaption><img src="{data_uri_2}" width="350" height="350" /></figure></div>"""
+                            p2_prompt = p1_messages
+                        else:
+                            p2_prompt = prompt_message
+                    else:
+                        p2_prompt = prompt_message
+                    logger.info(f"Reconst done, Optimizer step: {optim_step}, setting prompt for Player A and Player B.\n{p2_prompt}")
+
                 elif self.current_task == "reuse":
                     self.reuse_success = True
                     self.play_turns_reuse = self.current_task_turns
                     self.play_turns_total += self.current_task_turns
                     logger.info(f"Reuse task successful., turns taken: {self.current_task_turns}")
-                    p2_prompt = self._set_current_task_context(optim_step=False)
+                    prompt_message = self._set_current_task_context(optim_step=False)
+
+                    if self.player_a_type == "human" and self.use_images_in_human_prompts:
+                        #Add GT image filename in html format
+                        safe_text = escape(prompt_message+"\n\nReference Images are given below:\n\n")
+                        data_uri_shapes = self.shapes_references_base64
+                        data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
+                        data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
+                        #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
+                        p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="350" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid (Empty)</figcaption><img src="{data_uri_2}" width="350" height="350" /></figure></div>"""
+                        p2_prompt = p1_messages
+                    else:
+                        p2_prompt = prompt_message
+                    logger.info(f"Reuse done, setting prompt for Player A and Player B.\n{p2_prompt}")
+
             elif self.current_task == "repeat":
                 parse_a["status"] = "success"
                 self.repeat_success = True
@@ -814,11 +867,11 @@ class CocoTTRMaster(DialogueGameMaster):
             else:
                 safe_text = escape(str(p2_data)+"\n\nReference Images are given below:\n\n")
             data_uri_shapes = self.shapes_references_base64
-            data_uri_1 = f"data:image/png;base64,{self.gt_image_base64}"
+            data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
             if gen_image_base64:
                 data_uri_2 = f"data:image/png;base64,{gen_image_base64}"
             else:
-                data_uri_2 = f"data:image/png;base64,{self.empty_player_board_base64}"
+                data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_player_board_base64}"
             #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
             p2_message = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="350" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid (Empty)</figcaption><img src="{data_uri_2}" width="350" height="350" /></figure></div>"""
         else:
@@ -828,7 +881,9 @@ class CocoTTRMaster(DialogueGameMaster):
 
 
     def _prepare_playerb_clarification_response(self, details: str, cfq: bool) -> str:
-        gen_image_base64 = None#self.genresponse[-1]["gen_image_base64"] if self.genresponse and len(self.genresponse) > 0 and "gen_image_base64" in self.genresponse[-1] else None
+        #gen_image_base64 = None#self.genresponse[-1]["gen_image_base64"] if self.genresponse and len(self.genresponse) > 0 and "gen_image_base64" in self.genresponse[-1] else None
+
+        gen_image_base64 = self.gen_image_base64
         diff_grid = self._get_current_filled_grid()
         reconstruction_complete = "True" if self.player_grid_match_status else "False"
 
@@ -912,14 +967,19 @@ class CocoTTRMaster(DialogueGameMaster):
 
             logger.info(f"Generated ASCII representation:\n{gen_ascii_rep}")
             logger.info(self.genresponse[self.current_task])
-            self.genresponse[self.current_task][-1]["ascii_rep"] = gen_ascii_rep
-            self.genresponse[self.current_task][-1]["occupied_cells"] = gen_occupied_cells
-            self.genresponse[self.current_task][-1]["code_stats"] = code_stats
-            self.genresponse[self.current_task][-1]["gen_image_base64"] = None
 
             logger.info("Updating player grid with generated ASCII representation.")
             self.player_grid = gen_ascii_rep
             self.player_occupied_cells = gen_occupied_cells
+
+
+            self.gen_image_base64 = self.prepare_ascii_rep.get_image_gen_board(self.genboard[self.current_task], "turn_playerb_board.png")
+
+            self.genresponse[self.current_task][-1]["ascii_rep"] = gen_ascii_rep
+            self.genresponse[self.current_task][-1]["occupied_cells"] = gen_occupied_cells
+            self.genresponse[self.current_task][-1]["code_stats"] = code_stats
+            self.genresponse[self.current_task][-1]["gen_image_base64"] = self.gen_image_base64
+
 
             diff_grid = self._get_difference_grid()
             result = self._validate_game(self.genboard[self.current_task])

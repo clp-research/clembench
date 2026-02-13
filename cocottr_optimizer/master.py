@@ -340,7 +340,7 @@ class CocoTTRMaster(DialogueGameMaster):
             data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
             data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
             #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
-            p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid (Empty)</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
+            p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
 
             #p1_messages = self.prompt_a[self.current_task]+"\n"
         else:
@@ -864,7 +864,7 @@ class CocoTTRMaster(DialogueGameMaster):
                             data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
                             data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
                             #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
-                            p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid (Empty)</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
+                            p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
                             p2_prompt = p1_messages
                         else:
                             p2_prompt = prompt_message
@@ -884,7 +884,7 @@ class CocoTTRMaster(DialogueGameMaster):
                         data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
                         data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
                         #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
-                        p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid (Empty)</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
+                        p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
                         p2_prompt = p1_messages
                     else:
                         p2_prompt = prompt_message                    
@@ -904,7 +904,7 @@ class CocoTTRMaster(DialogueGameMaster):
                     data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
                     data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
                     #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
-                    p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid (Empty)</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
+                    p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
                     p2_prompt = p1_messages
                 else:
                     p2_prompt = prompt_message                
@@ -1017,12 +1017,14 @@ class CocoTTRMaster(DialogueGameMaster):
             else:
                 ack_text = clarification
 
+        #logger.info(f"_prepare_playerb_turn_response: Reconstruction status: {reconstruction_status}, {type(reconstruction_status)}")
         reconstruction_text = reconstruction_status
         if self.player_a_type == "human":
-            if reconstruction_status:
-                reconstruction_text = f'<span style="color: blue; font-size: 20px;">{reconstruction_status}</span>'
+            if reconstruction_status == "True":
+                reconst_color = "blue"
             else:
-                reconstruction_text = f'<span style="color: red; font-size: 20px;">{reconstruction_status}</span>'
+                reconst_color = "red"
+            reconstruction_text = f'<span style="color: {reconst_color}; font-size: 15px;f">{reconstruction_status}</span>'
 
         """
         if self.player_a_type == "human":
@@ -1038,10 +1040,11 @@ class CocoTTRMaster(DialogueGameMaster):
 
         if self.player_a_type == "human":
             #Add GT image filename in html format
-            if clarification:
-                safe_text = p2_data+"\n\nReference Images are given below:\n\n"                
-            else:
-                safe_text = escape(str(p2_data)+"\n\nReference Images are given below:\n\n")
+            safe_text = p2_data+"\n\nReference Images are given below:\n\n"                
+            #if clarification:
+            #    safe_text = p2_data+"\n\nReference Images are given below:\n\n"                
+            #else:
+            #    safe_text = escape(str(p2_data)+"\n\nReference Images are given below:\n\n")
             data_uri_shapes = self.shapes_references_base64
             data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
             if gen_image_base64:
@@ -1049,7 +1052,7 @@ class CocoTTRMaster(DialogueGameMaster):
             else:
                 data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_player_board_base64}"
             #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
-            p2_message = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid (Empty)</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
+            p2_message = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
         else:
             p2_message = p2_data
 

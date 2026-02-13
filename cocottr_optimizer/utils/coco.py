@@ -134,7 +134,7 @@ def set_up_board_plot(rows, cols, cell_size):
     # Create a figure and axis
     fig, ax = plt.subplots()
     # Draw grid first (low zorder)
-    ax.grid(True, zorder=0)    
+    ax.grid(True, zorder=0, which='both', linewidth=0.3, alpha=0.2)    
 
     # Loop through rows and columns to create the grid
     for row in range(rows):
@@ -155,9 +155,25 @@ def set_up_board_plot(rows, cols, cell_size):
     ax.set_xlim(0, cols)
     ax.set_ylim(0, rows)
 
-    # Remove axis labels and ticks
-    ax.set_xticks([])
-    ax.set_yticks([])
+    # ---- Put ticks at cell centers and use them as labels ----
+    ax.set_xticks(np.arange(cols) + 0.5)
+    ax.set_yticks(np.arange(rows) + 0.5)
+
+    ax.set_xticklabels(range(1, cols + 1))
+    ax.set_yticklabels(range(1, rows + 1))
+
+    #ax.tick_params(axis="both", length=0, pad=5)
+    ax.tick_params(axis="both", length=0, pad=5, labelsize=15)  # <-- small font
+
+    # Column numbers on top
+    ax.xaxis.tick_top()
+
+    # Axis titles
+    ax.set_xlabel("Columns →", labelpad=2, fontsize=15)
+    ax.xaxis.set_label_position('top')
+
+    ax.set_ylabel("Rows →", labelpad=2, fontsize=15)    
+    ax.yaxis.set_label_position('left')
 
     ax.set_aspect("equal", adjustable="box")
 

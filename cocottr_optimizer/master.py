@@ -1017,6 +1017,13 @@ class CocoTTRMaster(DialogueGameMaster):
             else:
                 ack_text = clarification
 
+        reconstruction_text = reconstruction_status
+        if self.player_a_type == "human":
+            if reconstruction_status:
+                reconstruction_text = f'<span style="color: blue; font-size: 20px;">{reconstruction_status}</span>'
+            else:
+                reconstruction_text = f'<span style="color: red; font-size: 20px;">{reconstruction_status}</span>'
+
         """
         if self.player_a_type == "human":
             if cfq:
@@ -1027,7 +1034,7 @@ class CocoTTRMaster(DialogueGameMaster):
 
         clarification_header = "Clarification"
         ack_header = "Acknowledgement"
-        p2_data = f"\nGoal:{self.player_a_goal}\nDifference grid: {difference_grid}\n{clarification_header}: {clarification_text}\n{ack_header}: {ack_text}\nReconstruction Status: {reconstruction_status}"
+        p2_data = f"\nGoal:{self.player_a_goal}\nDifference grid: {difference_grid}\n{clarification_header}: {clarification_text}\n{ack_header}: {ack_text}\nReconstruction Status: {reconstruction_text}"
 
         if self.player_a_type == "human":
             #Add GT image filename in html format

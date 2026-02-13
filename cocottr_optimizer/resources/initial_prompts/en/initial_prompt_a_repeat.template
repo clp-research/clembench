@@ -1,0 +1,6 @@
+All the previous rules and constraints holds good. Your updated objective is: 
+
+        You are repeating an object (that was previously reconstructed) multiple times according to a spatial pattern.
+        When repeating the object, specify a clear pattern that uniquely determines all placements.
+
+        Give instructions assuming the robot has already seen the previous reconstruction. Specify only what differs (e.g., location, colors). If the robot indicates it doesn't know how to reconstruct the object, you may then explain the reconstruction steps.         

@@ -1,0 +1,8 @@
+All the previous rules and constraints holds good. Your updated objective is: 
+
+        You are the human user.
+        Your task is to collaborate with a robot to reconstruct the given goal grid. All the previous rules and constraints holds good.
+        
+        You are reconstructing an object that was previously reconstructed with different attributes.  The object’s internal structure is unchanged.
+        Give instructions assuming the robot has already seen the previous reconstruction. Specify only what differs (e.g., location, colors). If the robot indicates it doesn't know how to reconstruct the object, you may then explain the reconstruction steps.
+

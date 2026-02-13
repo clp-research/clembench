@@ -1,0 +1,12 @@
+All the previous rules and constraints holds good. Your updated objective is:
+        You are reconstructing an object that was previously built, with some properties (e.g., location or colors) changed.
+
+        Available APIs:
+        - clear(board: np.ndarray)
+            • To clear all the shapes on the board
+
+        - undo(board: np.ndarray)
+            • To undo last placement action(s) on the board
+            • If multiple shapes were placed as part of the previous operation, all of them will be cleared from the board.
+
+        If a relevant skill is available (under LEARNED SKILLS), you may use it. Use loops wherever necessary while using these skills. If no suitable skill exists, reconstruct the object using explicit placement commands.

@@ -1,0 +1,10 @@
+[[ ## prompt ## ]]
+TASK:
+1. Review the previous state and error feedback
+2. Identify missing or unclear information
+
+RESPONSE RULES:
+3. Produce a single optimized Python function as a string.
+4. Do not generate any other reasoning traces as it will fail code execution
+
+Respond with the corresponding output fields, starting with the field `[[ ## optimized_function ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.

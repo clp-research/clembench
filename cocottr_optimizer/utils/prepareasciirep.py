@@ -58,7 +58,8 @@ class PrepareASCIIRep:
         try:
             exec(gt_exec_code)
         except Exception as e:
-            print(f"Error executing code: {e}")
+            #print(f"Error executing code: {e}")
+            logger.error(f"Error executing code: {e}")
             return None
         return board
     
@@ -320,8 +321,9 @@ def clear(board):
         for location in repeat_locations:
             row, col = location[0]-1, location[1]-1
             if f"{row}:{col}" in occupied_cells:
-                print(f"Multiple objects at location {row},{col} for combo {combo_name}")
-                input()
+                #print(f"Multiple objects at location {row},{col} for combo {combo_name}")
+                #input()
+                logger.info(f"Multiple objects at location {row},{col} for combo {combo_name}")
             occupied_cells[f"{row}:{col}"] = [(combo_name, f"{colors}")]
         return occupied_cells 
 
@@ -382,7 +384,8 @@ def clear(board):
             return None
 
         occupied_cells = self._list_occupied_cells_with_details(board)
-        print(occupied_cells)
+        #print(occupied_cells)
+        logger.info(f"Occupied cells: {occupied_cells}")
         layer_rep = self.get_layer_representation(occupied_cells)
         return layer_rep, board
         ascii_representation = "[\n"
@@ -428,7 +431,7 @@ def clear(board):
             return None, error, None, None
         logger.debug(f"Generating ASCII representation from the board generation call.")
         occupied_cells = self._list_occupied_cells_with_details(board)
-        print(occupied_cells)
+        #print(occupied_cells)
 
 
         try:
@@ -834,7 +837,8 @@ def clear(board):
     def get_layer_representation(self, occupied_cells, optim=False):
         """Generate a layer-wise ASCII representation from the occupied cells."""
         if not occupied_cells:
-            print(f"No occupied cells provided.")
+            #print(f"No occupied cells provided.")
+            logger.info(f"No occupied cells provided.")
             return None
         
 
@@ -1034,8 +1038,9 @@ def clear(board):
                     if next_key in occupied_cells:
                         next_elements = occupied_cells[next_key]
                         if index > len(next_elements)-1:
-                            print("Index is not matching for bridge-h-right")
-                            input()
+                            #print("Index is not matching for bridge-h-right")
+                            #input()
+                            logger.info(f"Index is not matching for bridge-h-right at {next_key} for shape L at {key}")
                         else:
                             next_shape, next_color = next_elements[index]
                             if next_shape == "R" and next_color == color:
@@ -1044,15 +1049,17 @@ def clear(board):
 
                                 skip_cells[next_key].append(index)
                             else:
-                                print(f"Bridge-h-right not found or color mismatch: {next_shape}, {next_color}")
-                                input()
+                                #print(f"Bridge-h-right not found or color mismatch: {next_shape}, {next_color}")
+                                #input()
+                                logger.info(f"Bridge-h-right not found or color mismatch at {next_key} for shape L at {key}. Found shape: {next_shape}, color: {next_color}")
                 elif shape == "T":
                     next_key = f"{row+1}:{col}"
                     if next_key in occupied_cells:
                         next_elements = occupied_cells[next_key]
                         if index > len(next_elements)-1:
-                            print("Index is not matching for bridge-v-bottom")
-                            input()
+                            #print("Index is not matching for bridge-v-bottom")
+                            #input()
+                            logger.info(f"Index is not matching for bridge-v-bottom at {next_key} for shape T at {key}")
                         else:
                             next_shape, next_color = next_elements[index]
                             if next_shape == "B" and next_color == color:
@@ -1061,17 +1068,19 @@ def clear(board):
 
                                 skip_cells[next_key].append(index)
                             else:
-                                print(f"Bridge-v-bottom not found or color mismatch: {next_shape}, {next_color}")
-                                input()   
+                                #print(f"Bridge-v-bottom not found or color mismatch: {next_shape}, {next_color}")
+                                #input()   
+                                logger.info(f"Bridge-v-bottom not found or color mismatch at {next_key} for shape T at {key}. Found shape: {next_shape}, color: {next_color}")
 
                 elif shape in ["R", "B"]:
                     if key in skip_cells and index in skip_cells[key]:
                         #print(f"Skipping shape {shape} at {key} as it's part of a bridge already processed.")
                         continue
                     else:
-                        print(f"Shape {shape} at {key} is not part of a bridge or already processed.")
-                        print(skip_cells)
-                        input()
+                        #print(f"Shape {shape} at {key} is not part of a bridge or already processed.")
+                        #print(skip_cells)
+                        #input()
+                        logger.info(f"Shape {shape} at {key} is not part of a bridge or already processed. Skip cells: {skip_cells}")
                 shapes_dict, shape_str, color_str = self._elaborate_shape_color_optim(shape, color)                             
                 #print(f"Processed shape-color: {shapes_dict}, {shape_str}, {color_str}")
                     

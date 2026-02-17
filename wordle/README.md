@@ -19,6 +19,15 @@ This game variant also begins with the guesser (Player A) who attempts to guess 
 
 This game variant helps to investigate the influence of the critic's role in the guesser's performance and can lead to interesting possibilities in human-machine interaction, where the human can be aided by the cLLM as the critic. We tested the game using the same cLLM for both roles, as well as different cLLMs for each role, employing distinct prompts for each.
 
+## Multilingual Word Lists
+
+The Wordle game is available in 28 languages (EU-24 + Russian, Turkish, Urdu, Arabic).
+Language-specific word lists are located in `wordle/resources/{language_code}/`.
+The lists are automatically generated from Universal Dependencies treebanks.
+For full details about supported languages, data format, and the extraction pipeline, see:
+
+`wordle/resources/README.md`
+
 ## Instantiation & Evaluation
 
 ### Instantiation

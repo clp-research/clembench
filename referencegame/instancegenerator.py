@@ -217,7 +217,15 @@ class ReferenceGameInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == '__main__':
-    # generate language versions
-    for language in MULTILINGUAL_PATTERNS.keys():
-        ReferenceGameInstanceGenerator().generate(
-            filename=f"instances_{VERSION}_{language}.json", seed=42, lang=language)
+    import json
+
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        config = json.load(f)
+    GAME_NAME = "referencegame"
+    supported_languages = [lang for lang, data in config["languages"].items() if GAME_NAME in data["games"]]
+    if not supported_languages:
+        print(f"No languages configured for game '{GAME_NAME}'")
+    for lang in supported_languages:
+        print(f"Generating instances for language '{lang}'")
+        ReferenceGameInstanceGenerator().generate(filename=f"instances_{VERSION}_{lang}.json", seed=42, lang=lang)

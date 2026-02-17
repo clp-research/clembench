@@ -60,26 +60,15 @@ strict = True
 n = 4
 m = 4
 instance_number = 10
-lang = "en"
 game_type = "named_graph"  # "named_graph" or "unnamed_graph"
 cycle_type = "cycle_false"  # "cycle_true" or "cycle_false"
 ambiguity = None  # (repetition_rooms, repetition_times) or None
-if strict:
-    RESPONSE_REGEX = '^\{\s*"action":\s*"([^{}]*?)"\s*,\s*"graph":\s*(\{\s*"nodes"\s*:\s*\[.*?\]\s*,\s*"edges"\s*:\s*\{.*?\}\s*\})\s*\}$'
-    MOVE_REGEX = f'{LANG_CONFIG[lang]["MOVE"]}:\s*({"|".join(LANG_CONFIG[lang]["DIRECTIONS"])})'
-    DONE_REGEX = f'^{LANG_CONFIG[lang]["DONE"]}$'
-else:
-    RESPONSE_REGEX = "^\{[\s]*\"action\":\s*\"([^\{]*?)\"\s*,\s*\"graph\":\s*(\{\s*\"nodes\"\s*:\s*\[.*\]\s*,\s*\"edges\"\s*:\s*\{.*\})\s*\}"
-    MOVE_REGEX = f'{LANG_CONFIG[lang]["MOVE"]}:\s*({"|".join(LANG_CONFIG[lang]["DIRECTIONS"])})'
-    DONE_REGEX = f'^{LANG_CONFIG[lang]["DONE"]}$'
 
 loop_reminder = False
 max_turns_reminder = False
 experiments = {"small": (4, "cycle_false"), "medium": (6, "cycle_false"), "large": (8, "cycle_false")}
 
 "°°°°°°°imported parameters°°°°°°°"
-prompt_file_name = 'PromptNamedGame.template'
-prompt_file_name = os.path.join('resources', 'initial_prompts', LANG_CONFIG[lang]['prompt_dir'], prompt_file_name)
 game_name = "textmapworld_graphreasoning"
 
 "-------------------------------------------------------------------------------------------------------------"
@@ -91,6 +80,20 @@ class TextMapWorldGraphGameInstanceGenerator(GameInstanceGenerator):
         super().__init__(os.path.dirname(__file__))
 
     def on_generate(self, seed: int, **kwargs):
+        language = kwargs.get("language") or kwargs.get("lang", "en")
+        lang_cfg = LANG_CONFIG[language]
+        prompt_dir = lang_cfg["prompt_dir"]
+
+        if strict:
+            RESPONSE_REGEX = r'^\{\s*"action":\s*"([^{}]*?)"\s*,\s*"graph":\s*(\{\s*"nodes"\s*:\s*\[.*?\]\s*,\s*"edges"\s*:\s*\{.*?\}\s*\})\s*\}$'
+            MOVE_REGEX = f'{lang_cfg["MOVE"]}:\s*({"|".join(lang_cfg["DIRECTIONS"])})'
+            DONE_REGEX = f'^{lang_cfg["DONE"]}$'
+        else:
+            RESPONSE_REGEX = r'^\{[\s]*\"action\":\s*\"([^\{]*?)\"\s*,\s*\"graph\":\s*(\{\s*\"nodes\"\s*:\s*\[.*\]\s*,\s*\"edges\"\s*:\s*\{.*\})\s*\}'
+            MOVE_REGEX = f'{lang_cfg["MOVE"]}:\s*({"|".join(lang_cfg["DIRECTIONS"])})'
+            DONE_REGEX = f'^{lang_cfg["DONE"]}$'
+
+        prompt_file_name = os.path.join('resources', 'initial_prompts', prompt_dir, 'PromptNamedGame.template')
         # prepare folder for generated files
         generated_dir = os.path.join(self.game_path, "generated")
         print("Prepare", generated_dir)
@@ -99,8 +102,8 @@ class TextMapWorldGraphGameInstanceGenerator(GameInstanceGenerator):
         os.makedirs(os.path.join(generated_dir, "images"))
         os.makedirs(os.path.join(generated_dir, "graphs"))
         # perform the instance generation
-        answers_file = self.load_json(f"resources/initial_prompts/{LANG_CONFIG[lang]['prompt_dir']}/answers.json")
-        reminders_file = self.load_json(f"resources/initial_prompts/{LANG_CONFIG[lang]['prompt_dir']}/reminders.json")
+        answers_file = self.load_json(f"resources/initial_prompts/{prompt_dir}/answers.json")
+        reminders_file = self.load_json(f"resources/initial_prompts/{prompt_dir}/reminders.json")
         player_a_prompt_header = self.load_template(prompt_file_name)
         game_id = 0
         for experiment_name, (size, cycle_type) in experiments.items():
@@ -136,9 +139,20 @@ class TextMapWorldGraphGameInstanceGenerator(GameInstanceGenerator):
                 game_instance["Max_Turns_Reminder_Text"] = reminders_file["max_turns_reminder"]
                 game_instance["Mapping"] = str(grid["Mapping"])
                 game_instance["Strict"] = strict
-                game_instance["Lang"] = lang
+                game_instance["Lang"] = language
                 game_id += 1
 
 
 if __name__ == '__main__':
-    TextMapWorldGraphGameInstanceGenerator().generate(filename=f"instances_{lang}.json", seed=42, lang=lang)
+    import json
+
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        config = json.load(f)
+    GAME_NAME = "textmapworld_graphreasoning"
+    supported_languages = [lang for lang, data in config["languages"].items() if GAME_NAME in data["games"]]
+    if not supported_languages:
+        print(f"No languages configured for game '{GAME_NAME}'")
+    for lang in supported_languages:
+        print(f"Generating instances for language '{lang}'")
+        TextMapWorldGraphGameInstanceGenerator().generate(seed=42, lang=lang, filename=f"instances_{lang}.json")

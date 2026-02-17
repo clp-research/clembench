@@ -117,14 +117,22 @@ class DealOrNoDealGameInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == '__main__':
+    import json
+
     parser = argparse.ArgumentParser(
         description='Generate Deal or No Deal game instances.')
     _ = parser.parse_args()
-    for lang in languages:
-        # Seed for reproducibility. We set it here so that all languages get the
-        # same instances, except for the language of course.
+
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        config = json.load(f)
+    GAME_NAME = "dond"
+    supported_languages = [lang for lang, data in config["languages"].items() if GAME_NAME in data["games"]]
+
+    if not supported_languages:
+        print(f"No languages configured for game '{GAME_NAME}'")
+    for lang in supported_languages:
         random.seed(3141592)
         for mode in modes:
-            DealOrNoDealGameInstanceGenerator(
-                mode=mode, language=lang
-            ).generate(filename=f'instances_{mode}_{lang}.json')
+            print(f"Generating {mode} instances for language '{lang}'")
+            DealOrNoDealGameInstanceGenerator(mode=mode, language=lang).generate(filename=f'instances_{mode}_{lang}.json')

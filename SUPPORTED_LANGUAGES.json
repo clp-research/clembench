@@ -1,0 +1,32 @@
+{
+  "languages": {
+    "bg": { "name": "Bulgarian", "games": [] },
+    "cs": { "name": "Czech", "games": [] },
+    "da": { "name": "Danish", "games": [] },
+    "de": { "name": "German", "games": ["air_balloon_survival", "clean_up", "dond", "referencegame", "wordle"] },
+    "el": { "name": "Greek", "games": [] },
+    "en": { "name": "English", "games": ["air_balloon_survival", "clean_up", "codenames", "dond", "guesswhat", "imagegame", "matchit_ascii", "mm_mapworld", "mm_mapworld_specificroom", "mm_mapworld_graphs", "privateshared", "referencegame", "taboo", "textmapworld", "textmapworld_graphreasoning", "textmapworld_specificroom", "wordle"] },
+    "es": { "name": "Spanish", "games": [] },
+    "et": { "name": "Estonian", "games": [] },
+    "fi": { "name": "Finnish", "games": [] },
+    "fr": { "name": "French", "games": [] },
+    "ga": { "name": "Irish", "games": [] },
+    "hr": { "name": "Croatian", "games": [] },
+    "hu": { "name": "Hungarian", "games": ["air_balloon_survival", "clean_up", "codenames", "dond", "guesswhat", "imagegame", "matchit_ascii", "mm_mapworld", "mm_mapworld_specificroom", "mm_mapworld_graphs", "privateshared", "referencegame", "taboo", "textmapworld", "textmapworld_graphreasoning", "textmapworld_specificroom", "wordle"] },
+    "it": { "name": "Italian", "games": ["dond", "referencegame"] },
+    "lt": { "name": "Lithuanian", "games": [] },
+    "lv": { "name": "Latvian", "games": [] },
+    "mt": { "name": "Maltese", "games": [] },
+    "nl": { "name": "Dutch", "games": [] },
+    "pl": { "name": "Polish", "games": [] },
+    "pt": { "name": "Portuguese", "games": ["referencegame"] },
+    "ro": { "name": "Romanian", "games": [] },
+    "sk": { "name": "Slovak", "games": [] },
+    "sl": { "name": "Slovenian", "games": [] },
+    "sv": { "name": "Swedish", "games": [] },
+    "ar": { "name": "Arabic", "games": [] },
+    "ru": { "name": "Russian", "games": ["referencegame"] },
+    "tr": { "name": "Turkish", "games": ["referencegame"] },
+    "ur": { "name": "Urdu", "games": [] }
+  }
+}

@@ -53,8 +53,8 @@ class AirBalloonInstanceGenerator(GameInstanceGenerator):
         super().__init__(os.path.dirname(__file__))
 
     def on_generate(self, seed, **kwargs):
-
-        lang_resources = self.load_language_resources(LANGUAGE)
+        language = kwargs["lang"]
+        lang_resources = self.load_language_resources(language)
 
         regex_patterns = lang_resources["regex_patterns"]
         items = lang_resources["items"][:N_ITEMS]
@@ -69,7 +69,7 @@ class AirBalloonInstanceGenerator(GameInstanceGenerator):
         require_argument_prompt = lang_resources["require_argument"]
 
         #Name the experiments within the instance file
-        experiment_name = f"{GAME_NAME}_{LANGUAGE}_{CATEGORY}_{NEGOTIATION_MODE}_{PLAYER_1_PREFERENCES}_{PLAYER_2_PREFERENCES}"
+        experiment_name = f"{GAME_NAME}_{language}_{CATEGORY}_{NEGOTIATION_MODE}_{PLAYER_1_PREFERENCES}_{PLAYER_2_PREFERENCES}"
         experiment = self.add_experiment(experiment_name)
 
         for game_id in range(N_INSTANCES):
@@ -318,4 +318,15 @@ class AirBalloonInstanceGenerator(GameInstanceGenerator):
         return player_1_scale, player_2_scale
 
 if __name__ == '__main__':
-    AirBalloonInstanceGenerator().generate(filename=f"instances_{LANGUAGE}_test.json", seed=SEED)
+    import json
+
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        config = json.load(f)
+    GAME_NAME = "air_balloon_survival"
+    LANGUAGES = [lang for lang, data in config["languages"].items() if GAME_NAME in data["games"]]
+    if not LANGUAGES:
+        print(f"No languages configured for game '{GAME_NAME}'")
+    for lang in LANGUAGES:
+        print(f"Generating instances for language: {lang}")
+        AirBalloonInstanceGenerator().generate(filename=f"instances_{lang}.json", seed=SEED, lang=lang)

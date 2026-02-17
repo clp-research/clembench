@@ -103,9 +103,16 @@ class MatchItAsciiInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == "__main__":
-    for lang in ["en", "hu"]:
-        MatchItAsciiInstanceGenerator().generate(
-            filename=f"instances_{lang}.json",
-            seed=123,
-            lang=lang
-        )
+    import json
+
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        config = json.load(f)
+    GAME_NAME = "matchit_ascii"
+    LANGUAGES = [lang for lang, data in config["languages"].items() if GAME_NAME in data["games"]]
+    if not LANGUAGES:
+        print(f"No languages configured for game '{GAME_NAME}'")
+
+    for lang in LANGUAGES:
+        print(f"Generating instances for language: {lang}")
+        MatchItAsciiInstanceGenerator().generate(filename=f"instances_{lang}.json", seed=123, lang=lang)

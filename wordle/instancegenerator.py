@@ -5,7 +5,7 @@ from wordle.utils.instance_utils import InstanceUtils
 
 # SEED = "17, 42"  # seed for old/v1.6 instances
 # SEED = "28"
-LANGUAGES = ["en", "de"]
+
 
 class WordleGameInstanceGenerator(GameInstanceGenerator):
     """Generate instances for wordle."""
@@ -41,7 +41,14 @@ class WordleGameInstanceGenerator(GameInstanceGenerator):
 
 if __name__ == "__main__":
     # support for multiple languages
-    for language in LANGUAGES:
+    import json
+
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        config = json.load(f)
+    GAME_NAME = "wordle"
+    supported_languages = [lang for lang, data in config["languages"].items() if GAME_NAME in data["games"]]
+    for language in supported_languages:
         for variant in ["wordle", "wordle_withclue", "wordle_withcritic"]:
             file_name = f"instances_{language}.json"
             variant_suffix = variant.split("_")

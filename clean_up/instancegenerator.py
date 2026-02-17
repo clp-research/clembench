@@ -222,18 +222,26 @@ class CleanUpInstanceGenerator(GameInstanceGenerator):
 
     
 if __name__ == '__main__':
+    import json
+
     instance_generator = CleanUpInstanceGenerator()
     experiments = instance_generator.load_json('resources/experiments.json')
     # experiments = json.load(open('resources/experiments.json', 'r', encoding='utf-8'))
     n_instances = experiments.get('n_instances', 2)
-    for language in experiments['languages']:
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        lang_config = json.load(f)
+    GAME_NAME = "clean_up"
+    supported_languages = [lang for lang, data in lang_config["languages"].items() if GAME_NAME in data["games"]]
+
+    if not supported_languages:
+        print(f"No languages configured for game '{GAME_NAME}'")
+
+    for language in supported_languages:
         for modalities, config in experiments['modalities'].items():
             for modality in modalities.split(','):
                 print(f"Generating instances for language '{language}' and modality '{modality}'")
                 file_name = config.get('instances', 'instances')
-                if language == 'en':
-                    file_name = file_name + '.json'
-                else:
-                    file_name = f"{file_name}_{language}.json"
+                file_name = f"{file_name}_{language}.json"
                 # config = experiments['modalities'][modality]
                 CleanUpInstanceGenerator().generate(filename=file_name, language=language, modality=modality, config=config, n_instances=n_instances, seed=SEED)

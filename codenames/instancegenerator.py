@@ -301,39 +301,14 @@ class CodenamesInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == '__main__':
+    import json
     # The resulting instances.json is automatically saved to the "in" directory of the game folder
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-k", "--keep",
-                        help="Optional flag to keep already generated instances and only replace new instances that will be generated for a specific variable and/or experiment. Otherwise overwrite all old instances.",
-                        action="store_true")
-    parser.add_argument("-v", "--variable-name", type=str,
-                        help="Optional argument to only (re-) generate instances for a specific experiment suite aka variable.")
-    parser.add_argument("-e", "--experiment-name", type=str,
-                        help="Optional argument to only (re-) generate instances for a specific experiment (variable name must also be set!).")
-    parser.add_argument("-g", "--generous",
-                        help="Optional flag to generate generous instances where all flags are set to True.",
-                        action="store_true")
-    parser.add_argument("-l", "--lang", type=str, default="en",
-                        help="Language code for wordlists (e.g. en, de)")
-    args = parser.parse_args()
-    if args.experiment_name and not args.variable_name:
-        print("Running a specific experiment requires both the experiment name (-e) and the variable name (-v)!")
-    else:
-        keep = args.keep
-        variable_name = args.variable_name
-        experiment_name = args.experiment_name
-        generous = args.generous
-        base_name = FILENAME.replace(".json", f"_{args.lang}.json")
-        filename = base_name
-        if generous:
-            filename = f"generous_{filename}"
-        if keep:
-            if variable_name and experiment_name:
-                print(f"Replacing instances for {variable_name}: {experiment_name}.")
-            elif variable_name:
-                print(f"Replacing instances for variable {variable_name}.")
-            else:
-                print(f"Replacing instances for experiment {experiment_name}.")
-            CodenamesInstanceGenerator(lang=args.lang).replace_instances(variable_name, experiment_name, filename)
-        else:
-            CodenamesInstanceGenerator(lang=args.lang).generate(filename, seed=SEED, **vars(args))
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        config = json.load(f)
+    GAME_NAME = "codenames"
+    supported_languages = [lang for lang, data in config["languages"].items() if GAME_NAME in data["games"]]
+    for lang in supported_languages:
+        print(f"Generating instances for language '{lang}'")
+        filename = FILENAME.replace(".json", f"_{lang}.json")
+        CodenamesInstanceGenerator(lang=lang).generate(filename, seed=SEED)

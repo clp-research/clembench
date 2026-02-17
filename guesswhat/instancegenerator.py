@@ -266,5 +266,16 @@ class GuessWhatGameInstanceGenerator(GameInstanceGenerator):
 
 
 if __name__ == '__main__':
-    for lang in LANG_CONFIG.keys():
+    import json
+
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        config = json.load(f)
+    GAME_NAME = "guesswhat"
+    supported_languages = [lang for lang, data in config["languages"].items() if GAME_NAME in data["games"]]
+    if not supported_languages:
+        print(f"No languages configured for game '{GAME_NAME}'")
+
+    for lang in supported_languages:
+        print(f"Generating instances for language '{lang}'")
         GuessWhatGameInstanceGenerator(lang=lang).generate(seed=42, filename=f"instances_{lang}.json")

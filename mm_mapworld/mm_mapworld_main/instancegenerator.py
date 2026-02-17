@@ -183,6 +183,16 @@ class MmMapWorldInstanceGenerator(GameInstanceGenerator):
 
 if __name__ == '__main__':
     # always call this, which will actually generate and save the JSON file
-    for lang in LANG_CONFIG.keys():
+    import json
+
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+    with open(os.path.join(ROOT, "SUPPORTED_LANGUAGES.json"), "r", encoding="utf-8") as f:
+        config = json.load(f)
+    GAME_NAME = "mm_mapworld"
+    supported_languages = [lang for lang, data in config["languages"].items() if GAME_NAME in data["games"]]
+    if not supported_languages:
+        print(f"No languages configured for game '{GAME_NAME}'")
+    for lang in supported_languages:
+        print(f"Generating instances for language '{lang}'")
         MmMapWorldInstanceGenerator().generate(seed=42, lang=lang, filename=f"instances_{lang}.json")
 

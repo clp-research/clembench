@@ -159,7 +159,7 @@ class textmapworld_specificroom(DialogueGameMaster):
 
     def _on_setup(self, **game_instance):
 
-        language = game_instance["Language"]
+        language = game_instance["Lang"]
         cfg = LANG_CONFIG[language]
         self.graph_type = game_instance['Game_Type']
         self.initial_position = game_instance["Current_Position"]

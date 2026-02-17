@@ -21,34 +21,26 @@ from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOS
 
 logger = logging.getLogger(__name__)
 
-DIRS = ["north", "south", "east", "west"]
 GAME_NAME = 'mm_mapworld'
 MAX_TURNS = 20
-
-CARDINAL_TO_DELTA = {
-    'north': (0, 1),
-    'south': (0, -1),
-    'east': (1, 0),
-    'west': (-1, 0)
-}
-DELTA_TO_CARDINAL = {
-    (0, 1): 'north',
-    (0, -1): 'south',
-    (1, 0): 'east',
-    (-1, 0): 'west'
-}
 
 
 class PathWalker(Player):
     def __init__(self, model: Model):
         super().__init__(model, forget_extras=["image"])
+        self.directions = []
+        self.move_const = "GO"
+        self.done_const = "DONE"
 
     def _custom_response(self, context) -> str:
         """Return a random direction."""
-        actions = ["GO: west", "GO: east", "GO: north", "GO: south", "DONE"]
+        if not self.directions:
+            action = self.done_const
+        else:
+            action = f"{self.move_const}: {np.random.choice(self.directions)}"
         response = {
             "description": " ",
-            "action": np.random.choice(actions)
+            "action": action
         }
         return json.dumps(response)
 
@@ -86,11 +78,11 @@ class PathDescriber(Player):
     def get_available_directions(self, node):
         moves = self.get_available_moves(node)
         deltas = [utils.edge_to_delta(move) for move in moves]
-        cardinals = [DELTA_TO_CARDINAL[delta] for delta in deltas]
+        cardinals = [self.delta_to_cardinal[delta] for delta in deltas]
         return cardinals
 
     def cardinal_room_change(self, cardinal):
-        delta = CARDINAL_TO_DELTA[cardinal]
+        delta = self.cardinal_to_delta[cardinal]
         new_room = (self.current_room[0] + delta[0], self.current_room[1] + delta[1])
         if (self.current_room, new_room) in self.edges:
             self.current_room = new_room
@@ -132,11 +124,11 @@ class MmMapWorld(DialogueGameMaster):
     def get_available_directions(self, node):
         moves = self.get_available_moves(node)
         deltas = [utils.edge_to_delta(move) for move in moves]
-        cardinals = [DELTA_TO_CARDINAL[delta] for delta in deltas]
+        cardinals = [self.delta_to_cardinal[delta] for delta in deltas]
         return cardinals
 
     def cardinal_room_change(self, cardinal):
-        delta = CARDINAL_TO_DELTA[cardinal]
+        delta = self.cardinal_to_delta[cardinal]
         new_room = (self.current_room[0] + delta[0], self.current_room[1] + delta[1])
         if (self.current_room, new_room) in self.edges:
             self.current_room = new_room
@@ -165,8 +157,25 @@ class MmMapWorld(DialogueGameMaster):
         self.do_reprompt = game_instance["reprompt"]
         self.reprompt_format = game_instance["reprompt_format"]
 
+        self.directions = game_instance["directions"]
+        self.cardinal_to_delta = game_instance["dir_to_delta"]
+
+        self.delta_to_cardinal = {
+            tuple(v): k for k, v in self.cardinal_to_delta.items()
+        }
+        self.rev_dir = {}
+        for k, v in self.cardinal_to_delta.items():
+            rev = (-v[0], -v[1])
+            if rev in self.delta_to_cardinal:
+                self.rev_dir[k] = self.delta_to_cardinal[rev]
+
         self.describer = PathDescriber(game_instance)
+        self.describer.cardinal_to_delta = self.cardinal_to_delta
+        self.describer.delta_to_cardinal = self.delta_to_cardinal
         self.walker = PathWalker(self.player_models[0])
+        self.walker.directions = self.directions
+        self.walker.move_const = self.move_const
+        self.walker.done_const = self.done_const
         self.add_player(self.describer)
         self.add_player(self.walker)
 
@@ -197,7 +206,7 @@ class MmMapWorld(DialogueGameMaster):
     def _parse_response(self, player: Player, utterance: str) -> str:
         if player == self.walker:
             utterance = utterance.replace("\n", "").strip()
-            for word in DIRS:
+            for word in self.directions:
                 utterance = utterance.replace(word.capitalize(), word)
                 utterance = utterance.replace(word.upper(), word)
             found = re.search(self.response_regex, utterance)
@@ -209,7 +218,7 @@ class MmMapWorld(DialogueGameMaster):
     def _validate_player_response(self, player: Player, answer: str) -> bool:
         if player == self.walker:
             answer = answer.replace("\n", "").strip()
-            for word in DIRS:
+            for word in self.directions:
                 answer = answer.replace(word.capitalize(), word)
                 answer = answer.replace(word.upper(), word)
             # in case we abort we set the next move to None
@@ -305,6 +314,8 @@ class MM_MapWorldScorer(GameScorer):
         self.nodes = instance_data["nodes"]
         self.edges = instance_data["edges"]
         self.start_node = instance_data["start"]
+        self.rev_dir = game_instance.get("rev_dir")
+        self.cardinal_to_delta = game_instance.get("dir_to_delta")
 
     def adj(self, node):
         return set([ed[1] for ed in self.edges if ed[0] == node])

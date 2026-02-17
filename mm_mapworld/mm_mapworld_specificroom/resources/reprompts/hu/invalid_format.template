@@ -1,4 +1,4 @@
 Kérlek, csak a megadott formátumban add meg a válaszodat, hogy meg tudjam érteni. A formátum a következő:
 {"description": "<szoba leírása>", "action": "<akció>"}.
 Cseréld le a <szoba leírása> részt egyetlen mondatra, amely leírja, milyen szobában vagyunk. A szomszédos szobába lépéshez cseréld ki az <akció> részt erre: "MENJ: IRÁNY", ahol az IRÁNY az alábbiak egyike lehet: [észak, dél, kelet, nyugat].
-Ha megtaláltuk a $GOAL$-t, az <akció> helyére "KÉSZ"-t írj. Mit tegyünk?
+Ha megtaláltuk a(z) $GOAL$ szobát, az <akció> helyére "KÉSZ"-t írj. Mit tegyünk?

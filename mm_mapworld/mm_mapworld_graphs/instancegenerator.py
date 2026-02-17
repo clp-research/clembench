@@ -5,13 +5,14 @@ import sys
 import os
 
 sys.path.append(os.path.abspath('../clembench/mm_mapworld'))
-from mm_mapworld_maps import AbstractMap
+from mm_mapworld.mm_mapworld_maps import AbstractMap
 
 import numpy as np
 import os
 import random
 import json
 import shutil
+from mm_mapworld.config_languages import LANG_CONFIG
 
 # set the name of the game in the script, as you named the directory
 # this name will be used everywhere, including in the table of results
@@ -115,15 +116,19 @@ class MmMapWorldGraphsInstanceGenerator(GameInstanceGenerator):
         return instances
 
     def on_generate(self, seed: int, **kwargs):
+        language = kwargs.get("language") or kwargs.get("lang", "en")
+        lang = LANG_CONFIG[language]
+        lang_dir = lang.get("prompt_dir", "")
+
         prompts = {
-            'initial': self.load_template(os.path.join("resources", "initial_prompts", "prompt.template")),
+            'initial': self.load_template(os.path.join("resources", "initial_prompts", lang_dir, "prompt.template")),
             'initial_one_shot': self.load_template(
-                os.path.join("resources", "initial_prompts", "prompt_one_shot.template")),
-            'later_success': self.load_template(os.path.join("resources", "later_prompts", "successful_move.template")),
-            'later_invalid': self.load_template(os.path.join("resources", "later_prompts", "invalid_move.template")),
-            'reprompt_format': self.load_template(os.path.join("resources", "reprompts", "invalid_format.template")),
-            'limit_warning': self.load_template(os.path.join("resources", "later_prompts", "turn_limit.template")),
-            'loop_warning': self.load_template(os.path.join("resources", "later_prompts", "loop.template")),
+                os.path.join("resources", "initial_prompts", lang_dir, "prompt_one_shot.template")),
+            'later_success': self.load_template(os.path.join("resources", "later_prompts", lang_dir, "successful_move.template")),
+            'later_invalid': self.load_template(os.path.join("resources", "later_prompts", lang_dir, "invalid_move.template")),
+            'reprompt_format': self.load_template(os.path.join("resources", "reprompts", lang_dir, "invalid_format.template")),
+            'limit_warning': self.load_template(os.path.join("resources", "later_prompts", lang_dir, "turn_limit.template")),
+            'loop_warning': self.load_template(os.path.join("resources", "later_prompts", lang_dir, "loop.template")),
         }
         experiments = {
             'small': {"size": "small", "reprompt": False, "one_shot": True},
@@ -145,14 +150,18 @@ class MmMapWorldGraphsInstanceGenerator(GameInstanceGenerator):
                 instance = self.add_game_instance(experiment, game_id)
                 for key, value in inst.items():
                     instance[key] = value
-                instance["move_construction"] = MOVE_CONSTRUCTION
-                instance["stop_construction"] = STOP_CONSTRUCTION
+                instance["move_construction"] = f'{lang["MOVE"]}: '
+                instance["stop_construction"] = lang["DONE"]
                 instance["response_regex"] = RESPONSE_REGEX
-                instance["done_regex"] = DONE_REGEX
-                instance["move_regex"] = MOVE_REGEX
+                instance["done_regex"] = f'^{lang["DONE"]}$'
+                instance["move_regex"] = (rf'^{lang["MOVE"]}:\s*(' + "|".join(lang["DIRECTIONS"]) + r')$')
+                instance["directions"] = lang["DIRECTIONS"]
+                instance["dir_to_delta"] = lang["DIR_TO_DELTA"]
                 game_id += 1
 
 
 if __name__ == '__main__':
     # always call this, which will actually generate and save the JSON file
-    MmMapWorldGraphsInstanceGenerator().generate(seed=42)
+    for lang in LANG_CONFIG.keys():
+
+        MmMapWorldGraphsInstanceGenerator().generate(seed=42, lang=lang, filename=f"instances_{lang}.json")

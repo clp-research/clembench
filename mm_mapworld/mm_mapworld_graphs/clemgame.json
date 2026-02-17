@@ -4,7 +4,7 @@
   "main_game": "mm_mapworld_main",
   "players": 2,
   "image": "single",
-  "languages": ["en"],
+  "languages": ["en", "hu"],
   "benchmark": ["multimodal_1.6", "multimodal_1.6.5", "multimodal_2.0"],
   "regression": "large",
   "roles": ["Describer", "Walker"]

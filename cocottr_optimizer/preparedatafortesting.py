@@ -1,10 +1,10 @@
 import os
 import json
-
+from utils.prepareasciirep import PrepareASCIIRep
 
 class PrepareDataForClemTesting:
     def __init__(self):
-        pass
+        self.prepareasciirep = PrepareASCIIRep()
 
     def readfile(self, filepath):
         with open(filepath, 'r') as file:
@@ -14,6 +14,32 @@ class PrepareDataForClemTesting:
     def writefile(self, filename, data):
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(data, file, indent=4)    
+
+
+        
+
+    def _executeandcomparesameobject(self, traincode, testcode):
+        trainfunction = traincode["single_turn"]["function"]
+        trainusage = traincode["single_turn"]["usage"]
+        if "single_turn" in testcode:
+            testfunction = testcode["single_turn"]["function"]
+            testusage = testcode["single_turn"]["usage"]
+        else:
+            testfunction = testcode["function"]
+            testusage = testcode["output"]
+
+        train_verify = {"function": trainfunction, "usage": trainusage}
+        test_verify = {"function": testfunction, "usage": trainusage} #pass trainusage so that we can compare the cells directly for colors, locations, and shapes
+        board_size = {"rows":8, "cols":8}
+        train_cells = self.prepareasciirep.get_occupied_cells(train_verify, board_size)
+        test_cells = self.prepareasciirep.get_occupied_cells(test_verify, board_size)
+        if train_cells != test_cells:
+            print(f"Object mismatch: Train cells {train_cells} vs Test cells {test_cells}")
+            input()
+            return False
+        return True
+
+        
     
     def run(self, trainfile, testfiles):
         if not trainfile or not testfiles:
@@ -49,6 +75,14 @@ class PrepareDataForClemTesting:
                                     
                                     if test_sample["shapes"] != tsample["shapes"]:
                                         raise ValueError(f"Shapes mismatch for {board_type}, {boardobj}, {total_shapes}, {combo_name}, index {index} in {tftype} data.")
+
+                                    #compare the same object are not
+                                    code_status = self._executeandcomparesameobject(tsample["code"], test_sample["code"])
+                                    if not code_status:
+                                        print(f"Object mismatch for {board_type}, {boardobj}, {total_shapes}, {combo_name}, index {index} in {tftype} data.")
+                                        # delete the last instance added since the object is not same in test and train
+                                        instancedata.pop()
+                                        break
 
 
                                     if tftype == "simple":

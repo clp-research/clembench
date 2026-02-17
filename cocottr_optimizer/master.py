@@ -273,7 +273,9 @@ class CocoTTRMaster(DialogueGameMaster):
         if not optim_step:
             status, variant = self._prepare_boardinfo()
             if not status:
-                raise GameError("No board info available to start the game.")
+                #raise GameError("No board info available to start the game.")
+                logger.error("No board info available to start the game.")
+                return None
             logger.info(f"Starting game with variant: {variant} for the combo_name: {self.board_info['combo_name']}")
 
             #self.max_task_turns = self.config_max_turns
@@ -303,7 +305,9 @@ class CocoTTRMaster(DialogueGameMaster):
                 self.empty_board_base64 = self.repeat_data["empty_board_base64"]                
                 p1_data = self.prompt_a["repeat"] + "\n" +self.repeat_data["details"]
             else:
-                raise GameError(f"Unknown variant type: {variant}")
+                #raise GameError(f"Unknown variant type: {variant}")
+                logger.error(f"Unknown variant type: {variant}.")
+                p1_data = None                
         else:
             self.current_task = "optim"
             self.max_task_turns = self.optim_data["max_task_turns"]
@@ -311,18 +315,21 @@ class CocoTTRMaster(DialogueGameMaster):
             logger.info(f"Starting Optimization process")
 
             if self.optim_data is None:
-                raise GameError("No optimization data available to start optimization step.")
-            
-            inst_code_pairs = self._prepare_instruction_code_pairs()
-            if inst_code_pairs is None:
-                inst_code_pairs = "No instruction-code pairs available."
+                #raise GameError("No optimization data available to start optimization step.")
+                logger.error("No optimization data available to start optimization step.")
                 p1_data = None
-            else:
-                p1_data = self.prompt_b[self.current_task] + self.optim_data["details"] + "\nInstruction-Code Pairs:\n" + json.dumps(inst_code_pairs)
-                self.optim_details["inst_code_pairs"] = inst_code_pairs
-            logger.info(p1_data)
 
-            self.mt_inst_occupied_cells = self.player_occupied_cells
+            else:            
+                inst_code_pairs = self._prepare_instruction_code_pairs()
+                if inst_code_pairs is None:
+                    inst_code_pairs = "No instruction-code pairs available."
+                    p1_data = None
+                else:
+                    p1_data = self.prompt_b[self.current_task] + self.optim_data["details"] + "\nInstruction-Code Pairs:\n" + json.dumps(inst_code_pairs)
+                    self.optim_details["inst_code_pairs"] = inst_code_pairs
+                #logger.info(p1_data)
+
+                self.mt_inst_occupied_cells = self.player_occupied_cells
 
         #self.current_task_turns = 0
         return p1_data
@@ -331,6 +338,10 @@ class CocoTTRMaster(DialogueGameMaster):
         """Actions to perform before starting the game (mandatory)."""
 
         p1_data = self._set_current_task_context(optim_step=False)
+        if p1_data is None:
+            logger.error(f"Game setup failed")
+            self.aborted = True
+            return        
         prompt_message = self.prompt_a[self.current_task]+"\n"+str(p1_data)
 
         if self.player_a_type == "human" and self.use_images_in_human_prompts:
@@ -396,6 +407,8 @@ class CocoTTRMaster(DialogueGameMaster):
         if self.current_task_turns < self.max_task_turns and not self.aborted and not self.lose and not self.success:       
             logger.info(f"Game continues: {self.current_task_turns} < {self.max_task_turns}")
             return True
+        else:
+            logger.info(f"Game does not proceed further: either max turns reached or game ended with success/lose/aborted.")
 
         if self.current_task == "reconst":
             self.reconst_details["play_reconst_turns"] = self.current_task_turns
@@ -408,29 +421,50 @@ class CocoTTRMaster(DialogueGameMaster):
                     self.lose = True
                 else:
                     if self.use_optimizer:
-                        self._set_current_task_context(optim_step=True)
+                        ct_data = self._set_current_task_context(optim_step=True)
                     else:
-                        self._set_current_task_context(optim_step=False)
-                    return True
+                        ct_data = self._set_current_task_context(optim_step=False)              
+                    if ct_data is None:
+                        logger.error(f"Game setup failed for optimization step after reconstruction.")
+                        self.aborted = True
+                    else:
+                        return True
 
         elif self.current_task == "optim":
             self.optim_details["play_optim_turns"] = self.current_task_turns
             if self.aborted:
                 self.optim_aborted = True
-                self.aborted = False
-            self._set_current_task_context(optim_step=False)
-            return True
+                #self.aborted = False
+            else:
+                if not self.optim_success:
+                    self.lose = True
+
+            if not self.lose:
+                ct_data = self._set_current_task_context(optim_step=False)
+                if ct_data is None:
+                    logger.error(f"Game setup failed for optimization step after reconstruction.")
+                    self.aborted = True
+                else:
+                    return True
         
         elif self.current_task == "reuse":
             self.reuse_details["play_reuse_turns"] = self.current_task_turns
             # Game will be stopped if max_turns reached
             if self.aborted:# and self.current_round == self.n_turns:
-                self.reuse_details["play_reuse_turns"] = self.current_task_turns
+                #self.reuse_details["play_reuse_turns"] = self.current_task_turns
                 self.reuse_aborted = True
-                self.aborted = False
+                #self.aborted = False
+            else:
+                if not self.reuse_success:
+                    self.lose = True
             
-            self._set_current_task_context(optim_step=False)
-            return True
+            if not self.lose:
+                ct_data = self._set_current_task_context(optim_step=False)
+                if ct_data is None:
+                    logger.error(f"Game setup failed for optimization step after reconstruction.")
+                    self.aborted = True
+                else:
+                    return True
 
         elif self.current_task == "repeat":
             self.repeat_details["play_repeat_turns"] = self.current_task_turns
@@ -469,15 +503,35 @@ class CocoTTRMaster(DialogueGameMaster):
             # If there are no issues in format, the game is considered successful.
             if parsed_response.get("status") == "success":
                 logger.info("Inside advance_game: Player A response validation is success.")
-                self._update_task_details(task_success=True)
-                if self.current_task == "repeat":
-                    self.success = True
+                try:
+                    self._update_task_details(task_success=True)
+                    if self.current_task == "repeat":
+                        self.success = True
+
+                except GameError as e:
+                    logger.error(f"Game setup failed: {str(e)}")
+                    #self._on_game_error(e)
+                    action_type = "info"
+                    action_content = "Failure in updating task details"
+                
+                    self.log_to_self(action_type, action_content)                
+
+                    # Game should be aborted irrespective of the current task because there is some issue in updating task details
+                    self.aborted = True
+                    self.gamedata["loss_reason"] = action_content
+                    self._set_pass_turn(self.player_a, False)     
 
             elif parsed_response.get("status") == "failure":
                 logger.info("Inside advance_game: Player A response validation failed.")
                 error = parsed_response.get("error", "Unknown error")
-                self._update_task_details(task_failure=True, error=error)
-                self.gamedata["loss_reason"] = error
+                try:
+                    self._update_task_details(task_failure=True, error=error)
+                    self.gamedata["loss_reason"] = error
+                except GameError as e:
+                    logger.error(f"Game setup failed: {str(e)}")
+                    #self._on_game_error(e)
+                    #return
+                    self.gamedata["loss_reason"] = f"GameError during task detail update: {str(e)}"
 
                 action_type = "info"
                 action_content = "Player grid does not match the goal grid, but user responded with DONE; lost the game."
@@ -656,8 +710,12 @@ class CocoTTRMaster(DialogueGameMaster):
                     logger.info(f"Response did not conform to rules. Reprobing the player. Current retry: {self.current_retry+1}")
                     self.log_event(from_='GM', to='GM', action={'type': 'info', 'content': 'Response did not conform to rules. Reprobing the player.'})
                     self.current_retry += 1
-                    self._update_task_details(task_retry=True)
-                    retry = True
+                    try:
+                        self._update_task_details(task_retry=True)
+                        retry = True
+                    except GameError as e:
+                        logger.error(f"Game setup failed: {str(e)}")
+                        #self._on_game_error(e)
                 else:
                     logger.error(f"Response did not conform to rules. Reprobing tries exceeded.")
                     self.log_event(from_='GM', to='GM', action={'type': 'info', 'content': 'Response did not conform to rules. Reprobing tries exceeded.'})
@@ -665,8 +723,12 @@ class CocoTTRMaster(DialogueGameMaster):
             elif self.current_task == "optim":
                 logger.info(f"Response did not conform to rules during optimization. Reprobing the player for optimization. Current optimization turn: {self.current_task_turns+1}")
                 self.log_event(from_='GM', to='GM', action={'type': 'info', 'content': 'Response did not conform to rules during optimization. Reprobing the player for optimization.'})
-                self._update_task_details(task_retry=True)
-                retry = True
+                try:
+                    self._update_task_details(task_retry=True)
+                    retry = True                    
+                except GameError as e:
+                    logger.error(f"Game setup failed: {str(e)}")
+                    #self._on_game_error(e)
 
         if not retry:
             raise ParseError(error)
@@ -852,31 +914,66 @@ class CocoTTRMaster(DialogueGameMaster):
                         optim_step=True
                     else:
                         optim_step=False
-                    prompt_message = self._set_current_task_context(optim_step)
 
-                    if not optim_step:
-                        if self.player_a_type == "human" and self.use_images_in_human_prompts:
-                            #Add GT image filename in html format
-                            safe_text = escape(prompt_message+"\n\nReference Images are given below:\n\n")
-                            data_uri_shapes = self.shapes_references_base64
-                            logger.info("Optimizer is not there.. setting data_uri for reuse board")
-                            logger.info(f"GT image base64 string:\n{self.gt_image_base64}")  # Log the beginning of the base64 string for verification
-                            data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
-                            data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
-                            #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
-                            p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
-                            p2_prompt = p1_messages
-                        else:
-                            p2_prompt = prompt_message
+                    prompt_message = self._set_current_task_context(optim_step)
+                    if prompt_message is None:
+                        p2_prompt = None
+                        parse_a["status"] = "failure"
                     else:
-                        p2_prompt = prompt_message                    
+                        if not optim_step:
+                            if self.player_a_type == "human" and self.use_images_in_human_prompts:
+                                #Add GT image filename in html format
+                                safe_text = escape(prompt_message+"\n\nReference Images are given below:\n\n")
+                                data_uri_shapes = self.shapes_references_base64
+                                logger.info("Optimizer is not there.. setting data_uri for reuse board")
+                                logger.info(f"GT image base64 string:\n{self.gt_image_base64}")  # Log the beginning of the base64 string for verification
+                                data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
+                                data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
+                                #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
+                                p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
+                                p2_prompt = p1_messages
+                            else:
+                                p2_prompt = prompt_message
+                        else:
+                            p2_prompt = prompt_message                    
                 elif self.current_task == "reuse":
                     self.reuse_success = True
                     self.play_turns_reuse = self.current_task_turns
                     self.play_turns_total += self.current_task_turns
                     logger.info(f"Reuse task successful., turns taken: {self.current_task_turns}")
 
+
                     prompt_message = self._set_current_task_context(optim_step=False)
+                    if prompt_message is None:
+                        p2_prompt = None
+                        parse_a["status"] = "failure"
+                    else:
+                        if self.player_a_type == "human" and self.use_images_in_human_prompts:
+                            #Add GT image filename in html format
+                            safe_text = escape(prompt_message+"\n\nReference Images are given below:\n\n")
+                            data_uri_shapes = self.shapes_references_base64
+                            #logger.info("Optimizer is not there.. setting data_uri for reuse board")
+                            #logger.info(f"GT image base64 string:\n{self.gt_image_base64}")  # Log the beginning of the base64 string for verification
+                            data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
+                            data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
+                            #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
+                            p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
+                            p2_prompt = p1_messages
+                        else:
+                            p2_prompt = prompt_message                    
+            elif self.current_task == "optim":
+                parse_a["status"] = "on-going"
+                self.optim_success = True
+                self.play_turns_optim = self.current_task_turns
+                self.play_turns_total += self.current_task_turns
+                logger.info(f"Optimization task successful., turns taken: {self.current_task_turns}")
+
+
+                prompt_message = self._set_current_task_context(optim_step=False)
+                if prompt_message is None:
+                    p2_prompt = None
+                    parse_a["status"] = "failure"
+                else:                
                     if self.player_a_type == "human" and self.use_images_in_human_prompts:
                         #Add GT image filename in html format
                         safe_text = escape(prompt_message+"\n\nReference Images are given below:\n\n")
@@ -887,27 +984,7 @@ class CocoTTRMaster(DialogueGameMaster):
                         p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
                         p2_prompt = p1_messages
                     else:
-                        p2_prompt = prompt_message                    
-            elif self.current_task == "optim":
-                parse_a["status"] = "on-going"
-                self.optim_success = True
-                self.play_turns_optim = self.current_task_turns
-                self.play_turns_total += self.current_task_turns
-                logger.info(f"Optimization task successful., turns taken: {self.current_task_turns}")
-                prompt_message = self._set_current_task_context(optim_step=False)
-                if self.player_a_type == "human" and self.use_images_in_human_prompts:
-                    #Add GT image filename in html format
-                    safe_text = escape(prompt_message+"\n\nReference Images are given below:\n\n")
-                    data_uri_shapes = self.shapes_references_base64
-                    logger.info("Optimizer is not there.. setting data_uri for reuse board")
-                    logger.info(f"GT image base64 string:\n{self.gt_image_base64}")  # Log the beginning of the base64 string for verification
-                    data_uri_1 = self.gt_image_base64#f"data:image/png;base64,{self.gt_image_base64}"
-                    data_uri_2 = self.empty_board_base64#f"data:image/png;base64,{self.empty_board_base64}"
-                    #p1_messages = f"""<div>{safe_text}</div><div style="display:flex; gap:8px; align-items:center;"><img src="{data_uri_1}" #width="200" height="200" /> <img src="{data_uri_2}" width="200" height="200" /></div> """
-                    p1_messages = f"""<div>{safe_text}</div><img src="{data_uri_shapes}" width="400" height="60"/><div style="display:flex; gap:8px; align-items:flex-start;"><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Goal Grid</figcaption><img src="{data_uri_1}" width="350" height="320" /></figure><figure style="text-align:center;"><figcaption style="font-size:14px; margin-bottom:4px;">Current Player Grid</figcaption><img src="{data_uri_2}" width="350" height="320" /></figure></div>"""
-                    p2_prompt = p1_messages
-                else:
-                    p2_prompt = prompt_message                
+                        p2_prompt = prompt_message                
             elif self.current_task == "repeat":
                 parse_a["status"] = "success"
                 self.repeat_success = True
@@ -1164,7 +1241,7 @@ class CocoTTRMaster(DialogueGameMaster):
             if self.current_task == "optim":
                 self.genresponse[self.current_task].append({"current_turn": self.current_task_turns, "optimized_function": details})                    
 
-            logger.info(self.genresponse[self.current_task])
+            #logger.info(self.genresponse[self.current_task])
 
             logger.info("Updating player grid with generated ASCII representation.")
             self.player_grid = gen_ascii_rep
@@ -1338,19 +1415,30 @@ class CocoTTRMaster(DialogueGameMaster):
                 self.turn_scores[self.current_turn-1] = 1
 
             if parse_b["status"] == "clarification":
-                self._update_task_progress("clarification")
-                response_b = self._prepare_playerb_clarification_response(parse_b["details"], True)
-                parsed_response = f"Clarification question:\n{parse_b['details']}"
-                self.genresponse[self.current_task][-1]["clarification"] = parse_b["details"]
-                self.genresponse[self.current_task][-1]["response"] = parse_b                
+                try:
+                    self._update_task_progress("clarification")
+                    response_b = self._prepare_playerb_clarification_response(parse_b["details"], True)
+                    parsed_response = f"Clarification question:\n{parse_b['details']}"
+                    self.genresponse[self.current_task][-1]["clarification"] = parse_b["details"]
+                    self.genresponse[self.current_task][-1]["response"] = parse_b                
+
+                except GameError as e:
+                    error = f"Game setup failed: {str(e)}"
+                    logger.error(error)
+                    #self._on_game_error(e)
+                    #return                    
 
             elif parse_b["status"] == "acknowledgement":
-                self._update_task_progress("acknowledgement")
-                response_b = self._prepare_playerb_clarification_response(parse_b["details"], False)
-                parsed_response = f"Clarification question:\n{parse_b['details']}"    
-                self.genresponse[self.current_task][-1]["acknowledgement"] = parse_b["details"]                
-                self.genresponse[self.current_task][-1]["response"] = parse_b                
-
+                try:
+                    self._update_task_progress("acknowledgement")
+                    response_b = self._prepare_playerb_clarification_response(parse_b["details"], False)
+                    parsed_response = f"Clarification question:\n{parse_b['details']}"    
+                    self.genresponse[self.current_task][-1]["acknowledgement"] = parse_b["details"]                
+                    self.genresponse[self.current_task][-1]["response"] = parse_b                      
+                except GameError as e:
+                    error = f"Game setup failed: {str(e)}"
+                    logger.error(error)
+                    #self._on_game_error(e)
             else:
                 # Temporary code to simulate execution error
                 #parse_b['details'] = "put(board, 'bridge-h', 'red', 0,7)"
@@ -1395,7 +1483,9 @@ class CocoTTRMaster(DialogueGameMaster):
                                 self._set_pass_turn(self.player_b, True) #Pass turn to Player A
                             else:
                                 logger.info(f"Unexpected status after optimization completion: {parse_b['status']}")
-                                raise GameError(f"Unexpected status after optimization completion: {parse_b['status']}")
+                                error = f"Unexpected status after optimization completion: {parse_b['status']}"
+                                #raise GameError(f"Unexpected status after optimization completion: {parse_b['status']}")
+                                parse_b = {"status": "failure", "details": None, "error": error}
                         else:
                             #Optimization failed but p1_prompt is None?
                             logger.error(f"Optimization failed but no prompt to send to Player A.")

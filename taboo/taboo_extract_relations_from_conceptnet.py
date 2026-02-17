@@ -96,7 +96,7 @@ MAX_WORDS_PER_RELATION = 2
 # High frequency threshold (first N words WITH relations)
 HIGH_FREQUENCY_THRESHOLD = 50
 
-OUTPUT_DIR = 'resources'
+OUTPUT_DIR = '../../../Downloads/conceptnet-words-categories-extractor-main-2/taboo/resources'
 
 # Top nouns frequency folder
 TOP_NOUNS_FOLDER = 'top_nouns_frequency'

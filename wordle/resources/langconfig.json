@@ -58,5 +58,35 @@
             "ERROR_GAME_FORMAT": "Die Vermutung entspricht nicht den Spielregeln.",
             "RETRY": "Bitte versuche es erneut."
         }
+    },
+    "hu": {
+        "max_word_length": 5,
+        "clue_lang": "nyom:",
+        "guess_lang": "tipp:",
+        "guess_word_lang": "szó",
+        "explanation_lang": "magyarázat:",
+        "explanataion_details_lang": "részletek",
+        "guess_feedback_lang": "tipp_visszajelzés:",
+        "agreement_lang": "egyetértés:",
+        "agreement_word_lang": "igen vagy nem",
+        "guess_agreement_lang": "tipp_egyetértés:",
+        "agreement_explanation_lang": "egyetértés_magyarázat:",
+        "agreement_match_keywords_lang": [
+            "igen",
+            "nem"
+        ],
+        "allowed_words_file_url": "https://raw.githubusercontent.com/3b1b/videos/master/_2022/wordle/data/allowed_words.txt",
+        "word_clues_file_url": "https://www.kaggle.com/datasets/darinhawley/new-york-times-crossword-clues-answers-19932021?select=nytcrosswords.csv",
+        "error_prompt_text": {
+            "INVALID_WORD_LENGTH": "A tippnek pontosan 5 betűből kell állnia.",
+            "INVALID_WORD": "A tipp csak betűket tartalmazhat.",
+            "NOT_VALID_WORD_FOR_GAME": "A tipped nem érvényes szó ebben a játékban.",
+            "INVALID_FORMAT": "A választ kizárólag ebben a formátumban add meg.",
+            "OTHER_ERROR": "Adj meg egy ötbetűs magyar szót tippként.",
+            "OTHER_DETAILS": "Ne generálj más szöveget. Kérlek, próbáld újra.",
+            "ERROR_RESPONSE_FORMAT": "A tipp nem felel meg a formátumi szabályoknak.",
+            "ERROR_GAME_FORMAT": "A tipp nem felel meg a játékszabályoknak.",
+            "RETRY": "Kérlek, próbáld újra."
+        }
     }
 }

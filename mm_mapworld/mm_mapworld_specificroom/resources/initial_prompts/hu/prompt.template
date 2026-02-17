@@ -1,4 +1,4 @@
-Kérlek, segíts nekem a következő feladatban. A cél az, hogy felfedezd a szobákat és megtaláld a $GOAL$-t. Minden szobában megmutatok egy képet a szobáról, és elmondom, milyen irányokba lehet továbbmenni. Te ezután pontosan egy mondatban leírod, mit látsz a szobában. Kérlek, a válaszodat a következő formátumban add meg:
+Kérlek, segíts nekem a következő feladatban. A cél az, hogy felfedezd a szobákat és megtaláld a(z) $GOAL$ szobát. Minden szobában megmutatok egy képet a szobáról, és elmondom, milyen irányokba lehet továbbmenni. Te ezután pontosan egy mondatban leírod, mit látsz a szobában. Kérlek, a válaszodat a következő formátumban add meg:
 {"description": "<szoba leírása>", "action": "<akció>"}.
 A szomszédos szobába való lépéshez cseréld ki az <akció> részt erre: "MENJ: IRÁNY", ahol az IRÁNY az alábbiak egyike lehet: [észak, dél, kelet, nyugat].
 A legfontosabb: miután megtaláltuk a $GOAL$-t, az <akció> helyére "KÉSZ"-t írj, hogy tudjam, elértük a célunkat.

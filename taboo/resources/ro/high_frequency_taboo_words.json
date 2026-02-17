@@ -1,0 +1,1416 @@
+[
+  {
+    "target_word": "stat",
+    "related_word": [
+      "condiție",
+      "țară",
+      "listă"
+    ],
+    "target_word_stem": "stat",
+    "related_word_stem": [
+      "condiție",
+      "țară",
+      "listă"
+    ]
+  },
+  {
+    "target_word": "vedere",
+    "related_word": [
+      "văz",
+      "opinie",
+      "ochi"
+    ],
+    "target_word_stem": "vedere",
+    "related_word_stem": [
+      "văz",
+      "opinie",
+      "ochi"
+    ]
+  },
+  {
+    "target_word": "carte",
+    "related_word": [
+      "bibliotecar",
+      "librar",
+      "manual"
+    ],
+    "target_word_stem": "carte",
+    "related_word_stem": [
+      "bibliotecar",
+      "librar",
+      "manual"
+    ]
+  },
+  {
+    "target_word": "muncă",
+    "related_word": [
+      "treabă",
+      "laboare",
+      "caznă"
+    ],
+    "target_word_stem": "muncă",
+    "related_word_stem": [
+      "treabă",
+      "laboare",
+      "caznă"
+    ]
+  },
+  {
+    "target_word": "oraș",
+    "related_word": [
+      "cetate",
+      "centru",
+      "politie"
+    ],
+    "target_word_stem": "oraș",
+    "related_word_stem": [
+      "cetate",
+      "centru",
+      "politie"
+    ]
+  },
+  {
+    "target_word": "lume",
+    "related_word": [
+      "pământ",
+      "societate",
+      "glob"
+    ],
+    "target_word_stem": "lume",
+    "related_word_stem": [
+      "pământ",
+      "societate",
+      "glob"
+    ]
+  },
+  {
+    "target_word": "parte",
+    "related_word": [
+      "regiune",
+      "bucată",
+      "despărți"
+    ],
+    "target_word_stem": "parte",
+    "related_word_stem": [
+      "regiune",
+      "bucată",
+      "despărți"
+    ]
+  },
+  {
+    "target_word": "termen",
+    "related_word": [
+      "cuvânt",
+      "soroc",
+      "clauză"
+    ],
+    "target_word_stem": "termen",
+    "related_word_stem": [
+      "cuvânt",
+      "soroc",
+      "clauză"
+    ]
+  },
+  {
+    "target_word": "putere",
+    "related_word": [
+      "forță",
+      "vlagă",
+      "cardinal"
+    ],
+    "target_word_stem": "putere",
+    "related_word_stem": [
+      "forță",
+      "vlagă",
+      "cardinal"
+    ]
+  },
+  {
+    "target_word": "centru",
+    "related_word": [
+      "mijloc",
+      "oraș",
+      "dric"
+    ],
+    "target_word_stem": "centru",
+    "related_word_stem": [
+      "mijloc",
+      "oraș",
+      "dric"
+    ]
+  },
+  {
+    "target_word": "bază",
+    "related_word": [
+      "temelie",
+      "fundament",
+      "esență"
+    ],
+    "target_word_stem": "bază",
+    "related_word_stem": [
+      "temelie",
+      "fundament",
+      "esență"
+    ]
+  },
+  {
+    "target_word": "caz",
+    "related_word": [
+      "împrejurare",
+      "întâmplare",
+      "eveniment"
+    ],
+    "target_word_stem": "caz",
+    "related_word_stem": [
+      "împrejurare",
+      "întâmplare",
+      "eveniment"
+    ]
+  },
+  {
+    "target_word": "femeie",
+    "related_word": [
+      "persoană",
+      "om",
+      "nevastă"
+    ],
+    "target_word_stem": "femeie",
+    "related_word_stem": [
+      "persoană",
+      "om",
+      "nevastă"
+    ]
+  },
+  {
+    "target_word": "viață",
+    "related_word": [
+      "moarte",
+      "trăi",
+      "învia"
+    ],
+    "target_word_stem": "viață",
+    "related_word_stem": [
+      "moarte",
+      "trăi",
+      "învia"
+    ]
+  },
+  {
+    "target_word": "țară",
+    "related_word": [
+      "națiune",
+      "pământ",
+      "stat"
+    ],
+    "target_word_stem": "țară",
+    "related_word_stem": [
+      "națiune",
+      "pământ",
+      "stat"
+    ]
+  },
+  {
+    "target_word": "prieten",
+    "related_word": [
+      "tovarăș",
+      "asociat",
+      "amic"
+    ],
+    "target_word_stem": "prieten",
+    "related_word_stem": [
+      "tovarăș",
+      "asociat",
+      "amic"
+    ]
+  },
+  {
+    "target_word": "casă",
+    "related_word": [
+      "domiciliu",
+      "încăpere",
+      "clădire"
+    ],
+    "target_word_stem": "casă",
+    "related_word_stem": [
+      "domiciliu",
+      "încăpere",
+      "clădire"
+    ]
+  },
+  {
+    "target_word": "lucru",
+    "related_word": [
+      "treabă",
+      "obiect",
+      "chestie"
+    ],
+    "target_word_stem": "lucru",
+    "related_word_stem": [
+      "treabă",
+      "obiect",
+      "chestie"
+    ]
+  },
+  {
+    "target_word": "apă",
+    "related_word": [
+      "râu",
+      "acvatic",
+      "hidrolog"
+    ],
+    "target_word_stem": "apă",
+    "related_word_stem": [
+      "râu",
+      "acvatic",
+      "hidrolog"
+    ]
+  },
+  {
+    "target_word": "fată",
+    "related_word": [
+      "servitoare",
+      "băiat",
+      "domnișoară"
+    ],
+    "target_word_stem": "fată",
+    "related_word_stem": [
+      "servitoare",
+      "băiat",
+      "domnișoară"
+    ]
+  },
+  {
+    "target_word": "acțiune",
+    "related_word": [
+      "subiect",
+      "tramă",
+      "faptă"
+    ],
+    "target_word_stem": "acțiune",
+    "related_word_stem": [
+      "subiect",
+      "tramă",
+      "faptă"
+    ]
+  },
+  {
+    "target_word": "mâncare",
+    "related_word": [
+      "aliment",
+      "hrană",
+      "legumă"
+    ],
+    "target_word_stem": "mâncare",
+    "related_word_stem": [
+      "aliment",
+      "hrană",
+      "legumă"
+    ]
+  },
+  {
+    "target_word": "fir",
+    "related_word": [
+      "ață",
+      "sârmă",
+      "ghem"
+    ],
+    "target_word_stem": "fir",
+    "related_word_stem": [
+      "ață",
+      "sârmă",
+      "ghem"
+    ]
+  },
+  {
+    "target_word": "cuvânt",
+    "related_word": [
+      "termen",
+      "vorbă",
+      "grai"
+    ],
+    "target_word_stem": "cuvânt",
+    "related_word_stem": [
+      "termen",
+      "vorbă",
+      "grai"
+    ]
+  },
+  {
+    "target_word": "persoană",
+    "related_word": [
+      "individ",
+      "om",
+      "creatură"
+    ],
+    "target_word_stem": "persoană",
+    "related_word_stem": [
+      "individ",
+      "om",
+      "creatură"
+    ]
+  },
+  {
+    "target_word": "câmp",
+    "related_word": [
+      "agru",
+      "șes",
+      "ogor"
+    ],
+    "target_word_stem": "câmp",
+    "related_word_stem": [
+      "agru",
+      "șes",
+      "ogor"
+    ]
+  },
+  {
+    "target_word": "plată",
+    "related_word": [
+      "fief",
+      "recompensă",
+      "salariu"
+    ],
+    "target_word_stem": "plată",
+    "related_word_stem": [
+      "fief",
+      "recompensă",
+      "salariu"
+    ]
+  },
+  {
+    "target_word": "stradă",
+    "related_word": [
+      "cale",
+      "drum",
+      "uliță"
+    ],
+    "target_word_stem": "stradă",
+    "related_word_stem": [
+      "cale",
+      "drum",
+      "uliță"
+    ]
+  },
+  {
+    "target_word": "drum",
+    "related_word": [
+      "cale",
+      "stradă",
+      "șosea"
+    ],
+    "target_word_stem": "drum",
+    "related_word_stem": [
+      "cale",
+      "stradă",
+      "șosea"
+    ]
+  },
+  {
+    "target_word": "semn",
+    "related_word": [
+      "punct",
+      "icoană",
+      "marcă"
+    ],
+    "target_word_stem": "semn",
+    "related_word_stem": [
+      "punct",
+      "icoană",
+      "marcă"
+    ]
+  },
+  {
+    "target_word": "fond",
+    "related_word": [
+      "esență",
+      "miez",
+      "mijloc"
+    ],
+    "target_word_stem": "fond",
+    "related_word_stem": [
+      "esență",
+      "miez",
+      "mijloc"
+    ]
+  },
+  {
+    "target_word": "sunet",
+    "related_word": [
+      "zvon",
+      "liniște",
+      "zgomot"
+    ],
+    "target_word_stem": "sunet",
+    "related_word_stem": [
+      "zvon",
+      "liniște",
+      "zgomot"
+    ]
+  },
+  {
+    "target_word": "regiune",
+    "related_word": [
+      "zonă",
+      "tărâm",
+      "parte"
+    ],
+    "target_word_stem": "regiune",
+    "related_word_stem": [
+      "zonă",
+      "tărâm",
+      "parte"
+    ]
+  },
+  {
+    "target_word": "viitor",
+    "related_word": [
+      "trecut",
+      "perspectivă",
+      "posteritate"
+    ],
+    "target_word_stem": "viitor",
+    "related_word_stem": [
+      "trecut",
+      "perspectivă",
+      "posteritate"
+    ]
+  },
+  {
+    "target_word": "poziție",
+    "related_word": [
+      "unghi",
+      "atitudine",
+      "postură"
+    ],
+    "target_word_stem": "poziție",
+    "related_word_stem": [
+      "unghi",
+      "atitudine",
+      "postură"
+    ]
+  },
+  {
+    "target_word": "animal",
+    "related_word": [
+      "creatură",
+      "dobitoc",
+      "bestie"
+    ],
+    "target_word_stem": "animal",
+    "related_word_stem": [
+      "creatură",
+      "dobitoc",
+      "bestie"
+    ]
+  },
+  {
+    "target_word": "tur",
+    "related_word": [
+      "ocol",
+      "învârtire",
+      "poală"
+    ],
+    "target_word_stem": "tur",
+    "related_word_stem": [
+      "ocol",
+      "învârtire",
+      "poală"
+    ]
+  },
+  {
+    "target_word": "scop",
+    "related_word": [
+      "țel",
+      "destinație",
+      "cauză"
+    ],
+    "target_word_stem": "scop",
+    "related_word_stem": [
+      "țel",
+      "destinație",
+      "cauză"
+    ]
+  },
+  {
+    "target_word": "mediu",
+    "related_word": [
+      "miez",
+      "mijloc",
+      "societate"
+    ],
+    "target_word_stem": "mediu",
+    "related_word_stem": [
+      "miez",
+      "mijloc",
+      "societate"
+    ]
+  },
+  {
+    "target_word": "cântec",
+    "related_word": [
+      "viers",
+      "melodie",
+      "doină"
+    ],
+    "target_word_stem": "cântec",
+    "related_word_stem": [
+      "viers",
+      "melodie",
+      "doină"
+    ]
+  },
+  {
+    "target_word": "piatră",
+    "related_word": [
+      "calcul",
+      "lespede",
+      "stâncă"
+    ],
+    "target_word_stem": "piatră",
+    "related_word_stem": [
+      "calcul",
+      "lespede",
+      "stâncă"
+    ]
+  },
+  {
+    "target_word": "mașină",
+    "related_word": [
+      "automobil",
+      "aparat",
+      "volan"
+    ],
+    "target_word_stem": "mașină",
+    "related_word_stem": [
+      "automobil",
+      "aparat",
+      "volan"
+    ]
+  },
+  {
+    "target_word": "față",
+    "related_word": [
+      "mutră",
+      "spate",
+      "chip"
+    ],
+    "target_word_stem": "față",
+    "related_word_stem": [
+      "mutră",
+      "spate",
+      "chip"
+    ]
+  },
+  {
+    "target_word": "inimă",
+    "related_word": [
+      "centru",
+      "pântece",
+      "cord"
+    ],
+    "target_word_stem": "inimă",
+    "related_word_stem": [
+      "centru",
+      "pântece",
+      "cord"
+    ]
+  },
+  {
+    "target_word": "structură",
+    "related_word": [
+      "schelet",
+      "organizație",
+      "constituție"
+    ],
+    "target_word_stem": "structură",
+    "related_word_stem": [
+      "schelet",
+      "organizație",
+      "constituție"
+    ]
+  },
+  {
+    "target_word": "decizie",
+    "related_word": [
+      "hotărâre",
+      "voință",
+      "vrere"
+    ],
+    "target_word_stem": "decizie",
+    "related_word_stem": [
+      "hotărâre",
+      "voință",
+      "vrere"
+    ]
+  },
+  {
+    "target_word": "profesor",
+    "related_word": [
+      "magistru",
+      "educator",
+      "învățător"
+    ],
+    "target_word_stem": "profesor",
+    "related_word_stem": [
+      "magistru",
+      "educator",
+      "învățător"
+    ]
+  },
+  {
+    "target_word": "rege",
+    "related_word": [
+      "monarh",
+      "popă",
+      "crai"
+    ],
+    "target_word_stem": "rege",
+    "related_word_stem": [
+      "monarh",
+      "popă",
+      "crai"
+    ]
+  },
+  {
+    "target_word": "moarte",
+    "related_word": [
+      "viață",
+      "odihnă",
+      "naștere"
+    ],
+    "target_word_stem": "moarte",
+    "related_word_stem": [
+      "viață",
+      "odihnă",
+      "naștere"
+    ]
+  },
+  {
+    "target_word": "floare",
+    "related_word": [
+      "spumă",
+      "elită",
+      "smântână"
+    ],
+    "target_word_stem": "floare",
+    "related_word_stem": [
+      "spumă",
+      "elită",
+      "smântână"
+    ]
+  },
+  {
+    "target_word": "râu",
+    "related_word": [
+      "apă",
+      "puhoi",
+      "torent"
+    ],
+    "target_word_stem": "râu",
+    "related_word_stem": [
+      "apă",
+      "puhoi",
+      "torent"
+    ]
+  },
+  {
+    "target_word": "țintă",
+    "related_word": [
+      "rost",
+      "cuișor",
+      "țel"
+    ],
+    "target_word_stem": "țintă",
+    "related_word_stem": [
+      "rost",
+      "cuișor",
+      "țel"
+    ]
+  },
+  {
+    "target_word": "efort",
+    "related_word": [
+      "silință",
+      "strădanie",
+      "trudă"
+    ],
+    "target_word_stem": "efort",
+    "related_word_stem": [
+      "silință",
+      "strădanie",
+      "trudă"
+    ]
+  },
+  {
+    "target_word": "națiune",
+    "related_word": [
+      "țară",
+      "neam",
+      "popor"
+    ],
+    "target_word_stem": "națiune",
+    "related_word_stem": [
+      "țară",
+      "neam",
+      "popor"
+    ]
+  },
+  {
+    "target_word": "cal",
+    "related_word": [
+      "încăleca",
+      "călăreț",
+      "geambaș"
+    ],
+    "target_word_stem": "cal",
+    "related_word_stem": [
+      "încăleca",
+      "călăreț",
+      "geambaș"
+    ]
+  },
+  {
+    "target_word": "bucată",
+    "related_word": [
+      "căpețel",
+      "porție",
+      "fragment"
+    ],
+    "target_word_stem": "bucată",
+    "related_word_stem": [
+      "căpețel",
+      "porție",
+      "fragment"
+    ]
+  },
+  {
+    "target_word": "mamă",
+    "related_word": [
+      "femeie",
+      "fiică",
+      "fiu"
+    ],
+    "target_word_stem": "mamă",
+    "related_word_stem": [
+      "femeie",
+      "fiică",
+      "fiu"
+    ]
+  },
+  {
+    "target_word": "sală",
+    "related_word": [
+      "încăpere",
+      "odaie",
+      "antreu"
+    ],
+    "target_word_stem": "sală",
+    "related_word_stem": [
+      "încăpere",
+      "odaie",
+      "antreu"
+    ]
+  },
+  {
+    "target_word": "foaie",
+    "related_word": [
+      "petală",
+      "frunză",
+      "hârtie"
+    ],
+    "target_word_stem": "foaie",
+    "related_word_stem": [
+      "petală",
+      "frunză",
+      "hârtie"
+    ]
+  },
+  {
+    "target_word": "căldură",
+    "related_word": [
+      "frig",
+      "arșiță",
+      "afecțiune"
+    ],
+    "target_word_stem": "căldură",
+    "related_word_stem": [
+      "frig",
+      "arșiță",
+      "afecțiune"
+    ]
+  },
+  {
+    "target_word": "vale",
+    "related_word": [
+      "curs",
+      "matcă",
+      "depresiune"
+    ],
+    "target_word_stem": "vale",
+    "related_word_stem": [
+      "curs",
+      "matcă",
+      "depresiune"
+    ]
+  },
+  {
+    "target_word": "pământ",
+    "related_word": [
+      "terra",
+      "lume",
+      "țară"
+    ],
+    "target_word_stem": "pământ",
+    "related_word_stem": [
+      "terra",
+      "lume",
+      "țară"
+    ]
+  },
+  {
+    "target_word": "păr",
+    "related_word": [
+      "roșcat",
+      "coafor",
+      "peruchier"
+    ],
+    "target_word_stem": "păr",
+    "related_word_stem": [
+      "roșcat",
+      "coafor",
+      "peruchier"
+    ]
+  },
+  {
+    "target_word": "sarcină",
+    "related_word": [
+      "povară",
+      "misiune",
+      "responsabilitate"
+    ],
+    "target_word_stem": "sarcină",
+    "related_word_stem": [
+      "povară",
+      "misiune",
+      "responsabilitate"
+    ]
+  },
+  {
+    "target_word": "odihnă",
+    "related_word": [
+      "somn",
+      "repaus",
+      "moarte"
+    ],
+    "target_word_stem": "odihnă",
+    "related_word_stem": [
+      "somn",
+      "repaus",
+      "moarte"
+    ]
+  },
+  {
+    "target_word": "scaun",
+    "related_word": [
+      "fotoliu",
+      "jeț",
+      "tron"
+    ],
+    "target_word_stem": "scaun",
+    "related_word_stem": [
+      "fotoliu",
+      "jeț",
+      "tron"
+    ]
+  },
+  {
+    "target_word": "avocat",
+    "related_word": [
+      "defensor",
+      "lege",
+      "jurist"
+    ],
+    "target_word_stem": "avocat",
+    "related_word_stem": [
+      "defensor",
+      "lege",
+      "jurist"
+    ]
+  },
+  {
+    "target_word": "barcă",
+    "related_word": [
+      "luntre",
+      "vapor",
+      "vas"
+    ],
+    "target_word_stem": "barcă",
+    "related_word_stem": [
+      "luntre",
+      "vapor",
+      "vas"
+    ]
+  },
+  {
+    "target_word": "tată",
+    "related_word": [
+      "părinte",
+      "fiică",
+      "fiu"
+    ],
+    "target_word_stem": "tată",
+    "related_word_stem": [
+      "părinte",
+      "fiică",
+      "fiu"
+    ]
+  },
+  {
+    "target_word": "soție",
+    "related_word": [
+      "nevastă",
+      "muiere",
+      "bărbat"
+    ],
+    "target_word_stem": "soție",
+    "related_word_stem": [
+      "nevastă",
+      "muiere",
+      "bărbat"
+    ]
+  },
+  {
+    "target_word": "pădure",
+    "related_word": [
+      "silvă",
+      "câmpie",
+      "eț"
+    ],
+    "target_word_stem": "pădure",
+    "related_word_stem": [
+      "silvă",
+      "câmpie",
+      "eț"
+    ]
+  },
+  {
+    "target_word": "pasăre",
+    "related_word": [
+      "vertebrat",
+      "găinaț",
+      "ornitolog"
+    ],
+    "target_word_stem": "pasăre",
+    "related_word_stem": [
+      "vertebrat",
+      "găinaț",
+      "ornitolog"
+    ]
+  },
+  {
+    "target_word": "sat",
+    "related_word": [
+      "cătun",
+      "oraș",
+      "săteancă"
+    ],
+    "target_word_stem": "sat",
+    "related_word_stem": [
+      "cătun",
+      "oraș",
+      "săteancă"
+    ]
+  },
+  {
+    "target_word": "coastă",
+    "related_word": [
+      "litoral",
+      "versant",
+      "rână"
+    ],
+    "target_word_stem": "coastă",
+    "related_word_stem": [
+      "litoral",
+      "versant",
+      "rână"
+    ]
+  },
+  {
+    "target_word": "monedă",
+    "related_word": [
+      "argint",
+      "ban",
+      "bancnotă"
+    ],
+    "target_word_stem": "monedă",
+    "related_word_stem": [
+      "argint",
+      "ban",
+      "bancnotă"
+    ]
+  },
+  {
+    "target_word": "pace",
+    "related_word": [
+      "armonie",
+      "război",
+      "luptă"
+    ],
+    "target_word_stem": "pace",
+    "related_word_stem": [
+      "armonie",
+      "război",
+      "luptă"
+    ]
+  },
+  {
+    "target_word": "fund",
+    "related_word": [
+      "dos",
+      "șezut",
+      "bucă"
+    ],
+    "target_word_stem": "fund",
+    "related_word_stem": [
+      "dos",
+      "șezut",
+      "bucă"
+    ]
+  },
+  {
+    "target_word": "spirit",
+    "related_word": [
+      "duh",
+      "creier",
+      "fantomă"
+    ],
+    "target_word_stem": "spirit",
+    "related_word_stem": [
+      "duh",
+      "creier",
+      "fantomă"
+    ]
+  },
+  {
+    "target_word": "roată",
+    "related_word": [
+      "cerc",
+      "bătător",
+      "disc"
+    ],
+    "target_word_stem": "roată",
+    "related_word_stem": [
+      "cerc",
+      "bătător",
+      "disc"
+    ]
+  },
+  {
+    "target_word": "armată",
+    "related_word": [
+      "oștire",
+      "silă",
+      "oaste"
+    ],
+    "target_word_stem": "armată",
+    "related_word_stem": [
+      "oștire",
+      "silă",
+      "oaste"
+    ]
+  },
+  {
+    "target_word": "specie",
+    "related_word": [
+      "neam",
+      "gen",
+      "fel"
+    ],
+    "target_word_stem": "specie",
+    "related_word_stem": [
+      "neam",
+      "gen",
+      "fel"
+    ]
+  },
+  {
+    "target_word": "naștere",
+    "related_word": [
+      "născut",
+      "creație",
+      "deces"
+    ],
+    "target_word_stem": "naștere",
+    "related_word_stem": [
+      "născut",
+      "creație",
+      "deces"
+    ]
+  },
+  {
+    "target_word": "gaură",
+    "related_word": [
+      "găoace",
+      "zgău",
+      "deschizătură"
+    ],
+    "target_word_stem": "gaură",
+    "related_word_stem": [
+      "găoace",
+      "zgău",
+      "deschizătură"
+    ]
+  },
+  {
+    "target_word": "adevăr",
+    "related_word": [
+      "veritate",
+      "real",
+      "minciună"
+    ],
+    "target_word_stem": "adevăr",
+    "related_word_stem": [
+      "veritate",
+      "real",
+      "minciună"
+    ]
+  },
+  {
+    "target_word": "discurs",
+    "related_word": [
+      "cuvântare",
+      "orație",
+      "expunere"
+    ],
+    "target_word_stem": "discurs",
+    "related_word_stem": [
+      "cuvântare",
+      "orație",
+      "expunere"
+    ]
+  },
+  {
+    "target_word": "adunare",
+    "related_word": [
+      "buluc",
+      "scădere",
+      "grămadă"
+    ],
+    "target_word_stem": "adunare",
+    "related_word_stem": [
+      "buluc",
+      "scădere",
+      "grămadă"
+    ]
+  },
+  {
+    "target_word": "creier",
+    "related_word": [
+      "minte",
+      "encefal",
+      "spirit"
+    ],
+    "target_word_stem": "creier",
+    "related_word_stem": [
+      "minte",
+      "encefal",
+      "spirit"
+    ]
+  },
+  {
+    "target_word": "antic",
+    "related_word": [
+      "demodat",
+      "vechi",
+      "vetust"
+    ],
+    "target_word_stem": "antic",
+    "related_word_stem": [
+      "demodat",
+      "vechi",
+      "vetust"
+    ]
+  },
+  {
+    "target_word": "zăpadă",
+    "related_word": [
+      "ninsoare",
+      "nea",
+      "omăt"
+    ],
+    "target_word_stem": "zăpadă",
+    "related_word_stem": [
+      "ninsoare",
+      "nea",
+      "omăt"
+    ]
+  },
+  {
+    "target_word": "baie",
+    "related_word": [
+      "closet",
+      "cadă",
+      "ciubăr"
+    ],
+    "target_word_stem": "baie",
+    "related_word_stem": [
+      "closet",
+      "cadă",
+      "ciubăr"
+    ]
+  },
+  {
+    "target_word": "ieri",
+    "related_word": [
+      "astăzi",
+      "mâine",
+      "răsalaltăieri"
+    ],
+    "target_word_stem": "ieri",
+    "related_word_stem": [
+      "astăzi",
+      "mâine",
+      "răsalaltăieri"
+    ]
+  },
+  {
+    "target_word": "ziua",
+    "related_word": [
+      "dimineața",
+      "noaptea",
+      "seara"
+    ],
+    "target_word_stem": "ziua",
+    "related_word_stem": [
+      "dimineața",
+      "noaptea",
+      "seara"
+    ]
+  },
+  {
+    "target_word": "teritoriu",
+    "related_word": [
+      "pământ",
+      "ținut",
+      "cuprins"
+    ],
+    "target_word_stem": "teritoriu",
+    "related_word_stem": [
+      "pământ",
+      "ținut",
+      "cuprins"
+    ]
+  },
+  {
+    "target_word": "sămânță",
+    "related_word": [
+      "grăunte",
+      "bob",
+      "spermă"
+    ],
+    "target_word_stem": "sămânță",
+    "related_word_stem": [
+      "grăunte",
+      "bob",
+      "spermă"
+    ]
+  },
+  {
+    "target_word": "fruct",
+    "related_word": [
+      "rod",
+      "poamă",
+      "carpo"
+    ],
+    "target_word_stem": "fruct",
+    "related_word_stem": [
+      "rod",
+      "poamă",
+      "carpo"
+    ]
+  },
+  {
+    "target_word": "vârf",
+    "related_word": [
+      "bază",
+      "pisc",
+      "culme"
+    ],
+    "target_word_stem": "vârf",
+    "related_word_stem": [
+      "bază",
+      "pisc",
+      "culme"
+    ]
+  },
+  {
+    "target_word": "specialitate",
+    "related_word": [
+      "branșă",
+      "ramură",
+      "domeniu"
+    ],
+    "target_word_stem": "specialitate",
+    "related_word_stem": [
+      "branșă",
+      "ramură",
+      "domeniu"
+    ]
+  },
+  {
+    "target_word": "haină",
+    "related_word": [
+      "îmbrăcăminte",
+      "strai",
+      "veșmânt"
+    ],
+    "target_word_stem": "haină",
+    "related_word_stem": [
+      "îmbrăcăminte",
+      "strai",
+      "veșmânt"
+    ]
+  },
+  {
+    "target_word": "sare",
+    "related_word": [
+      "piper",
+      "sănină",
+      "sărătură"
+    ],
+    "target_word_stem": "sare",
+    "related_word_stem": [
+      "piper",
+      "sănină",
+      "sărătură"
+    ]
+  },
+  {
+    "target_word": "evoluție",
+    "related_word": [
+      "transformare",
+      "progres",
+      "schimbare"
+    ],
+    "target_word_stem": "evoluție",
+    "related_word_stem": [
+      "transformare",
+      "progres",
+      "schimbare"
+    ]
+  },
+  {
+    "target_word": "vultur",
+    "related_word": [
+      "acvilă",
+      "condor",
+      "pajură"
+    ],
+    "target_word_stem": "vultur",
+    "related_word_stem": [
+      "acvilă",
+      "condor",
+      "pajură"
+    ]
+  }
+]

@@ -1,0 +1,394 @@
+[
+  {
+    "target_word": "حياة",
+    "related_word": [
+      "استحياء",
+      "الست المستحية",
+      "عمر"
+    ],
+    "target_word_stem": "حياة",
+    "related_word_stem": [
+      "استحياء",
+      "الست المستحية",
+      "عمر"
+    ]
+  },
+  {
+    "target_word": "حقيقة",
+    "related_word": [
+      "باطل",
+      "كذبة",
+      "صدق"
+    ],
+    "target_word_stem": "حقيقة",
+    "related_word_stem": [
+      "باطل",
+      "كذبة",
+      "صدق"
+    ]
+  },
+  {
+    "target_word": "نصف",
+    "related_word": [
+      "تسع",
+      "ثلث",
+      "ثمن"
+    ],
+    "target_word_stem": "نصف",
+    "related_word_stem": [
+      "تسع",
+      "ثلث",
+      "ثمن"
+    ]
+  },
+  {
+    "target_word": "أخ",
+    "related_word": [
+      "شقيق",
+      "اخاء",
+      "اخوية"
+    ],
+    "target_word_stem": "أخ",
+    "related_word_stem": [
+      "شقيق",
+      "اخاء",
+      "اخوية"
+    ]
+  },
+  {
+    "target_word": "زوج",
+    "related_word": [
+      "اثنان",
+      "بعل",
+      "امراة"
+    ],
+    "target_word_stem": "زوج",
+    "related_word_stem": [
+      "اثنان",
+      "بعل",
+      "امراة"
+    ]
+  },
+  {
+    "target_word": "يسوع",
+    "related_word": [
+      "عيسى",
+      "المسيح",
+      "يشوع"
+    ],
+    "target_word_stem": "يسوع",
+    "related_word_stem": [
+      "عيسى",
+      "المسيح",
+      "يشوع"
+    ]
+  },
+  {
+    "target_word": "برج",
+    "related_word": [
+      "قلعة",
+      "معقل",
+      "حصن"
+    ],
+    "target_word_stem": "برج",
+    "related_word_stem": [
+      "قلعة",
+      "معقل",
+      "حصن"
+    ]
+  },
+  {
+    "target_word": "أصل",
+    "related_word": [
+      "فرع",
+      "استيصال",
+      "اصالة"
+    ],
+    "target_word_stem": "أصل",
+    "related_word_stem": [
+      "فرع",
+      "استيصال",
+      "اصالة"
+    ]
+  },
+  {
+    "target_word": "كتاب",
+    "related_word": [
+      "قرأ",
+      "مكتبة",
+      "ورق"
+    ],
+    "target_word_stem": "كتب",
+    "related_word_stem": [
+      "قرأ",
+      "كتب",
+      "ورق"
+    ]
+  },
+  {
+    "target_word": "بيت",
+    "related_word": [
+      "منزل",
+      "غرفة",
+      "عائلة"
+    ],
+    "target_word_stem": "بيت",
+    "related_word_stem": [
+      "نزل",
+      "غرف",
+      "اهل"
+    ]
+  },
+  {
+    "target_word": "شمس",
+    "related_word": [
+      "نهار",
+      "ضوء",
+      "حرارة"
+    ],
+    "target_word_stem": "شمس",
+    "related_word_stem": [
+      "نهر",
+      "ضوء",
+      "حرر"
+    ]
+  },
+  {
+    "target_word": "ماء",
+    "related_word": [
+      "شرب",
+      "نهر",
+      "بحر"
+    ],
+    "target_word_stem": "موه",
+    "related_word_stem": [
+      "شرب",
+      "نهر",
+      "بحر"
+    ]
+  },
+  {
+    "target_word": "ذهب",
+    "related_word": [
+      "مال",
+      "بنك",
+      "غالي"
+    ],
+    "target_word_stem": "ذهب",
+    "related_word_stem": [
+      "مول",
+      "بنك",
+      "غلو"
+    ]
+  },
+  {
+    "target_word": "أكل",
+    "related_word": [
+      "طعام",
+      "مطعم",
+      "جوع"
+    ],
+    "target_word_stem": "اكل",
+    "related_word_stem": [
+      "طعم",
+      "طعم",
+      "جوع"
+    ]
+  },
+  {
+    "target_word": "عمل",
+    "related_word": [
+      "وظيفة",
+      "شركة",
+      "فلوس"
+    ],
+    "target_word_stem": "عمل",
+    "related_word_stem": [
+      "وظف",
+      "شرك",
+      "فلس"
+    ]
+  },
+  {
+    "target_word": "سيارة",
+    "related_word": [
+      "طريق",
+      "عجلات",
+      "نقل"
+    ],
+    "target_word_stem": "سير",
+    "related_word_stem": [
+      "طرق",
+      "عجل",
+      "نقل"
+    ]
+  },
+  {
+    "target_word": "باب",
+    "related_word": [
+      "مفتاح",
+      "غلق",
+      "مدخل"
+    ],
+    "target_word_stem": "بوب",
+    "related_word_stem": [
+      "فتح",
+      "غلق",
+      "دخل"
+    ]
+  },
+  {
+    "target_word": "يد",
+    "related_word": [
+      "أصابع",
+      "لمس",
+      "قبضة"
+    ],
+    "target_word_stem": "يدي",
+    "related_word_stem": [
+      "اصبع",
+      "لمس",
+      "قبض"
+    ]
+  },
+  {
+    "target_word": "رجل",
+    "related_word": [
+      "ذكر",
+      "إنسان",
+      "ولد"
+    ],
+    "target_word_stem": "رجل",
+    "related_word_stem": [
+      "ذكر",
+      "انس",
+      "ولد"
+    ]
+  },
+  {
+    "target_word": "امرأة",
+    "related_word": [
+      "أنثى",
+      "بنت",
+      "سيدة"
+    ],
+    "target_word_stem": "مرء",
+    "related_word_stem": [
+      "انث",
+      "بنت",
+      "سود"
+    ]
+  },
+  {
+    "target_word": "وقت",
+    "related_word": [
+      "ساعة",
+      "يوم",
+      "تاريخ"
+    ],
+    "target_word_stem": "وقت",
+    "related_word_stem": [
+      "سوع",
+      "يوم",
+      "ورخ"
+    ]
+  },
+  {
+    "target_word": "مدينة",
+    "related_word": [
+      "شارع",
+      "سكان",
+      "دولة"
+    ],
+    "target_word_stem": "مدن",
+    "related_word_stem": [
+      "شرع",
+      "سكن",
+      "دول"
+    ]
+  },
+  {
+    "target_word": "اسم",
+    "related_word": [
+      "هوية",
+      "تعريف",
+      "شخص"
+    ],
+    "target_word_stem": "سمو",
+    "related_word_stem": [
+      "هوي",
+      "عرف",
+      "شخص"
+    ]
+  },
+  {
+    "target_word": "طعام",
+    "related_word": [
+      "مطبخ",
+      "أكل",
+      "وجبة"
+    ],
+    "target_word_stem": "طعم",
+    "related_word_stem": [
+      "طبخ",
+      "اكل",
+      "وجب"
+    ]
+  },
+  {
+    "target_word": "سوق",
+    "related_word": [
+      "بيع",
+      "شراء",
+      "متجر"
+    ],
+    "target_word_stem": "سوق",
+    "related_word_stem": [
+      "بيع",
+      "شري",
+      "تجر"
+    ]
+  },
+  {
+    "target_word": "نوم",
+    "related_word": [
+      "سرير",
+      "ليل",
+      "حلم"
+    ],
+    "target_word_stem": "نوم",
+    "related_word_stem": [
+      "سرر",
+      "ليل",
+      "حلم"
+    ]
+  },
+  {
+    "target_word": "شجرة",
+    "related_word": [
+      "أوراق",
+      "غابة",
+      "خشب"
+    ],
+    "target_word_stem": "شجر",
+    "related_word_stem": [
+      "ورق",
+      "غيب",
+      "خشب"
+    ]
+  },
+  {
+    "target_word": "لغة",
+    "related_word": [
+      "كلمات",
+      "تحدث",
+      "عربي"
+    ],
+    "target_word_stem": "لغو",
+    "related_word_stem": [
+      "كلم",
+      "حدث",
+      "عرب"
+    ]
+  }
+]

@@ -1,0 +1,604 @@
+[
+  {
+    "target_word": "grāmata",
+    "related_word": [
+      "vēstule",
+      "lappuse",
+      "vāks"
+    ],
+    "target_word_stem": "grāmata",
+    "related_word_stem": [
+      "vēstule",
+      "lappuse",
+      "vāks"
+    ]
+  },
+  {
+    "target_word": "plāns",
+    "related_word": [
+      "rets",
+      "tievs",
+      "grīda"
+    ],
+    "target_word_stem": "plāns",
+    "related_word_stem": [
+      "rets",
+      "tievs",
+      "grīda"
+    ]
+  },
+  {
+    "target_word": "bērns",
+    "related_word": [
+      "vecāki",
+      "ģimene",
+      "cilvēks"
+    ],
+    "target_word_stem": "bērns",
+    "related_word_stem": [
+      "vecāki",
+      "ģimene",
+      "cilvēks"
+    ]
+  },
+  {
+    "target_word": "ģimene",
+    "related_word": [
+      "dzimta",
+      "famīlija",
+      "bērns"
+    ],
+    "target_word_stem": "ģimene",
+    "related_word_stem": [
+      "dzimta",
+      "famīlija",
+      "bērns"
+    ]
+  },
+  {
+    "target_word": "mēnesis",
+    "related_word": [
+      "aprīlis",
+      "augusts",
+      "februāris"
+    ],
+    "target_word_stem": "mēnesis",
+    "related_word_stem": [
+      "aprīlis",
+      "augusts",
+      "februāris"
+    ]
+  },
+  {
+    "target_word": "diskusija",
+    "related_word": [
+      "debates",
+      "apspriešana",
+      "pārrunas"
+    ],
+    "target_word_stem": "diskusija",
+    "related_word_stem": [
+      "debates",
+      "apspriešana",
+      "pārrunas"
+    ]
+  },
+  {
+    "target_word": "vēstule",
+    "related_word": [
+      "grāmata",
+      "aploksne",
+      "pastmarka"
+    ],
+    "target_word_stem": "vēstule",
+    "related_word_stem": [
+      "grāmata",
+      "aploksne",
+      "pastmarka"
+    ]
+  },
+  {
+    "target_word": "uguns",
+    "related_word": [
+      "degšana",
+      "liesma",
+      "sārts"
+    ],
+    "target_word_stem": "uguns",
+    "related_word_stem": [
+      "degšana",
+      "liesma",
+      "sārts"
+    ]
+  },
+  {
+    "target_word": "baznīca",
+    "related_word": [
+      "abatija",
+      "kapela",
+      "klosteris"
+    ],
+    "target_word_stem": "baznīca",
+    "related_word_stem": [
+      "abatija",
+      "kapela",
+      "klosteris"
+    ]
+  },
+  {
+    "target_word": "karalis",
+    "related_word": [
+      "ķēniņš",
+      "ķeizars",
+      "princese"
+    ],
+    "target_word_stem": "karalis",
+    "related_word_stem": [
+      "ķēniņš",
+      "ķeizars",
+      "princese"
+    ]
+  },
+  {
+    "target_word": "sezona",
+    "related_word": [
+      "gadalaiks",
+      "rudens",
+      "vasara"
+    ],
+    "target_word_stem": "sezona",
+    "related_word_stem": [
+      "gadalaiks",
+      "rudens",
+      "vasara"
+    ]
+  },
+  {
+    "target_word": "zirgs",
+    "related_word": [
+      "kumeļš",
+      "pakavs",
+      "baltiņš"
+    ],
+    "target_word_stem": "zirgs",
+    "related_word_stem": [
+      "kumeļš",
+      "pakavs",
+      "baltiņš"
+    ]
+  },
+  {
+    "target_word": "tēvs",
+    "related_word": [
+      "māte",
+      "meita",
+      "ģimene"
+    ],
+    "target_word_stem": "tēvs",
+    "related_word_stem": [
+      "māte",
+      "meita",
+      "ģimene"
+    ]
+  },
+  {
+    "target_word": "putns",
+    "related_word": [
+      "knābis",
+      "ligzda",
+      "ola"
+    ],
+    "target_word_stem": "putns",
+    "related_word_stem": [
+      "knābis",
+      "ligzda",
+      "ola"
+    ]
+  },
+  {
+    "target_word": "tērauds",
+    "related_word": [
+      "dzelzs",
+      "čuguns",
+      "ķets"
+    ],
+    "target_word_stem": "tērauds",
+    "related_word_stem": [
+      "dzelzs",
+      "čuguns",
+      "ķets"
+    ]
+  },
+  {
+    "target_word": "meita",
+    "related_word": [
+      "skuķe",
+      "kalpone",
+      "puisis"
+    ],
+    "target_word_stem": "meita",
+    "related_word_stem": [
+      "skuķe",
+      "kalpone",
+      "puisis"
+    ]
+  },
+  {
+    "target_word": "planēta",
+    "related_word": [
+      "jupiters",
+      "marss",
+      "neptūns"
+    ],
+    "target_word_stem": "planēta",
+    "related_word_stem": [
+      "jupiters",
+      "marss",
+      "neptūns"
+    ]
+  },
+  {
+    "target_word": "lietus",
+    "related_word": [
+      "vētra",
+      "gāze",
+      "auka"
+    ],
+    "target_word_stem": "lietus",
+    "related_word_stem": [
+      "vētra",
+      "gāze",
+      "auka"
+    ]
+  },
+  {
+    "target_word": "debates",
+    "related_word": [
+      "diskutēšana",
+      "apspriede",
+      "pārrunas"
+    ],
+    "target_word_stem": "debates",
+    "related_word_stem": [
+      "diskutēšana",
+      "apspriede",
+      "pārrunas"
+    ]
+  },
+  {
+    "target_word": "alga",
+    "related_word": [
+      "peļņa",
+      "atlīdzinājums",
+      "gājiens"
+    ],
+    "target_word_stem": "alga",
+    "related_word_stem": [
+      "peļņa",
+      "atlīdzinājums",
+      "gājiens"
+    ]
+  },
+  {
+    "target_word": "vētra",
+    "related_word": [
+      "lietus",
+      "auka",
+      "gāze"
+    ],
+    "target_word_stem": "vētra",
+    "related_word_stem": [
+      "lietus",
+      "auka",
+      "gāze"
+    ]
+  },
+  {
+    "target_word": "garša",
+    "related_word": [
+      "rūgts",
+      "salds",
+      "skābs"
+    ],
+    "target_word_stem": "garša",
+    "related_word_stem": [
+      "rūgts",
+      "salds",
+      "skābs"
+    ]
+  },
+  {
+    "target_word": "princis",
+    "related_word": [
+      "erchercogiene",
+      "firstiene",
+      "grāfs"
+    ],
+    "target_word_stem": "princis",
+    "related_word_stem": [
+      "erchercogiene",
+      "firstiene",
+      "grāfs"
+    ]
+  },
+  {
+    "target_word": "nāve",
+    "related_word": [
+      "mironis",
+      "mirstība",
+      "mirstīgs"
+    ],
+    "target_word_stem": "nāve",
+    "related_word_stem": [
+      "mironis",
+      "mirstība",
+      "mirstīgs"
+    ]
+  },
+  {
+    "target_word": "māte",
+    "related_word": [
+      "tēvs",
+      "bērns",
+      "dēls"
+    ],
+    "target_word_stem": "māte",
+    "related_word_stem": [
+      "tēvs",
+      "bērns",
+      "dēls"
+    ]
+  },
+  {
+    "target_word": "miegs",
+    "related_word": [
+      "dusa",
+      "gulēt",
+      "dusēt"
+    ],
+    "target_word_stem": "miegs",
+    "related_word_stem": [
+      "dusa",
+      "gulēt",
+      "dusēt"
+    ]
+  },
+  {
+    "target_word": "saule",
+    "related_word": [
+      "karsts",
+      "gaisma",
+      "debesis"
+    ],
+    "target_word_stem": "saul",
+    "related_word_stem": [
+      "karst",
+      "gaism",
+      "debes"
+    ]
+  },
+  {
+    "target_word": "ūdens",
+    "related_word": [
+      "jūra",
+      "dzert",
+      "slapjš"
+    ],
+    "target_word_stem": "ūden",
+    "related_word_stem": [
+      "jūr",
+      "dzer",
+      "slap"
+    ]
+  },
+  {
+    "target_word": "māja",
+    "related_word": [
+      "dzīvot",
+      "istaba",
+      "ģimene"
+    ],
+    "target_word_stem": "māj",
+    "related_word_stem": [
+      "dzīv",
+      "istab",
+      "ģimen"
+    ]
+  },
+  {
+    "target_word": "darbs",
+    "related_word": [
+      "strādāt",
+      "nauda",
+      "birojs"
+    ],
+    "target_word_stem": "darb",
+    "related_word_stem": [
+      "strād",
+      "naud",
+      "biroj"
+    ]
+  },
+  {
+    "target_word": "laiks",
+    "related_word": [
+      "stunda",
+      "dienas",
+      "pulsktenis"
+    ],
+    "target_word_stem": "laik",
+    "related_word_stem": [
+      "stund",
+      "dien",
+      "pulksten"
+    ]
+  },
+  {
+    "target_word": "cilvēks",
+    "related_word": [
+      "persona",
+      "vīrietis",
+      "sieviete"
+    ],
+    "target_word_stem": "cilvēk",
+    "related_word_stem": [
+      "person",
+      "vīriet",
+      "sieviet"
+    ]
+  },
+  {
+    "target_word": "valsts",
+    "related_word": [
+      "Latvija",
+      "prezidents",
+      "likums"
+    ],
+    "target_word_stem": "valst",
+    "related_word_stem": [
+      "Latvij",
+      "prezident",
+      "likum"
+    ]
+  },
+  {
+    "target_word": "ceļš",
+    "related_word": [
+      "braukt",
+      "mašīna",
+      "karte"
+    ],
+    "target_word_stem": "ceļ",
+    "related_word_stem": [
+      "brauk",
+      "mašīn",
+      "kart"
+    ]
+  },
+  {
+    "target_word": "diena",
+    "related_word": [
+      "rīts",
+      "vakars",
+      "saule"
+    ],
+    "target_word_stem": "dien",
+    "related_word_stem": [
+      "rīt",
+      "vakar",
+      "saul"
+    ]
+  },
+  {
+    "target_word": "nakts",
+    "related_word": [
+      "tumšs",
+      "mēness",
+      "gulēt"
+    ],
+    "target_word_stem": "nakts",
+    "related_word_stem": [
+      "tumš",
+      "mēnes",
+      "gul"
+    ]
+  },
+  {
+    "target_word": "pilsēta",
+    "related_word": [
+      "Rīga",
+      "ielas",
+      "ēkas"
+    ],
+    "target_word_stem": "pilsēt",
+    "related_word_stem": [
+      "Rīg",
+      "iel",
+      "ēk"
+    ]
+  },
+  {
+    "target_word": "ēdiens",
+    "related_word": [
+      "ēst",
+      "garšīgs",
+      "restorāns"
+    ],
+    "target_word_stem": "ēdien",
+    "related_word_stem": [
+      "ēst",
+      "garš",
+      "restorān"
+    ]
+  },
+  {
+    "target_word": "miers",
+    "related_word": [
+      "kluss",
+      "atpūta",
+      "relaksācija"
+    ],
+    "target_word_stem": "mier",
+    "related_word_stem": [
+      "klus",
+      "atpūt",
+      "relaksācij"
+    ]
+  },
+  {
+    "target_word": "mīlestība",
+    "related_word": [
+      "sirds",
+      "romantika",
+      "jūtas"
+    ],
+    "target_word_stem": "mīlestīb",
+    "related_word_stem": [
+      "sird",
+      "romantik",
+      "jūt"
+    ]
+  },
+  {
+    "target_word": "draugs",
+    "related_word": [
+      "biedrs",
+      "palīdzība",
+      "komunikācija"
+    ],
+    "target_word_stem": "draug",
+    "related_word_stem": [
+      "biedr",
+      "palīdzīb",
+      "komunikācij"
+    ]
+  },
+  {
+    "target_word": "skola",
+    "related_word": [
+      "mācīties",
+      "klase",
+      "skolotājs"
+    ],
+    "target_word_stem": "skol",
+    "related_word_stem": [
+      "mācīt",
+      "klas",
+      "skolotāj"
+    ]
+  },
+  {
+    "target_word": "sports",
+    "related_word": [
+      "spēle",
+      "vingrošana",
+      "stadions"
+    ],
+    "target_word_stem": "sport",
+    "related_word_stem": [
+      "spēl",
+      "vingrošan",
+      "stadion"
+    ]
+  }
+]

@@ -1,0 +1,352 @@
+[
+  {
+    "target_word": "ese",
+    "related_word": [
+      "eesmärk",
+      "objekt",
+      "sihitis"
+    ],
+    "target_word_stem": "ese",
+    "related_word_stem": [
+      "eesmärk",
+      "objekt",
+      "sihitis"
+    ]
+  },
+  {
+    "target_word": "pea",
+    "related_word": [
+      "gi",
+      "kohe",
+      "nii"
+    ],
+    "target_word_stem": "pea",
+    "related_word_stem": [
+      "gi",
+      "kohe",
+      "nii"
+    ]
+  },
+  {
+    "target_word": "objekt",
+    "related_word": [
+      "alis",
+      "ehitus",
+      "ese"
+    ],
+    "target_word_stem": "objekt",
+    "related_word_stem": [
+      "alis",
+      "ehitus",
+      "ese"
+    ]
+  },
+  {
+    "target_word": "hobune",
+    "related_word": [
+      "ratsu",
+      "mära",
+      "täkk"
+    ],
+    "target_word_stem": "hobune",
+    "related_word_stem": [
+      "ratsu",
+      "mära",
+      "täkk"
+    ]
+  },
+  {
+    "target_word": "hommik",
+    "related_word": [
+      "õhtu",
+      "päev",
+      "öö"
+    ],
+    "target_word_stem": "hommik",
+    "related_word_stem": [
+      "õhtu",
+      "päev",
+      "öö"
+    ]
+  },
+  {
+    "target_word": "õhtu",
+    "related_word": [
+      "hommik",
+      "päev",
+      "öö"
+    ],
+    "target_word_stem": "õhtu",
+    "related_word_stem": [
+      "hommik",
+      "päev",
+      "öö"
+    ]
+  },
+  {
+    "target_word": "maja",
+    "related_word": [
+      "kodu",
+      "ehitis",
+      "ruum"
+    ],
+    "target_word_stem": "maja",
+    "related_word_stem": [
+      "kodu",
+      "ehiti",
+      "ruum"
+    ]
+  },
+  {
+    "target_word": "inimene",
+    "related_word": [
+      "mees",
+      "naine",
+      "keha"
+    ],
+    "target_word_stem": "inim",
+    "related_word_stem": [
+      "mees",
+      "naine",
+      "keha"
+    ]
+  },
+  {
+    "target_word": "aeg",
+    "related_word": [
+      "kell",
+      "päev",
+      "öö"
+    ],
+    "target_word_stem": "aeg",
+    "related_word_stem": [
+      "kell",
+      "päev",
+      "öö"
+    ]
+  },
+  {
+    "target_word": "maa",
+    "related_word": [
+      "põld",
+      "planeet",
+      "muld"
+    ],
+    "target_word_stem": "maa",
+    "related_word_stem": [
+      "põld",
+      "planeet",
+      "muld"
+    ]
+  },
+  {
+    "target_word": "vesi",
+    "related_word": [
+      "jõgi",
+      "meri",
+      "jooma"
+    ],
+    "target_word_stem": "vesi",
+    "related_word_stem": [
+      "jõgi",
+      "meri",
+      "joom"
+    ]
+  },
+  {
+    "target_word": "töö",
+    "related_word": [
+      "amet",
+      "teenima",
+      "kontor"
+    ],
+    "target_word_stem": "töö",
+    "related_word_stem": [
+      "amet",
+      "teen",
+      "kontor"
+    ]
+  },
+  {
+    "target_word": "raha",
+    "related_word": [
+      "pank",
+      "arve",
+      "ostma"
+    ],
+    "target_word_stem": "raha",
+    "related_word_stem": [
+      "pank",
+      "arv",
+      "ost"
+    ]
+  },
+  {
+    "target_word": "laps",
+    "related_word": [
+      "ema",
+      "isa",
+      "mängima"
+    ],
+    "target_word_stem": "laps",
+    "related_word_stem": [
+      "ema",
+      "isa",
+      "mäng"
+    ]
+  },
+  {
+    "target_word": "auto",
+    "related_word": [
+      "sõitma",
+      "ratas",
+      "bensiin"
+    ],
+    "target_word_stem": "auto",
+    "related_word_stem": [
+      "sõit",
+      "ratas",
+      "bensiin"
+    ]
+  },
+  {
+    "target_word": "päike",
+    "related_word": [
+      "soe",
+      "valgus",
+      "taevas"
+    ],
+    "target_word_stem": "päike",
+    "related_word_stem": [
+      "soe",
+      "valgus",
+      "taevas"
+    ]
+  },
+  {
+    "target_word": "sõna",
+    "related_word": [
+      "rääkima",
+      "keel",
+      "kirjutama"
+    ],
+    "target_word_stem": "sõna",
+    "related_word_stem": [
+      "rääk",
+      "keel",
+      "kirjut"
+    ]
+  },
+  {
+    "target_word": "käsi",
+    "related_word": [
+      "sõrm",
+      "haarama",
+      "keha"
+    ],
+    "target_word_stem": "käsi",
+    "related_word_stem": [
+      "sõrm",
+      "haar",
+      "keha"
+    ]
+  },
+  {
+    "target_word": "jalg",
+    "related_word": [
+      "jooksma",
+      "põlv",
+      "keha"
+    ],
+    "target_word_stem": "jalg",
+    "related_word_stem": [
+      "jooks",
+      "põlv",
+      "keha"
+    ]
+  },
+  {
+    "target_word": "söök",
+    "related_word": [
+      "sööma",
+      "restoran",
+      "näljane"
+    ],
+    "target_word_stem": "söök",
+    "related_word_stem": [
+      "söö",
+      "restoran",
+      "nälj"
+    ]
+  },
+  {
+    "target_word": "puu",
+    "related_word": [
+      "mets",
+      "leht",
+      "oks"
+    ],
+    "target_word_stem": "puu",
+    "related_word_stem": [
+      "mets",
+      "leht",
+      "oks"
+    ]
+  },
+  {
+    "target_word": "riik",
+    "related_word": [
+      "Eesti",
+      "valitsus",
+      "president"
+    ],
+    "target_word_stem": "riik",
+    "related_word_stem": [
+      "Eesti",
+      "valits",
+      "president"
+    ]
+  },
+  {
+    "target_word": "number",
+    "related_word": [
+      "üks",
+      "kaks",
+      "arvutama"
+    ],
+    "target_word_stem": "number",
+    "related_word_stem": [
+      "üks",
+      "kaks",
+      "arvut"
+    ]
+  },
+  {
+    "target_word": "pilt",
+    "related_word": [
+      "foto",
+      "maal",
+      "vaatama"
+    ],
+    "target_word_stem": "pilt",
+    "related_word_stem": [
+      "foto",
+      "maal",
+      "vaat"
+    ]
+  },
+  {
+    "target_word": "tee",
+    "related_word": [
+      "juua",
+      "soojus",
+      "sidrun"
+    ],
+    "target_word_stem": "tee",
+    "related_word_stem": [
+      "joo",
+      "soe",
+      "sidrun"
+    ]
+  }
+]

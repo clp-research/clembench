@@ -1,0 +1,408 @@
+[
+  {
+    "target_word": "by",
+    "related_word": [
+      "bymidte",
+      "bymæssig",
+      "landsby"
+    ],
+    "target_word_stem": "by",
+    "related_word_stem": [
+      "bymidte",
+      "bymæssig",
+      "landsby"
+    ]
+  },
+  {
+    "target_word": "sort",
+    "related_word": [
+      "neger",
+      "abekat",
+      "afrikaner"
+    ],
+    "target_word_stem": "sort",
+    "related_word_stem": [
+      "neger",
+      "abekat",
+      "afrikaner"
+    ]
+  },
+  {
+    "target_word": "kamp",
+    "related_word": [
+      "slag",
+      "træfning",
+      "dyst"
+    ],
+    "target_word_stem": "kamp",
+    "related_word_stem": [
+      "slag",
+      "træfning",
+      "dyst"
+    ]
+  },
+  {
+    "target_word": "agent",
+    "related_word": [
+      "spion",
+      "kommissionær",
+      "repræsentant"
+    ],
+    "target_word_stem": "agent",
+    "related_word_stem": [
+      "spion",
+      "kommissionær",
+      "repræsentant"
+    ]
+  },
+  {
+    "target_word": "flod",
+    "related_word": [
+      "højvande",
+      "bæk",
+      "å"
+    ],
+    "target_word_stem": "flod",
+    "related_word_stem": [
+      "højvande",
+      "bæk",
+      "å"
+    ]
+  },
+  {
+    "target_word": "vind",
+    "related_word": [
+      "fjert",
+      "prut",
+      "blæst"
+    ],
+    "target_word_stem": "vind",
+    "related_word_stem": [
+      "fjert",
+      "prut",
+      "blæst"
+    ]
+  },
+  {
+    "target_word": "hustru",
+    "related_word": [
+      "ægtefælle",
+      "frue",
+      "viv"
+    ],
+    "target_word_stem": "hustru",
+    "related_word_stem": [
+      "ægtefælle",
+      "frue",
+      "viv"
+    ]
+  },
+  {
+    "target_word": "mus",
+    "related_word": [
+      "dyr",
+      "gnaver",
+      "hvirveldyr"
+    ],
+    "target_word_stem": "mus",
+    "related_word_stem": [
+      "dyr",
+      "gnaver",
+      "hvirveldyr"
+    ]
+  },
+  {
+    "target_word": "hår",
+    "related_word": [
+      "bakkenbart",
+      "overskæg",
+      "skæg"
+    ],
+    "target_word_stem": "hår",
+    "related_word_stem": [
+      "bakkenbart",
+      "overskæg",
+      "skæg"
+    ]
+  },
+  {
+    "target_word": "Hund",
+    "related_word": [
+      "Kæledyr",
+      "Vovse",
+      "Gø"
+    ],
+    "target_word_stem": "hund",
+    "related_word_stem": [
+      "kæledyr",
+      "vovs",
+      "gø"
+    ]
+  },
+  {
+    "target_word": "Hus",
+    "related_word": [
+      "Bolig",
+      "Lejlighed",
+      "Hjem"
+    ],
+    "target_word_stem": "hus",
+    "related_word_stem": [
+      "bolig",
+      "lejlighed",
+      "hjem"
+    ]
+  },
+  {
+    "target_word": "Mad",
+    "related_word": [
+      "Spise",
+      "Aftensmad",
+      "Frokost"
+    ],
+    "target_word_stem": "mad",
+    "related_word_stem": [
+      "spis",
+      "aftensmad",
+      "frokost"
+    ]
+  },
+  {
+    "target_word": "Vand",
+    "related_word": [
+      "Drikke",
+      "Hav",
+      "Sø"
+    ],
+    "target_word_stem": "vand",
+    "related_word_stem": [
+      "drik",
+      "hav",
+      "sø"
+    ]
+  },
+  {
+    "target_word": "Bil",
+    "related_word": [
+      "Køre",
+      "Transport",
+      "Vogn"
+    ],
+    "target_word_stem": "bil",
+    "related_word_stem": [
+      "kør",
+      "transport",
+      "vogn"
+    ]
+  },
+  {
+    "target_word": "Sol",
+    "related_word": [
+      "Varme",
+      "Sommer",
+      "Lys"
+    ],
+    "target_word_stem": "sol",
+    "related_word_stem": [
+      "varm",
+      "sommer",
+      "lys"
+    ]
+  },
+  {
+    "target_word": "Bog",
+    "related_word": [
+      "Læse",
+      "Historie",
+      "Kapitel"
+    ],
+    "target_word_stem": "bog",
+    "related_word_stem": [
+      "læs",
+      "histori",
+      "kapitel"
+    ]
+  },
+  {
+    "target_word": "Tid",
+    "related_word": [
+      "Klokke",
+      "Uge",
+      "Dag"
+    ],
+    "target_word_stem": "tid",
+    "related_word_stem": [
+      "klokk",
+      "ug",
+      "dag"
+    ]
+  },
+  {
+    "target_word": "Penge",
+    "related_word": [
+      "Betale",
+      "Krone",
+      "Rig"
+    ],
+    "target_word_stem": "peng",
+    "related_word_stem": [
+      "betal",
+      "kron",
+      "rig"
+    ]
+  },
+  {
+    "target_word": "Arbejde",
+    "related_word": [
+      "Job",
+      "Kontor",
+      "Løn"
+    ],
+    "target_word_stem": "arbejd",
+    "related_word_stem": [
+      "job",
+      "kontor",
+      "løn"
+    ]
+  },
+  {
+    "target_word": "Barn",
+    "related_word": [
+      "Lege",
+      "Forældre",
+      "Familie"
+    ],
+    "target_word_stem": "barn",
+    "related_word_stem": [
+      "leg",
+      "forældr",
+      "famili"
+    ]
+  },
+  {
+    "target_word": "Computer",
+    "related_word": [
+      "Internet",
+      "Skærm",
+      "Tastatur"
+    ],
+    "target_word_stem": "comput",
+    "related_word_stem": [
+      "internet",
+      "skærm",
+      "tastatur"
+    ]
+  },
+  {
+    "target_word": "Skole",
+    "related_word": [
+      "Lærer",
+      "Elev",
+      "Undervisning"
+    ],
+    "target_word_stem": "skol",
+    "related_word_stem": [
+      "lærer",
+      "elev",
+      "undervis"
+    ]
+  },
+  {
+    "target_word": "Ven",
+    "related_word": [
+      "Kammerat",
+      "Venskab",
+      "Hyggelig"
+    ],
+    "target_word_stem": "ven",
+    "related_word_stem": [
+      "kammerat",
+      "venskab",
+      "hyggelig"
+    ]
+  },
+  {
+    "target_word": "Land",
+    "related_word": [
+      "Danmark",
+      "Natur",
+      "Grænse"
+    ],
+    "target_word_stem": "land",
+    "related_word_stem": [
+      "danmark",
+      "natur",
+      "græns"
+    ]
+  },
+  {
+    "target_word": "By",
+    "related_word": [
+      "Gade",
+      "Storby",
+      "Huse"
+    ],
+    "target_word_stem": "by",
+    "related_word_stem": [
+      "gad",
+      "storby",
+      "hus"
+    ]
+  },
+  {
+    "target_word": "Problem",
+    "related_word": [
+      "Løsning",
+      "Svært",
+      "Udfordring"
+    ],
+    "target_word_stem": "problem",
+    "related_word_stem": [
+      "løsn",
+      "svær",
+      "udfordr"
+    ]
+  },
+  {
+    "target_word": "Musik",
+    "related_word": [
+      "Sang",
+      "Lytte",
+      "Tone"
+    ],
+    "target_word_stem": "musik",
+    "related_word_stem": [
+      "sang",
+      "lyt",
+      "ton"
+    ]
+  },
+  {
+    "target_word": "Spil",
+    "related_word": [
+      "Leg",
+      "Vinde",
+      "Tabe"
+    ],
+    "target_word_stem": "spil",
+    "related_word_stem": [
+      "leg",
+      "vind",
+      "tab"
+    ]
+  },
+  {
+    "target_word": "Farve",
+    "related_word": [
+      "Rød",
+      "Blå",
+      "Male"
+    ],
+    "target_word_stem": "farv",
+    "related_word_stem": [
+      "rød",
+      "blå",
+      "mal"
+    ]
+  }
+]

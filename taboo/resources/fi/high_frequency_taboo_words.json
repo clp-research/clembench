@@ -1,0 +1,1276 @@
+[
+  {
+    "target_word": "sivu",
+    "related_word": [
+      "lehti",
+      "profiili",
+      "rinta"
+    ],
+    "target_word_stem": "sivu",
+    "related_word_stem": [
+      "lehti",
+      "profiili",
+      "rinta"
+    ]
+  },
+  {
+    "target_word": "aika",
+    "related_word": [
+      "kohtalaisen",
+      "verrattain",
+      "kieltolaki"
+    ],
+    "target_word_stem": "aika",
+    "related_word_stem": [
+      "kohtalaisen",
+      "verrattain",
+      "kieltolaki"
+    ]
+  },
+  {
+    "target_word": "työ",
+    "related_word": [
+      "homma",
+      "duuni",
+      "ruumiillinen"
+    ],
+    "target_word_stem": "työ",
+    "related_word_stem": [
+      "homma",
+      "duuni",
+      "ruumiillinen"
+    ]
+  },
+  {
+    "target_word": "esine",
+    "related_word": [
+      "juttu",
+      "edellä",
+      "eteen"
+    ],
+    "target_word_stem": "esine",
+    "related_word_stem": [
+      "juttu",
+      "edellä",
+      "eteen"
+    ]
+  },
+  {
+    "target_word": "peli",
+    "related_word": [
+      "matsi",
+      "keino",
+      "ritirati"
+    ],
+    "target_word_stem": "peli",
+    "related_word_stem": [
+      "matsi",
+      "keino",
+      "ritirati"
+    ]
+  },
+  {
+    "target_word": "kauppa",
+    "related_word": [
+      "marketti",
+      "myymälä",
+      "puoti"
+    ],
+    "target_word_stem": "kauppa",
+    "related_word_stem": [
+      "marketti",
+      "myymälä",
+      "puoti"
+    ]
+  },
+  {
+    "target_word": "tulos",
+    "related_word": [
+      "voitto",
+      "pistemäärä",
+      "löydös"
+    ],
+    "target_word_stem": "tulos",
+    "related_word_stem": [
+      "voitto",
+      "pistemäärä",
+      "löydös"
+    ]
+  },
+  {
+    "target_word": "alue",
+    "related_word": [
+      "oblasti",
+      "paikka",
+      "rekisteri"
+    ],
+    "target_word_stem": "alue",
+    "related_word_stem": [
+      "oblasti",
+      "paikka",
+      "rekisteri"
+    ]
+  },
+  {
+    "target_word": "tyyppi",
+    "related_word": [
+      "kaveri",
+      "jätkä",
+      "sortti"
+    ],
+    "target_word_stem": "tyyppi",
+    "related_word_stem": [
+      "kaveri",
+      "jätkä",
+      "sortti"
+    ]
+  },
+  {
+    "target_word": "verkko",
+    "related_word": [
+      "webbi",
+      "ritilä",
+      "kokea"
+    ],
+    "target_word_stem": "verkko",
+    "related_word_stem": [
+      "webbi",
+      "ritilä",
+      "kokea"
+    ]
+  },
+  {
+    "target_word": "lapsi",
+    "related_word": [
+      "pikkuväki",
+      "jälkeläinen",
+      "piltti"
+    ],
+    "target_word_stem": "lapsi",
+    "related_word_stem": [
+      "pikkuväki",
+      "jälkeläinen",
+      "piltti"
+    ]
+  },
+  {
+    "target_word": "asia",
+    "related_word": [
+      "juttu",
+      "kuulua",
+      "ydin"
+    ],
+    "target_word_stem": "asia",
+    "related_word_stem": [
+      "juttu",
+      "kuulua",
+      "ydin"
+    ]
+  },
+  {
+    "target_word": "nainen",
+    "related_word": [
+      "daami",
+      "rouva",
+      "täti"
+    ],
+    "target_word_stem": "nainen",
+    "related_word_stem": [
+      "daami",
+      "rouva",
+      "täti"
+    ]
+  },
+  {
+    "target_word": "kohta",
+    "related_word": [
+      "paikka",
+      "pian",
+      "paragrafi"
+    ],
+    "target_word_stem": "kohta",
+    "related_word_stem": [
+      "paikka",
+      "pian",
+      "paragrafi"
+    ]
+  },
+  {
+    "target_word": "maa",
+    "related_word": [
+      "valtio",
+      "väri",
+      "planeetta"
+    ],
+    "target_word_stem": "maa",
+    "related_word_stem": [
+      "valtio",
+      "väri",
+      "planeetta"
+    ]
+  },
+  {
+    "target_word": "ehto",
+    "related_word": [
+      "klausuuli",
+      "reservaatti",
+      "varaaminen"
+    ],
+    "target_word_stem": "ehto",
+    "related_word_stem": [
+      "klausuuli",
+      "reservaatti",
+      "varaaminen"
+    ]
+  },
+  {
+    "target_word": "maakunta",
+    "related_word": [
+      "aluehallintovirasto",
+      "lääni",
+      "pirkanmaa"
+    ],
+    "target_word_stem": "maakunta",
+    "related_word_stem": [
+      "aluehallintovirasto",
+      "lääni",
+      "pirkanmaa"
+    ]
+  },
+  {
+    "target_word": "etelä",
+    "related_word": [
+      "pohjoinen",
+      "pääilmansuunta",
+      "esi"
+    ],
+    "target_word_stem": "etelä",
+    "related_word_stem": [
+      "pohjoinen",
+      "pääilmansuunta",
+      "esi"
+    ]
+  },
+  {
+    "target_word": "tyttö",
+    "related_word": [
+      "beibi",
+      "mirkku",
+      "mies"
+    ],
+    "target_word_stem": "tyttö",
+    "related_word_stem": [
+      "beibi",
+      "mirkku",
+      "mies"
+    ]
+  },
+  {
+    "target_word": "ruoka",
+    "related_word": [
+      "ravinto",
+      "ateria",
+      "laittaa"
+    ],
+    "target_word_stem": "ruoka",
+    "related_word_stem": [
+      "ravinto",
+      "ateria",
+      "laittaa"
+    ]
+  },
+  {
+    "target_word": "tähti",
+    "related_word": [
+      "taivaankappale",
+      "kuuluisuus",
+      "julkkis"
+    ],
+    "target_word_stem": "tähti",
+    "related_word_stem": [
+      "taivaankappale",
+      "kuuluisuus",
+      "julkkis"
+    ]
+  },
+  {
+    "target_word": "raha",
+    "related_word": [
+      "pätäkkä",
+      "likvidiys",
+      "kiskoa"
+    ],
+    "target_word_stem": "raha",
+    "related_word_stem": [
+      "pätäkkä",
+      "likvidiys",
+      "kiskoa"
+    ]
+  },
+  {
+    "target_word": "henkilö",
+    "related_word": [
+      "persoona",
+      "ihminen",
+      "trenditietoinen"
+    ],
+    "target_word_stem": "henkilö",
+    "related_word_stem": [
+      "persoona",
+      "ihminen",
+      "trenditietoinen"
+    ]
+  },
+  {
+    "target_word": "käsi",
+    "related_word": [
+      "handu",
+      "ruumiinjäsen",
+      "kymmenen"
+    ],
+    "target_word_stem": "käsi",
+    "related_word_stem": [
+      "handu",
+      "ruumiinjäsen",
+      "kymmenen"
+    ]
+  },
+  {
+    "target_word": "kieli",
+    "related_word": [
+      "puhetapa",
+      "flaami",
+      "atsteekki"
+    ],
+    "target_word_stem": "kieli",
+    "related_word_stem": [
+      "puhetapa",
+      "flaami",
+      "atsteekki"
+    ]
+  },
+  {
+    "target_word": "asiakirja",
+    "related_word": [
+      "dokumentti",
+      "propuska",
+      "bumaga"
+    ],
+    "target_word_stem": "asiakirja",
+    "related_word_stem": [
+      "dokumentti",
+      "propuska",
+      "bumaga"
+    ]
+  },
+  {
+    "target_word": "kerho",
+    "related_word": [
+      "klubi",
+      "järjestö",
+      "piiri"
+    ],
+    "target_word_stem": "kerho",
+    "related_word_stem": [
+      "klubi",
+      "järjestö",
+      "piiri"
+    ]
+  },
+  {
+    "target_word": "näyttö",
+    "related_word": [
+      "monitori",
+      "ruutu",
+      "todiste"
+    ],
+    "target_word_stem": "näyttö",
+    "related_word_stem": [
+      "monitori",
+      "ruutu",
+      "todiste"
+    ]
+  },
+  {
+    "target_word": "vartalo",
+    "related_word": [
+      "kroppa",
+      "emi",
+      "sikiäin"
+    ],
+    "target_word_stem": "vartalo",
+    "related_word_stem": [
+      "kroppa",
+      "emi",
+      "sikiäin"
+    ]
+  },
+  {
+    "target_word": "kärry",
+    "related_word": [
+      "kotsa",
+      "vaunu",
+      "auto"
+    ],
+    "target_word_stem": "kärry",
+    "related_word_stem": [
+      "kotsa",
+      "vaunu",
+      "auto"
+    ]
+  },
+  {
+    "target_word": "pää",
+    "related_word": [
+      "kärki",
+      "ajukoppa",
+      "tuuli"
+    ],
+    "target_word_stem": "pää",
+    "related_word_stem": [
+      "kärki",
+      "ajukoppa",
+      "tuuli"
+    ]
+  },
+  {
+    "target_word": "merkki",
+    "related_word": [
+      "symboli",
+      "signaali",
+      "oire"
+    ],
+    "target_word_stem": "merkki",
+    "related_word_stem": [
+      "symboli",
+      "signaali",
+      "oire"
+    ]
+  },
+  {
+    "target_word": "laiva",
+    "related_word": [
+      "haaksi",
+      "alus",
+      "upottaa"
+    ],
+    "target_word_stem": "laiva",
+    "related_word_stem": [
+      "haaksi",
+      "alus",
+      "upottaa"
+    ]
+  },
+  {
+    "target_word": "etu",
+    "related_word": [
+      "intressi",
+      "taka",
+      "haitta"
+    ],
+    "target_word_stem": "etu",
+    "related_word_stem": [
+      "intressi",
+      "taka",
+      "haitta"
+    ]
+  },
+  {
+    "target_word": "syy",
+    "related_word": [
+      "aihe",
+      "juuri",
+      "vika"
+    ],
+    "target_word_stem": "syy",
+    "related_word_stem": [
+      "aihe",
+      "juuri",
+      "vika"
+    ]
+  },
+  {
+    "target_word": "asema",
+    "related_word": [
+      "tehtävä",
+      "status",
+      "pysäkki"
+    ],
+    "target_word_stem": "asema",
+    "related_word_stem": [
+      "tehtävä",
+      "status",
+      "pysäkki"
+    ]
+  },
+  {
+    "target_word": "karhu",
+    "related_word": [
+      "uros",
+      "oksi",
+      "mesikämmen"
+    ],
+    "target_word_stem": "karhu",
+    "related_word_stem": [
+      "uros",
+      "oksi",
+      "mesikämmen"
+    ]
+  },
+  {
+    "target_word": "kulta",
+    "related_word": [
+      "rakas",
+      "muru",
+      "beibi"
+    ],
+    "target_word_stem": "kulta",
+    "related_word_stem": [
+      "rakas",
+      "muru",
+      "beibi"
+    ]
+  },
+  {
+    "target_word": "paino",
+    "related_word": [
+      "emfaasi",
+      "puntti",
+      "korko"
+    ],
+    "target_word_stem": "paino",
+    "related_word_stem": [
+      "emfaasi",
+      "puntti",
+      "korko"
+    ]
+  },
+  {
+    "target_word": "auto",
+    "related_word": [
+      "kärry",
+      "itse",
+      "bussi"
+    ],
+    "target_word_stem": "auto",
+    "related_word_stem": [
+      "kärry",
+      "itse",
+      "bussi"
+    ]
+  },
+  {
+    "target_word": "luku",
+    "related_word": [
+      "kaksari",
+      "kirja",
+      "asetus"
+    ],
+    "target_word_stem": "luku",
+    "related_word_stem": [
+      "kaksari",
+      "kirja",
+      "asetus"
+    ]
+  },
+  {
+    "target_word": "jalka",
+    "related_word": [
+      "kinttu",
+      "ruumiinjäsen",
+      "reisi"
+    ],
+    "target_word_stem": "jalka",
+    "related_word_stem": [
+      "kinttu",
+      "ruumiinjäsen",
+      "reisi"
+    ]
+  },
+  {
+    "target_word": "tappio",
+    "related_word": [
+      "häviö",
+      "myöntää",
+      "pilaantuminen"
+    ],
+    "target_word_stem": "tappio",
+    "related_word_stem": [
+      "häviö",
+      "myöntää",
+      "pilaantuminen"
+    ]
+  },
+  {
+    "target_word": "kenkä",
+    "related_word": [
+      "saapas",
+      "jalkine",
+      "potkut"
+    ],
+    "target_word_stem": "kenkä",
+    "related_word_stem": [
+      "saapas",
+      "jalkine",
+      "potkut"
+    ]
+  },
+  {
+    "target_word": "apuraha",
+    "related_word": [
+      "stipendi",
+      "avustus",
+      "palkinto"
+    ],
+    "target_word_stem": "apuraha",
+    "related_word_stem": [
+      "stipendi",
+      "avustus",
+      "palkinto"
+    ]
+  },
+  {
+    "target_word": "kuolema",
+    "related_word": [
+      "viikatemies",
+      "ikiuni",
+      "lähtö"
+    ],
+    "target_word_stem": "kuolema",
+    "related_word_stem": [
+      "viikatemies",
+      "ikiuni",
+      "lähtö"
+    ]
+  },
+  {
+    "target_word": "vuodenaika",
+    "related_word": [
+      "syksy",
+      "talvi",
+      "kesä"
+    ],
+    "target_word_stem": "vuodenaika",
+    "related_word_stem": [
+      "syksy",
+      "talvi",
+      "kesä"
+    ]
+  },
+  {
+    "target_word": "tavara",
+    "related_word": [
+      "aine",
+      "irtain",
+      "mammona"
+    ],
+    "target_word_stem": "tavara",
+    "related_word_stem": [
+      "aine",
+      "irtain",
+      "mammona"
+    ]
+  },
+  {
+    "target_word": "yhteenveto",
+    "related_word": [
+      "tiivistelmä",
+      "kiteytys",
+      "briiffaus"
+    ],
+    "target_word_stem": "yhteenveto",
+    "related_word_stem": [
+      "tiivistelmä",
+      "kiteytys",
+      "briiffaus"
+    ]
+  },
+  {
+    "target_word": "painike",
+    "related_word": [
+      "näppäin",
+      "kahva",
+      "vedin"
+    ],
+    "target_word_stem": "painike",
+    "related_word_stem": [
+      "näppäin",
+      "kahva",
+      "vedin"
+    ]
+  },
+  {
+    "target_word": "kahva",
+    "related_word": [
+      "ripa",
+      "otin",
+      "painike"
+    ],
+    "target_word_stem": "kahva",
+    "related_word_stem": [
+      "ripa",
+      "otin",
+      "painike"
+    ]
+  },
+  {
+    "target_word": "vieras",
+    "related_word": [
+      "tuttu",
+      "isäntä",
+      "muukalainen"
+    ],
+    "target_word_stem": "vieras",
+    "related_word_stem": [
+      "tuttu",
+      "isäntä",
+      "muukalainen"
+    ]
+  },
+  {
+    "target_word": "hevonen",
+    "related_word": [
+      "ratsu",
+      "ori",
+      "ruuna"
+    ],
+    "target_word_stem": "hevonen",
+    "related_word_stem": [
+      "ratsu",
+      "ori",
+      "ruuna"
+    ]
+  },
+  {
+    "target_word": "kesä",
+    "related_word": [
+      "suvi",
+      "talvi",
+      "vuodenaika"
+    ],
+    "target_word_stem": "kesä",
+    "related_word_stem": [
+      "suvi",
+      "talvi",
+      "vuodenaika"
+    ]
+  },
+  {
+    "target_word": "syöpä",
+    "related_word": [
+      "ruumiinmato",
+      "koiska",
+      "kasvain"
+    ],
+    "target_word_stem": "syöpä",
+    "related_word_stem": [
+      "ruumiinmato",
+      "koiska",
+      "kasvain"
+    ]
+  },
+  {
+    "target_word": "poliisi",
+    "related_word": [
+      "jepari",
+      "kyttä",
+      "koukku"
+    ],
+    "target_word_stem": "poliisi",
+    "related_word_stem": [
+      "jepari",
+      "kyttä",
+      "koukku"
+    ]
+  },
+  {
+    "target_word": "äiti",
+    "related_word": [
+      "mamma",
+      "emä",
+      "isä"
+    ],
+    "target_word_stem": "äiti",
+    "related_word_stem": [
+      "mamma",
+      "emä",
+      "isä"
+    ]
+  },
+  {
+    "target_word": "veri",
+    "related_word": [
+      "hurme",
+      "antitromboottinen",
+      "vuotaa"
+    ],
+    "target_word_stem": "veri",
+    "related_word_stem": [
+      "hurme",
+      "antitromboottinen",
+      "vuotaa"
+    ]
+  },
+  {
+    "target_word": "tehtävä",
+    "related_word": [
+      "tarkoitus",
+      "kutsumus",
+      "asema"
+    ],
+    "target_word_stem": "tehtävä",
+    "related_word_stem": [
+      "tarkoitus",
+      "kutsumus",
+      "asema"
+    ]
+  },
+  {
+    "target_word": "manuaali",
+    "related_word": [
+      "käsikirja",
+      "koskettimisto",
+      "sormio"
+    ],
+    "target_word_stem": "manuaali",
+    "related_word_stem": [
+      "käsikirja",
+      "koskettimisto",
+      "sormio"
+    ]
+  },
+  {
+    "target_word": "asunto",
+    "related_word": [
+      "kämppä",
+      "boksi",
+      "huone"
+    ],
+    "target_word_stem": "asunto",
+    "related_word_stem": [
+      "kämppä",
+      "boksi",
+      "huone"
+    ]
+  },
+  {
+    "target_word": "tuoli",
+    "related_word": [
+      "istuin",
+      "jakkara",
+      "penkki"
+    ],
+    "target_word_stem": "tuoli",
+    "related_word_stem": [
+      "istuin",
+      "jakkara",
+      "penkki"
+    ]
+  },
+  {
+    "target_word": "tuuli",
+    "related_word": [
+      "eolinen",
+      "pää",
+      "blosis"
+    ],
+    "target_word_stem": "tuuli",
+    "related_word_stem": [
+      "eolinen",
+      "pää",
+      "blosis"
+    ]
+  },
+  {
+    "target_word": "maali",
+    "related_word": [
+      "kohde",
+      "päämäärä",
+      "touchdown"
+    ],
+    "target_word_stem": "maali",
+    "related_word_stem": [
+      "kohde",
+      "päämäärä",
+      "touchdown"
+    ]
+  },
+  {
+    "target_word": "juuri",
+    "related_word": [
+      "täsmälleen",
+      "ydin",
+      "syy"
+    ],
+    "target_word_stem": "juuri",
+    "related_word_stem": [
+      "täsmälleen",
+      "ydin",
+      "syy"
+    ]
+  },
+  {
+    "target_word": "virta",
+    "related_word": [
+      "joki",
+      "puhti",
+      "tarmo"
+    ],
+    "target_word_stem": "virta",
+    "related_word_stem": [
+      "joki",
+      "puhti",
+      "tarmo"
+    ]
+  },
+  {
+    "target_word": "asianajaja",
+    "related_word": [
+      "juristi",
+      "lakimies",
+      "oikeudenkäyntiasiamies"
+    ],
+    "target_word_stem": "asianajaja",
+    "related_word_stem": [
+      "juristi",
+      "lakimies",
+      "oikeudenkäyntiasiamies"
+    ]
+  },
+  {
+    "target_word": "kivi",
+    "related_word": [
+      "lohkare",
+      "luu",
+      "upottaa"
+    ],
+    "target_word_stem": "kivi",
+    "related_word_stem": [
+      "lohkare",
+      "luu",
+      "upottaa"
+    ]
+  },
+  {
+    "target_word": "vene",
+    "related_word": [
+      "haaksi",
+      "lotja",
+      "ruuhi"
+    ],
+    "target_word_stem": "vene",
+    "related_word_stem": [
+      "haaksi",
+      "lotja",
+      "ruuhi"
+    ]
+  },
+  {
+    "target_word": "paikka",
+    "related_word": [
+      "kohta",
+      "alue",
+      "tilanne"
+    ],
+    "target_word_stem": "paikka",
+    "related_word_stem": [
+      "kohta",
+      "alue",
+      "tilanne"
+    ]
+  },
+  {
+    "target_word": "isä",
+    "related_word": [
+      "taatto",
+      "fade",
+      "faija"
+    ],
+    "target_word_stem": "isä",
+    "related_word_stem": [
+      "taatto",
+      "fade",
+      "faija"
+    ]
+  },
+  {
+    "target_word": "ydin",
+    "related_word": [
+      "juuri",
+      "nukleus",
+      "tuma"
+    ],
+    "target_word_stem": "ydin",
+    "related_word_stem": [
+      "juuri",
+      "nukleus",
+      "tuma"
+    ]
+  },
+  {
+    "target_word": "reuna",
+    "related_word": [
+      "laitama",
+      "parras",
+      "pieli"
+    ],
+    "target_word_stem": "reuna",
+    "related_word_stem": [
+      "laitama",
+      "parras",
+      "pieli"
+    ]
+  },
+  {
+    "target_word": "mekko",
+    "related_word": [
+      "hame",
+      "leninki",
+      "pikkumusta"
+    ],
+    "target_word_stem": "mekko",
+    "related_word_stem": [
+      "hame",
+      "leninki",
+      "pikkumusta"
+    ]
+  },
+  {
+    "target_word": "hetki",
+    "related_word": [
+      "aika",
+      "kotva",
+      "silmänräpäys"
+    ],
+    "target_word_stem": "hetki",
+    "related_word_stem": [
+      "aika",
+      "kotva",
+      "silmänräpäys"
+    ]
+  },
+  {
+    "target_word": "näkemys",
+    "related_word": [
+      "kanta",
+      "visio",
+      "mielipide"
+    ],
+    "target_word_stem": "näkemys",
+    "related_word_stem": [
+      "kanta",
+      "visio",
+      "mielipide"
+    ]
+  },
+  {
+    "target_word": "suunnittelija",
+    "related_word": [
+      "designer",
+      "arkkitehti",
+      "insinööri"
+    ],
+    "target_word_stem": "suunnittelija",
+    "related_word_stem": [
+      "designer",
+      "arkkitehti",
+      "insinööri"
+    ]
+  },
+  {
+    "target_word": "erä",
+    "related_word": [
+      "riista",
+      "satsi",
+      "puoliaika"
+    ],
+    "target_word_stem": "erä",
+    "related_word_stem": [
+      "riista",
+      "satsi",
+      "puoliaika"
+    ]
+  },
+  {
+    "target_word": "asetus",
+    "related_word": [
+      "laki",
+      "momentti",
+      "määritys"
+    ],
+    "target_word_stem": "asetus",
+    "related_word_stem": [
+      "laki",
+      "momentti",
+      "määritys"
+    ]
+  },
+  {
+    "target_word": "ehdokas",
+    "related_word": [
+      "kandidaatti",
+      "vaalipiiri",
+      "äänestää"
+    ],
+    "target_word_stem": "ehdokas",
+    "related_word_stem": [
+      "kandidaatti",
+      "vaalipiiri",
+      "äänestää"
+    ]
+  },
+  {
+    "target_word": "kuningatar",
+    "related_word": [
+      "daami",
+      "akka",
+      "korttipakka"
+    ],
+    "target_word_stem": "kuningatar",
+    "related_word_stem": [
+      "daami",
+      "akka",
+      "korttipakka"
+    ]
+  },
+  {
+    "target_word": "rauta",
+    "related_word": [
+      "ferroyhdiste",
+      "kahleet",
+      "teräs"
+    ],
+    "target_word_stem": "rauta",
+    "related_word_stem": [
+      "ferroyhdiste",
+      "kahleet",
+      "teräs"
+    ]
+  },
+  {
+    "target_word": "aalto",
+    "related_word": [
+      "virta",
+      "laine",
+      "loimukuvio"
+    ],
+    "target_word_stem": "aalto",
+    "related_word_stem": [
+      "virta",
+      "laine",
+      "loimukuvio"
+    ]
+  },
+  {
+    "target_word": "lumi",
+    "related_word": [
+      "snöge",
+      "hanki",
+      "huurre"
+    ],
+    "target_word_stem": "lumi",
+    "related_word_stem": [
+      "snöge",
+      "hanki",
+      "huurre"
+    ]
+  },
+  {
+    "target_word": "avioliitto",
+    "related_word": [
+      "naiminen",
+      "häät",
+      "peruuttaa"
+    ],
+    "target_word_stem": "avioliitto",
+    "related_word_stem": [
+      "naiminen",
+      "häät",
+      "peruuttaa"
+    ]
+  },
+  {
+    "target_word": "huippu",
+    "related_word": [
+      "kulminaatio",
+      "akme",
+      "kärkipää"
+    ],
+    "target_word_stem": "huippu",
+    "related_word_stem": [
+      "kulminaatio",
+      "akme",
+      "kärkipää"
+    ]
+  },
+  {
+    "target_word": "kuu",
+    "related_word": [
+      "satelliitti",
+      "kiertolainen",
+      "ihra"
+    ],
+    "target_word_stem": "kuu",
+    "related_word_stem": [
+      "satelliitti",
+      "kiertolainen",
+      "ihra"
+    ]
+  },
+  {
+    "target_word": "joukko",
+    "related_word": [
+      "parvi",
+      "keskuus",
+      "ryhmä"
+    ],
+    "target_word_stem": "joukko",
+    "related_word_stem": [
+      "parvi",
+      "keskuus",
+      "ryhmä"
+    ]
+  },
+  {
+    "target_word": "sotilas",
+    "related_word": [
+      "jätkä",
+      "taistelija",
+      "talonpoika"
+    ],
+    "target_word_stem": "sotilas",
+    "related_word_stem": [
+      "jätkä",
+      "taistelija",
+      "talonpoika"
+    ]
+  },
+  {
+    "target_word": "miehistö",
+    "related_word": [
+      "korpraali",
+      "sotamies",
+      "sotilasarvo"
+    ],
+    "target_word_stem": "miehistö",
+    "related_word_stem": [
+      "korpraali",
+      "sotamies",
+      "sotilasarvo"
+    ]
+  },
+  {
+    "target_word": "vitsi",
+    "related_word": [
+      "pila",
+      "huuli",
+      "juju"
+    ],
+    "target_word_stem": "vitsi",
+    "related_word_stem": [
+      "pila",
+      "huuli",
+      "juju"
+    ]
+  }
+]

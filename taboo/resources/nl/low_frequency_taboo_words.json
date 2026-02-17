@@ -1,0 +1,4314 @@
+[
+  {
+    "target_word": "opdracht",
+    "related_word": [
+      "taak",
+      "bevel",
+      "bestelling"
+    ],
+    "target_word_stem": "opdracht",
+    "related_word_stem": [
+      "taak",
+      "bevel",
+      "bestelling"
+    ]
+  },
+  {
+    "target_word": "pijp",
+    "related_word": [
+      "roede",
+      "stang",
+      "bierflesje"
+    ],
+    "target_word_stem": "pijp",
+    "related_word_stem": [
+      "roede",
+      "stang",
+      "bierflesje"
+    ]
+  },
+  {
+    "target_word": "onderzoek",
+    "related_word": [
+      "research",
+      "speurtocht",
+      "zoekactie"
+    ],
+    "target_word_stem": "onderzoek",
+    "related_word_stem": [
+      "research",
+      "speurtocht",
+      "zoekactie"
+    ]
+  },
+  {
+    "target_word": "reus",
+    "related_word": [
+      "titaan",
+      "kerel",
+      "gigant"
+    ],
+    "target_word_stem": "reus",
+    "related_word_stem": [
+      "titaan",
+      "kerel",
+      "gigant"
+    ]
+  },
+  {
+    "target_word": "rijk",
+    "related_word": [
+      "vermogend",
+      "uitbundig",
+      "luxueus"
+    ],
+    "target_word_stem": "rijk",
+    "related_word_stem": [
+      "vermogend",
+      "uitbundig",
+      "luxueus"
+    ]
+  },
+  {
+    "target_word": "afspraak",
+    "related_word": [
+      "akkoord",
+      "overeenkomst",
+      "verbintenis"
+    ],
+    "target_word_stem": "afspraak",
+    "related_word_stem": [
+      "akkoord",
+      "overeenkomst",
+      "verbintenis"
+    ]
+  },
+  {
+    "target_word": "riem",
+    "related_word": [
+      "pak",
+      "ceintuur",
+      "hoeveelheid"
+    ],
+    "target_word_stem": "riem",
+    "related_word_stem": [
+      "pak",
+      "ceintuur",
+      "hoeveelheid"
+    ]
+  },
+  {
+    "target_word": "kliniek",
+    "related_word": [
+      "ziekenhuis",
+      "hospitaal",
+      "gasthuis"
+    ],
+    "target_word_stem": "kliniek",
+    "related_word_stem": [
+      "ziekenhuis",
+      "hospitaal",
+      "gasthuis"
+    ]
+  },
+  {
+    "target_word": "stof",
+    "related_word": [
+      "pulver",
+      "materie",
+      "substantie"
+    ],
+    "target_word_stem": "stof",
+    "related_word_stem": [
+      "pulver",
+      "materie",
+      "substantie"
+    ]
+  },
+  {
+    "target_word": "rek",
+    "related_word": [
+      "schap",
+      "stellage",
+      "stander"
+    ],
+    "target_word_stem": "rek",
+    "related_word_stem": [
+      "schap",
+      "stellage",
+      "stander"
+    ]
+  },
+  {
+    "target_word": "schaduw",
+    "related_word": [
+      "afspiegeling",
+      "zweem",
+      "lommer"
+    ],
+    "target_word_stem": "schaduw",
+    "related_word_stem": [
+      "afspiegeling",
+      "zweem",
+      "lommer"
+    ]
+  },
+  {
+    "target_word": "kip",
+    "related_word": [
+      "smeris",
+      "hen",
+      "politieagent"
+    ],
+    "target_word_stem": "kip",
+    "related_word_stem": [
+      "smeris",
+      "hen",
+      "politieagent"
+    ]
+  },
+  {
+    "target_word": "toestemming",
+    "related_word": [
+      "permissie",
+      "fiat",
+      "verlof"
+    ],
+    "target_word_stem": "toestemming",
+    "related_word_stem": [
+      "permissie",
+      "fiat",
+      "verlof"
+    ]
+  },
+  {
+    "target_word": "vertrouwen",
+    "related_word": [
+      "geloof",
+      "fiducie",
+      "goodwill"
+    ],
+    "target_word_stem": "vertrouwen",
+    "related_word_stem": [
+      "geloof",
+      "fiducie",
+      "goodwill"
+    ]
+  },
+  {
+    "target_word": "moeilijkheid",
+    "related_word": [
+      "probleem",
+      "bezwaar",
+      "wrijving"
+    ],
+    "target_word_stem": "moeilijkheid",
+    "related_word_stem": [
+      "probleem",
+      "bezwaar",
+      "wrijving"
+    ]
+  },
+  {
+    "target_word": "monster",
+    "related_word": [
+      "gedrocht",
+      "specimen",
+      "staal"
+    ],
+    "target_word_stem": "monster",
+    "related_word_stem": [
+      "gedrocht",
+      "specimen",
+      "staal"
+    ]
+  },
+  {
+    "target_word": "grens",
+    "related_word": [
+      "afbakening",
+      "limiet",
+      "boord"
+    ],
+    "target_word_stem": "grens",
+    "related_word_stem": [
+      "afbakening",
+      "limiet",
+      "boord"
+    ]
+  },
+  {
+    "target_word": "alarm",
+    "related_word": [
+      "noodsignaal",
+      "onraad",
+      "verklikker"
+    ],
+    "target_word_stem": "alarm",
+    "related_word_stem": [
+      "noodsignaal",
+      "onraad",
+      "verklikker"
+    ]
+  },
+  {
+    "target_word": "lunch",
+    "related_word": [
+      "middageten",
+      "noenmaal",
+      "maaltijd"
+    ],
+    "target_word_stem": "lunch",
+    "related_word_stem": [
+      "middageten",
+      "noenmaal",
+      "maaltijd"
+    ]
+  },
+  {
+    "target_word": "hemel",
+    "related_word": [
+      "zwerk",
+      "baldakijn",
+      "lucht"
+    ],
+    "target_word_stem": "hemel",
+    "related_word_stem": [
+      "zwerk",
+      "baldakijn",
+      "lucht"
+    ]
+  },
+  {
+    "target_word": "schok",
+    "related_word": [
+      "inslag",
+      "hort",
+      "botsing"
+    ],
+    "target_word_stem": "schok",
+    "related_word_stem": [
+      "inslag",
+      "hort",
+      "botsing"
+    ]
+  },
+  {
+    "target_word": "ramp",
+    "related_word": [
+      "ongeluk",
+      "catastrofe",
+      "calamiteit"
+    ],
+    "target_word_stem": "ramp",
+    "related_word_stem": [
+      "ongeluk",
+      "catastrofe",
+      "calamiteit"
+    ]
+  },
+  {
+    "target_word": "fout",
+    "related_word": [
+      "verkeerd",
+      "tekortkoming",
+      "gebrek"
+    ],
+    "target_word_stem": "fout",
+    "related_word_stem": [
+      "verkeerd",
+      "tekortkoming",
+      "gebrek"
+    ]
+  },
+  {
+    "target_word": "mening",
+    "related_word": [
+      "opinie",
+      "inzicht",
+      "dunk"
+    ],
+    "target_word_stem": "mening",
+    "related_word_stem": [
+      "opinie",
+      "inzicht",
+      "dunk"
+    ]
+  },
+  {
+    "target_word": "inzicht",
+    "related_word": [
+      "verstand",
+      "besef",
+      "mening"
+    ],
+    "target_word_stem": "inzicht",
+    "related_word_stem": [
+      "verstand",
+      "besef",
+      "mening"
+    ]
+  },
+  {
+    "target_word": "spreuk",
+    "related_word": [
+      "gezegde",
+      "aforisme",
+      "adagium"
+    ],
+    "target_word_stem": "spreuk",
+    "related_word_stem": [
+      "gezegde",
+      "aforisme",
+      "adagium"
+    ]
+  },
+  {
+    "target_word": "verschijning",
+    "related_word": [
+      "aanzien",
+      "gedaante",
+      "geest"
+    ],
+    "target_word_stem": "verschijning",
+    "related_word_stem": [
+      "aanzien",
+      "gedaante",
+      "geest"
+    ]
+  },
+  {
+    "target_word": "beroep",
+    "related_word": [
+      "vak",
+      "handwerk",
+      "ambacht"
+    ],
+    "target_word_stem": "beroep",
+    "related_word_stem": [
+      "vak",
+      "handwerk",
+      "ambacht"
+    ]
+  },
+  {
+    "target_word": "geloof",
+    "related_word": [
+      "godsdienst",
+      "overtuiging",
+      "vertrouwen"
+    ],
+    "target_word_stem": "geloof",
+    "related_word_stem": [
+      "godsdienst",
+      "overtuiging",
+      "vertrouwen"
+    ]
+  },
+  {
+    "target_word": "strijd",
+    "related_word": [
+      "gevecht",
+      "veldslag",
+      "conflict"
+    ],
+    "target_word_stem": "strijd",
+    "related_word_stem": [
+      "gevecht",
+      "veldslag",
+      "conflict"
+    ]
+  },
+  {
+    "target_word": "gezicht",
+    "related_word": [
+      "gelaatsuitdrukking",
+      "uiterlijk",
+      "facie"
+    ],
+    "target_word_stem": "gezicht",
+    "related_word_stem": [
+      "gelaatsuitdrukking",
+      "uiterlijk",
+      "facie"
+    ]
+  },
+  {
+    "target_word": "zin",
+    "related_word": [
+      "frase",
+      "betekenis",
+      "welgevallen"
+    ],
+    "target_word_stem": "zin",
+    "related_word_stem": [
+      "frase",
+      "betekenis",
+      "welgevallen"
+    ]
+  },
+  {
+    "target_word": "uitgave",
+    "related_word": [
+      "besteding",
+      "druk",
+      "onkosten"
+    ],
+    "target_word_stem": "uitgave",
+    "related_word_stem": [
+      "besteding",
+      "druk",
+      "onkosten"
+    ]
+  },
+  {
+    "target_word": "uitzicht",
+    "related_word": [
+      "panorama",
+      "gelaatsuitdrukking",
+      "air"
+    ],
+    "target_word_stem": "uitzicht",
+    "related_word_stem": [
+      "panorama",
+      "gelaatsuitdrukking",
+      "air"
+    ]
+  },
+  {
+    "target_word": "houding",
+    "related_word": [
+      "manieren",
+      "positie",
+      "stand"
+    ],
+    "target_word_stem": "houding",
+    "related_word_stem": [
+      "manieren",
+      "positie",
+      "stand"
+    ]
+  },
+  {
+    "target_word": "verbinding",
+    "related_word": [
+      "poort",
+      "link",
+      "gesprek"
+    ],
+    "target_word_stem": "verbinding",
+    "related_word_stem": [
+      "poort",
+      "link",
+      "gesprek"
+    ]
+  },
+  {
+    "target_word": "gevolg",
+    "related_word": [
+      "uitkomst",
+      "consequentie",
+      "voortvloeisel"
+    ],
+    "target_word_stem": "gevolg",
+    "related_word_stem": [
+      "uitkomst",
+      "consequentie",
+      "voortvloeisel"
+    ]
+  },
+  {
+    "target_word": "plezier",
+    "related_word": [
+      "genoegen",
+      "vermaak",
+      "lol"
+    ],
+    "target_word_stem": "plezier",
+    "related_word_stem": [
+      "genoegen",
+      "vermaak",
+      "lol"
+    ]
+  },
+  {
+    "target_word": "kostuum",
+    "related_word": [
+      "dracht",
+      "gewaad",
+      "pak"
+    ],
+    "target_word_stem": "kostuum",
+    "related_word_stem": [
+      "dracht",
+      "gewaad",
+      "pak"
+    ]
+  },
+  {
+    "target_word": "gesprek",
+    "related_word": [
+      "conversatie",
+      "verbinding",
+      "onderhoud"
+    ],
+    "target_word_stem": "gesprek",
+    "related_word_stem": [
+      "conversatie",
+      "verbinding",
+      "onderhoud"
+    ]
+  },
+  {
+    "target_word": "verdienste",
+    "related_word": [
+      "baat",
+      "ontvangst",
+      "bezoldiging"
+    ],
+    "target_word_stem": "verdienste",
+    "related_word_stem": [
+      "baat",
+      "ontvangst",
+      "bezoldiging"
+    ]
+  },
+  {
+    "target_word": "gevangenis",
+    "related_word": [
+      "cel",
+      "provoost",
+      "bak"
+    ],
+    "target_word_stem": "gevangenis",
+    "related_word_stem": [
+      "cel",
+      "provoost",
+      "bak"
+    ]
+  },
+  {
+    "target_word": "geschil",
+    "related_word": [
+      "strijd",
+      "mot",
+      "aanvaring"
+    ],
+    "target_word_stem": "geschil",
+    "related_word_stem": [
+      "strijd",
+      "mot",
+      "aanvaring"
+    ]
+  },
+  {
+    "target_word": "duur",
+    "related_word": [
+      "kostbaar",
+      "goedkoop",
+      "tijd"
+    ],
+    "target_word_stem": "duur",
+    "related_word_stem": [
+      "kostbaar",
+      "goedkoop",
+      "tijd"
+    ]
+  },
+  {
+    "target_word": "oordeel",
+    "related_word": [
+      "uitspraak",
+      "mening",
+      "judicium"
+    ],
+    "target_word_stem": "oordeel",
+    "related_word_stem": [
+      "uitspraak",
+      "mening",
+      "judicium"
+    ]
+  },
+  {
+    "target_word": "prestatie",
+    "related_word": [
+      "handeling",
+      "daad",
+      "toer"
+    ],
+    "target_word_stem": "prestatie",
+    "related_word_stem": [
+      "handeling",
+      "daad",
+      "toer"
+    ]
+  },
+  {
+    "target_word": "tempel",
+    "related_word": [
+      "heiligdom",
+      "godshuis",
+      "kerk"
+    ],
+    "target_word_stem": "tempel",
+    "related_word_stem": [
+      "heiligdom",
+      "godshuis",
+      "kerk"
+    ]
+  },
+  {
+    "target_word": "verwachting",
+    "related_word": [
+      "vooruitzicht",
+      "hoop",
+      "prognose"
+    ],
+    "target_word_stem": "verwachting",
+    "related_word_stem": [
+      "vooruitzicht",
+      "hoop",
+      "prognose"
+    ]
+  },
+  {
+    "target_word": "leerling",
+    "related_word": [
+      "pupil",
+      "alumnus",
+      "scholier"
+    ],
+    "target_word_stem": "leerling",
+    "related_word_stem": [
+      "pupil",
+      "alumnus",
+      "scholier"
+    ]
+  },
+  {
+    "target_word": "overwinning",
+    "related_word": [
+      "triomf",
+      "victorie",
+      "nederlaag"
+    ],
+    "target_word_stem": "overwinning",
+    "related_word_stem": [
+      "triomf",
+      "victorie",
+      "nederlaag"
+    ]
+  },
+  {
+    "target_word": "band",
+    "related_word": [
+      "muziekkorps",
+      "orkest",
+      "schakel"
+    ],
+    "target_word_stem": "band",
+    "related_word_stem": [
+      "muziekkorps",
+      "orkest",
+      "schakel"
+    ]
+  },
+  {
+    "target_word": "geest",
+    "related_word": [
+      "ziel",
+      "verschijning",
+      "schim"
+    ],
+    "target_word_stem": "geest",
+    "related_word_stem": [
+      "ziel",
+      "verschijning",
+      "schim"
+    ]
+  },
+  {
+    "target_word": "menigte",
+    "related_word": [
+      "schare",
+      "massa",
+      "drom"
+    ],
+    "target_word_stem": "menigte",
+    "related_word_stem": [
+      "schare",
+      "massa",
+      "drom"
+    ]
+  },
+  {
+    "target_word": "blik",
+    "related_word": [
+      "schep",
+      "trommel",
+      "plaatstaal"
+    ],
+    "target_word_stem": "blik",
+    "related_word_stem": [
+      "schep",
+      "trommel",
+      "plaatstaal"
+    ]
+  },
+  {
+    "target_word": "gevaar",
+    "related_word": [
+      "risico",
+      "nood",
+      "perikel"
+    ],
+    "target_word_stem": "gevaar",
+    "related_word_stem": [
+      "risico",
+      "nood",
+      "perikel"
+    ]
+  },
+  {
+    "target_word": "clausule",
+    "related_word": [
+      "bepaling",
+      "voorziening",
+      "stipulatie"
+    ],
+    "target_word_stem": "clausule",
+    "related_word_stem": [
+      "bepaling",
+      "voorziening",
+      "stipulatie"
+    ]
+  },
+  {
+    "target_word": "luchtvaart",
+    "related_word": [
+      "vliegwezen",
+      "aviatiek",
+      "klm"
+    ],
+    "target_word_stem": "luchtvaart",
+    "related_word_stem": [
+      "vliegwezen",
+      "aviatiek",
+      "klm"
+    ]
+  },
+  {
+    "target_word": "stapel",
+    "related_word": [
+      "drom",
+      "dolzinnig",
+      "gek"
+    ],
+    "target_word_stem": "stapel",
+    "related_word_stem": [
+      "drom",
+      "dolzinnig",
+      "gek"
+    ]
+  },
+  {
+    "target_word": "oever",
+    "related_word": [
+      "kust",
+      "wal",
+      "boord"
+    ],
+    "target_word_stem": "oever",
+    "related_word_stem": [
+      "kust",
+      "wal",
+      "boord"
+    ]
+  },
+  {
+    "target_word": "getuigenis",
+    "related_word": [
+      "attest",
+      "verklaring",
+      "certificaat"
+    ],
+    "target_word_stem": "getuigenis",
+    "related_word_stem": [
+      "attest",
+      "verklaring",
+      "certificaat"
+    ]
+  },
+  {
+    "target_word": "geluk",
+    "related_word": [
+      "succes",
+      "prosperiteit",
+      "kans"
+    ],
+    "target_word_stem": "geluk",
+    "related_word_stem": [
+      "succes",
+      "prosperiteit",
+      "kans"
+    ]
+  },
+  {
+    "target_word": "afdeling",
+    "related_word": [
+      "vak",
+      "sectie",
+      "faculteit"
+    ],
+    "target_word_stem": "afdeling",
+    "related_word_stem": [
+      "vak",
+      "sectie",
+      "faculteit"
+    ]
+  },
+  {
+    "target_word": "barrière",
+    "related_word": [
+      "hek",
+      "afsluiting",
+      "versperring"
+    ],
+    "target_word_stem": "barrière",
+    "related_word_stem": [
+      "hek",
+      "afsluiting",
+      "versperring"
+    ]
+  },
+  {
+    "target_word": "strip",
+    "related_word": [
+      "deklat",
+      "beeldverhaal",
+      "band"
+    ],
+    "target_word_stem": "strip",
+    "related_word_stem": [
+      "deklat",
+      "beeldverhaal",
+      "band"
+    ]
+  },
+  {
+    "target_word": "overzicht",
+    "related_word": [
+      "uittreksel",
+      "resumé",
+      "beschrijving"
+    ],
+    "target_word_stem": "overzicht",
+    "related_word_stem": [
+      "uittreksel",
+      "resumé",
+      "beschrijving"
+    ]
+  },
+  {
+    "target_word": "gevecht",
+    "related_word": [
+      "strijd",
+      "veldslag",
+      "kamp"
+    ],
+    "target_word_stem": "gevecht",
+    "related_word_stem": [
+      "strijd",
+      "veldslag",
+      "kamp"
+    ]
+  },
+  {
+    "target_word": "troep",
+    "related_word": [
+      "schare",
+      "weermacht",
+      "zootje"
+    ],
+    "target_word_stem": "troep",
+    "related_word_stem": [
+      "schare",
+      "weermacht",
+      "zootje"
+    ]
+  },
+  {
+    "target_word": "schip",
+    "related_word": [
+      "beuk",
+      "vaartuig",
+      "ruim"
+    ],
+    "target_word_stem": "schip",
+    "related_word_stem": [
+      "beuk",
+      "vaartuig",
+      "ruim"
+    ]
+  },
+  {
+    "target_word": "huisje",
+    "related_word": [
+      "slakkehuis",
+      "schelp",
+      "kinkhoorn"
+    ],
+    "target_word_stem": "huisje",
+    "related_word_stem": [
+      "slakkehuis",
+      "schelp",
+      "kinkhoorn"
+    ]
+  },
+  {
+    "target_word": "top",
+    "related_word": [
+      "hoogtepunt",
+      "punt",
+      "piek"
+    ],
+    "target_word_stem": "top",
+    "related_word_stem": [
+      "hoogtepunt",
+      "punt",
+      "piek"
+    ]
+  },
+  {
+    "target_word": "baas",
+    "related_word": [
+      "leidinggevende",
+      "chef",
+      "meester"
+    ],
+    "target_word_stem": "baas",
+    "related_word_stem": [
+      "leidinggevende",
+      "chef",
+      "meester"
+    ]
+  },
+  {
+    "target_word": "gemak",
+    "related_word": [
+      "comfort",
+      "privaat",
+      "toilet"
+    ],
+    "target_word_stem": "gemak",
+    "related_word_stem": [
+      "comfort",
+      "privaat",
+      "toilet"
+    ]
+  },
+  {
+    "target_word": "plank",
+    "related_word": [
+      "bord",
+      "schap",
+      "rek"
+    ],
+    "target_word_stem": "plank",
+    "related_word_stem": [
+      "bord",
+      "schap",
+      "rek"
+    ]
+  },
+  {
+    "target_word": "afwezigheid",
+    "related_word": [
+      "mangel",
+      "gebrek",
+      "tekortkoming"
+    ],
+    "target_word_stem": "afwezigheid",
+    "related_word_stem": [
+      "mangel",
+      "gebrek",
+      "tekortkoming"
+    ]
+  },
+  {
+    "target_word": "arena",
+    "related_word": [
+      "krijt",
+      "strijdperk",
+      "kampplaats"
+    ],
+    "target_word_stem": "arena",
+    "related_word_stem": [
+      "krijt",
+      "strijdperk",
+      "kampplaats"
+    ]
+  },
+  {
+    "target_word": "ziekte",
+    "related_word": [
+      "kwaal",
+      "aandoening",
+      "doodziek"
+    ],
+    "target_word_stem": "ziekte",
+    "related_word_stem": [
+      "kwaal",
+      "aandoening",
+      "doodziek"
+    ]
+  },
+  {
+    "target_word": "spanning",
+    "related_word": [
+      "druk",
+      "potentiaal",
+      "bezorgdheid"
+    ],
+    "target_word_stem": "spanning",
+    "related_word_stem": [
+      "druk",
+      "potentiaal",
+      "bezorgdheid"
+    ]
+  },
+  {
+    "target_word": "schild",
+    "related_word": [
+      "bordje",
+      "aegide",
+      "blazoen"
+    ],
+    "target_word_stem": "schild",
+    "related_word_stem": [
+      "bordje",
+      "aegide",
+      "blazoen"
+    ]
+  },
+  {
+    "target_word": "brood",
+    "related_word": [
+      "mik",
+      "tarwe",
+      "boterham"
+    ],
+    "target_word_stem": "brood",
+    "related_word_stem": [
+      "mik",
+      "tarwe",
+      "boterham"
+    ]
+  },
+  {
+    "target_word": "gedrag",
+    "related_word": [
+      "handelwijze",
+      "manieren",
+      "optreden"
+    ],
+    "target_word_stem": "gedrag",
+    "related_word_stem": [
+      "handelwijze",
+      "manieren",
+      "optreden"
+    ]
+  },
+  {
+    "target_word": "verklaring",
+    "related_word": [
+      "uitleg",
+      "attest",
+      "aangifte"
+    ],
+    "target_word_stem": "verklaring",
+    "related_word_stem": [
+      "uitleg",
+      "attest",
+      "aangifte"
+    ]
+  },
+  {
+    "target_word": "tand",
+    "related_word": [
+      "nok",
+      "gebit",
+      "kies"
+    ],
+    "target_word_stem": "tand",
+    "related_word_stem": [
+      "nok",
+      "gebit",
+      "kies"
+    ]
+  },
+  {
+    "target_word": "passie",
+    "related_word": [
+      "hartstocht",
+      "lust",
+      "zucht"
+    ],
+    "target_word_stem": "passie",
+    "related_word_stem": [
+      "hartstocht",
+      "lust",
+      "zucht"
+    ]
+  },
+  {
+    "target_word": "advocaat",
+    "related_word": [
+      "verdediger",
+      "zaakbezorger",
+      "voorspreker"
+    ],
+    "target_word_stem": "advocaat",
+    "related_word_stem": [
+      "verdediger",
+      "zaakbezorger",
+      "voorspreker"
+    ]
+  },
+  {
+    "target_word": "koord",
+    "related_word": [
+      "snoer",
+      "touw",
+      "garen"
+    ],
+    "target_word_stem": "koord",
+    "related_word_stem": [
+      "snoer",
+      "touw",
+      "garen"
+    ]
+  },
+  {
+    "target_word": "kijker",
+    "related_word": [
+      "toeschouwer",
+      "binocle",
+      "telescoop"
+    ],
+    "target_word_stem": "kijker",
+    "related_word_stem": [
+      "toeschouwer",
+      "binocle",
+      "telescoop"
+    ]
+  },
+  {
+    "target_word": "trots",
+    "related_word": [
+      "ondanks",
+      "fier",
+      "zelfrespect"
+    ],
+    "target_word_stem": "trots",
+    "related_word_stem": [
+      "ondanks",
+      "fier",
+      "zelfrespect"
+    ]
+  },
+  {
+    "target_word": "borst",
+    "related_word": [
+      "mam",
+      "tiet",
+      "jongeheer"
+    ],
+    "target_word_stem": "borst",
+    "related_word_stem": [
+      "mam",
+      "tiet",
+      "jongeheer"
+    ]
+  },
+  {
+    "target_word": "bom",
+    "related_word": [
+      "wapen",
+      "projectiel",
+      "explosief"
+    ],
+    "target_word_stem": "bom",
+    "related_word_stem": [
+      "wapen",
+      "projectiel",
+      "explosief"
+    ]
+  },
+  {
+    "target_word": "schat",
+    "related_word": [
+      "liefje",
+      "lieveling",
+      "sjoe"
+    ],
+    "target_word_stem": "schat",
+    "related_word_stem": [
+      "liefje",
+      "lieveling",
+      "sjoe"
+    ]
+  },
+  {
+    "target_word": "ontvangst",
+    "related_word": [
+      "aanneming",
+      "acceptatie",
+      "verdienste"
+    ],
+    "target_word_stem": "ontvangst",
+    "related_word_stem": [
+      "aanneming",
+      "acceptatie",
+      "verdienste"
+    ]
+  },
+  {
+    "target_word": "geur",
+    "related_word": [
+      "aroma",
+      "stank",
+      "parfum"
+    ],
+    "target_word_stem": "geur",
+    "related_word_stem": [
+      "aroma",
+      "stank",
+      "parfum"
+    ]
+  },
+  {
+    "target_word": "overvloed",
+    "related_word": [
+      "abundantie",
+      "uitbundigheid",
+      "luxe"
+    ],
+    "target_word_stem": "overvloed",
+    "related_word_stem": [
+      "abundantie",
+      "uitbundigheid",
+      "luxe"
+    ]
+  },
+  {
+    "target_word": "buit",
+    "related_word": [
+      "vangst",
+      "prooi",
+      "verwerving"
+    ],
+    "target_word_stem": "buit",
+    "related_word_stem": [
+      "vangst",
+      "prooi",
+      "verwerving"
+    ]
+  },
+  {
+    "target_word": "korting",
+    "related_word": [
+      "reductie",
+      "afslag",
+      "aftrek"
+    ],
+    "target_word_stem": "korting",
+    "related_word_stem": [
+      "reductie",
+      "afslag",
+      "aftrek"
+    ]
+  },
+  {
+    "target_word": "opschorting",
+    "related_word": [
+      "surseance",
+      "uitstel",
+      "verlet"
+    ],
+    "target_word_stem": "opschorting",
+    "related_word_stem": [
+      "surseance",
+      "uitstel",
+      "verlet"
+    ]
+  },
+  {
+    "target_word": "klei",
+    "related_word": [
+      "aarde",
+      "materiaal",
+      "boetseren"
+    ],
+    "target_word_stem": "klei",
+    "related_word_stem": [
+      "aarde",
+      "materiaal",
+      "boetseren"
+    ]
+  },
+  {
+    "target_word": "golf",
+    "related_word": [
+      "waag",
+      "onde",
+      "amplitude"
+    ],
+    "target_word_stem": "golf",
+    "related_word_stem": [
+      "waag",
+      "onde",
+      "amplitude"
+    ]
+  },
+  {
+    "target_word": "staal",
+    "related_word": [
+      "proefstuk",
+      "specimen",
+      "voorbeeld"
+    ],
+    "target_word_stem": "staal",
+    "related_word_stem": [
+      "proefstuk",
+      "specimen",
+      "voorbeeld"
+    ]
+  },
+  {
+    "target_word": "bout",
+    "related_word": [
+      "schenkel",
+      "strijkijzer",
+      "moer"
+    ],
+    "target_word_stem": "bout",
+    "related_word_stem": [
+      "schenkel",
+      "strijkijzer",
+      "moer"
+    ]
+  },
+  {
+    "target_word": "munt",
+    "related_word": [
+      "geldstuk",
+      "penning",
+      "kleingeld"
+    ],
+    "target_word_stem": "munt",
+    "related_word_stem": [
+      "geldstuk",
+      "penning",
+      "kleingeld"
+    ]
+  },
+  {
+    "target_word": "roos",
+    "related_word": [
+      "schilfer",
+      "doelwit",
+      "pellekes"
+    ],
+    "target_word_stem": "roos",
+    "related_word_stem": [
+      "schilfer",
+      "doelwit",
+      "pellekes"
+    ]
+  },
+  {
+    "target_word": "bestuur",
+    "related_word": [
+      "administratie",
+      "regering",
+      "leiderschap"
+    ],
+    "target_word_stem": "bestuur",
+    "related_word_stem": [
+      "administratie",
+      "regering",
+      "leiderschap"
+    ]
+  },
+  {
+    "target_word": "journalist",
+    "related_word": [
+      "reporter",
+      "verslaggever",
+      "dagbladschrijver"
+    ],
+    "target_word_stem": "journalist",
+    "related_word_stem": [
+      "reporter",
+      "verslaggever",
+      "dagbladschrijver"
+    ]
+  },
+  {
+    "target_word": "diesel",
+    "related_word": [
+      "gasolie",
+      "benzine",
+      "brandstof"
+    ],
+    "target_word_stem": "diesel",
+    "related_word_stem": [
+      "gasolie",
+      "benzine",
+      "brandstof"
+    ]
+  },
+  {
+    "target_word": "blad",
+    "related_word": [
+      "vleugel",
+      "folie",
+      "courant"
+    ],
+    "target_word_stem": "blad",
+    "related_word_stem": [
+      "vleugel",
+      "folie",
+      "courant"
+    ]
+  },
+  {
+    "target_word": "schuilplaats",
+    "related_word": [
+      "toevluchtsoord",
+      "hol",
+      "abri"
+    ],
+    "target_word_stem": "schuilplaats",
+    "related_word_stem": [
+      "toevluchtsoord",
+      "hol",
+      "abri"
+    ]
+  },
+  {
+    "target_word": "bundel",
+    "related_word": [
+      "schoof",
+      "garf",
+      "verzameling"
+    ],
+    "target_word_stem": "bundel",
+    "related_word_stem": [
+      "schoof",
+      "garf",
+      "verzameling"
+    ]
+  },
+  {
+    "target_word": "stemming",
+    "related_word": [
+      "akkoord",
+      "gemoedsgesteldheid",
+      "bui"
+    ],
+    "target_word_stem": "stemming",
+    "related_word_stem": [
+      "akkoord",
+      "gemoedsgesteldheid",
+      "bui"
+    ]
+  },
+  {
+    "target_word": "bok",
+    "related_word": [
+      "schraag",
+      "ezel",
+      "stander"
+    ],
+    "target_word_stem": "bok",
+    "related_word_stem": [
+      "schraag",
+      "ezel",
+      "stander"
+    ]
+  },
+  {
+    "target_word": "hek",
+    "related_word": [
+      "barrière",
+      "afsluiting",
+      "achtersteven"
+    ],
+    "target_word_stem": "hek",
+    "related_word_stem": [
+      "barrière",
+      "afsluiting",
+      "achtersteven"
+    ]
+  },
+  {
+    "target_word": "fiets",
+    "related_word": [
+      "rijwiel",
+      "velo",
+      "tweewieler"
+    ],
+    "target_word_stem": "fiets",
+    "related_word_stem": [
+      "rijwiel",
+      "velo",
+      "tweewieler"
+    ]
+  },
+  {
+    "target_word": "diameter",
+    "related_word": [
+      "doorsnee",
+      "middellijn",
+      "omtrek"
+    ],
+    "target_word_stem": "diameter",
+    "related_word_stem": [
+      "doorsnee",
+      "middellijn",
+      "omtrek"
+    ]
+  },
+  {
+    "target_word": "mal",
+    "related_word": [
+      "gek",
+      "ridicuul",
+      "gietvorm"
+    ],
+    "target_word_stem": "mal",
+    "related_word_stem": [
+      "gek",
+      "ridicuul",
+      "gietvorm"
+    ]
+  },
+  {
+    "target_word": "grondstof",
+    "related_word": [
+      "materiaal",
+      "bestanddeel",
+      "element"
+    ],
+    "target_word_stem": "grondstof",
+    "related_word_stem": [
+      "materiaal",
+      "bestanddeel",
+      "element"
+    ]
+  },
+  {
+    "target_word": "defect",
+    "related_word": [
+      "beschadiging",
+      "kapot",
+      "storing"
+    ],
+    "target_word_stem": "defect",
+    "related_word_stem": [
+      "beschadiging",
+      "kapot",
+      "storing"
+    ]
+  },
+  {
+    "target_word": "fortuin",
+    "related_word": [
+      "rijkdom",
+      "kapitaal",
+      "levenslot"
+    ],
+    "target_word_stem": "fortuin",
+    "related_word_stem": [
+      "rijkdom",
+      "kapitaal",
+      "levenslot"
+    ]
+  },
+  {
+    "target_word": "streep",
+    "related_word": [
+      "lijn",
+      "linie",
+      "haal"
+    ],
+    "target_word_stem": "streep",
+    "related_word_stem": [
+      "lijn",
+      "linie",
+      "haal"
+    ]
+  },
+  {
+    "target_word": "roem",
+    "related_word": [
+      "befaamdheid",
+      "mare",
+      "glorie"
+    ],
+    "target_word_stem": "roem",
+    "related_word_stem": [
+      "befaamdheid",
+      "mare",
+      "glorie"
+    ]
+  },
+  {
+    "target_word": "verzet",
+    "related_word": [
+      "tegenstand",
+      "afleiding",
+      "ontspanning"
+    ],
+    "target_word_stem": "verzet",
+    "related_word_stem": [
+      "tegenstand",
+      "afleiding",
+      "ontspanning"
+    ]
+  },
+  {
+    "target_word": "toilet",
+    "related_word": [
+      "wc",
+      "gemak",
+      "kledij"
+    ],
+    "target_word_stem": "toilet",
+    "related_word_stem": [
+      "wc",
+      "gemak",
+      "kledij"
+    ]
+  },
+  {
+    "target_word": "kunstwerk",
+    "related_word": [
+      "opus",
+      "geschrift",
+      "pennevrucht"
+    ],
+    "target_word_stem": "kunstwerk",
+    "related_word_stem": [
+      "opus",
+      "geschrift",
+      "pennevrucht"
+    ]
+  },
+  {
+    "target_word": "gemeente",
+    "related_word": [
+      "kerkbuurt",
+      "stad",
+      "municipaliteit"
+    ],
+    "target_word_stem": "gemeente",
+    "related_word_stem": [
+      "kerkbuurt",
+      "stad",
+      "municipaliteit"
+    ]
+  },
+  {
+    "target_word": "greep",
+    "related_word": [
+      "handvat",
+      "slag",
+      "kunstje"
+    ],
+    "target_word_stem": "greep",
+    "related_word_stem": [
+      "handvat",
+      "slag",
+      "kunstje"
+    ]
+  },
+  {
+    "target_word": "verwijdering",
+    "related_word": [
+      "eliminatie",
+      "congé",
+      "distantie"
+    ],
+    "target_word_stem": "verwijdering",
+    "related_word_stem": [
+      "eliminatie",
+      "congé",
+      "distantie"
+    ]
+  },
+  {
+    "target_word": "aanval",
+    "related_word": [
+      "attaque",
+      "agressie",
+      "vlaag"
+    ],
+    "target_word_stem": "aanval",
+    "related_word_stem": [
+      "attaque",
+      "agressie",
+      "vlaag"
+    ]
+  },
+  {
+    "target_word": "vijver",
+    "related_word": [
+      "bassin",
+      "plas",
+      "meertje"
+    ],
+    "target_word_stem": "vijver",
+    "related_word_stem": [
+      "bassin",
+      "plas",
+      "meertje"
+    ]
+  },
+  {
+    "target_word": "ceremonie",
+    "related_word": [
+      "festiviteit",
+      "plechtigheid",
+      "ritueel"
+    ],
+    "target_word_stem": "ceremonie",
+    "related_word_stem": [
+      "festiviteit",
+      "plechtigheid",
+      "ritueel"
+    ]
+  },
+  {
+    "target_word": "mentor",
+    "related_word": [
+      "adviseur",
+      "raadgever",
+      "leidsman"
+    ],
+    "target_word_stem": "mentor",
+    "related_word_stem": [
+      "adviseur",
+      "raadgever",
+      "leidsman"
+    ]
+  },
+  {
+    "target_word": "verdrag",
+    "related_word": [
+      "traktaat",
+      "pact",
+      "conventie"
+    ],
+    "target_word_stem": "verdrag",
+    "related_word_stem": [
+      "traktaat",
+      "pact",
+      "conventie"
+    ]
+  },
+  {
+    "target_word": "last",
+    "related_word": [
+      "juk",
+      "hinder",
+      "moeilijkheid"
+    ],
+    "target_word_stem": "last",
+    "related_word_stem": [
+      "juk",
+      "hinder",
+      "moeilijkheid"
+    ]
+  },
+  {
+    "target_word": "reputatie",
+    "related_word": [
+      "befaamdheid",
+      "roem",
+      "faam"
+    ],
+    "target_word_stem": "reputatie",
+    "related_word_stem": [
+      "befaamdheid",
+      "roem",
+      "faam"
+    ]
+  },
+  {
+    "target_word": "kras",
+    "related_word": [
+      "tierig",
+      "sterk",
+      "kwiek"
+    ],
+    "target_word_stem": "kras",
+    "related_word_stem": [
+      "tierig",
+      "sterk",
+      "kwiek"
+    ]
+  },
+  {
+    "target_word": "hoorn",
+    "related_word": [
+      "uitsteeksel",
+      "toeter",
+      "claxon"
+    ],
+    "target_word_stem": "hoorn",
+    "related_word_stem": [
+      "uitsteeksel",
+      "toeter",
+      "claxon"
+    ]
+  },
+  {
+    "target_word": "veerboot",
+    "related_word": [
+      "schouw",
+      "bak",
+      "pontveer"
+    ],
+    "target_word_stem": "veerboot",
+    "related_word_stem": [
+      "schouw",
+      "bak",
+      "pontveer"
+    ]
+  },
+  {
+    "target_word": "tent",
+    "related_word": [
+      "paviljoen",
+      "huif",
+      "kraam"
+    ],
+    "target_word_stem": "tent",
+    "related_word_stem": [
+      "paviljoen",
+      "huif",
+      "kraam"
+    ]
+  },
+  {
+    "target_word": "neus",
+    "related_word": [
+      "orgaan",
+      "piek",
+      "lichaamsdeel"
+    ],
+    "target_word_stem": "neus",
+    "related_word_stem": [
+      "orgaan",
+      "piek",
+      "lichaamsdeel"
+    ]
+  },
+  {
+    "target_word": "leraar",
+    "related_word": [
+      "docent",
+      "instructeur",
+      "aanleren"
+    ],
+    "target_word_stem": "leraar",
+    "related_word_stem": [
+      "docent",
+      "instructeur",
+      "aanleren"
+    ]
+  },
+  {
+    "target_word": "metgezel",
+    "related_word": [
+      "kornuit",
+      "maat",
+      "kameraad"
+    ],
+    "target_word_stem": "metgezel",
+    "related_word_stem": [
+      "kornuit",
+      "maat",
+      "kameraad"
+    ]
+  },
+  {
+    "target_word": "bezit",
+    "related_word": [
+      "actief",
+      "vermogen",
+      "eigendom"
+    ],
+    "target_word_stem": "bezit",
+    "related_word_stem": [
+      "actief",
+      "vermogen",
+      "eigendom"
+    ]
+  },
+  {
+    "target_word": "overtreding",
+    "related_word": [
+      "delict",
+      "misdrijf",
+      "transgression"
+    ],
+    "target_word_stem": "overtreding",
+    "related_word_stem": [
+      "delict",
+      "misdrijf",
+      "transgression"
+    ]
+  },
+  {
+    "target_word": "vlinder",
+    "related_word": [
+      "botervlieg",
+      "kapel",
+      "mot"
+    ],
+    "target_word_stem": "vlinder",
+    "related_word_stem": [
+      "botervlieg",
+      "kapel",
+      "mot"
+    ]
+  },
+  {
+    "target_word": "doek",
+    "related_word": [
+      "voorhangsel",
+      "linnen",
+      "lijnwaad"
+    ],
+    "target_word_stem": "doek",
+    "related_word_stem": [
+      "voorhangsel",
+      "linnen",
+      "lijnwaad"
+    ]
+  },
+  {
+    "target_word": "streng",
+    "related_word": [
+      "nauw",
+      "zwaar",
+      "duchtig"
+    ],
+    "target_word_stem": "streng",
+    "related_word_stem": [
+      "nauw",
+      "zwaar",
+      "duchtig"
+    ]
+  },
+  {
+    "target_word": "bos",
+    "related_word": [
+      "bundel",
+      "pluk",
+      "woud"
+    ],
+    "target_word_stem": "bos",
+    "related_word_stem": [
+      "bundel",
+      "pluk",
+      "woud"
+    ]
+  },
+  {
+    "target_word": "verslaving",
+    "related_word": [
+      "addictie",
+      "lust",
+      "passie"
+    ],
+    "target_word_stem": "verslaving",
+    "related_word_stem": [
+      "addictie",
+      "lust",
+      "passie"
+    ]
+  },
+  {
+    "target_word": "kikker",
+    "related_word": [
+      "vors",
+      "puit",
+      "amfibie"
+    ],
+    "target_word_stem": "kikker",
+    "related_word_stem": [
+      "vors",
+      "puit",
+      "amfibie"
+    ]
+  },
+  {
+    "target_word": "accent",
+    "related_word": [
+      "tongval",
+      "kapje",
+      "nadruk"
+    ],
+    "target_word_stem": "accent",
+    "related_word_stem": [
+      "tongval",
+      "kapje",
+      "nadruk"
+    ]
+  },
+  {
+    "target_word": "sluiting",
+    "related_word": [
+      "schakel",
+      "knip",
+      "beugel"
+    ],
+    "target_word_stem": "sluiting",
+    "related_word_stem": [
+      "schakel",
+      "knip",
+      "beugel"
+    ]
+  },
+  {
+    "target_word": "depot",
+    "related_word": [
+      "opslagplaats",
+      "filiaal",
+      "veem"
+    ],
+    "target_word_stem": "depot",
+    "related_word_stem": [
+      "opslagplaats",
+      "filiaal",
+      "veem"
+    ]
+  },
+  {
+    "target_word": "plak",
+    "related_word": [
+      "schijf",
+      "medaille",
+      "snee"
+    ],
+    "target_word_stem": "plak",
+    "related_word_stem": [
+      "schijf",
+      "medaille",
+      "snee"
+    ]
+  },
+  {
+    "target_word": "herinnering",
+    "related_word": [
+      "aandenken",
+      "gedachtenis",
+      "geheugen"
+    ],
+    "target_word_stem": "herinnering",
+    "related_word_stem": [
+      "aandenken",
+      "gedachtenis",
+      "geheugen"
+    ]
+  },
+  {
+    "target_word": "mandaat",
+    "related_word": [
+      "machtiging",
+      "bevoegdheid",
+      "postwissel"
+    ],
+    "target_word_stem": "mandaat",
+    "related_word_stem": [
+      "machtiging",
+      "bevoegdheid",
+      "postwissel"
+    ]
+  },
+  {
+    "target_word": "arm",
+    "related_word": [
+      "behoeftig",
+      "schamel",
+      "beklagenswaardig"
+    ],
+    "target_word_stem": "arm",
+    "related_word_stem": [
+      "behoeftig",
+      "schamel",
+      "beklagenswaardig"
+    ]
+  },
+  {
+    "target_word": "deken",
+    "related_word": [
+      "aartspriester",
+      "stafhouder",
+      "diaken"
+    ],
+    "target_word_stem": "deken",
+    "related_word_stem": [
+      "aartspriester",
+      "stafhouder",
+      "diaken"
+    ]
+  },
+  {
+    "target_word": "betekenis",
+    "related_word": [
+      "zin",
+      "significantie",
+      "zwaarwichtigheid"
+    ],
+    "target_word_stem": "betekenis",
+    "related_word_stem": [
+      "zin",
+      "significantie",
+      "zwaarwichtigheid"
+    ]
+  },
+  {
+    "target_word": "angst",
+    "related_word": [
+      "vrees",
+      "benauwdheid",
+      "schrik"
+    ],
+    "target_word_stem": "angst",
+    "related_word_stem": [
+      "vrees",
+      "benauwdheid",
+      "schrik"
+    ]
+  },
+  {
+    "target_word": "touw",
+    "related_word": [
+      "lijn",
+      "koorde",
+      "strop"
+    ],
+    "target_word_stem": "touw",
+    "related_word_stem": [
+      "lijn",
+      "koorde",
+      "strop"
+    ]
+  },
+  {
+    "target_word": "indicatie",
+    "related_word": [
+      "aanwijzing",
+      "teken",
+      "spoor"
+    ],
+    "target_word_stem": "indicatie",
+    "related_word_stem": [
+      "aanwijzing",
+      "teken",
+      "spoor"
+    ]
+  },
+  {
+    "target_word": "idee",
+    "related_word": [
+      "benul",
+      "begrip",
+      "notie"
+    ],
+    "target_word_stem": "idee",
+    "related_word_stem": [
+      "benul",
+      "begrip",
+      "notie"
+    ]
+  },
+  {
+    "target_word": "rommel",
+    "related_word": [
+      "prullaria",
+      "zootje",
+      "wanorde"
+    ],
+    "target_word_stem": "rommel",
+    "related_word_stem": [
+      "prullaria",
+      "zootje",
+      "wanorde"
+    ]
+  },
+  {
+    "target_word": "gram",
+    "related_word": [
+      "gewicht",
+      "kilo",
+      "toorn"
+    ],
+    "target_word_stem": "gram",
+    "related_word_stem": [
+      "gewicht",
+      "kilo",
+      "toorn"
+    ]
+  },
+  {
+    "target_word": "schuim",
+    "related_word": [
+      "slak",
+      "rommel",
+      "afval"
+    ],
+    "target_word_stem": "schuim",
+    "related_word_stem": [
+      "slak",
+      "rommel",
+      "afval"
+    ]
+  },
+  {
+    "target_word": "ploeg",
+    "related_word": [
+      "vendel",
+      "equipe",
+      "rot"
+    ],
+    "target_word_stem": "ploeg",
+    "related_word_stem": [
+      "vendel",
+      "equipe",
+      "rot"
+    ]
+  },
+  {
+    "target_word": "eer",
+    "related_word": [
+      "liefst",
+      "alvorens",
+      "hulde"
+    ],
+    "target_word_stem": "eer",
+    "related_word_stem": [
+      "liefst",
+      "alvorens",
+      "hulde"
+    ]
+  },
+  {
+    "target_word": "bereik",
+    "related_word": [
+      "toonomvang",
+      "draagwijdte",
+      "gebied"
+    ],
+    "target_word_stem": "bereik",
+    "related_word_stem": [
+      "toonomvang",
+      "draagwijdte",
+      "gebied"
+    ]
+  },
+  {
+    "target_word": "schuur",
+    "related_word": [
+      "bergplaats",
+      "berging",
+      "barak"
+    ],
+    "target_word_stem": "schuur",
+    "related_word_stem": [
+      "bergplaats",
+      "berging",
+      "barak"
+    ]
+  },
+  {
+    "target_word": "rol",
+    "related_word": [
+      "cedel",
+      "speler",
+      "figuur"
+    ],
+    "target_word_stem": "rol",
+    "related_word_stem": [
+      "cedel",
+      "speler",
+      "figuur"
+    ]
+  },
+  {
+    "target_word": "kanaal",
+    "related_word": [
+      "waterweg",
+      "buis",
+      "kring"
+    ],
+    "target_word_stem": "kanaal",
+    "related_word_stem": [
+      "waterweg",
+      "buis",
+      "kring"
+    ]
+  },
+  {
+    "target_word": "gif",
+    "related_word": [
+      "zwadder",
+      "venijn",
+      "vergeven"
+    ],
+    "target_word_stem": "gif",
+    "related_word_stem": [
+      "zwadder",
+      "venijn",
+      "vergeven"
+    ]
+  },
+  {
+    "target_word": "stelling",
+    "related_word": [
+      "proefschrift",
+      "dissertatie",
+      "positie"
+    ],
+    "target_word_stem": "stelling",
+    "related_word_stem": [
+      "proefschrift",
+      "dissertatie",
+      "positie"
+    ]
+  },
+  {
+    "target_word": "compromis",
+    "related_word": [
+      "schikking",
+      "tussenvoorstel",
+      "middenweg"
+    ],
+    "target_word_stem": "compromis",
+    "related_word_stem": [
+      "schikking",
+      "tussenvoorstel",
+      "middenweg"
+    ]
+  },
+  {
+    "target_word": "vat",
+    "related_word": [
+      "greep",
+      "invloed",
+      "oor"
+    ],
+    "target_word_stem": "vat",
+    "related_word_stem": [
+      "greep",
+      "invloed",
+      "oor"
+    ]
+  },
+  {
+    "target_word": "behoud",
+    "related_word": [
+      "uitredding",
+      "verlossing",
+      "uitkomst"
+    ],
+    "target_word_stem": "behoud",
+    "related_word_stem": [
+      "uitredding",
+      "verlossing",
+      "uitkomst"
+    ]
+  },
+  {
+    "target_word": "pad",
+    "related_word": [
+      "tra",
+      "weggetje",
+      "krodde"
+    ],
+    "target_word_stem": "pad",
+    "related_word_stem": [
+      "tra",
+      "weggetje",
+      "krodde"
+    ]
+  },
+  {
+    "target_word": "inzet",
+    "related_word": [
+      "gedrevenheid",
+      "pot",
+      "bijlage"
+    ],
+    "target_word_stem": "inzet",
+    "related_word_stem": [
+      "gedrevenheid",
+      "pot",
+      "bijlage"
+    ]
+  },
+  {
+    "target_word": "gemeente",
+    "related_word": [
+      "kerkbuurt",
+      "stad",
+      "municipaliteit"
+    ],
+    "target_word_stem": "gemeente",
+    "related_word_stem": [
+      "kerkbuurt",
+      "stad",
+      "municipaliteit"
+    ]
+  },
+  {
+    "target_word": "kraam",
+    "related_word": [
+      "keet",
+      "loods",
+      "schuur"
+    ],
+    "target_word_stem": "kraam",
+    "related_word_stem": [
+      "keet",
+      "loods",
+      "schuur"
+    ]
+  },
+  {
+    "target_word": "decoratie",
+    "related_word": [
+      "versiersel",
+      "tooisel",
+      "opsmuk"
+    ],
+    "target_word_stem": "decoratie",
+    "related_word_stem": [
+      "versiersel",
+      "tooisel",
+      "opsmuk"
+    ]
+  },
+  {
+    "target_word": "retentie",
+    "related_word": [
+      "herinneringsvermogen",
+      "afscheiding",
+      "afstand"
+    ],
+    "target_word_stem": "retentie",
+    "related_word_stem": [
+      "herinneringsvermogen",
+      "afscheiding",
+      "afstand"
+    ]
+  },
+  {
+    "target_word": "steek",
+    "related_word": [
+      "prik",
+      "schroefgang",
+      "schalm"
+    ],
+    "target_word_stem": "steek",
+    "related_word_stem": [
+      "prik",
+      "schroefgang",
+      "schalm"
+    ]
+  },
+  {
+    "target_word": "streep",
+    "related_word": [
+      "lijn",
+      "linie",
+      "haal"
+    ],
+    "target_word_stem": "streep",
+    "related_word_stem": [
+      "lijn",
+      "linie",
+      "haal"
+    ]
+  },
+  {
+    "target_word": "spanning",
+    "related_word": [
+      "druk",
+      "potentiaal",
+      "bezorgdheid"
+    ],
+    "target_word_stem": "spanning",
+    "related_word_stem": [
+      "druk",
+      "potentiaal",
+      "bezorgdheid"
+    ]
+  },
+  {
+    "target_word": "schaap",
+    "related_word": [
+      "dier",
+      "lam",
+      "ooi"
+    ],
+    "target_word_stem": "schaap",
+    "related_word_stem": [
+      "dier",
+      "lam",
+      "ooi"
+    ]
+  },
+  {
+    "target_word": "woede",
+    "related_word": [
+      "razernij",
+      "toorn",
+      "drift"
+    ],
+    "target_word_stem": "woede",
+    "related_word_stem": [
+      "razernij",
+      "toorn",
+      "drift"
+    ]
+  },
+  {
+    "target_word": "heer",
+    "related_word": [
+      "baas",
+      "menigte",
+      "krijgsmacht"
+    ],
+    "target_word_stem": "heer",
+    "related_word_stem": [
+      "baas",
+      "menigte",
+      "krijgsmacht"
+    ]
+  },
+  {
+    "target_word": "toelage",
+    "related_word": [
+      "ondersteuning",
+      "steun",
+      "stipendium"
+    ],
+    "target_word_stem": "toelage",
+    "related_word_stem": [
+      "ondersteuning",
+      "steun",
+      "stipendium"
+    ]
+  },
+  {
+    "target_word": "kooi",
+    "related_word": [
+      "ligplaats",
+      "schacht",
+      "couchette"
+    ],
+    "target_word_stem": "kooi",
+    "related_word_stem": [
+      "ligplaats",
+      "schacht",
+      "couchette"
+    ]
+  },
+  {
+    "target_word": "afwijking",
+    "related_word": [
+      "onregelmatigheid",
+      "aberratie",
+      "verschil"
+    ],
+    "target_word_stem": "afwijking",
+    "related_word_stem": [
+      "onregelmatigheid",
+      "aberratie",
+      "verschil"
+    ]
+  },
+  {
+    "target_word": "chaos",
+    "related_word": [
+      "wanorde",
+      "warwinkel",
+      "baaierd"
+    ],
+    "target_word_stem": "chaos",
+    "related_word_stem": [
+      "wanorde",
+      "warwinkel",
+      "baaierd"
+    ]
+  },
+  {
+    "target_word": "lezing",
+    "related_word": [
+      "spreekbeurt",
+      "interpretatie",
+      "voordracht"
+    ],
+    "target_word_stem": "lezing",
+    "related_word_stem": [
+      "spreekbeurt",
+      "interpretatie",
+      "voordracht"
+    ]
+  },
+  {
+    "target_word": "rooster",
+    "related_word": [
+      "gril",
+      "tralie",
+      "hek"
+    ],
+    "target_word_stem": "rooster",
+    "related_word_stem": [
+      "gril",
+      "tralie",
+      "hek"
+    ]
+  },
+  {
+    "target_word": "belasting",
+    "related_word": [
+      "taks",
+      "druk",
+      "tol"
+    ],
+    "target_word_stem": "belasting",
+    "related_word_stem": [
+      "taks",
+      "druk",
+      "tol"
+    ]
+  },
+  {
+    "target_word": "nadeel",
+    "related_word": [
+      "bezwaar",
+      "hinder",
+      "keerzijde"
+    ],
+    "target_word_stem": "nadeel",
+    "related_word_stem": [
+      "bezwaar",
+      "hinder",
+      "keerzijde"
+    ]
+  },
+  {
+    "target_word": "tolerantie",
+    "related_word": [
+      "verdraagzaamheid",
+      "lankmoedigheid",
+      "speling"
+    ],
+    "target_word_stem": "tolerantie",
+    "related_word_stem": [
+      "verdraagzaamheid",
+      "lankmoedigheid",
+      "speling"
+    ]
+  },
+  {
+    "target_word": "inrichting",
+    "related_word": [
+      "toestel",
+      "patroon",
+      "accommodatie"
+    ],
+    "target_word_stem": "inrichting",
+    "related_word_stem": [
+      "toestel",
+      "patroon",
+      "accommodatie"
+    ]
+  },
+  {
+    "target_word": "gordijn",
+    "related_word": [
+      "voorhangsel",
+      "doek",
+      "scherm"
+    ],
+    "target_word_stem": "gordijn",
+    "related_word_stem": [
+      "voorhangsel",
+      "doek",
+      "scherm"
+    ]
+  },
+  {
+    "target_word": "hypothese",
+    "related_word": [
+      "vermoeden",
+      "aanname",
+      "stelling"
+    ],
+    "target_word_stem": "hypothese",
+    "related_word_stem": [
+      "vermoeden",
+      "aanname",
+      "stelling"
+    ]
+  },
+  {
+    "target_word": "vuil",
+    "related_word": [
+      "smerig",
+      "goor",
+      "smeerlapperij"
+    ],
+    "target_word_stem": "vuil",
+    "related_word_stem": [
+      "smerig",
+      "goor",
+      "smeerlapperij"
+    ]
+  },
+  {
+    "target_word": "adviseur",
+    "related_word": [
+      "raadsman",
+      "mentor",
+      "spindoctor"
+    ],
+    "target_word_stem": "adviseur",
+    "related_word_stem": [
+      "raadsman",
+      "mentor",
+      "spindoctor"
+    ]
+  },
+  {
+    "target_word": "afdeling",
+    "related_word": [
+      "vak",
+      "sectie",
+      "faculteit"
+    ],
+    "target_word_stem": "afdeling",
+    "related_word_stem": [
+      "vak",
+      "sectie",
+      "faculteit"
+    ]
+  },
+  {
+    "target_word": "grens",
+    "related_word": [
+      "afbakening",
+      "limiet",
+      "boord"
+    ],
+    "target_word_stem": "grens",
+    "related_word_stem": [
+      "afbakening",
+      "limiet",
+      "boord"
+    ]
+  },
+  {
+    "target_word": "lot",
+    "related_word": [
+      "bestemming",
+      "prijs",
+      "lotenverkoopster"
+    ],
+    "target_word_stem": "lot",
+    "related_word_stem": [
+      "bestemming",
+      "prijs",
+      "lotenverkoopster"
+    ]
+  },
+  {
+    "target_word": "schacht",
+    "related_word": [
+      "spijl",
+      "stok",
+      "kooi"
+    ],
+    "target_word_stem": "schacht",
+    "related_word_stem": [
+      "spijl",
+      "stok",
+      "kooi"
+    ]
+  },
+  {
+    "target_word": "moeras",
+    "related_word": [
+      "drasland",
+      "broek",
+      "zomp"
+    ],
+    "target_word_stem": "moeras",
+    "related_word_stem": [
+      "drasland",
+      "broek",
+      "zomp"
+    ]
+  },
+  {
+    "target_word": "stapel",
+    "related_word": [
+      "drom",
+      "dolzinnig",
+      "gek"
+    ],
+    "target_word_stem": "stapel",
+    "related_word_stem": [
+      "drom",
+      "dolzinnig",
+      "gek"
+    ]
+  },
+  {
+    "target_word": "geluk",
+    "related_word": [
+      "succes",
+      "prosperiteit",
+      "kans"
+    ],
+    "target_word_stem": "geluk",
+    "related_word_stem": [
+      "succes",
+      "prosperiteit",
+      "kans"
+    ]
+  },
+  {
+    "target_word": "straf",
+    "related_word": [
+      "geducht",
+      "fiks",
+      "pittig"
+    ],
+    "target_word_stem": "straf",
+    "related_word_stem": [
+      "geducht",
+      "fiks",
+      "pittig"
+    ]
+  },
+  {
+    "target_word": "rijk",
+    "related_word": [
+      "vermogend",
+      "uitbundig",
+      "luxueus"
+    ],
+    "target_word_stem": "rijk",
+    "related_word_stem": [
+      "vermogend",
+      "uitbundig",
+      "luxueus"
+    ]
+  },
+  {
+    "target_word": "verwarring",
+    "related_word": [
+      "disorde",
+      "rotzooi",
+      "rommel"
+    ],
+    "target_word_stem": "verwarring",
+    "related_word_stem": [
+      "disorde",
+      "rotzooi",
+      "rommel"
+    ]
+  },
+  {
+    "target_word": "zweep",
+    "related_word": [
+      "janhaver",
+      "gesel",
+      "roede"
+    ],
+    "target_word_stem": "zweep",
+    "related_word_stem": [
+      "janhaver",
+      "gesel",
+      "roede"
+    ]
+  },
+  {
+    "target_word": "ondergang",
+    "related_word": [
+      "decadentie",
+      "val",
+      "opkomst"
+    ],
+    "target_word_stem": "ondergang",
+    "related_word_stem": [
+      "decadentie",
+      "val",
+      "opkomst"
+    ]
+  },
+  {
+    "target_word": "daad",
+    "related_word": [
+      "zet",
+      "verrichting",
+      "prestatie"
+    ],
+    "target_word_stem": "daad",
+    "related_word_stem": [
+      "zet",
+      "verrichting",
+      "prestatie"
+    ]
+  },
+  {
+    "target_word": "gloed",
+    "related_word": [
+      "sappigheid",
+      "geestdrift",
+      "vuur"
+    ],
+    "target_word_stem": "gloed",
+    "related_word_stem": [
+      "sappigheid",
+      "geestdrift",
+      "vuur"
+    ]
+  },
+  {
+    "target_word": "schets",
+    "related_word": [
+      "aanleg",
+      "krabbel",
+      "werkje"
+    ],
+    "target_word_stem": "schets",
+    "related_word_stem": [
+      "aanleg",
+      "krabbel",
+      "werkje"
+    ]
+  },
+  {
+    "target_word": "prop",
+    "related_word": [
+      "stekker",
+      "kluit",
+      "stopmiddel"
+    ],
+    "target_word_stem": "prop",
+    "related_word_stem": [
+      "stekker",
+      "kluit",
+      "stopmiddel"
+    ]
+  },
+  {
+    "target_word": "hoogte",
+    "related_word": [
+      "heuvel",
+      "niveau",
+      "stand"
+    ],
+    "target_word_stem": "hoogte",
+    "related_word_stem": [
+      "heuvel",
+      "niveau",
+      "stand"
+    ]
+  },
+  {
+    "target_word": "bliksem",
+    "related_word": [
+      "hemelvuur",
+      "weerlicht",
+      "donder"
+    ],
+    "target_word_stem": "bliksem",
+    "related_word_stem": [
+      "hemelvuur",
+      "weerlicht",
+      "donder"
+    ]
+  },
+  {
+    "target_word": "beschaving",
+    "related_word": [
+      "cultuur",
+      "bouw",
+      "teelt"
+    ],
+    "target_word_stem": "beschaving",
+    "related_word_stem": [
+      "cultuur",
+      "bouw",
+      "teelt"
+    ]
+  },
+  {
+    "target_word": "tekort",
+    "related_word": [
+      "euvel",
+      "manco",
+      "gemis"
+    ],
+    "target_word_stem": "tekort",
+    "related_word_stem": [
+      "euvel",
+      "manco",
+      "gemis"
+    ]
+  },
+  {
+    "target_word": "overtreding",
+    "related_word": [
+      "delict",
+      "misdrijf",
+      "transgression"
+    ],
+    "target_word_stem": "overtreding",
+    "related_word_stem": [
+      "delict",
+      "misdrijf",
+      "transgression"
+    ]
+  },
+  {
+    "target_word": "kerel",
+    "related_word": [
+      "vuilik",
+      "gast",
+      "vent"
+    ],
+    "target_word_stem": "kerel",
+    "related_word_stem": [
+      "vuilik",
+      "gast",
+      "vent"
+    ]
+  },
+  {
+    "target_word": "akkoord",
+    "related_word": [
+      "afgesproken",
+      "overeenkomst",
+      "okee"
+    ],
+    "target_word_stem": "akkoord",
+    "related_word_stem": [
+      "afgesproken",
+      "overeenkomst",
+      "okee"
+    ]
+  },
+  {
+    "target_word": "voorkomen",
+    "related_word": [
+      "gedaante",
+      "air",
+      "geschieden"
+    ],
+    "target_word_stem": "voorkomen",
+    "related_word_stem": [
+      "gedaante",
+      "air",
+      "geschieden"
+    ]
+  },
+  {
+    "target_word": "groef",
+    "related_word": [
+      "rimpel",
+      "sleuf",
+      "geul"
+    ],
+    "target_word_stem": "groef",
+    "related_word_stem": [
+      "rimpel",
+      "sleuf",
+      "geul"
+    ]
+  },
+  {
+    "target_word": "mededeling",
+    "related_word": [
+      "bericht",
+      "mare",
+      "boodschap"
+    ],
+    "target_word_stem": "mededeling",
+    "related_word_stem": [
+      "bericht",
+      "mare",
+      "boodschap"
+    ]
+  },
+  {
+    "target_word": "gelijkenis",
+    "related_word": [
+      "dubbelheid",
+      "overeenkomst",
+      "fabel"
+    ],
+    "target_word_stem": "gelijkenis",
+    "related_word_stem": [
+      "dubbelheid",
+      "overeenkomst",
+      "fabel"
+    ]
+  },
+  {
+    "target_word": "minnares",
+    "related_word": [
+      "vrijster",
+      "geliefde",
+      "vriendin"
+    ],
+    "target_word_stem": "minnares",
+    "related_word_stem": [
+      "vrijster",
+      "geliefde",
+      "vriendin"
+    ]
+  },
+  {
+    "target_word": "aanwijzing",
+    "related_word": [
+      "indicatie",
+      "hint",
+      "tip"
+    ],
+    "target_word_stem": "aanwijzing",
+    "related_word_stem": [
+      "indicatie",
+      "hint",
+      "tip"
+    ]
+  },
+  {
+    "target_word": "sfeer",
+    "related_word": [
+      "bol",
+      "omgeving",
+      "kloot"
+    ],
+    "target_word_stem": "sfeer",
+    "related_word_stem": [
+      "bol",
+      "omgeving",
+      "kloot"
+    ]
+  },
+  {
+    "target_word": "kanaal",
+    "related_word": [
+      "waterweg",
+      "buis",
+      "kring"
+    ],
+    "target_word_stem": "kanaal",
+    "related_word_stem": [
+      "waterweg",
+      "buis",
+      "kring"
+    ]
+  },
+  {
+    "target_word": "vent",
+    "related_word": [
+      "knul",
+      "kerel",
+      "jochie"
+    ],
+    "target_word_stem": "vent",
+    "related_word_stem": [
+      "knul",
+      "kerel",
+      "jochie"
+    ]
+  },
+  {
+    "target_word": "spoel",
+    "related_word": [
+      "klos",
+      "condensator",
+      "weerstand"
+    ],
+    "target_word_stem": "spoel",
+    "related_word_stem": [
+      "klos",
+      "condensator",
+      "weerstand"
+    ]
+  },
+  {
+    "target_word": "ons",
+    "related_word": [
+      "hectogram",
+      "jullie",
+      "wij"
+    ],
+    "target_word_stem": "ons",
+    "related_word_stem": [
+      "hectogram",
+      "jullie",
+      "wij"
+    ]
+  },
+  {
+    "target_word": "baan",
+    "related_word": [
+      "werkkring",
+      "strook",
+      "parcours"
+    ],
+    "target_word_stem": "baan",
+    "related_word_stem": [
+      "werkkring",
+      "strook",
+      "parcours"
+    ]
+  },
+  {
+    "target_word": "fout",
+    "related_word": [
+      "verkeerd",
+      "tekortkoming",
+      "gebrek"
+    ],
+    "target_word_stem": "fout",
+    "related_word_stem": [
+      "verkeerd",
+      "tekortkoming",
+      "gebrek"
+    ]
+  },
+  {
+    "target_word": "schuur",
+    "related_word": [
+      "bergplaats",
+      "berging",
+      "barak"
+    ],
+    "target_word_stem": "schuur",
+    "related_word_stem": [
+      "bergplaats",
+      "berging",
+      "barak"
+    ]
+  },
+  {
+    "target_word": "waar",
+    "related_word": [
+      "goed",
+      "heus",
+      "er"
+    ],
+    "target_word_stem": "waar",
+    "related_word_stem": [
+      "goed",
+      "heus",
+      "er"
+    ]
+  },
+  {
+    "target_word": "reservoir",
+    "related_word": [
+      "waterbekken",
+      "tank",
+      "vergaarbak"
+    ],
+    "target_word_stem": "reservoir",
+    "related_word_stem": [
+      "waterbekken",
+      "tank",
+      "vergaarbak"
+    ]
+  },
+  {
+    "target_word": "voeding",
+    "related_word": [
+      "levensmiddel",
+      "alimentatie",
+      "kost"
+    ],
+    "target_word_stem": "voeding",
+    "related_word_stem": [
+      "levensmiddel",
+      "alimentatie",
+      "kost"
+    ]
+  },
+  {
+    "target_word": "huisbaas",
+    "related_word": [
+      "verhuurder",
+      "hospita",
+      "gastheer"
+    ],
+    "target_word_stem": "huisbaas",
+    "related_word_stem": [
+      "verhuurder",
+      "hospita",
+      "gastheer"
+    ]
+  },
+  {
+    "target_word": "afstand",
+    "related_word": [
+      "toegeving",
+      "cessie",
+      "overdracht"
+    ],
+    "target_word_stem": "afstand",
+    "related_word_stem": [
+      "toegeving",
+      "cessie",
+      "overdracht"
+    ]
+  },
+  {
+    "target_word": "steun",
+    "related_word": [
+      "hulp",
+      "handreiking",
+      "toelage"
+    ],
+    "target_word_stem": "steun",
+    "related_word_stem": [
+      "hulp",
+      "handreiking",
+      "toelage"
+    ]
+  },
+  {
+    "target_word": "luchtvaart",
+    "related_word": [
+      "vliegwezen",
+      "aviatiek",
+      "klm"
+    ],
+    "target_word_stem": "luchtvaart",
+    "related_word_stem": [
+      "vliegwezen",
+      "aviatiek",
+      "klm"
+    ]
+  },
+  {
+    "target_word": "afdruk",
+    "related_word": [
+      "exemplaar",
+      "kopie",
+      "print"
+    ],
+    "target_word_stem": "afdruk",
+    "related_word_stem": [
+      "exemplaar",
+      "kopie",
+      "print"
+    ]
+  },
+  {
+    "target_word": "bos",
+    "related_word": [
+      "bundel",
+      "pluk",
+      "woud"
+    ],
+    "target_word_stem": "bos",
+    "related_word_stem": [
+      "bundel",
+      "pluk",
+      "woud"
+    ]
+  },
+  {
+    "target_word": "paviljoen",
+    "related_word": [
+      "tent",
+      "zomerhuisje",
+      "tuinhuis"
+    ],
+    "target_word_stem": "paviljoen",
+    "related_word_stem": [
+      "tent",
+      "zomerhuisje",
+      "tuinhuis"
+    ]
+  },
+  {
+    "target_word": "bezwaar",
+    "related_word": [
+      "tegenwerping",
+      "nadeel",
+      "ongemak"
+    ],
+    "target_word_stem": "bezwaar",
+    "related_word_stem": [
+      "tegenwerping",
+      "nadeel",
+      "ongemak"
+    ]
+  },
+  {
+    "target_word": "koepel",
+    "related_word": [
+      "tuinhuis",
+      "paviljoen",
+      "zomerhuisje"
+    ],
+    "target_word_stem": "koepel",
+    "related_word_stem": [
+      "tuinhuis",
+      "paviljoen",
+      "zomerhuisje"
+    ]
+  },
+  {
+    "target_word": "rommel",
+    "related_word": [
+      "prullaria",
+      "zootje",
+      "wanorde"
+    ],
+    "target_word_stem": "rommel",
+    "related_word_stem": [
+      "prullaria",
+      "zootje",
+      "wanorde"
+    ]
+  },
+  {
+    "target_word": "verval",
+    "related_word": [
+      "bederf",
+      "ontluistering",
+      "ruïne"
+    ],
+    "target_word_stem": "verval",
+    "related_word_stem": [
+      "bederf",
+      "ontluistering",
+      "ruïne"
+    ]
+  },
+  {
+    "target_word": "afval",
+    "related_word": [
+      "vuilnis",
+      "overblijfsel",
+      "ontrouw"
+    ],
+    "target_word_stem": "afval",
+    "related_word_stem": [
+      "vuilnis",
+      "overblijfsel",
+      "ontrouw"
+    ]
+  },
+  {
+    "target_word": "nachtmerrie",
+    "related_word": [
+      "incubus",
+      "droom",
+      "visioen"
+    ],
+    "target_word_stem": "nachtmerrie",
+    "related_word_stem": [
+      "incubus",
+      "droom",
+      "visioen"
+    ]
+  },
+  {
+    "target_word": "krant",
+    "related_word": [
+      "dagblad",
+      "gazet",
+      "nieuws"
+    ],
+    "target_word_stem": "krant",
+    "related_word_stem": [
+      "dagblad",
+      "gazet",
+      "nieuws"
+    ]
+  },
+  {
+    "target_word": "gerucht",
+    "related_word": [
+      "roddel",
+      "praatje",
+      "klank"
+    ],
+    "target_word_stem": "gerucht",
+    "related_word_stem": [
+      "roddel",
+      "praatje",
+      "klank"
+    ]
+  },
+  {
+    "target_word": "idioot",
+    "related_word": [
+      "gek",
+      "domkop",
+      "lul"
+    ],
+    "target_word_stem": "idioot",
+    "related_word_stem": [
+      "gek",
+      "domkop",
+      "lul"
+    ]
+  },
+  {
+    "target_word": "wagen",
+    "related_word": [
+      "kar",
+      "vehikel",
+      "automobiel"
+    ],
+    "target_word_stem": "wagen",
+    "related_word_stem": [
+      "kar",
+      "vehikel",
+      "automobiel"
+    ]
+  },
+  {
+    "target_word": "helling",
+    "related_word": [
+      "verval",
+      "stapel",
+      "ramp"
+    ],
+    "target_word_stem": "helling",
+    "related_word_stem": [
+      "verval",
+      "stapel",
+      "ramp"
+    ]
+  },
+  {
+    "target_word": "moed",
+    "related_word": [
+      "durf",
+      "courage",
+      "dapperheid"
+    ],
+    "target_word_stem": "moed",
+    "related_word_stem": [
+      "durf",
+      "courage",
+      "dapperheid"
+    ]
+  },
+  {
+    "target_word": "vlies",
+    "related_word": [
+      "film",
+      "huid",
+      "vacht"
+    ],
+    "target_word_stem": "vlies",
+    "related_word_stem": [
+      "film",
+      "huid",
+      "vacht"
+    ]
+  },
+  {
+    "target_word": "gehoor",
+    "related_word": [
+      "luisterpubliek",
+      "auditie",
+      "horen"
+    ],
+    "target_word_stem": "gehoor",
+    "related_word_stem": [
+      "luisterpubliek",
+      "auditie",
+      "horen"
+    ]
+  },
+  {
+    "target_word": "garen",
+    "related_word": [
+      "draad",
+      "gaar",
+      "koord"
+    ],
+    "target_word_stem": "garen",
+    "related_word_stem": [
+      "draad",
+      "gaar",
+      "koord"
+    ]
+  },
+  {
+    "target_word": "gang",
+    "related_word": [
+      "schroefdraad",
+      "schotel",
+      "loop"
+    ],
+    "target_word_stem": "gang",
+    "related_word_stem": [
+      "schroefdraad",
+      "schotel",
+      "loop"
+    ]
+  },
+  {
+    "target_word": "veer",
+    "related_word": [
+      "pluim",
+      "pont",
+      "spiraal"
+    ],
+    "target_word_stem": "veer",
+    "related_word_stem": [
+      "pluim",
+      "pont",
+      "spiraal"
+    ]
+  },
+  {
+    "target_word": "baai",
+    "related_word": [
+      "bocht",
+      "kreek",
+      "inham"
+    ],
+    "target_word_stem": "baai",
+    "related_word_stem": [
+      "bocht",
+      "kreek",
+      "inham"
+    ]
+  },
+  {
+    "target_word": "botsing",
+    "related_word": [
+      "confrontatie",
+      "stoot",
+      "schok"
+    ],
+    "target_word_stem": "botsing",
+    "related_word_stem": [
+      "confrontatie",
+      "stoot",
+      "schok"
+    ]
+  },
+  {
+    "target_word": "benzine",
+    "related_word": [
+      "diesel",
+      "lpg",
+      "tanken"
+    ],
+    "target_word_stem": "benzine",
+    "related_word_stem": [
+      "diesel",
+      "lpg",
+      "tanken"
+    ]
+  },
+  {
+    "target_word": "plaats",
+    "related_word": [
+      "lokaliteit",
+      "erf",
+      "stadje"
+    ],
+    "target_word_stem": "plaats",
+    "related_word_stem": [
+      "lokaliteit",
+      "erf",
+      "stadje"
+    ]
+  },
+  {
+    "target_word": "oma",
+    "related_word": [
+      "bes",
+      "grootje",
+      "bestemoer"
+    ],
+    "target_word_stem": "oma",
+    "related_word_stem": [
+      "bes",
+      "grootje",
+      "bestemoer"
+    ]
+  },
+  {
+    "target_word": "roddel",
+    "related_word": [
+      "gerucht",
+      "kletspraat",
+      "achterklap"
+    ],
+    "target_word_stem": "roddel",
+    "related_word_stem": [
+      "gerucht",
+      "kletspraat",
+      "achterklap"
+    ]
+  },
+  {
+    "target_word": "film",
+    "related_word": [
+      "video",
+      "rolprent",
+      "laag"
+    ],
+    "target_word_stem": "film",
+    "related_word_stem": [
+      "video",
+      "rolprent",
+      "laag"
+    ]
+  },
+  {
+    "target_word": "controverse",
+    "related_word": [
+      "polemiek",
+      "pennestrijd",
+      "twistgeschrijf"
+    ],
+    "target_word_stem": "controverse",
+    "related_word_stem": [
+      "polemiek",
+      "pennestrijd",
+      "twistgeschrijf"
+    ]
+  },
+  {
+    "target_word": "timmerman",
+    "related_word": [
+      "koken",
+      "beroep",
+      "glas"
+    ],
+    "target_word_stem": "timmerman",
+    "related_word_stem": [
+      "koken",
+      "beroep",
+      "glas"
+    ]
+  },
+  {
+    "target_word": "prestatie",
+    "related_word": [
+      "handeling",
+      "daad",
+      "toer"
+    ],
+    "target_word_stem": "prestatie",
+    "related_word_stem": [
+      "handeling",
+      "daad",
+      "toer"
+    ]
+  },
+  {
+    "target_word": "verbond",
+    "related_word": [
+      "liga",
+      "wilsbeschikking",
+      "alliantie"
+    ],
+    "target_word_stem": "verbond",
+    "related_word_stem": [
+      "liga",
+      "wilsbeschikking",
+      "alliantie"
+    ]
+  },
+  {
+    "target_word": "kopie",
+    "related_word": [
+      "afdruk",
+      "afschrift",
+      "tweevoud"
+    ],
+    "target_word_stem": "kopie",
+    "related_word_stem": [
+      "afdruk",
+      "afschrift",
+      "tweevoud"
+    ]
+  },
+  {
+    "target_word": "vertrouwen",
+    "related_word": [
+      "geloof",
+      "fiducie",
+      "goodwill"
+    ],
+    "target_word_stem": "vertrouwen",
+    "related_word_stem": [
+      "geloof",
+      "fiducie",
+      "goodwill"
+    ]
+  },
+  {
+    "target_word": "zadel",
+    "related_word": [
+      "bouwvakker",
+      "koken",
+      "glas"
+    ],
+    "target_word_stem": "zadel",
+    "related_word_stem": [
+      "bouwvakker",
+      "koken",
+      "glas"
+    ]
+  },
+  {
+    "target_word": "opening",
+    "related_word": [
+      "inauguratie",
+      "bek",
+      "gat"
+    ],
+    "target_word_stem": "opening",
+    "related_word_stem": [
+      "inauguratie",
+      "bek",
+      "gat"
+    ]
+  },
+  {
+    "target_word": "apparaat",
+    "related_word": [
+      "toestel",
+      "inrichting",
+      "hulpmiddelen"
+    ],
+    "target_word_stem": "apparaat",
+    "related_word_stem": [
+      "toestel",
+      "inrichting",
+      "hulpmiddelen"
+    ]
+  },
+  {
+    "target_word": "vooruitgang",
+    "related_word": [
+      "progressie",
+      "beterschap",
+      "schot"
+    ],
+    "target_word_stem": "vooruitgang",
+    "related_word_stem": [
+      "progressie",
+      "beterschap",
+      "schot"
+    ]
+  },
+  {
+    "target_word": "emmer",
+    "related_word": [
+      "etui",
+      "kruik",
+      "korf"
+    ],
+    "target_word_stem": "emmer",
+    "related_word_stem": [
+      "etui",
+      "kruik",
+      "korf"
+    ]
+  },
+  {
+    "target_word": "vaas",
+    "related_word": [
+      "dier",
+      "pul",
+      "bouwvakker"
+    ],
+    "target_word_stem": "vaas",
+    "related_word_stem": [
+      "dier",
+      "pul",
+      "bouwvakker"
+    ]
+  },
+  {
+    "target_word": "docent",
+    "related_word": [
+      "leraar",
+      "onderwijzer",
+      "leerkracht"
+    ],
+    "target_word_stem": "docent",
+    "related_word_stem": [
+      "leraar",
+      "onderwijzer",
+      "leerkracht"
+    ]
+  },
+  {
+    "target_word": "ritueel",
+    "related_word": [
+      "ceremonie",
+      "kerkgebruik",
+      "plechtigheid"
+    ],
+    "target_word_stem": "ritueel",
+    "related_word_stem": [
+      "ceremonie",
+      "kerkgebruik",
+      "plechtigheid"
+    ]
+  },
+  {
+    "target_word": "kruk",
+    "related_word": [
+      "handvat",
+      "zwengel",
+      "taboeret"
+    ],
+    "target_word_stem": "kruk",
+    "related_word_stem": [
+      "handvat",
+      "zwengel",
+      "taboeret"
+    ]
+  },
+  {
+    "target_word": "teken",
+    "related_word": [
+      "symbool",
+      "indicatie",
+      "blijk"
+    ],
+    "target_word_stem": "teken",
+    "related_word_stem": [
+      "symbool",
+      "indicatie",
+      "blijk"
+    ]
+  },
+  {
+    "target_word": "kast",
+    "related_word": [
+      "plint",
+      "hok",
+      "buffet"
+    ],
+    "target_word_stem": "kast",
+    "related_word_stem": [
+      "plint",
+      "hok",
+      "buffet"
+    ]
+  },
+  {
+    "target_word": "meid",
+    "related_word": [
+      "wicht",
+      "dienares",
+      "dienstbode"
+    ],
+    "target_word_stem": "meid",
+    "related_word_stem": [
+      "wicht",
+      "dienares",
+      "dienstbode"
+    ]
+  },
+  {
+    "target_word": "nood",
+    "related_word": [
+      "behoefte",
+      "schamelheid",
+      "misère"
+    ],
+    "target_word_stem": "nood",
+    "related_word_stem": [
+      "behoefte",
+      "schamelheid",
+      "misère"
+    ]
+  },
+  {
+    "target_word": "ader",
+    "related_word": [
+      "draad",
+      "isolatiemateriaal",
+      "bloedvat"
+    ],
+    "target_word_stem": "ader",
+    "related_word_stem": [
+      "draad",
+      "isolatiemateriaal",
+      "bloedvat"
+    ]
+  },
+  {
+    "target_word": "pinda",
+    "related_word": [
+      "aardnoot",
+      "blauwe",
+      "sesamolie"
+    ],
+    "target_word_stem": "pinda",
+    "related_word_stem": [
+      "aardnoot",
+      "blauwe",
+      "sesamolie"
+    ]
+  },
+  {
+    "target_word": "bloem",
+    "related_word": [
+      "dier",
+      "meel",
+      "puikje"
+    ],
+    "target_word_stem": "bloem",
+    "related_word_stem": [
+      "dier",
+      "meel",
+      "puikje"
+    ]
+  },
+  {
+    "target_word": "dissertatie",
+    "related_word": [
+      "thesis",
+      "proefschrift",
+      "stelling"
+    ],
+    "target_word_stem": "dissertatie",
+    "related_word_stem": [
+      "thesis",
+      "proefschrift",
+      "stelling"
+    ]
+  },
+  {
+    "target_word": "folie",
+    "related_word": [
+      "blad",
+      "mesje",
+      "plaatje"
+    ],
+    "target_word_stem": "folie",
+    "related_word_stem": [
+      "blad",
+      "mesje",
+      "plaatje"
+    ]
+  },
+  {
+    "target_word": "fluit",
+    "related_word": [
+      "bierglas",
+      "piemel",
+      "penis"
+    ],
+    "target_word_stem": "fluit",
+    "related_word_stem": [
+      "bierglas",
+      "piemel",
+      "penis"
+    ]
+  },
+  {
+    "target_word": "patroon",
+    "related_word": [
+      "inrichting",
+      "beschermheer",
+      "voorbeeld"
+    ],
+    "target_word_stem": "patroon",
+    "related_word_stem": [
+      "inrichting",
+      "beschermheer",
+      "voorbeeld"
+    ]
+  },
+  {
+    "target_word": "zak",
+    "related_word": [
+      "kloot",
+      "foedraal",
+      "korf"
+    ],
+    "target_word_stem": "zak",
+    "related_word_stem": [
+      "kloot",
+      "foedraal",
+      "korf"
+    ]
+  },
+  {
+    "target_word": "spiraal",
+    "related_word": [
+      "helix",
+      "veer",
+      "propeller"
+    ],
+    "target_word_stem": "spiraal",
+    "related_word_stem": [
+      "helix",
+      "veer",
+      "propeller"
+    ]
+  },
+  {
+    "target_word": "opwinding",
+    "related_word": [
+      "drukte",
+      "agitatie",
+      "heisa"
+    ],
+    "target_word_stem": "opwinding",
+    "related_word_stem": [
+      "drukte",
+      "agitatie",
+      "heisa"
+    ]
+  },
+  {
+    "target_word": "postbode",
+    "related_word": [
+      "brievenbesteller",
+      "facteur",
+      "gerechtsbode"
+    ],
+    "target_word_stem": "postbode",
+    "related_word_stem": [
+      "brievenbesteller",
+      "facteur",
+      "gerechtsbode"
+    ]
+  },
+  {
+    "target_word": "overvloed",
+    "related_word": [
+      "abundantie",
+      "uitbundigheid",
+      "luxe"
+    ],
+    "target_word_stem": "overvloed",
+    "related_word_stem": [
+      "abundantie",
+      "uitbundigheid",
+      "luxe"
+    ]
+  },
+  {
+    "target_word": "verwijdering",
+    "related_word": [
+      "eliminatie",
+      "congé",
+      "distantie"
+    ],
+    "target_word_stem": "verwijdering",
+    "related_word_stem": [
+      "eliminatie",
+      "congé",
+      "distantie"
+    ]
+  },
+  {
+    "target_word": "verdediger",
+    "related_word": [
+      "advocaat",
+      "doelman",
+      "spits"
+    ],
+    "target_word_stem": "verdediger",
+    "related_word_stem": [
+      "advocaat",
+      "doelman",
+      "spits"
+    ]
+  },
+  {
+    "target_word": "illusie",
+    "related_word": [
+      "waanbeeld",
+      "zinsbedrog",
+      "luchtkasteel"
+    ],
+    "target_word_stem": "illusie",
+    "related_word_stem": [
+      "waanbeeld",
+      "zinsbedrog",
+      "luchtkasteel"
+    ]
+  },
+  {
+    "target_word": "pier",
+    "related_word": [
+      "zeehoofd",
+      "havendam",
+      "golfbreker"
+    ],
+    "target_word_stem": "pier",
+    "related_word_stem": [
+      "zeehoofd",
+      "havendam",
+      "golfbreker"
+    ]
+  },
+  {
+    "target_word": "eigenschap",
+    "related_word": [
+      "kenmerk",
+      "allooi",
+      "trek"
+    ],
+    "target_word_stem": "eigenschap",
+    "related_word_stem": [
+      "kenmerk",
+      "allooi",
+      "trek"
+    ]
+  },
+  {
+    "target_word": "feest",
+    "related_word": [
+      "party",
+      "kermis",
+      "fuif"
+    ],
+    "target_word_stem": "feest",
+    "related_word_stem": [
+      "party",
+      "kermis",
+      "fuif"
+    ]
+  }
+]

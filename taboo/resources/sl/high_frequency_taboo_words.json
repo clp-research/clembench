@@ -1,0 +1,282 @@
+[
+  {
+    "target_word": "hiša",
+    "related_word": [
+      "dom",
+      "stanovanje",
+      "streha"
+    ],
+    "target_word_stem": "hiš",
+    "related_word_stem": [
+      "dom",
+      "stanovanj",
+      "streh"
+    ]
+  },
+  {
+    "target_word": "avto",
+    "related_word": [
+      "vozilo",
+      "cesta",
+      "motor"
+    ],
+    "target_word_stem": "avt",
+    "related_word_stem": [
+      "vozil",
+      "cest",
+      "motor"
+    ]
+  },
+  {
+    "target_word": "delo",
+    "related_word": [
+      "služba",
+      "pisarna",
+      "denar"
+    ],
+    "target_word_stem": "del",
+    "related_word_stem": [
+      "služb",
+      "pisarn",
+      "denar"
+    ]
+  },
+  {
+    "target_word": "voda",
+    "related_word": [
+      "reka",
+      "morje",
+      "pijača"
+    ],
+    "target_word_stem": "vod",
+    "related_word_stem": [
+      "rek",
+      "morj",
+      "pijač"
+    ]
+  },
+  {
+    "target_word": "čas",
+    "related_word": [
+      "ura",
+      "dan",
+      "leto"
+    ],
+    "target_word_stem": "čas",
+    "related_word_stem": [
+      "ur",
+      "dan",
+      "let"
+    ]
+  },
+  {
+    "target_word": "oseba",
+    "related_word": [
+      "človek",
+      "moški",
+      "ženska"
+    ],
+    "target_word_stem": "oseb",
+    "related_word_stem": [
+      "človek",
+      "mošk",
+      "žensk"
+    ]
+  },
+  {
+    "target_word": "država",
+    "related_word": [
+      "Slovenija",
+      "Evropa",
+      "vlada"
+    ],
+    "target_word_stem": "držav",
+    "related_word_stem": [
+      "Sloven",
+      "Evrop",
+      "vlad"
+    ]
+  },
+  {
+    "target_word": "denar",
+    "related_word": [
+      "evro",
+      "plača",
+      "banka"
+    ],
+    "target_word_stem": "denar",
+    "related_word_stem": [
+      "evr",
+      "plač",
+      "bank"
+    ]
+  },
+  {
+    "target_word": "hrana",
+    "related_word": [
+      "jesti",
+      "kosilo",
+      "večerja"
+    ],
+    "target_word_stem": "hran",
+    "related_word_stem": [
+      "jes",
+      "kosil",
+      "večer"
+    ]
+  },
+  {
+    "target_word": "otroci",
+    "related_word": [
+      "mladi",
+      "šola",
+      "igra"
+    ],
+    "target_word_stem": "otroc",
+    "related_word_stem": [
+      "mlad",
+      "šol",
+      "igr"
+    ]
+  },
+  {
+    "target_word": "ljubezen",
+    "related_word": [
+      "srce",
+      "romantika",
+      "čustva"
+    ],
+    "target_word_stem": "ljubezn",
+    "related_word_stem": [
+      "src",
+      "romant",
+      "čustv"
+    ]
+  },
+  {
+    "target_word": "knjiga",
+    "related_word": [
+      "brati",
+      "zgodba",
+      "stran"
+    ],
+    "target_word_stem": "knjig",
+    "related_word_stem": [
+      "brat",
+      "zgodb",
+      "stran"
+    ]
+  },
+  {
+    "target_word": "miza",
+    "related_word": [
+      "pohištvo",
+      "jedilnica",
+      "prt"
+    ],
+    "target_word_stem": "miz",
+    "related_word_stem": [
+      "pohištv",
+      "jedil",
+      "prt"
+    ]
+  },
+  {
+    "target_word": "računalnik",
+    "related_word": [
+      "internet",
+      "tipkovnica",
+      "zaslon"
+    ],
+    "target_word_stem": "računalnik",
+    "related_word_stem": [
+      "internet",
+      "tipkov",
+      "zaslon"
+    ]
+  },
+  {
+    "target_word": "telefon",
+    "related_word": [
+      "klicati",
+      "mobitel",
+      "številka"
+    ],
+    "target_word_stem": "telefon",
+    "related_word_stem": [
+      "klic",
+      "mobil",
+      "števil"
+    ]
+  },
+  {
+    "target_word": "sonce",
+    "related_word": [
+      "toplota",
+      "poletje",
+      "svetloba"
+    ],
+    "target_word_stem": "sonc",
+    "related_word_stem": [
+      "toplot",
+      "polet",
+      "svet"
+    ]
+  },
+  {
+    "target_word": "problem",
+    "related_word": [
+      "težava",
+      "rešitev",
+      "izziv"
+    ],
+    "target_word_stem": "problem",
+    "related_word_stem": [
+      "težav",
+      "rešitv",
+      "izziv"
+    ]
+  },
+  {
+    "target_word": "glasba",
+    "related_word": [
+      "pesem",
+      "zvok",
+      "instrument"
+    ],
+    "target_word_stem": "glasb",
+    "related_word_stem": [
+      "pesm",
+      "zvo",
+      "instr"
+    ]
+  },
+  {
+    "target_word": "igra",
+    "related_word": [
+      "zabava",
+      "šport",
+      "pravila"
+    ],
+    "target_word_stem": "igr",
+    "related_word_stem": [
+      "zabav",
+      "šport",
+      "pravil"
+    ]
+  },
+  {
+    "target_word": "šola",
+    "related_word": [
+      "učenje",
+      "učitelj",
+      "razred"
+    ],
+    "target_word_stem": "šol",
+    "related_word_stem": [
+      "učen",
+      "učitel",
+      "razr"
+    ]
+  }
+]

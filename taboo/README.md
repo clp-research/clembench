@@ -13,6 +13,17 @@ It also tests whether it can detect parts of words and its helpfulness in the ga
 For example, if a Describer does not alter or extend its initial description after an incorrect guess, we consider this unhelpful behavior.
 On the opposite side, if a Guesser repeats an earlier guess, it has not understood the game goal well enough to make real progress at each turn.
 
+## Multilingual Word Lists
+
+The Taboo game is available in multiple languages (EU-24 + additional languages).
+Language-specific word lists are located in:
+`resources/{language_code}/`
+
+The multilingual lists were generated through an automated curation pipeline.
+For full details about the supported languages, data format, and generation process, see:
+
+`resources/README.md`
+
 
 ### Instantiation
 We instantiate this game by setting the maximum number of guesses to 3 and we use target words that vary according to their frequency.

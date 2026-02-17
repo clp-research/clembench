@@ -1,0 +1,5392 @@
+[
+  {
+    "target_word": "domov",
+    "related_word": [
+      "byt",
+      "vlast",
+      "starobinec"
+    ],
+    "target_word_stem": "domov",
+    "related_word_stem": [
+      "byt",
+      "vlast",
+      "starobinec"
+    ]
+  },
+  {
+    "target_word": "stránka",
+    "related_word": [
+      "hledisko",
+      "papír",
+      "ohled"
+    ],
+    "target_word_stem": "stránka",
+    "related_word_stem": [
+      "hledisko",
+      "papír",
+      "ohled"
+    ]
+  },
+  {
+    "target_word": "čas",
+    "related_word": [
+      "hodina",
+      "doba",
+      "lhůta"
+    ],
+    "target_word_stem": "čas",
+    "related_word_stem": [
+      "hodina",
+      "doba",
+      "lhůta"
+    ]
+  },
+  {
+    "target_word": "informace",
+    "related_word": [
+      "údaj",
+      "zpráva",
+      "data"
+    ],
+    "target_word_stem": "informace",
+    "related_word_stem": [
+      "údaj",
+      "zpráva",
+      "data"
+    ]
+  },
+  {
+    "target_word": "rok",
+    "related_word": [
+      "léta",
+      "sezóna",
+      "letos"
+    ],
+    "target_word_stem": "rok",
+    "related_word_stem": [
+      "léta",
+      "sezóna",
+      "letos"
+    ]
+  },
+  {
+    "target_word": "cena",
+    "related_word": [
+      "prémie",
+      "uznání",
+      "důležitost"
+    ],
+    "target_word_stem": "cena",
+    "related_word_stem": [
+      "prémie",
+      "uznání",
+      "důležitost"
+    ]
+  },
+  {
+    "target_word": "stát",
+    "related_word": [
+      "země",
+      "vlast",
+      "toužit"
+    ],
+    "target_word_stem": "stát",
+    "related_word_stem": [
+      "země",
+      "vlast",
+      "toužit"
+    ]
+  },
+  {
+    "target_word": "práce",
+    "related_word": [
+      "dílo",
+      "zaměstnání",
+      "činnost"
+    ],
+    "target_word_stem": "práce",
+    "related_word_stem": [
+      "dílo",
+      "zaměstnání",
+      "činnost"
+    ]
+  },
+  {
+    "target_word": "položka",
+    "related_word": [
+      "článek",
+      "element",
+      "seznam"
+    ],
+    "target_word_stem": "položka",
+    "related_word_stem": [
+      "článek",
+      "element",
+      "seznam"
+    ]
+  },
+  {
+    "target_word": "jméno",
+    "related_word": [
+      "název",
+      "pověst",
+      "proslulost"
+    ],
+    "target_word_stem": "jméno",
+    "related_word_stem": [
+      "název",
+      "pověst",
+      "proslulost"
+    ]
+  },
+  {
+    "target_word": "hra",
+    "related_word": [
+      "divadlo",
+      "soutěž",
+      "hřiště"
+    ],
+    "target_word_stem": "hra",
+    "related_word_stem": [
+      "divadlo",
+      "soutěž",
+      "hřiště"
+    ]
+  },
+  {
+    "target_word": "člen",
+    "related_word": [
+      "součást",
+      "příslušník",
+      "jednotka"
+    ],
+    "target_word_stem": "člen",
+    "related_word_stem": [
+      "součást",
+      "příslušník",
+      "jednotka"
+    ]
+  },
+  {
+    "target_word": "zpráva",
+    "related_word": [
+      "novina",
+      "informace",
+      "zvěst"
+    ],
+    "target_word_stem": "zpráva",
+    "related_word_stem": [
+      "novina",
+      "informace",
+      "zvěst"
+    ]
+  },
+  {
+    "target_word": "škola",
+    "related_word": [
+      "vzdělávání",
+      "ústav",
+      "gymnázium"
+    ],
+    "target_word_stem": "škola",
+    "related_word_stem": [
+      "vzdělávání",
+      "ústav",
+      "gymnázium"
+    ]
+  },
+  {
+    "target_word": "číslo",
+    "related_word": [
+      "hodnota",
+      "exemplář",
+      "počet"
+    ],
+    "target_word_stem": "číslo",
+    "related_word_stem": [
+      "hodnota",
+      "exemplář",
+      "počet"
+    ]
+  },
+  {
+    "target_word": "obchod",
+    "related_word": [
+      "komerce",
+      "živnost",
+      "butik"
+    ],
+    "target_word_stem": "obchod",
+    "related_word_stem": [
+      "komerce",
+      "živnost",
+      "butik"
+    ]
+  },
+  {
+    "target_word": "program",
+    "related_word": [
+      "aplikace",
+      "agenda",
+      "plán"
+    ],
+    "target_word_stem": "program",
+    "related_word_stem": [
+      "aplikace",
+      "agenda",
+      "plán"
+    ]
+  },
+  {
+    "target_word": "skupina",
+    "related_word": [
+      "kolektiv",
+      "družstvo",
+      "tým"
+    ],
+    "target_word_stem": "skupina",
+    "related_word_stem": [
+      "kolektiv",
+      "družstvo",
+      "tým"
+    ]
+  },
+  {
+    "target_word": "město",
+    "related_word": [
+      "centrum",
+      "okres",
+      "maloměšťácký"
+    ],
+    "target_word_stem": "město",
+    "related_word_stem": [
+      "centrum",
+      "okres",
+      "maloměšťácký"
+    ]
+  },
+  {
+    "target_word": "společnost",
+    "related_word": [
+      "organizace",
+      "firma",
+      "klub"
+    ],
+    "target_word_stem": "společnost",
+    "related_word_stem": [
+      "organizace",
+      "firma",
+      "klub"
+    ]
+  },
+  {
+    "target_word": "svět",
+    "related_word": [
+      "země",
+      "lidstvo",
+      "cizina"
+    ],
+    "target_word_stem": "svět",
+    "related_word_stem": [
+      "země",
+      "lidstvo",
+      "cizina"
+    ]
+  },
+  {
+    "target_word": "výsledek",
+    "related_word": [
+      "rezultát",
+      "úspěch",
+      "produkt"
+    ],
+    "target_word_stem": "výsledek",
+    "related_word_stem": [
+      "rezultát",
+      "úspěch",
+      "produkt"
+    ]
+  },
+  {
+    "target_word": "soubor",
+    "related_word": [
+      "úhrn",
+      "sbírka",
+      "kolekce"
+    ],
+    "target_word_stem": "soubor",
+    "related_word_stem": [
+      "úhrn",
+      "sbírka",
+      "kolekce"
+    ]
+  },
+  {
+    "target_word": "část",
+    "related_word": [
+      "díl",
+      "složka",
+      "úsek"
+    ],
+    "target_word_stem": "část",
+    "related_word_stem": [
+      "díl",
+      "složka",
+      "úsek"
+    ]
+  },
+  {
+    "target_word": "termín",
+    "related_word": [
+      "výraz",
+      "pojem",
+      "uzávěrka"
+    ],
+    "target_word_stem": "termín",
+    "related_word_stem": [
+      "výraz",
+      "pojem",
+      "uzávěrka"
+    ]
+  },
+  {
+    "target_word": "oblast",
+    "related_word": [
+      "území",
+      "zóna",
+      "sféra"
+    ],
+    "target_word_stem": "oblast",
+    "related_word_stem": [
+      "území",
+      "zóna",
+      "sféra"
+    ]
+  },
+  {
+    "target_word": "plán",
+    "related_word": [
+      "návrh",
+      "projekt",
+      "záměr"
+    ],
+    "target_word_stem": "plán",
+    "related_word_stem": [
+      "návrh",
+      "projekt",
+      "záměr"
+    ]
+  },
+  {
+    "target_word": "typ",
+    "related_word": [
+      "druh",
+      "ráz",
+      "způsob"
+    ],
+    "target_word_stem": "typ",
+    "related_word_stem": [
+      "druh",
+      "ráz",
+      "způsob"
+    ]
+  },
+  {
+    "target_word": "energie",
+    "related_word": [
+      "důraz",
+      "elán",
+      "potence"
+    ],
+    "target_word_stem": "energie",
+    "related_word_stem": [
+      "důraz",
+      "elán",
+      "potence"
+    ]
+  },
+  {
+    "target_word": "student",
+    "related_word": [
+      "vysokoškolák",
+      "posluchač",
+      "žák"
+    ],
+    "target_word_stem": "student",
+    "related_word_stem": [
+      "vysokoškolák",
+      "posluchač",
+      "žák"
+    ]
+  },
+  {
+    "target_word": "film",
+    "related_word": [
+      "snímek",
+      "vrstva",
+      "povlak"
+    ],
+    "target_word_stem": "film",
+    "related_word_stem": [
+      "snímek",
+      "vrstva",
+      "povlak"
+    ]
+  },
+  {
+    "target_word": "kategorie",
+    "related_word": [
+      "rubrika",
+      "druh",
+      "pojem"
+    ],
+    "target_word_stem": "kategorie",
+    "related_word_stem": [
+      "rubrika",
+      "druh",
+      "pojem"
+    ]
+  },
+  {
+    "target_word": "centrum",
+    "related_word": [
+      "středisko",
+      "těžiště",
+      "město"
+    ],
+    "target_word_stem": "centrum",
+    "related_word_stem": [
+      "středisko",
+      "těžiště",
+      "město"
+    ]
+  },
+  {
+    "target_word": "článek",
+    "related_word": [
+      "pojednání",
+      "položka",
+      "díl"
+    ],
+    "target_word_stem": "článek",
+    "related_word_stem": [
+      "pojednání",
+      "položka",
+      "díl"
+    ]
+  },
+  {
+    "target_word": "obraz",
+    "related_word": [
+      "podoba",
+      "vzor",
+      "představa"
+    ],
+    "target_word_stem": "obraz",
+    "related_word_stem": [
+      "podoba",
+      "vzor",
+      "představa"
+    ]
+  },
+  {
+    "target_word": "dítě",
+    "related_word": [
+      "děcko",
+      "rodič",
+      "miminko"
+    ],
+    "target_word_stem": "dítě",
+    "related_word_stem": [
+      "děcko",
+      "rodič",
+      "miminko"
+    ]
+  },
+  {
+    "target_word": "událost",
+    "related_word": [
+      "věc",
+      "děj",
+      "příběh"
+    ],
+    "target_word_stem": "událost",
+    "related_word_stem": [
+      "věc",
+      "děj",
+      "příběh"
+    ]
+  },
+  {
+    "target_word": "telefon",
+    "related_word": [
+      "rozhovor",
+      "přístroj",
+      "fón"
+    ],
+    "target_word_stem": "telefon",
+    "related_word_stem": [
+      "rozhovor",
+      "přístroj",
+      "fón"
+    ]
+  },
+  {
+    "target_word": "výzkum",
+    "related_word": [
+      "bádání",
+      "studie",
+      "věda"
+    ],
+    "target_word_stem": "výzkum",
+    "related_word_stem": [
+      "bádání",
+      "studie",
+      "věda"
+    ]
+  },
+  {
+    "target_word": "zdroj",
+    "related_word": [
+      "původce",
+      "matka",
+      "pramen"
+    ],
+    "target_word_stem": "zdroj",
+    "related_word_stem": [
+      "původce",
+      "matka",
+      "pramen"
+    ]
+  },
+  {
+    "target_word": "adresa",
+    "related_word": [
+      "bydliště",
+      "identifikace",
+      "režim"
+    ],
+    "target_word_stem": "adresa",
+    "related_word_stem": [
+      "bydliště",
+      "identifikace",
+      "režim"
+    ]
+  },
+  {
+    "target_word": "problém",
+    "related_word": [
+      "řešení",
+      "otázka",
+      "malér"
+    ],
+    "target_word_stem": "problém",
+    "related_word_stem": [
+      "řešení",
+      "otázka",
+      "malér"
+    ]
+  },
+  {
+    "target_word": "žena",
+    "related_word": [
+      "holka",
+      "člověk",
+      "choť"
+    ],
+    "target_word_stem": "žena",
+    "related_word_stem": [
+      "holka",
+      "člověk",
+      "choť"
+    ]
+  },
+  {
+    "target_word": "funkce",
+    "related_word": [
+      "činnost",
+      "úkol",
+      "poslání"
+    ],
+    "target_word_stem": "funkce",
+    "related_word_stem": [
+      "činnost",
+      "úkol",
+      "poslání"
+    ]
+  },
+  {
+    "target_word": "předmět",
+    "related_word": [
+      "objekt",
+      "věc",
+      "téma"
+    ],
+    "target_word_stem": "předmět",
+    "related_word_stem": [
+      "objekt",
+      "věc",
+      "téma"
+    ]
+  },
+  {
+    "target_word": "život",
+    "related_word": [
+      "bytí",
+      "krk",
+      "existence"
+    ],
+    "target_word_stem": "život",
+    "related_word_stem": [
+      "bytí",
+      "krk",
+      "existence"
+    ]
+  },
+  {
+    "target_word": "řízení",
+    "related_word": [
+      "kontrola",
+      "management",
+      "proces"
+    ],
+    "target_word_stem": "řízení",
+    "related_word_stem": [
+      "kontrola",
+      "management",
+      "proces"
+    ]
+  },
+  {
+    "target_word": "vývoj",
+    "related_word": [
+      "evoluce",
+      "chod",
+      "běh"
+    ],
+    "target_word_stem": "vývoj",
+    "related_word_stem": [
+      "evoluce",
+      "chod",
+      "běh"
+    ]
+  },
+  {
+    "target_word": "rodina",
+    "related_word": [
+      "příbuzenstvo",
+      "dům",
+      "čeleď"
+    ],
+    "target_word_stem": "rodina",
+    "related_word_stem": [
+      "příbuzenstvo",
+      "dům",
+      "čeleď"
+    ]
+  },
+  {
+    "target_word": "kód",
+    "related_word": [
+      "šifra",
+      "zdroják",
+      "dekodér"
+    ],
+    "target_word_stem": "kód",
+    "related_word_stem": [
+      "šifra",
+      "zdroják",
+      "dekodér"
+    ]
+  },
+  {
+    "target_word": "kancelář",
+    "related_word": [
+      "pracovna",
+      "agentura",
+      "ústav"
+    ],
+    "target_word_stem": "kancelář",
+    "related_word_stem": [
+      "pracovna",
+      "agentura",
+      "ústav"
+    ]
+  },
+  {
+    "target_word": "otázka",
+    "related_word": [
+      "záležitost",
+      "věc",
+      "problém"
+    ],
+    "target_word_stem": "otázka",
+    "related_word_stem": [
+      "záležitost",
+      "věc",
+      "problém"
+    ]
+  },
+  {
+    "target_word": "průvodce",
+    "related_word": [
+      "příručka",
+      "asistent",
+      "vést"
+    ],
+    "target_word_stem": "průvodce",
+    "related_word_stem": [
+      "příručka",
+      "asistent",
+      "vést"
+    ]
+  },
+  {
+    "target_word": "proces",
+    "related_word": [
+      "postup",
+      "činnost",
+      "řízení"
+    ],
+    "target_word_stem": "proces",
+    "related_word_stem": [
+      "postup",
+      "činnost",
+      "řízení"
+    ]
+  },
+  {
+    "target_word": "bod",
+    "related_word": [
+      "tečka",
+      "oddíl",
+      "část"
+    ],
+    "target_word_stem": "bod",
+    "related_word_stem": [
+      "tečka",
+      "oddíl",
+      "část"
+    ]
+  },
+  {
+    "target_word": "kontrola",
+    "related_word": [
+      "řízení",
+      "dohled",
+      "revizor"
+    ],
+    "target_word_stem": "kontrola",
+    "related_word_stem": [
+      "řízení",
+      "dohled",
+      "revizor"
+    ]
+  },
+  {
+    "target_word": "index",
+    "related_word": [
+      "přehled",
+      "rejstřík",
+      "obsah"
+    ],
+    "target_word_stem": "index",
+    "related_word_stem": [
+      "přehled",
+      "rejstřík",
+      "obsah"
+    ]
+  },
+  {
+    "target_word": "úroveň",
+    "related_word": [
+      "výše",
+      "hladina",
+      "nivó"
+    ],
+    "target_word_stem": "úroveň",
+    "related_word_stem": [
+      "výše",
+      "hladina",
+      "nivó"
+    ]
+  },
+  {
+    "target_word": "země",
+    "related_word": [
+      "krajina",
+      "svět",
+      "souš"
+    ],
+    "target_word_stem": "země",
+    "related_word_stem": [
+      "krajina",
+      "svět",
+      "souš"
+    ]
+  },
+  {
+    "target_word": "zákazník",
+    "related_word": [
+      "odběratel",
+      "klient",
+      "kupující"
+    ],
+    "target_word_stem": "zákazník",
+    "related_word_stem": [
+      "odběratel",
+      "klient",
+      "kupující"
+    ]
+  },
+  {
+    "target_word": "obsah",
+    "related_word": [
+      "náplň",
+      "látka",
+      "plocha"
+    ],
+    "target_word_stem": "obsah",
+    "related_word_stem": [
+      "náplň",
+      "látka",
+      "plocha"
+    ]
+  },
+  {
+    "target_word": "vzdělání",
+    "related_word": [
+      "učenost",
+      "výuka",
+      "erudice"
+    ],
+    "target_word_stem": "vzdělání",
+    "related_word_stem": [
+      "učenost",
+      "výuka",
+      "erudice"
+    ]
+  },
+  {
+    "target_word": "deska",
+    "related_word": [
+      "prkno",
+      "tabule",
+      "panel"
+    ],
+    "target_word_stem": "deska",
+    "related_word_stem": [
+      "prkno",
+      "tabule",
+      "panel"
+    ]
+  },
+  {
+    "target_word": "přítel",
+    "related_word": [
+      "kamarád",
+      "stoupenec",
+      "kluk"
+    ],
+    "target_word_stem": "přítel",
+    "related_word_stem": [
+      "kamarád",
+      "stoupenec",
+      "kluk"
+    ]
+  },
+  {
+    "target_word": "dům",
+    "related_word": [
+      "budova",
+      "stavba",
+      "středisko"
+    ],
+    "target_word_stem": "dům",
+    "related_word_stem": [
+      "budova",
+      "stavba",
+      "středisko"
+    ]
+  },
+  {
+    "target_word": "hodnota",
+    "related_word": [
+      "význam",
+      "číslo",
+      "statek"
+    ],
+    "target_word_stem": "hodnota",
+    "related_word_stem": [
+      "význam",
+      "číslo",
+      "statek"
+    ]
+  },
+  {
+    "target_word": "doprava",
+    "related_word": [
+      "transport",
+      "dolů",
+      "nahoru"
+    ],
+    "target_word_stem": "doprava",
+    "related_word_stem": [
+      "transport",
+      "dolů",
+      "nahoru"
+    ]
+  },
+  {
+    "target_word": "velikost",
+    "related_word": [
+      "rozměr",
+      "míra",
+      "číslo"
+    ],
+    "target_word_stem": "velikost",
+    "related_word_stem": [
+      "rozměr",
+      "míra",
+      "číslo"
+    ]
+  },
+  {
+    "target_word": "příběh",
+    "related_word": [
+      "událost",
+      "osud",
+      "komiks"
+    ],
+    "target_word_stem": "příběh",
+    "related_word_stem": [
+      "událost",
+      "osud",
+      "komiks"
+    ]
+  },
+  {
+    "target_word": "nástroj",
+    "related_word": [
+      "prostředek",
+      "sluha",
+      "loutka"
+    ],
+    "target_word_stem": "nástroj",
+    "related_word_stem": [
+      "prostředek",
+      "sluha",
+      "loutka"
+    ]
+  },
+  {
+    "target_word": "vlastnost",
+    "related_word": [
+      "rys",
+      "kvalita",
+      "příznak"
+    ],
+    "target_word_stem": "vlastnost",
+    "related_word_stem": [
+      "rys",
+      "kvalita",
+      "příznak"
+    ]
+  },
+  {
+    "target_word": "bezpečnost",
+    "related_word": [
+      "policie",
+      "stav",
+      "jistota"
+    ],
+    "target_word_stem": "bezpečnost",
+    "related_word_stem": [
+      "policie",
+      "stav",
+      "jistota"
+    ]
+  },
+  {
+    "target_word": "titul",
+    "related_word": [
+      "název",
+      "hodnost",
+      "nadpis"
+    ],
+    "target_word_stem": "titul",
+    "related_word_stem": [
+      "název",
+      "hodnost",
+      "nadpis"
+    ]
+  },
+  {
+    "target_word": "věc",
+    "related_word": [
+      "předmět",
+      "záležitost",
+      "objekt"
+    ],
+    "target_word_stem": "věc",
+    "related_word_stem": [
+      "předmět",
+      "záležitost",
+      "objekt"
+    ]
+  },
+  {
+    "target_word": "pokoj",
+    "related_word": [
+      "místnost",
+      "nábytek",
+      "klid"
+    ],
+    "target_word_stem": "pokoj",
+    "related_word_stem": [
+      "místnost",
+      "nábytek",
+      "klid"
+    ]
+  },
+  {
+    "target_word": "dnes",
+    "related_word": [
+      "nyní",
+      "včera",
+      "zítra"
+    ],
+    "target_word_stem": "dnes",
+    "related_word_stem": [
+      "nyní",
+      "včera",
+      "zítra"
+    ]
+  },
+  {
+    "target_word": "třída",
+    "related_word": [
+      "klasa",
+      "kategorie",
+      "vrstva"
+    ],
+    "target_word_stem": "třída",
+    "related_word_stem": [
+      "klasa",
+      "kategorie",
+      "vrstva"
+    ]
+  },
+  {
+    "target_word": "autor",
+    "related_word": [
+      "spisovatel",
+      "tvůrce",
+      "básník"
+    ],
+    "target_word_stem": "autor",
+    "related_word_stem": [
+      "spisovatel",
+      "tvůrce",
+      "básník"
+    ]
+  },
+  {
+    "target_word": "péče",
+    "related_word": [
+      "starost",
+      "údržba",
+      "pečovat"
+    ],
+    "target_word_stem": "péče",
+    "related_word_stem": [
+      "starost",
+      "údržba",
+      "pečovat"
+    ]
+  },
+  {
+    "target_word": "měsíc",
+    "related_word": [
+      "luna",
+      "satelit",
+      "perioda"
+    ],
+    "target_word_stem": "měsíc",
+    "related_word_stem": [
+      "luna",
+      "satelit",
+      "perioda"
+    ]
+  },
+  {
+    "target_word": "voda",
+    "related_word": [
+      "jezero",
+      "živel",
+      "tekutina"
+    ],
+    "target_word_stem": "voda",
+    "related_word_stem": [
+      "jezero",
+      "živel",
+      "tekutina"
+    ]
+  },
+  {
+    "target_word": "oddělení",
+    "related_word": [
+      "středisko",
+      "provoz",
+      "pracoviště"
+    ],
+    "target_word_stem": "oddělení",
+    "related_word_stem": [
+      "středisko",
+      "provoz",
+      "pracoviště"
+    ]
+  },
+  {
+    "target_word": "vláda",
+    "related_word": [
+      "režim",
+      "moc",
+      "panování"
+    ],
+    "target_word_stem": "vláda",
+    "related_word_stem": [
+      "režim",
+      "moc",
+      "panování"
+    ]
+  },
+  {
+    "target_word": "dívka",
+    "related_word": [
+      "žába",
+      "chlapec",
+      "děvečka"
+    ],
+    "target_word_stem": "dívka",
+    "related_word_stem": [
+      "žába",
+      "chlapec",
+      "děvečka"
+    ]
+  },
+  {
+    "target_word": "věda",
+    "related_word": [
+      "nauka",
+      "výzkum",
+      "bádání"
+    ],
+    "target_word_stem": "věda",
+    "related_word_stem": [
+      "nauka",
+      "výzkum",
+      "bádání"
+    ]
+  },
+  {
+    "target_word": "úvěr",
+    "related_word": [
+      "půjčka",
+      "dluh",
+      "příslib"
+    ],
+    "target_word_stem": "úvěr",
+    "related_word_stem": [
+      "půjčka",
+      "dluh",
+      "příslib"
+    ]
+  },
+  {
+    "target_word": "tým",
+    "related_word": [
+      "kolektiv",
+      "skupina",
+      "reprezentace"
+    ],
+    "target_word_stem": "tým",
+    "related_word_stem": [
+      "kolektiv",
+      "skupina",
+      "reprezentace"
+    ]
+  },
+  {
+    "target_word": "akce",
+    "related_word": [
+      "činnost",
+      "jednání",
+      "zásah"
+    ],
+    "target_word_stem": "akce",
+    "related_word_stem": [
+      "činnost",
+      "jednání",
+      "zásah"
+    ]
+  },
+  {
+    "target_word": "světlo",
+    "related_word": [
+      "lampa",
+      "tma",
+      "záření"
+    ],
+    "target_word_stem": "světlo",
+    "related_word_stem": [
+      "lampa",
+      "tma",
+      "záření"
+    ]
+  },
+  {
+    "target_word": "jídlo",
+    "related_word": [
+      "potravina",
+      "pokrm",
+      "výživa"
+    ],
+    "target_word_stem": "jídlo",
+    "related_word_stem": [
+      "potravina",
+      "pokrm",
+      "výživa"
+    ]
+  },
+  {
+    "target_word": "možnost",
+    "related_word": [
+      "šance",
+      "prostor",
+      "moc"
+    ],
+    "target_word_stem": "možnost",
+    "related_word_stem": [
+      "šance",
+      "prostor",
+      "moc"
+    ]
+  },
+  {
+    "target_word": "prodejce",
+    "related_word": [
+      "kupce",
+      "obchodník",
+      "dodavatel"
+    ],
+    "target_word_stem": "prodejce",
+    "related_word_stem": [
+      "kupce",
+      "obchodník",
+      "dodavatel"
+    ]
+  },
+  {
+    "target_word": "tisk",
+    "related_word": [
+      "publikování",
+      "časopis",
+      "noviny"
+    ],
+    "target_word_stem": "tisk",
+    "related_word_stem": [
+      "publikování",
+      "časopis",
+      "noviny"
+    ]
+  },
+  {
+    "target_word": "slovo",
+    "related_word": [
+      "výrok",
+      "prohlášení",
+      "projev"
+    ],
+    "target_word_stem": "slovo",
+    "related_word_stem": [
+      "výrok",
+      "prohlášení",
+      "projev"
+    ]
+  },
+  {
+    "target_word": "žádost",
+    "related_word": [
+      "přání",
+      "fond",
+      "chtíč"
+    ],
+    "target_word_stem": "žádost",
+    "related_word_stem": [
+      "přání",
+      "fond",
+      "chtíč"
+    ]
+  },
+  {
+    "target_word": "peníze",
+    "related_word": [
+      "prachy",
+      "platidlo",
+      "měna"
+    ],
+    "target_word_stem": "peníze",
+    "related_word_stem": [
+      "prachy",
+      "platidlo",
+      "měna"
+    ]
+  },
+  {
+    "target_word": "osoba",
+    "related_word": [
+      "jednotlivec",
+      "člověk",
+      "subjekt"
+    ],
+    "target_word_stem": "osoba",
+    "related_word_stem": [
+      "jednotlivec",
+      "člověk",
+      "subjekt"
+    ]
+  },
+  {
+    "target_word": "zásoba",
+    "related_word": [
+      "rezerva",
+      "potraviny",
+      "arzenál"
+    ],
+    "target_word_stem": "zásoba",
+    "related_word_stem": [
+      "rezerva",
+      "potraviny",
+      "arzenál"
+    ]
+  },
+  {
+    "target_word": "papír",
+    "related_word": [
+      "písemnost",
+      "listina",
+      "stránka"
+    ],
+    "target_word_stem": "papír",
+    "related_word_stem": [
+      "písemnost",
+      "listina",
+      "stránka"
+    ]
+  },
+  {
+    "target_word": "materiál",
+    "related_word": [
+      "surovina",
+      "podklad",
+      "hmota"
+    ],
+    "target_word_stem": "materiál",
+    "related_word_stem": [
+      "surovina",
+      "podklad",
+      "hmota"
+    ]
+  },
+  {
+    "target_word": "řešení",
+    "related_word": [
+      "problém",
+      "rozhodnutí",
+      "vyřešit"
+    ],
+    "target_word_stem": "řešení",
+    "related_word_stem": [
+      "problém",
+      "rozhodnutí",
+      "vyřešit"
+    ]
+  },
+  {
+    "target_word": "ruka",
+    "related_word": [
+      "paže",
+      "tlapa",
+      "končetina"
+    ],
+    "target_word_stem": "ruka",
+    "related_word_stem": [
+      "paže",
+      "tlapa",
+      "končetina"
+    ]
+  },
+  {
+    "target_word": "dohoda",
+    "related_word": [
+      "úmluva",
+      "koluze",
+      "konspirace"
+    ],
+    "target_word_stem": "dohoda",
+    "related_word_stem": [
+      "úmluva",
+      "koluze",
+      "konspirace"
+    ]
+  },
+  {
+    "target_word": "majetek",
+    "related_word": [
+      "vlastnictví",
+      "jmění",
+      "mít"
+    ],
+    "target_word_stem": "majetek",
+    "related_word_stem": [
+      "vlastnictví",
+      "jmění",
+      "mít"
+    ]
+  },
+  {
+    "target_word": "jazyk",
+    "related_word": [
+      "řeč",
+      "mluva",
+      "komunikace"
+    ],
+    "target_word_stem": "jazyk",
+    "related_word_stem": [
+      "řeč",
+      "mluva",
+      "komunikace"
+    ]
+  },
+  {
+    "target_word": "metoda",
+    "related_word": [
+      "postup",
+      "způsob",
+      "procedura"
+    ],
+    "target_word_stem": "metoda",
+    "related_word_stem": [
+      "postup",
+      "způsob",
+      "procedura"
+    ]
+  },
+  {
+    "target_word": "hráč",
+    "related_word": [
+      "sportovec",
+      "muzikant",
+      "hudebník"
+    ],
+    "target_word_stem": "hráč",
+    "related_word_stem": [
+      "sportovec",
+      "muzikant",
+      "hudebník"
+    ]
+  },
+  {
+    "target_word": "příklad",
+    "related_word": [
+      "ukázka",
+      "vzor",
+      "úloha"
+    ],
+    "target_word_stem": "příklad",
+    "related_word_stem": [
+      "ukázka",
+      "vzor",
+      "úloha"
+    ]
+  },
+  {
+    "target_word": "pravidlo",
+    "related_word": [
+      "předpis",
+      "norma",
+      "zákon"
+    ],
+    "target_word_stem": "pravidlo",
+    "related_word_stem": [
+      "předpis",
+      "norma",
+      "zákon"
+    ]
+  },
+  {
+    "target_word": "klub",
+    "related_word": [
+      "společnost",
+      "sdružení",
+      "organizace"
+    ],
+    "target_word_stem": "klub",
+    "related_word_stem": [
+      "společnost",
+      "sdružení",
+      "organizace"
+    ]
+  },
+  {
+    "target_word": "strana",
+    "related_word": [
+      "část",
+      "partaj",
+      "plocha"
+    ],
+    "target_word_stem": "strana",
+    "related_word_stem": [
+      "část",
+      "partaj",
+      "plocha"
+    ]
+  },
+  {
+    "target_word": "ulice",
+    "related_word": [
+      "cesta",
+      "třída",
+      "úl"
+    ],
+    "target_word_stem": "ulice",
+    "related_word_stem": [
+      "cesta",
+      "třída",
+      "úl"
+    ]
+  },
+  {
+    "target_word": "knihovna",
+    "related_word": [
+      "skříň",
+      "místnost",
+      "nábytek"
+    ],
+    "target_word_stem": "knihovna",
+    "related_word_stem": [
+      "skříň",
+      "místnost",
+      "nábytek"
+    ]
+  },
+  {
+    "target_word": "efekt",
+    "related_word": [
+      "účinek",
+      "jev",
+      "následek"
+    ],
+    "target_word_stem": "efekt",
+    "related_word_stem": [
+      "účinek",
+      "jev",
+      "následek"
+    ]
+  },
+  {
+    "target_word": "zájem",
+    "related_word": [
+      "užitek",
+      "obliba",
+      "prospěch"
+    ],
+    "target_word_stem": "zájem",
+    "related_word_stem": [
+      "užitek",
+      "obliba",
+      "prospěch"
+    ]
+  },
+  {
+    "target_word": "hlava",
+    "related_word": [
+      "škopek",
+      "lebka",
+      "palice"
+    ],
+    "target_word_stem": "hlava",
+    "related_word_stem": [
+      "škopek",
+      "lebka",
+      "palice"
+    ]
+  },
+  {
+    "target_word": "rozsah",
+    "related_word": [
+      "míra",
+      "objem",
+      "rámec"
+    ],
+    "target_word_stem": "rozsah",
+    "related_word_stem": [
+      "míra",
+      "objem",
+      "rámec"
+    ]
+  },
+  {
+    "target_word": "soud",
+    "related_word": [
+      "mínění",
+      "přelíčení",
+      "názor"
+    ],
+    "target_word_stem": "soud",
+    "related_word_stem": [
+      "mínění",
+      "přelíčení",
+      "názor"
+    ]
+  },
+  {
+    "target_word": "oznámení",
+    "related_word": [
+      "vyhláška",
+      "zpráva",
+      "učinit"
+    ],
+    "target_word_stem": "oznámení",
+    "related_word_stem": [
+      "vyhláška",
+      "zpráva",
+      "učinit"
+    ]
+  },
+  {
+    "target_word": "diskuse",
+    "related_word": [
+      "rozprava",
+      "debata",
+      "rozhovor"
+    ],
+    "target_word_stem": "diskuse",
+    "related_word_stem": [
+      "rozprava",
+      "debata",
+      "rozhovor"
+    ]
+  },
+  {
+    "target_word": "prostor",
+    "related_word": [
+      "území",
+      "dimenze",
+      "areál"
+    ],
+    "target_word_stem": "prostor",
+    "related_word_stem": [
+      "území",
+      "dimenze",
+      "areál"
+    ]
+  },
+  {
+    "target_word": "výbor",
+    "related_word": [
+      "komité",
+      "rada",
+      "braní"
+    ],
+    "target_word_stem": "výbor",
+    "related_word_stem": [
+      "komité",
+      "rada",
+      "braní"
+    ]
+  },
+  {
+    "target_word": "heslo",
+    "related_word": [
+      "slovo",
+      "moto",
+      "hodit"
+    ],
+    "target_word_stem": "heslo",
+    "related_word_stem": [
+      "slovo",
+      "moto",
+      "hodit"
+    ]
+  },
+  {
+    "target_word": "fond",
+    "related_word": [
+      "nárok",
+      "předpoklad",
+      "nadace"
+    ],
+    "target_word_stem": "fond",
+    "related_word_stem": [
+      "nárok",
+      "předpoklad",
+      "nadace"
+    ]
+  },
+  {
+    "target_word": "zvuk",
+    "related_word": [
+      "renomé",
+      "pověst",
+      "jméno"
+    ],
+    "target_word_stem": "zvuk",
+    "related_word_stem": [
+      "renomé",
+      "pověst",
+      "jméno"
+    ]
+  },
+  {
+    "target_word": "druh",
+    "related_word": [
+      "sorta",
+      "kategorie",
+      "žánr"
+    ],
+    "target_word_stem": "druh",
+    "related_word_stem": [
+      "sorta",
+      "kategorie",
+      "žánr"
+    ]
+  },
+  {
+    "target_word": "časopis",
+    "related_word": [
+      "noviny",
+      "magazín",
+      "žurnál"
+    ],
+    "target_word_stem": "časopis",
+    "related_word_stem": [
+      "noviny",
+      "magazín",
+      "žurnál"
+    ]
+  },
+  {
+    "target_word": "prohlášení",
+    "related_word": [
+      "deklarace",
+      "slovo",
+      "učinit"
+    ],
+    "target_word_stem": "prohlášení",
+    "related_word_stem": [
+      "deklarace",
+      "slovo",
+      "učinit"
+    ]
+  },
+  {
+    "target_word": "odpověď",
+    "related_word": [
+      "výrok",
+      "reakce",
+      "povědět"
+    ],
+    "target_word_stem": "odpověď",
+    "related_word_stem": [
+      "výrok",
+      "reakce",
+      "povědět"
+    ]
+  },
+  {
+    "target_word": "loď",
+    "related_word": [
+      "plavidlo",
+      "bárka",
+      "koráb"
+    ],
+    "target_word_stem": "loď",
+    "related_word_stem": [
+      "plavidlo",
+      "bárka",
+      "koráb"
+    ]
+  },
+  {
+    "target_word": "nápad",
+    "related_word": [
+      "idea",
+      "myšlenka",
+      "rozum"
+    ],
+    "target_word_stem": "nápad",
+    "related_word_stem": [
+      "idea",
+      "myšlenka",
+      "rozum"
+    ]
+  },
+  {
+    "target_word": "krok",
+    "related_word": [
+      "opatření",
+      "chůze",
+      "počin"
+    ],
+    "target_word_stem": "krok",
+    "related_word_stem": [
+      "opatření",
+      "chůze",
+      "počin"
+    ]
+  },
+  {
+    "target_word": "sbírka",
+    "related_word": [
+      "kolekce",
+      "soubor",
+      "antologie"
+    ],
+    "target_word_stem": "sbírka",
+    "related_word_stem": [
+      "kolekce",
+      "soubor",
+      "antologie"
+    ]
+  },
+  {
+    "target_word": "půda",
+    "related_word": [
+      "území",
+      "hlína",
+      "zemina"
+    ],
+    "target_word_stem": "půda",
+    "related_word_stem": [
+      "území",
+      "hlína",
+      "zemina"
+    ]
+  },
+  {
+    "target_word": "fakt",
+    "related_word": [
+      "skutečnost",
+      "vědění",
+      "čin"
+    ],
+    "target_word_stem": "fakt",
+    "related_word_stem": [
+      "skutečnost",
+      "vědění",
+      "čin"
+    ]
+  },
+  {
+    "target_word": "organizace",
+    "related_word": [
+      "společnost",
+      "sdružení",
+      "svaz"
+    ],
+    "target_word_stem": "organizace",
+    "related_word_stem": [
+      "společnost",
+      "sdružení",
+      "svaz"
+    ]
+  },
+  {
+    "target_word": "praxe",
+    "related_word": [
+      "postup",
+      "zkušenost",
+      "praktikovat"
+    ],
+    "target_word_stem": "praxe",
+    "related_word_stem": [
+      "postup",
+      "zkušenost",
+      "praktikovat"
+    ]
+  },
+  {
+    "target_word": "chyba",
+    "related_word": [
+      "omyl",
+      "poklesek",
+      "závada"
+    ],
+    "target_word_stem": "chyba",
+    "related_word_stem": [
+      "omyl",
+      "poklesek",
+      "závada"
+    ]
+  },
+  {
+    "target_word": "příčina",
+    "related_word": [
+      "důvod",
+      "základ",
+      "následek"
+    ],
+    "target_word_stem": "příčina",
+    "related_word_stem": [
+      "důvod",
+      "základ",
+      "následek"
+    ]
+  },
+  {
+    "target_word": "styl",
+    "related_word": [
+      "šmrnc",
+      "způsob",
+      "sloh"
+    ],
+    "target_word_stem": "styl",
+    "related_word_stem": [
+      "šmrnc",
+      "způsob",
+      "sloh"
+    ]
+  },
+  {
+    "target_word": "období",
+    "related_word": [
+      "perioda",
+      "epocha",
+      "věk"
+    ],
+    "target_word_stem": "období",
+    "related_word_stem": [
+      "perioda",
+      "epocha",
+      "věk"
+    ]
+  },
+  {
+    "target_word": "množství",
+    "related_word": [
+      "objem",
+      "řada",
+      "hora"
+    ],
+    "target_word_stem": "množství",
+    "related_word_stem": [
+      "objem",
+      "řada",
+      "hora"
+    ]
+  },
+  {
+    "target_word": "operace",
+    "related_word": [
+      "zákrok",
+      "úkon",
+      "opus"
+    ],
+    "target_word_stem": "operace",
+    "related_word_stem": [
+      "zákrok",
+      "úkon",
+      "opus"
+    ]
+  },
+  {
+    "target_word": "zvíře",
+    "related_word": [
+      "živočich",
+      "bestie",
+      "šelma"
+    ],
+    "target_word_stem": "zvíře",
+    "related_word_stem": [
+      "živočich",
+      "bestie",
+      "šelma"
+    ]
+  },
+  {
+    "target_word": "zápas",
+    "related_word": [
+      "utkání",
+      "souboj",
+      "střetnutí"
+    ],
+    "target_word_stem": "zápas",
+    "related_word_stem": [
+      "utkání",
+      "souboj",
+      "střetnutí"
+    ]
+  },
+  {
+    "target_word": "požadavek",
+    "related_word": [
+      "nárok",
+      "předpoklad",
+      "vůle"
+    ],
+    "target_word_stem": "požadavek",
+    "related_word_stem": [
+      "nárok",
+      "předpoklad",
+      "vůle"
+    ]
+  },
+  {
+    "target_word": "poplatek",
+    "related_word": [
+      "kuvert",
+      "clo",
+      "daň"
+    ],
+    "target_word_stem": "poplatek",
+    "related_word_stem": [
+      "kuvert",
+      "clo",
+      "daň"
+    ]
+  },
+  {
+    "target_word": "hlas",
+    "related_word": [
+      "zvuk",
+      "mínění",
+      "názor"
+    ],
+    "target_word_stem": "hlas",
+    "related_word_stem": [
+      "zvuk",
+      "mínění",
+      "názor"
+    ]
+  },
+  {
+    "target_word": "rada",
+    "related_word": [
+      "komise",
+      "tip",
+      "poučení"
+    ],
+    "target_word_stem": "rada",
+    "related_word_stem": [
+      "komise",
+      "tip",
+      "poučení"
+    ]
+  },
+  {
+    "target_word": "lék",
+    "related_word": [
+      "medikament",
+      "farmakum",
+      "lékárnictví"
+    ],
+    "target_word_stem": "lék",
+    "related_word_stem": [
+      "medikament",
+      "farmakum",
+      "lékárnictví"
+    ]
+  },
+  {
+    "target_word": "medvěd",
+    "related_word": [
+      "býk",
+      "šelma",
+      "savec"
+    ],
+    "target_word_stem": "medvěd",
+    "related_word_stem": [
+      "býk",
+      "šelma",
+      "savec"
+    ]
+  },
+  {
+    "target_word": "zařízení",
+    "related_word": [
+      "přístroj",
+      "technologie",
+      "instalace"
+    ],
+    "target_word_stem": "zařízení",
+    "related_word_stem": [
+      "přístroj",
+      "technologie",
+      "instalace"
+    ]
+  },
+  {
+    "target_word": "já",
+    "related_word": [
+      "ego",
+      "ono",
+      "můj"
+    ],
+    "target_word_stem": "já",
+    "related_word_stem": [
+      "ego",
+      "ono",
+      "můj"
+    ]
+  },
+  {
+    "target_word": "zábava",
+    "related_word": [
+      "legrace",
+      "radovánky",
+      "psina"
+    ],
+    "target_word_stem": "zábava",
+    "related_word_stem": [
+      "legrace",
+      "radovánky",
+      "psina"
+    ]
+  },
+  {
+    "target_word": "riziko",
+    "related_word": [
+      "nebezpečí",
+      "hazard",
+      "riskantní"
+    ],
+    "target_word_stem": "riziko",
+    "related_word_stem": [
+      "nebezpečí",
+      "hazard",
+      "riskantní"
+    ]
+  },
+  {
+    "target_word": "stroj",
+    "related_word": [
+      "mechanismus",
+      "letadlo",
+      "motocykl"
+    ],
+    "target_word_stem": "stroj",
+    "related_word_stem": [
+      "mechanismus",
+      "letadlo",
+      "motocykl"
+    ]
+  },
+  {
+    "target_word": "dopis",
+    "related_word": [
+      "zásilka",
+      "psaní",
+      "list"
+    ],
+    "target_word_stem": "dopis",
+    "related_word_stem": [
+      "zásilka",
+      "psaní",
+      "list"
+    ]
+  },
+  {
+    "target_word": "restaurace",
+    "related_word": [
+      "pohostinství",
+      "hospoda",
+      "obnovení"
+    ],
+    "target_word_stem": "restaurace",
+    "related_word_stem": [
+      "pohostinství",
+      "hospoda",
+      "obnovení"
+    ]
+  },
+  {
+    "target_word": "objekt",
+    "related_word": [
+      "předmět",
+      "věc",
+      "entita"
+    ],
+    "target_word_stem": "objekt",
+    "related_word_stem": [
+      "předmět",
+      "věc",
+      "entita"
+    ]
+  },
+  {
+    "target_word": "srdce",
+    "related_word": [
+      "střed",
+      "karta",
+      "cit"
+    ],
+    "target_word_stem": "srdce",
+    "related_word_stem": [
+      "střed",
+      "karta",
+      "cit"
+    ]
+  },
+  {
+    "target_word": "obava",
+    "related_word": [
+      "bázeň",
+      "starost",
+      "bát"
+    ],
+    "target_word_stem": "obava",
+    "related_word_stem": [
+      "bázeň",
+      "starost",
+      "bát"
+    ]
+  },
+  {
+    "target_word": "smlouva",
+    "related_word": [
+      "konvence",
+      "kontrakt",
+      "dohoda"
+    ],
+    "target_word_stem": "smlouva",
+    "related_word_stem": [
+      "konvence",
+      "kontrakt",
+      "dohoda"
+    ]
+  },
+  {
+    "target_word": "oheň",
+    "related_word": [
+      "požár",
+      "vatra",
+      "střelba"
+    ],
+    "target_word_stem": "oheň",
+    "related_word_stem": [
+      "požár",
+      "vatra",
+      "střelba"
+    ]
+  },
+  {
+    "target_word": "struktura",
+    "related_word": [
+      "organizace",
+      "výstavba",
+      "členění"
+    ],
+    "target_word_stem": "struktura",
+    "related_word_stem": [
+      "organizace",
+      "výstavba",
+      "členění"
+    ]
+  },
+  {
+    "target_word": "rozhodnutí",
+    "related_word": [
+      "předsevzetí",
+      "řešení",
+      "nález"
+    ],
+    "target_word_stem": "rozhodnutí",
+    "related_word_stem": [
+      "předsevzetí",
+      "řešení",
+      "nález"
+    ]
+  },
+  {
+    "target_word": "noha",
+    "related_word": [
+      "tlapa",
+      "bérec",
+      "končetina"
+    ],
+    "target_word_stem": "noha",
+    "related_word_stem": [
+      "tlapa",
+      "bérec",
+      "končetina"
+    ]
+  },
+  {
+    "target_word": "závod",
+    "related_word": [
+      "soutěž",
+      "továrna",
+      "podnik"
+    ],
+    "target_word_stem": "závod",
+    "related_word_stem": [
+      "soutěž",
+      "továrna",
+      "podnik"
+    ]
+  },
+  {
+    "target_word": "ztráta",
+    "related_word": [
+      "úbytek",
+      "deficit",
+      "zisk"
+    ],
+    "target_word_stem": "ztráta",
+    "related_word_stem": [
+      "úbytek",
+      "deficit",
+      "zisk"
+    ]
+  },
+  {
+    "target_word": "bota",
+    "related_word": [
+      "střevíc",
+      "obuv",
+      "chyba"
+    ],
+    "target_word_stem": "bota",
+    "related_word_stem": [
+      "střevíc",
+      "obuv",
+      "chyba"
+    ]
+  },
+  {
+    "target_word": "ryba",
+    "related_word": [
+      "zvíře",
+      "jídlo",
+      "potravina"
+    ],
+    "target_word_stem": "ryba",
+    "related_word_stem": [
+      "zvíře",
+      "jídlo",
+      "potravina"
+    ]
+  },
+  {
+    "target_word": "stupeň",
+    "related_word": [
+      "míra",
+      "fáze",
+      "hladina"
+    ],
+    "target_word_stem": "stupeň",
+    "related_word_stem": [
+      "míra",
+      "fáze",
+      "hladina"
+    ]
+  },
+  {
+    "target_word": "král",
+    "related_word": [
+      "panovník",
+      "monarcha",
+      "vládce"
+    ],
+    "target_word_stem": "král",
+    "related_word_stem": [
+      "panovník",
+      "monarcha",
+      "vládce"
+    ]
+  },
+  {
+    "target_word": "rychlost",
+    "related_word": [
+      "spěch",
+      "fyzikální",
+      "stupeň"
+    ],
+    "target_word_stem": "rychlost",
+    "related_word_stem": [
+      "spěch",
+      "fyzikální",
+      "stupeň"
+    ]
+  },
+  {
+    "target_word": "přání",
+    "related_word": [
+      "žádost",
+      "sen",
+      "touha"
+    ],
+    "target_word_stem": "přání",
+    "related_word_stem": [
+      "žádost",
+      "sen",
+      "touha"
+    ]
+  },
+  {
+    "target_word": "charakter",
+    "related_word": [
+      "povaha",
+      "rys",
+      "ráz"
+    ],
+    "target_word_stem": "charakter",
+    "related_word_stem": [
+      "povaha",
+      "rys",
+      "ráz"
+    ]
+  },
+  {
+    "target_word": "řeka",
+    "related_word": [
+      "proud",
+      "řečiště",
+      "říční"
+    ],
+    "target_word_stem": "řeka",
+    "related_word_stem": [
+      "proud",
+      "řečiště",
+      "říční"
+    ]
+  },
+  {
+    "target_word": "názor",
+    "related_word": [
+      "mínění",
+      "rozum",
+      "úsudek"
+    ],
+    "target_word_stem": "názor",
+    "related_word_stem": [
+      "mínění",
+      "rozum",
+      "úsudek"
+    ]
+  },
+  {
+    "target_word": "krása",
+    "related_word": [
+      "nádhera",
+      "vzhled",
+      "půvab"
+    ],
+    "target_word_stem": "krása",
+    "related_word_stem": [
+      "nádhera",
+      "vzhled",
+      "půvab"
+    ]
+  },
+  {
+    "target_word": "volba",
+    "related_word": [
+      "selekce",
+      "výběr",
+      "hlasování"
+    ],
+    "target_word_stem": "volba",
+    "related_word_stem": [
+      "selekce",
+      "výběr",
+      "hlasování"
+    ]
+  },
+  {
+    "target_word": "polovina",
+    "related_word": [
+      "střed",
+      "půl",
+      "rozpůlení"
+    ],
+    "target_word_stem": "polovina",
+    "related_word_stem": [
+      "střed",
+      "půl",
+      "rozpůlení"
+    ]
+  },
+  {
+    "target_word": "průzkum",
+    "related_word": [
+      "anketa",
+      "sondáž",
+      "zkoumat"
+    ],
+    "target_word_stem": "průzkum",
+    "related_word_stem": [
+      "anketa",
+      "sondáž",
+      "zkoumat"
+    ]
+  },
+  {
+    "target_word": "dovednost",
+    "related_word": [
+      "praxe",
+      "umění",
+      "um"
+    ],
+    "target_word_stem": "dovednost",
+    "related_word_stem": [
+      "praxe",
+      "umění",
+      "um"
+    ]
+  },
+  {
+    "target_word": "role",
+    "related_word": [
+      "úloha",
+      "part",
+      "cívka"
+    ],
+    "target_word_stem": "role",
+    "related_word_stem": [
+      "úloha",
+      "part",
+      "cívka"
+    ]
+  },
+  {
+    "target_word": "seznam",
+    "related_word": [
+      "katalog",
+      "rejstřík",
+      "soupis"
+    ],
+    "target_word_stem": "seznam",
+    "related_word_stem": [
+      "katalog",
+      "rejstřík",
+      "soupis"
+    ]
+  },
+  {
+    "target_word": "shrnutí",
+    "related_word": [
+      "resumé",
+      "výtah",
+      "synopse"
+    ],
+    "target_word_stem": "shrnutí",
+    "related_word_stem": [
+      "resumé",
+      "výtah",
+      "synopse"
+    ]
+  },
+  {
+    "target_word": "nemoc",
+    "related_word": [
+      "choroba",
+      "porucha",
+      "zdraví"
+    ],
+    "target_word_stem": "nemoc",
+    "related_word_stem": [
+      "choroba",
+      "porucha",
+      "zdraví"
+    ]
+  },
+  {
+    "target_word": "korporace",
+    "related_word": [
+      "firma",
+      "podnik",
+      "společnost"
+    ],
+    "target_word_stem": "korporace",
+    "related_word_stem": [
+      "firma",
+      "podnik",
+      "společnost"
+    ]
+  },
+  {
+    "target_word": "podnik",
+    "related_word": [
+      "firma",
+      "organizace",
+      "činnost"
+    ],
+    "target_word_stem": "podnik",
+    "related_word_stem": [
+      "firma",
+      "organizace",
+      "činnost"
+    ]
+  },
+  {
+    "target_word": "postup",
+    "related_word": [
+      "proces",
+      "akce",
+      "metoda"
+    ],
+    "target_word_stem": "postup",
+    "related_word_stem": [
+      "proces",
+      "akce",
+      "metoda"
+    ]
+  },
+  {
+    "target_word": "objem",
+    "related_word": [
+      "rozsah",
+      "míra",
+      "množství"
+    ],
+    "target_word_stem": "objem",
+    "related_word_stem": [
+      "rozsah",
+      "míra",
+      "množství"
+    ]
+  },
+  {
+    "target_word": "cíl",
+    "related_word": [
+      "záměr",
+      "úmysl",
+      "meta"
+    ],
+    "target_word_stem": "cíl",
+    "related_word_stem": [
+      "záměr",
+      "úmysl",
+      "meta"
+    ]
+  },
+  {
+    "target_word": "výběr",
+    "related_word": [
+      "vklad",
+      "volba",
+      "selekce"
+    ],
+    "target_word_stem": "výběr",
+    "related_word_stem": [
+      "vklad",
+      "volba",
+      "selekce"
+    ]
+  },
+  {
+    "target_word": "příjem",
+    "related_word": [
+      "zisk",
+      "důchod",
+      "výdaj"
+    ],
+    "target_word_stem": "příjem",
+    "related_word_stem": [
+      "zisk",
+      "důchod",
+      "výdaj"
+    ]
+  },
+  {
+    "target_word": "příroda",
+    "related_word": [
+      "divočina",
+      "krajina",
+      "vlastnost"
+    ],
+    "target_word_stem": "příroda",
+    "related_word_stem": [
+      "divočina",
+      "krajina",
+      "vlastnost"
+    ]
+  },
+  {
+    "target_word": "blok",
+    "related_word": [
+      "sešit",
+      "zápisník",
+      "tábor"
+    ],
+    "target_word_stem": "blok",
+    "related_word_stem": [
+      "sešit",
+      "zápisník",
+      "tábor"
+    ]
+  },
+  {
+    "target_word": "unie",
+    "related_word": [
+      "sdružení",
+      "svaz",
+      "federace"
+    ],
+    "target_word_stem": "unie",
+    "related_word_stem": [
+      "sdružení",
+      "svaz",
+      "federace"
+    ]
+  },
+  {
+    "target_word": "režim",
+    "related_word": [
+      "vláda",
+      "řád",
+      "plán"
+    ],
+    "target_word_stem": "režim",
+    "related_word_stem": [
+      "vláda",
+      "řád",
+      "plán"
+    ]
+  },
+  {
+    "target_word": "mistr",
+    "related_word": [
+      "přeborník",
+      "šampión",
+      "tovaryš"
+    ],
+    "target_word_stem": "mistr",
+    "related_word_stem": [
+      "přeborník",
+      "šampión",
+      "tovaryš"
+    ]
+  },
+  {
+    "target_word": "prvek",
+    "related_word": [
+      "složka",
+      "součástka",
+      "element"
+    ],
+    "target_word_stem": "prvek",
+    "related_word_stem": [
+      "složka",
+      "součástka",
+      "element"
+    ]
+  },
+  {
+    "target_word": "růst",
+    "related_word": [
+      "zvětšování",
+      "stoupat",
+      "konjunktura"
+    ],
+    "target_word_stem": "růst",
+    "related_word_stem": [
+      "zvětšování",
+      "stoupat",
+      "konjunktura"
+    ]
+  },
+  {
+    "target_word": "zaměstnání",
+    "related_word": [
+      "práce",
+      "dílo",
+      "hokna"
+    ],
+    "target_word_stem": "zaměstnání",
+    "related_word_stem": [
+      "práce",
+      "dílo",
+      "hokna"
+    ]
+  },
+  {
+    "target_word": "nemocnice",
+    "related_word": [
+      "poliklinika",
+      "špitál",
+      "hospitalizace"
+    ],
+    "target_word_stem": "nemocnice",
+    "related_word_stem": [
+      "poliklinika",
+      "špitál",
+      "hospitalizace"
+    ]
+  },
+  {
+    "target_word": "řidič",
+    "related_word": [
+      "šofér",
+      "povolání",
+      "řízení"
+    ],
+    "target_word_stem": "řidič",
+    "related_word_stem": [
+      "šofér",
+      "povolání",
+      "řízení"
+    ]
+  },
+  {
+    "target_word": "zvyk",
+    "related_word": [
+      "móda",
+      "způsob",
+      "úzus"
+    ],
+    "target_word_stem": "zvyk",
+    "related_word_stem": [
+      "móda",
+      "způsob",
+      "úzus"
+    ]
+  },
+  {
+    "target_word": "směr",
+    "related_word": [
+      "orientace",
+      "cesta",
+      "ohled"
+    ],
+    "target_word_stem": "směr",
+    "related_word_stem": [
+      "orientace",
+      "cesta",
+      "ohled"
+    ]
+  },
+  {
+    "target_word": "zeď",
+    "related_word": [
+      "stěna",
+      "zdích",
+      "zděný"
+    ],
+    "target_word_stem": "zeď",
+    "related_word_stem": [
+      "stěna",
+      "zdích",
+      "zděný"
+    ]
+  },
+  {
+    "target_word": "kůň",
+    "related_word": [
+      "jezdec",
+      "oř",
+      "kobyla"
+    ],
+    "target_word_stem": "kůň",
+    "related_word_stem": [
+      "jezdec",
+      "oř",
+      "kobyla"
+    ]
+  },
+  {
+    "target_word": "délka",
+    "related_word": [
+      "míra",
+      "trvání",
+      "souřadnice"
+    ],
+    "target_word_stem": "délka",
+    "related_word_stem": [
+      "míra",
+      "trvání",
+      "souřadnice"
+    ]
+  },
+  {
+    "target_word": "oblečení",
+    "related_word": [
+      "oděv",
+      "šaty",
+      "kabát"
+    ],
+    "target_word_stem": "oblečení",
+    "related_word_stem": [
+      "oděv",
+      "šaty",
+      "kabát"
+    ]
+  },
+  {
+    "target_word": "let",
+    "related_word": [
+      "chvat",
+      "spěch",
+      "slet"
+    ],
+    "target_word_stem": "let",
+    "related_word_stem": [
+      "chvat",
+      "spěch",
+      "slet"
+    ]
+  },
+  {
+    "target_word": "kus",
+    "related_word": [
+      "díl",
+      "cucek",
+      "divadlo"
+    ],
+    "target_word_stem": "kus",
+    "related_word_stem": [
+      "díl",
+      "cucek",
+      "divadlo"
+    ]
+  },
+  {
+    "target_word": "firma",
+    "related_word": [
+      "podnik",
+      "společnost",
+      "korporace"
+    ],
+    "target_word_stem": "firma",
+    "related_word_stem": [
+      "podnik",
+      "společnost",
+      "korporace"
+    ]
+  },
+  {
+    "target_word": "hora",
+    "related_word": [
+      "kopec",
+      "množství",
+      "vrch"
+    ],
+    "target_word_stem": "hora",
+    "related_word_stem": [
+      "kopec",
+      "množství",
+      "vrch"
+    ]
+  },
+  {
+    "target_word": "rozdíl",
+    "related_word": [
+      "odlišnost",
+      "diference",
+      "součet"
+    ],
+    "target_word_stem": "rozdíl",
+    "related_word_stem": [
+      "odlišnost",
+      "diference",
+      "součet"
+    ]
+  },
+  {
+    "target_word": "odborník",
+    "related_word": [
+      "expert",
+      "specialista",
+      "znalec"
+    ],
+    "target_word_stem": "odborník",
+    "related_word_stem": [
+      "expert",
+      "specialista",
+      "znalec"
+    ]
+  },
+  {
+    "target_word": "pár",
+    "related_word": [
+      "dvojice",
+      "několik",
+      "komparace"
+    ],
+    "target_word_stem": "pár",
+    "related_word_stem": [
+      "dvojice",
+      "několik",
+      "komparace"
+    ]
+  },
+  {
+    "target_word": "základ",
+    "related_word": [
+      "podstata",
+      "matka",
+      "jádro"
+    ],
+    "target_word_stem": "základ",
+    "related_word_stem": [
+      "podstata",
+      "matka",
+      "jádro"
+    ]
+  },
+  {
+    "target_word": "rozpočet",
+    "related_word": [
+      "plán",
+      "odhad",
+      "počítat"
+    ],
+    "target_word_stem": "rozpočet",
+    "related_word_stem": [
+      "plán",
+      "odhad",
+      "počítat"
+    ]
+  },
+  {
+    "target_word": "povrch",
+    "related_word": [
+      "hladina",
+      "země",
+      "vnějšek"
+    ],
+    "target_word_stem": "povrch",
+    "related_word_stem": [
+      "hladina",
+      "země",
+      "vnějšek"
+    ]
+  },
+  {
+    "target_word": "matka",
+    "related_word": [
+      "příbuzná",
+      "základ",
+      "samice"
+    ],
+    "target_word_stem": "matka",
+    "related_word_stem": [
+      "příbuzná",
+      "základ",
+      "samice"
+    ]
+  },
+  {
+    "target_word": "výlet",
+    "related_word": [
+      "zájezd",
+      "túra",
+      "procházka"
+    ],
+    "target_word_stem": "výlet",
+    "related_word_stem": [
+      "zájezd",
+      "túra",
+      "procházka"
+    ]
+  },
+  {
+    "target_word": "hala",
+    "related_word": [
+      "předsíň",
+      "místnost",
+      "vestibul"
+    ],
+    "target_word_stem": "hala",
+    "related_word_stem": [
+      "předsíň",
+      "místnost",
+      "vestibul"
+    ]
+  },
+  {
+    "target_word": "plocha",
+    "related_word": [
+      "rovina",
+      "areál",
+      "obsah"
+    ],
+    "target_word_stem": "plocha",
+    "related_word_stem": [
+      "rovina",
+      "areál",
+      "obsah"
+    ]
+  },
+  {
+    "target_word": "úvod",
+    "related_word": [
+      "zahájení",
+      "předmluva",
+      "uvést"
+    ],
+    "target_word_stem": "úvod",
+    "related_word_stem": [
+      "zahájení",
+      "předmluva",
+      "uvést"
+    ]
+  },
+  {
+    "target_word": "list",
+    "related_word": [
+      "noviny",
+      "dopis",
+      "doklad"
+    ],
+    "target_word_stem": "list",
+    "related_word_stem": [
+      "noviny",
+      "dopis",
+      "doklad"
+    ]
+  },
+  {
+    "target_word": "teplo",
+    "related_word": [
+      "chladno",
+      "fyzikální",
+      "láska"
+    ],
+    "target_word_stem": "teplo",
+    "related_word_stem": [
+      "chladno",
+      "fyzikální",
+      "láska"
+    ]
+  },
+  {
+    "target_word": "dělník",
+    "related_word": [
+      "zaměstnanec",
+      "pracující",
+      "povolání"
+    ],
+    "target_word_stem": "dělník",
+    "related_word_stem": [
+      "zaměstnanec",
+      "pracující",
+      "povolání"
+    ]
+  },
+  {
+    "target_word": "útok",
+    "related_word": [
+      "napadení",
+      "ofenziva",
+      "agrese"
+    ],
+    "target_word_stem": "útok",
+    "related_word_stem": [
+      "napadení",
+      "ofenziva",
+      "agrese"
+    ]
+  },
+  {
+    "target_word": "kuchyně",
+    "related_word": [
+      "nábytek",
+      "linka",
+      "yně"
+    ],
+    "target_word_stem": "kuchyně",
+    "related_word_stem": [
+      "nábytek",
+      "linka",
+      "yně"
+    ]
+  },
+  {
+    "target_word": "kůže",
+    "related_word": [
+      "pleť",
+      "orgán",
+      "koza"
+    ],
+    "target_word_stem": "kůže",
+    "related_word_stem": [
+      "pleť",
+      "orgán",
+      "koza"
+    ]
+  },
+  {
+    "target_word": "tok",
+    "related_word": [
+      "proud",
+      "tekutina",
+      "téct"
+    ],
+    "target_word_stem": "tok",
+    "related_word_stem": [
+      "proud",
+      "tekutina",
+      "téct"
+    ]
+  },
+  {
+    "target_word": "úspěch",
+    "related_word": [
+      "sukces",
+      "výhra",
+      "výsledek"
+    ],
+    "target_word_stem": "úspěch",
+    "related_word_stem": [
+      "sukces",
+      "výhra",
+      "výsledek"
+    ]
+  },
+  {
+    "target_word": "smysl",
+    "related_word": [
+      "význam",
+      "pochopení",
+      "porozumění"
+    ],
+    "target_word_stem": "smysl",
+    "related_word_stem": [
+      "význam",
+      "pochopení",
+      "porozumění"
+    ]
+  },
+  {
+    "target_word": "bazén",
+    "related_word": [
+      "nádrž",
+      "lázeň",
+      "plovárna"
+    ],
+    "target_word_stem": "bazén",
+    "related_word_stem": [
+      "nádrž",
+      "lázeň",
+      "plovárna"
+    ]
+  },
+  {
+    "target_word": "rozhovor",
+    "related_word": [
+      "dialog",
+      "diskuse",
+      "telefon"
+    ],
+    "target_word_stem": "rozhovor",
+    "related_word_stem": [
+      "dialog",
+      "diskuse",
+      "telefon"
+    ]
+  },
+  {
+    "target_word": "škála",
+    "related_word": [
+      "stupnice",
+      "paleta",
+      "skalární"
+    ],
+    "target_word_stem": "škála",
+    "related_word_stem": [
+      "stupnice",
+      "paleta",
+      "skalární"
+    ]
+  },
+  {
+    "target_word": "recept",
+    "related_word": [
+      "návod",
+      "předpis",
+      "instrukce"
+    ],
+    "target_word_stem": "recept",
+    "related_word_stem": [
+      "návod",
+      "předpis",
+      "instrukce"
+    ]
+  },
+  {
+    "target_word": "škoda",
+    "related_word": [
+      "úraz",
+      "ztráta",
+      "újma"
+    ],
+    "target_word_stem": "škoda",
+    "related_word_stem": [
+      "úraz",
+      "ztráta",
+      "újma"
+    ]
+  },
+  {
+    "target_word": "krev",
+    "related_word": [
+      "povaha",
+      "krveprolití",
+      "krvinka"
+    ],
+    "target_word_stem": "krev",
+    "related_word_stem": [
+      "povaha",
+      "krveprolití",
+      "krvinka"
+    ]
+  },
+  {
+    "target_word": "vzor",
+    "related_word": [
+      "šablona",
+      "model",
+      "ukázka"
+    ],
+    "target_word_stem": "vzor",
+    "related_word_stem": [
+      "šablona",
+      "model",
+      "ukázka"
+    ]
+  },
+  {
+    "target_word": "století",
+    "related_word": [
+      "doba",
+      "věk",
+      "perioda"
+    ],
+    "target_word_stem": "století",
+    "related_word_stem": [
+      "doba",
+      "věk",
+      "perioda"
+    ]
+  },
+  {
+    "target_word": "úkol",
+    "related_word": [
+      "povinnost",
+      "funkce",
+      "klát"
+    ],
+    "target_word_stem": "úkol",
+    "related_word_stem": [
+      "povinnost",
+      "funkce",
+      "klát"
+    ]
+  },
+  {
+    "target_word": "provoz",
+    "related_word": [
+      "chod",
+      "činnost",
+      "oddělení"
+    ],
+    "target_word_stem": "provoz",
+    "related_word_stem": [
+      "chod",
+      "činnost",
+      "oddělení"
+    ]
+  },
+  {
+    "target_word": "mise",
+    "related_word": [
+      "poslání",
+      "intermitentní",
+      "komitét"
+    ],
+    "target_word_stem": "mise",
+    "related_word_stem": [
+      "poslání",
+      "intermitentní",
+      "komitét"
+    ]
+  },
+  {
+    "target_word": "přehled",
+    "related_word": [
+      "index",
+      "hledět",
+      "synopse"
+    ],
+    "target_word_stem": "přehled",
+    "related_word_stem": [
+      "index",
+      "hledět",
+      "synopse"
+    ]
+  },
+  {
+    "target_word": "rovnováha",
+    "related_word": [
+      "ekvilibrium",
+      "stabilita",
+      "míra"
+    ],
+    "target_word_stem": "rovnováha",
+    "related_word_stem": [
+      "ekvilibrium",
+      "stabilita",
+      "míra"
+    ]
+  },
+  {
+    "target_word": "ustanovení",
+    "related_word": [
+      "předpis",
+      "zákon",
+      "právo"
+    ],
+    "target_word_stem": "ustanovení",
+    "related_word_stem": [
+      "předpis",
+      "zákon",
+      "právo"
+    ]
+  },
+  {
+    "target_word": "manuál",
+    "related_word": [
+      "návod",
+      "příručka",
+      "rukověť"
+    ],
+    "target_word_stem": "manuál",
+    "related_word_stem": [
+      "návod",
+      "příručka",
+      "rukověť"
+    ]
+  },
+  {
+    "target_word": "schopnost",
+    "related_word": [
+      "nadání",
+      "moc",
+      "potence"
+    ],
+    "target_word_stem": "schopnost",
+    "related_word_stem": [
+      "nadání",
+      "moc",
+      "potence"
+    ]
+  },
+  {
+    "target_word": "situace",
+    "related_word": [
+      "podmínky",
+      "okolnost",
+      "poloha"
+    ],
+    "target_word_stem": "situace",
+    "related_word_stem": [
+      "podmínky",
+      "okolnost",
+      "poloha"
+    ]
+  },
+  {
+    "target_word": "vítr",
+    "related_word": [
+      "plynatost",
+      "prd",
+      "bouře"
+    ],
+    "target_word_stem": "vítr",
+    "related_word_stem": [
+      "plynatost",
+      "prd",
+      "bouře"
+    ]
+  },
+  {
+    "target_word": "bratr",
+    "related_word": [
+      "sourozenec",
+      "příbuzný",
+      "přítel"
+    ],
+    "target_word_stem": "bratr",
+    "related_word_stem": [
+      "sourozenec",
+      "příbuzný",
+      "přítel"
+    ]
+  },
+  {
+    "target_word": "doktor",
+    "related_word": [
+      "lékař",
+      "léčitel",
+      "hodnost"
+    ],
+    "target_word_stem": "doktor",
+    "related_word_stem": [
+      "lékař",
+      "léčitel",
+      "hodnost"
+    ]
+  },
+  {
+    "target_word": "sen",
+    "related_word": [
+      "iluze",
+      "přelud",
+      "vidina"
+    ],
+    "target_word_stem": "sen",
+    "related_word_stem": [
+      "iluze",
+      "přelud",
+      "vidina"
+    ]
+  },
+  {
+    "target_word": "proud",
+    "related_word": [
+      "tok",
+      "řeka",
+      "elektřina"
+    ],
+    "target_word_stem": "proud",
+    "related_word_stem": [
+      "tok",
+      "řeka",
+      "elektřina"
+    ]
+  },
+  {
+    "target_word": "kámen",
+    "related_word": [
+      "hornina",
+      "šutr",
+      "figurka"
+    ],
+    "target_word_stem": "kámen",
+    "related_word_stem": [
+      "hornina",
+      "šutr",
+      "figurka"
+    ]
+  },
+  {
+    "target_word": "dluh",
+    "related_word": [
+      "závazek",
+      "pohledávka",
+      "sekera"
+    ],
+    "target_word_stem": "dluh",
+    "related_word_stem": [
+      "závazek",
+      "pohledávka",
+      "sekera"
+    ]
+  },
+  {
+    "target_word": "ráno",
+    "related_word": [
+      "dopoledne",
+      "večer",
+      "jitro"
+    ],
+    "target_word_stem": "ráno",
+    "related_word_stem": [
+      "dopoledne",
+      "večer",
+      "jitro"
+    ]
+  },
+  {
+    "target_word": "cesta",
+    "related_word": [
+      "silnice",
+      "dráha",
+      "směr"
+    ],
+    "target_word_stem": "cesta",
+    "related_word_stem": [
+      "silnice",
+      "dráha",
+      "směr"
+    ]
+  },
+  {
+    "target_word": "otec",
+    "related_word": [
+      "táta",
+      "taťka",
+      "rodič"
+    ],
+    "target_word_stem": "otec",
+    "related_word_stem": [
+      "táta",
+      "taťka",
+      "rodič"
+    ]
+  },
+  {
+    "target_word": "zima",
+    "related_word": [
+      "chladno",
+      "teplo",
+      "mráz"
+    ],
+    "target_word_stem": "zima",
+    "related_word_stem": [
+      "chladno",
+      "teplo",
+      "mráz"
+    ]
+  },
+  {
+    "target_word": "jádro",
+    "related_word": [
+      "podstata",
+      "pecka",
+      "semeno"
+    ],
+    "target_word_stem": "jádro",
+    "related_word_stem": [
+      "podstata",
+      "pecka",
+      "semeno"
+    ]
+  },
+  {
+    "target_word": "manželka",
+    "related_word": [
+      "příbuzný",
+      "choť",
+      "paní"
+    ],
+    "target_word_stem": "manželka",
+    "related_word_stem": [
+      "příbuzný",
+      "choť",
+      "paní"
+    ]
+  },
+  {
+    "target_word": "les",
+    "related_word": [
+      "hvozd",
+      "krajina",
+      "háj"
+    ],
+    "target_word_stem": "les",
+    "related_word_stem": [
+      "hvozd",
+      "krajina",
+      "háj"
+    ]
+  },
+  {
+    "target_word": "pán",
+    "related_word": [
+      "muž",
+      "sluha",
+      "člověk"
+    ],
+    "target_word_stem": "pán",
+    "related_word_stem": [
+      "muž",
+      "sluha",
+      "člověk"
+    ]
+  },
+  {
+    "target_word": "šance",
+    "related_word": [
+      "příležitost",
+      "možnost",
+      "vyhlídka"
+    ],
+    "target_word_stem": "šance",
+    "related_word_stem": [
+      "příležitost",
+      "možnost",
+      "vyhlídka"
+    ]
+  },
+  {
+    "target_word": "obchodník",
+    "related_word": [
+      "podnikatel",
+      "byznysmen",
+      "povolání"
+    ],
+    "target_word_stem": "obchodník",
+    "related_word_stem": [
+      "podnikatel",
+      "byznysmen",
+      "povolání"
+    ]
+  },
+  {
+    "target_word": "odpad",
+    "related_word": [
+      "smetí",
+      "sběr",
+      "sifon"
+    ],
+    "target_word_stem": "odpad",
+    "related_word_stem": [
+      "smetí",
+      "sběr",
+      "sifon"
+    ]
+  },
+  {
+    "target_word": "pták",
+    "related_word": [
+      "živočich",
+      "opeřenec",
+      "kokot"
+    ],
+    "target_word_stem": "pták",
+    "related_word_stem": [
+      "živočich",
+      "opeřenec",
+      "kokot"
+    ]
+  },
+  {
+    "target_word": "instalace",
+    "related_word": [
+      "montáž",
+      "zařízení",
+      "umístění"
+    ],
+    "target_word_stem": "instalace",
+    "related_word_stem": [
+      "montáž",
+      "zařízení",
+      "umístění"
+    ]
+  },
+  {
+    "target_word": "móda",
+    "related_word": [
+      "zvyk",
+      "obliba",
+      "modální"
+    ],
+    "target_word_stem": "móda",
+    "related_word_stem": [
+      "zvyk",
+      "obliba",
+      "modální"
+    ]
+  },
+  {
+    "target_word": "šéf",
+    "related_word": [
+      "ředitel",
+      "vedoucí",
+      "nadřízený"
+    ],
+    "target_word_stem": "šéf",
+    "related_word_stem": [
+      "ředitel",
+      "vedoucí",
+      "nadřízený"
+    ]
+  },
+  {
+    "target_word": "povinnost",
+    "related_word": [
+      "úkol",
+      "závazek",
+      "muset"
+    ],
+    "target_word_stem": "povinnost",
+    "related_word_stem": [
+      "úkol",
+      "závazek",
+      "muset"
+    ]
+  },
+  {
+    "target_word": "vesnice",
+    "related_word": [
+      "obec",
+      "osada",
+      "dědina"
+    ],
+    "target_word_stem": "vesnice",
+    "related_word_stem": [
+      "obec",
+      "osada",
+      "dědina"
+    ]
+  },
+  {
+    "target_word": "fáze",
+    "related_word": [
+      "stupeň",
+      "skupenství",
+      "stádium"
+    ],
+    "target_word_stem": "fáze",
+    "related_word_stem": [
+      "stupeň",
+      "skupenství",
+      "stádium"
+    ]
+  },
+  {
+    "target_word": "dodavatel",
+    "related_word": [
+      "zákazník",
+      "obchodník",
+      "prodejce"
+    ],
+    "target_word_stem": "dodavatel",
+    "related_word_stem": [
+      "zákazník",
+      "obchodník",
+      "prodejce"
+    ]
+  },
+  {
+    "target_word": "šaty",
+    "related_word": [
+      "oděv",
+      "oblečení",
+      "úbor"
+    ],
+    "target_word_stem": "šaty",
+    "related_word_stem": [
+      "oděv",
+      "oblečení",
+      "úbor"
+    ]
+  },
+  {
+    "target_word": "okamžik",
+    "related_word": [
+      "moment",
+      "chvíle",
+      "minuta"
+    ],
+    "target_word_stem": "okamžik",
+    "related_word_stem": [
+      "moment",
+      "chvíle",
+      "minuta"
+    ]
+  },
+  {
+    "target_word": "mír",
+    "related_word": [
+      "klid",
+      "válka",
+      "ticho"
+    ],
+    "target_word_stem": "mír",
+    "related_word_stem": [
+      "klid",
+      "válka",
+      "ticho"
+    ]
+  },
+  {
+    "target_word": "zisk",
+    "related_word": [
+      "výdělek",
+      "příjem",
+      "výnos"
+    ],
+    "target_word_stem": "zisk",
+    "related_word_stem": [
+      "výdělek",
+      "příjem",
+      "výnos"
+    ]
+  },
+  {
+    "target_word": "fikce",
+    "related_word": [
+      "smyšlenka",
+      "výmysl",
+      "skutečnost"
+    ],
+    "target_word_stem": "fikce",
+    "related_word_stem": [
+      "smyšlenka",
+      "výmysl",
+      "skutečnost"
+    ]
+  },
+  {
+    "target_word": "soutěž",
+    "related_word": [
+      "konkurence",
+      "turnaj",
+      "závod"
+    ],
+    "target_word_stem": "soutěž",
+    "related_word_stem": [
+      "konkurence",
+      "turnaj",
+      "závod"
+    ]
+  },
+  {
+    "target_word": "pohyb",
+    "related_word": [
+      "hnutí",
+      "gesto",
+      "klid"
+    ],
+    "target_word_stem": "pohyb",
+    "related_word_stem": [
+      "hnutí",
+      "gesto",
+      "klid"
+    ]
+  },
+  {
+    "target_word": "vize",
+    "related_word": [
+      "improvizovat",
+      "interview",
+      "revizionismus"
+    ],
+    "target_word_stem": "vize",
+    "related_word_stem": [
+      "improvizovat",
+      "interview",
+      "revizionismus"
+    ]
+  },
+  {
+    "target_word": "dno",
+    "related_word": [
+      "spodek",
+      "vršek",
+      "základ"
+    ],
+    "target_word_stem": "dno",
+    "related_word_stem": [
+      "spodek",
+      "vršek",
+      "základ"
+    ]
+  },
+  {
+    "target_word": "návrh",
+    "related_word": [
+      "plán",
+      "projekt",
+      "nabídka"
+    ],
+    "target_word_stem": "návrh",
+    "related_word_stem": [
+      "plán",
+      "projekt",
+      "nabídka"
+    ]
+  },
+  {
+    "target_word": "duch",
+    "related_word": [
+      "povaha",
+      "důvtip",
+      "ráz"
+    ],
+    "target_word_stem": "duch",
+    "related_word_stem": [
+      "povaha",
+      "důvtip",
+      "ráz"
+    ]
+  },
+  {
+    "target_word": "kolo",
+    "related_word": [
+      "okruh",
+      "bicykl",
+      "závod"
+    ],
+    "target_word_stem": "kolo",
+    "related_word_stem": [
+      "okruh",
+      "bicykl",
+      "závod"
+    ]
+  },
+  {
+    "target_word": "literatura",
+    "related_word": [
+      "spisování",
+      "písemnictví",
+      "beletrie"
+    ],
+    "target_word_stem": "literatura",
+    "related_word_stem": [
+      "spisování",
+      "písemnictví",
+      "beletrie"
+    ]
+  },
+  {
+    "target_word": "tvar",
+    "related_word": [
+      "podoba",
+      "forma",
+      "vzhled"
+    ],
+    "target_word_stem": "tvar",
+    "related_word_stem": [
+      "podoba",
+      "forma",
+      "vzhled"
+    ]
+  },
+  {
+    "target_word": "most",
+    "related_word": [
+      "přejezd",
+      "spojení",
+      "lávka"
+    ],
+    "target_word_stem": "most",
+    "related_word_stem": [
+      "přejezd",
+      "spojení",
+      "lávka"
+    ]
+  },
+  {
+    "target_word": "kapsa",
+    "related_word": [
+      "antikoncepce",
+      "emancipace",
+      "kontraceptivum"
+    ],
+    "target_word_stem": "kapsa",
+    "related_word_stem": [
+      "antikoncepce",
+      "emancipace",
+      "kontraceptivum"
+    ]
+  },
+  {
+    "target_word": "bolest",
+    "related_word": [
+      "zármutek",
+      "žal",
+      "rána"
+    ],
+    "target_word_stem": "bolest",
+    "related_word_stem": [
+      "zármutek",
+      "žal",
+      "rána"
+    ]
+  },
+  {
+    "target_word": "noviny",
+    "related_word": [
+      "časopis",
+      "deník",
+      "publikace"
+    ],
+    "target_word_stem": "noviny",
+    "related_word_stem": [
+      "časopis",
+      "deník",
+      "publikace"
+    ]
+  },
+  {
+    "target_word": "inženýr",
+    "related_word": [
+      "technik",
+      "povolání",
+      "ing"
+    ],
+    "target_word_stem": "inženýr",
+    "related_word_stem": [
+      "technik",
+      "povolání",
+      "ing"
+    ]
+  },
+  {
+    "target_word": "hledisko",
+    "related_word": [
+      "zřetel",
+      "aspekt",
+      "moment"
+    ],
+    "target_word_stem": "hledisko",
+    "related_word_stem": [
+      "zřetel",
+      "aspekt",
+      "moment"
+    ]
+  },
+  {
+    "target_word": "šablona",
+    "related_word": [
+      "vzor",
+      "prototyp",
+      "předloha"
+    ],
+    "target_word_stem": "šablona",
+    "related_word_stem": [
+      "vzor",
+      "prototyp",
+      "předloha"
+    ]
+  },
+  {
+    "target_word": "fantazie",
+    "related_word": [
+      "smyšlenka",
+      "obraznost",
+      "výmysl"
+    ],
+    "target_word_stem": "fantazie",
+    "related_word_stem": [
+      "smyšlenka",
+      "obraznost",
+      "výmysl"
+    ]
+  },
+  {
+    "target_word": "káva",
+    "related_word": [
+      "nápoj",
+      "kafčo",
+      "brynda"
+    ],
+    "target_word_stem": "káva",
+    "related_word_stem": [
+      "nápoj",
+      "kafčo",
+      "brynda"
+    ]
+  },
+  {
+    "target_word": "místo",
+    "related_word": [
+      "lokalita",
+      "poloha",
+      "obec"
+    ],
+    "target_word_stem": "místo",
+    "related_word_stem": [
+      "lokalita",
+      "poloha",
+      "obec"
+    ]
+  },
+  {
+    "target_word": "předpověď",
+    "related_word": [
+      "prognóza",
+      "odhad",
+      "proroctví"
+    ],
+    "target_word_stem": "předpověď",
+    "related_word_stem": [
+      "prognóza",
+      "odhad",
+      "proroctví"
+    ]
+  },
+  {
+    "target_word": "selhání",
+    "related_word": [
+      "nezdar",
+      "debakl",
+      "neúspěch"
+    ],
+    "target_word_stem": "selhání",
+    "related_word_stem": [
+      "nezdar",
+      "debakl",
+      "neúspěch"
+    ]
+  },
+  {
+    "target_word": "ložnice",
+    "related_word": [
+      "místnost",
+      "jídelna",
+      "obývák"
+    ],
+    "target_word_stem": "ložnice",
+    "related_word_stem": [
+      "místnost",
+      "jídelna",
+      "obývák"
+    ]
+  },
+  {
+    "target_word": "záruka",
+    "related_word": [
+      "garance",
+      "jistota",
+      "ručení"
+    ],
+    "target_word_stem": "záruka",
+    "related_word_stem": [
+      "garance",
+      "jistota",
+      "ručení"
+    ]
+  },
+  {
+    "target_word": "nedostatek",
+    "related_word": [
+      "bída",
+      "chyba",
+      "mezera"
+    ],
+    "target_word_stem": "nedostatek",
+    "related_word_stem": [
+      "bída",
+      "chyba",
+      "mezera"
+    ]
+  },
+  {
+    "target_word": "lekce",
+    "related_word": [
+      "ponaučení",
+      "výklad",
+      "přednáška"
+    ],
+    "target_word_stem": "lekce",
+    "related_word_stem": [
+      "ponaučení",
+      "výklad",
+      "přednáška"
+    ]
+  },
+  {
+    "target_word": "oděv",
+    "related_word": [
+      "šaty",
+      "oblečení",
+      "úbor"
+    ],
+    "target_word_stem": "oděv",
+    "related_word_stem": [
+      "šaty",
+      "oblečení",
+      "úbor"
+    ]
+  },
+  {
+    "target_word": "vliv",
+    "related_word": [
+      "účinek",
+      "dopad",
+      "působení"
+    ],
+    "target_word_stem": "vliv",
+    "related_word_stem": [
+      "účinek",
+      "dopad",
+      "působení"
+    ]
+  },
+  {
+    "target_word": "snídaně",
+    "related_word": [
+      "jídlo",
+      "oběd",
+      "večeře"
+    ],
+    "target_word_stem": "snídaně",
+    "related_word_stem": [
+      "jídlo",
+      "oběd",
+      "večeře"
+    ]
+  },
+  {
+    "target_word": "divadlo",
+    "related_word": [
+      "představení",
+      "hra",
+      "umění"
+    ],
+    "target_word_stem": "divadlo",
+    "related_word_stem": [
+      "představení",
+      "hra",
+      "umění"
+    ]
+  },
+  {
+    "target_word": "zápisník",
+    "related_word": [
+      "notes",
+      "sešit",
+      "blok"
+    ],
+    "target_word_stem": "zápisník",
+    "related_word_stem": [
+      "notes",
+      "sešit",
+      "blok"
+    ]
+  },
+  {
+    "target_word": "výraz",
+    "related_word": [
+      "termín",
+      "vyjádření",
+      "pojem"
+    ],
+    "target_word_stem": "výraz",
+    "related_word_stem": [
+      "termín",
+      "vyjádření",
+      "pojem"
+    ]
+  },
+  {
+    "target_word": "obrana",
+    "related_word": [
+      "útok",
+      "bek",
+      "forward"
+    ],
+    "target_word_stem": "obrana",
+    "related_word_stem": [
+      "útok",
+      "bek",
+      "forward"
+    ]
+  },
+  {
+    "target_word": "schůze",
+    "related_word": [
+      "shromáždění",
+      "konvent",
+      "porada"
+    ],
+    "target_word_stem": "schůze",
+    "related_word_stem": [
+      "shromáždění",
+      "konvent",
+      "porada"
+    ]
+  },
+  {
+    "target_word": "královna",
+    "related_word": [
+      "monarcha",
+      "figurka",
+      "včela"
+    ],
+    "target_word_stem": "královna",
+    "related_word_stem": [
+      "monarcha",
+      "figurka",
+      "včela"
+    ]
+  },
+  {
+    "target_word": "vrstva",
+    "related_word": [
+      "lavice",
+      "film",
+      "třída"
+    ],
+    "target_word_stem": "vrstva",
+    "related_word_stem": [
+      "lavice",
+      "film",
+      "třída"
+    ]
+  },
+  {
+    "target_word": "duše",
+    "related_word": [
+      "bytost",
+      "mysl",
+      "vědomí"
+    ],
+    "target_word_stem": "duše",
+    "related_word_stem": [
+      "bytost",
+      "mysl",
+      "vědomí"
+    ]
+  },
+  {
+    "target_word": "podvod",
+    "related_word": [
+      "švindl",
+      "bouda",
+      "faleš"
+    ],
+    "target_word_stem": "podvod",
+    "related_word_stem": [
+      "švindl",
+      "bouda",
+      "faleš"
+    ]
+  },
+  {
+    "target_word": "touha",
+    "related_word": [
+      "přání",
+      "chuť",
+      "hlad"
+    ],
+    "target_word_stem": "touha",
+    "related_word_stem": [
+      "přání",
+      "chuť",
+      "hlad"
+    ]
+  },
+  {
+    "target_word": "původ",
+    "related_word": [
+      "vznik",
+      "zdroj",
+      "matka"
+    ],
+    "target_word_stem": "původ",
+    "related_word_stem": [
+      "vznik",
+      "zdroj",
+      "matka"
+    ]
+  },
+  {
+    "target_word": "řeč",
+    "related_word": [
+      "mluva",
+      "proslov",
+      "hovor"
+    ],
+    "target_word_stem": "řeč",
+    "related_word_stem": [
+      "mluva",
+      "proslov",
+      "hovor"
+    ]
+  },
+  {
+    "target_word": "shromáždění",
+    "related_word": [
+      "schůze",
+      "skupina",
+      "sbor"
+    ],
+    "target_word_stem": "shromáždění",
+    "related_word_stem": [
+      "schůze",
+      "skupina",
+      "sbor"
+    ]
+  },
+  {
+    "target_word": "víra",
+    "related_word": [
+      "vyznání",
+      "přesvědčení",
+      "náboženství"
+    ],
+    "target_word_stem": "víra",
+    "related_word_stem": [
+      "vyznání",
+      "přesvědčení",
+      "náboženství"
+    ]
+  },
+  {
+    "target_word": "díl",
+    "related_word": [
+      "část",
+      "složka",
+      "úsek"
+    ],
+    "target_word_stem": "díl",
+    "related_word_stem": [
+      "část",
+      "složka",
+      "úsek"
+    ]
+  },
+  {
+    "target_word": "vana",
+    "related_word": [
+      "nádrž",
+      "koupat",
+      "škopek"
+    ],
+    "target_word_stem": "vana",
+    "related_word_stem": [
+      "nádrž",
+      "koupat",
+      "škopek"
+    ]
+  },
+  {
+    "target_word": "konflikt",
+    "related_word": [
+      "hádka",
+      "rozpor",
+      "střet"
+    ],
+    "target_word_stem": "konflikt",
+    "related_word_stem": [
+      "hádka",
+      "rozpor",
+      "střet"
+    ]
+  },
+  {
+    "target_word": "hon",
+    "related_word": [
+      "chvat",
+      "spěch",
+      "hnát"
+    ],
+    "target_word_stem": "hon",
+    "related_word_stem": [
+      "chvat",
+      "spěch",
+      "hnát"
+    ]
+  },
+  {
+    "target_word": "stezka",
+    "related_word": [
+      "dráha",
+      "pěšina",
+      "komunikace"
+    ],
+    "target_word_stem": "stezka",
+    "related_word_stem": [
+      "dráha",
+      "pěšina",
+      "komunikace"
+    ]
+  },
+  {
+    "target_word": "rozměr",
+    "related_word": [
+      "velikost",
+      "míra",
+      "dimenze"
+    ],
+    "target_word_stem": "rozměr",
+    "related_word_stem": [
+      "velikost",
+      "míra",
+      "dimenze"
+    ]
+  },
+  {
+    "target_word": "křídlo",
+    "related_word": [
+      "končetina",
+      "klavír",
+      "pianino"
+    ],
+    "target_word_stem": "křídlo",
+    "related_word_stem": [
+      "končetina",
+      "klavír",
+      "pianino"
+    ]
+  },
+  {
+    "target_word": "síla",
+    "related_word": [
+      "moc",
+      "slabost",
+      "siloměr"
+    ],
+    "target_word_stem": "síla",
+    "related_word_stem": [
+      "moc",
+      "slabost",
+      "siloměr"
+    ]
+  },
+  {
+    "target_word": "konvence",
+    "related_word": [
+      "smlouva",
+      "norma",
+      "obyčej"
+    ],
+    "target_word_stem": "konvence",
+    "related_word_stem": [
+      "smlouva",
+      "norma",
+      "obyčej"
+    ]
+  },
+  {
+    "target_word": "panenka",
+    "related_word": [
+      "zornice",
+      "člověk",
+      "svíčková"
+    ],
+    "target_word_stem": "panenka",
+    "related_word_stem": [
+      "zornice",
+      "člověk",
+      "svíčková"
+    ]
+  },
+  {
+    "target_word": "dcera",
+    "related_word": [
+      "dítě",
+      "potomek",
+      "příbuzná"
+    ],
+    "target_word_stem": "dcera",
+    "related_word_stem": [
+      "dítě",
+      "potomek",
+      "příbuzná"
+    ]
+  },
+  {
+    "target_word": "hranice",
+    "related_word": [
+      "vatra",
+      "okraj",
+      "pomezí"
+    ],
+    "target_word_stem": "hranice",
+    "related_word_stem": [
+      "vatra",
+      "okraj",
+      "pomezí"
+    ]
+  },
+  {
+    "target_word": "stres",
+    "related_word": [
+      "zátěž",
+      "pohoda",
+      "vazokonstrikce"
+    ],
+    "target_word_stem": "stres",
+    "related_word_stem": [
+      "zátěž",
+      "pohoda",
+      "vazokonstrikce"
+    ]
+  },
+  {
+    "target_word": "lékař",
+    "related_word": [
+      "doktor",
+      "klinik",
+      "povolání"
+    ],
+    "target_word_stem": "lékař",
+    "related_word_stem": [
+      "doktor",
+      "klinik",
+      "povolání"
+    ]
+  },
+  {
+    "target_word": "okruh",
+    "related_word": [
+      "kolo",
+      "rámec",
+      "obor"
+    ],
+    "target_word_stem": "okruh",
+    "related_word_stem": [
+      "kolo",
+      "rámec",
+      "obor"
+    ]
+  },
+  {
+    "target_word": "celebrita",
+    "related_word": [
+      "slavný",
+      "hvězda",
+      "osobnost"
+    ],
+    "target_word_stem": "celebrita",
+    "related_word_stem": [
+      "slavný",
+      "hvězda",
+      "osobnost"
+    ]
+  },
+  {
+    "target_word": "zlozvyk",
+    "related_word": [
+      "nemoc",
+      "neřest",
+      "nešvar"
+    ],
+    "target_word_stem": "zlozvyk",
+    "related_word_stem": [
+      "nemoc",
+      "neřest",
+      "nešvar"
+    ]
+  },
+  {
+    "target_word": "území",
+    "related_word": [
+      "teritorium",
+      "oblast",
+      "půda"
+    ],
+    "target_word_stem": "území",
+    "related_word_stem": [
+      "teritorium",
+      "oblast",
+      "půda"
+    ]
+  },
+  {
+    "target_word": "látka",
+    "related_word": [
+      "námět",
+      "štof",
+      "téma"
+    ],
+    "target_word_stem": "látka",
+    "related_word_stem": [
+      "námět",
+      "štof",
+      "téma"
+    ]
+  },
+  {
+    "target_word": "bonus",
+    "related_word": [
+      "zvýhodnění",
+      "odměna",
+      "příplatek"
+    ],
+    "target_word_stem": "bonus",
+    "related_word_stem": [
+      "zvýhodnění",
+      "odměna",
+      "příplatek"
+    ]
+  },
+  {
+    "target_word": "poměr",
+    "related_word": [
+      "situace",
+      "přístup",
+      "vztah"
+    ],
+    "target_word_stem": "poměr",
+    "related_word_stem": [
+      "situace",
+      "přístup",
+      "vztah"
+    ]
+  },
+  {
+    "target_word": "semeno",
+    "related_word": [
+      "jádro",
+      "sperma",
+      "sít"
+    ],
+    "target_word_stem": "semeno",
+    "related_word_stem": [
+      "jádro",
+      "sperma",
+      "sít"
+    ]
+  },
+  {
+    "target_word": "déšť",
+    "related_word": [
+      "srážka",
+      "deštník",
+      "liják"
+    ],
+    "target_word_stem": "déšť",
+    "related_word_stem": [
+      "srážka",
+      "deštník",
+      "liják"
+    ]
+  },
+  {
+    "target_word": "úvaha",
+    "related_word": [
+      "myšlenka",
+      "rozjímání",
+      "uvážit"
+    ],
+    "target_word_stem": "úvaha",
+    "related_word_stem": [
+      "myšlenka",
+      "rozjímání",
+      "uvážit"
+    ]
+  },
+  {
+    "target_word": "ovoce",
+    "related_word": [
+      "plod",
+      "pokrm",
+      "výsledek"
+    ],
+    "target_word_stem": "ovoce",
+    "related_word_stem": [
+      "plod",
+      "pokrm",
+      "výsledek"
+    ]
+  },
+  {
+    "target_word": "známka",
+    "related_word": [
+      "doklad",
+      "poštovné",
+      "příznak"
+    ],
+    "target_word_stem": "známka",
+    "related_word_stem": [
+      "doklad",
+      "poštovné",
+      "příznak"
+    ]
+  },
+  {
+    "target_word": "záloha",
+    "related_word": [
+      "rezerva",
+      "kauce",
+      "úkryt"
+    ],
+    "target_word_stem": "záloha",
+    "related_word_stem": [
+      "rezerva",
+      "kauce",
+      "úkryt"
+    ]
+  },
+  {
+    "target_word": "nádrž",
+    "related_word": [
+      "rezervoár",
+      "přehrada",
+      "bazén"
+    ],
+    "target_word_stem": "nádrž",
+    "related_word_stem": [
+      "rezervoár",
+      "přehrada",
+      "bazén"
+    ]
+  },
+  {
+    "target_word": "porucha",
+    "related_word": [
+      "nemoc",
+      "závada",
+      "afekce"
+    ],
+    "target_word_stem": "porucha",
+    "related_word_stem": [
+      "nemoc",
+      "závada",
+      "afekce"
+    ]
+  },
+  {
+    "target_word": "čest",
+    "related_word": [
+      "pocta",
+      "ctižádostivý",
+      "ctít"
+    ],
+    "target_word_stem": "čest",
+    "related_word_stem": [
+      "pocta",
+      "ctižádostivý",
+      "ctít"
+    ]
+  },
+  {
+    "target_word": "způsob",
+    "related_word": [
+      "metoda",
+      "povaha",
+      "zvyk"
+    ],
+    "target_word_stem": "způsob",
+    "related_word_stem": [
+      "metoda",
+      "povaha",
+      "zvyk"
+    ]
+  },
+  {
+    "target_word": "dráha",
+    "related_word": [
+      "trajektorie",
+      "cesta",
+      "trať"
+    ],
+    "target_word_stem": "dráha",
+    "related_word_stem": [
+      "trajektorie",
+      "cesta",
+      "trať"
+    ]
+  },
+  {
+    "target_word": "dvůr",
+    "related_word": [
+      "sídlo",
+      "plocha",
+      "nádvoří"
+    ],
+    "target_word_stem": "dvůr",
+    "related_word_stem": [
+      "sídlo",
+      "plocha",
+      "nádvoří"
+    ]
+  },
+  {
+    "target_word": "závěr",
+    "related_word": [
+      "finále",
+      "konec",
+      "úsudek"
+    ],
+    "target_word_stem": "závěr",
+    "related_word_stem": [
+      "finále",
+      "konec",
+      "úsudek"
+    ]
+  },
+  {
+    "target_word": "sušenka",
+    "related_word": [
+      "sladkost",
+      "cukroví",
+      "kremrole"
+    ],
+    "target_word_stem": "sušenka",
+    "related_word_stem": [
+      "sladkost",
+      "cukroví",
+      "kremrole"
+    ]
+  },
+  {
+    "target_word": "entita",
+    "related_word": [
+      "objekt",
+      "jsoucno",
+      "předmět"
+    ],
+    "target_word_stem": "entita",
+    "related_word_stem": [
+      "objekt",
+      "jsoucno",
+      "předmět"
+    ]
+  },
+  {
+    "target_word": "přítomnost",
+    "related_word": [
+      "prezence",
+      "účast",
+      "dnešek"
+    ],
+    "target_word_stem": "přítomnost",
+    "related_word_stem": [
+      "prezence",
+      "účast",
+      "dnešek"
+    ]
+  },
+  {
+    "target_word": "účast",
+    "related_word": [
+      "participace",
+      "podíl",
+      "přítomnost"
+    ],
+    "target_word_stem": "účast",
+    "related_word_stem": [
+      "participace",
+      "podíl",
+      "přítomnost"
+    ]
+  },
+  {
+    "target_word": "herec",
+    "related_word": [
+      "aktér",
+      "představitel",
+      "povolání"
+    ],
+    "target_word_stem": "herec",
+    "related_word_stem": [
+      "aktér",
+      "představitel",
+      "povolání"
+    ]
+  },
+  {
+    "target_word": "sůl",
+    "related_word": [
+      "koření",
+      "přísada",
+      "slánka"
+    ],
+    "target_word_stem": "sůl",
+    "related_word_stem": [
+      "koření",
+      "přísada",
+      "slánka"
+    ]
+  },
+  {
+    "target_word": "kamarád",
+    "related_word": [
+      "přítel",
+      "kolega",
+      "kluk"
+    ],
+    "target_word_stem": "kamarád",
+    "related_word_stem": [
+      "přítel",
+      "kolega",
+      "kluk"
+    ]
+  },
+  {
+    "target_word": "komora",
+    "related_word": [
+      "místnost",
+      "dutina",
+      "spíž"
+    ],
+    "target_word_stem": "komora",
+    "related_word_stem": [
+      "místnost",
+      "dutina",
+      "spíž"
+    ]
+  },
+  {
+    "target_word": "plat",
+    "related_word": [
+      "mzda",
+      "gáže",
+      "odměna"
+    ],
+    "target_word_stem": "plat",
+    "related_word_stem": [
+      "mzda",
+      "gáže",
+      "odměna"
+    ]
+  },
+  {
+    "target_word": "večeře",
+    "related_word": [
+      "jídlo",
+      "oběd",
+      "snídaně"
+    ],
+    "target_word_stem": "večeře",
+    "related_word_stem": [
+      "jídlo",
+      "oběd",
+      "snídaně"
+    ]
+  },
+  {
+    "target_word": "nehoda",
+    "related_word": [
+      "havárie",
+      "incident",
+      "katastrofa"
+    ],
+    "target_word_stem": "nehoda",
+    "related_word_stem": [
+      "havárie",
+      "incident",
+      "katastrofa"
+    ]
+  },
+  {
+    "target_word": "složka",
+    "related_word": [
+      "součást",
+      "díl",
+      "prvek"
+    ],
+    "target_word_stem": "složka",
+    "related_word_stem": [
+      "součást",
+      "díl",
+      "prvek"
+    ]
+  },
+  {
+    "target_word": "obal",
+    "related_word": [
+      "vazba",
+      "jádro",
+      "kůra"
+    ],
+    "target_word_stem": "obal",
+    "related_word_stem": [
+      "vazba",
+      "jádro",
+      "kůra"
+    ]
+  },
+  {
+    "target_word": "zkouška",
+    "related_word": [
+      "pokus",
+      "nácvik",
+      "experiment"
+    ],
+    "target_word_stem": "zkouška",
+    "related_word_stem": [
+      "pokus",
+      "nácvik",
+      "experiment"
+    ]
+  },
+  {
+    "target_word": "bouřka",
+    "related_word": [
+      "vítr",
+      "nečas",
+      "vichřice"
+    ],
+    "target_word_stem": "bouřka",
+    "related_word_stem": [
+      "vítr",
+      "nečas",
+      "vichřice"
+    ]
+  },
+  {
+    "target_word": "hluk",
+    "related_word": [
+      "ticho",
+      "povyk",
+      "rámus"
+    ],
+    "target_word_stem": "hluk",
+    "related_word_stem": [
+      "ticho",
+      "povyk",
+      "rámus"
+    ]
+  },
+  {
+    "target_word": "láhev",
+    "related_word": [
+      "flaška",
+      "nádoba",
+      "balení"
+    ],
+    "target_word_stem": "láhev",
+    "related_word_stem": [
+      "flaška",
+      "nádoba",
+      "balení"
+    ]
+  },
+  {
+    "target_word": "mísa",
+    "related_word": [
+      "nádoba",
+      "pohár",
+      "pokrm"
+    ],
+    "target_word_stem": "mísa",
+    "related_word_stem": [
+      "nádoba",
+      "pohár",
+      "pokrm"
+    ]
+  },
+  {
+    "target_word": "pilulka",
+    "related_word": [
+      "lék",
+      "kapsle",
+      "prášek"
+    ],
+    "target_word_stem": "pilulka",
+    "related_word_stem": [
+      "lék",
+      "kapsle",
+      "prášek"
+    ]
+  },
+  {
+    "target_word": "význam",
+    "related_word": [
+      "smysl",
+      "důležitost",
+      "hodnota"
+    ],
+    "target_word_stem": "význam",
+    "related_word_stem": [
+      "smysl",
+      "důležitost",
+      "hodnota"
+    ]
+  },
+  {
+    "target_word": "věta",
+    "related_word": [
+      "sentence",
+      "poučka",
+      "tvrzení"
+    ],
+    "target_word_stem": "věta",
+    "related_word_stem": [
+      "sentence",
+      "poučka",
+      "tvrzení"
+    ]
+  },
+  {
+    "target_word": "úřad",
+    "related_word": [
+      "budova",
+      "funkce",
+      "křeslo"
+    ],
+    "target_word_stem": "úřad",
+    "related_word_stem": [
+      "budova",
+      "funkce",
+      "křeslo"
+    ]
+  },
+  {
+    "target_word": "chuť",
+    "related_word": [
+      "smysl",
+      "rád",
+      "touha"
+    ],
+    "target_word_stem": "chuť",
+    "related_word_stem": [
+      "smysl",
+      "rád",
+      "touha"
+    ]
+  },
+  {
+    "target_word": "prapor",
+    "related_word": [
+      "brigáda",
+      "vlajka",
+      "korouhev"
+    ],
+    "target_word_stem": "prapor",
+    "related_word_stem": [
+      "brigáda",
+      "vlajka",
+      "korouhev"
+    ]
+  },
+  {
+    "target_word": "legenda",
+    "related_word": [
+      "pověst",
+      "báje",
+      "lekce"
+    ],
+    "target_word_stem": "legenda",
+    "related_word_stem": [
+      "pověst",
+      "báje",
+      "lekce"
+    ]
+  },
+  {
+    "target_word": "orel",
+    "related_word": [
+      "souhvězdí",
+      "hlava",
+      "pták"
+    ],
+    "target_word_stem": "orel",
+    "related_word_stem": [
+      "souhvězdí",
+      "hlava",
+      "pták"
+    ]
+  },
+  {
+    "target_word": "reprezentace",
+    "related_word": [
+      "znázornění",
+      "tým",
+      "mužstvo"
+    ],
+    "target_word_stem": "reprezentace",
+    "related_word_stem": [
+      "znázornění",
+      "tým",
+      "mužstvo"
+    ]
+  },
+  {
+    "target_word": "vtip",
+    "related_word": [
+      "žert",
+      "fór",
+      "frk"
+    ],
+    "target_word_stem": "vtip",
+    "related_word_stem": [
+      "žert",
+      "fór",
+      "frk"
+    ]
+  }
+]

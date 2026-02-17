@@ -1,0 +1,534 @@
+[
+  {
+    "target_word": "pobal",
+    "related_word": [
+      "paróiste",
+      "comhthionól",
+      "cumann"
+    ],
+    "target_word_stem": "pobal",
+    "related_word_stem": [
+      "paróiste",
+      "comhthionól",
+      "cumann"
+    ]
+  },
+  {
+    "target_word": "leagan",
+    "related_word": [
+      "cineál",
+      "frása",
+      "réiteach"
+    ],
+    "target_word_stem": "leagan",
+    "related_word_stem": [
+      "cineál",
+      "frása",
+      "réiteach"
+    ]
+  },
+  {
+    "target_word": "maoin",
+    "related_word": [
+      "saibhreas",
+      "sealúchas",
+      "gustal"
+    ],
+    "target_word_stem": "maoin",
+    "related_word_stem": [
+      "saibhreas",
+      "sealúchas",
+      "gustal"
+    ]
+  },
+  {
+    "target_word": "deisceart",
+    "related_word": [
+      "d",
+      "aneas",
+      "iarthar"
+    ],
+    "target_word_stem": "deisceart",
+    "related_word_stem": [
+      "d",
+      "aneas",
+      "iarthar"
+    ]
+  },
+  {
+    "target_word": "mí",
+    "related_word": [
+      "éa",
+      "ro",
+      "dios"
+    ],
+    "target_word_stem": "mí",
+    "related_word_stem": [
+      "éa",
+      "ro",
+      "dios"
+    ]
+  },
+  {
+    "target_word": "roinn",
+    "related_word": [
+      "cuid",
+      "cúige",
+      "leath"
+    ],
+    "target_word_stem": "roinn",
+    "related_word_stem": [
+      "cuid",
+      "cúige",
+      "leath"
+    ]
+  },
+  {
+    "target_word": "stoc",
+    "related_word": [
+      "bun",
+      "trumpa",
+      "buabhall"
+    ],
+    "target_word_stem": "stoc",
+    "related_word_stem": [
+      "bun",
+      "trumpa",
+      "buabhall"
+    ]
+  },
+  {
+    "target_word": "carr",
+    "related_word": [
+      "féan",
+      "vaigín",
+      "gluaisteán"
+    ],
+    "target_word_stem": "carr",
+    "related_word_stem": [
+      "féan",
+      "vaigín",
+      "gluaisteán"
+    ]
+  },
+  {
+    "target_word": "feidhm",
+    "related_word": [
+      "úsáid",
+      "gá",
+      "gnó"
+    ],
+    "target_word_stem": "feidhm",
+    "related_word_stem": [
+      "úsáid",
+      "gá",
+      "gnó"
+    ]
+  },
+  {
+    "target_word": "sochar",
+    "related_word": [
+      "brabús",
+      "toradh",
+      "tairbhe"
+    ],
+    "target_word_stem": "sochar",
+    "related_word_stem": [
+      "brabús",
+      "toradh",
+      "tairbhe"
+    ]
+  },
+  {
+    "target_word": "inneall",
+    "related_word": [
+      "troscán",
+      "socrú",
+      "ord"
+    ],
+    "target_word_stem": "inneall",
+    "related_word_stem": [
+      "troscán",
+      "socrú",
+      "ord"
+    ]
+  },
+  {
+    "target_word": "capall",
+    "related_word": [
+      "marc",
+      "each",
+      "láir"
+    ],
+    "target_word_stem": "capall",
+    "related_word_stem": [
+      "marc",
+      "each",
+      "láir"
+    ]
+  },
+  {
+    "target_word": "bileog",
+    "related_word": [
+      "corrán",
+      "faisnéisiú",
+      "leathán"
+    ],
+    "target_word_stem": "bileog",
+    "related_word_stem": [
+      "corrán",
+      "faisnéisiú",
+      "leathán"
+    ]
+  },
+  {
+    "target_word": "bun",
+    "related_word": [
+      "príomh",
+      "stoc",
+      "fo"
+    ],
+    "target_word_stem": "bun",
+    "related_word_stem": [
+      "príomh",
+      "stoc",
+      "fo"
+    ]
+  },
+  {
+    "target_word": "léiriú",
+    "related_word": [
+      "seó",
+      "taispeántas",
+      "eiseamláir"
+    ],
+    "target_word_stem": "léiriú",
+    "related_word_stem": [
+      "seó",
+      "taispeántas",
+      "eiseamláir"
+    ]
+  },
+  {
+    "target_word": "cumas",
+    "related_word": [
+      "inniúlacht",
+      "poitéinseal",
+      "acmhainneacht"
+    ],
+    "target_word_stem": "cumas",
+    "related_word_stem": [
+      "inniúlacht",
+      "poitéinseal",
+      "acmhainneacht"
+    ]
+  },
+  {
+    "target_word": "garda",
+    "related_word": [
+      "oifigeach",
+      "péas",
+      "póilín"
+    ],
+    "target_word_stem": "garda",
+    "related_word_stem": [
+      "oifigeach",
+      "péas",
+      "póilín"
+    ]
+  },
+  {
+    "target_word": "baint",
+    "related_word": [
+      "ardú",
+      "tógáil",
+      "gaol"
+    ],
+    "target_word_stem": "baint",
+    "related_word_stem": [
+      "ardú",
+      "tógáil",
+      "gaol"
+    ]
+  },
+  {
+    "target_word": "féin",
+    "related_word": [
+      "na",
+      "se",
+      "ne"
+    ],
+    "target_word_stem": "féin",
+    "related_word_stem": [
+      "na",
+      "se",
+      "ne"
+    ]
+  },
+  {
+    "target_word": "céad",
+    "related_word": [
+      "aois",
+      "1ú",
+      "aon"
+    ],
+    "target_word_stem": "céad",
+    "related_word_stem": [
+      "aois",
+      "1ú",
+      "aon"
+    ]
+  },
+  {
+    "target_word": "teach",
+    "related_word": [
+      "scoil",
+      "foghlaim",
+      "múinteoir"
+    ],
+    "target_word_stem": "teach",
+    "related_word_stem": [
+      "scoil",
+      "foghl",
+      "múint"
+    ]
+  },
+  {
+    "target_word": "cúpla",
+    "related_word": [
+      "beirt",
+      "dó",
+      "péire"
+    ],
+    "target_word_stem": "cúpl",
+    "related_word_stem": [
+      "beir",
+      "dó",
+      "péir"
+    ]
+  },
+  {
+    "target_word": "lá",
+    "related_word": [
+      "grian",
+      "solas",
+      "dias"
+    ],
+    "target_word_stem": "lá",
+    "related_word_stem": [
+      "grian",
+      "solas",
+      "dias"
+    ]
+  },
+  {
+    "target_word": "bean",
+    "related_word": [
+      "cailín",
+      "baineann",
+      "sí"
+    ],
+    "target_word_stem": "bean",
+    "related_word_stem": [
+      "cail",
+      "bain",
+      "sí"
+    ]
+  },
+  {
+    "target_word": "fear",
+    "related_word": [
+      "fathach",
+      "duine",
+      "sé"
+    ],
+    "target_word_stem": "fear",
+    "related_word_stem": [
+      "fath",
+      "duin",
+      "sé"
+    ]
+  },
+  {
+    "target_word": "uisce",
+    "related_word": [
+      "báisteach",
+      "abhainn",
+      "ól"
+    ],
+    "target_word_stem": "uisce",
+    "related_word_stem": [
+      "báis",
+      "abh",
+      "ól"
+    ]
+  },
+  {
+    "target_word": "bia",
+    "related_word": [
+      "ithe",
+      "béile",
+      "cistin"
+    ],
+    "target_word_stem": "bia",
+    "related_word_stem": [
+      "ithe",
+      "béil",
+      "cist"
+    ]
+  },
+  {
+    "target_word": "obair",
+    "related_word": [
+      "post",
+      "gnó",
+      "déanamh"
+    ],
+    "target_word_stem": "obair",
+    "related_word_stem": [
+      "post",
+      "gnó",
+      "déan"
+    ]
+  },
+  {
+    "target_word": "am",
+    "related_word": [
+      "uair",
+      "nóiméad",
+      "clog"
+    ],
+    "target_word_stem": "am",
+    "related_word_stem": [
+      "uair",
+      "nóim",
+      "clog"
+    ]
+  },
+  {
+    "target_word": "airgead",
+    "related_word": [
+      "banc",
+      "pingin",
+      "ceannach"
+    ],
+    "target_word_stem": "airg",
+    "related_word_stem": [
+      "banc",
+      "ping",
+      "ceann"
+    ]
+  },
+  {
+    "target_word": "teanga",
+    "related_word": [
+      "focal",
+      "labhairt",
+      "béarla"
+    ],
+    "target_word_stem": "teang",
+    "related_word_stem": [
+      "focal",
+      "labh",
+      "béarl"
+    ]
+  },
+  {
+    "target_word": "ceol",
+    "related_word": [
+      "amhrán",
+      "uirlis",
+      "éisteacht"
+    ],
+    "target_word_stem": "ceol",
+    "related_word_stem": [
+      "amhr",
+      "uirl",
+      "éis"
+    ]
+  },
+  {
+    "target_word": "cairde",
+    "related_word": [
+      "grúpa",
+      "daoine",
+      "cumann"
+    ],
+    "target_word_stem": "caird",
+    "related_word_stem": [
+      "grúp",
+      "daoin",
+      "cumann"
+    ]
+  },
+  {
+    "target_word": "leabhar",
+    "related_word": [
+      "léamh",
+      "scéal",
+      "leathanach"
+    ],
+    "target_word_stem": "leabh",
+    "related_word_stem": [
+      "léamh",
+      "scéal",
+      "leath"
+    ]
+  },
+  {
+    "target_word": "bord",
+    "related_word": [
+      "adhmad",
+      "dinnéar",
+      "cistin"
+    ],
+    "target_word_stem": "bord",
+    "related_word_stem": [
+      "adhm",
+      "dinn",
+      "cist"
+    ]
+  },
+  {
+    "target_word": "cathair",
+    "related_word": [
+      "sráid",
+      "foirgneamh",
+      "daonra"
+    ],
+    "target_word_stem": "cath",
+    "related_word_stem": [
+      "sráid",
+      "foirgn",
+      "daon"
+    ]
+  },
+  {
+    "target_word": "fón",
+    "related_word": [
+      "glaoch",
+      "comhrá",
+      "póca"
+    ],
+    "target_word_stem": "fón",
+    "related_word_stem": [
+      "glao",
+      "comh",
+      "póca"
+    ]
+  },
+  {
+    "target_word": "féach",
+    "related_word": [
+      "súil",
+      "amharc",
+      "teilifís"
+    ],
+    "target_word_stem": "féach",
+    "related_word_stem": [
+      "súil",
+      "amh",
+      "teil"
+    ]
+  }
+]

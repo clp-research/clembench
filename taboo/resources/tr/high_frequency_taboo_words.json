@@ -1,0 +1,422 @@
+[
+  {
+    "target_word": "ev",
+    "related_word": [
+      "ocak",
+      "hane",
+      "bina"
+    ],
+    "target_word_stem": "ev",
+    "related_word_stem": [
+      "ocak",
+      "hane",
+      "bina"
+    ]
+  },
+  {
+    "target_word": "grup",
+    "related_word": [
+      "öbek",
+      "cisim",
+      "halka"
+    ],
+    "target_word_stem": "grup",
+    "related_word_stem": [
+      "öbek",
+      "cisim",
+      "halka"
+    ]
+  },
+  {
+    "target_word": "güç",
+    "related_word": [
+      "kuvvet",
+      "ağır",
+      "zor"
+    ],
+    "target_word_stem": "güç",
+    "related_word_stem": [
+      "kuvvet",
+      "ağır",
+      "zor"
+    ]
+  },
+  {
+    "target_word": "çocuk",
+    "related_word": [
+      "oğlan",
+      "insan",
+      "kızan"
+    ],
+    "target_word_stem": "çocuk",
+    "related_word_stem": [
+      "oğlan",
+      "insan",
+      "kızan"
+    ]
+  },
+  {
+    "target_word": "kadın",
+    "related_word": [
+      "insan",
+      "aktris",
+      "erkek"
+    ],
+    "target_word_stem": "kadın",
+    "related_word_stem": [
+      "insan",
+      "aktris",
+      "erkek"
+    ]
+  },
+  {
+    "target_word": "konu",
+    "related_word": [
+      "süje",
+      "mevzu",
+      "madde"
+    ],
+    "target_word_stem": "konu",
+    "related_word_stem": [
+      "süje",
+      "mevzu",
+      "madde"
+    ]
+  },
+  {
+    "target_word": "aile",
+    "related_word": [
+      "eş",
+      "avrat",
+      "karı"
+    ],
+    "target_word_stem": "aile",
+    "related_word_stem": [
+      "eş",
+      "avrat",
+      "karı"
+    ]
+  },
+  {
+    "target_word": "genç",
+    "related_word": [
+      "insan",
+      "yaşlı",
+      "ihtiyar"
+    ],
+    "target_word_stem": "genç",
+    "related_word_stem": [
+      "insan",
+      "yaşlı",
+      "ihtiyar"
+    ]
+  },
+  {
+    "target_word": "güney",
+    "related_word": [
+      "ak",
+      "cenup",
+      "kara"
+    ],
+    "target_word_stem": "güney",
+    "related_word_stem": [
+      "ak",
+      "cenup",
+      "kara"
+    ]
+  },
+  {
+    "target_word": "su",
+    "related_word": [
+      "asit",
+      "baz",
+      "şeker"
+    ],
+    "target_word_stem": "su",
+    "related_word_stem": [
+      "asit",
+      "baz",
+      "şeker"
+    ]
+  },
+  {
+    "target_word": "kız",
+    "related_word": [
+      "çocuk",
+      "insan",
+      "kardeş"
+    ],
+    "target_word_stem": "kız",
+    "related_word_stem": [
+      "çocuk",
+      "insan",
+      "kardeş"
+    ]
+  },
+  {
+    "target_word": "gemi",
+    "related_word": [
+      "kayık",
+      "sandal",
+      "otobüs"
+    ],
+    "target_word_stem": "gemi",
+    "related_word_stem": [
+      "kayık",
+      "sandal",
+      "otobüs"
+    ]
+  },
+  {
+    "target_word": "bölge",
+    "related_word": [
+      "mıntıka",
+      "kayış",
+      "kemer"
+    ],
+    "target_word_stem": "bölge",
+    "related_word_stem": [
+      "mıntıka",
+      "kayış",
+      "kemer"
+    ]
+  },
+  {
+    "target_word": "gerçek",
+    "related_word": [
+      "hakiki",
+      "doğru",
+      "asıl"
+    ],
+    "target_word_stem": "gerçek",
+    "related_word_stem": [
+      "hakiki",
+      "doğru",
+      "asıl"
+    ]
+  },
+  {
+    "target_word": "plaj",
+    "related_word": [
+      "kıyı",
+      "kumsal",
+      "sahil"
+    ],
+    "target_word_stem": "plaj",
+    "related_word_stem": [
+      "kıyı",
+      "kumsal",
+      "sahil"
+    ]
+  },
+  {
+    "target_word": "kalp",
+    "related_word": [
+      "yürek",
+      "gönül",
+      "sine"
+    ],
+    "target_word_stem": "kalp",
+    "related_word_stem": [
+      "yürek",
+      "gönül",
+      "sine"
+    ]
+  },
+  {
+    "target_word": "ayak",
+    "related_word": [
+      "but",
+      "pati",
+      "pençe"
+    ],
+    "target_word_stem": "ayak",
+    "related_word_stem": [
+      "but",
+      "pati",
+      "pençe"
+    ]
+  },
+  {
+    "target_word": "usta",
+    "related_word": [
+      "ağa",
+      "kalfa",
+      "üstün"
+    ],
+    "target_word_stem": "usta",
+    "related_word_stem": [
+      "ağa",
+      "kalfa",
+      "üstün"
+    ]
+  },
+  {
+    "target_word": "polis",
+    "related_word": [
+      "emniyet",
+      "aynasız",
+      "zabıta"
+    ],
+    "target_word_stem": "polis",
+    "related_word_stem": [
+      "emniyet",
+      "aynasız",
+      "zabıta"
+    ]
+  },
+  {
+    "target_word": "hanımefendi",
+    "related_word": [
+      "bayan",
+      "kız",
+      "kadın"
+    ],
+    "target_word_stem": "hanımefendi",
+    "related_word_stem": [
+      "bayan",
+      "kız",
+      "kadın"
+    ]
+  },
+  {
+    "target_word": "top",
+    "related_word": [
+      "silah",
+      "tüfek",
+      "dolmak"
+    ],
+    "target_word_stem": "top",
+    "related_word_stem": [
+      "silah",
+      "tüfek",
+      "dolmak"
+    ]
+  },
+  {
+    "target_word": "köprü",
+    "related_word": [
+      "кёпюр",
+      "күргэ",
+      "كوبري"
+    ],
+    "target_word_stem": "köprü",
+    "related_word_stem": [
+      "кёпюр",
+      "күргэ",
+      "كوبري"
+    ]
+  },
+  {
+    "target_word": "asit",
+    "related_word": [
+      "baz",
+      "hamız",
+      "su"
+    ],
+    "target_word_stem": "asit",
+    "related_word_stem": [
+      "baz",
+      "hamız",
+      "su"
+    ]
+  },
+  {
+    "target_word": "gezegen",
+    "related_word": [
+      "seyyare",
+      "planet",
+      "neptün"
+    ],
+    "target_word_stem": "gezegen",
+    "related_word_stem": [
+      "seyyare",
+      "planet",
+      "neptün"
+    ]
+  },
+  {
+    "target_word": "tuz",
+    "related_word": [
+      "bileşik",
+      "asit",
+      "şeker"
+    ],
+    "target_word_stem": "tuz",
+    "related_word_stem": [
+      "bileşik",
+      "asit",
+      "şeker"
+    ]
+  },
+  {
+    "target_word": "çıkış",
+    "related_word": [
+      "ayrılma",
+      "giriş",
+      "başlama"
+    ],
+    "target_word_stem": "çıkış",
+    "related_word_stem": [
+      "ayrılma",
+      "giriş",
+      "başlama"
+    ]
+  },
+  {
+    "target_word": "kelime",
+    "related_word": [
+      "sözcük",
+      "lügat",
+      "söz"
+    ],
+    "target_word_stem": "kelime",
+    "related_word_stem": [
+      "sözcük",
+      "lügat",
+      "söz"
+    ]
+  },
+  {
+    "target_word": "araba",
+    "related_word": [
+      "otomobil",
+      "oto",
+      "otobüs"
+    ],
+    "target_word_stem": "araba",
+    "related_word_stem": [
+      "otomobil",
+      "oto",
+      "otobüs"
+    ]
+  },
+  {
+    "target_word": "oto",
+    "related_word": [
+      "vasıta",
+      "araç",
+      "araba"
+    ],
+    "target_word_stem": "oto",
+    "related_word_stem": [
+      "vasıta",
+      "araç",
+      "araba"
+    ]
+  },
+  {
+    "target_word": "söz",
+    "related_word": [
+      "kelam",
+      "lügat",
+      "kelime"
+    ],
+    "target_word_stem": "söz",
+    "related_word_stem": [
+      "kelam",
+      "lügat",
+      "kelime"
+    ]
+  }
+]

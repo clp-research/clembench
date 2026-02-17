@@ -1,0 +1,380 @@
+[
+  {
+    "target_word": "vyras",
+    "related_word": [
+      "moteris",
+      "asmenybe",
+      "asmuo"
+    ],
+    "target_word_stem": "vyras",
+    "related_word_stem": [
+      "moteris",
+      "asmenybe",
+      "asmuo"
+    ]
+  },
+  {
+    "target_word": "burna",
+    "related_word": [
+      "snukis",
+      "gomurys",
+      "lūpa"
+    ],
+    "target_word_stem": "burna",
+    "related_word_stem": [
+      "snukis",
+      "gomurys",
+      "lūpa"
+    ]
+  },
+  {
+    "target_word": "kampas",
+    "related_word": [
+      "kerte",
+      "pastoge",
+      "briauna"
+    ],
+    "target_word_stem": "kampas",
+    "related_word_stem": [
+      "kerte",
+      "pastoge",
+      "briauna"
+    ]
+  },
+  {
+    "target_word": "varlė",
+    "related_word": [
+      "amfibija",
+      "rupuže",
+      "salamandra"
+    ],
+    "target_word_stem": "varlė",
+    "related_word_stem": [
+      "amfibija",
+      "rupuže",
+      "salamandra"
+    ]
+  },
+  {
+    "target_word": "gluosnis",
+    "related_word": [
+      "medis",
+      "blinde",
+      "karklas"
+    ],
+    "target_word_stem": "gluosnis",
+    "related_word_stem": [
+      "medis",
+      "blinde",
+      "karklas"
+    ]
+  },
+  {
+    "target_word": "žievė",
+    "related_word": [
+      "oda",
+      "pluta",
+      "tošis"
+    ],
+    "target_word_stem": "žievė",
+    "related_word_stem": [
+      "oda",
+      "pluta",
+      "tošis"
+    ]
+  },
+  {
+    "target_word": "kaukolė",
+    "related_word": [
+      "galva",
+      "griaučiai",
+      "skeletas"
+    ],
+    "target_word_stem": "kaukolė",
+    "related_word_stem": [
+      "galva",
+      "griaučiai",
+      "skeletas"
+    ]
+  },
+  {
+    "target_word": "Žvilgsnis",
+    "related_word": [
+      "Akys",
+      "Žiūrėti",
+      "Regėjimas"
+    ],
+    "target_word_stem": "Žvilgsn",
+    "related_word_stem": [
+      "Ak",
+      "Žiūr",
+      "Reg"
+    ]
+  },
+  {
+    "target_word": "Sąsiuvinis",
+    "related_word": [
+      "Popierius",
+      "Rašyti",
+      "Mokykla"
+    ],
+    "target_word_stem": "Sąsiuvin",
+    "related_word_stem": [
+      "Popier",
+      "Raš",
+      "Mokykl"
+    ]
+  },
+  {
+    "target_word": "Atsiprašymas",
+    "related_word": [
+      "Atleisti",
+      "Kaltė",
+      "Gaila"
+    ],
+    "target_word_stem": "Atsipraš",
+    "related_word_stem": [
+      "Atleist",
+      "Kalt",
+      "Gail"
+    ]
+  },
+  {
+    "target_word": "Kryptis",
+    "related_word": [
+      "Kelias",
+      "Rodyklė",
+      "Pusė"
+    ],
+    "target_word_stem": "Krypt",
+    "related_word_stem": [
+      "Kel",
+      "Rodykl",
+      "Pus"
+    ]
+  },
+  {
+    "target_word": "Prielaida",
+    "related_word": [
+      "Manyti",
+      "Spėjimas",
+      "Teiginys"
+    ],
+    "target_word_stem": "Prielaid",
+    "related_word_stem": [
+      "Many",
+      "Spėj",
+      "Teig"
+    ]
+  },
+  {
+    "target_word": "Sąmonė",
+    "related_word": [
+      "Protas",
+      "Mąstymas",
+      "Jausmai"
+    ],
+    "target_word_stem": "Sąmon",
+    "related_word_stem": [
+      "Prot",
+      "Mąst",
+      "Jausm"
+    ]
+  },
+  {
+    "target_word": "Nuojauta",
+    "related_word": [
+      "Jausti",
+      "Numanymas",
+      "Intuicija"
+    ],
+    "target_word_stem": "Nuojaut",
+    "related_word_stem": [
+      "Jaust",
+      "Numan",
+      "Intuic"
+    ]
+  },
+  {
+    "target_word": "Būdas",
+    "related_word": [
+      "Charakteris",
+      "Elgesys",
+      "Įprotis"
+    ],
+    "target_word_stem": "Būd",
+    "related_word_stem": [
+      "Charakter",
+      "Elg",
+      "Įprot"
+    ]
+  },
+  {
+    "target_word": "Atodūsis",
+    "related_word": [
+      "Kvėpuoti",
+      "Atsipalaiduoti",
+      "Liūdesys"
+    ],
+    "target_word_stem": "Atodūs",
+    "related_word_stem": [
+      "Kvėp",
+      "Atsipalaid",
+      "Liūdes"
+    ]
+  },
+  {
+    "target_word": "Sutartis",
+    "related_word": [
+      "Dokumentas",
+      "Pasirašyti",
+      "Susitarimas"
+    ],
+    "target_word_stem": "Sutart",
+    "related_word_stem": [
+      "Dokument",
+      "Pasiraš",
+      "Susitar"
+    ]
+  },
+  {
+    "target_word": "Apgailestavimas",
+    "related_word": [
+      "Liūdėti",
+      "Atsiprašyti",
+      "Klaida"
+    ],
+    "target_word_stem": "Apgailestav",
+    "related_word_stem": [
+      "Liūd",
+      "Atsipraš",
+      "Klaid"
+    ]
+  },
+  {
+    "target_word": "Įkvėpimas",
+    "related_word": [
+      "Kūryba",
+      "Idėja",
+      "Muzika"
+    ],
+    "target_word_stem": "Įkvėp",
+    "related_word_stem": [
+      "Kūryb",
+      "Idėj",
+      "Muzik"
+    ]
+  },
+  {
+    "target_word": "Užuomina",
+    "related_word": [
+      "Paslaptis",
+      "Mintis",
+      "Patarimas"
+    ],
+    "target_word_stem": "Užuomin",
+    "related_word_stem": [
+      "Paslapt",
+      "Mint",
+      "Patar"
+    ]
+  },
+  {
+    "target_word": "Įtaka",
+    "related_word": [
+      "Paveikti",
+      "Autoritetas",
+      "Valdžia"
+    ],
+    "target_word_stem": "Įtak",
+    "related_word_stem": [
+      "Paveik",
+      "Autoritet",
+      "Valdži"
+    ]
+  },
+  {
+    "target_word": "Šnabždesys",
+    "related_word": [
+      "Tyla",
+      "Kalba",
+      "Paslaptis"
+    ],
+    "target_word_stem": "Šnabždes",
+    "related_word_stem": [
+      "Tyl",
+      "Kalb",
+      "Paslapt"
+    ]
+  },
+  {
+    "target_word": "Atsipalaidavimas",
+    "related_word": [
+      "Poilsis",
+      "Stresas",
+      "Joga"
+    ],
+    "target_word_stem": "Atsipalaid",
+    "related_word_stem": [
+      "Poils",
+      "Stres",
+      "Jog"
+    ]
+  },
+  {
+    "target_word": "Ištvermė",
+    "related_word": [
+      "Stiprybė",
+      "Kantrybė",
+      "Sportas"
+    ],
+    "target_word_stem": "Ištverm",
+    "related_word_stem": [
+      "Stipr",
+      "Kantr",
+      "Sport"
+    ]
+  },
+  {
+    "target_word": "Apgaulė",
+    "related_word": [
+      "Melas",
+      "Išdavystė",
+      "Aferistas"
+    ],
+    "target_word_stem": "Apgaul",
+    "related_word_stem": [
+      "Mel",
+      "Išdav",
+      "Aferist"
+    ]
+  },
+  {
+    "target_word": "Atspindys",
+    "related_word": [
+      "Veidrodis",
+      "Šviesa",
+      "Vanduo"
+    ],
+    "target_word_stem": "Atspind",
+    "related_word_stem": [
+      "Veidrod",
+      "Švies",
+      "Vand"
+    ]
+  },
+  {
+    "target_word": "Svajonė",
+    "related_word": [
+      "Miegoti",
+      "Fantazija",
+      "Tikslas"
+    ],
+    "target_word_stem": "Svajon",
+    "related_word_stem": [
+      "Mieg",
+      "Fantaz",
+      "Tiksl"
+    ]
+  }
+]

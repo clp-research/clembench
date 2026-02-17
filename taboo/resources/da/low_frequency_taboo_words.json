@@ -1,0 +1,450 @@
+[
+  {
+    "target_word": "sand",
+    "related_word": [
+      "rigtig",
+      "egentlig",
+      "ægte"
+    ],
+    "target_word_stem": "sand",
+    "related_word_stem": [
+      "rigtig",
+      "egentlig",
+      "ægte"
+    ]
+  },
+  {
+    "target_word": "sky",
+    "related_word": [
+      "genert",
+      "bange",
+      "forlegen"
+    ],
+    "target_word_stem": "sky",
+    "related_word_stem": [
+      "genert",
+      "bange",
+      "forlegen"
+    ]
+  },
+  {
+    "target_word": "kamp",
+    "related_word": [
+      "slag",
+      "træfning",
+      "dyst"
+    ],
+    "target_word_stem": "kamp",
+    "related_word_stem": [
+      "slag",
+      "træfning",
+      "dyst"
+    ]
+  },
+  {
+    "target_word": "rædsel",
+    "related_word": [
+      "skræk",
+      "angst",
+      "gru"
+    ],
+    "target_word_stem": "rædsel",
+    "related_word_stem": [
+      "skræk",
+      "angst",
+      "gru"
+    ]
+  },
+  {
+    "target_word": "abe",
+    "related_word": [
+      "dyr",
+      "pattedyr",
+      "ansvar"
+    ],
+    "target_word_stem": "abe",
+    "related_word_stem": [
+      "dyr",
+      "pattedyr",
+      "ansvar"
+    ]
+  },
+  {
+    "target_word": "ægtefælle",
+    "related_word": [
+      "hustru",
+      "mand",
+      "kone"
+    ],
+    "target_word_stem": "ægtefælle",
+    "related_word_stem": [
+      "hustru",
+      "mand",
+      "kone"
+    ]
+  },
+  {
+    "target_word": "opfattelse",
+    "related_word": [
+      "begreb",
+      "idé",
+      "mening"
+    ],
+    "target_word_stem": "opfattelse",
+    "related_word_stem": [
+      "begreb",
+      "idé",
+      "mening"
+    ]
+  },
+  {
+    "target_word": "høg",
+    "related_word": [
+      "dyr",
+      "hvirveldyr",
+      "rovfugl"
+    ],
+    "target_word_stem": "høg",
+    "related_word_stem": [
+      "dyr",
+      "hvirveldyr",
+      "rovfugl"
+    ]
+  },
+  {
+    "target_word": "accent",
+    "related_word": [
+      "tegn",
+      "betoning",
+      "hovedvægt"
+    ],
+    "target_word_stem": "accent",
+    "related_word_stem": [
+      "tegn",
+      "betoning",
+      "hovedvægt"
+    ]
+  },
+  {
+    "target_word": "onkel",
+    "related_word": [
+      "morbror",
+      "nevø",
+      "tante"
+    ],
+    "target_word_stem": "onkel",
+    "related_word_stem": [
+      "morbror",
+      "nevø",
+      "tante"
+    ]
+  },
+  {
+    "target_word": "ravn",
+    "related_word": [
+      "dyr",
+      "hvirveldyr",
+      "fugl"
+    ],
+    "target_word_stem": "ravn",
+    "related_word_stem": [
+      "dyr",
+      "hvirveldyr",
+      "fugl"
+    ]
+  },
+  {
+    "target_word": "krage",
+    "related_word": [
+      "fugl",
+      "hvirveldyr",
+      "dyr"
+    ],
+    "target_word_stem": "krage",
+    "related_word_stem": [
+      "fugl",
+      "hvirveldyr",
+      "dyr"
+    ]
+  },
+  {
+    "target_word": "Åsyn",
+    "related_word": [
+      "Ansigt",
+      "Syn",
+      "Se"
+    ],
+    "target_word_stem": "Åsyn",
+    "related_word_stem": [
+      "Ansigt",
+      "Syn",
+      "Se"
+    ]
+  },
+  {
+    "target_word": "Bekvem",
+    "related_word": [
+      "Komfortabel",
+      "Behagelig",
+      "Let"
+    ],
+    "target_word_stem": "Bekvem",
+    "related_word_stem": [
+      "Komfort",
+      "Behag",
+      "Let"
+    ]
+  },
+  {
+    "target_word": "Dyd",
+    "related_word": [
+      "Moral",
+      "Godhed",
+      "Ære"
+    ],
+    "target_word_stem": "Dyd",
+    "related_word_stem": [
+      "Moral",
+      "God",
+      "Ær"
+    ]
+  },
+  {
+    "target_word": "Ærbødighed",
+    "related_word": [
+      "Respekt",
+      "Høflighed",
+      "Veneration"
+    ],
+    "target_word_stem": "Ærbødig",
+    "related_word_stem": [
+      "Respekt",
+      "Høflig",
+      "Vener"
+    ]
+  },
+  {
+    "target_word": "Formaste",
+    "related_word": [
+      "Vove",
+      "Driste",
+      "Turde"
+    ],
+    "target_word_stem": "Formast",
+    "related_word_stem": [
+      "Vov",
+      "Drist",
+      "Tur"
+    ]
+  },
+  {
+    "target_word": "Grue",
+    "related_word": [
+      "Frygte",
+      "Ængste",
+      "Bange"
+    ],
+    "target_word_stem": "Grue",
+    "related_word_stem": [
+      "Frygt",
+      "Ængst",
+      "Bang"
+    ]
+  },
+  {
+    "target_word": "Higen",
+    "related_word": [
+      "Længsel",
+      "Ønske",
+      "Trang"
+    ],
+    "target_word_stem": "Hig",
+    "related_word_stem": [
+      "Læng",
+      "Ønsk",
+      "Trang"
+    ]
+  },
+  {
+    "target_word": "Indignation",
+    "related_word": [
+      "Harm",
+      "Vrede",
+      "Forargelse"
+    ],
+    "target_word_stem": "Indignation",
+    "related_word_stem": [
+      "Harm",
+      "Vred",
+      "Forarg"
+    ]
+  },
+  {
+    "target_word": "Karsk",
+    "related_word": [
+      "Frisk",
+      "Livlig",
+      "Rask"
+    ],
+    "target_word_stem": "Karsk",
+    "related_word_stem": [
+      "Frisk",
+      "Liv",
+      "Rask"
+    ]
+  },
+  {
+    "target_word": "Lemlæste",
+    "related_word": [
+      "Skade",
+      "Invalidere",
+      "Såre"
+    ],
+    "target_word_stem": "Lemlæst",
+    "related_word_stem": [
+      "Skad",
+      "Invalid",
+      "Sår"
+    ]
+  },
+  {
+    "target_word": "Mæle",
+    "related_word": [
+      "Tale",
+      "Stemme",
+      "Sige"
+    ],
+    "target_word_stem": "Mæl",
+    "related_word_stem": [
+      "Tal",
+      "Stem",
+      "Sig"
+    ]
+  },
+  {
+    "target_word": "Nærig",
+    "related_word": [
+      "Gnier",
+      "Gerrig",
+      "Sparsom"
+    ],
+    "target_word_stem": "Nærig",
+    "related_word_stem": [
+      "Gnier",
+      "Gerrig",
+      "Spar"
+    ]
+  },
+  {
+    "target_word": "Omsider",
+    "related_word": [
+      "Endelig",
+      "Til sidst",
+      "Efter lang tid"
+    ],
+    "target_word_stem": "Omsid",
+    "related_word_stem": [
+      "End",
+      "Sidst",
+      "Lang"
+    ]
+  },
+  {
+    "target_word": "Plejede",
+    "related_word": [
+      "Vane",
+      "Brug",
+      "Ofte"
+    ],
+    "target_word_stem": "Plej",
+    "related_word_stem": [
+      "Van",
+      "Brug",
+      "Oft"
+    ]
+  },
+  {
+    "target_word": "Rådslagning",
+    "related_word": [
+      "Diskussion",
+      "Forhandling",
+      "Drøftelse"
+    ],
+    "target_word_stem": "Rådslag",
+    "related_word_stem": [
+      "Diskut",
+      "Forhandl",
+      "Drøft"
+    ]
+  },
+  {
+    "target_word": "Skøde",
+    "related_word": [
+      "Ejendom",
+      "Hus",
+      "Overdrage"
+    ],
+    "target_word_stem": "Skød",
+    "related_word_stem": [
+      "Ejen",
+      "Hus",
+      "Overdrag"
+    ]
+  },
+  {
+    "target_word": "Tækkelig",
+    "related_word": [
+      "Passende",
+      "Anstændig",
+      "Sømmelig"
+    ],
+    "target_word_stem": "Tækkelig",
+    "related_word_stem": [
+      "Pas",
+      "Anstænd",
+      "Sømm"
+    ]
+  },
+  {
+    "target_word": "Udsondre",
+    "related_word": [
+      "Adskille",
+      "Isolere",
+      "Fjerne"
+    ],
+    "target_word_stem": "Udsondr",
+    "related_word_stem": [
+      "Adskil",
+      "Isoler",
+      "Fjern"
+    ]
+  },
+  {
+    "target_word": "Vederstyggelig",
+    "related_word": [
+      "Afskyelig",
+      "Modbydelig",
+      "Ulækker"
+    ],
+    "target_word_stem": "Vederstygg",
+    "related_word_stem": [
+      "Afsky",
+      "Modbyd",
+      "Ulæk"
+    ]
+  },
+  {
+    "target_word": "Ynk",
+    "related_word": [
+      "Medlidenhed",
+      "Synd",
+      "Beklage"
+    ],
+    "target_word_stem": "Ynk",
+    "related_word_stem": [
+      "Medlid",
+      "Synd",
+      "Beklag"
+    ]
+  }
+]

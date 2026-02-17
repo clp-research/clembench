@@ -1,0 +1,1668 @@
+[
+  {
+    "target_word": "hogar",
+    "related_word": [
+      "casa",
+      "foco",
+      "fuego"
+    ],
+    "target_word_stem": "hogar",
+    "related_word_stem": [
+      "casa",
+      "foco",
+      "fuego"
+    ]
+  },
+  {
+    "target_word": "tiempo",
+    "related_word": [
+      "hora",
+      "correr",
+      "vez"
+    ],
+    "target_word_stem": "tiempo",
+    "related_word_stem": [
+      "hora",
+      "correr",
+      "vez"
+    ]
+  },
+  {
+    "target_word": "servicio",
+    "related_word": [
+      "favor",
+      "retrete",
+      "cuenta"
+    ],
+    "target_word_stem": "servicio",
+    "related_word_stem": [
+      "favor",
+      "retrete",
+      "cuenta"
+    ]
+  },
+  {
+    "target_word": "año",
+    "related_word": [
+      "anal",
+      "aniversario",
+      "década"
+    ],
+    "target_word_stem": "año",
+    "related_word_stem": [
+      "anal",
+      "aniversario",
+      "década"
+    ]
+  },
+  {
+    "target_word": "precio",
+    "related_word": [
+      "tarifa",
+      "gastos",
+      "factura"
+    ],
+    "target_word_stem": "precio",
+    "related_word_stem": [
+      "tarifa",
+      "gastos",
+      "factura"
+    ]
+  },
+  {
+    "target_word": "trabajo",
+    "related_word": [
+      "empleo",
+      "obra",
+      "quehacer"
+    ],
+    "target_word_stem": "trabajo",
+    "related_word_stem": [
+      "empleo",
+      "obra",
+      "quehacer"
+    ]
+  },
+  {
+    "target_word": "nombre",
+    "related_word": [
+      "sustantivo",
+      "título",
+      "designación"
+    ],
+    "target_word_stem": "nombre",
+    "related_word_stem": [
+      "sustantivo",
+      "título",
+      "designación"
+    ]
+  },
+  {
+    "target_word": "hotel",
+    "related_word": [
+      "albergue",
+      "pensión",
+      "posada"
+    ],
+    "target_word_stem": "hotel",
+    "related_word_stem": [
+      "albergue",
+      "pensión",
+      "posada"
+    ]
+  },
+  {
+    "target_word": "tienda",
+    "related_word": [
+      "almacén",
+      "abarrotería",
+      "carpa"
+    ],
+    "target_word_stem": "tienda",
+    "related_word_stem": [
+      "almacén",
+      "abarrotería",
+      "carpa"
+    ]
+  },
+  {
+    "target_word": "grupo",
+    "related_word": [
+      "colectivo",
+      "horda",
+      "clase"
+    ],
+    "target_word_stem": "grupo",
+    "related_word_stem": [
+      "colectivo",
+      "horda",
+      "clase"
+    ]
+  },
+  {
+    "target_word": "ciudad",
+    "related_word": [
+      "aldea",
+      "pueblo",
+      "cívico"
+    ],
+    "target_word_stem": "ciudad",
+    "related_word_stem": [
+      "aldea",
+      "pueblo",
+      "cívico"
+    ]
+  },
+  {
+    "target_word": "mundo",
+    "related_word": [
+      "tierra",
+      "planeta",
+      "cosmos"
+    ],
+    "target_word_stem": "mundo",
+    "related_word_stem": [
+      "tierra",
+      "planeta",
+      "cosmos"
+    ]
+  },
+  {
+    "target_word": "término",
+    "related_word": [
+      "voz",
+      "final",
+      "acabar"
+    ],
+    "target_word_stem": "término",
+    "related_word_stem": [
+      "voz",
+      "final",
+      "acabar"
+    ]
+  },
+  {
+    "target_word": "tipo",
+    "related_word": [
+      "gallo",
+      "maje",
+      "clase"
+    ],
+    "target_word_stem": "tipo",
+    "related_word_stem": [
+      "gallo",
+      "maje",
+      "clase"
+    ]
+  },
+  {
+    "target_word": "estudiante",
+    "related_word": [
+      "alumno",
+      "universitario",
+      "colegial"
+    ],
+    "target_word_stem": "estudiante",
+    "related_word_stem": [
+      "alumno",
+      "universitario",
+      "colegial"
+    ]
+  },
+  {
+    "target_word": "niño",
+    "related_word": [
+      "muchacho",
+      "infante",
+      "adulto"
+    ],
+    "target_word_stem": "niño",
+    "related_word_stem": [
+      "muchacho",
+      "infante",
+      "adulto"
+    ]
+  },
+  {
+    "target_word": "mujer",
+    "related_word": [
+      "esposa",
+      "hombre",
+      "chica"
+    ],
+    "target_word_stem": "mujer",
+    "related_word_stem": [
+      "esposa",
+      "hombre",
+      "chica"
+    ]
+  },
+  {
+    "target_word": "oficina",
+    "related_word": [
+      "despacho",
+      "registro",
+      "delegación"
+    ],
+    "target_word_stem": "oficina",
+    "related_word_stem": [
+      "despacho",
+      "registro",
+      "delegación"
+    ]
+  },
+  {
+    "target_word": "formulario",
+    "related_word": [
+      "solicitud",
+      "hoja",
+      "planilla"
+    ],
+    "target_word_stem": "formulario",
+    "related_word_stem": [
+      "solicitud",
+      "hoja",
+      "planilla"
+    ]
+  },
+  {
+    "target_word": "cuenta",
+    "related_word": [
+      "precio",
+      "cálculo",
+      "descuento"
+    ],
+    "target_word_stem": "cuenta",
+    "related_word_stem": [
+      "precio",
+      "cálculo",
+      "descuento"
+    ]
+  },
+  {
+    "target_word": "prueba",
+    "related_word": [
+      "test",
+      "examen",
+      "cala"
+    ],
+    "target_word_stem": "prueba",
+    "related_word_stem": [
+      "test",
+      "examen",
+      "cala"
+    ]
+  },
+  {
+    "target_word": "hora",
+    "related_word": [
+      "tiempo",
+      "día",
+      "reloj"
+    ],
+    "target_word_stem": "hora",
+    "related_word_stem": [
+      "tiempo",
+      "día",
+      "reloj"
+    ]
+  },
+  {
+    "target_word": "valor",
+    "related_word": [
+      "cobardía",
+      "coraje",
+      "ánimo"
+    ],
+    "target_word_stem": "valor",
+    "related_word_stem": [
+      "cobardía",
+      "coraje",
+      "ánimo"
+    ]
+  },
+  {
+    "target_word": "registro",
+    "related_word": [
+      "inscripción",
+      "nota",
+      "grabación"
+    ],
+    "target_word_stem": "registro",
+    "related_word_stem": [
+      "inscripción",
+      "nota",
+      "grabación"
+    ]
+  },
+  {
+    "target_word": "herramienta",
+    "related_word": [
+      "trebejo",
+      "artilugio",
+      "hierro"
+    ],
+    "target_word_stem": "herramienta",
+    "related_word_stem": [
+      "trebejo",
+      "artilugio",
+      "hierro"
+    ]
+  },
+  {
+    "target_word": "habitación",
+    "related_word": [
+      "cuarto",
+      "aposento",
+      "cámara"
+    ],
+    "target_word_stem": "habitación",
+    "related_word_stem": [
+      "cuarto",
+      "aposento",
+      "cámara"
+    ]
+  },
+  {
+    "target_word": "hoy",
+    "related_word": [
+      "antaño",
+      "actualmente",
+      "mañana"
+    ],
+    "target_word_stem": "hoy",
+    "related_word_stem": [
+      "antaño",
+      "actualmente",
+      "mañana"
+    ]
+  },
+  {
+    "target_word": "semana",
+    "related_word": [
+      "mes",
+      "año",
+      "día"
+    ],
+    "target_word_stem": "semana",
+    "related_word_stem": [
+      "mes",
+      "año",
+      "día"
+    ]
+  },
+  {
+    "target_word": "clase",
+    "related_word": [
+      "estatus",
+      "tipo",
+      "grupo"
+    ],
+    "target_word_stem": "clase",
+    "related_word_stem": [
+      "estatus",
+      "tipo",
+      "grupo"
+    ]
+  },
+  {
+    "target_word": "sur",
+    "related_word": [
+      "norte",
+      "austral",
+      "meridional"
+    ],
+    "target_word_stem": "sur",
+    "related_word_stem": [
+      "norte",
+      "austral",
+      "meridional"
+    ]
+  },
+  {
+    "target_word": "mes",
+    "related_word": [
+      "año",
+      "mensualidad",
+      "sietemesino"
+    ],
+    "target_word_stem": "mes",
+    "related_word_stem": [
+      "año",
+      "mensualidad",
+      "sietemesino"
+    ]
+  },
+  {
+    "target_word": "agua",
+    "related_word": [
+      "pañí",
+      "zumo",
+      "acueducto"
+    ],
+    "target_word_stem": "agua",
+    "related_word_stem": [
+      "pañí",
+      "zumo",
+      "acueducto"
+    ]
+  },
+  {
+    "target_word": "galería",
+    "related_word": [
+      "tribuna",
+      "pórtico",
+      "pinacoteca"
+    ],
+    "target_word_stem": "galería",
+    "related_word_stem": [
+      "tribuna",
+      "pórtico",
+      "pinacoteca"
+    ]
+  },
+  {
+    "target_word": "fiesta",
+    "related_word": [
+      "parranda",
+      "día",
+      "carrete"
+    ],
+    "target_word_stem": "fiesta",
+    "related_word_stem": [
+      "parranda",
+      "día",
+      "carrete"
+    ]
+  },
+  {
+    "target_word": "pago",
+    "related_word": [
+      "granja",
+      "chacra",
+      "hacienda"
+    ],
+    "target_word_stem": "pago",
+    "related_word_stem": [
+      "granja",
+      "chacra",
+      "hacienda"
+    ]
+  },
+  {
+    "target_word": "idioma",
+    "related_word": [
+      "lenguaje",
+      "dialecto",
+      "habla"
+    ],
+    "target_word_stem": "idioma",
+    "related_word_stem": [
+      "lenguaje",
+      "dialecto",
+      "habla"
+    ]
+  },
+  {
+    "target_word": "carro",
+    "related_word": [
+      "coche",
+      "automóvil",
+      "movilizar"
+    ],
+    "target_word_stem": "carro",
+    "related_word_stem": [
+      "coche",
+      "automóvil",
+      "movilizar"
+    ]
+  },
+  {
+    "target_word": "cámara",
+    "related_word": [
+      "habitación",
+      "chico",
+      "fotografía"
+    ],
+    "target_word_stem": "cámara",
+    "related_word_stem": [
+      "habitación",
+      "chico",
+      "fotografía"
+    ]
+  },
+  {
+    "target_word": "noche",
+    "related_word": [
+      "oscuridad",
+      "mañana",
+      "tarde"
+    ],
+    "target_word_stem": "noche",
+    "related_word_stem": [
+      "oscuridad",
+      "mañana",
+      "tarde"
+    ]
+  },
+  {
+    "target_word": "paquete",
+    "related_word": [
+      "encomienda",
+      "manco",
+      "bulto"
+    ],
+    "target_word_stem": "paquete",
+    "related_word_stem": [
+      "encomienda",
+      "manco",
+      "bulto"
+    ]
+  },
+  {
+    "target_word": "espacio",
+    "related_word": [
+      "ámbito",
+      "cosmos",
+      "azul"
+    ],
+    "target_word_stem": "espacio",
+    "related_word_stem": [
+      "ámbito",
+      "cosmos",
+      "azul"
+    ]
+  },
+  {
+    "target_word": "bebé",
+    "related_word": [
+      "rorro",
+      "guagua",
+      "mamá"
+    ],
+    "target_word_stem": "bebé",
+    "related_word_stem": [
+      "rorro",
+      "guagua",
+      "mamá"
+    ]
+  },
+  {
+    "target_word": "tierra",
+    "related_word": [
+      "suelo",
+      "mar",
+      "mundo"
+    ],
+    "target_word_stem": "tierra",
+    "related_word_stem": [
+      "suelo",
+      "mar",
+      "mundo"
+    ]
+  },
+  {
+    "target_word": "asociación",
+    "related_word": [
+      "sindicato",
+      "colectivo",
+      "liga"
+    ],
+    "target_word_stem": "asociación",
+    "related_word_stem": [
+      "sindicato",
+      "colectivo",
+      "liga"
+    ]
+  },
+  {
+    "target_word": "figura",
+    "related_word": [
+      "rostro",
+      "papel",
+      "mapa"
+    ],
+    "target_word_stem": "figura",
+    "related_word_stem": [
+      "rostro",
+      "papel",
+      "mapa"
+    ]
+  },
+  {
+    "target_word": "partido",
+    "related_word": [
+      "encuentro",
+      "adherencia",
+      "juego"
+    ],
+    "target_word_stem": "partido",
+    "related_word_stem": [
+      "encuentro",
+      "adherencia",
+      "juego"
+    ]
+  },
+  {
+    "target_word": "factura",
+    "related_word": [
+      "precio",
+      "bizcocho",
+      "f.a"
+    ],
+    "target_word_stem": "factura",
+    "related_word_stem": [
+      "precio",
+      "bizcocho",
+      "f.a"
+    ]
+  },
+  {
+    "target_word": "padre",
+    "related_word": [
+      "abuelo",
+      "chivo",
+      "guay"
+    ],
+    "target_word_stem": "padre",
+    "related_word_stem": [
+      "abuelo",
+      "chivo",
+      "guay"
+    ]
+  },
+  {
+    "target_word": "dueño",
+    "related_word": [
+      "propietario",
+      "comandante",
+      "amo"
+    ],
+    "target_word_stem": "dueño",
+    "related_word_stem": [
+      "propietario",
+      "comandante",
+      "amo"
+    ]
+  },
+  {
+    "target_word": "muestra",
+    "related_word": [
+      "espécimen",
+      "seña",
+      "signo"
+    ],
+    "target_word_stem": "muestra",
+    "related_word_stem": [
+      "espécimen",
+      "seña",
+      "signo"
+    ]
+  },
+  {
+    "target_word": "pueblo",
+    "related_word": [
+      "ciudad",
+      "población",
+      "popular"
+    ],
+    "target_word_stem": "pueblo",
+    "related_word_stem": [
+      "ciudad",
+      "población",
+      "popular"
+    ]
+  },
+  {
+    "target_word": "corazón",
+    "related_word": [
+      "alma",
+      "mano",
+      "bobo"
+    ],
+    "target_word_stem": "corazón",
+    "related_word_stem": [
+      "alma",
+      "mano",
+      "bobo"
+    ]
+  },
+  {
+    "target_word": "lago",
+    "related_word": [
+      "estanque",
+      "agua",
+      "lacustre"
+    ],
+    "target_word_stem": "lago",
+    "related_word_stem": [
+      "estanque",
+      "agua",
+      "lacustre"
+    ]
+  },
+  {
+    "target_word": "pie",
+    "related_word": [
+      "mocasín",
+      "pedestre",
+      "peón"
+    ],
+    "target_word_stem": "pie",
+    "related_word_stem": [
+      "mocasín",
+      "pedestre",
+      "peón"
+    ]
+  },
+  {
+    "target_word": "rey",
+    "related_word": [
+      "monarca",
+      "ajedrez",
+      "reinado"
+    ],
+    "target_word_stem": "rey",
+    "related_word_stem": [
+      "monarca",
+      "ajedrez",
+      "reinado"
+    ]
+  },
+  {
+    "target_word": "muerte",
+    "related_word": [
+      "defunción",
+      "deceso",
+      "boleta"
+    ],
+    "target_word_stem": "muerte",
+    "related_word_stem": [
+      "defunción",
+      "deceso",
+      "boleta"
+    ]
+  },
+  {
+    "target_word": "flor",
+    "related_word": [
+      "roseta",
+      "súchil",
+      "requiebro"
+    ],
+    "target_word_stem": "flor",
+    "related_word_stem": [
+      "roseta",
+      "súchil",
+      "requiebro"
+    ]
+  },
+  {
+    "target_word": "construcción",
+    "related_word": [
+      "edificio",
+      "acuerdo",
+      "chico"
+    ],
+    "target_word_stem": "construcción",
+    "related_word_stem": [
+      "edificio",
+      "acuerdo",
+      "chico"
+    ]
+  },
+  {
+    "target_word": "protección",
+    "related_word": [
+      "defensa",
+      "égida",
+      "cobijo"
+    ],
+    "target_word_stem": "protección",
+    "related_word_stem": [
+      "defensa",
+      "égida",
+      "cobijo"
+    ]
+  },
+  {
+    "target_word": "árbol",
+    "related_word": [
+      "bosque",
+      "floresta",
+      "arboriforme"
+    ],
+    "target_word_stem": "árbol",
+    "related_word_stem": [
+      "bosque",
+      "floresta",
+      "arboriforme"
+    ]
+  },
+  {
+    "target_word": "huésped",
+    "related_word": [
+      "invitado",
+      "anfitrión",
+      "hospicio"
+    ],
+    "target_word_stem": "huésped",
+    "related_word_stem": [
+      "invitado",
+      "anfitrión",
+      "hospicio"
+    ]
+  },
+  {
+    "target_word": "suelo",
+    "related_word": [
+      "tierra",
+      "piso",
+      "solador"
+    ],
+    "target_word_stem": "suelo",
+    "related_word_stem": [
+      "tierra",
+      "piso",
+      "solador"
+    ]
+  },
+  {
+    "target_word": "costumbre",
+    "related_word": [
+      "vezo",
+      "hábito",
+      "usanza"
+    ],
+    "target_word_stem": "costumbre",
+    "related_word_stem": [
+      "vezo",
+      "hábito",
+      "usanza"
+    ]
+  },
+  {
+    "target_word": "voz",
+    "related_word": [
+      "término",
+      "abogar",
+      "vocablo"
+    ],
+    "target_word_stem": "voz",
+    "related_word_stem": [
+      "término",
+      "abogar",
+      "vocablo"
+    ]
+  },
+  {
+    "target_word": "vidrio",
+    "related_word": [
+      "copa",
+      "cristal",
+      "recipiente"
+    ],
+    "target_word_stem": "vidrio",
+    "related_word_stem": [
+      "copa",
+      "cristal",
+      "recipiente"
+    ]
+  },
+  {
+    "target_word": "caballo",
+    "related_word": [
+      "animal",
+      "rocín",
+      "ajedrez"
+    ],
+    "target_word_stem": "caballo",
+    "related_word_stem": [
+      "animal",
+      "rocín",
+      "ajedrez"
+    ]
+  },
+  {
+    "target_word": "líder",
+    "related_word": [
+      "dirigente",
+      "jefe",
+      "cabeza"
+    ],
+    "target_word_stem": "líder",
+    "related_word_stem": [
+      "dirigente",
+      "jefe",
+      "cabeza"
+    ]
+  },
+  {
+    "target_word": "boda",
+    "related_word": [
+      "alegría",
+      "matrimonio",
+      "nupcias"
+    ],
+    "target_word_stem": "boda",
+    "related_word_stem": [
+      "alegría",
+      "matrimonio",
+      "nupcias"
+    ]
+  },
+  {
+    "target_word": "juicio",
+    "related_word": [
+      "pleito",
+      "cordura",
+      "insensatez"
+    ],
+    "target_word_stem": "juicio",
+    "related_word_stem": [
+      "pleito",
+      "cordura",
+      "insensatez"
+    ]
+  },
+  {
+    "target_word": "piso",
+    "related_word": [
+      "suelo",
+      "taburete",
+      "alfombra"
+    ],
+    "target_word_stem": "piso",
+    "related_word_stem": [
+      "suelo",
+      "taburete",
+      "alfombra"
+    ]
+  },
+  {
+    "target_word": "vino",
+    "related_word": [
+      "pan",
+      "vendimia",
+      "vinicultura"
+    ],
+    "target_word_stem": "vino",
+    "related_word_stem": [
+      "pan",
+      "vendimia",
+      "vinicultura"
+    ]
+  },
+  {
+    "target_word": "policía",
+    "related_word": [
+      "agente",
+      "cobani",
+      "tegobi"
+    ],
+    "target_word_stem": "policía",
+    "related_word_stem": [
+      "agente",
+      "cobani",
+      "tegobi"
+    ]
+  },
+  {
+    "target_word": "madera",
+    "related_word": [
+      "árbol",
+      "palo",
+      "fuste"
+    ],
+    "target_word_stem": "madera",
+    "related_word_stem": [
+      "árbol",
+      "palo",
+      "fuste"
+    ]
+  },
+  {
+    "target_word": "calor",
+    "related_word": [
+      "frío",
+      "energía",
+      "calefacción"
+    ],
+    "target_word_stem": "calor",
+    "related_word_stem": [
+      "frío",
+      "energía",
+      "calefacción"
+    ]
+  },
+  {
+    "target_word": "trabajador",
+    "related_word": [
+      "obrero",
+      "laborioso",
+      "currante"
+    ],
+    "target_word_stem": "trabajador",
+    "related_word_stem": [
+      "obrero",
+      "laborioso",
+      "currante"
+    ]
+  },
+  {
+    "target_word": "cocina",
+    "related_word": [
+      "comedor",
+      "salón",
+      "dormitorio"
+    ],
+    "target_word_stem": "cocina",
+    "related_word_stem": [
+      "comedor",
+      "salón",
+      "dormitorio"
+    ]
+  },
+  {
+    "target_word": "piel",
+    "related_word": [
+      "cuero",
+      "cutis",
+      "hollejo"
+    ],
+    "target_word_stem": "piel",
+    "related_word_stem": [
+      "cuero",
+      "cutis",
+      "hollejo"
+    ]
+  },
+  {
+    "target_word": "sangre",
+    "related_word": [
+      "líquido",
+      "crúor",
+      "carácter"
+    ],
+    "target_word_stem": "sangre",
+    "related_word_stem": [
+      "líquido",
+      "crúor",
+      "carácter"
+    ]
+  },
+  {
+    "target_word": "siglo",
+    "related_word": [
+      "centuria",
+      "año",
+      "década"
+    ],
+    "target_word_stem": "siglo",
+    "related_word_stem": [
+      "centuria",
+      "año",
+      "década"
+    ]
+  },
+  {
+    "target_word": "tarea",
+    "related_word": [
+      "deber",
+      "quehacer",
+      "trabajo"
+    ],
+    "target_word_stem": "tarea",
+    "related_word_stem": [
+      "deber",
+      "quehacer",
+      "trabajo"
+    ]
+  },
+  {
+    "target_word": "disposición",
+    "related_word": [
+      "capacidad",
+      "preparativos",
+      "poner"
+    ],
+    "target_word_stem": "disposición",
+    "related_word_stem": [
+      "capacidad",
+      "preparativos",
+      "poner"
+    ]
+  },
+  {
+    "target_word": "viento",
+    "related_word": [
+      "marea",
+      "brisa",
+      "derrota"
+    ],
+    "target_word_stem": "viento",
+    "related_word_stem": [
+      "marea",
+      "brisa",
+      "derrota"
+    ]
+  },
+  {
+    "target_word": "sueño",
+    "related_word": [
+      "soñar",
+      "somnoliento",
+      "dormido"
+    ],
+    "target_word_stem": "sueño",
+    "related_word_stem": [
+      "soñar",
+      "somnoliento",
+      "dormido"
+    ]
+  },
+  {
+    "target_word": "raíz",
+    "related_word": [
+      "árbol",
+      "arraigar",
+      "tronco"
+    ],
+    "target_word_stem": "raíz",
+    "related_word_stem": [
+      "árbol",
+      "arraigar",
+      "tronco"
+    ]
+  },
+  {
+    "target_word": "bola",
+    "related_word": [
+      "cojón",
+      "mentira",
+      "autostop"
+    ],
+    "target_word_stem": "bola",
+    "related_word_stem": [
+      "cojón",
+      "mentira",
+      "autostop"
+    ]
+  },
+  {
+    "target_word": "mañana",
+    "related_word": [
+      "día",
+      "anteayer",
+      "hoy"
+    ],
+    "target_word_stem": "mañana",
+    "related_word_stem": [
+      "día",
+      "anteayer",
+      "hoy"
+    ]
+  },
+  {
+    "target_word": "invierno",
+    "related_word": [
+      "temporada",
+      "año",
+      "bruma"
+    ],
+    "target_word_stem": "invierno",
+    "related_word_stem": [
+      "temporada",
+      "año",
+      "bruma"
+    ]
+  },
+  {
+    "target_word": "señor",
+    "related_word": [
+      "tío",
+      "caballero",
+      "don"
+    ],
+    "target_word_stem": "señor",
+    "related_word_stem": [
+      "tío",
+      "caballero",
+      "don"
+    ]
+  },
+  {
+    "target_word": "capacidad",
+    "related_word": [
+      "disposición",
+      "aforo",
+      "caber"
+    ],
+    "target_word_stem": "capacidad",
+    "related_word_stem": [
+      "disposición",
+      "aforo",
+      "caber"
+    ]
+  },
+  {
+    "target_word": "jefe",
+    "related_word": [
+      "director",
+      "comandante",
+      "líder"
+    ],
+    "target_word_stem": "jefe",
+    "related_word_stem": [
+      "director",
+      "comandante",
+      "líder"
+    ]
+  },
+  {
+    "target_word": "deber",
+    "related_word": [
+      "cometido",
+      "tarea",
+      "obligarse"
+    ],
+    "target_word_stem": "deber",
+    "related_word_stem": [
+      "cometido",
+      "tarea",
+      "obligarse"
+    ]
+  },
+  {
+    "target_word": "aldea",
+    "related_word": [
+      "pueblo",
+      "villa",
+      "población"
+    ],
+    "target_word_stem": "aldea",
+    "related_word_stem": [
+      "pueblo",
+      "villa",
+      "población"
+    ]
+  },
+  {
+    "target_word": "juez",
+    "related_word": [
+      "merino",
+      "judicial",
+      "juzgado"
+    ],
+    "target_word_stem": "juez",
+    "related_word_stem": [
+      "merino",
+      "judicial",
+      "juzgado"
+    ]
+  },
+  {
+    "target_word": "vestido",
+    "related_word": [
+      "traje",
+      "flux",
+      "terno"
+    ],
+    "target_word_stem": "vestido",
+    "related_word_stem": [
+      "traje",
+      "flux",
+      "terno"
+    ]
+  },
+  {
+    "target_word": "rueda",
+    "related_word": [
+      "corro",
+      "rodilla",
+      "rotar"
+    ],
+    "target_word_stem": "rueda",
+    "related_word_stem": [
+      "corro",
+      "rodilla",
+      "rotar"
+    ]
+  },
+  {
+    "target_word": "camión",
+    "related_word": [
+      "autobús",
+      "guagua",
+      "coche"
+    ],
+    "target_word_stem": "camión",
+    "related_word_stem": [
+      "autobús",
+      "guagua",
+      "coche"
+    ]
+  },
+  {
+    "target_word": "altura",
+    "related_word": [
+      "medida",
+      "tono",
+      "peralto"
+    ],
+    "target_word_stem": "altura",
+    "related_word_stem": [
+      "medida",
+      "tono",
+      "peralto"
+    ]
+  },
+  {
+    "target_word": "ratón",
+    "related_word": [
+      "mouse",
+      "mur",
+      "laucha"
+    ],
+    "target_word_stem": "ratón",
+    "related_word_stem": [
+      "mouse",
+      "mur",
+      "laucha"
+    ]
+  },
+  {
+    "target_word": "dolor",
+    "related_word": [
+      "sufrimiento",
+      "pena",
+      "herida"
+    ],
+    "target_word_stem": "dolor",
+    "related_word_stem": [
+      "sufrimiento",
+      "pena",
+      "herida"
+    ]
+  },
+  {
+    "target_word": "cuero",
+    "related_word": [
+      "odre",
+      "pelleja",
+      "piel"
+    ],
+    "target_word_stem": "cuero",
+    "related_word_stem": [
+      "odre",
+      "pelleja",
+      "piel"
+    ]
+  },
+  {
+    "target_word": "asunto",
+    "related_word": [
+      "cuestión",
+      "quehacer",
+      "negocio"
+    ],
+    "target_word_stem": "asunto",
+    "related_word_stem": [
+      "cuestión",
+      "quehacer",
+      "negocio"
+    ]
+  },
+  {
+    "target_word": "dormitorio",
+    "related_word": [
+      "cuarto",
+      "aposento",
+      "cocina"
+    ],
+    "target_word_stem": "dormitorio",
+    "related_word_stem": [
+      "cuarto",
+      "aposento",
+      "cocina"
+    ]
+  },
+  {
+    "target_word": "nacimiento",
+    "related_word": [
+      "belén",
+      "pesebre",
+      "portal"
+    ],
+    "target_word_stem": "nacimiento",
+    "related_word_stem": [
+      "belén",
+      "pesebre",
+      "portal"
+    ]
+  },
+  {
+    "target_word": "desayuno",
+    "related_word": [
+      "almuerzo",
+      "cenar",
+      "comer"
+    ],
+    "target_word_stem": "desayuno",
+    "related_word_stem": [
+      "almuerzo",
+      "cenar",
+      "comer"
+    ]
+  },
+  {
+    "target_word": "trampa",
+    "related_word": [
+      "escotillón",
+      "engaño",
+      "celada"
+    ],
+    "target_word_stem": "trampa",
+    "related_word_stem": [
+      "escotillón",
+      "engaño",
+      "celada"
+    ]
+  },
+  {
+    "target_word": "hierro",
+    "related_word": [
+      "plancha",
+      "herramienta",
+      "ferrocarril"
+    ],
+    "target_word_stem": "hierro",
+    "related_word_stem": [
+      "plancha",
+      "herramienta",
+      "ferrocarril"
+    ]
+  },
+  {
+    "target_word": "caza",
+    "related_word": [
+      "montería",
+      "acoso",
+      "busqueda"
+    ],
+    "target_word_stem": "caza",
+    "related_word_stem": [
+      "montería",
+      "acoso",
+      "busqueda"
+    ]
+  },
+  {
+    "target_word": "ala",
+    "related_word": [
+      "sombrero",
+      "pájaro",
+      "avión"
+    ],
+    "target_word_stem": "ala",
+    "related_word_stem": [
+      "sombrero",
+      "pájaro",
+      "avión"
+    ]
+  },
+  {
+    "target_word": "fuerza",
+    "related_word": [
+      "intensidad",
+      "ímpetu",
+      "fan"
+    ],
+    "target_word_stem": "fuerza",
+    "related_word_stem": [
+      "intensidad",
+      "ímpetu",
+      "fan"
+    ]
+  },
+  {
+    "target_word": "ayer",
+    "related_word": [
+      "cras",
+      "mañana",
+      "transantehier"
+    ],
+    "target_word_stem": "ayer",
+    "related_word_stem": [
+      "cras",
+      "mañana",
+      "transantehier"
+    ]
+  },
+  {
+    "target_word": "matrimonio",
+    "related_word": [
+      "boda",
+      "casar",
+      "esposo"
+    ],
+    "target_word_stem": "matrimonio",
+    "related_word_stem": [
+      "boda",
+      "casar",
+      "esposo"
+    ]
+  },
+  {
+    "target_word": "portal",
+    "related_word": [
+      "pesebre",
+      "belén",
+      "nacimiento"
+    ],
+    "target_word_stem": "portal",
+    "related_word_stem": [
+      "pesebre",
+      "belén",
+      "nacimiento"
+    ]
+  },
+  {
+    "target_word": "planeta",
+    "related_word": [
+      "mundo",
+      "tierra",
+      "sol"
+    ],
+    "target_word_stem": "planeta",
+    "related_word_stem": [
+      "mundo",
+      "tierra",
+      "sol"
+    ]
+  },
+  {
+    "target_word": "matriz",
+    "related_word": [
+      "vector",
+      "molde",
+      "útero"
+    ],
+    "target_word_stem": "matriz",
+    "related_word_stem": [
+      "vector",
+      "molde",
+      "útero"
+    ]
+  },
+  {
+    "target_word": "campana",
+    "related_word": [
+      "timbre",
+      "gongo",
+      "extractora"
+    ],
+    "target_word_stem": "campana",
+    "related_word_stem": [
+      "timbre",
+      "gongo",
+      "extractora"
+    ]
+  },
+  {
+    "target_word": "torre",
+    "related_word": [
+      "gabinete",
+      "rascacielos",
+      "ajedrez"
+    ],
+    "target_word_stem": "torre",
+    "related_word_stem": [
+      "gabinete",
+      "rascacielos",
+      "ajedrez"
+    ]
+  },
+  {
+    "target_word": "pavo",
+    "related_word": [
+      "cócono",
+      "necio",
+      "chumpe"
+    ],
+    "target_word_stem": "pavo",
+    "related_word_stem": [
+      "cócono",
+      "necio",
+      "chumpe"
+    ]
+  },
+  {
+    "target_word": "gemelo",
+    "related_word": [
+      "cuate",
+      "pantorrilla",
+      "mellizo"
+    ],
+    "target_word_stem": "gemelo",
+    "related_word_stem": [
+      "cuate",
+      "pantorrilla",
+      "mellizo"
+    ]
+  },
+  {
+    "target_word": "águila",
+    "related_word": [
+      "pájaro",
+      "ave",
+      "animal"
+    ],
+    "target_word_stem": "águila",
+    "related_word_stem": [
+      "pájaro",
+      "ave",
+      "animal"
+    ]
+  }
+]

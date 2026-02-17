@@ -1,0 +1,30 @@
+[
+  {
+    "target_word": "شیر",
+    "related_word": [
+      "دودھ",
+      "سنہ",
+      "باگھ"
+    ],
+    "target_word_stem": "شیر",
+    "related_word_stem": [
+      "دودھ",
+      "سنہ",
+      "باگھ"
+    ]
+  },
+  {
+    "target_word": "شہد",
+    "related_word": [
+      "عسل",
+      "انگبین",
+      "مدھو"
+    ],
+    "target_word_stem": "شہد",
+    "related_word_stem": [
+      "عسل",
+      "انگبین",
+      "مدھو"
+    ]
+  }
+]

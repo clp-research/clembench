@@ -1,0 +1,2494 @@
+[
+  {
+    "target_word": "sida",
+    "related_word": [
+      "blad",
+      "flank",
+      "hand"
+    ],
+    "target_word_stem": "sida",
+    "related_word_stem": [
+      "blad",
+      "flank",
+      "hand"
+    ]
+  },
+  {
+    "target_word": "tjänst",
+    "related_word": [
+      "förfogande",
+      "ämbete",
+      "nytta"
+    ],
+    "target_word_stem": "tjänst",
+    "related_word_stem": [
+      "förfogande",
+      "ämbete",
+      "nytta"
+    ]
+  },
+  {
+    "target_word": "plats",
+    "related_word": [
+      "befattning",
+      "utrymme",
+      "torg"
+    ],
+    "target_word_stem": "plats",
+    "related_word_stem": [
+      "befattning",
+      "utrymme",
+      "torg"
+    ]
+  },
+  {
+    "target_word": "år",
+    "related_word": [
+      "januari",
+      "millennium",
+      "regeringsår"
+    ],
+    "target_word_stem": "år",
+    "related_word_stem": [
+      "januari",
+      "millennium",
+      "regeringsår"
+    ]
+  },
+  {
+    "target_word": "pris",
+    "related_word": [
+      "beröm",
+      "avgift",
+      "belöning"
+    ],
+    "target_word_stem": "pris",
+    "related_word_stem": [
+      "beröm",
+      "avgift",
+      "belöning"
+    ]
+  },
+  {
+    "target_word": "stat",
+    "related_word": [
+      "land",
+      "rike",
+      "nation"
+    ],
+    "target_word_stem": "stat",
+    "related_word_stem": [
+      "land",
+      "rike",
+      "nation"
+    ]
+  },
+  {
+    "target_word": "arbete",
+    "related_word": [
+      "verk",
+      "kneg",
+      "jobb"
+    ],
+    "target_word_stem": "arbete",
+    "related_word_stem": [
+      "verk",
+      "kneg",
+      "jobb"
+    ]
+  },
+  {
+    "target_word": "affär",
+    "related_word": [
+      "butik",
+      "handelsbod",
+      "uppgörelse"
+    ],
+    "target_word_stem": "affär",
+    "related_word_stem": [
+      "butik",
+      "handelsbod",
+      "uppgörelse"
+    ]
+  },
+  {
+    "target_word": "recension",
+    "related_word": [
+      "granskning",
+      "anmälan",
+      "kritik"
+    ],
+    "target_word_stem": "recension",
+    "related_word_stem": [
+      "granskning",
+      "anmälan",
+      "kritik"
+    ]
+  },
+  {
+    "target_word": "namn",
+    "related_word": [
+      "beteckning",
+      "egennamn",
+      "heta"
+    ],
+    "target_word_stem": "namn",
+    "related_word_stem": [
+      "beteckning",
+      "egennamn",
+      "heta"
+    ]
+  },
+  {
+    "target_word": "meddelande",
+    "related_word": [
+      "avi",
+      "annons",
+      "uppgift"
+    ],
+    "target_word_stem": "meddelande",
+    "related_word_stem": [
+      "avi",
+      "annons",
+      "uppgift"
+    ]
+  },
+  {
+    "target_word": "skola",
+    "related_word": [
+      "utbildning",
+      "bilda",
+      "akademi"
+    ],
+    "target_word_stem": "skola",
+    "related_word_stem": [
+      "utbildning",
+      "bilda",
+      "akademi"
+    ]
+  },
+  {
+    "target_word": "ordning",
+    "related_word": [
+      "reda",
+      "tillaga",
+      "inordna"
+    ],
+    "target_word_stem": "ordning",
+    "related_word_stem": [
+      "reda",
+      "tillaga",
+      "inordna"
+    ]
+  },
+  {
+    "target_word": "butik",
+    "related_word": [
+      "affär",
+      "handelsbod",
+      "bod"
+    ],
+    "target_word_stem": "butik",
+    "related_word_stem": [
+      "affär",
+      "handelsbod",
+      "bod"
+    ]
+  },
+  {
+    "target_word": "företag",
+    "related_word": [
+      "bedrift",
+      "bolag",
+      "verksamhet"
+    ],
+    "target_word_stem": "företag",
+    "related_word_stem": [
+      "bedrift",
+      "bolag",
+      "verksamhet"
+    ]
+  },
+  {
+    "target_word": "värld",
+    "related_word": [
+      "jorden",
+      "himlakropp",
+      "världsomspännande"
+    ],
+    "target_word_stem": "värld",
+    "related_word_stem": [
+      "jorden",
+      "himlakropp",
+      "världsomspännande"
+    ]
+  },
+  {
+    "target_word": "fil",
+    "related_word": [
+      "räcka",
+      "kö",
+      "rasp"
+    ],
+    "target_word_stem": "fil",
+    "related_word_stem": [
+      "räcka",
+      "kö",
+      "rasp"
+    ]
+  },
+  {
+    "target_word": "område",
+    "related_word": [
+      "ängd",
+      "trakt",
+      "zon"
+    ],
+    "target_word_stem": "område",
+    "related_word_stem": [
+      "ängd",
+      "trakt",
+      "zon"
+    ]
+  },
+  {
+    "target_word": "plan",
+    "related_word": [
+      "uppsåt",
+      "ritning",
+      "skiss"
+    ],
+    "target_word_stem": "plan",
+    "related_word_stem": [
+      "uppsåt",
+      "ritning",
+      "skiss"
+    ]
+  },
+  {
+    "target_word": "bild",
+    "related_word": [
+      "foto",
+      "tavla",
+      "syn"
+    ],
+    "target_word_stem": "bild",
+    "related_word_stem": [
+      "foto",
+      "tavla",
+      "syn"
+    ]
+  },
+  {
+    "target_word": "bas",
+    "related_word": [
+      "grund",
+      "arbetsledare",
+      "baryton"
+    ],
+    "target_word_stem": "bas",
+    "related_word_stem": [
+      "grund",
+      "arbetsledare",
+      "baryton"
+    ]
+  },
+  {
+    "target_word": "barn",
+    "related_word": [
+      "unge",
+      "familjemedlem",
+      "flicka"
+    ],
+    "target_word_stem": "barn",
+    "related_word_stem": [
+      "unge",
+      "familjemedlem",
+      "flicka"
+    ]
+  },
+  {
+    "target_word": "fråga",
+    "related_word": [
+      "svar",
+      "problem",
+      "spörsmål"
+    ],
+    "target_word_stem": "fråga",
+    "related_word_stem": [
+      "svar",
+      "problem",
+      "spörsmål"
+    ]
+  },
+  {
+    "target_word": "resa",
+    "related_word": [
+      "färd",
+      "bygga",
+      "förflyttning"
+    ],
+    "target_word_stem": "resa",
+    "related_word_stem": [
+      "färd",
+      "bygga",
+      "förflyttning"
+    ]
+  },
+  {
+    "target_word": "kvinna",
+    "related_word": [
+      "man",
+      "ftm",
+      "jungfru"
+    ],
+    "target_word_stem": "kvinna",
+    "related_word_stem": [
+      "man",
+      "ftm",
+      "jungfru"
+    ]
+  },
+  {
+    "target_word": "ämne",
+    "related_word": [
+      "anledning",
+      "avvika",
+      "sak"
+    ],
+    "target_word_stem": "ämne",
+    "related_word_stem": [
+      "anledning",
+      "avvika",
+      "sak"
+    ]
+  },
+  {
+    "target_word": "kontor",
+    "related_word": [
+      "byrå",
+      "förvaltning",
+      "myndighet"
+    ],
+    "target_word_stem": "kontor",
+    "related_word_stem": [
+      "byrå",
+      "förvaltning",
+      "myndighet"
+    ]
+  },
+  {
+    "target_word": "process",
+    "related_word": [
+      "fortgång",
+      "förfarande",
+      "förlopp"
+    ],
+    "target_word_stem": "process",
+    "related_word_stem": [
+      "fortgång",
+      "förfarande",
+      "förlopp"
+    ]
+  },
+  {
+    "target_word": "test",
+    "related_word": [
+      "prov",
+      "experiment",
+      "försök"
+    ],
+    "target_word_stem": "test",
+    "related_word_stem": [
+      "prov",
+      "experiment",
+      "försök"
+    ]
+  },
+  {
+    "target_word": "land",
+    "related_word": [
+      "stat",
+      "nation",
+      "vischan"
+    ],
+    "target_word_stem": "land",
+    "related_word_stem": [
+      "stat",
+      "nation",
+      "vischan"
+    ]
+  },
+  {
+    "target_word": "timme",
+    "related_word": [
+      "dygn",
+      "undervisning",
+      "kvart"
+    ],
+    "target_word_stem": "timme",
+    "related_word_stem": [
+      "dygn",
+      "undervisning",
+      "kvart"
+    ]
+  },
+  {
+    "target_word": "vän",
+    "related_word": [
+      "kompis",
+      "vacker",
+      "fiende"
+    ],
+    "target_word_stem": "vän",
+    "related_word_stem": [
+      "kompis",
+      "vacker",
+      "fiende"
+    ]
+  },
+  {
+    "target_word": "hus",
+    "related_word": [
+      "byggnad",
+      "stuga",
+      "kåk"
+    ],
+    "target_word_stem": "hus",
+    "related_word_stem": [
+      "byggnad",
+      "stuga",
+      "kåk"
+    ]
+  },
+  {
+    "target_word": "problem",
+    "related_word": [
+      "kris",
+      "fråga",
+      "komplikation"
+    ],
+    "target_word_stem": "problem",
+    "related_word_stem": [
+      "kris",
+      "fråga",
+      "komplikation"
+    ]
+  },
+  {
+    "target_word": "villkor",
+    "related_word": [
+      "förutsättning",
+      "betingelse",
+      "förbehåll"
+    ],
+    "target_word_stem": "villkor",
+    "related_word_stem": [
+      "förutsättning",
+      "betingelse",
+      "förbehåll"
+    ]
+  },
+  {
+    "target_word": "värde",
+    "related_word": [
+      "valör",
+      "halt",
+      "betydelse"
+    ],
+    "target_word_stem": "värde",
+    "related_word_stem": [
+      "valör",
+      "halt",
+      "betydelse"
+    ]
+  },
+  {
+    "target_word": "storlek",
+    "related_word": [
+      "omfång",
+      "utsträckning",
+      "vidd"
+    ],
+    "target_word_stem": "storlek",
+    "related_word_stem": [
+      "omfång",
+      "utsträckning",
+      "vidd"
+    ]
+  },
+  {
+    "target_word": "berättelse",
+    "related_word": [
+      "historia",
+      "saga",
+      "uppgift"
+    ],
+    "target_word_stem": "berättelse",
+    "related_word_stem": [
+      "historia",
+      "saga",
+      "uppgift"
+    ]
+  },
+  {
+    "target_word": "egendom",
+    "related_word": [
+      "besittning",
+      "tillhörighet",
+      "ägodelar"
+    ],
+    "target_word_stem": "egendom",
+    "related_word_stem": [
+      "besittning",
+      "tillhörighet",
+      "ägodelar"
+    ]
+  },
+  {
+    "target_word": "län",
+    "related_word": [
+      "sverige",
+      "provins",
+      "landsdel"
+    ],
+    "target_word_stem": "län",
+    "related_word_stem": [
+      "sverige",
+      "provins",
+      "landsdel"
+    ]
+  },
+  {
+    "target_word": "sak",
+    "related_word": [
+      "företeelse",
+      "grej",
+      "ting"
+    ],
+    "target_word_stem": "sak",
+    "related_word_stem": [
+      "företeelse",
+      "grej",
+      "ting"
+    ]
+  },
+  {
+    "target_word": "idag",
+    "related_word": [
+      "nuförtiden",
+      "igår",
+      "imorgon"
+    ],
+    "target_word_stem": "idag",
+    "related_word_stem": [
+      "nuförtiden",
+      "igår",
+      "imorgon"
+    ]
+  },
+  {
+    "target_word": "författare",
+    "related_word": [
+      "skribent",
+      "novellist",
+      "poet"
+    ],
+    "target_word_stem": "författare",
+    "related_word_stem": [
+      "skribent",
+      "novellist",
+      "poet"
+    ]
+  },
+  {
+    "target_word": "söder",
+    "related_word": [
+      "väderstreck",
+      "ost",
+      "om"
+    ],
+    "target_word_stem": "söder",
+    "related_word_stem": [
+      "väderstreck",
+      "ost",
+      "om"
+    ]
+  },
+  {
+    "target_word": "gåva",
+    "related_word": [
+      "skänk",
+      "present",
+      "stiftelse"
+    ],
+    "target_word_stem": "gåva",
+    "related_word_stem": [
+      "skänk",
+      "present",
+      "stiftelse"
+    ]
+  },
+  {
+    "target_word": "tåg",
+    "related_word": [
+      "järnväg",
+      "procession",
+      "rep"
+    ],
+    "target_word_stem": "tåg",
+    "related_word_stem": [
+      "järnväg",
+      "procession",
+      "rep"
+    ]
+  },
+  {
+    "target_word": "flicka",
+    "related_word": [
+      "tjej",
+      "tös",
+      "brallis"
+    ],
+    "target_word_stem": "flicka",
+    "related_word_stem": [
+      "tjej",
+      "tös",
+      "brallis"
+    ]
+  },
+  {
+    "target_word": "historia",
+    "related_word": [
+      "berättelse",
+      "skildring",
+      "roman"
+    ],
+    "target_word_stem": "historia",
+    "related_word_stem": [
+      "berättelse",
+      "skildring",
+      "roman"
+    ]
+  },
+  {
+    "target_word": "aktivitet",
+    "related_word": [
+      "energi",
+      "insats",
+      "sysselsättning"
+    ],
+    "target_word_stem": "aktivitet",
+    "related_word_stem": [
+      "energi",
+      "insats",
+      "sysselsättning"
+    ]
+  },
+  {
+    "target_word": "mat",
+    "related_word": [
+      "föda",
+      "livsmedel",
+      "kost"
+    ],
+    "target_word_stem": "mat",
+    "related_word_stem": [
+      "föda",
+      "livsmedel",
+      "kost"
+    ]
+  },
+  {
+    "target_word": "fest",
+    "related_word": [
+      "partaj",
+      "kalas",
+      "högtid"
+    ],
+    "target_word_stem": "fest",
+    "related_word_stem": [
+      "partaj",
+      "kalas",
+      "högtid"
+    ]
+  },
+  {
+    "target_word": "ord",
+    "related_word": [
+      "mening",
+      "språk",
+      "begrepp"
+    ],
+    "target_word_stem": "ord",
+    "related_word_stem": [
+      "mening",
+      "språk",
+      "begrepp"
+    ]
+  },
+  {
+    "target_word": "pengar",
+    "related_word": [
+      "betalningsmedel",
+      "rikedom",
+      "mynt"
+    ],
+    "target_word_stem": "pengar",
+    "related_word_stem": [
+      "betalningsmedel",
+      "rikedom",
+      "mynt"
+    ]
+  },
+  {
+    "target_word": "papper",
+    "related_word": [
+      "ark",
+      "engångs",
+      "kartong"
+    ],
+    "target_word_stem": "papper",
+    "related_word_stem": [
+      "ark",
+      "engångs",
+      "kartong"
+    ]
+  },
+  {
+    "target_word": "hand",
+    "related_word": [
+      "fot",
+      "anatomi",
+      "lem"
+    ],
+    "target_word_stem": "hand",
+    "related_word_stem": [
+      "fot",
+      "anatomi",
+      "lem"
+    ]
+  },
+  {
+    "target_word": "ö",
+    "related_word": [
+      "bokstav",
+      "skär",
+      "halvö"
+    ],
+    "target_word_stem": "ö",
+    "related_word_stem": [
+      "bokstav",
+      "skär",
+      "halvö"
+    ]
+  },
+  {
+    "target_word": "spår",
+    "related_word": [
+      "fotavtryck",
+      "gnutta",
+      "järnväg"
+    ],
+    "target_word_stem": "spår",
+    "related_word_stem": [
+      "fotavtryck",
+      "gnutta",
+      "järnväg"
+    ]
+  },
+  {
+    "target_word": "referens",
+    "related_word": [
+      "hänvisning",
+      "standard",
+      "norm"
+    ],
+    "target_word_stem": "referens",
+    "related_word_stem": [
+      "hänvisning",
+      "standard",
+      "norm"
+    ]
+  },
+  {
+    "target_word": "personal",
+    "related_word": [
+      "människa",
+      "anställd",
+      "arbetare"
+    ],
+    "target_word_stem": "personal",
+    "related_word_stem": [
+      "människa",
+      "anställd",
+      "arbetare"
+    ]
+  },
+  {
+    "target_word": "vagn",
+    "related_word": [
+      "kärra",
+      "schäs",
+      "släp"
+    ],
+    "target_word_stem": "vagn",
+    "related_word_stem": [
+      "kärra",
+      "schäs",
+      "släp"
+    ]
+  },
+  {
+    "target_word": "paket",
+    "related_word": [
+      "försändelse",
+      "kolli",
+      "julklapp"
+    ],
+    "target_word_stem": "paket",
+    "related_word_stem": [
+      "försändelse",
+      "kolli",
+      "julklapp"
+    ]
+  },
+  {
+    "target_word": "tur",
+    "related_word": [
+      "oflyt",
+      "lycka",
+      "runda"
+    ],
+    "target_word_stem": "tur",
+    "related_word_stem": [
+      "oflyt",
+      "lycka",
+      "runda"
+    ]
+  },
+  {
+    "target_word": "domstol",
+    "related_word": [
+      "rätt",
+      "häradsrätt",
+      "kammarrätt"
+    ],
+    "target_word_stem": "domstol",
+    "related_word_stem": [
+      "rätt",
+      "häradsrätt",
+      "kammarrätt"
+    ]
+  },
+  {
+    "target_word": "väg",
+    "related_word": [
+      "gata",
+      "riktning",
+      "stråt"
+    ],
+    "target_word_stem": "väg",
+    "related_word_stem": [
+      "gata",
+      "riktning",
+      "stråt"
+    ]
+  },
+  {
+    "target_word": "licens",
+    "related_word": [
+      "produktionsdelningsavtal",
+      "fiskekort",
+      "jaktlicens"
+    ],
+    "target_word_stem": "licens",
+    "related_word_stem": [
+      "produktionsdelningsavtal",
+      "fiskekort",
+      "jaktlicens"
+    ]
+  },
+  {
+    "target_word": "ljud",
+    "related_word": [
+      "mummel",
+      "lyda",
+      "låt"
+    ],
+    "target_word_stem": "ljud",
+    "related_word_stem": [
+      "mummel",
+      "lyda",
+      "låt"
+    ]
+  },
+  {
+    "target_word": "svar",
+    "related_word": [
+      "respons",
+      "besked",
+      "reaktion"
+    ],
+    "target_word_stem": "svar",
+    "related_word_stem": [
+      "respons",
+      "besked",
+      "reaktion"
+    ]
+  },
+  {
+    "target_word": "skepp",
+    "related_word": [
+      "fartyg",
+      "båt",
+      "färja"
+    ],
+    "target_word_stem": "skepp",
+    "related_word_stem": [
+      "fartyg",
+      "båt",
+      "färja"
+    ]
+  },
+  {
+    "target_word": "region",
+    "related_word": [
+      "area",
+      "område",
+      "part"
+    ],
+    "target_word_stem": "region",
+    "related_word_stem": [
+      "area",
+      "område",
+      "part"
+    ]
+  },
+  {
+    "target_word": "förmån",
+    "related_word": [
+      "favör",
+      "bidrag",
+      "bistånd"
+    ],
+    "target_word_stem": "förmån",
+    "related_word_stem": [
+      "favör",
+      "bidrag",
+      "bistånd"
+    ]
+  },
+  {
+    "target_word": "fel",
+    "related_word": [
+      "brist",
+      "rätt",
+      "misstag"
+    ],
+    "target_word_stem": "fel",
+    "related_word_stem": [
+      "brist",
+      "rätt",
+      "misstag"
+    ]
+  },
+  {
+    "target_word": "orsak",
+    "related_word": [
+      "grund",
+      "anledning",
+      "skäl"
+    ],
+    "target_word_stem": "orsak",
+    "related_word_stem": [
+      "grund",
+      "anledning",
+      "skäl"
+    ]
+  },
+  {
+    "target_word": "myndighet",
+    "related_word": [
+      "stat",
+      "nämnd",
+      "verk"
+    ],
+    "target_word_stem": "myndighet",
+    "related_word_stem": [
+      "stat",
+      "nämnd",
+      "verk"
+    ]
+  },
+  {
+    "target_word": "semester",
+    "related_word": [
+      "ferie",
+      "ledighet",
+      "sommarlov"
+    ],
+    "target_word_stem": "semester",
+    "related_word_stem": [
+      "ferie",
+      "ledighet",
+      "sommarlov"
+    ]
+  },
+  {
+    "target_word": "förening",
+    "related_word": [
+      "sällskap",
+      "överensstämmelse",
+      "association"
+    ],
+    "target_word_stem": "förening",
+    "related_word_stem": [
+      "sällskap",
+      "överensstämmelse",
+      "association"
+    ]
+  },
+  {
+    "target_word": "djur",
+    "related_word": [
+      "varelse",
+      "väsen",
+      "best"
+    ],
+    "target_word_stem": "djur",
+    "related_word_stem": [
+      "varelse",
+      "väsen",
+      "best"
+    ]
+  },
+  {
+    "target_word": "energi",
+    "related_word": [
+      "ork",
+      "aktivitet",
+      "arbete"
+    ],
+    "target_word_stem": "energi",
+    "related_word_stem": [
+      "ork",
+      "aktivitet",
+      "arbete"
+    ]
+  },
+  {
+    "target_word": "avgift",
+    "related_word": [
+      "kostnad",
+      "betalning",
+      "pris"
+    ],
+    "target_word_stem": "avgift",
+    "related_word_stem": [
+      "kostnad",
+      "betalning",
+      "pris"
+    ]
+  },
+  {
+    "target_word": "förälder",
+    "related_word": [
+      "släkt",
+      "päron",
+      "vårdnadshavare"
+    ],
+    "target_word_stem": "förälder",
+    "related_word_stem": [
+      "släkt",
+      "päron",
+      "vårdnadshavare"
+    ]
+  },
+  {
+    "target_word": "distrikt",
+    "related_word": [
+      "krets",
+      "rote",
+      "amt"
+    ],
+    "target_word_stem": "distrikt",
+    "related_word_stem": [
+      "krets",
+      "rote",
+      "amt"
+    ]
+  },
+  {
+    "target_word": "partner",
+    "related_word": [
+      "kompanjon",
+      "medspelare",
+      "moatjé"
+    ],
+    "target_word_stem": "partner",
+    "related_word_stem": [
+      "kompanjon",
+      "medspelare",
+      "moatjé"
+    ]
+  },
+  {
+    "target_word": "prov",
+    "related_word": [
+      "gärd",
+      "bevis",
+      "test"
+    ],
+    "target_word_stem": "prov",
+    "related_word_stem": [
+      "gärd",
+      "bevis",
+      "test"
+    ]
+  },
+  {
+    "target_word": "brev",
+    "related_word": [
+      "post",
+      "ass",
+      "vykort"
+    ],
+    "target_word_stem": "brev",
+    "related_word_stem": [
+      "post",
+      "ass",
+      "vykort"
+    ]
+  },
+  {
+    "target_word": "anledning",
+    "related_word": [
+      "skäl",
+      "grund",
+      "orsak"
+    ],
+    "target_word_stem": "anledning",
+    "related_word_stem": [
+      "skäl",
+      "grund",
+      "orsak"
+    ]
+  },
+  {
+    "target_word": "restaurang",
+    "related_word": [
+      "fik",
+      "matställe",
+      "värdshus"
+    ],
+    "target_word_stem": "restaurang",
+    "related_word_stem": [
+      "fik",
+      "matställe",
+      "värdshus"
+    ]
+  },
+  {
+    "target_word": "vikt",
+    "related_word": [
+      "tyngd",
+      "betydenhet",
+      "väga"
+    ],
+    "target_word_stem": "vikt",
+    "related_word_stem": [
+      "tyngd",
+      "betydenhet",
+      "väga"
+    ]
+  },
+  {
+    "target_word": "bil",
+    "related_word": [
+      "transportmedel",
+      "lappa",
+      "möte"
+    ],
+    "target_word_stem": "bil",
+    "related_word_stem": [
+      "transportmedel",
+      "lappa",
+      "möte"
+    ]
+  },
+  {
+    "target_word": "fram",
+    "related_word": [
+      "hitåt",
+      "mot",
+      "ut"
+    ],
+    "target_word_stem": "fram",
+    "related_word_stem": [
+      "hitåt",
+      "mot",
+      "ut"
+    ]
+  },
+  {
+    "target_word": "oro",
+    "related_word": [
+      "ångest",
+      "bekymmer",
+      "ängslan"
+    ],
+    "target_word_stem": "oro",
+    "related_word_stem": [
+      "ångest",
+      "bekymmer",
+      "ängslan"
+    ]
+  },
+  {
+    "target_word": "brand",
+    "related_word": [
+      "eld",
+      "eldsvåda",
+      "vårdkase"
+    ],
+    "target_word_stem": "brand",
+    "related_word_stem": [
+      "eld",
+      "eldsvåda",
+      "vårdkase"
+    ]
+  },
+  {
+    "target_word": "sjö",
+    "related_word": [
+      "hav",
+      "vatten",
+      "göl"
+    ],
+    "target_word_stem": "sjö",
+    "related_word_stem": [
+      "hav",
+      "vatten",
+      "göl"
+    ]
+  },
+  {
+    "target_word": "fot",
+    "related_word": [
+      "huvud",
+      "topp",
+      "mil"
+    ],
+    "target_word_stem": "fot",
+    "related_word_stem": [
+      "huvud",
+      "topp",
+      "mil"
+    ]
+  },
+  {
+    "target_word": "sko",
+    "related_word": [
+      "fotbeklädnad",
+      "stövel",
+      "doja"
+    ],
+    "target_word_stem": "sko",
+    "related_word_stem": [
+      "fotbeklädnad",
+      "stövel",
+      "doja"
+    ]
+  },
+  {
+    "target_word": "kabel",
+    "related_word": [
+      "högspänningskabel",
+      "ledning",
+      "sladd"
+    ],
+    "target_word_stem": "kabel",
+    "related_word_stem": [
+      "högspänningskabel",
+      "ledning",
+      "sladd"
+    ]
+  },
+  {
+    "target_word": "kung",
+    "related_word": [
+      "härskare",
+      "regent",
+      "statsöverhuvud"
+    ],
+    "target_word_stem": "kung",
+    "related_word_stem": [
+      "härskare",
+      "regent",
+      "statsöverhuvud"
+    ]
+  },
+  {
+    "target_word": "död",
+    "related_word": [
+      "avliden",
+      "frånfälle",
+      "oavgjord"
+    ],
+    "target_word_stem": "död",
+    "related_word_stem": [
+      "avliden",
+      "frånfälle",
+      "oavgjord"
+    ]
+  },
+  {
+    "target_word": "inteckning",
+    "related_word": [
+      "hypotek",
+      "fastighet",
+      "tomt"
+    ],
+    "target_word_stem": "inteckning",
+    "related_word_stem": [
+      "hypotek",
+      "fastighet",
+      "tomt"
+    ]
+  },
+  {
+    "target_word": "ram",
+    "related_word": [
+      "oblandad",
+      "idel",
+      "gedigen"
+    ],
+    "target_word_stem": "ram",
+    "related_word_stem": [
+      "oblandad",
+      "idel",
+      "gedigen"
+    ]
+  },
+  {
+    "target_word": "flod",
+    "related_word": [
+      "ström",
+      "högvatten",
+      "vattendrag"
+    ],
+    "target_word_stem": "flod",
+    "related_word_stem": [
+      "ström",
+      "högvatten",
+      "vattendrag"
+    ]
+  },
+  {
+    "target_word": "kulle",
+    "related_word": [
+      "backe",
+      "höjd",
+      "berg"
+    ],
+    "target_word_stem": "kulle",
+    "related_word_stem": [
+      "backe",
+      "höjd",
+      "berg"
+    ]
+  },
+  {
+    "target_word": "åsikt",
+    "related_word": [
+      "uppfattning",
+      "omdöme",
+      "mening"
+    ],
+    "target_word_stem": "åsikt",
+    "related_word_stem": [
+      "uppfattning",
+      "omdöme",
+      "mening"
+    ]
+  },
+  {
+    "target_word": "institut",
+    "related_word": [
+      "akademi",
+      "forskningsanläggning",
+      "högskola"
+    ],
+    "target_word_stem": "institut",
+    "related_word_stem": [
+      "akademi",
+      "forskningsanläggning",
+      "högskola"
+    ]
+  },
+  {
+    "target_word": "mål",
+    "related_word": [
+      "avsikt",
+      "bur",
+      "rättegång"
+    ],
+    "target_word_stem": "mål",
+    "related_word_stem": [
+      "avsikt",
+      "bur",
+      "rättegång"
+    ]
+  },
+  {
+    "target_word": "union",
+    "related_word": [
+      "fackförening",
+      "förbund",
+      "kår"
+    ],
+    "target_word_stem": "union",
+    "related_word_stem": [
+      "fackförening",
+      "förbund",
+      "kår"
+    ]
+  },
+  {
+    "target_word": "läge",
+    "related_word": [
+      "situation",
+      "tillstånd",
+      "lägesbeskrivning"
+    ],
+    "target_word_stem": "läge",
+    "related_word_stem": [
+      "situation",
+      "tillstånd",
+      "lägesbeskrivning"
+    ]
+  },
+  {
+    "target_word": "kommando",
+    "related_word": [
+      "befäl",
+      "befallning",
+      "order"
+    ],
+    "target_word_stem": "kommando",
+    "related_word_stem": [
+      "befäl",
+      "befallning",
+      "order"
+    ]
+  },
+  {
+    "target_word": "förhållande",
+    "related_word": [
+      "relation",
+      "omständighet",
+      "sakläge"
+    ],
+    "target_word_stem": "förhållande",
+    "related_word_stem": [
+      "relation",
+      "omständighet",
+      "sakläge"
+    ]
+  },
+  {
+    "target_word": "relation",
+    "related_word": [
+      "förhållande",
+      "förbindelse",
+      "samband"
+    ],
+    "target_word_stem": "relation",
+    "related_word_stem": [
+      "förhållande",
+      "förbindelse",
+      "samband"
+    ]
+  },
+  {
+    "target_word": "nation",
+    "related_word": [
+      "land",
+      "rike",
+      "stat"
+    ],
+    "target_word_stem": "nation",
+    "related_word_stem": [
+      "land",
+      "rike",
+      "stat"
+    ]
+  },
+  {
+    "target_word": "bröllop",
+    "related_word": [
+      "giftermål",
+      "vigsel",
+      "äktenskap"
+    ],
+    "target_word_stem": "bröllop",
+    "related_word_stem": [
+      "giftermål",
+      "vigsel",
+      "äktenskap"
+    ]
+  },
+  {
+    "target_word": "medicin",
+    "related_word": [
+      "läkemedel",
+      "läkarvetenskap",
+      "alternativmedicin"
+    ],
+    "target_word_stem": "medicin",
+    "related_word_stem": [
+      "läkemedel",
+      "läkarvetenskap",
+      "alternativmedicin"
+    ]
+  },
+  {
+    "target_word": "berg",
+    "related_word": [
+      "fjäll",
+      "hög",
+      "kulle"
+    ],
+    "target_word_stem": "berg",
+    "related_word_stem": [
+      "fjäll",
+      "hög",
+      "kulle"
+    ]
+  },
+  {
+    "target_word": "skillnad",
+    "related_word": [
+      "differens",
+      "olikhet",
+      "annat"
+    ],
+    "target_word_stem": "skillnad",
+    "related_word_stem": [
+      "differens",
+      "olikhet",
+      "annat"
+    ]
+  },
+  {
+    "target_word": "protein",
+    "related_word": [
+      "näringsämne",
+      "ämne",
+      "äggviteämne"
+    ],
+    "target_word_stem": "protein",
+    "related_word_stem": [
+      "näringsämne",
+      "ämne",
+      "äggviteämne"
+    ]
+  },
+  {
+    "target_word": "expert",
+    "related_word": [
+      "sakkunnig",
+      "kännare",
+      "specialist"
+    ],
+    "target_word_stem": "expert",
+    "related_word_stem": [
+      "sakkunnig",
+      "kännare",
+      "specialist"
+    ]
+  },
+  {
+    "target_word": "grund",
+    "related_word": [
+      "anledning",
+      "orsak",
+      "bas"
+    ],
+    "target_word_stem": "grund",
+    "related_word_stem": [
+      "anledning",
+      "orsak",
+      "bas"
+    ]
+  },
+  {
+    "target_word": "hall",
+    "related_word": [
+      "korridor",
+      "farstu",
+      "tambur"
+    ],
+    "target_word_stem": "hall",
+    "related_word_stem": [
+      "korridor",
+      "farstu",
+      "tambur"
+    ]
+  },
+  {
+    "target_word": "ark",
+    "related_word": [
+      "blad",
+      "papper",
+      "förbundsark"
+    ],
+    "target_word_stem": "ark",
+    "related_word_stem": [
+      "blad",
+      "papper",
+      "förbundsark"
+    ]
+  },
+  {
+    "target_word": "kök",
+    "related_word": [
+      "matkultur",
+      "rum",
+      "köksinredning"
+    ],
+    "target_word_stem": "kök",
+    "related_word_stem": [
+      "matkultur",
+      "rum",
+      "köksinredning"
+    ]
+  },
+  {
+    "target_word": "skada",
+    "related_word": [
+      "ödelägga",
+      "olägenhet",
+      "avbräck"
+    ],
+    "target_word_stem": "skada",
+    "related_word_stem": [
+      "ödelägga",
+      "olägenhet",
+      "avbräck"
+    ]
+  },
+  {
+    "target_word": "uppgift",
+    "related_word": [
+      "bestämning",
+      "förklaring",
+      "meddelande"
+    ],
+    "target_word_stem": "uppgift",
+    "related_word_stem": [
+      "bestämning",
+      "förklaring",
+      "meddelande"
+    ]
+  },
+  {
+    "target_word": "vila",
+    "related_word": [
+      "uppehåll",
+      "baseras",
+      "grundad"
+    ],
+    "target_word_stem": "vila",
+    "related_word_stem": [
+      "uppehåll",
+      "baseras",
+      "grundad"
+    ]
+  },
+  {
+    "target_word": "bror",
+    "related_word": [
+      "familjemedlem",
+      "syster",
+      "lillebror"
+    ],
+    "target_word_stem": "bror",
+    "related_word_stem": [
+      "familjemedlem",
+      "syster",
+      "lillebror"
+    ]
+  },
+  {
+    "target_word": "ström",
+    "related_word": [
+      "flöde",
+      "älv",
+      "å"
+    ],
+    "target_word_stem": "ström",
+    "related_word_stem": [
+      "flöde",
+      "älv",
+      "å"
+    ]
+  },
+  {
+    "target_word": "boll",
+    "related_word": [
+      "klot",
+      "kula",
+      "sfär"
+    ],
+    "target_word_stem": "boll",
+    "related_word_stem": [
+      "klot",
+      "kula",
+      "sfär"
+    ]
+  },
+  {
+    "target_word": "båt",
+    "related_word": [
+      "fartyg",
+      "transportmedel",
+      "skepp"
+    ],
+    "target_word_stem": "båt",
+    "related_word_stem": [
+      "fartyg",
+      "transportmedel",
+      "skepp"
+    ]
+  },
+  {
+    "target_word": "fru",
+    "related_word": [
+      "herre",
+      "maka",
+      "adel"
+    ],
+    "target_word_stem": "fru",
+    "related_word_stem": [
+      "herre",
+      "maka",
+      "adel"
+    ]
+  },
+  {
+    "target_word": "transport",
+    "related_word": [
+      "befordran",
+      "kommunikation",
+      "minnessiffra"
+    ],
+    "target_word_stem": "transport",
+    "related_word_stem": [
+      "befordran",
+      "kommunikation",
+      "minnessiffra"
+    ]
+  },
+  {
+    "target_word": "cykel",
+    "related_word": [
+      "transportmedel",
+      "hjonne",
+      "fordon"
+    ],
+    "target_word_stem": "cykel",
+    "related_word_stem": [
+      "transportmedel",
+      "hjonne",
+      "fordon"
+    ]
+  },
+  {
+    "target_word": "tillstånd",
+    "related_word": [
+      "läge",
+      "skick",
+      "status"
+    ],
+    "target_word_stem": "tillstånd",
+    "related_word_stem": [
+      "läge",
+      "skick",
+      "status"
+    ]
+  },
+  {
+    "target_word": "plikt",
+    "related_word": [
+      "böter",
+      "vite",
+      "straffavgift"
+    ],
+    "target_word_stem": "plikt",
+    "related_word_stem": [
+      "böter",
+      "vite",
+      "straffavgift"
+    ]
+  },
+  {
+    "target_word": "vinst",
+    "related_word": [
+      "seger",
+      "reveny",
+      "pris"
+    ],
+    "target_word_stem": "vinst",
+    "related_word_stem": [
+      "seger",
+      "reveny",
+      "pris"
+    ]
+  },
+  {
+    "target_word": "lastbil",
+    "related_word": [
+      "långtradare",
+      "trailer",
+      "åkare"
+    ],
+    "target_word_stem": "lastbil",
+    "related_word_stem": [
+      "långtradare",
+      "trailer",
+      "åkare"
+    ]
+  },
+  {
+    "target_word": "religion",
+    "related_word": [
+      "ateism",
+      "gud",
+      "konventikel"
+    ],
+    "target_word_stem": "religion",
+    "related_word_stem": [
+      "ateism",
+      "gud",
+      "konventikel"
+    ]
+  },
+  {
+    "target_word": "höjd",
+    "related_word": [
+      "sänka",
+      "djup",
+      "kulle"
+    ],
+    "target_word_stem": "höjd",
+    "related_word_stem": [
+      "sänka",
+      "djup",
+      "kulle"
+    ]
+  },
+  {
+    "target_word": "mus",
+    "related_word": [
+      "kutta",
+      "inmatningsenhet",
+      "snippa"
+    ],
+    "target_word_stem": "mus",
+    "related_word_stem": [
+      "kutta",
+      "inmatningsenhet",
+      "snippa"
+    ]
+  },
+  {
+    "target_word": "tidning",
+    "related_word": [
+      "dagblad",
+      "tryckalster",
+      "magasin"
+    ],
+    "target_word_stem": "tidning",
+    "related_word_stem": [
+      "dagblad",
+      "tryckalster",
+      "magasin"
+    ]
+  },
+  {
+    "target_word": "läder",
+    "related_word": [
+      "skinn",
+      "hud",
+      "munläder"
+    ],
+    "target_word_stem": "läder",
+    "related_word_stem": [
+      "skinn",
+      "hud",
+      "munläder"
+    ]
+  },
+  {
+    "target_word": "hörn",
+    "related_word": [
+      "smyg",
+      "knut",
+      "vrå"
+    ],
+    "target_word_stem": "hörn",
+    "related_word_stem": [
+      "smyg",
+      "knut",
+      "vrå"
+    ]
+  },
+  {
+    "target_word": "brist",
+    "related_word": [
+      "fel",
+      "nöd",
+      "saknad"
+    ],
+    "target_word_stem": "brist",
+    "related_word_stem": [
+      "fel",
+      "nöd",
+      "saknad"
+    ]
+  },
+  {
+    "target_word": "uttryck",
+    "related_word": [
+      "fras",
+      "begrepp",
+      "beteckning"
+    ],
+    "target_word_stem": "uttryck",
+    "related_word_stem": [
+      "fras",
+      "begrepp",
+      "beteckning"
+    ]
+  },
+  {
+    "target_word": "möte",
+    "related_word": [
+      "sammanträffande",
+      "sammankomst",
+      "träff"
+    ],
+    "target_word_stem": "möte",
+    "related_word_stem": [
+      "sammanträffande",
+      "sammankomst",
+      "träff"
+    ]
+  },
+  {
+    "target_word": "drottning",
+    "related_word": [
+      "monarki",
+      "dam",
+      "schack"
+    ],
+    "target_word_stem": "drottning",
+    "related_word_stem": [
+      "monarki",
+      "dam",
+      "schack"
+    ]
+  },
+  {
+    "target_word": "bäck",
+    "related_word": [
+      "vattendrag",
+      "å",
+      "dike"
+    ],
+    "target_word_stem": "bäck",
+    "related_word_stem": [
+      "vattendrag",
+      "å",
+      "dike"
+    ]
+  },
+  {
+    "target_word": "strid",
+    "related_word": [
+      "slag",
+      "kamp",
+      "batalj"
+    ],
+    "target_word_stem": "strid",
+    "related_word_stem": [
+      "slag",
+      "kamp",
+      "batalj"
+    ]
+  },
+  {
+    "target_word": "tal",
+    "related_word": [
+      "problem",
+      "yttrande",
+      "tungomålstalande"
+    ],
+    "target_word_stem": "tal",
+    "related_word_stem": [
+      "problem",
+      "yttrande",
+      "tungomålstalande"
+    ]
+  },
+  {
+    "target_word": "församling",
+    "related_word": [
+      "pastorat",
+      "sammanträde",
+      "möte"
+    ],
+    "target_word_stem": "församling",
+    "related_word_stem": [
+      "pastorat",
+      "sammanträde",
+      "möte"
+    ]
+  },
+  {
+    "target_word": "tro",
+    "related_word": [
+      "åskådning",
+      "anta",
+      "religion"
+    ],
+    "target_word_stem": "tro",
+    "related_word_stem": [
+      "åskådning",
+      "anta",
+      "religion"
+    ]
+  },
+  {
+    "target_word": "snö",
+    "related_word": [
+      "kokain",
+      "fåk",
+      "hagel"
+    ],
+    "target_word_stem": "snö",
+    "related_word_stem": [
+      "kokain",
+      "fåk",
+      "hagel"
+    ]
+  },
+  {
+    "target_word": "bad",
+    "related_word": [
+      "bada",
+      "dopp",
+      "havsbad"
+    ],
+    "target_word_stem": "bad",
+    "related_word_stem": [
+      "bada",
+      "dopp",
+      "havsbad"
+    ]
+  },
+  {
+    "target_word": "ocean",
+    "related_word": [
+      "världshav",
+      "hav",
+      "sjö"
+    ],
+    "target_word_stem": "ocean",
+    "related_word_stem": [
+      "världshav",
+      "hav",
+      "sjö"
+    ]
+  },
+  {
+    "target_word": "styrka",
+    "related_word": [
+      "kraft",
+      "bescheinigen",
+      "befästa"
+    ],
+    "target_word_stem": "styrka",
+    "related_word_stem": [
+      "kraft",
+      "bescheinigen",
+      "befästa"
+    ]
+  },
+  {
+    "target_word": "äktenskap",
+    "related_word": [
+      "giftermål",
+      "bröllop",
+      "vigsel"
+    ],
+    "target_word_stem": "äktenskap",
+    "related_word_stem": [
+      "giftermål",
+      "bröllop",
+      "vigsel"
+    ]
+  },
+  {
+    "target_word": "docka",
+    "related_word": [
+      "actionfigur",
+      "marionett",
+      "tennsoldat"
+    ],
+    "target_word_stem": "docka",
+    "related_word_stem": [
+      "actionfigur",
+      "marionett",
+      "tennsoldat"
+    ]
+  },
+  {
+    "target_word": "ersättning",
+    "related_word": [
+      "reserv",
+      "skadestånd",
+      "förmån"
+    ],
+    "target_word_stem": "ersättning",
+    "related_word_stem": [
+      "reserv",
+      "skadestånd",
+      "förmån"
+    ]
+  },
+  {
+    "target_word": "gräns",
+    "related_word": [
+      "slut",
+      "fastighet",
+      "gränsöverskridande"
+    ],
+    "target_word_stem": "gräns",
+    "related_word_stem": [
+      "slut",
+      "fastighet",
+      "gränsöverskridande"
+    ]
+  },
+  {
+    "target_word": "krets",
+    "related_word": [
+      "rund",
+      "distrikt",
+      "amt"
+    ],
+    "target_word_stem": "krets",
+    "related_word_stem": [
+      "rund",
+      "distrikt",
+      "amt"
+    ]
+  },
+  {
+    "target_word": "vapen",
+    "related_word": [
+      "atomvapen",
+      "beväpna",
+      "massförstörelsevapen"
+    ],
+    "target_word_stem": "vapen",
+    "related_word_stem": [
+      "atomvapen",
+      "beväpna",
+      "massförstörelsevapen"
+    ]
+  },
+  {
+    "target_word": "akademi",
+    "related_word": [
+      "institut",
+      "skola",
+      "universitet"
+    ],
+    "target_word_stem": "akademi",
+    "related_word_stem": [
+      "institut",
+      "skola",
+      "universitet"
+    ]
+  },
+  {
+    "target_word": "rektor",
+    "related_word": [
+      "dekanus",
+      "fackhögskola",
+      "gymnasieskola"
+    ],
+    "target_word_stem": "rektor",
+    "related_word_stem": [
+      "dekanus",
+      "fackhögskola",
+      "gymnasieskola"
+    ]
+  },
+  {
+    "target_word": "regn",
+    "related_word": [
+      "duggregn",
+      "monsunregn",
+      "skvala"
+    ],
+    "target_word_stem": "regn",
+    "related_word_stem": [
+      "duggregn",
+      "monsunregn",
+      "skvala"
+    ]
+  },
+  {
+    "target_word": "identitet",
+    "related_word": [
+      "id",
+      "kongruens",
+      "likhet"
+    ],
+    "target_word_stem": "identitet",
+    "related_word_stem": [
+      "id",
+      "kongruens",
+      "likhet"
+    ]
+  },
+  {
+    "target_word": "landskap",
+    "related_word": [
+      "provins",
+      "konstverk",
+      "tavla"
+    ],
+    "target_word_stem": "landskap",
+    "related_word_stem": [
+      "provins",
+      "konstverk",
+      "tavla"
+    ]
+  },
+  {
+    "target_word": "topp",
+    "related_word": [
+      "plagg",
+      "gå",
+      "javisst"
+    ],
+    "target_word_stem": "topp",
+    "related_word_stem": [
+      "plagg",
+      "gå",
+      "javisst"
+    ]
+  },
+  {
+    "target_word": "ära",
+    "related_word": [
+      "honnör",
+      "heder",
+      "stolthet"
+    ],
+    "target_word_stem": "ära",
+    "related_word_stem": [
+      "honnör",
+      "heder",
+      "stolthet"
+    ]
+  },
+  {
+    "target_word": "sätt",
+    "related_word": [
+      "mod",
+      "vis",
+      "maner"
+    ],
+    "target_word_stem": "sätt",
+    "related_word_stem": [
+      "mod",
+      "vis",
+      "maner"
+    ]
+  },
+  {
+    "target_word": "rätt",
+    "related_word": [
+      "ganska",
+      "tämligen",
+      "domstol"
+    ],
+    "target_word_stem": "rätt",
+    "related_word_stem": [
+      "ganska",
+      "tämligen",
+      "domstol"
+    ]
+  },
+  {
+    "target_word": "roman",
+    "related_word": [
+      "bok",
+      "verk",
+      "berättelse"
+    ],
+    "target_word_stem": "roman",
+    "related_word_stem": [
+      "bok",
+      "verk",
+      "berättelse"
+    ]
+  },
+  {
+    "target_word": "kompis",
+    "related_word": [
+      "vän",
+      "polare",
+      "buss"
+    ],
+    "target_word_stem": "kompis",
+    "related_word_stem": [
+      "vän",
+      "polare",
+      "buss"
+    ]
+  },
+  {
+    "target_word": "utgång",
+    "related_word": [
+      "väg",
+      "slut",
+      "resultat"
+    ],
+    "target_word_stem": "utgång",
+    "related_word_stem": [
+      "väg",
+      "slut",
+      "resultat"
+    ]
+  },
+  {
+    "target_word": "olycka",
+    "related_word": [
+      "elände",
+      "kasus",
+      "möte"
+    ],
+    "target_word_stem": "olycka",
+    "related_word_stem": [
+      "elände",
+      "kasus",
+      "möte"
+    ]
+  },
+  {
+    "target_word": "skål",
+    "related_word": [
+      "gutår",
+      "kyvett",
+      "urna"
+    ],
+    "target_word_stem": "skål",
+    "related_word_stem": [
+      "gutår",
+      "kyvett",
+      "urna"
+    ]
+  },
+  {
+    "target_word": "encyklopedi",
+    "related_word": [
+      "uppslagsbok",
+      "konversationslexikon",
+      "allordbok"
+    ],
+    "target_word_stem": "encyklopedi",
+    "related_word_stem": [
+      "uppslagsbok",
+      "konversationslexikon",
+      "allordbok"
+    ]
+  },
+  {
+    "target_word": "mening",
+    "related_word": [
+      "betydelse",
+      "tanke",
+      "fras"
+    ],
+    "target_word_stem": "mening",
+    "related_word_stem": [
+      "betydelse",
+      "tanke",
+      "fras"
+    ]
+  },
+  {
+    "target_word": "ben",
+    "related_word": [
+      "skånk",
+      "byxben",
+      "lägg"
+    ],
+    "target_word_stem": "ben",
+    "related_word_stem": [
+      "skånk",
+      "byxben",
+      "lägg"
+    ]
+  },
+  {
+    "target_word": "prins",
+    "related_word": [
+      "furste",
+      "adel",
+      "kronprins"
+    ],
+    "target_word_stem": "prins",
+    "related_word_stem": [
+      "furste",
+      "adel",
+      "kronprins"
+    ]
+  },
+  {
+    "target_word": "poesi",
+    "related_word": [
+      "lyrik",
+      "dikt",
+      "vers"
+    ],
+    "target_word_stem": "poesi",
+    "related_word_stem": [
+      "lyrik",
+      "dikt",
+      "vers"
+    ]
+  },
+  {
+    "target_word": "skämt",
+    "related_word": [
+      "vits",
+      "upptåg",
+      "fars"
+    ],
+    "target_word_stem": "skämt",
+    "related_word_stem": [
+      "vits",
+      "upptåg",
+      "fars"
+    ]
+  }
+]

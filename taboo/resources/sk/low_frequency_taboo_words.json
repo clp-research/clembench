@@ -1,0 +1,352 @@
+[
+  {
+    "target_word": "čerešňa",
+    "related_word": [
+      "plod",
+      "strom",
+      "drevo"
+    ],
+    "target_word_stem": "čerešňa",
+    "related_word_stem": [
+      "plod",
+      "strom",
+      "drevo"
+    ]
+  },
+  {
+    "target_word": "správa",
+    "related_word": [
+      "hlásenie",
+      "novina",
+      "zvesť"
+    ],
+    "target_word_stem": "správa",
+    "related_word_stem": [
+      "hlásenie",
+      "novina",
+      "zvesť"
+    ]
+  },
+  {
+    "target_word": "kňaz",
+    "related_word": [
+      "duchovný",
+      "farár",
+      "otec"
+    ],
+    "target_word_stem": "kňaz",
+    "related_word_stem": [
+      "duchovný",
+      "farár",
+      "otec"
+    ]
+  },
+  {
+    "target_word": "prameň",
+    "related_word": [
+      "žriedlo",
+      "zdroj",
+      "pôvod"
+    ],
+    "target_word_stem": "prameň",
+    "related_word_stem": [
+      "žriedlo",
+      "zdroj",
+      "pôvod"
+    ]
+  },
+  {
+    "target_word": "česť",
+    "related_word": [
+      "ctižiadostivec",
+      "ctíť",
+      "ctižiadostivý"
+    ],
+    "target_word_stem": "česť",
+    "related_word_stem": [
+      "ctižiadostivec",
+      "ctíť",
+      "ctižiadostivý"
+    ]
+  },
+  {
+    "target_word": "žmolka",
+    "related_word": [
+      "vlna",
+      "sveter",
+      "oblečenie"
+    ],
+    "target_word_stem": "žmolk",
+    "related_word_stem": [
+      "vln",
+      "svetr",
+      "oblek"
+    ]
+  },
+  {
+    "target_word": "kalamár",
+    "related_word": [
+      "atrament",
+      "pero",
+      "písanie"
+    ],
+    "target_word_stem": "kalamár",
+    "related_word_stem": [
+      "atrament",
+      "per",
+      "pís"
+    ]
+  },
+  {
+    "target_word": "špajza",
+    "related_word": [
+      "potraviny",
+      "sklad",
+      "domácnosť"
+    ],
+    "target_word_stem": "špajz",
+    "related_word_stem": [
+      "potravin",
+      "sklad",
+      "domác"
+    ]
+  },
+  {
+    "target_word": "truhlík",
+    "related_word": [
+      "kvet",
+      "balkón",
+      "záhrada"
+    ],
+    "target_word_stem": "truhlík",
+    "related_word_stem": [
+      "kvet",
+      "balkón",
+      "záhrad"
+    ]
+  },
+  {
+    "target_word": "žinka",
+    "related_word": [
+      "umyť",
+      "tvár",
+      "kúpeľňa"
+    ],
+    "target_word_stem": "žink",
+    "related_word_stem": [
+      "umy",
+      "tvár",
+      "kúpeľ"
+    ]
+  },
+  {
+    "target_word": "veranda",
+    "related_word": [
+      "dom",
+      "záhrada",
+      "terasa"
+    ],
+    "target_word_stem": "verand",
+    "related_word_stem": [
+      "dom",
+      "záhrad",
+      "teras"
+    ]
+  },
+  {
+    "target_word": "kredenc",
+    "related_word": [
+      "riad",
+      "kuchyňa",
+      "skrinka"
+    ],
+    "target_word_stem": "kredenc",
+    "related_word_stem": [
+      "riad",
+      "kuch",
+      "skrink"
+    ]
+  },
+  {
+    "target_word": "šindel",
+    "related_word": [
+      "strecha",
+      "drevo",
+      "dom"
+    ],
+    "target_word_stem": "šindel",
+    "related_word_stem": [
+      "strech",
+      "drev",
+      "dom"
+    ]
+  },
+  {
+    "target_word": "krosná",
+    "related_word": [
+      "tkanie",
+      "látka",
+      "remeslo"
+    ],
+    "target_word_stem": "krosn",
+    "related_word_stem": [
+      "tkan",
+      "lát",
+      "remesl"
+    ]
+  },
+  {
+    "target_word": "žochár",
+    "related_word": [
+      "mešťan",
+      "boháč",
+      "peniaze"
+    ],
+    "target_word_stem": "žochár",
+    "related_word_stem": [
+      "mešt",
+      "boháč",
+      "peniaz"
+    ]
+  },
+  {
+    "target_word": "priehrštie",
+    "related_word": [
+      "hrść",
+      "množstvo",
+      "ruky"
+    ],
+    "target_word_stem": "priehršt",
+    "related_word_stem": [
+      "hrsť",
+      "množ",
+      "ruk"
+    ]
+  },
+  {
+    "target_word": "žriedlo",
+    "related_word": [
+      "prameň",
+      "voda",
+      "liečivý"
+    ],
+    "target_word_stem": "žriedl",
+    "related_word_stem": [
+      "prameň",
+      "vod",
+      "lieč"
+    ]
+  },
+  {
+    "target_word": "kúdeľ",
+    "related_word": [
+      "ľan",
+      "pradenie",
+      "vlákno"
+    ],
+    "target_word_stem": "kúdeľ",
+    "related_word_stem": [
+      "ľan",
+      "prad",
+      "vlákn"
+    ]
+  },
+  {
+    "target_word": "škrabka",
+    "related_word": [
+      "zemiak",
+      "kôra",
+      "kuchyňa"
+    ],
+    "target_word_stem": "škrabk",
+    "related_word_stem": [
+      "zemiak",
+      "kôr",
+      "kuch"
+    ]
+  },
+  {
+    "target_word": "železo",
+    "related_word": [
+      "kov",
+      "hrdza",
+      "tvrdý"
+    ],
+    "target_word_stem": "želez",
+    "related_word_stem": [
+      "kov",
+      "hrdz",
+      "tvrd"
+    ]
+  },
+  {
+    "target_word": "drieň",
+    "related_word": [
+      "strom",
+      "ovocie",
+      "červený"
+    ],
+    "target_word_stem": "drieň",
+    "related_word_stem": [
+      "strom",
+      "ovoc",
+      "červen"
+    ]
+  },
+  {
+    "target_word": "pajta",
+    "related_word": [
+      "stodola",
+      "hospodárstvo",
+      "zvieratá"
+    ],
+    "target_word_stem": "pajt",
+    "related_word_stem": [
+      "stodol",
+      "hospodár",
+      "zviera"
+    ]
+  },
+  {
+    "target_word": "šerbeľ",
+    "related_word": [
+      "nočník",
+      "dieťa",
+      "hygiena"
+    ],
+    "target_word_stem": "šerbeľ",
+    "related_word_stem": [
+      "nočník",
+      "dieť",
+      "hygien"
+    ]
+  },
+  {
+    "target_word": "trlica",
+    "related_word": [
+      "ľan",
+      "spracovanie",
+      "nástroj"
+    ],
+    "target_word_stem": "trlic",
+    "related_word_stem": [
+      "ľan",
+      "sprac",
+      "nástroj"
+    ]
+  },
+  {
+    "target_word": "žaburina",
+    "related_word": [
+      "voda",
+      "rybník",
+      "zelený"
+    ],
+    "target_word_stem": "žaburin",
+    "related_word_stem": [
+      "vod",
+      "rybník",
+      "zelen"
+    ]
+  }
+]

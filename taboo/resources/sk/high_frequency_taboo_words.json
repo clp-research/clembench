@@ -1,0 +1,366 @@
+[
+  {
+    "target_word": "správa",
+    "related_word": [
+      "hlásenie",
+      "novina",
+      "zvesť"
+    ],
+    "target_word_stem": "správa",
+    "related_word_stem": [
+      "hlásenie",
+      "novina",
+      "zvesť"
+    ]
+  },
+  {
+    "target_word": "mesiac",
+    "related_word": [
+      "luna",
+      "satelit",
+      "deň"
+    ],
+    "target_word_stem": "mesiac",
+    "related_word_stem": [
+      "luna",
+      "satelit",
+      "deň"
+    ]
+  },
+  {
+    "target_word": "pravda",
+    "related_word": [
+      "samozrejme",
+      "lož",
+      "klamstvo"
+    ],
+    "target_word_stem": "pravda",
+    "related_word_stem": [
+      "samozrejme",
+      "lož",
+      "klamstvo"
+    ]
+  },
+  {
+    "target_word": "princ",
+    "related_word": [
+      "kráľovič",
+      "infant",
+      "knieža"
+    ],
+    "target_word_stem": "princ",
+    "related_word_stem": [
+      "kráľovič",
+      "infant",
+      "knieža"
+    ]
+  },
+  {
+    "target_word": "ja",
+    "related_word": [
+      "my",
+      "on",
+      "oni"
+    ],
+    "target_word_stem": "ja",
+    "related_word_stem": [
+      "my",
+      "on",
+      "oni"
+    ]
+  },
+  {
+    "target_word": "česť",
+    "related_word": [
+      "ctižiadostivec",
+      "ctíť",
+      "ctižiadostivý"
+    ],
+    "target_word_stem": "česť",
+    "related_word_stem": [
+      "ctižiadostivec",
+      "ctíť",
+      "ctižiadostivý"
+    ]
+  },
+  {
+    "target_word": "voda",
+    "related_word": [
+      "piť",
+      "mokrý",
+      "rieka"
+    ],
+    "target_word_stem": "vod",
+    "related_word_stem": [
+      "pi",
+      "mokr",
+      "riek"
+    ]
+  },
+  {
+    "target_word": "slnko",
+    "related_word": [
+      "teplo",
+      "žltý",
+      "obloha"
+    ],
+    "target_word_stem": "slnk",
+    "related_word_stem": [
+      "tepl",
+      "žlt",
+      "obloh"
+    ]
+  },
+  {
+    "target_word": "dom",
+    "related_word": [
+      "bývať",
+      "strecha",
+      "izba"
+    ],
+    "target_word_stem": "dom",
+    "related_word_stem": [
+      "býv",
+      "strech",
+      "izb"
+    ]
+  },
+  {
+    "target_word": "auto",
+    "related_word": [
+      "koleso",
+      "cesta",
+      "šofér"
+    ],
+    "target_word_stem": "aut",
+    "related_word_stem": [
+      "koles",
+      "cest",
+      "šofér"
+    ]
+  },
+  {
+    "target_word": "čas",
+    "related_word": [
+      "hodiny",
+      "minúta",
+      "deň"
+    ],
+    "target_word_stem": "čas",
+    "related_word_stem": [
+      "hodin",
+      "minút",
+      "deň"
+    ]
+  },
+  {
+    "target_word": "kniha",
+    "related_word": [
+      "čítať",
+      "strana",
+      "písmeno"
+    ],
+    "target_word_stem": "knih",
+    "related_word_stem": [
+      "čít",
+      "stran",
+      "písmen"
+    ]
+  },
+  {
+    "target_word": "škola",
+    "related_word": [
+      "učiť",
+      "žiak",
+      "trieda"
+    ],
+    "target_word_stem": "škol",
+    "related_word_stem": [
+      "uč",
+      "žiak",
+      "tried"
+    ]
+  },
+  {
+    "target_word": "práca",
+    "related_word": [
+      "robiť",
+      "peniaze",
+      "zamestnanie"
+    ],
+    "target_word_stem": "prác",
+    "related_word_stem": [
+      "rob",
+      "peniaz",
+      "zamestnan"
+    ]
+  },
+  {
+    "target_word": "ruka",
+    "related_word": [
+      "prsty",
+      "písať",
+      "chytať"
+    ],
+    "target_word_stem": "ruk",
+    "related_word_stem": [
+      "prst",
+      "pís",
+      "chyt"
+    ]
+  },
+  {
+    "target_word": "jedlo",
+    "related_word": [
+      "jesť",
+      "reštaurácia",
+      "varenie"
+    ],
+    "target_word_stem": "jedl",
+    "related_word_stem": [
+      "jes",
+      "reštauráci",
+      "varen"
+    ]
+  },
+  {
+    "target_word": "strom",
+    "related_word": [
+      "les",
+      "list",
+      "kôra"
+    ],
+    "target_word_stem": "strom",
+    "related_word_stem": [
+      "les",
+      "list",
+      "kôr"
+    ]
+  },
+  {
+    "target_word": "peniaze",
+    "related_word": [
+      "platiť",
+      "banka",
+      "euro"
+    ],
+    "target_word_stem": "peniaz",
+    "related_word_stem": [
+      "plat",
+      "bank",
+      "eur"
+    ]
+  },
+  {
+    "target_word": "láska",
+    "related_word": [
+      "srdce",
+      "milovať",
+      "vzťah"
+    ],
+    "target_word_stem": "lásk",
+    "related_word_stem": [
+      "srdc",
+      "milov",
+      "vzťah"
+    ]
+  },
+  {
+    "target_word": "rodina",
+    "related_word": [
+      "mama",
+      "otec",
+      "dieťa"
+    ],
+    "target_word_stem": "rodin",
+    "related_word_stem": [
+      "mam",
+      "otec",
+      "dieť"
+    ]
+  },
+  {
+    "target_word": "hra",
+    "related_word": [
+      "zabávať sa",
+      "pravidlá",
+      "víťazstvo"
+    ],
+    "target_word_stem": "hra",
+    "related_word_stem": [
+      "zabáv",
+      "pravidl",
+      "víťaz"
+    ]
+  },
+  {
+    "target_word": "počítač",
+    "related_word": [
+      "internet",
+      "klávesnica",
+      "obrazovka"
+    ],
+    "target_word_stem": "počítač",
+    "related_word_stem": [
+      "internet",
+      "klávesnic",
+      "obrazovk"
+    ]
+  },
+  {
+    "target_word": "hudba",
+    "related_word": [
+      "počúvať",
+      "pieseň",
+      "nástroj"
+    ],
+    "target_word_stem": "hudb",
+    "related_word_stem": [
+      "počúv",
+      "piesn",
+      "nástroj"
+    ]
+  },
+  {
+    "target_word": "mesto",
+    "related_word": [
+      "ulica",
+      "budova",
+      "ľudia"
+    ],
+    "target_word_stem": "mest",
+    "related_word_stem": [
+      "ulic",
+      "budov",
+      "ľud"
+    ]
+  },
+  {
+    "target_word": "zviera",
+    "related_word": [
+      "pes",
+      "mačka",
+      "príroda"
+    ],
+    "target_word_stem": "zviera",
+    "related_word_stem": [
+      "pes",
+      "mačk",
+      "prírod"
+    ]
+  },
+  {
+    "target_word": "telefón",
+    "related_word": [
+      "volať",
+      "hovor",
+      "mobil"
+    ],
+    "target_word_stem": "telefón",
+    "related_word_stem": [
+      "vol",
+      "hovor",
+      "mobil"
+    ]
+  }
+]

@@ -1,0 +1,282 @@
+[
+  {
+    "target_word": "vidra",
+    "related_word": [
+      "rijeka",
+      "životinja",
+      "krzno"
+    ],
+    "target_word_stem": "vidr",
+    "related_word_stem": [
+      "riječ",
+      "život",
+      "krz"
+    ]
+  },
+  {
+    "target_word": "ždrijebe",
+    "related_word": [
+      "konj",
+      "mlado",
+      "ergela"
+    ],
+    "target_word_stem": "ždrijeb",
+    "related_word_stem": [
+      "konj",
+      "mlad",
+      "ergel"
+    ]
+  },
+  {
+    "target_word": "kovčeg",
+    "related_word": [
+      "putovanje",
+      "prtljaga",
+      "kofer"
+    ],
+    "target_word_stem": "kovčeg",
+    "related_word_stem": [
+      "put",
+      "prtljag",
+      "kofer"
+    ]
+  },
+  {
+    "target_word": "ognjište",
+    "related_word": [
+      "vatra",
+      "dom",
+      "kamin"
+    ],
+    "target_word_stem": "ognjišt",
+    "related_word_stem": [
+      "vatr",
+      "dom",
+      "kamin"
+    ]
+  },
+  {
+    "target_word": "vršidba",
+    "related_word": [
+      "žito",
+      "polje",
+      "kombajn"
+    ],
+    "target_word_stem": "vršidb",
+    "related_word_stem": [
+      "žit",
+      "polj",
+      "kombajn"
+    ]
+  },
+  {
+    "target_word": "špilja",
+    "related_word": [
+      "pećina",
+      "tama",
+      "stalaktit"
+    ],
+    "target_word_stem": "špilj",
+    "related_word_stem": [
+      "peć",
+      "tam",
+      "stalakt"
+    ]
+  },
+  {
+    "target_word": "žitnica",
+    "related_word": [
+      "žito",
+      "skladište",
+      "hrana"
+    ],
+    "target_word_stem": "žitnic",
+    "related_word_stem": [
+      "žit",
+      "sklad",
+      "hran"
+    ]
+  },
+  {
+    "target_word": "ćilim",
+    "related_word": [
+      "tepih",
+      "pod",
+      "orijent"
+    ],
+    "target_word_stem": "ćilim",
+    "related_word_stem": [
+      "tepih",
+      "pod",
+      "orijent"
+    ]
+  },
+  {
+    "target_word": "fućkati",
+    "related_word": [
+      "zviždati",
+      "usta",
+      "melodija"
+    ],
+    "target_word_stem": "fućk",
+    "related_word_stem": [
+      "zvižd",
+      "ust",
+      "melod"
+    ]
+  },
+  {
+    "target_word": "grimiz",
+    "related_word": [
+      "crveno",
+      "boja",
+      "skupo"
+    ],
+    "target_word_stem": "grimiz",
+    "related_word_stem": [
+      "crven",
+      "boj",
+      "skup"
+    ]
+  },
+  {
+    "target_word": "ćup",
+    "related_word": [
+      "posuda",
+      "glina",
+      "voda"
+    ],
+    "target_word_stem": "ćup",
+    "related_word_stem": [
+      "posud",
+      "glin",
+      "vod"
+    ]
+  },
+  {
+    "target_word": "brijest",
+    "related_word": [
+      "drvo",
+      "list",
+      "šuma"
+    ],
+    "target_word_stem": "brijest",
+    "related_word_stem": [
+      "drv",
+      "list",
+      "šum"
+    ]
+  },
+  {
+    "target_word": "ždral",
+    "related_word": [
+      "ptica",
+      "močvara",
+      "let"
+    ],
+    "target_word_stem": "ždral",
+    "related_word_stem": [
+      "ptic",
+      "močvar",
+      "let"
+    ]
+  },
+  {
+    "target_word": "ogrlina",
+    "related_word": [
+      "nakit",
+      "vrat",
+      "perle"
+    ],
+    "target_word_stem": "ogrlin",
+    "related_word_stem": [
+      "nakit",
+      "vrat",
+      "perl"
+    ]
+  },
+  {
+    "target_word": "prikolica",
+    "related_word": [
+      "auto",
+      "vući",
+      "teret"
+    ],
+    "target_word_stem": "prikolic",
+    "related_word_stem": [
+      "aut",
+      "vuć",
+      "teret"
+    ]
+  },
+  {
+    "target_word": "smilje",
+    "related_word": [
+      "cvijet",
+      "miris",
+      "Dalmacija"
+    ],
+    "target_word_stem": "smilj",
+    "related_word_stem": [
+      "cvijet",
+      "miris",
+      "dalmacij"
+    ]
+  },
+  {
+    "target_word": "kotao",
+    "related_word": [
+      "voda",
+      "grijanje",
+      "bakar"
+    ],
+    "target_word_stem": "kotal",
+    "related_word_stem": [
+      "vod",
+      "grij",
+      "bakar"
+    ]
+  },
+  {
+    "target_word": "tavan",
+    "related_word": [
+      "kuća",
+      "krov",
+      "prašina"
+    ],
+    "target_word_stem": "tavan",
+    "related_word_stem": [
+      "kuć",
+      "krov",
+      "praš"
+    ]
+  },
+  {
+    "target_word": "oluk",
+    "related_word": [
+      "kiša",
+      "voda",
+      "krov"
+    ],
+    "target_word_stem": "oluk",
+    "related_word_stem": [
+      "kiš",
+      "vod",
+      "krov"
+    ]
+  },
+  {
+    "target_word": "šljiva",
+    "related_word": [
+      "voće",
+      "stablo",
+      "pekmez"
+    ],
+    "target_word_stem": "šljiv",
+    "related_word_stem": [
+      "voć",
+      "stabl",
+      "pekmez"
+    ]
+  }
+]

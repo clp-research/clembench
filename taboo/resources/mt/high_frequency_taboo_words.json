@@ -1,0 +1,282 @@
+[
+  {
+    "target_word": "Dar",
+    "related_word": [
+      "Kamra",
+      "Bieb",
+      "Familja"
+    ],
+    "target_word_stem": "dar",
+    "related_word_stem": [
+      "kamr",
+      "bieb",
+      "famil"
+    ]
+  },
+  {
+    "target_word": "Skola",
+    "related_word": [
+      "Student",
+      "Għalliem",
+      "Ktieb"
+    ],
+    "target_word_stem": "skol",
+    "related_word_stem": [
+      "stud",
+      "għall",
+      "ktieb"
+    ]
+  },
+  {
+    "target_word": "Ħobż",
+    "related_word": [
+      "Ikel",
+      "Forn",
+      "Qamħ"
+    ],
+    "target_word_stem": "ħobż",
+    "related_word_stem": [
+      "ikel",
+      "forn",
+      "qamħ"
+    ]
+  },
+  {
+    "target_word": "Ilma",
+    "related_word": [
+      "Xorb",
+      "Baħar",
+      "Xmara"
+    ],
+    "target_word_stem": "ilm",
+    "related_word_stem": [
+      "xorb",
+      "baħar",
+      "xmara"
+    ]
+  },
+  {
+    "target_word": "Xogħol",
+    "related_word": [
+      "Uffiċċju",
+      "Impjieg",
+      "Paga"
+    ],
+    "target_word_stem": "xogħol",
+    "related_word_stem": [
+      "uffiċċ",
+      "impjieg",
+      "paga"
+    ]
+  },
+  {
+    "target_word": "Karozza",
+    "related_word": [
+      "Triq",
+      "Rota",
+      "Sewqan"
+    ],
+    "target_word_stem": "karozz",
+    "related_word_stem": [
+      "triq",
+      "rot",
+      "sewq"
+    ]
+  },
+  {
+    "target_word": "Flus",
+    "related_word": [
+      "Bank",
+      "Kartiera",
+      "Ġid"
+    ],
+    "target_word_stem": "flus",
+    "related_word_stem": [
+      "bank",
+      "kartier",
+      "ġid"
+    ]
+  },
+  {
+    "target_word": "Ħabib",
+    "related_word": [
+      "Soċjali",
+      "Relazzjoni",
+      "Kumpanija"
+    ],
+    "target_word_stem": "ħabib",
+    "related_word_stem": [
+      "soċjal",
+      "relazzjon",
+      "kumpan"
+    ]
+  },
+  {
+    "target_word": "Ktieb",
+    "related_word": [
+      "Qari",
+      "Paġna",
+      "Storja"
+    ],
+    "target_word_stem": "ktieb",
+    "related_word_stem": [
+      "qar",
+      "paġn",
+      "stor"
+    ]
+  },
+  {
+    "target_word": "Temp",
+    "related_word": [
+      "Xemx",
+      "Xita",
+      "Sħab"
+    ],
+    "target_word_stem": "temp",
+    "related_word_stem": [
+      "xemx",
+      "xit",
+      "sħab"
+    ]
+  },
+  {
+    "target_word": "Raġel",
+    "related_word": [
+      "Mara",
+      "Bniedem",
+      "Familja"
+    ],
+    "target_word_stem": "raġel",
+    "related_word_stem": [
+      "mar",
+      "bnied",
+      "famil"
+    ]
+  },
+  {
+    "target_word": "Tifel",
+    "related_word": [
+      "Tifla",
+      "Żgħir",
+      "Logħob"
+    ],
+    "target_word_stem": "tifel",
+    "related_word_stem": [
+      "tifla",
+      "żgħir",
+      "logħ"
+    ]
+  },
+  {
+    "target_word": "Sena",
+    "related_word": [
+      "Xahar",
+      "Ġurnata",
+      "Kalendarju"
+    ],
+    "target_word_stem": "sena",
+    "related_word_stem": [
+      "xahar",
+      "ġurnat",
+      "kalendar"
+    ]
+  },
+  {
+    "target_word": "Belt",
+    "related_word": [
+      "Triq",
+      "Bini",
+      "Ċentru"
+    ],
+    "target_word_stem": "belt",
+    "related_word_stem": [
+      "triq",
+      "bin",
+      "ċentr"
+    ]
+  },
+  {
+    "target_word": "Parti",
+    "related_word": [
+      "Festa",
+      "Mużika",
+      "Żfin"
+    ],
+    "target_word_stem": "part",
+    "related_word_stem": [
+      "fest",
+      "mużik",
+      "żfin"
+    ]
+  },
+  {
+    "target_word": "Gvern",
+    "related_word": [
+      "Politika",
+      "Liġi",
+      "Pajjiż"
+    ],
+    "target_word_stem": "gvern",
+    "related_word_stem": [
+      "politik",
+      "liġ",
+      "pajjiż"
+    ]
+  },
+  {
+    "target_word": "Saħħa",
+    "related_word": [
+      "Sptar",
+      "Mediċina",
+      "Ġisem"
+    ],
+    "target_word_stem": "saħħ",
+    "related_word_stem": [
+      "sptar",
+      "mediċin",
+      "ġisem"
+    ]
+  },
+  {
+    "target_word": "Kelma",
+    "related_word": [
+      "Lingwa",
+      "Sentenza",
+      "Dizzjunarju"
+    ],
+    "target_word_stem": "kelm",
+    "related_word_stem": [
+      "lingw",
+      "sentenz",
+      "dizzjun"
+    ]
+  },
+  {
+    "target_word": "Messaġġ",
+    "related_word": [
+      "Telefon",
+      "Ittra",
+      "Komunikazzjoni"
+    ],
+    "target_word_stem": "messaġġ",
+    "related_word_stem": [
+      "telefon",
+      "ittr",
+      "komunik"
+    ]
+  },
+  {
+    "target_word": "Annimal",
+    "related_word": [
+      "Klieb",
+      "Qtates",
+      "Natura"
+    ],
+    "target_word_stem": "annimal",
+    "related_word_stem": [
+      "klieb",
+      "qtates",
+      "natur"
+    ]
+  }
+]

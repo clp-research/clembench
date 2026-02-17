@@ -1,0 +1,1500 @@
+[
+  {
+    "target_word": "marito",
+    "related_word": [
+      "sposo",
+      "coniuge",
+      "moglie"
+    ],
+    "target_word_stem": "marito",
+    "related_word_stem": [
+      "sposo",
+      "coniuge",
+      "moglie"
+    ]
+  },
+  {
+    "target_word": "bocca",
+    "related_word": [
+      "corpo",
+      "testa",
+      "fauce"
+    ],
+    "target_word_stem": "bocca",
+    "related_word_stem": [
+      "corpo",
+      "testa",
+      "fauce"
+    ]
+  },
+  {
+    "target_word": "posteriore",
+    "related_word": [
+      "successivo",
+      "antecedente",
+      "davanti"
+    ],
+    "target_word_stem": "posteriore",
+    "related_word_stem": [
+      "successivo",
+      "antecedente",
+      "davanti"
+    ]
+  },
+  {
+    "target_word": "gravidanza",
+    "related_word": [
+      "gestazione",
+      "incinta",
+      "parto"
+    ],
+    "target_word_stem": "gravidanza",
+    "related_word_stem": [
+      "gestazione",
+      "incinta",
+      "parto"
+    ]
+  },
+  {
+    "target_word": "dito",
+    "related_word": [
+      "misura",
+      "mano",
+      "alluce"
+    ],
+    "target_word_stem": "dito",
+    "related_word_stem": [
+      "misura",
+      "mano",
+      "alluce"
+    ]
+  },
+  {
+    "target_word": "gigante",
+    "related_word": [
+      "colosso",
+      "enorme",
+      "nano"
+    ],
+    "target_word_stem": "gigante",
+    "related_word_stem": [
+      "colosso",
+      "enorme",
+      "nano"
+    ]
+  },
+  {
+    "target_word": "cintura",
+    "related_word": [
+      "corpo",
+      "abbigliamento",
+      "anatomia"
+    ],
+    "target_word_stem": "cintura",
+    "related_word_stem": [
+      "corpo",
+      "abbigliamento",
+      "anatomia"
+    ]
+  },
+  {
+    "target_word": "luogo",
+    "related_word": [
+      "parte",
+      "ubi",
+      "ameno"
+    ],
+    "target_word_stem": "luogo",
+    "related_word_stem": [
+      "parte",
+      "ubi",
+      "ameno"
+    ]
+  },
+  {
+    "target_word": "autorizzazione",
+    "related_word": [
+      "licenza",
+      "visto",
+      "nullaosta"
+    ],
+    "target_word_stem": "autorizzazione",
+    "related_word_stem": [
+      "licenza",
+      "visto",
+      "nullaosta"
+    ]
+  },
+  {
+    "target_word": "tessuto",
+    "related_word": [
+      "stoffa",
+      "organo",
+      "isto"
+    ],
+    "target_word_stem": "tessuto",
+    "related_word_stem": [
+      "stoffa",
+      "organo",
+      "isto"
+    ]
+  },
+  {
+    "target_word": "pranzo",
+    "related_word": [
+      "desinare",
+      "cena",
+      "colazione"
+    ],
+    "target_word_stem": "pranzo",
+    "related_word_stem": [
+      "desinare",
+      "cena",
+      "colazione"
+    ]
+  },
+  {
+    "target_word": "lavoro",
+    "related_word": [
+      "impiego",
+      "occupazione",
+      "opera"
+    ],
+    "target_word_stem": "lavoro",
+    "related_word_stem": [
+      "impiego",
+      "occupazione",
+      "opera"
+    ]
+  },
+  {
+    "target_word": "errore",
+    "related_word": [
+      "fallo",
+      "mancanza",
+      "cazzata"
+    ],
+    "target_word_stem": "errore",
+    "related_word_stem": [
+      "fallo",
+      "mancanza",
+      "cazzata"
+    ]
+  },
+  {
+    "target_word": "opinione",
+    "related_word": [
+      "giudizio",
+      "concetto",
+      "avviso"
+    ],
+    "target_word_stem": "opinione",
+    "related_word_stem": [
+      "giudizio",
+      "concetto",
+      "avviso"
+    ]
+  },
+  {
+    "target_word": "occupazione",
+    "related_word": [
+      "impiego",
+      "lavoro",
+      "attività"
+    ],
+    "target_word_stem": "occupazione",
+    "related_word_stem": [
+      "impiego",
+      "lavoro",
+      "attività"
+    ]
+  },
+  {
+    "target_word": "cellulare",
+    "related_word": [
+      "telefonino",
+      "cella",
+      "polizia"
+    ],
+    "target_word_stem": "cellulare",
+    "related_word_stem": [
+      "telefonino",
+      "cella",
+      "polizia"
+    ]
+  },
+  {
+    "target_word": "traccia",
+    "related_word": [
+      "pista",
+      "impronta",
+      "indizio"
+    ],
+    "target_word_stem": "traccia",
+    "related_word_stem": [
+      "pista",
+      "impronta",
+      "indizio"
+    ]
+  },
+  {
+    "target_word": "povertà",
+    "related_word": [
+      "ricchezza",
+      "indigenza",
+      "inopia"
+    ],
+    "target_word_stem": "povertà",
+    "related_word_stem": [
+      "ricchezza",
+      "indigenza",
+      "inopia"
+    ]
+  },
+  {
+    "target_word": "costume",
+    "related_word": [
+      "abito",
+      "tradizione",
+      "usanza"
+    ],
+    "target_word_stem": "costume",
+    "related_word_stem": [
+      "abito",
+      "tradizione",
+      "usanza"
+    ]
+  },
+  {
+    "target_word": "caffè",
+    "related_word": [
+      "gastronomia",
+      "bevanda",
+      "bibita"
+    ],
+    "target_word_stem": "caffè",
+    "related_word_stem": [
+      "gastronomia",
+      "bevanda",
+      "bibita"
+    ]
+  },
+  {
+    "target_word": "opera",
+    "related_word": [
+      "lirica",
+      "istituzione",
+      "melodramma"
+    ],
+    "target_word_stem": "opera",
+    "related_word_stem": [
+      "lirica",
+      "istituzione",
+      "melodramma"
+    ]
+  },
+  {
+    "target_word": "banda",
+    "related_word": [
+      "gruppo",
+      "reparto",
+      "complesso"
+    ],
+    "target_word_stem": "banda",
+    "related_word_stem": [
+      "gruppo",
+      "reparto",
+      "complesso"
+    ]
+  },
+  {
+    "target_word": "giudizio",
+    "related_word": [
+      "parere",
+      "opinione",
+      "processo"
+    ],
+    "target_word_stem": "giudizio",
+    "related_word_stem": [
+      "parere",
+      "opinione",
+      "processo"
+    ]
+  },
+  {
+    "target_word": "manuale",
+    "related_word": [
+      "automatico",
+      "vademecum",
+      "bignamino"
+    ],
+    "target_word_stem": "manuale",
+    "related_word_stem": [
+      "automatico",
+      "vademecum",
+      "bignamino"
+    ]
+  },
+  {
+    "target_word": "studente",
+    "related_word": [
+      "università",
+      "cartina",
+      "allievo"
+    ],
+    "target_word_stem": "studente",
+    "related_word_stem": [
+      "università",
+      "cartina",
+      "allievo"
+    ]
+  },
+  {
+    "target_word": "vicino",
+    "related_word": [
+      "presso",
+      "lontano",
+      "vico"
+    ],
+    "target_word_stem": "vicino",
+    "related_word_stem": [
+      "presso",
+      "lontano",
+      "vico"
+    ]
+  },
+  {
+    "target_word": "capo",
+    "related_word": [
+      "principale",
+      "boss",
+      "responsabile"
+    ],
+    "target_word_stem": "capo",
+    "related_word_stem": [
+      "principale",
+      "boss",
+      "responsabile"
+    ]
+  },
+  {
+    "target_word": "guanto",
+    "related_word": [
+      "sci",
+      "preservativo",
+      "condom"
+    ],
+    "target_word_stem": "guanto",
+    "related_word_stem": [
+      "sci",
+      "preservativo",
+      "condom"
+    ]
+  },
+  {
+    "target_word": "tappeto",
+    "related_word": [
+      "kilim",
+      "passatoia",
+      "scendiletto"
+    ],
+    "target_word_stem": "tappeto",
+    "related_word_stem": [
+      "kilim",
+      "passatoia",
+      "scendiletto"
+    ]
+  },
+  {
+    "target_word": "automobile",
+    "related_word": [
+      "macchina",
+      "vettura",
+      "viaggiare"
+    ],
+    "target_word_stem": "automobile",
+    "related_word_stem": [
+      "macchina",
+      "vettura",
+      "viaggiare"
+    ]
+  },
+  {
+    "target_word": "attacco",
+    "related_word": [
+      "aggressione",
+      "giunto",
+      "inizio"
+    ],
+    "target_word_stem": "attacco",
+    "related_word_stem": [
+      "aggressione",
+      "giunto",
+      "inizio"
+    ]
+  },
+  {
+    "target_word": "mercurio",
+    "related_word": [
+      "pianeta",
+      "chimica",
+      "argentovivo"
+    ],
+    "target_word_stem": "mercurio",
+    "related_word_stem": [
+      "pianeta",
+      "chimica",
+      "argentovivo"
+    ]
+  },
+  {
+    "target_word": "profumo",
+    "related_word": [
+      "fetore",
+      "essenza",
+      "fragranza"
+    ],
+    "target_word_stem": "profumo",
+    "related_word_stem": [
+      "fetore",
+      "essenza",
+      "fragranza"
+    ]
+  },
+  {
+    "target_word": "malattia",
+    "related_word": [
+      "infermità",
+      "affezione",
+      "disturbo"
+    ],
+    "target_word_stem": "malattia",
+    "related_word_stem": [
+      "infermità",
+      "affezione",
+      "disturbo"
+    ]
+  },
+  {
+    "target_word": "fiamma",
+    "related_word": [
+      "fuoco",
+      "fiaccola",
+      "ignifugo"
+    ],
+    "target_word_stem": "fiamma",
+    "related_word_stem": [
+      "fuoco",
+      "fiaccola",
+      "ignifugo"
+    ]
+  },
+  {
+    "target_word": "libro",
+    "related_word": [
+      "letteratura",
+      "omaso",
+      "floema"
+    ],
+    "target_word_stem": "libro",
+    "related_word_stem": [
+      "letteratura",
+      "omaso",
+      "floema"
+    ]
+  },
+  {
+    "target_word": "licenza",
+    "related_word": [
+      "autorizzazione",
+      "permesso",
+      "facoltà"
+    ],
+    "target_word_stem": "licenza",
+    "related_word_stem": [
+      "autorizzazione",
+      "permesso",
+      "facoltà"
+    ]
+  },
+  {
+    "target_word": "margine",
+    "related_word": [
+      "bordo",
+      "ciglio",
+      "labbro"
+    ],
+    "target_word_stem": "margine",
+    "related_word_stem": [
+      "bordo",
+      "ciglio",
+      "labbro"
+    ]
+  },
+  {
+    "target_word": "asse",
+    "related_word": [
+      "perno",
+      "epistrofeo",
+      "palanca"
+    ],
+    "target_word_stem": "asse",
+    "related_word_stem": [
+      "perno",
+      "epistrofeo",
+      "palanca"
+    ]
+  },
+  {
+    "target_word": "erba",
+    "related_word": [
+      "pianta",
+      "erboristico",
+      "inerbimento"
+    ],
+    "target_word_stem": "erba",
+    "related_word_stem": [
+      "pianta",
+      "erboristico",
+      "inerbimento"
+    ]
+  },
+  {
+    "target_word": "temperatura",
+    "related_word": [
+      "caldo",
+      "febbre",
+      "freddo"
+    ],
+    "target_word_stem": "temperatura",
+    "related_word_stem": [
+      "caldo",
+      "febbre",
+      "freddo"
+    ]
+  },
+  {
+    "target_word": "toro",
+    "related_word": [
+      "costellazione",
+      "animale",
+      "superficie"
+    ],
+    "target_word_stem": "toro",
+    "related_word_stem": [
+      "costellazione",
+      "animale",
+      "superficie"
+    ]
+  },
+  {
+    "target_word": "succo",
+    "related_word": [
+      "bevanda",
+      "essenza",
+      "bibita"
+    ],
+    "target_word_stem": "succo",
+    "related_word_stem": [
+      "bevanda",
+      "essenza",
+      "bibita"
+    ]
+  },
+  {
+    "target_word": "zuppa",
+    "related_word": [
+      "alimentazione",
+      "minestra",
+      "gastronomia"
+    ],
+    "target_word_stem": "zuppa",
+    "related_word_stem": [
+      "alimentazione",
+      "minestra",
+      "gastronomia"
+    ]
+  },
+  {
+    "target_word": "mais",
+    "related_word": [
+      "granturco",
+      "frumentone",
+      "cereale"
+    ],
+    "target_word_stem": "mais",
+    "related_word_stem": [
+      "granturco",
+      "frumentone",
+      "cereale"
+    ]
+  },
+  {
+    "target_word": "tronco",
+    "related_word": [
+      "fusto",
+      "anatomia",
+      "architettura"
+    ],
+    "target_word_stem": "tronco",
+    "related_word_stem": [
+      "fusto",
+      "anatomia",
+      "architettura"
+    ]
+  },
+  {
+    "target_word": "pettirosso",
+    "related_word": [
+      "animale",
+      "uccello",
+      "ornitologia"
+    ],
+    "target_word_stem": "pettirosso",
+    "related_word_stem": [
+      "animale",
+      "uccello",
+      "ornitologia"
+    ]
+  },
+  {
+    "target_word": "difetto",
+    "related_word": [
+      "mancanza",
+      "imprecisione",
+      "pecca"
+    ],
+    "target_word_stem": "difetto",
+    "related_word_stem": [
+      "mancanza",
+      "imprecisione",
+      "pecca"
+    ]
+  },
+  {
+    "target_word": "anatra",
+    "related_word": [
+      "papero",
+      "uccello",
+      "ornitologia"
+    ],
+    "target_word_stem": "anatra",
+    "related_word_stem": [
+      "papero",
+      "uccello",
+      "ornitologia"
+    ]
+  },
+  {
+    "target_word": "comune",
+    "related_word": [
+      "collettivo",
+      "banale",
+      "mediocre"
+    ],
+    "target_word_stem": "comune",
+    "related_word_stem": [
+      "collettivo",
+      "banale",
+      "mediocre"
+    ]
+  },
+  {
+    "target_word": "coniglio",
+    "related_word": [
+      "animale",
+      "lepre",
+      "lapin"
+    ],
+    "target_word_stem": "coniglio",
+    "related_word_stem": [
+      "animale",
+      "lepre",
+      "lapin"
+    ]
+  },
+  {
+    "target_word": "corpo",
+    "related_word": [
+      "cadavere",
+      "a",
+      "mettersi"
+    ],
+    "target_word_stem": "corpo",
+    "related_word_stem": [
+      "cadavere",
+      "a",
+      "mettersi"
+    ]
+  },
+  {
+    "target_word": "stagno",
+    "related_word": [
+      "acqua",
+      "chimica",
+      "elemento"
+    ],
+    "target_word_stem": "stagno",
+    "related_word_stem": [
+      "acqua",
+      "chimica",
+      "elemento"
+    ]
+  },
+  {
+    "target_word": "cammello",
+    "related_word": [
+      "zoologia",
+      "mammifero",
+      "cammellato"
+    ],
+    "target_word_stem": "cammello",
+    "related_word_stem": [
+      "zoologia",
+      "mammifero",
+      "cammellato"
+    ]
+  },
+  {
+    "target_word": "sposa",
+    "related_word": [
+      "nozze",
+      "matrimonio",
+      "moglie"
+    ],
+    "target_word_stem": "sposa",
+    "related_word_stem": [
+      "nozze",
+      "matrimonio",
+      "moglie"
+    ]
+  },
+  {
+    "target_word": "avversario",
+    "related_word": [
+      "opposto",
+      "antagonista",
+      "rivale"
+    ],
+    "target_word_stem": "avversario",
+    "related_word_stem": [
+      "opposto",
+      "antagonista",
+      "rivale"
+    ]
+  },
+  {
+    "target_word": "verso",
+    "related_word": [
+      "circa",
+      "fronte",
+      "stico"
+    ],
+    "target_word_stem": "verso",
+    "related_word_stem": [
+      "circa",
+      "fronte",
+      "stico"
+    ]
+  },
+  {
+    "target_word": "proiettile",
+    "related_word": [
+      "munizione",
+      "razzo",
+      "palla"
+    ],
+    "target_word_stem": "proiettile",
+    "related_word_stem": [
+      "munizione",
+      "razzo",
+      "palla"
+    ]
+  },
+  {
+    "target_word": "serpente",
+    "related_word": [
+      "animale",
+      "colubro",
+      "ofide"
+    ],
+    "target_word_stem": "serpente",
+    "related_word_stem": [
+      "animale",
+      "colubro",
+      "ofide"
+    ]
+  },
+  {
+    "target_word": "apparecchio",
+    "related_word": [
+      "dispositivo",
+      "ricevitore",
+      "telefono"
+    ],
+    "target_word_stem": "apparecchio",
+    "related_word_stem": [
+      "dispositivo",
+      "ricevitore",
+      "telefono"
+    ]
+  },
+  {
+    "target_word": "ansia",
+    "related_word": [
+      "impazienza",
+      "preoccupazione",
+      "ansiogeno"
+    ],
+    "target_word_stem": "ansia",
+    "related_word_stem": [
+      "impazienza",
+      "preoccupazione",
+      "ansiogeno"
+    ]
+  },
+  {
+    "target_word": "anziano",
+    "related_word": [
+      "vecchio",
+      "giovane",
+      "ante"
+    ],
+    "target_word_stem": "anziano",
+    "related_word_stem": [
+      "vecchio",
+      "giovane",
+      "ante"
+    ]
+  },
+  {
+    "target_word": "limone",
+    "related_word": [
+      "frutto",
+      "pianta",
+      "botanica"
+    ],
+    "target_word_stem": "limone",
+    "related_word_stem": [
+      "frutto",
+      "pianta",
+      "botanica"
+    ]
+  },
+  {
+    "target_word": "squadra",
+    "related_word": [
+      "team",
+      "gruppo",
+      "compagine"
+    ],
+    "target_word_stem": "squadra",
+    "related_word_stem": [
+      "team",
+      "gruppo",
+      "compagine"
+    ]
+  },
+  {
+    "target_word": "veleno",
+    "related_word": [
+      "tossico",
+      "avvelenamento",
+      "controveleno"
+    ],
+    "target_word_stem": "veleno",
+    "related_word_stem": [
+      "tossico",
+      "avvelenamento",
+      "controveleno"
+    ]
+  },
+  {
+    "target_word": "calcio",
+    "related_word": [
+      "pedata",
+      "sport",
+      "chimica"
+    ],
+    "target_word_stem": "calcio",
+    "related_word_stem": [
+      "pedata",
+      "sport",
+      "chimica"
+    ]
+  },
+  {
+    "target_word": "buono",
+    "related_word": [
+      "piacevole",
+      "positivo",
+      "ubbidiente"
+    ],
+    "target_word_stem": "buono",
+    "related_word_stem": [
+      "piacevole",
+      "positivo",
+      "ubbidiente"
+    ]
+  },
+  {
+    "target_word": "comune",
+    "related_word": [
+      "collettivo",
+      "banale",
+      "mediocre"
+    ],
+    "target_word_stem": "comune",
+    "related_word_stem": [
+      "collettivo",
+      "banale",
+      "mediocre"
+    ]
+  },
+  {
+    "target_word": "pecora",
+    "related_word": [
+      "animale",
+      "berbice",
+      "agnello"
+    ],
+    "target_word_stem": "pecora",
+    "related_word_stem": [
+      "animale",
+      "berbice",
+      "agnello"
+    ]
+  },
+  {
+    "target_word": "rene",
+    "related_word": [
+      "corpo",
+      "anatomia",
+      "nefrologia"
+    ],
+    "target_word_stem": "rene",
+    "related_word_stem": [
+      "corpo",
+      "anatomia",
+      "nefrologia"
+    ]
+  },
+  {
+    "target_word": "libro",
+    "related_word": [
+      "letteratura",
+      "omaso",
+      "floema"
+    ],
+    "target_word_stem": "libro",
+    "related_word_stem": [
+      "letteratura",
+      "omaso",
+      "floema"
+    ]
+  },
+  {
+    "target_word": "pancia",
+    "related_word": [
+      "torace",
+      "addome",
+      "ventre"
+    ],
+    "target_word_stem": "pancia",
+    "related_word_stem": [
+      "torace",
+      "addome",
+      "ventre"
+    ]
+  },
+  {
+    "target_word": "prima",
+    "related_word": [
+      "fa",
+      "avanti",
+      "antecedentemente"
+    ],
+    "target_word_stem": "prima",
+    "related_word_stem": [
+      "fa",
+      "avanti",
+      "antecedentemente"
+    ]
+  },
+  {
+    "target_word": "norma",
+    "related_word": [
+      "regola",
+      "consuetudine",
+      "istruzione"
+    ],
+    "target_word_stem": "norma",
+    "related_word_stem": [
+      "regola",
+      "consuetudine",
+      "istruzione"
+    ]
+  },
+  {
+    "target_word": "elefante",
+    "related_word": [
+      "pachiderma",
+      "animale",
+      "proboscide"
+    ],
+    "target_word_stem": "elefante",
+    "related_word_stem": [
+      "pachiderma",
+      "animale",
+      "proboscide"
+    ]
+  },
+  {
+    "target_word": "negozio",
+    "related_word": [
+      "bottega",
+      "rivendita",
+      "forno"
+    ],
+    "target_word_stem": "negozio",
+    "related_word_stem": [
+      "bottega",
+      "rivendita",
+      "forno"
+    ]
+  },
+  {
+    "target_word": "albero",
+    "related_word": [
+      "pianta",
+      "natura",
+      "pioppo"
+    ],
+    "target_word_stem": "albero",
+    "related_word_stem": [
+      "pianta",
+      "natura",
+      "pioppo"
+    ]
+  },
+  {
+    "target_word": "frusta",
+    "related_word": [
+      "nerbo",
+      "staffile",
+      "sferza"
+    ],
+    "target_word_stem": "frusta",
+    "related_word_stem": [
+      "nerbo",
+      "staffile",
+      "sferza"
+    ]
+  },
+  {
+    "target_word": "imposta",
+    "related_word": [
+      "scuro",
+      "contribuzione",
+      "impositivo"
+    ],
+    "target_word_stem": "imposta",
+    "related_word_stem": [
+      "scuro",
+      "contribuzione",
+      "impositivo"
+    ]
+  },
+  {
+    "target_word": "atto",
+    "related_word": [
+      "idoneo",
+      "agire",
+      "attitudine"
+    ],
+    "target_word_stem": "atto",
+    "related_word_stem": [
+      "idoneo",
+      "agire",
+      "attitudine"
+    ]
+  },
+  {
+    "target_word": "guasto",
+    "related_word": [
+      "avariato",
+      "corrotto",
+      "putrefatto"
+    ],
+    "target_word_stem": "guasto",
+    "related_word_stem": [
+      "avariato",
+      "corrotto",
+      "putrefatto"
+    ]
+  },
+  {
+    "target_word": "spazzatura",
+    "related_word": [
+      "rifiuti",
+      "immondezza",
+      "mondazione"
+    ],
+    "target_word_stem": "spazzatura",
+    "related_word_stem": [
+      "rifiuti",
+      "immondezza",
+      "mondazione"
+    ]
+  },
+  {
+    "target_word": "stomaco",
+    "related_word": [
+      "anatomia",
+      "corpo",
+      "gastrite"
+    ],
+    "target_word_stem": "stomaco",
+    "related_word_stem": [
+      "anatomia",
+      "corpo",
+      "gastrite"
+    ]
+  },
+  {
+    "target_word": "giungla",
+    "related_word": [
+      "selva",
+      "natura",
+      "foresta"
+    ],
+    "target_word_stem": "giungla",
+    "related_word_stem": [
+      "selva",
+      "natura",
+      "foresta"
+    ]
+  },
+  {
+    "target_word": "indizio",
+    "related_word": [
+      "spia",
+      "prova",
+      "traccia"
+    ],
+    "target_word_stem": "indizio",
+    "related_word_stem": [
+      "spia",
+      "prova",
+      "traccia"
+    ]
+  },
+  {
+    "target_word": "protettore",
+    "related_word": [
+      "magnaccia",
+      "mezzano",
+      "pappa"
+    ],
+    "target_word_stem": "protettore",
+    "related_word_stem": [
+      "magnaccia",
+      "mezzano",
+      "pappa"
+    ]
+  },
+  {
+    "target_word": "fucile",
+    "related_word": [
+      "arma",
+      "doppietta",
+      "carabina"
+    ],
+    "target_word_stem": "fucile",
+    "related_word_stem": [
+      "arma",
+      "doppietta",
+      "carabina"
+    ]
+  },
+  {
+    "target_word": "pantera",
+    "related_word": [
+      "leopardo",
+      "animale",
+      "giaguaro"
+    ],
+    "target_word_stem": "pantera",
+    "related_word_stem": [
+      "leopardo",
+      "animale",
+      "giaguaro"
+    ]
+  },
+  {
+    "target_word": "difetto",
+    "related_word": [
+      "mancanza",
+      "imprecisione",
+      "pecca"
+    ],
+    "target_word_stem": "difetto",
+    "related_word_stem": [
+      "mancanza",
+      "imprecisione",
+      "pecca"
+    ]
+  },
+  {
+    "target_word": "vicino",
+    "related_word": [
+      "presso",
+      "lontano",
+      "vico"
+    ],
+    "target_word_stem": "vicino",
+    "related_word_stem": [
+      "presso",
+      "lontano",
+      "vico"
+    ]
+  },
+  {
+    "target_word": "truffa",
+    "related_word": [
+      "imbroglio",
+      "frode",
+      "inganno"
+    ],
+    "target_word_stem": "truffa",
+    "related_word_stem": [
+      "imbroglio",
+      "frode",
+      "inganno"
+    ]
+  },
+  {
+    "target_word": "polso",
+    "related_word": [
+      "ingegno",
+      "anatomia",
+      "medicina"
+    ],
+    "target_word_stem": "polso",
+    "related_word_stem": [
+      "ingegno",
+      "anatomia",
+      "medicina"
+    ]
+  },
+  {
+    "target_word": "misura",
+    "related_word": [
+      "quantità",
+      "dimensione",
+      "provvedimento"
+    ],
+    "target_word_stem": "misura",
+    "related_word_stem": [
+      "quantità",
+      "dimensione",
+      "provvedimento"
+    ]
+  },
+  {
+    "target_word": "vendetta",
+    "related_word": [
+      "faida",
+      "ripicca",
+      "vendicativo"
+    ],
+    "target_word_stem": "vendetta",
+    "related_word_stem": [
+      "faida",
+      "ripicca",
+      "vendicativo"
+    ]
+  },
+  {
+    "target_word": "bosco",
+    "related_word": [
+      "selva",
+      "gualdo",
+      "foresta"
+    ],
+    "target_word_stem": "bosco",
+    "related_word_stem": [
+      "selva",
+      "gualdo",
+      "foresta"
+    ]
+  },
+  {
+    "target_word": "fungo",
+    "related_word": [
+      "micete",
+      "micologia",
+      "volva"
+    ],
+    "target_word_stem": "fungo",
+    "related_word_stem": [
+      "micete",
+      "micologia",
+      "volva"
+    ]
+  },
+  {
+    "target_word": "casa",
+    "related_word": [
+      "dimora",
+      "abitazione",
+      "edificio"
+    ],
+    "target_word_stem": "casa",
+    "related_word_stem": [
+      "dimora",
+      "abitazione",
+      "edificio"
+    ]
+  },
+  {
+    "target_word": "stima",
+    "related_word": [
+      "riguardo",
+      "calcolo",
+      "considerazione"
+    ],
+    "target_word_stem": "stima",
+    "related_word_stem": [
+      "riguardo",
+      "calcolo",
+      "considerazione"
+    ]
+  },
+  {
+    "target_word": "corvo",
+    "related_word": [
+      "pesce",
+      "animale",
+      "gracchiare"
+    ],
+    "target_word_stem": "corvo",
+    "related_word_stem": [
+      "pesce",
+      "animale",
+      "gracchiare"
+    ]
+  },
+  {
+    "target_word": "uva",
+    "related_word": [
+      "acino",
+      "frutto",
+      "vite"
+    ],
+    "target_word_stem": "uva",
+    "related_word_stem": [
+      "acino",
+      "frutto",
+      "vite"
+    ]
+  },
+  {
+    "target_word": "azoto",
+    "related_word": [
+      "nitro",
+      "nitrificazione",
+      "nitrobatterio"
+    ],
+    "target_word_stem": "azoto",
+    "related_word_stem": [
+      "nitro",
+      "nitrificazione",
+      "nitrobatterio"
+    ]
+  },
+  {
+    "target_word": "maiale",
+    "related_word": [
+      "porco",
+      "suino",
+      "scrofa"
+    ],
+    "target_word_stem": "maiale",
+    "related_word_stem": [
+      "porco",
+      "suino",
+      "scrofa"
+    ]
+  },
+  {
+    "target_word": "progresso",
+    "related_word": [
+      "avanzamento",
+      "sviluppo",
+      "civiltà"
+    ],
+    "target_word_stem": "progresso",
+    "related_word_stem": [
+      "avanzamento",
+      "sviluppo",
+      "civiltà"
+    ]
+  },
+  {
+    "target_word": "vaso",
+    "related_word": [
+      "tinozza",
+      "bricco",
+      "vasellame"
+    ],
+    "target_word_stem": "vaso",
+    "related_word_stem": [
+      "tinozza",
+      "bricco",
+      "vasellame"
+    ]
+  },
+  {
+    "target_word": "obesità",
+    "related_word": [
+      "corpulenza",
+      "pinguetudine",
+      "medicina"
+    ],
+    "target_word_stem": "obesità",
+    "related_word_stem": [
+      "corpulenza",
+      "pinguetudine",
+      "medicina"
+    ]
+  },
+  {
+    "target_word": "pulizia",
+    "related_word": [
+      "detersione",
+      "lindore",
+      "faccenda"
+    ],
+    "target_word_stem": "pulizia",
+    "related_word_stem": [
+      "detersione",
+      "lindore",
+      "faccenda"
+    ]
+  },
+  {
+    "target_word": "angoscia",
+    "related_word": [
+      "timore",
+      "paura",
+      "medicina"
+    ],
+    "target_word_stem": "angoscia",
+    "related_word_stem": [
+      "timore",
+      "paura",
+      "medicina"
+    ]
+  }
+]

@@ -1,0 +1,324 @@
+[
+  {
+    "target_word": "oblak",
+    "related_word": [
+      "cirus",
+      "kumulus",
+      "stratus"
+    ],
+    "target_word_stem": "oblak",
+    "related_word_stem": [
+      "cirus",
+      "kumulus",
+      "stratus"
+    ]
+  },
+  {
+    "target_word": "žitnica",
+    "related_word": [
+      "žito",
+      "kmetijstvo",
+      "polje"
+    ],
+    "target_word_stem": "žit",
+    "related_word_stem": [
+      "žit",
+      "kmet",
+      "polj"
+    ]
+  },
+  {
+    "target_word": "vodomec",
+    "related_word": [
+      "ptica",
+      "reka",
+      "ribe"
+    ],
+    "target_word_stem": "vodom",
+    "related_word_stem": [
+      "ptic",
+      "rek",
+      "rib"
+    ]
+  },
+  {
+    "target_word": "kolofon",
+    "related_word": [
+      "knjiga",
+      "podatki",
+      "založnik"
+    ],
+    "target_word_stem": "kolof",
+    "related_word_stem": [
+      "knjig",
+      "podatk",
+      "založ"
+    ]
+  },
+  {
+    "target_word": "verižnik",
+    "related_word": [
+      "oklep",
+      "srednji vek",
+      "vitezi"
+    ],
+    "target_word_stem": "veriž",
+    "related_word_stem": [
+      "oklep",
+      "sred",
+      "vitez"
+    ]
+  },
+  {
+    "target_word": "šina",
+    "related_word": [
+      "železnica",
+      "vlak",
+      "tir"
+    ],
+    "target_word_stem": "šin",
+    "related_word_stem": [
+      "želez",
+      "vlak",
+      "tir"
+    ]
+  },
+  {
+    "target_word": "škržat",
+    "related_word": [
+      "poletje",
+      "sonce",
+      "žuželka"
+    ],
+    "target_word_stem": "škrž",
+    "related_word_stem": [
+      "polet",
+      "sonc",
+      "žužel"
+    ]
+  },
+  {
+    "target_word": "stelja",
+    "related_word": [
+      "gozd",
+      "listje",
+      "živali"
+    ],
+    "target_word_stem": "stel",
+    "related_word_stem": [
+      "gozd",
+      "list",
+      "žival"
+    ]
+  },
+  {
+    "target_word": "kremen",
+    "related_word": [
+      "kristal",
+      "kamen",
+      "mineral"
+    ],
+    "target_word_stem": "krem",
+    "related_word_stem": [
+      "krist",
+      "kam",
+      "miner"
+    ]
+  },
+  {
+    "target_word": "preja",
+    "related_word": [
+      "volna",
+      "nit",
+      "tekstil"
+    ],
+    "target_word_stem": "prej",
+    "related_word_stem": [
+      "voln",
+      "nit",
+      "tekst"
+    ]
+  },
+  {
+    "target_word": "brana",
+    "related_word": [
+      "kmetijstvo",
+      "zemlja",
+      "traktor"
+    ],
+    "target_word_stem": "bran",
+    "related_word_stem": [
+      "kmet",
+      "zemlj",
+      "trakt"
+    ]
+  },
+  {
+    "target_word": "ždrelo",
+    "related_word": [
+      "vulkan",
+      "jama",
+      "grlo"
+    ],
+    "target_word_stem": "ždrel",
+    "related_word_stem": [
+      "vulk",
+      "jam",
+      "grl"
+    ]
+  },
+  {
+    "target_word": "koprena",
+    "related_word": [
+      "megla",
+      "tančica",
+      "zavesa"
+    ],
+    "target_word_stem": "kopren",
+    "related_word_stem": [
+      "megl",
+      "tanč",
+      "zaves"
+    ]
+  },
+  {
+    "target_word": "sršen",
+    "related_word": [
+      "osa",
+      "pika",
+      "žuželka"
+    ],
+    "target_word_stem": "srš",
+    "related_word_stem": [
+      "os",
+      "pik",
+      "žužel"
+    ]
+  },
+  {
+    "target_word": "poglednica",
+    "related_word": [
+      "dopust",
+      "pošta",
+      "razglednica"
+    ],
+    "target_word_stem": "pogledn",
+    "related_word_stem": [
+      "dopust",
+      "pošt",
+      "razgledn"
+    ]
+  },
+  {
+    "target_word": "vodnjak",
+    "related_word": [
+      "voda",
+      "vedro",
+      "globoko"
+    ],
+    "target_word_stem": "vodnj",
+    "related_word_stem": [
+      "vod",
+      "vedr",
+      "glob"
+    ]
+  },
+  {
+    "target_word": "čutara",
+    "related_word": [
+      "voda",
+      "posoda",
+      "pijača"
+    ],
+    "target_word_stem": "čutar",
+    "related_word_stem": [
+      "vod",
+      "posod",
+      "pijač"
+    ]
+  },
+  {
+    "target_word": "kresnička",
+    "related_word": [
+      "noč",
+      "luč",
+      "žuželka"
+    ],
+    "target_word_stem": "kresn",
+    "related_word_stem": [
+      "noč",
+      "luč",
+      "žužel"
+    ]
+  },
+  {
+    "target_word": "ognjišče",
+    "related_word": [
+      "ogenj",
+      "kamin",
+      "hiša"
+    ],
+    "target_word_stem": "ognj",
+    "related_word_stem": [
+      "ognj",
+      "kamin",
+      "hiš"
+    ]
+  },
+  {
+    "target_word": "pastir",
+    "related_word": [
+      "ovce",
+      "gora",
+      "palica"
+    ],
+    "target_word_stem": "past",
+    "related_word_stem": [
+      "ovc",
+      "gor",
+      "palic"
+    ]
+  },
+  {
+    "target_word": "mlatvica",
+    "related_word": [
+      "žito",
+      "kmet",
+      "orodje"
+    ],
+    "target_word_stem": "mlatv",
+    "related_word_stem": [
+      "žit",
+      "kmet",
+      "orod"
+    ]
+  },
+  {
+    "target_word": "traminec",
+    "related_word": [
+      "vino",
+      "trta",
+      "steklenica"
+    ],
+    "target_word_stem": "tramin",
+    "related_word_stem": [
+      "vin",
+      "trt",
+      "stekl"
+    ]
+  },
+  {
+    "target_word": "žrmlje",
+    "related_word": [
+      "moka",
+      "kamen",
+      "mlin"
+    ],
+    "target_word_stem": "žrmlj",
+    "related_word_stem": [
+      "mok",
+      "kam",
+      "mlin"
+    ]
+  }
+]

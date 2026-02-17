@@ -1,0 +1,282 @@
+[
+  {
+    "target_word": "Kuća",
+    "related_word": [
+      "Stan",
+      "Zgrada",
+      "Dom"
+    ],
+    "target_word_stem": "Kuć",
+    "related_word_stem": [
+      "Stan",
+      "Zgrad",
+      "Dom"
+    ]
+  },
+  {
+    "target_word": "Voda",
+    "related_word": [
+      "Piće",
+      "More",
+      "Rijeka"
+    ],
+    "target_word_stem": "Vod",
+    "related_word_stem": [
+      "Pić",
+      "Mor",
+      "Rijek"
+    ]
+  },
+  {
+    "target_word": "Dan",
+    "related_word": [
+      "Noć",
+      "Jutro",
+      "Vrijeme"
+    ],
+    "target_word_stem": "Dan",
+    "related_word_stem": [
+      "Noć",
+      "Jutr",
+      "Vrijem"
+    ]
+  },
+  {
+    "target_word": "Ruka",
+    "related_word": [
+      "Prst",
+      "Tijelo",
+      "Dodir"
+    ],
+    "target_word_stem": "Ruk",
+    "related_word_stem": [
+      "Prst",
+      "Tijel",
+      "Dodi"
+    ]
+  },
+  {
+    "target_word": "Glava",
+    "related_word": [
+      "Lice",
+      "Mozak",
+      "Kosa"
+    ],
+    "target_word_stem": "Glav",
+    "related_word_stem": [
+      "Lic",
+      "Moz",
+      "Kos"
+    ]
+  },
+  {
+    "target_word": "Posao",
+    "related_word": [
+      "Rad",
+      "Ured",
+      "Novac"
+    ],
+    "target_word_stem": "Posl",
+    "related_word_stem": [
+      "Rad",
+      "Ured",
+      "Nov"
+    ]
+  },
+  {
+    "target_word": "Auto",
+    "related_word": [
+      "Cesta",
+      "Vozilo",
+      "Kotač"
+    ],
+    "target_word_stem": "Aut",
+    "related_word_stem": [
+      "Cest",
+      "Vozil",
+      "Kotač"
+    ]
+  },
+  {
+    "target_word": "Hrana",
+    "related_word": [
+      "Jelo",
+      "Restoran",
+      "Kuhanje"
+    ],
+    "target_word_stem": "Hran",
+    "related_word_stem": [
+      "Jel",
+      "Restor",
+      "Kuh"
+    ]
+  },
+  {
+    "target_word": "Novac",
+    "related_word": [
+      "Banka",
+      "Platiti",
+      "Kuna"
+    ],
+    "target_word_stem": "Nov",
+    "related_word_stem": [
+      "Bank",
+      "Plat",
+      "Kun"
+    ]
+  },
+  {
+    "target_word": "Čovjek",
+    "related_word": [
+      "Osoba",
+      "Muškarac",
+      "Žena"
+    ],
+    "target_word_stem": "Čovjek",
+    "related_word_stem": [
+      "Osob",
+      "Muškar",
+      "Žen"
+    ]
+  },
+  {
+    "target_word": "Vrijeme",
+    "related_word": [
+      "Sat",
+      "Kalendar",
+      "Danas"
+    ],
+    "target_word_stem": "Vrijem",
+    "related_word_stem": [
+      "Sat",
+      "Kalend",
+      "Dan"
+    ]
+  },
+  {
+    "target_word": "Drvo",
+    "related_word": [
+      "Šuma",
+      "List",
+      "Grana"
+    ],
+    "target_word_stem": "Drv",
+    "related_word_stem": [
+      "Šum",
+      "List",
+      "Gran"
+    ]
+  },
+  {
+    "target_word": "Grad",
+    "related_word": [
+      "Ulica",
+      "Ljudi",
+      "Zgrade"
+    ],
+    "target_word_stem": "Grad",
+    "related_word_stem": [
+      "Ulic",
+      "Ljud",
+      "Zgrad"
+    ]
+  },
+  {
+    "target_word": "Ljubav",
+    "related_word": [
+      "Srce",
+      "Voljeti",
+      "Osjećaj"
+    ],
+    "target_word_stem": "Ljubav",
+    "related_word_stem": [
+      "Src",
+      "Volj",
+      "Osjeć"
+    ]
+  },
+  {
+    "target_word": "Obitelj",
+    "related_word": [
+      "Mama",
+      "Tata",
+      "Dijete"
+    ],
+    "target_word_stem": "Obitel",
+    "related_word_stem": [
+      "Mam",
+      "Tat",
+      "Djet"
+    ]
+  },
+  {
+    "target_word": "Škola",
+    "related_word": [
+      "Učenik",
+      "Profesor",
+      "Učenje"
+    ],
+    "target_word_stem": "Škol",
+    "related_word_stem": [
+      "Učen",
+      "Profesor",
+      "Učenj"
+    ]
+  },
+  {
+    "target_word": "Prijatelj",
+    "related_word": [
+      "Društvo",
+      "Pomagati",
+      "Zabava"
+    ],
+    "target_word_stem": "Prijatelj",
+    "related_word_stem": [
+      "Društv",
+      "Pomag",
+      "Zabav"
+    ]
+  },
+  {
+    "target_word": "Telefon",
+    "related_word": [
+      "Zvati",
+      "Broj",
+      "Razgovor"
+    ],
+    "target_word_stem": "Telefon",
+    "related_word_stem": [
+      "Zvat",
+      "Broj",
+      "Razgov"
+    ]
+  },
+  {
+    "target_word": "Internet",
+    "related_word": [
+      "Web",
+      "Online",
+      "Računalo"
+    ],
+    "target_word_stem": "Internet",
+    "related_word_stem": [
+      "Web",
+      "Onlin",
+      "Računal"
+    ]
+  },
+  {
+    "target_word": "Problem",
+    "related_word": [
+      "Rješenje",
+      "Teškoća",
+      "Poteškoća"
+    ],
+    "target_word_stem": "Problem",
+    "related_word_stem": [
+      "Rješenj",
+      "Teškoć",
+      "Poteškoć"
+    ]
+  }
+]

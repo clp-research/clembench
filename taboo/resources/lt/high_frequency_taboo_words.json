@@ -1,0 +1,324 @@
+[
+  {
+    "target_word": "moteris",
+    "related_word": [
+      "vyras",
+      "asmenybe",
+      "asmuo"
+    ],
+    "target_word_stem": "moteris",
+    "related_word_stem": [
+      "vyras",
+      "asmenybe",
+      "asmuo"
+    ]
+  },
+  {
+    "target_word": "oda",
+    "related_word": [
+      "kailis",
+      "šikšna",
+      "žievė"
+    ],
+    "target_word_stem": "oda",
+    "related_word_stem": [
+      "kailis",
+      "šikšna",
+      "žievė"
+    ]
+  },
+  {
+    "target_word": "kampas",
+    "related_word": [
+      "kerte",
+      "pastoge",
+      "briauna"
+    ],
+    "target_word_stem": "kampas",
+    "related_word_stem": [
+      "kerte",
+      "pastoge",
+      "briauna"
+    ]
+  },
+  {
+    "target_word": "namas",
+    "related_word": [
+      "butas",
+      "pastatas",
+      "šeima"
+    ],
+    "target_word_stem": "nam",
+    "related_word_stem": [
+      "but",
+      "pastat",
+      "šeim"
+    ]
+  },
+  {
+    "target_word": "diena",
+    "related_word": [
+      "saulė",
+      "rytas",
+      "naktis"
+    ],
+    "target_word_stem": "dien",
+    "related_word_stem": [
+      "saul",
+      "ryt",
+      "nakt"
+    ]
+  },
+  {
+    "target_word": "žmogus",
+    "related_word": [
+      "vyras",
+      "moteris",
+      "vaikas"
+    ],
+    "target_word_stem": "žmog",
+    "related_word_stem": [
+      "vyr",
+      "moter",
+      "vaik"
+    ]
+  },
+  {
+    "target_word": "laikas",
+    "related_word": [
+      "valanda",
+      "minutė",
+      "sekundė"
+    ],
+    "target_word_stem": "laik",
+    "related_word_stem": [
+      "valand",
+      "minut",
+      "sekund"
+    ]
+  },
+  {
+    "target_word": "darbas",
+    "related_word": [
+      "ofisas",
+      "užduotis",
+      "pinigai"
+    ],
+    "target_word_stem": "darb",
+    "related_word_stem": [
+      "ofis",
+      "užduot",
+      "pinig"
+    ]
+  },
+  {
+    "target_word": "vanduo",
+    "related_word": [
+      "jūra",
+      "upė",
+      "gerti"
+    ],
+    "target_word_stem": "vandu",
+    "related_word_stem": [
+      "jūr",
+      "up",
+      "ger"
+    ]
+  },
+  {
+    "target_word": "maistas",
+    "related_word": [
+      "valgyti",
+      "restoranas",
+      "virtuvė"
+    ],
+    "target_word_stem": "maist",
+    "related_word_stem": [
+      "valgy",
+      "restoran",
+      "virt"
+    ]
+  },
+  {
+    "target_word": "knyga",
+    "related_word": [
+      "skaityti",
+      "puslapis",
+      "istorija"
+    ],
+    "target_word_stem": "knyg",
+    "related_word_stem": [
+      "skaity",
+      "puslap",
+      "istor"
+    ]
+  },
+  {
+    "target_word": "miestas",
+    "related_word": [
+      "gatvė",
+      "žmonės",
+      "automobilis"
+    ],
+    "target_word_stem": "miest",
+    "related_word_stem": [
+      "gatv",
+      "žmon",
+      "automobil"
+    ]
+  },
+  {
+    "target_word": "šalis",
+    "related_word": [
+      "valstybė",
+      "žemėlapis",
+      "vėliava"
+    ],
+    "target_word_stem": "šal",
+    "related_word_stem": [
+      "valst",
+      "žemėl",
+      "vėliav"
+    ]
+  },
+  {
+    "target_word": "kelias",
+    "related_word": [
+      "automobilis",
+      "eiti",
+      "asfaltas"
+    ],
+    "target_word_stem": "keli",
+    "related_word_stem": [
+      "automobil",
+      "ei",
+      "asfalt"
+    ]
+  },
+  {
+    "target_word": "medis",
+    "related_word": [
+      "lapas",
+      "šaka",
+      "miškas"
+    ],
+    "target_word_stem": "med",
+    "related_word_stem": [
+      "lap",
+      "šak",
+      "mišk"
+    ]
+  },
+  {
+    "target_word": "ugnis",
+    "related_word": [
+      "liepsna",
+      "šiluma",
+      "degti"
+    ],
+    "target_word_stem": "ugn",
+    "related_word_stem": [
+      "liepsn",
+      "šilum",
+      "deg"
+    ]
+  },
+  {
+    "target_word": "oras",
+    "related_word": [
+      "debesys",
+      "vėjas",
+      "temperatūra"
+    ],
+    "target_word_stem": "or",
+    "related_word_stem": [
+      "debes",
+      "vėj",
+      "temperatūr"
+    ]
+  },
+  {
+    "target_word": "meilė",
+    "related_word": [
+      "širdis",
+      "jausmai",
+      "romantika"
+    ],
+    "target_word_stem": "meil",
+    "related_word_stem": [
+      "šird",
+      "jausm",
+      "romantik"
+    ]
+  },
+  {
+    "target_word": "mokykla",
+    "related_word": [
+      "mokinys",
+      "mokytojas",
+      "klasė"
+    ],
+    "target_word_stem": "mokykl",
+    "related_word_stem": [
+      "mokin",
+      "mokytoj",
+      "klas"
+    ]
+  },
+  {
+    "target_word": "žodis",
+    "related_word": [
+      "kalba",
+      "raidė",
+      "sakyti"
+    ],
+    "target_word_stem": "žod",
+    "related_word_stem": [
+      "kalb",
+      "raid",
+      "sak"
+    ]
+  },
+  {
+    "target_word": "šeima",
+    "related_word": [
+      "tėvas",
+      "motina",
+      "vaikai"
+    ],
+    "target_word_stem": "šeim",
+    "related_word_stem": [
+      "tėv",
+      "motin",
+      "vaik"
+    ]
+  },
+  {
+    "target_word": "pinigai",
+    "related_word": [
+      "bankas",
+      "pirkti",
+      "atlyginimas"
+    ],
+    "target_word_stem": "pinig",
+    "related_word_stem": [
+      "bank",
+      "pirk",
+      "atlygin"
+    ]
+  },
+  {
+    "target_word": "dovana",
+    "related_word": [
+      "gimtadienis",
+      "šventė",
+      "įpakuoti"
+    ],
+    "target_word_stem": "dovan",
+    "related_word_stem": [
+      "gimtadien",
+      "švent",
+      "įpaku"
+    ]
+  }
+]

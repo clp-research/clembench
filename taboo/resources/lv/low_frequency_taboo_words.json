@@ -1,0 +1,534 @@
+[
+  {
+    "target_word": "alga",
+    "related_word": [
+      "peļņa",
+      "atlīdzinājums",
+      "gājiens"
+    ],
+    "target_word_stem": "alga",
+    "related_word_stem": [
+      "peļņa",
+      "atlīdzinājums",
+      "gājiens"
+    ]
+  },
+  {
+    "target_word": "prieks",
+    "related_word": [
+      "laime",
+      "bauda",
+      "skumjas"
+    ],
+    "target_word_stem": "prieks",
+    "related_word_stem": [
+      "laime",
+      "bauda",
+      "skumjas"
+    ]
+  },
+  {
+    "target_word": "produktivitāte",
+    "related_word": [
+      "auglība",
+      "ražīgums",
+      "rasma"
+    ],
+    "target_word_stem": "produktivitāte",
+    "related_word_stem": [
+      "auglība",
+      "ražīgums",
+      "rasma"
+    ]
+  },
+  {
+    "target_word": "bulta",
+    "related_word": [
+      "rādītājs",
+      "strēle",
+      "loks"
+    ],
+    "target_word_stem": "bulta",
+    "related_word_stem": [
+      "rādītājs",
+      "strēle",
+      "loks"
+    ]
+  },
+  {
+    "target_word": "ass",
+    "related_word": [
+      "gluds",
+      "raupjš",
+      "truls"
+    ],
+    "target_word_stem": "ass",
+    "related_word_stem": [
+      "gluds",
+      "raupjš",
+      "truls"
+    ]
+  },
+  {
+    "target_word": "hercogs",
+    "related_word": [
+      "firstiene",
+      "grāfs",
+      "kņazs"
+    ],
+    "target_word_stem": "hercogs",
+    "related_word_stem": [
+      "firstiene",
+      "grāfs",
+      "kņazs"
+    ]
+  },
+  {
+    "target_word": "vērsis",
+    "related_word": [
+      "bullis",
+      "govs",
+      "liellops"
+    ],
+    "target_word_stem": "vērsis",
+    "related_word_stem": [
+      "bullis",
+      "govs",
+      "liellops"
+    ]
+  },
+  {
+    "target_word": "tabaka",
+    "related_word": [
+      "cigārs",
+      "pīpe",
+      "smēķēt"
+    ],
+    "target_word_stem": "tabaka",
+    "related_word_stem": [
+      "cigārs",
+      "pīpe",
+      "smēķēt"
+    ]
+  },
+  {
+    "target_word": "laime",
+    "related_word": [
+      "prieks",
+      "sērība",
+      "bēda"
+    ],
+    "target_word_stem": "laime",
+    "related_word_stem": [
+      "prieks",
+      "sērība",
+      "bēda"
+    ]
+  },
+  {
+    "target_word": "garša",
+    "related_word": [
+      "rūgts",
+      "salds",
+      "skābs"
+    ],
+    "target_word_stem": "garša",
+    "related_word_stem": [
+      "rūgts",
+      "salds",
+      "skābs"
+    ]
+  },
+  {
+    "target_word": "aita",
+    "related_word": [
+      "auns",
+      "jērs",
+      "teķis"
+    ],
+    "target_word_stem": "aita",
+    "related_word_stem": [
+      "auns",
+      "jērs",
+      "teķis"
+    ]
+  },
+  {
+    "target_word": "jērs",
+    "related_word": [
+      "aita",
+      "auns",
+      "teķis"
+    ],
+    "target_word_stem": "jērs",
+    "related_word_stem": [
+      "aita",
+      "auns",
+      "teķis"
+    ]
+  },
+  {
+    "target_word": "kontinents",
+    "related_word": [
+      "amerika",
+      "antarktīda",
+      "austrālija"
+    ],
+    "target_word_stem": "kontinents",
+    "related_word_stem": [
+      "amerika",
+      "antarktīda",
+      "austrālija"
+    ]
+  },
+  {
+    "target_word": "idiots",
+    "related_word": [
+      "stulbenis",
+      "muļķis",
+      "debils"
+    ],
+    "target_word_stem": "idiots",
+    "related_word_stem": [
+      "stulbenis",
+      "muļķis",
+      "debils"
+    ]
+  },
+  {
+    "target_word": "marihuāna",
+    "related_word": [
+      "anaša",
+      "kanabiss",
+      "kaņepes"
+    ],
+    "target_word_stem": "marihuāna",
+    "related_word_stem": [
+      "anaša",
+      "kanabiss",
+      "kaņepes"
+    ]
+  },
+  {
+    "target_word": "artērija",
+    "related_word": [
+      "dzīsla",
+      "asinsvads",
+      "vēna"
+    ],
+    "target_word_stem": "artērija",
+    "related_word_stem": [
+      "dzīsla",
+      "asinsvads",
+      "vēna"
+    ]
+  },
+  {
+    "target_word": "vista",
+    "related_word": [
+      "cālis",
+      "gailēns",
+      "gailis"
+    ],
+    "target_word_stem": "vista",
+    "related_word_stem": [
+      "cālis",
+      "gailēns",
+      "gailis"
+    ]
+  },
+  {
+    "target_word": "mūks",
+    "related_word": [
+      "abats",
+      "klosteris",
+      "priesteris"
+    ],
+    "target_word_stem": "mūks",
+    "related_word_stem": [
+      "abats",
+      "klosteris",
+      "priesteris"
+    ]
+  },
+  {
+    "target_word": "šķērsgriezums",
+    "related_word": [
+      "griezums",
+      "šķērsot",
+      "plāns"
+    ],
+    "target_word_stem": "šķērsgriez",
+    "related_word_stem": [
+      "griez",
+      "šķērs",
+      "plān"
+    ]
+  },
+  {
+    "target_word": "atraitne",
+    "related_word": [
+      "vīrs",
+      "miris",
+      "pazaudēt"
+    ],
+    "target_word_stem": "atraitn",
+    "related_word_stem": [
+      "vīr",
+      "mir",
+      "pazaud"
+    ]
+  },
+  {
+    "target_word": "dzirnakmens",
+    "related_word": [
+      "dzirnas",
+      "akmens",
+      "milti"
+    ],
+    "target_word_stem": "dzirnakmen",
+    "related_word_stem": [
+      "dzirn",
+      "akmen",
+      "milt"
+    ]
+  },
+  {
+    "target_word": "ieleja",
+    "related_word": [
+      "kalns",
+      "zem",
+      "doba"
+    ],
+    "target_word_stem": "ielej",
+    "related_word_stem": [
+      "kaln",
+      "zem",
+      "dob"
+    ]
+  },
+  {
+    "target_word": "pavēlnieks",
+    "related_word": [
+      "pavēlēt",
+      "kungs",
+      "vadītājs"
+    ],
+    "target_word_stem": "pavēlniek",
+    "related_word_stem": [
+      "pavēl",
+      "kung",
+      "vad"
+    ]
+  },
+  {
+    "target_word": "žēlastība",
+    "related_word": [
+      "žēl",
+      "līdzjūtība",
+      "piedot"
+    ],
+    "target_word_stem": "žēlast",
+    "related_word_stem": [
+      "žēl",
+      "līdzjūt",
+      "pied"
+    ]
+  },
+  {
+    "target_word": "apvārsnis",
+    "related_word": [
+      "redzēt",
+      "tālu",
+      "debesis"
+    ],
+    "target_word_stem": "apvārsn",
+    "related_word_stem": [
+      "redz",
+      "tāl",
+      "deb"
+    ]
+  },
+  {
+    "target_word": "šķūnis",
+    "related_word": [
+      "lauksaimniecība",
+      "siena",
+      "glabāt"
+    ],
+    "target_word_stem": "šķūn",
+    "related_word_stem": [
+      "lauksaimn",
+      "sien",
+      "glab"
+    ]
+  },
+  {
+    "target_word": "atspulgs",
+    "related_word": [
+      "spogulis",
+      "atstarot",
+      "gaisma"
+    ],
+    "target_word_stem": "atspulg",
+    "related_word_stem": [
+      "spog",
+      "atstar",
+      "gaism"
+    ]
+  },
+  {
+    "target_word": "pārdomas",
+    "related_word": [
+      "domāt",
+      "dziļi",
+      "prāts"
+    ],
+    "target_word_stem": "pārdom",
+    "related_word_stem": [
+      "dom",
+      "dziļ",
+      "prāt"
+    ]
+  },
+  {
+    "target_word": "sašķelt",
+    "related_word": [
+      "šķelt",
+      "divi",
+      "sadalīt"
+    ],
+    "target_word_stem": "sašķel",
+    "related_word_stem": [
+      "šķel",
+      "div",
+      "sadal"
+    ]
+  },
+  {
+    "target_word": "žvadzēt",
+    "related_word": [
+      "skaņa",
+      "metāls",
+      "zvans"
+    ],
+    "target_word_stem": "žvadz",
+    "related_word_stem": [
+      "skan",
+      "metāl",
+      "zvan"
+    ]
+  },
+  {
+    "target_word": "noriete",
+    "related_word": [
+      "saule",
+      "vakars",
+      "lejā"
+    ],
+    "target_word_stem": "noriet",
+    "related_word_stem": [
+      "saul",
+      "vakar",
+      "lej"
+    ]
+  },
+  {
+    "target_word": "iekarot",
+    "related_word": [
+      "uzvarēt",
+      "valsts",
+      "armija"
+    ],
+    "target_word_stem": "iekar",
+    "related_word_stem": [
+      "uzvar",
+      "valst",
+      "armij"
+    ]
+  },
+  {
+    "target_word": "brīnums",
+    "related_word": [
+      "maģija",
+      "pārsteigums",
+      "neticami"
+    ],
+    "target_word_stem": "brīnum",
+    "related_word_stem": [
+      "maģ",
+      "pārsteig",
+      "netic"
+    ]
+  },
+  {
+    "target_word": "šķīstītava",
+    "related_word": [
+      "reliģija",
+      "grēki",
+      "purgatorija"
+    ],
+    "target_word_stem": "šķīstītav",
+    "related_word_stem": [
+      "reliģ",
+      "grēk",
+      "purg"
+    ]
+  },
+  {
+    "target_word": "atklāsme",
+    "related_word": [
+      "noslēpums",
+      "zināt",
+      "atklāt"
+    ],
+    "target_word_stem": "atklāsm",
+    "related_word_stem": [
+      "noslēp",
+      "zin",
+      "atkl"
+    ]
+  },
+  {
+    "target_word": "šķemba",
+    "related_word": [
+      "koks",
+      "ass",
+      "sāpes"
+    ],
+    "target_word_stem": "šķemb",
+    "related_word_stem": [
+      "kok",
+      "as",
+      "sāp"
+    ]
+  },
+  {
+    "target_word": "rītausma",
+    "related_word": [
+      "rīts",
+      "saule",
+      "gaisma"
+    ],
+    "target_word_stem": "rītausm",
+    "related_word_stem": [
+      "rīt",
+      "saul",
+      "gaism"
+    ]
+  },
+  {
+    "target_word": "samtaini",
+    "related_word": [
+      "mīksts",
+      "audums",
+      "pieskarties"
+    ],
+    "target_word_stem": "samtain",
+    "related_word_stem": [
+      "mīkst",
+      "aud",
+      "piesk"
+    ]
+  }
+]

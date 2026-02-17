@@ -1,0 +1,1864 @@
+[
+  {
+    "target_word": "dom",
+    "related_word": [
+      "rezydencja",
+      "mieszkanie",
+      "kamienica"
+    ],
+    "target_word_stem": "dom",
+    "related_word_stem": [
+      "rezydencja",
+      "mieszkanie",
+      "kamienica"
+    ]
+  },
+  {
+    "target_word": "czas",
+    "related_word": [
+      "wrzemię",
+      "pora",
+      "kategoria"
+    ],
+    "target_word_stem": "czas",
+    "related_word_stem": [
+      "wrzemię",
+      "pora",
+      "kategoria"
+    ]
+  },
+  {
+    "target_word": "informacja",
+    "related_word": [
+      "wiadomość",
+      "dział",
+      "biuro"
+    ],
+    "target_word_stem": "informacja",
+    "related_word_stem": [
+      "wiadomość",
+      "dział",
+      "biuro"
+    ]
+  },
+  {
+    "target_word": "rok",
+    "related_word": [
+      "dekada",
+      "tysiąclecie",
+      "milenium"
+    ],
+    "target_word_stem": "rok",
+    "related_word_stem": [
+      "dekada",
+      "tysiąclecie",
+      "milenium"
+    ]
+  },
+  {
+    "target_word": "data",
+    "related_word": [
+      "czas",
+      "epoka",
+      "okres"
+    ],
+    "target_word_stem": "data",
+    "related_word_stem": [
+      "czas",
+      "epoka",
+      "okres"
+    ]
+  },
+  {
+    "target_word": "imię",
+    "related_word": [
+      "nazwisko",
+      "wyraz",
+      "antroponim"
+    ],
+    "target_word_stem": "imię",
+    "related_word_stem": [
+      "nazwisko",
+      "wyraz",
+      "antroponim"
+    ]
+  },
+  {
+    "target_word": "wiadomość",
+    "related_word": [
+      "komunikat",
+      "informacja",
+      "nowina"
+    ],
+    "target_word_stem": "wiadomość",
+    "related_word_stem": [
+      "komunikat",
+      "informacja",
+      "nowina"
+    ]
+  },
+  {
+    "target_word": "miasto",
+    "related_word": [
+      "gród",
+      "ludność",
+      "sztokholm"
+    ],
+    "target_word_stem": "miasto",
+    "related_word_stem": [
+      "gród",
+      "ludność",
+      "sztokholm"
+    ]
+  },
+  {
+    "target_word": "firma",
+    "related_word": [
+      "przedsiębiorstwo",
+      "nazwa",
+      "osoba"
+    ],
+    "target_word_stem": "firma",
+    "related_word_stem": [
+      "przedsiębiorstwo",
+      "nazwa",
+      "osoba"
+    ]
+  },
+  {
+    "target_word": "obszar",
+    "related_word": [
+      "strefa",
+      "region",
+      "areał"
+    ],
+    "target_word_stem": "obszar",
+    "related_word_stem": [
+      "strefa",
+      "region",
+      "areał"
+    ]
+  },
+  {
+    "target_word": "film",
+    "related_word": [
+      "kinematografia",
+      "utwór",
+      "sztuka"
+    ],
+    "target_word_stem": "film",
+    "related_word_stem": [
+      "kinematografia",
+      "utwór",
+      "sztuka"
+    ]
+  },
+  {
+    "target_word": "artykuł",
+    "related_word": [
+      "przedimek",
+      "umowa",
+      "rodzajnik"
+    ],
+    "target_word_stem": "artykuł",
+    "related_word_stem": [
+      "przedimek",
+      "umowa",
+      "rodzajnik"
+    ]
+  },
+  {
+    "target_word": "dziecko",
+    "related_word": [
+      "niemowlę",
+      "mały",
+      "córka"
+    ],
+    "target_word_stem": "dziecko",
+    "related_word_stem": [
+      "niemowlę",
+      "mały",
+      "córka"
+    ]
+  },
+  {
+    "target_word": "adres",
+    "related_word": [
+      "pismo",
+      "identyfikator",
+      "zręczność"
+    ],
+    "target_word_stem": "adres",
+    "related_word_stem": [
+      "pismo",
+      "identyfikator",
+      "zręczność"
+    ]
+  },
+  {
+    "target_word": "kobieta",
+    "related_word": [
+      "pani",
+      "płeć",
+      "małżonka"
+    ],
+    "target_word_stem": "kobieta",
+    "related_word_stem": [
+      "pani",
+      "płeć",
+      "małżonka"
+    ]
+  },
+  {
+    "target_word": "życie",
+    "related_word": [
+      "śmierć",
+      "witalność",
+      "egzystencja"
+    ],
+    "target_word_stem": "życie",
+    "related_word_stem": [
+      "śmierć",
+      "witalność",
+      "egzystencja"
+    ]
+  },
+  {
+    "target_word": "biuro",
+    "related_word": [
+      "urząd",
+      "instytucja",
+      "zespół"
+    ],
+    "target_word_stem": "biuro",
+    "related_word_stem": [
+      "urząd",
+      "instytucja",
+      "zespół"
+    ]
+  },
+  {
+    "target_word": "formularz",
+    "related_word": [
+      "przepis",
+      "zbiór",
+      "wzór"
+    ],
+    "target_word_stem": "formularz",
+    "related_word_stem": [
+      "przepis",
+      "zbiór",
+      "wzór"
+    ]
+  },
+  {
+    "target_word": "kraj",
+    "related_word": [
+      "rosja",
+      "słowacja",
+      "brzeg"
+    ],
+    "target_word_stem": "kraj",
+    "related_word_stem": [
+      "rosja",
+      "słowacja",
+      "brzeg"
+    ]
+  },
+  {
+    "target_word": "okno",
+    "related_word": [
+      "szyba",
+      "otwór",
+      "luka"
+    ],
+    "target_word_stem": "okno",
+    "related_word_stem": [
+      "szyba",
+      "otwór",
+      "luka"
+    ]
+  },
+  {
+    "target_word": "przyjaciel",
+    "related_word": [
+      "brat",
+      "amikus",
+      "achates"
+    ],
+    "target_word_stem": "przyjaciel",
+    "related_word_stem": [
+      "brat",
+      "amikus",
+      "achates"
+    ]
+  },
+  {
+    "target_word": "problem",
+    "related_word": [
+      "zagadnienie",
+      "pytanie",
+      "kwestia"
+    ],
+    "target_word_stem": "problem",
+    "related_word_stem": [
+      "zagadnienie",
+      "pytanie",
+      "kwestia"
+    ]
+  },
+  {
+    "target_word": "narzędzie",
+    "related_word": [
+      "instrument",
+      "lokal",
+      "miejscowość"
+    ],
+    "target_word_stem": "narzędzie",
+    "related_word_stem": [
+      "instrument",
+      "lokal",
+      "miejscowość"
+    ]
+  },
+  {
+    "target_word": "aplikacja",
+    "related_word": [
+      "program",
+      "zastosowanie",
+      "wzór"
+    ],
+    "target_word_stem": "aplikacja",
+    "related_word_stem": [
+      "program",
+      "zastosowanie",
+      "wzór"
+    ]
+  },
+  {
+    "target_word": "źródło",
+    "related_word": [
+      "matka",
+      "krynica",
+      "pochodzenie"
+    ],
+    "target_word_stem": "źródło",
+    "related_word_stem": [
+      "matka",
+      "krynica",
+      "pochodzenie"
+    ]
+  },
+  {
+    "target_word": "pokój",
+    "related_word": [
+      "izba",
+      "pomieszczenie",
+      "zgoda"
+    ],
+    "target_word_stem": "pokój",
+    "related_word_stem": [
+      "izba",
+      "pomieszczenie",
+      "zgoda"
+    ]
+  },
+  {
+    "target_word": "woda",
+    "related_word": [
+      "płyn",
+      "ciecz",
+      "obrzęk"
+    ],
+    "target_word_stem": "woda",
+    "related_word_stem": [
+      "płyn",
+      "ciecz",
+      "obrzęk"
+    ]
+  },
+  {
+    "target_word": "pociąg",
+    "related_word": [
+      "kolej",
+      "chęć",
+      "instynkt"
+    ],
+    "target_word_stem": "pociąg",
+    "related_word_stem": [
+      "kolej",
+      "chęć",
+      "instynkt"
+    ]
+  },
+  {
+    "target_word": "dziewczyna",
+    "related_word": [
+      "panna",
+      "młódka",
+      "służąca"
+    ],
+    "target_word_stem": "dziewczyna",
+    "related_word_stem": [
+      "panna",
+      "młódka",
+      "służąca"
+    ]
+  },
+  {
+    "target_word": "archiwum",
+    "related_word": [
+      "zbiór",
+      "instytucja",
+      "budynek"
+    ],
+    "target_word_stem": "archiwum",
+    "related_word_stem": [
+      "zbiór",
+      "instytucja",
+      "budynek"
+    ]
+  },
+  {
+    "target_word": "zespół",
+    "related_word": [
+      "ekipa",
+      "drużyna",
+      "asocjacja"
+    ],
+    "target_word_stem": "zespół",
+    "related_word_stem": [
+      "ekipa",
+      "drużyna",
+      "asocjacja"
+    ]
+  },
+  {
+    "target_word": "akcja",
+    "related_word": [
+      "czyn",
+      "działanie",
+      "przedsięwzięcie"
+    ],
+    "target_word_stem": "akcja",
+    "related_word_stem": [
+      "czyn",
+      "działanie",
+      "przedsięwzięcie"
+    ]
+  },
+  {
+    "target_word": "stół",
+    "related_word": [
+      "jadalnia",
+      "mebel",
+      "stolarz"
+    ],
+    "target_word_stem": "stół",
+    "related_word_stem": [
+      "jadalnia",
+      "mebel",
+      "stolarz"
+    ]
+  },
+  {
+    "target_word": "impreza",
+    "related_word": [
+      "zabawa",
+      "akcja",
+      "balet"
+    ],
+    "target_word_stem": "impreza",
+    "related_word_stem": [
+      "zabawa",
+      "akcja",
+      "balet"
+    ]
+  },
+  {
+    "target_word": "ręka",
+    "related_word": [
+      "pazura",
+      "badyl",
+      "ręcznie"
+    ],
+    "target_word_stem": "ręka",
+    "related_word_stem": [
+      "pazura",
+      "badyl",
+      "ręcznie"
+    ]
+  },
+  {
+    "target_word": "język",
+    "related_word": [
+      "ozór",
+      "styl",
+      "narząd"
+    ],
+    "target_word_stem": "język",
+    "related_word_stem": [
+      "ozór",
+      "styl",
+      "narząd"
+    ]
+  },
+  {
+    "target_word": "zasada",
+    "related_word": [
+      "kwas",
+      "norma",
+      "alkalia"
+    ],
+    "target_word_stem": "zasada",
+    "related_word_stem": [
+      "kwas",
+      "norma",
+      "alkalia"
+    ]
+  },
+  {
+    "target_word": "ulica",
+    "related_word": [
+      "droga",
+      "arteria",
+      "tłum"
+    ],
+    "target_word_stem": "ulica",
+    "related_word_stem": [
+      "droga",
+      "arteria",
+      "tłum"
+    ]
+  },
+  {
+    "target_word": "biblioteka",
+    "related_word": [
+      "księgozbiór",
+      "książnica",
+      "szafa"
+    ],
+    "target_word_stem": "biblioteka",
+    "related_word_stem": [
+      "księgozbiór",
+      "książnica",
+      "szafa"
+    ]
+  },
+  {
+    "target_word": "funkcja",
+    "related_word": [
+      "procedura",
+      "operator",
+      "odwzorowanie"
+    ],
+    "target_word_stem": "funkcja",
+    "related_word_stem": [
+      "procedura",
+      "operator",
+      "odwzorowanie"
+    ]
+  },
+  {
+    "target_word": "magazyn",
+    "related_word": [
+      "czasopismo",
+      "sklep",
+      "handel"
+    ],
+    "target_word_stem": "magazyn",
+    "related_word_stem": [
+      "czasopismo",
+      "sklep",
+      "handel"
+    ]
+  },
+  {
+    "target_word": "statek",
+    "related_word": [
+      "okręt",
+      "pojazd",
+      "bandera"
+    ],
+    "target_word_stem": "statek",
+    "related_word_stem": [
+      "okręt",
+      "pojazd",
+      "bandera"
+    ]
+  },
+  {
+    "target_word": "region",
+    "related_word": [
+      "obszar",
+      "kraina",
+      "strefa"
+    ],
+    "target_word_stem": "region",
+    "related_word_stem": [
+      "obszar",
+      "kraina",
+      "strefa"
+    ]
+  },
+  {
+    "target_word": "korzyść",
+    "related_word": [
+      "zaleta",
+      "beneficjum",
+      "awantaż"
+    ],
+    "target_word_stem": "korzyść",
+    "related_word_stem": [
+      "zaleta",
+      "beneficjum",
+      "awantaż"
+    ]
+  },
+  {
+    "target_word": "wakacje",
+    "related_word": [
+      "urlop",
+      "ferie",
+      "okres"
+    ],
+    "target_word_stem": "wakacje",
+    "related_word_stem": [
+      "urlop",
+      "ferie",
+      "okres"
+    ]
+  },
+  {
+    "target_word": "ilość",
+    "related_word": [
+      "liczba",
+      "suma",
+      "lik"
+    ],
+    "target_word_stem": "ilość",
+    "related_word_stem": [
+      "liczba",
+      "suma",
+      "lik"
+    ]
+  },
+  {
+    "target_word": "bank",
+    "related_word": [
+      "instytucja",
+      "magazyn",
+      "gmach"
+    ],
+    "target_word_stem": "bank",
+    "related_word_stem": [
+      "instytucja",
+      "magazyn",
+      "gmach"
+    ]
+  },
+  {
+    "target_word": "artysta",
+    "related_word": [
+      "twórca",
+      "człowiek",
+      "mistrz"
+    ],
+    "target_word_stem": "artysta",
+    "related_word_stem": [
+      "twórca",
+      "człowiek",
+      "mistrz"
+    ]
+  },
+  {
+    "target_word": "handel",
+    "related_word": [
+      "działalność",
+      "restauracja",
+      "magazyn"
+    ],
+    "target_word_stem": "handel",
+    "related_word_stem": [
+      "działalność",
+      "restauracja",
+      "magazyn"
+    ]
+  },
+  {
+    "target_word": "niedźwiedź",
+    "related_word": [
+      "miś",
+      "zwierzę",
+      "drapieżnik"
+    ],
+    "target_word_stem": "niedźwiedź",
+    "related_word_stem": [
+      "miś",
+      "zwierzę",
+      "drapieżnik"
+    ]
+  },
+  {
+    "target_word": "złoto",
+    "related_word": [
+      "pierwiastek",
+      "połysk",
+      "pieniądz"
+    ],
+    "target_word_stem": "złoto",
+    "related_word_stem": [
+      "pierwiastek",
+      "połysk",
+      "pieniądz"
+    ]
+  },
+  {
+    "target_word": "agent",
+    "related_word": [
+      "numer",
+      "przedstawiciel",
+      "szpieg"
+    ],
+    "target_word_stem": "agent",
+    "related_word_stem": [
+      "numer",
+      "przedstawiciel",
+      "szpieg"
+    ]
+  },
+  {
+    "target_word": "album",
+    "related_word": [
+      "książka",
+      "pamiętnik",
+      "szkicownik"
+    ],
+    "target_word_stem": "album",
+    "related_word_stem": [
+      "książka",
+      "pamiętnik",
+      "szkicownik"
+    ]
+  },
+  {
+    "target_word": "jezioro",
+    "related_word": [
+      "woda",
+      "zbiornik",
+      "j"
+    ],
+    "target_word_stem": "jezioro",
+    "related_word_stem": [
+      "woda",
+      "zbiornik",
+      "j"
+    ]
+  },
+  {
+    "target_word": "kościół",
+    "related_word": [
+      "świątynia",
+      "budynek",
+      "cerkiew"
+    ],
+    "target_word_stem": "kościół",
+    "related_word_stem": [
+      "świątynia",
+      "budynek",
+      "cerkiew"
+    ]
+  },
+  {
+    "target_word": "nauczyciel",
+    "related_word": [
+      "pan",
+      "bakałarz",
+      "belfer"
+    ],
+    "target_word_stem": "nauczyciel",
+    "related_word_stem": [
+      "pan",
+      "bakałarz",
+      "belfer"
+    ]
+  },
+  {
+    "target_word": "ryba",
+    "related_word": [
+      "zwierzę",
+      "kręgowiec",
+      "potrawa"
+    ],
+    "target_word_stem": "ryba",
+    "related_word_stem": [
+      "zwierzę",
+      "kręgowiec",
+      "potrawa"
+    ]
+  },
+  {
+    "target_word": "król",
+    "related_word": [
+      "monarcha",
+      "władca",
+      "człowiek"
+    ],
+    "target_word_stem": "król",
+    "related_word_stem": [
+      "monarcha",
+      "władca",
+      "człowiek"
+    ]
+  },
+  {
+    "target_word": "śmierć",
+    "related_word": [
+      "koniec",
+      "zgon",
+      "zejście"
+    ],
+    "target_word_stem": "śmierć",
+    "related_word_stem": [
+      "koniec",
+      "zgon",
+      "zejście"
+    ]
+  },
+  {
+    "target_word": "kwiat",
+    "related_word": [
+      "roślina",
+      "czubek",
+      "motyw"
+    ],
+    "target_word_stem": "kwiat",
+    "related_word_stem": [
+      "roślina",
+      "czubek",
+      "motyw"
+    ]
+  },
+  {
+    "target_word": "budowa",
+    "related_word": [
+      "konstrukcja",
+      "anatomia",
+      "architektonika"
+    ],
+    "target_word_stem": "budowa",
+    "related_word_stem": [
+      "konstrukcja",
+      "anatomia",
+      "architektonika"
+    ]
+  },
+  {
+    "target_word": "rzeka",
+    "related_word": [
+      "strumień",
+      "potok",
+      "woda"
+    ],
+    "target_word_stem": "rzeka",
+    "related_word_stem": [
+      "strumień",
+      "potok",
+      "woda"
+    ]
+  },
+  {
+    "target_word": "ankieta",
+    "related_word": [
+      "kwestionariusz",
+      "sondaż",
+      "arkusz"
+    ],
+    "target_word_stem": "ankieta",
+    "related_word_stem": [
+      "kwestionariusz",
+      "sondaż",
+      "arkusz"
+    ]
+  },
+  {
+    "target_word": "blok",
+    "related_word": [
+      "krążek",
+      "walec",
+      "bryła"
+    ],
+    "target_word_stem": "blok",
+    "related_word_stem": [
+      "krążek",
+      "walec",
+      "bryła"
+    ]
+  },
+  {
+    "target_word": "drzwi",
+    "related_word": [
+      "wejście",
+      "dwór",
+      "odźwierny"
+    ],
+    "target_word_stem": "drzwi",
+    "related_word_stem": [
+      "wejście",
+      "dwór",
+      "odźwierny"
+    ]
+  },
+  {
+    "target_word": "lotnisko",
+    "related_word": [
+      "aeroport",
+      "teren",
+      "baza"
+    ],
+    "target_word_stem": "lotnisko",
+    "related_word_stem": [
+      "aeroport",
+      "teren",
+      "baza"
+    ]
+  },
+  {
+    "target_word": "naród",
+    "related_word": [
+      "ciżba",
+      "lud",
+      "państwo"
+    ],
+    "target_word_stem": "naród",
+    "related_word_stem": [
+      "ciżba",
+      "lud",
+      "państwo"
+    ]
+  },
+  {
+    "target_word": "ściana",
+    "related_word": [
+      "mur",
+      "zbocze",
+      "przegroda"
+    ],
+    "target_word_stem": "ściana",
+    "related_word_stem": [
+      "mur",
+      "zbocze",
+      "przegroda"
+    ]
+  },
+  {
+    "target_word": "koń",
+    "related_word": [
+      "zwierzę",
+      "prącie",
+      "przyrząd"
+    ],
+    "target_word_stem": "koń",
+    "related_word_stem": [
+      "zwierzę",
+      "prącie",
+      "przyrząd"
+    ]
+  },
+  {
+    "target_word": "srebro",
+    "related_word": [
+      "pierwiastek",
+      "połysk",
+      "blask"
+    ],
+    "target_word_stem": "srebro",
+    "related_word_stem": [
+      "pierwiastek",
+      "połysk",
+      "blask"
+    ]
+  },
+  {
+    "target_word": "mieszkanie",
+    "related_word": [
+      "dom",
+      "próg",
+      "kąt"
+    ],
+    "target_word_stem": "mieszkanie",
+    "related_word_stem": [
+      "dom",
+      "próg",
+      "kąt"
+    ]
+  },
+  {
+    "target_word": "podstawa",
+    "related_word": [
+      "abecadło",
+      "abc",
+      "baza"
+    ],
+    "target_word_stem": "podstawa",
+    "related_word_stem": [
+      "abecadło",
+      "abc",
+      "baza"
+    ]
+  },
+  {
+    "target_word": "wino",
+    "related_word": [
+      "porcja",
+      "napój",
+      "alkohol"
+    ],
+    "target_word_stem": "wino",
+    "related_word_stem": [
+      "porcja",
+      "napój",
+      "alkohol"
+    ]
+  },
+  {
+    "target_word": "rak",
+    "related_word": [
+      "choroba",
+      "bezkręgowiec",
+      "zwierzę"
+    ],
+    "target_word_stem": "rak",
+    "related_word_stem": [
+      "choroba",
+      "bezkręgowiec",
+      "zwierzę"
+    ]
+  },
+  {
+    "target_word": "matka",
+    "related_word": [
+      "źródło",
+      "bogurodzica",
+      "rodzicielka"
+    ],
+    "target_word_stem": "matka",
+    "related_word_stem": [
+      "źródło",
+      "bogurodzica",
+      "rodzicielka"
+    ]
+  },
+  {
+    "target_word": "strefa",
+    "related_word": [
+      "pas",
+      "zona",
+      "obszar"
+    ],
+    "target_word_stem": "strefa",
+    "related_word_stem": [
+      "pas",
+      "zona",
+      "obszar"
+    ]
+  },
+  {
+    "target_word": "arkusz",
+    "related_word": [
+      "kartka",
+      "płat",
+      "liść"
+    ],
+    "target_word_stem": "arkusz",
+    "related_word_stem": [
+      "kartka",
+      "płat",
+      "liść"
+    ]
+  },
+  {
+    "target_word": "atak",
+    "related_word": [
+      "uderzenie",
+      "agresja",
+      "ofensywa"
+    ],
+    "target_word_stem": "atak",
+    "related_word_stem": [
+      "uderzenie",
+      "agresja",
+      "ofensywa"
+    ]
+  },
+  {
+    "target_word": "basen",
+    "related_word": [
+      "zlewisko",
+      "pływalnia",
+      "naczynie"
+    ],
+    "target_word_stem": "basen",
+    "related_word_stem": [
+      "zlewisko",
+      "pływalnia",
+      "naczynie"
+    ]
+  },
+  {
+    "target_word": "akademik",
+    "related_word": [
+      "uczeń",
+      "artysta",
+      "budynek"
+    ],
+    "target_word_stem": "akademik",
+    "related_word_stem": [
+      "uczeń",
+      "artysta",
+      "budynek"
+    ]
+  },
+  {
+    "target_word": "wzór",
+    "related_word": [
+      "formularz",
+      "abrys",
+      "deseń"
+    ],
+    "target_word_stem": "wzór",
+    "related_word_stem": [
+      "formularz",
+      "abrys",
+      "deseń"
+    ]
+  },
+  {
+    "target_word": "rolka",
+    "related_word": [
+      "motek",
+      "szpula",
+      "zwój"
+    ],
+    "target_word_stem": "rolka",
+    "related_word_stem": [
+      "motek",
+      "szpula",
+      "zwój"
+    ]
+  },
+  {
+    "target_word": "ruch",
+    "related_word": [
+      "poruszenie",
+      "krok",
+      "bieg"
+    ],
+    "target_word_stem": "ruch",
+    "related_word_stem": [
+      "poruszenie",
+      "krok",
+      "bieg"
+    ]
+  },
+  {
+    "target_word": "powierzchnia",
+    "related_word": [
+      "lustro",
+      "przestrzeń",
+      "rozległość"
+    ],
+    "target_word_stem": "powierzchnia",
+    "related_word_stem": [
+      "lustro",
+      "przestrzeń",
+      "rozległość"
+    ]
+  },
+  {
+    "target_word": "szacunek",
+    "related_word": [
+      "respekt",
+      "atencja",
+      "autorytet"
+    ],
+    "target_word_stem": "szacunek",
+    "related_word_stem": [
+      "respekt",
+      "atencja",
+      "autorytet"
+    ]
+  },
+  {
+    "target_word": "brat",
+    "related_word": [
+      "przyjaciel",
+      "zakonnik",
+      "mnich"
+    ],
+    "target_word_stem": "brat",
+    "related_word_stem": [
+      "przyjaciel",
+      "zakonnik",
+      "mnich"
+    ]
+  },
+  {
+    "target_word": "ojciec",
+    "related_word": [
+      "tatuś",
+      "zakonnik",
+      "inicjator"
+    ],
+    "target_word_stem": "ojciec",
+    "related_word_stem": [
+      "tatuś",
+      "zakonnik",
+      "inicjator"
+    ]
+  },
+  {
+    "target_word": "las",
+    "related_word": [
+      "ogrom",
+      "drewno",
+      "leśny"
+    ],
+    "target_word_stem": "las",
+    "related_word_stem": [
+      "ogrom",
+      "drewno",
+      "leśny"
+    ]
+  },
+  {
+    "target_word": "argument",
+    "related_word": [
+      "kąt",
+      "racja",
+      "zmienna"
+    ],
+    "target_word_stem": "argument",
+    "related_word_stem": [
+      "kąt",
+      "racja",
+      "zmienna"
+    ]
+  },
+  {
+    "target_word": "pan",
+    "related_word": [
+      "wy",
+      "władca",
+      "mężczyzna"
+    ],
+    "target_word_stem": "pan",
+    "related_word_stem": [
+      "wy",
+      "władca",
+      "mężczyzna"
+    ]
+  },
+  {
+    "target_word": "majątek",
+    "related_word": [
+      "bogactwo",
+      "posiadłość",
+      "nieruchomość"
+    ],
+    "target_word_stem": "majątek",
+    "related_word_stem": [
+      "bogactwo",
+      "posiadłość",
+      "nieruchomość"
+    ]
+  },
+  {
+    "target_word": "koło",
+    "related_word": [
+      "niedaleko",
+      "blisko",
+      "okrąg"
+    ],
+    "target_word_stem": "koło",
+    "related_word_stem": [
+      "niedaleko",
+      "blisko",
+      "okrąg"
+    ]
+  },
+  {
+    "target_word": "armia",
+    "related_word": [
+      "wojsko",
+      "jednostka",
+      "oddział"
+    ],
+    "target_word_stem": "armia",
+    "related_word_stem": [
+      "wojsko",
+      "jednostka",
+      "oddział"
+    ]
+  },
+  {
+    "target_word": "mysz",
+    "related_word": [
+      "zwierzę",
+      "kręgowiec",
+      "urządzenie"
+    ],
+    "target_word_stem": "mysz",
+    "related_word_stem": [
+      "zwierzę",
+      "kręgowiec",
+      "urządzenie"
+    ]
+  },
+  {
+    "target_word": "uwaga",
+    "related_word": [
+      "spostrzeżenie",
+      "baczenie",
+      "admonicja"
+    ],
+    "target_word_stem": "uwaga",
+    "related_word_stem": [
+      "spostrzeżenie",
+      "baczenie",
+      "admonicja"
+    ]
+  },
+  {
+    "target_word": "architektura",
+    "related_word": [
+      "wydział",
+      "sztuka",
+      "budowa"
+    ],
+    "target_word_stem": "architektura",
+    "related_word_stem": [
+      "wydział",
+      "sztuka",
+      "budowa"
+    ]
+  },
+  {
+    "target_word": "talerz",
+    "related_word": [
+      "ostrze",
+      "naczynie",
+      "lustro"
+    ],
+    "target_word_stem": "talerz",
+    "related_word_stem": [
+      "ostrze",
+      "naczynie",
+      "lustro"
+    ]
+  },
+  {
+    "target_word": "kawa",
+    "related_word": [
+      "napój",
+      "porcja",
+      "krzew"
+    ],
+    "target_word_stem": "kawa",
+    "related_word_stem": [
+      "napój",
+      "porcja",
+      "krzew"
+    ]
+  },
+  {
+    "target_word": "róg",
+    "related_word": [
+      "kąt",
+      "narożnik",
+      "węgieł"
+    ],
+    "target_word_stem": "róg",
+    "related_word_stem": [
+      "kąt",
+      "narożnik",
+      "węgieł"
+    ]
+  },
+  {
+    "target_word": "afera",
+    "related_word": [
+      "sprawa",
+      "klasówka",
+      "sensacja"
+    ],
+    "target_word_stem": "afera",
+    "related_word_stem": [
+      "sprawa",
+      "klasówka",
+      "sensacja"
+    ]
+  },
+  {
+    "target_word": "brak",
+    "related_word": [
+      "wyrób",
+      "błąd",
+      "niedociągnięcie"
+    ],
+    "target_word_stem": "brak",
+    "related_word_stem": [
+      "wyrób",
+      "błąd",
+      "niedociągnięcie"
+    ]
+  },
+  {
+    "target_word": "kwas",
+    "related_word": [
+      "zasada",
+      "związek",
+      "zaczyn"
+    ],
+    "target_word_stem": "kwas",
+    "related_word_stem": [
+      "zasada",
+      "związek",
+      "zaczyn"
+    ]
+  },
+  {
+    "target_word": "asystent",
+    "related_word": [
+      "pracownik",
+      "osoba",
+      "kreator"
+    ],
+    "target_word_stem": "asystent",
+    "related_word_stem": [
+      "pracownik",
+      "osoba",
+      "kreator"
+    ]
+  },
+  {
+    "target_word": "królowa",
+    "related_word": [
+      "monarcha",
+      "matka",
+      "pszczoła"
+    ],
+    "target_word_stem": "królowa",
+    "related_word_stem": [
+      "monarcha",
+      "matka",
+      "pszczoła"
+    ]
+  },
+  {
+    "target_word": "pragnienie",
+    "related_word": [
+      "apetyt",
+      "pociąg",
+      "afektacja"
+    ],
+    "target_word_stem": "pragnienie",
+    "related_word_stem": [
+      "apetyt",
+      "pociąg",
+      "afektacja"
+    ]
+  },
+  {
+    "target_word": "żelazo",
+    "related_word": [
+      "pierwiastek",
+      "miecz",
+      "zbroja"
+    ],
+    "target_word_stem": "żelazo",
+    "related_word_stem": [
+      "pierwiastek",
+      "miecz",
+      "zbroja"
+    ]
+  },
+  {
+    "target_word": "prawda",
+    "related_word": [
+      "tak",
+      "kłamstwo",
+      "nie"
+    ],
+    "target_word_stem": "prawda",
+    "related_word_stem": [
+      "tak",
+      "kłamstwo",
+      "nie"
+    ]
+  },
+  {
+    "target_word": "wiara",
+    "related_word": [
+      "kredo",
+      "pewność",
+      "przekonanie"
+    ],
+    "target_word_stem": "wiara",
+    "related_word_stem": [
+      "kredo",
+      "pewność",
+      "przekonanie"
+    ]
+  },
+  {
+    "target_word": "śnieg",
+    "related_word": [
+      "powłoka",
+      "opad",
+      "warstwa"
+    ],
+    "target_word_stem": "śnieg",
+    "related_word_stem": [
+      "powłoka",
+      "opad",
+      "warstwa"
+    ]
+  },
+  {
+    "target_word": "atrakcja",
+    "related_word": [
+      "przyjemność",
+      "rozrywka",
+      "ciekawostka"
+    ],
+    "target_word_stem": "atrakcja",
+    "related_word_stem": [
+      "przyjemność",
+      "rozrywka",
+      "ciekawostka"
+    ]
+  },
+  {
+    "target_word": "wczoraj",
+    "related_word": [
+      "niedawno",
+      "dzień",
+      "przeszłość"
+    ],
+    "target_word_stem": "wczoraj",
+    "related_word_stem": [
+      "niedawno",
+      "dzień",
+      "przeszłość"
+    ]
+  },
+  {
+    "target_word": "lustro",
+    "related_word": [
+      "zwierciadło",
+      "talerz",
+      "jeleń"
+    ],
+    "target_word_stem": "lustro",
+    "related_word_stem": [
+      "zwierciadło",
+      "talerz",
+      "jeleń"
+    ]
+  },
+  {
+    "target_word": "obwód",
+    "related_word": [
+      "rosja",
+      "litwa",
+      "region"
+    ],
+    "target_word_stem": "obwód",
+    "related_word_stem": [
+      "rosja",
+      "litwa",
+      "region"
+    ]
+  },
+  {
+    "target_word": "adapter",
+    "related_word": [
+      "urządzenie",
+      "odtwarzacz",
+      "gramofon"
+    ],
+    "target_word_stem": "adapter",
+    "related_word_stem": [
+      "urządzenie",
+      "odtwarzacz",
+      "gramofon"
+    ]
+  },
+  {
+    "target_word": "kłopot",
+    "related_word": [
+      "staranie",
+      "ambaras",
+      "zabiegi"
+    ],
+    "target_word_stem": "kłopot",
+    "related_word_stem": [
+      "staranie",
+      "ambaras",
+      "zabiegi"
+    ]
+  },
+  {
+    "target_word": "owoc",
+    "related_word": [
+      "roślina",
+      "wynik",
+      "skutek"
+    ],
+    "target_word_stem": "owoc",
+    "related_word_stem": [
+      "roślina",
+      "wynik",
+      "skutek"
+    ]
+  },
+  {
+    "target_word": "honor",
+    "related_word": [
+      "zaszczyt",
+      "ambicja",
+      "cześć"
+    ],
+    "target_word_stem": "honor",
+    "related_word_stem": [
+      "zaszczyt",
+      "ambicja",
+      "cześć"
+    ]
+  },
+  {
+    "target_word": "jazz",
+    "related_word": [
+      "muzyka",
+      "dżezbend",
+      "wygłup"
+    ],
+    "target_word_stem": "jazz",
+    "related_word_stem": [
+      "muzyka",
+      "dżezbend",
+      "wygłup"
+    ]
+  },
+  {
+    "target_word": "płeć",
+    "related_word": [
+      "kobieta",
+      "cera",
+      "skóra"
+    ],
+    "target_word_stem": "płeć",
+    "related_word_stem": [
+      "kobieta",
+      "cera",
+      "skóra"
+    ]
+  },
+  {
+    "target_word": "indyk",
+    "related_word": [
+      "drób",
+      "danie",
+      "zwierzę"
+    ],
+    "target_word_stem": "indyk",
+    "related_word_stem": [
+      "drób",
+      "danie",
+      "zwierzę"
+    ]
+  },
+  {
+    "target_word": "aktor",
+    "related_word": [
+      "uczestnik",
+      "człowiek",
+      "mężczyzna"
+    ],
+    "target_word_stem": "aktor",
+    "related_word_stem": [
+      "uczestnik",
+      "człowiek",
+      "mężczyzna"
+    ]
+  },
+  {
+    "target_word": "sól",
+    "related_word": [
+      "substancja",
+      "skała",
+      "przyprawa"
+    ],
+    "target_word_stem": "sól",
+    "related_word_stem": [
+      "substancja",
+      "skała",
+      "przyprawa"
+    ]
+  },
+  {
+    "target_word": "krem",
+    "related_word": [
+      "masa",
+      "zupa",
+      "kosmetyk"
+    ],
+    "target_word_stem": "krem",
+    "related_word_stem": [
+      "masa",
+      "zupa",
+      "kosmetyk"
+    ]
+  },
+  {
+    "target_word": "badanie",
+    "related_word": [
+      "przegląd",
+      "kontrola",
+      "wynik"
+    ],
+    "target_word_stem": "badanie",
+    "related_word_stem": [
+      "przegląd",
+      "kontrola",
+      "wynik"
+    ]
+  },
+  {
+    "target_word": "bas",
+    "related_word": [
+      "śpiewak",
+      "litr",
+      "rejestr"
+    ],
+    "target_word_stem": "bas",
+    "related_word_stem": [
+      "śpiewak",
+      "litr",
+      "rejestr"
+    ]
+  },
+  {
+    "target_word": "prowincja",
+    "related_word": [
+      "abruzja",
+      "argentyna",
+      "estonia"
+    ],
+    "target_word_stem": "prowincja",
+    "related_word_stem": [
+      "abruzja",
+      "argentyna",
+      "estonia"
+    ]
+  },
+  {
+    "target_word": "burza",
+    "related_word": [
+      "awantura",
+      "kłąb",
+      "masa"
+    ],
+    "target_word_stem": "burza",
+    "related_word_stem": [
+      "awantura",
+      "kłąb",
+      "masa"
+    ]
+  },
+  {
+    "target_word": "butelka",
+    "related_word": [
+      "pojemnik",
+      "opakowanie",
+      "naczynie"
+    ],
+    "target_word_stem": "butelka",
+    "related_word_stem": [
+      "pojemnik",
+      "opakowanie",
+      "naczynie"
+    ]
+  },
+  {
+    "target_word": "agenda",
+    "related_word": [
+      "oddział",
+      "notes",
+      "filia"
+    ],
+    "target_word_stem": "agenda",
+    "related_word_stem": [
+      "oddział",
+      "notes",
+      "filia"
+    ]
+  },
+  {
+    "target_word": "kość",
+    "related_word": [
+      "zwłoki",
+      "sześcian",
+      "gnat"
+    ],
+    "target_word_stem": "kość",
+    "related_word_stem": [
+      "zwłoki",
+      "sześcian",
+      "gnat"
+    ]
+  },
+  {
+    "target_word": "lampa",
+    "related_word": [
+      "urządzenie",
+      "mebel",
+      "sypialnia"
+    ],
+    "target_word_stem": "lampa",
+    "related_word_stem": [
+      "urządzenie",
+      "mebel",
+      "sypialnia"
+    ]
+  },
+  {
+    "target_word": "alkohol",
+    "related_word": [
+      "napój",
+      "związek",
+      "trunek"
+    ],
+    "target_word_stem": "alkohol",
+    "related_word_stem": [
+      "napój",
+      "związek",
+      "trunek"
+    ]
+  },
+  {
+    "target_word": "rolnik",
+    "related_word": [
+      "chłop",
+      "rataj",
+      "powołanie"
+    ],
+    "target_word_stem": "rolnik",
+    "related_word_stem": [
+      "chłop",
+      "rataj",
+      "powołanie"
+    ]
+  }
+]

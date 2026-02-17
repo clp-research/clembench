@@ -1,0 +1,394 @@
+[
+  {
+    "target_word": "система",
+    "related_word": [
+      "направа",
+      "режим",
+      "механизъм"
+    ],
+    "target_word_stem": "система",
+    "related_word_stem": [
+      "направа",
+      "режим",
+      "механизъм"
+    ]
+  },
+  {
+    "target_word": "юг",
+    "related_word": [
+      "север",
+      "югославия",
+      "южен"
+    ],
+    "target_word_stem": "юг",
+    "related_word_stem": [
+      "север",
+      "югославия",
+      "южен"
+    ]
+  },
+  {
+    "target_word": "господар",
+    "related_word": [
+      "владетел",
+      "повелител",
+      "собственик"
+    ],
+    "target_word_stem": "господар",
+    "related_word_stem": [
+      "владетел",
+      "повелител",
+      "собственик"
+    ]
+  },
+  {
+    "target_word": "век",
+    "related_word": [
+      "епоха",
+      "столетие",
+      "вечност"
+    ],
+    "target_word_stem": "век",
+    "related_word_stem": [
+      "епоха",
+      "столетие",
+      "вечност"
+    ]
+  },
+  {
+    "target_word": "абонамент",
+    "related_word": [
+      "предплата",
+      "право",
+      "сума"
+    ],
+    "target_word_stem": "абонамент",
+    "related_word_stem": [
+      "предплата",
+      "право",
+      "сума"
+    ]
+  },
+  {
+    "target_word": "реч",
+    "related_word": [
+      "слово",
+      "зарека",
+      "изричам"
+    ],
+    "target_word_stem": "реч",
+    "related_word_stem": [
+      "слово",
+      "зарека",
+      "изричам"
+    ]
+  },
+  {
+    "target_word": "читател",
+    "related_word": [
+      "допрочета",
+      "зачитам",
+      "допрочитам"
+    ],
+    "target_word_stem": "читател",
+    "related_word_stem": [
+      "допрочета",
+      "зачитам",
+      "допрочитам"
+    ]
+  },
+  {
+    "target_word": "речник",
+    "related_word": [
+      "зарека",
+      "изричам",
+      "заричам"
+    ],
+    "target_word_stem": "речник",
+    "related_word_stem": [
+      "зарека",
+      "изричам",
+      "заричам"
+    ]
+  },
+  {
+    "target_word": "Книга",
+    "related_word": [
+      "Четене",
+      "Страници",
+      "История"
+    ],
+    "target_word_stem": "книг",
+    "related_word_stem": [
+      "чет",
+      "стран",
+      "истор"
+    ]
+  },
+  {
+    "target_word": "Вода",
+    "related_word": [
+      "Пиене",
+      "Река",
+      "Море"
+    ],
+    "target_word_stem": "вод",
+    "related_word_stem": [
+      "пи",
+      "рек",
+      "мор"
+    ]
+  },
+  {
+    "target_word": "Слънце",
+    "related_word": [
+      "Топлина",
+      "Светлина",
+      "Небе"
+    ],
+    "target_word_stem": "слънц",
+    "related_word_stem": [
+      "топл",
+      "светл",
+      "неб"
+    ]
+  },
+  {
+    "target_word": "Къща",
+    "related_word": [
+      "Семейство",
+      "Стая",
+      "Дом"
+    ],
+    "target_word_stem": "къщ",
+    "related_word_stem": [
+      "семей",
+      "ста",
+      "дом"
+    ]
+  },
+  {
+    "target_word": "Ден",
+    "related_word": [
+      "Сутрин",
+      "Нощ",
+      "Време"
+    ],
+    "target_word_stem": "ден",
+    "related_word_stem": [
+      "сутр",
+      "нощ",
+      "врем"
+    ]
+  },
+  {
+    "target_word": "Човек",
+    "related_word": [
+      "Лице",
+      "Тяло",
+      "Хора"
+    ],
+    "target_word_stem": "човек",
+    "related_word_stem": [
+      "лиц",
+      "тял",
+      "хор"
+    ]
+  },
+  {
+    "target_word": "Работа",
+    "related_word": [
+      "Пари",
+      "Офис",
+      "Труд"
+    ],
+    "target_word_stem": "работ",
+    "related_word_stem": [
+      "пар",
+      "офис",
+      "труд"
+    ]
+  },
+  {
+    "target_word": "Време",
+    "related_word": [
+      "Час",
+      "Минута",
+      "Секунда"
+    ],
+    "target_word_stem": "врем",
+    "related_word_stem": [
+      "час",
+      "минут",
+      "секунд"
+    ]
+  },
+  {
+    "target_word": "Храна",
+    "related_word": [
+      "Ядене",
+      "Ресторант",
+      "Готвене"
+    ],
+    "target_word_stem": "хран",
+    "related_word_stem": [
+      "яд",
+      "ресторант",
+      "готв"
+    ]
+  },
+  {
+    "target_word": "Любов",
+    "related_word": [
+      "Сърце",
+      "Романтика",
+      "Обичам"
+    ],
+    "target_word_stem": "любов",
+    "related_word_stem": [
+      "сърц",
+      "романт",
+      "обич"
+    ]
+  },
+  {
+    "target_word": "Приятел",
+    "related_word": [
+      "Другар",
+      "Компания",
+      "Забава"
+    ],
+    "target_word_stem": "приятел",
+    "related_word_stem": [
+      "другар",
+      "компан",
+      "забав"
+    ]
+  },
+  {
+    "target_word": "Пари",
+    "related_word": [
+      "Банка",
+      "Плащане",
+      "Сметка"
+    ],
+    "target_word_stem": "пар",
+    "related_word_stem": [
+      "банк",
+      "плащ",
+      "смет"
+    ]
+  },
+  {
+    "target_word": "Държава",
+    "related_word": [
+      "Народ",
+      "Правителство",
+      "България"
+    ],
+    "target_word_stem": "държав",
+    "related_word_stem": [
+      "народ",
+      "правител",
+      "българ"
+    ]
+  },
+  {
+    "target_word": "Игра",
+    "related_word": [
+      "Забавление",
+      "Правила",
+      "Печеля"
+    ],
+    "target_word_stem": "игр",
+    "related_word_stem": [
+      "забавл",
+      "правил",
+      "печел"
+    ]
+  },
+  {
+    "target_word": "Музика",
+    "related_word": [
+      "Песен",
+      "Инструмент",
+      "Танцувам"
+    ],
+    "target_word_stem": "музик",
+    "related_word_stem": [
+      "песен",
+      "инструмент",
+      "танцув"
+    ]
+  },
+  {
+    "target_word": "Училище",
+    "related_word": [
+      "Ученик",
+      "Учител",
+      "Знание"
+    ],
+    "target_word_stem": "училищ",
+    "related_word_stem": [
+      "ученик",
+      "учител",
+      "зна"
+    ]
+  },
+  {
+    "target_word": "Живот",
+    "related_word": [
+      "Смърт",
+      "Раждане",
+      "Съществуване"
+    ],
+    "target_word_stem": "живот",
+    "related_word_stem": [
+      "смърт",
+      "ражд",
+      "съществув"
+    ]
+  },
+  {
+    "target_word": "Дете",
+    "related_word": [
+      "Родител",
+      "Играчка",
+      "Малък"
+    ],
+    "target_word_stem": "дет",
+    "related_word_stem": [
+      "родител",
+      "играчк",
+      "малък"
+    ]
+  },
+  {
+    "target_word": "Автомобил",
+    "related_word": [
+      "Кола",
+      "Път",
+      "Шофьор"
+    ],
+    "target_word_stem": "автомобил",
+    "related_word_stem": [
+      "кол",
+      "път",
+      "шофьор"
+    ]
+  },
+  {
+    "target_word": "Въздух",
+    "related_word": [
+      "Дишане",
+      "Кислород",
+      "Атмосфера"
+    ],
+    "target_word_stem": "въздух",
+    "related_word_stem": [
+      "диш",
+      "кислород",
+      "атмосфер"
+    ]
+  }
+]

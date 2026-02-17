@@ -1,0 +1,380 @@
+[
+  {
+    "target_word": "дело",
+    "related_word": [
+      "работа",
+      "кауза",
+      "постижение"
+    ],
+    "target_word_stem": "дело",
+    "related_word_stem": [
+      "работа",
+      "кауза",
+      "постижение"
+    ]
+  },
+  {
+    "target_word": "хаос",
+    "related_word": [
+      "бъркотия",
+      "безпорядък",
+      "безредица"
+    ],
+    "target_word_stem": "хаос",
+    "related_word_stem": [
+      "бъркотия",
+      "безпорядък",
+      "безредица"
+    ]
+  },
+  {
+    "target_word": "дело",
+    "related_word": [
+      "работа",
+      "кауза",
+      "постижение"
+    ],
+    "target_word_stem": "дело",
+    "related_word_stem": [
+      "работа",
+      "кауза",
+      "постижение"
+    ]
+  },
+  {
+    "target_word": "идиот",
+    "related_word": [
+      "глупец",
+      "малоумник",
+      "тъпак"
+    ],
+    "target_word_stem": "идиот",
+    "related_word_stem": [
+      "глупец",
+      "малоумник",
+      "тъпак"
+    ]
+  },
+  {
+    "target_word": "печка",
+    "related_word": [
+      "соба",
+      "допичам",
+      "запека"
+    ],
+    "target_word_stem": "печка",
+    "related_word_stem": [
+      "соба",
+      "допичам",
+      "запека"
+    ]
+  },
+  {
+    "target_word": "течност",
+    "related_word": [
+      "дотека",
+      "затичам",
+      "дотичам"
+    ],
+    "target_word_stem": "течност",
+    "related_word_stem": [
+      "дотека",
+      "затичам",
+      "дотичам"
+    ]
+  },
+  {
+    "target_word": "речник",
+    "related_word": [
+      "зарека",
+      "изричам",
+      "заричам"
+    ],
+    "target_word_stem": "речник",
+    "related_word_stem": [
+      "зарека",
+      "изричам",
+      "заричам"
+    ]
+  },
+  {
+    "target_word": "Амвон",
+    "related_word": [
+      "Църква",
+      "Олтар",
+      "Поп"
+    ],
+    "target_word_stem": "Амвон",
+    "related_word_stem": [
+      "Църкв",
+      "Олтар",
+      "Поп"
+    ]
+  },
+  {
+    "target_word": "Крушение",
+    "related_word": [
+      "Кораб",
+      "Катастрофа",
+      "Трагедия"
+    ],
+    "target_word_stem": "Крушен",
+    "related_word_stem": [
+      "Кораб",
+      "Катастроф",
+      "Трагед"
+    ]
+  },
+  {
+    "target_word": "Епитет",
+    "related_word": [
+      "Определение",
+      "Прилагателно",
+      "Описание"
+    ],
+    "target_word_stem": "Епитет",
+    "related_word_stem": [
+      "Определен",
+      "Прилагател",
+      "Описан"
+    ]
+  },
+  {
+    "target_word": "Дилема",
+    "related_word": [
+      "Избор",
+      "Проблем",
+      "Решение"
+    ],
+    "target_word_stem": "Дилем",
+    "related_word_stem": [
+      "Избор",
+      "Проблем",
+      "Решен"
+    ]
+  },
+  {
+    "target_word": "Аскет",
+    "related_word": [
+      "Монах",
+      "Отказ",
+      "Жертва"
+    ],
+    "target_word_stem": "Аскет",
+    "related_word_stem": [
+      "Монах",
+      "Отказ",
+      "Жертв"
+    ]
+  },
+  {
+    "target_word": "Релеф",
+    "related_word": [
+      "Планина",
+      "Равнина",
+      "География"
+    ],
+    "target_word_stem": "Релеф",
+    "related_word_stem": [
+      "Планин",
+      "Равнин",
+      "Географ"
+    ]
+  },
+  {
+    "target_word": "Екзекуция",
+    "related_word": [
+      "Смърт",
+      "Наказание",
+      "Убийство"
+    ],
+    "target_word_stem": "Екзекуци",
+    "related_word_stem": [
+      "Смърт",
+      "Наказан",
+      "Убий"
+    ]
+  },
+  {
+    "target_word": "Панихида",
+    "related_word": [
+      "Погребение",
+      "Църква",
+      "Опело"
+    ],
+    "target_word_stem": "Панихид",
+    "related_word_stem": [
+      "Погребен",
+      "Църкв",
+      "Опел"
+    ]
+  },
+  {
+    "target_word": "Скитник",
+    "related_word": [
+      "Пътник",
+      "Бездомник",
+      "Пътешествие"
+    ],
+    "target_word_stem": "Скитн",
+    "related_word_stem": [
+      "Път",
+      "Бездом",
+      "Пътешеств"
+    ]
+  },
+  {
+    "target_word": "Антиквар",
+    "related_word": [
+      "Старина",
+      "Магазин",
+      "Колекция"
+    ],
+    "target_word_stem": "Антиквар",
+    "related_word_stem": [
+      "Стар",
+      "Магаз",
+      "Колекц"
+    ]
+  },
+  {
+    "target_word": "Ерудит",
+    "related_word": [
+      "Учен",
+      "Знание",
+      "Интелигентност"
+    ],
+    "target_word_stem": "Ерудит",
+    "related_word_stem": [
+      "Учен",
+      "Знан",
+      "Интелигент"
+    ]
+  },
+  {
+    "target_word": "Фреска",
+    "related_word": [
+      "Стенопис",
+      "Рисунка",
+      "Църква"
+    ],
+    "target_word_stem": "Фреск",
+    "related_word_stem": [
+      "Стенопис",
+      "Рис",
+      "Църкв"
+    ]
+  },
+  {
+    "target_word": "Патриций",
+    "related_word": [
+      "Аристократ",
+      "Благородник",
+      "Рим"
+    ],
+    "target_word_stem": "Патрици",
+    "related_word_stem": [
+      "Аристократ",
+      "Благород",
+      "Рим"
+    ]
+  },
+  {
+    "target_word": "Алегория",
+    "related_word": [
+      "Символ",
+      "Образ",
+      "Смисъл"
+    ],
+    "target_word_stem": "Алегор",
+    "related_word_stem": [
+      "Символ",
+      "Образ",
+      "Смисъл"
+    ]
+  },
+  {
+    "target_word": "Крепост",
+    "related_word": [
+      "Замък",
+      "Стена",
+      "Отбрана"
+    ],
+    "target_word_stem": "Крепост",
+    "related_word_stem": [
+      "Замък",
+      "Стен",
+      "Отбран"
+    ]
+  },
+  {
+    "target_word": "Послание",
+    "related_word": [
+      "Съобщение",
+      "Писмо",
+      "Новина"
+    ],
+    "target_word_stem": "Посла",
+    "related_word_stem": [
+      "Съобщен",
+      "Писм",
+      "Нов"
+    ]
+  },
+  {
+    "target_word": "Сатира",
+    "related_word": [
+      "Критика",
+      "Ирония",
+      "Смях"
+    ],
+    "target_word_stem": "Сатир",
+    "related_word_stem": [
+      "Критик",
+      "Ирон",
+      "Смя"
+    ]
+  },
+  {
+    "target_word": "Триаж",
+    "related_word": [
+      "Медицина",
+      "Сортиране",
+      "Болница"
+    ],
+    "target_word_stem": "Триаж",
+    "related_word_stem": [
+      "Медицин",
+      "Сорт",
+      "Болн"
+    ]
+  },
+  {
+    "target_word": "Импулс",
+    "related_word": [
+      "Подтик",
+      "Енергия",
+      "Движение"
+    ],
+    "target_word_stem": "Импулс",
+    "related_word_stem": [
+      "Подтик",
+      "Енерг",
+      "Движ"
+    ]
+  },
+  {
+    "target_word": "Екстракция",
+    "related_word": [
+      "Изваждане",
+      "Процес",
+      "Химия"
+    ],
+    "target_word_stem": "Екстракци",
+    "related_word_stem": [
+      "Извад",
+      "Процес",
+      "Хим"
+    ]
+  }
+]

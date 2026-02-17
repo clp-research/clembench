@@ -1,0 +1,380 @@
+[
+  {
+    "target_word": "زوج",
+    "related_word": [
+      "اثنان",
+      "بعل",
+      "امراة"
+    ],
+    "target_word_stem": "زوج",
+    "related_word_stem": [
+      "اثنان",
+      "بعل",
+      "امراة"
+    ]
+  },
+  {
+    "target_word": "قرد",
+    "related_word": [
+      "حبن",
+      "ميمون",
+      "نسناس"
+    ],
+    "target_word_stem": "قرد",
+    "related_word_stem": [
+      "حبن",
+      "ميمون",
+      "نسناس"
+    ]
+  },
+  {
+    "target_word": "جمل",
+    "related_word": [
+      "ناقة",
+      "بعير",
+      "ابل"
+    ],
+    "target_word_stem": "جمل",
+    "related_word_stem": [
+      "ناقة",
+      "بعير",
+      "ابل"
+    ]
+  },
+  {
+    "target_word": "طوب",
+    "related_word": [
+      "اجر",
+      "لبن",
+      "قرميد"
+    ],
+    "target_word_stem": "طوب",
+    "related_word_stem": [
+      "اجر",
+      "لبن",
+      "قرميد"
+    ]
+  },
+  {
+    "target_word": "غضب",
+    "related_word": [
+      "اغتاظ",
+      "زخ",
+      "حمى"
+    ],
+    "target_word_stem": "غضب",
+    "related_word_stem": [
+      "اغتاظ",
+      "زخ",
+      "حمى"
+    ]
+  },
+  {
+    "target_word": "سمع",
+    "related_word": [
+      "ب",
+      "ل",
+      "من"
+    ],
+    "target_word_stem": "سمع",
+    "related_word_stem": [
+      "ب",
+      "ل",
+      "من"
+    ]
+  },
+  {
+    "target_word": "نسخ",
+    "related_word": [
+      "نستعليق",
+      "استنساخ",
+      "منسوخ"
+    ],
+    "target_word_stem": "نسخ",
+    "related_word_stem": [
+      "نستعليق",
+      "استنساخ",
+      "منسوخ"
+    ]
+  },
+  {
+    "target_word": "مِرْقَاة",
+    "related_word": [
+      "سُلَّم",
+      "دَرَج",
+      "صُعُود"
+    ],
+    "target_word_stem": "ر ق و",
+    "related_word_stem": [
+      "س ل م",
+      "د ر ج",
+      "ص ع د"
+    ]
+  },
+  {
+    "target_word": "هَجِين",
+    "related_word": [
+      "مُهَجَّن",
+      "خَلِيط",
+      "مُخْتَلَط"
+    ],
+    "target_word_stem": "ه ج ن",
+    "related_word_stem": [
+      "ه ج ن",
+      "خ ل ط",
+      "خ ل ط"
+    ]
+  },
+  {
+    "target_word": "بَغِيض",
+    "related_word": [
+      "مَكْرُوه",
+      "مُنْفِّر",
+      "كَرَاهِيَة"
+    ],
+    "target_word_stem": "ب غ ض",
+    "related_word_stem": [
+      "ك ر ه",
+      "ن ف ر",
+      "ك ر ه"
+    ]
+  },
+  {
+    "target_word": "قَحْط",
+    "related_word": [
+      "جَفَاف",
+      "نُدْرَة",
+      "مَجَاعَة"
+    ],
+    "target_word_stem": "ق ح ط",
+    "related_word_stem": [
+      "ج ف ف",
+      "ن د ر",
+      "ج و ع"
+    ]
+  },
+  {
+    "target_word": "وَجِيف",
+    "related_word": [
+      "خَوْف",
+      "فَزَع",
+      "رُعْب"
+    ],
+    "target_word_stem": "و ج ف",
+    "related_word_stem": [
+      "خ و ف",
+      "ف ز ع",
+      "ر ع ب"
+    ]
+  },
+  {
+    "target_word": "غَيْهَب",
+    "related_word": [
+      "ظُلْمَة",
+      "دَاجٍ",
+      "سَوَاد"
+    ],
+    "target_word_stem": "غ ه ب",
+    "related_word_stem": [
+      "ظ ل م",
+      "د ج و",
+      "س و د"
+    ]
+  },
+  {
+    "target_word": "أُبَّهَة",
+    "related_word": [
+      "فَخَامَة",
+      "عَظَمَة",
+      "جَلَال"
+    ],
+    "target_word_stem": "أ ب ه",
+    "related_word_stem": [
+      "ف خ م",
+      "ع ظ م",
+      "ج ل ل"
+    ]
+  },
+  {
+    "target_word": "حِقْبَة",
+    "related_word": [
+      "فَتْرَة",
+      "مُدَّة",
+      "زَمَن"
+    ],
+    "target_word_stem": "ح ق ب",
+    "related_word_stem": [
+      "ف ت ر",
+      "م د د",
+      "ز م ن"
+    ]
+  },
+  {
+    "target_word": "وَجِيه",
+    "related_word": [
+      "مُحْتَرَم",
+      "مَرْمُوق",
+      "مُبَجَّل"
+    ],
+    "target_word_stem": "و ج ه",
+    "related_word_stem": [
+      "ح ر م",
+      "ر م ق",
+      "ب ج ل"
+    ]
+  },
+  {
+    "target_word": "أَسْفَار",
+    "related_word": [
+      "كُتُب",
+      "مَخْطُوطَات",
+      "مُؤَلَّفَات"
+    ],
+    "target_word_stem": "س ف ر",
+    "related_word_stem": [
+      "ك ت ب",
+      "خ ط ط",
+      "أ ل ف"
+    ]
+  },
+  {
+    "target_word": "مُتَيَّم",
+    "related_word": [
+      "عَاشِق",
+      "مُحِبّ",
+      "هَائِم"
+    ],
+    "target_word_stem": "ت ي م",
+    "related_word_stem": [
+      "ع ش ق",
+      "ح ب ب",
+      "ه ي م"
+    ]
+  },
+  {
+    "target_word": "ضَرِيح",
+    "related_word": [
+      "قَبْر",
+      "مَدْفَن",
+      "رُفَات"
+    ],
+    "target_word_stem": "ض ر ح",
+    "related_word_stem": [
+      "ق ب ر",
+      "د ف ن",
+      "ر ف ت"
+    ]
+  },
+  {
+    "target_word": "عَسْجَد",
+    "related_word": [
+      "ذَهَب",
+      "ذَهَبِيّ",
+      "جَوْهَر"
+    ],
+    "target_word_stem": "ع س ج د",
+    "related_word_stem": [
+      "ذ ه ب",
+      "ذ ه ب",
+      "ج و ه ر"
+    ]
+  },
+  {
+    "target_word": "إِرْهَاص",
+    "related_word": [
+      "بِدَايَة",
+      "مُقَدِّمَة",
+      "تَمْهِيد"
+    ],
+    "target_word_stem": "ر ه ص",
+    "related_word_stem": [
+      "ب د أ",
+      "ق د م",
+      "م ه د"
+    ]
+  },
+  {
+    "target_word": "مِئْزَر",
+    "related_word": [
+      "مِرْيَلَة",
+      "ثَوْب",
+      "لِبَاس"
+    ],
+    "target_word_stem": "أ ز ر",
+    "related_word_stem": [
+      "م ر ل",
+      "ث و ب",
+      "ل ب س"
+    ]
+  },
+  {
+    "target_word": "سِبْط",
+    "related_word": [
+      "حَفِيد",
+      "ذُرِّيَّة",
+      "نَسْل"
+    ],
+    "target_word_stem": "س ب ط",
+    "related_word_stem": [
+      "ح ف د",
+      "ذ ر ر",
+      "ن س ل"
+    ]
+  },
+  {
+    "target_word": "مُتَوَارٍ",
+    "related_word": [
+      "مُخْتَفٍ",
+      "مُخَبَّأ",
+      "مُسْتَتِر"
+    ],
+    "target_word_stem": "و ر ي",
+    "related_word_stem": [
+      "خ ف ي",
+      "خ ب أ",
+      "س ت ر"
+    ]
+  },
+  {
+    "target_word": "أُحْجِيَّة",
+    "related_word": [
+      "لُغْز",
+      "مُعَمَّى",
+      "مَسْأَلَة"
+    ],
+    "target_word_stem": "ح ج و",
+    "related_word_stem": [
+      "ل غ ز",
+      "ع م ي",
+      "س أ ل"
+    ]
+  },
+  {
+    "target_word": "مِصْبَاح",
+    "related_word": [
+      "فَانُوس",
+      "سِرَاج",
+      "ضَوْء"
+    ],
+    "target_word_stem": "ص ب ح",
+    "related_word_stem": [
+      "ف ن س",
+      "س ر ج",
+      "ض و أ"
+    ]
+  },
+  {
+    "target_word": "يَمّ",
+    "related_word": [
+      "بَحْر",
+      "مُحِيط",
+      "مَاء"
+    ],
+    "target_word_stem": "ي م م",
+    "related_word_stem": [
+      "ب ح ر",
+      "ح و ط",
+      "م و ه"
+    ]
+  }
+]

@@ -9,6 +9,7 @@ from clemcore.backends import Model
 from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, ResponseError, ParseError, RuleViolationError
 from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.master import GameState, Outcome
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_VIOLATED, METRIC_REQUEST_COUNT_PARSED, BENCH_SCORE
 
@@ -196,16 +197,13 @@ def validate_agreement(agreement: str, words: Dict):
 
 
 @dataclass
-class WordleGameState:
+class WordleGameState(GameState):
     # Wordle
-    target_word: str
-    words: Dict[str, str]
-    max_rounds: int
-    max_retry_per_error: int
-    guesser_initial_prompt: str
-    success: bool = False
-    failure: bool = False
-    aborted: bool = False
+    target_word: str = None
+    words: Dict[str, str] = None
+    max_rounds: int = None
+    max_retry_per_error: int = None
+    guesser_initial_prompt: str = None
     valid_response: bool = False
     reprompt_attempts: int = 0
     error: Optional[ResponseError] = None
@@ -220,6 +218,9 @@ class WordleGameState:
     commit_guess: Optional[bool] = None
     current_agreement: Optional[str] = None
     current_agreement_explanation: Optional[str] = None
+
+    def __post_init__(self):
+        super().__init__()  # sets self.outcome = Outcome.RUNNING
 
 
 # interaction keys to log structured data for scoring or logging
@@ -301,9 +302,6 @@ class Wordle(DialogueGameMaster):
         self.guesser = WordGuesser(self.player_models[0], self.state.words, self.state.target_word)
         self.add_player(self.guesser, initial_context=self.state.guesser_initial_prompt)
 
-    def _does_game_proceed(self):
-        return not (self.state.success or self.state.failure or self.state.aborted)
-
     def _validate_player_response(self, player: Player, utterance: str) -> bool:
         self.request_counts += 1
         try:
@@ -336,12 +334,12 @@ class Wordle(DialogueGameMaster):
                 self.state.reprompt_attempts += 1
                 if self.state.reprompt_attempts > self.state.max_retry_per_error:
                     self.log_to_self("invalid format", "game_result = ABORT")
-                    self.state.aborted = True
+                    self.state.abort()
                 else:  # adjust re-prompt text
                     self.set_context_for(self.guesser, self.formatter.to_gm_reprompt_for_guesser(self.state.error))
             else:
                 self.log_to_self("invalid format", "game_result = ABORT")
-                self.state.aborted = True
+                self.state.abort()
             return False
         return True
 
@@ -357,10 +355,10 @@ class Wordle(DialogueGameMaster):
         # Check terminal conditions
         if self.state.target_word == self.state.current_guess:
             self.log_to_self("correct guess", "game_result = WIN")
-            self.state.success = True
+            self.state.succeed()
         elif self.current_round + 1 >= self.state.max_rounds:  # zero-based rounds
             self.log_to_self("max rounds played", "game_result = LOSS")
-            self.state.failure = True
+            self.state.failed()
         else:  # Provide word validation feedback to guesser for next round
             content = self.formatter.to_gm_response_for_guesser(self.state.guess_feedback)
             self.set_context_for(self.guesser, content)
@@ -373,18 +371,10 @@ class Wordle(DialogueGameMaster):
             "guess_feedback": self.state.guess_feedback
         }
 
-    def compute_response_score(self, response, context):
-        return 1 if self.state.success else 0
-
-    def compute_episode_score(self):
-        if self.state.success:
-            return 100 / self.current_round
-        return 0
-
     def _on_after_game(self):
-        self.log_key(METRIC_ABORTED, int(self.state.aborted))
-        self.log_key(METRIC_LOSE, int(self.state.failure))
-        self.log_key(METRIC_SUCCESS, int(self.state.success))
+        self.log_key(METRIC_ABORTED, int(self.state.outcome == Outcome.ABORTED))
+        self.log_key(METRIC_LOSE, int(self.state.outcome == Outcome.FAILURE))
+        self.log_key(METRIC_SUCCESS, int(self.state.outcome == Outcome.SUCCESS))
 
         self.log_key(METRIC_REQUEST_COUNT, self.request_counts)
         self.log_key(METRIC_REQUEST_COUNT_PARSED, self.parsed_request_counts)
@@ -476,7 +466,7 @@ class WordleWithCritic(WordleWithClue):
             except (ParseError, RuleViolationError) as e:
                 # Immediately abort when critic fails to produce a valid response
                 self.violated_request_counts += 1
-                self.state.aborted = True
+                self.state.abort()
                 self.log_to_self("metadata", e.reason)
                 self.log_to_self("invalid format", "game_result = ABORT")
                 return False
@@ -519,7 +509,7 @@ class WordleWithCritic(WordleWithClue):
     def _does_game_proceed(self):
         # Proceed if waiting for critic response (skip success/failure conditions)
         # However the game might be aborted, when the guesser or critic fails to produce a valid response
-        if self.state.awaiting_critic and not self.state.aborted:
+        if self.state.awaiting_critic and self.state.outcome != Outcome.ABORTED:
             return True
         return super()._does_game_proceed()
 

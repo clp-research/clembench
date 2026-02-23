@@ -1,0 +1,39 @@
+{
+    "upgpt-codex-t0.0": {
+        "skillreuse": {
+            "skillreuse_zs": {
+                "total_cost": 12.07240475,
+                "user_simulator_cost": 5.52449275,
+                "cobot_cost": 6.547912,
+                "cobot_optim cost": 0.0,
+                "unknown_cost": 0.0,
+                "token_stats": {
+                    "usersimulator": {
+                        "input_tokens": 2085077,
+                        "output_tokens": 133972,
+                        "total_tokens": 2219049,
+                        "num_calls": 1121
+                    },
+                    "cobot": {
+                        "input_tokens": 3132752,
+                        "output_tokens": 76114,
+                        "total_tokens": 3208866,
+                        "num_calls": 638
+                    },
+                    "cobot-optimizer": {
+                        "input_tokens": 0,
+                        "output_tokens": 0,
+                        "total_tokens": 0,
+                        "num_calls": 0
+                    },
+                    "unknown": {
+                        "input_tokens": 0,
+                        "output_tokens": 0,
+                        "total_tokens": 0,
+                        "num_calls": 0
+                    }
+                }
+            }
+        }
+    }
+}

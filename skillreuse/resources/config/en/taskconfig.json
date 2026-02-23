@@ -1,6 +1,6 @@
 {
     "use_error_feedback": true,
-    "use_images_in_human_prompts": false,
+    "use_images_in_human_prompts": true,
     "use_skills": true,
     "use_oracle_code": false,
     "num_retry": 3,

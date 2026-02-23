@@ -275,7 +275,7 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
             if not use_images_in_human_prompts:
                 empty_player_board = None
             else:
-                board_size = {"rows": sample["simple"]['rows'], "cols": sample["simple"]['cols']}
+                board_size = {"rows": sample["simple_reuse"]['rows'], "cols": sample["simple_reuse"]['cols']}
                 empty_player_board = self._prepare_empty_board_encoding(board_size)
 
             instance["data"]["reuse_data"] = self._prepare_reuse_data(sample["simple_reuse"], reuse_turns, empty_player_board)

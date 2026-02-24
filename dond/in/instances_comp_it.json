@@ -1,625 +1,1520 @@
 {
-    "experiments": [
+  "experiments": [
+    {
+      "name": "comp_it",
+      "game_instances": [
         {
-            "name": "comp_it",
-            "game_instances": [
-                {
-                    "game_id": 0,
-                    "item_types": [
-                        "anello",
-                        "tela",
-                        "rivetto",
-                        "conchiglia"
-                    ],
-                    "item_types_plural": [
-                        "anelli",
-                        "tele",
-                        "rivetti",
-                        "conchiglie"
-                    ],
-                    "item_counts": [
-                        1,
-                        1,
-                        1,
-                        2
-                    ],
-                    "player_a_values": [
-                        3,
-                        4,
-                        1,
-                        1
-                    ],
-                    "player_b_values": [
-                        0,
-                        1,
-                        3,
-                        3
-                    ]
-                },
-                {
-                    "game_id": 1,
-                    "item_types": [
-                        "rivetto",
-                        "gomma",
-                        "bacca",
-                        "ingranaggio",
-                        "carota"
-                    ],
-                    "item_types_plural": [
-                        "rivetti",
-                        "gomme",
-                        "bacche",
-                        "ingranaggi",
-                        "carote"
-                    ],
-                    "item_counts": [
-                        1,
-                        1,
-                        1,
-                        1,
-                        1
-                    ],
-                    "player_a_values": [
-                        0,
-                        0,
-                        2,
-                        0,
-                        8
-                    ],
-                    "player_b_values": [
-                        1,
-                        3,
-                        1,
-                        5,
-                        0
-                    ]
-                },
-                {
-                    "game_id": 2,
-                    "item_types": [
-                        "bicchiere",
-                        "cipolla",
-                        "pala",
-                        "scatola"
-                    ],
-                    "item_types_plural": [
-                        "bicchieri",
-                        "cipolle",
-                        "pale",
-                        "scatole"
-                    ],
-                    "item_counts": [
-                        1,
-                        2,
-                        1,
-                        1
-                    ],
-                    "player_a_values": [
-                        2,
-                        2,
-                        1,
-                        3
-                    ],
-                    "player_b_values": [
-                        3,
-                        0,
-                        3,
-                        4
-                    ]
-                },
-                {
-                    "game_id": 3,
-                    "item_types": [
-                        "rivetto",
-                        "foglia",
-                        "spugna"
-                    ],
-                    "item_types_plural": [
-                        "rivetti",
-                        "foglie",
-                        "spugne"
-                    ],
-                    "item_counts": [
-                        4,
-                        1,
-                        2
-                    ],
-                    "player_a_values": [
-                        0,
-                        8,
-                        1
-                    ],
-                    "player_b_values": [
-                        2,
-                        2,
-                        0
-                    ]
-                },
-                {
-                    "game_id": 4,
-                    "item_types": [
-                        "banana",
-                        "bullone",
-                        "pomodoro",
-                        "piatto",
-                        "lampada"
-                    ],
-                    "item_types_plural": [
-                        "banane",
-                        "bulloni",
-                        "pomodori",
-                        "piatti",
-                        "lampade"
-                    ],
-                    "item_counts": [
-                        1,
-                        1,
-                        1,
-                        1,
-                        1
-                    ],
-                    "player_a_values": [
-                        3,
-                        1,
-                        4,
-                        1,
-                        1
-                    ],
-                    "player_b_values": [
-                        2,
-                        6,
-                        0,
-                        2,
-                        0
-                    ]
-                },
-                {
-                    "game_id": 5,
-                    "item_types": [
-                        "calzino",
-                        "pala",
-                        "borsa",
-                        "penna"
-                    ],
-                    "item_types_plural": [
-                        "calzini",
-                        "pale",
-                        "borse",
-                        "penne"
-                    ],
-                    "item_counts": [
-                        1,
-                        2,
-                        1,
-                        1
-                    ],
-                    "player_a_values": [
-                        3,
-                        2,
-                        2,
-                        1
-                    ],
-                    "player_b_values": [
-                        1,
-                        1,
-                        0,
-                        7
-                    ]
-                },
-                {
-                    "game_id": 6,
-                    "item_types": [
-                        "dado",
-                        "moneta",
-                        "cucchiaio"
-                    ],
-                    "item_types_plural": [
-                        "dadi",
-                        "monete",
-                        "cucchiai"
-                    ],
-                    "item_counts": [
-                        4,
-                        2,
-                        1
-                    ],
-                    "player_a_values": [
-                        2,
-                        1,
-                        0
-                    ],
-                    "player_b_values": [
-                        1,
-                        1,
-                        4
-                    ]
-                },
-                {
-                    "game_id": 7,
-                    "item_types": [
-                        "penna",
-                        "moneta",
-                        "roccia",
-                        "calzino"
-                    ],
-                    "item_types_plural": [
-                        "penne",
-                        "monete",
-                        "rocce",
-                        "calzini"
-                    ],
-                    "item_counts": [
-                        1,
-                        1,
-                        1,
-                        2
-                    ],
-                    "player_a_values": [
-                        2,
-                        5,
-                        1,
-                        1
-                    ],
-                    "player_b_values": [
-                        2,
-                        0,
-                        8,
-                        0
-                    ]
-                },
-                {
-                    "game_id": 8,
-                    "item_types": [
-                        "telecomando",
-                        "tavolo",
-                        "calzino"
-                    ],
-                    "item_types_plural": [
-                        "telecomandi",
-                        "tavoli",
-                        "calzini"
-                    ],
-                    "item_counts": [
-                        1,
-                        2,
-                        2
-                    ],
-                    "player_a_values": [
-                        6,
-                        1,
-                        1
-                    ],
-                    "player_b_values": [
-                        0,
-                        1,
-                        4
-                    ]
-                },
-                {
-                    "game_id": 9,
-                    "item_types": [
-                        "seme",
-                        "pomodoro",
-                        "borsa"
-                    ],
-                    "item_types_plural": [
-                        "semi",
-                        "pomodori",
-                        "borse"
-                    ],
-                    "item_counts": [
-                        2,
-                        2,
-                        2
-                    ],
-                    "player_a_values": [
-                        2,
-                        2,
-                        1
-                    ],
-                    "player_b_values": [
-                        4,
-                        0,
-                        1
-                    ]
-                },
-                {
-                    "game_id": 10,
-                    "item_types": [
-                        "ciotola",
-                        "sveglia",
-                        "quadro"
-                    ],
-                    "item_types_plural": [
-                        "ciotole",
-                        "sveglie",
-                        "quadri"
-                    ],
-                    "item_counts": [
-                        1,
-                        3,
-                        2
-                    ],
-                    "player_a_values": [
-                        2,
-                        0,
-                        4
-                    ],
-                    "player_b_values": [
-                        5,
-                        1,
-                        1
-                    ]
-                },
-                {
-                    "game_id": 11,
-                    "item_types": [
-                        "fischietto",
-                        "lampada",
-                        "seme",
-                        "chiave"
-                    ],
-                    "item_types_plural": [
-                        "fischietti",
-                        "lampade",
-                        "semi",
-                        "chiavi"
-                    ],
-                    "item_counts": [
-                        1,
-                        1,
-                        3,
-                        1
-                    ],
-                    "player_a_values": [
-                        5,
-                        1,
-                        0,
-                        4
-                    ],
-                    "player_b_values": [
-                        0,
-                        3,
-                        1,
-                        4
-                    ]
-                },
-                {
-                    "game_id": 12,
-                    "item_types": [
-                        "patata",
-                        "ciotola",
-                        "coltello"
-                    ],
-                    "item_types_plural": [
-                        "patate",
-                        "ciotole",
-                        "coltelli"
-                    ],
-                    "item_counts": [
-                        1,
-                        1,
-                        3
-                    ],
-                    "player_a_values": [
-                        3,
-                        4,
-                        1
-                    ],
-                    "player_b_values": [
-                        1,
-                        9,
-                        0
-                    ]
-                },
-                {
-                    "game_id": 13,
-                    "item_types": [
-                        "campana",
-                        "bullone",
-                        "rivetto"
-                    ],
-                    "item_types_plural": [
-                        "campane",
-                        "bulloni",
-                        "rivetti"
-                    ],
-                    "item_counts": [
-                        1,
-                        3,
-                        1
-                    ],
-                    "player_a_values": [
-                        1,
-                        3,
-                        0
-                    ],
-                    "player_b_values": [
-                        6,
-                        1,
-                        1
-                    ]
-                },
-                {
-                    "game_id": 14,
-                    "item_types": [
-                        "forbici",
-                        "pietra",
-                        "giocattolo"
-                    ],
-                    "item_types_plural": [
-                        "forbici",
-                        "pietre",
-                        "giocattoli"
-                    ],
-                    "item_counts": [
-                        1,
-                        2,
-                        2
-                    ],
-                    "player_a_values": [
-                        6,
-                        0,
-                        2
-                    ],
-                    "player_b_values": [
-                        6,
-                        2,
-                        0
-                    ]
-                },
-                {
-                    "game_id": 15,
-                    "item_types": [
-                        "spugna",
-                        "anello",
-                        "fischietto"
-                    ],
-                    "item_types_plural": [
-                        "spugne",
-                        "anelli",
-                        "fischietti"
-                    ],
-                    "item_counts": [
-                        1,
-                        2,
-                        3
-                    ],
-                    "player_a_values": [
-                        3,
-                        2,
-                        1
-                    ],
-                    "player_b_values": [
-                        1,
-                        0,
-                        3
-                    ]
-                },
-                {
-                    "game_id": 16,
-                    "item_types": [
-                        "specchio",
-                        "palla",
-                        "cucitrice"
-                    ],
-                    "item_types_plural": [
-                        "specchi",
-                        "palle",
-                        "cucitrici"
-                    ],
-                    "item_counts": [
-                        2,
-                        2,
-                        2
-                    ],
-                    "player_a_values": [
-                        4,
-                        0,
-                        1
-                    ],
-                    "player_b_values": [
-                        1,
-                        3,
-                        1
-                    ]
-                },
-                {
-                    "game_id": 17,
-                    "item_types": [
-                        "asciugamano",
-                        "ditale",
-                        "seme"
-                    ],
-                    "item_types_plural": [
-                        "asciugamani",
-                        "ditali",
-                        "semi"
-                    ],
-                    "item_counts": [
-                        3,
-                        1,
-                        1
-                    ],
-                    "player_a_values": [
-                        3,
-                        1,
-                        0
-                    ],
-                    "player_b_values": [
-                        2,
-                        0,
-                        4
-                    ]
-                },
-                {
-                    "game_id": 18,
-                    "item_types": [
-                        "libro",
-                        "gancio",
-                        "scopa",
-                        "conchiglia"
-                    ],
-                    "item_types_plural": [
-                        "libri",
-                        "ganci",
-                        "scope",
-                        "conchiglie"
-                    ],
-                    "item_counts": [
-                        1,
-                        1,
-                        1,
-                        2
-                    ],
-                    "player_a_values": [
-                        1,
-                        3,
-                        2,
-                        2
-                    ],
-                    "player_b_values": [
-                        5,
-                        2,
-                        3,
-                        0
-                    ]
-                },
-                {
-                    "game_id": 19,
-                    "item_types": [
-                        "fiore",
-                        "batteria",
-                        "spugna"
-                    ],
-                    "item_types_plural": [
-                        "fiori",
-                        "batterie",
-                        "spugne"
-                    ],
-                    "item_counts": [
-                        2,
-                        1,
-                        2
-                    ],
-                    "player_a_values": [
-                        2,
-                        2,
-                        2
-                    ],
-                    "player_b_values": [
-                        1,
-                        8,
-                        0
-                    ]
-                }
-            ],
-            "max_turns": 5,
-            "mode": "comp",
-            "language": "it",
-            "initial_prompt": "State giocando a un gioco di negoziazione competitiva in cui dovete accordarvi su come dividere una serie di oggetti tra voi e un altro giocatore.\n\nRegole:\n(a) A Lei e all'altro giocatore viene dato un insieme di oggetti. Ognuno di voi riceve anche una funzione di valore segreta, che rappresenta il valore di ciascun tipo di oggetto.\n(b) Si scambiano messaggi con l'altro giocatore per concordare chi si aggiudica gli oggetti. Potete inviare un massimo di $N$ messaggi ciascuno, oppure terminare in anticipo facendo una proposta segreta in qualsiasi momento.\n(c) A ciascuno di voi viene chiesto di inviare una proposta segreta indicando gli oggetti che desiderate, formattata tra parentesi quadre come segue: \"[Proposta: <numero> <nome oggetto>, <numero> <nome oggetto>, <...>]\".\n(d) Se le vostre proposte sono complementari, cioè ci sono abbastanza oggetti per soddisfare entrambe le proposte, a ciascun giocatore viene assegnato un punteggio basato sulla somma dei valori degli oggetti ricevuti. In caso contrario, entrambi ricevono zero punti.\n(e) L'obiettivo è massimizzare la differenza tra il proprio punteggio e quello dell'altro giocatore.\n\nCominciamo.\n\nL'insieme degli oggetti disponibili è:\n\n$ITEMS$\n\nLa funzione valore segreta è:\n\n$VALUE_FUNCTION$\n\nIMPORTANTE: i vostri messaggi, a meno che non si tratti di una proposta segreta, vengono trasmessi direttamente all'altro giocatore, quindi non includete alcuna risposta alle regole o testo di annuncio del vostro messaggio. Per fare una proposta segreta, utilizzate il formato indicato. Non utilizzare delle parentesi quadre quando si comunica all'altro giocatore, altrimenti verrà interpretata come una proposta segreta.\n",
-            "proposal_early": "L'altro giocatore ha presentato una proposta segreta. Ora tocca a Lei presentare una sua proposta.\n",
-            "proposal_timeout": "Il tempo è scaduto. Ora tocca a Lei presentare una proposta segreta.\n"
+          "game_id": 0,
+          "item_types": [
+            "scopa",
+            "telefono",
+            "bullone"
+          ],
+          "item_types_plural": [
+            "scope",
+            "telefoni",
+            "bulloni"
+          ],
+          "item_counts": [
+            1,
+            3,
+            2
+          ],
+          "player_a_values": [
+            5,
+            1,
+            1
+          ],
+          "player_b_values": [
+            5,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 1,
+          "item_types": [
+            "quadro",
+            "roccia",
+            "scarpa"
+          ],
+          "item_types_plural": [
+            "quadri",
+            "rocce",
+            "scarpe"
+          ],
+          "item_counts": [
+            2,
+            1,
+            2
+          ],
+          "player_a_values": [
+            1,
+            6,
+            1
+          ],
+          "player_b_values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "game_id": 2,
+          "item_types": [
+            "chiave",
+            "piatto",
+            "seme"
+          ],
+          "item_types_plural": [
+            "chiavi",
+            "piatti",
+            "semi"
+          ],
+          "item_counts": [
+            3,
+            1,
+            1
+          ],
+          "player_a_values": [
+            0,
+            5,
+            5
+          ],
+          "player_b_values": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "game_id": 3,
+          "item_types": [
+            "dado",
+            "scopa",
+            "lampada"
+          ],
+          "item_types_plural": [
+            "dadi",
+            "scope",
+            "lampade"
+          ],
+          "item_counts": [
+            2,
+            3,
+            1
+          ],
+          "player_a_values": [
+            3,
+            1,
+            1
+          ],
+          "player_b_values": [
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 4,
+          "item_types": [
+            "cucchiaio",
+            "fischietto",
+            "cavo",
+            "sedia"
+          ],
+          "item_types_plural": [
+            "cucchiai",
+            "fischietti",
+            "cavi",
+            "sedie"
+          ],
+          "item_counts": [
+            5,
+            1,
+            1,
+            1
+          ],
+          "player_a_values": [
+            0,
+            0,
+            7,
+            3
+          ],
+          "player_b_values": [
+            1,
+            4,
+            0,
+            1
+          ]
+        },
+        {
+          "game_id": 5,
+          "item_types": [
+            "moneta",
+            "fiore",
+            "arancia",
+            "pomodoro"
+          ],
+          "item_types_plural": [
+            "monete",
+            "fiori",
+            "arance",
+            "pomodori"
+          ],
+          "item_counts": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "player_a_values": [
+            3,
+            3,
+            2,
+            0
+          ],
+          "player_b_values": [
+            0,
+            0,
+            2,
+            6
+          ]
+        },
+        {
+          "game_id": 6,
+          "item_types": [
+            "cipolla",
+            "cornice",
+            "filo"
+          ],
+          "item_types_plural": [
+            "cipolle",
+            "cornici",
+            "fili"
+          ],
+          "item_counts": [
+            3,
+            1,
+            1
+          ],
+          "player_a_values": [
+            3,
+            0,
+            1
+          ],
+          "player_b_values": [
+            1,
+            4,
+            3
+          ]
+        },
+        {
+          "game_id": 7,
+          "item_types": [
+            "pinza",
+            "asciugamano",
+            "cucitrice"
+          ],
+          "item_types_plural": [
+            "pinze",
+            "asciugamani",
+            "cucitrici"
+          ],
+          "item_counts": [
+            3,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            6,
+            1
+          ],
+          "player_b_values": [
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "game_id": 8,
+          "item_types": [
+            "cucchiaio",
+            "scarpa",
+            "carta"
+          ],
+          "item_types_plural": [
+            "cucchiai",
+            "scarpe",
+            "carte"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            0,
+            5,
+            0
+          ],
+          "player_b_values": [
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "game_id": 9,
+          "item_types": [
+            "roccia",
+            "fischietto",
+            "piatto"
+          ],
+          "item_types_plural": [
+            "rocce",
+            "fischietti",
+            "piatti"
+          ],
+          "item_counts": [
+            1,
+            3,
+            1
+          ],
+          "player_a_values": [
+            2,
+            2,
+            2
+          ],
+          "player_b_values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "game_id": 10,
+          "item_types": [
+            "chiodo",
+            "pentola",
+            "orologio"
+          ],
+          "item_types_plural": [
+            "chiodi",
+            "pentole",
+            "orologi"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            2,
+            2,
+            1
+          ],
+          "player_b_values": [
+            1,
+            4,
+            0
+          ]
+        },
+        {
+          "game_id": 11,
+          "item_types": [
+            "campana",
+            "colla",
+            "cornice"
+          ],
+          "item_types_plural": [
+            "campane",
+            "colle",
+            "cornici"
+          ],
+          "item_counts": [
+            4,
+            2,
+            2
+          ],
+          "player_a_values": [
+            0,
+            3,
+            2
+          ],
+          "player_b_values": [
+            2,
+            0,
+            1
+          ]
+        },
+        {
+          "game_id": 12,
+          "item_types": [
+            "forbici",
+            "martello",
+            "padella"
+          ],
+          "item_types_plural": [
+            "forbici",
+            "martelli",
+            "padelle"
+          ],
+          "item_counts": [
+            1,
+            4,
+            1
+          ],
+          "player_a_values": [
+            1,
+            1,
+            5
+          ],
+          "player_b_values": [
+            5,
+            0,
+            5
+          ]
+        },
+        {
+          "game_id": 13,
+          "item_types": [
+            "francobollo",
+            "campana",
+            "gesso"
+          ],
+          "item_types_plural": [
+            "francobolli",
+            "campane",
+            "gessi"
+          ],
+          "item_counts": [
+            2,
+            1,
+            2
+          ],
+          "player_a_values": [
+            0,
+            6,
+            2
+          ],
+          "player_b_values": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "game_id": 14,
+          "item_types": [
+            "carota",
+            "mattone",
+            "batteria"
+          ],
+          "item_types_plural": [
+            "carote",
+            "mattoni",
+            "batterie"
+          ],
+          "item_counts": [
+            1,
+            1,
+            3
+          ],
+          "player_a_values": [
+            2,
+            5,
+            1
+          ],
+          "player_b_values": [
+            3,
+            4,
+            1
+          ]
+        },
+        {
+          "game_id": 15,
+          "item_types": [
+            "bottone",
+            "tela",
+            "forbici"
+          ],
+          "item_types_plural": [
+            "bottoni",
+            "tele",
+            "forbici"
+          ],
+          "item_counts": [
+            2,
+            1,
+            2
+          ],
+          "player_a_values": [
+            2,
+            2,
+            2
+          ],
+          "player_b_values": [
+            1,
+            6,
+            1
+          ]
+        },
+        {
+          "game_id": 16,
+          "item_types": [
+            "forbici",
+            "cornice",
+            "sapone",
+            "lampada",
+            "telefono"
+          ],
+          "item_types_plural": [
+            "forbici",
+            "cornici",
+            "saponi",
+            "lampade",
+            "telefoni"
+          ],
+          "item_counts": [
+            1,
+            3,
+            1,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            1,
+            0,
+            4,
+            2
+          ],
+          "player_b_values": [
+            1,
+            0,
+            6,
+            2,
+            1
+          ]
+        },
+        {
+          "game_id": 17,
+          "item_types": [
+            "scheda",
+            "forbici",
+            "caramella"
+          ],
+          "item_types_plural": [
+            "schede",
+            "forbici",
+            "caramelle"
+          ],
+          "item_counts": [
+            2,
+            1,
+            2
+          ],
+          "player_a_values": [
+            2,
+            4,
+            1
+          ],
+          "player_b_values": [
+            0,
+            10,
+            0
+          ]
+        },
+        {
+          "game_id": 18,
+          "item_types": [
+            "cipolla",
+            "cappello",
+            "vite",
+            "filo",
+            "fischietto"
+          ],
+          "item_types_plural": [
+            "cipolle",
+            "cappelli",
+            "viti",
+            "fili",
+            "fischietti"
+          ],
+          "item_counts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            7,
+            1,
+            0,
+            1
+          ],
+          "player_b_values": [
+            4,
+            2,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 19,
+          "item_types": [
+            "pomodoro",
+            "pinza",
+            "graffetta"
+          ],
+          "item_types_plural": [
+            "pomodori",
+            "pinze",
+            "graffette"
+          ],
+          "item_counts": [
+            1,
+            2,
+            2
+          ],
+          "player_a_values": [
+            6,
+            1,
+            1
+          ],
+          "player_b_values": [
+            4,
+            0,
+            3
+          ]
+        },
+        {
+          "game_id": 20,
+          "item_types": [
+            "pentola",
+            "spugna",
+            "anello",
+            "pala"
+          ],
+          "item_types_plural": [
+            "pentole",
+            "spugne",
+            "anelli",
+            "pale"
+          ],
+          "item_counts": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "player_a_values": [
+            0,
+            0,
+            2,
+            8
+          ],
+          "player_b_values": [
+            1,
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "game_id": 21,
+          "item_types": [
+            "graffetta",
+            "vite",
+            "moneta"
+          ],
+          "item_types_plural": [
+            "graffette",
+            "viti",
+            "monete"
+          ],
+          "item_counts": [
+            1,
+            3,
+            1
+          ],
+          "player_a_values": [
+            6,
+            1,
+            1
+          ],
+          "player_b_values": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "game_id": 22,
+          "item_types": [
+            "magnete",
+            "libro",
+            "tela",
+            "penna"
+          ],
+          "item_types_plural": [
+            "magneti",
+            "libri",
+            "tele",
+            "penne"
+          ],
+          "item_counts": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "player_a_values": [
+            1,
+            0,
+            1,
+            6
+          ],
+          "player_b_values": [
+            1,
+            5,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 23,
+          "item_types": [
+            "righello",
+            "sapone",
+            "pinza",
+            "uva",
+            "rivetto"
+          ],
+          "item_types_plural": [
+            "righelli",
+            "saponi",
+            "pinze",
+            "uve",
+            "rivetti"
+          ],
+          "item_counts": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "player_a_values": [
+            0,
+            0,
+            6,
+            0,
+            4
+          ],
+          "player_b_values": [
+            2,
+            4,
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "game_id": 24,
+          "item_types": [
+            "peperone",
+            "carta",
+            "uva",
+            "bastone"
+          ],
+          "item_types_plural": [
+            "peperoni",
+            "carte",
+            "uve",
+            "bastoni"
+          ],
+          "item_counts": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "player_a_values": [
+            0,
+            0,
+            10,
+            0
+          ],
+          "player_b_values": [
+            2,
+            1,
+            4,
+            1
+          ]
+        },
+        {
+          "game_id": 25,
+          "item_types": [
+            "telefono",
+            "calzino",
+            "bicchiere"
+          ],
+          "item_types_plural": [
+            "telefoni",
+            "calzini",
+            "bicchieri"
+          ],
+          "item_counts": [
+            3,
+            1,
+            2
+          ],
+          "player_a_values": [
+            1,
+            1,
+            3
+          ],
+          "player_b_values": [
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "game_id": 26,
+          "item_types": [
+            "palla",
+            "frutta",
+            "tazza",
+            "telefono"
+          ],
+          "item_types_plural": [
+            "palle",
+            "frutti",
+            "tazze",
+            "telefoni"
+          ],
+          "item_counts": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "player_a_values": [
+            7,
+            1,
+            1,
+            0
+          ],
+          "player_b_values": [
+            1,
+            5,
+            0,
+            2
+          ]
+        },
+        {
+          "game_id": 27,
+          "item_types": [
+            "uva",
+            "colla",
+            "gancio"
+          ],
+          "item_types_plural": [
+            "uve",
+            "colle",
+            "ganci"
+          ],
+          "item_counts": [
+            1,
+            1,
+            3
+          ],
+          "player_a_values": [
+            5,
+            5,
+            0
+          ],
+          "player_b_values": [
+            3,
+            4,
+            1
+          ]
+        },
+        {
+          "game_id": 28,
+          "item_types": [
+            "ago",
+            "vaso",
+            "vite"
+          ],
+          "item_types_plural": [
+            "aghi",
+            "vasi",
+            "viti"
+          ],
+          "item_counts": [
+            1,
+            2,
+            2
+          ],
+          "player_a_values": [
+            4,
+            2,
+            1
+          ],
+          "player_b_values": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "game_id": 29,
+          "item_types": [
+            "vite",
+            "cappello",
+            "limone",
+            "pietra"
+          ],
+          "item_types_plural": [
+            "viti",
+            "cappelli",
+            "limoni",
+            "pietre"
+          ],
+          "item_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "player_a_values": [
+            5,
+            2,
+            3,
+            0
+          ],
+          "player_b_values": [
+            1,
+            5,
+            0,
+            2
+          ]
+        },
+        {
+          "game_id": 30,
+          "item_types": [
+            "scheda",
+            "cappello",
+            "fischietto"
+          ],
+          "item_types_plural": [
+            "schede",
+            "cappelli",
+            "fischietti"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            2,
+            1,
+            2
+          ],
+          "player_b_values": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "game_id": 31,
+          "item_types": [
+            "bicchiere",
+            "scheda",
+            "cornice"
+          ],
+          "item_types_plural": [
+            "bicchieri",
+            "schede",
+            "cornici"
+          ],
+          "item_counts": [
+            2,
+            2,
+            1
+          ],
+          "player_a_values": [
+            0,
+            1,
+            8
+          ],
+          "player_b_values": [
+            3,
+            0,
+            4
+          ]
+        },
+        {
+          "game_id": 32,
+          "item_types": [
+            "bastone",
+            "sveglia",
+            "peperone",
+            "rivetto"
+          ],
+          "item_types_plural": [
+            "bastoni",
+            "sveglie",
+            "peperoni",
+            "rivetti"
+          ],
+          "item_counts": [
+            2,
+            1,
+            1,
+            2
+          ],
+          "player_a_values": [
+            3,
+            1,
+            3,
+            0
+          ],
+          "player_b_values": [
+            0,
+            2,
+            4,
+            2
+          ]
+        },
+        {
+          "game_id": 33,
+          "item_types": [
+            "matita",
+            "palla",
+            "forbici"
+          ],
+          "item_types_plural": [
+            "matite",
+            "palle",
+            "forbici"
+          ],
+          "item_counts": [
+            1,
+            1,
+            3
+          ],
+          "player_a_values": [
+            0,
+            4,
+            2
+          ],
+          "player_b_values": [
+            4,
+            3,
+            1
+          ]
+        },
+        {
+          "game_id": 34,
+          "item_types": [
+            "sapone",
+            "pomodoro",
+            "banana"
+          ],
+          "item_types_plural": [
+            "saponi",
+            "pomodori",
+            "banane"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            2,
+            1,
+            2
+          ],
+          "player_b_values": [
+            5,
+            0,
+            0
+          ]
+        },
+        {
+          "game_id": 35,
+          "item_types": [
+            "telefono",
+            "moneta",
+            "uva"
+          ],
+          "item_types_plural": [
+            "telefoni",
+            "monete",
+            "uve"
+          ],
+          "item_counts": [
+            1,
+            1,
+            3
+          ],
+          "player_a_values": [
+            0,
+            7,
+            1
+          ],
+          "player_b_values": [
+            4,
+            6,
+            0
+          ]
+        },
+        {
+          "game_id": 36,
+          "item_types": [
+            "cornice",
+            "vite",
+            "graffetta"
+          ],
+          "item_types_plural": [
+            "cornici",
+            "viti",
+            "graffette"
+          ],
+          "item_counts": [
+            2,
+            1,
+            2
+          ],
+          "player_a_values": [
+            2,
+            4,
+            1
+          ],
+          "player_b_values": [
+            0,
+            4,
+            3
+          ]
+        },
+        {
+          "game_id": 37,
+          "item_types": [
+            "giocattolo",
+            "batteria",
+            "bottone",
+            "magnete"
+          ],
+          "item_types_plural": [
+            "giocattoli",
+            "batterie",
+            "bottoni",
+            "magneti"
+          ],
+          "item_counts": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "player_a_values": [
+            6,
+            2,
+            0,
+            0
+          ],
+          "player_b_values": [
+            4,
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "game_id": 38,
+          "item_types": [
+            "cappello",
+            "bottone",
+            "spugna"
+          ],
+          "item_types_plural": [
+            "cappelli",
+            "bottoni",
+            "spugne"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            2,
+            2,
+            1
+          ],
+          "player_b_values": [
+            1,
+            3,
+            1
+          ]
+        },
+        {
+          "game_id": 39,
+          "item_types": [
+            "tazza",
+            "sedia",
+            "bottiglia",
+            "asciugamano"
+          ],
+          "item_types_plural": [
+            "tazze",
+            "sedie",
+            "bottiglie",
+            "asciugamani"
+          ],
+          "item_counts": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            0,
+            4,
+            4
+          ],
+          "player_b_values": [
+            1,
+            3,
+            2,
+            0
+          ]
+        },
+        {
+          "game_id": 40,
+          "item_types": [
+            "righello",
+            "biscotto",
+            "gancio",
+            "secchio"
+          ],
+          "item_types_plural": [
+            "righelli",
+            "biscotti",
+            "ganci",
+            "secchi"
+          ],
+          "item_counts": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "player_a_values": [
+            3,
+            0,
+            3,
+            1
+          ],
+          "player_b_values": [
+            0,
+            3,
+            0,
+            7
+          ]
+        },
+        {
+          "game_id": 41,
+          "item_types": [
+            "penna",
+            "pettine",
+            "peperone",
+            "chiodo"
+          ],
+          "item_types_plural": [
+            "penne",
+            "pettini",
+            "peperoni",
+            "chiodi"
+          ],
+          "item_counts": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "player_a_values": [
+            0,
+            4,
+            0,
+            6
+          ],
+          "player_b_values": [
+            2,
+            5,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 42,
+          "item_types": [
+            "quadro",
+            "telecomando",
+            "telefono"
+          ],
+          "item_types_plural": [
+            "quadri",
+            "telecomandi",
+            "telefoni"
+          ],
+          "item_counts": [
+            2,
+            1,
+            2
+          ],
+          "player_a_values": [
+            2,
+            6,
+            0
+          ],
+          "player_b_values": [
+            2,
+            0,
+            3
+          ]
+        },
+        {
+          "game_id": 43,
+          "item_types": [
+            "arancia",
+            "telecomando",
+            "francobollo",
+            "sveglia"
+          ],
+          "item_types_plural": [
+            "arance",
+            "telecomandi",
+            "francobolli",
+            "sveglie"
+          ],
+          "item_counts": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "player_a_values": [
+            1,
+            2,
+            3,
+            1
+          ],
+          "player_b_values": [
+            3,
+            5,
+            0,
+            2
+          ]
+        },
+        {
+          "game_id": 44,
+          "item_types": [
+            "forchetta",
+            "scopa",
+            "cucitrice",
+            "statua"
+          ],
+          "item_types_plural": [
+            "forchette",
+            "scope",
+            "cucitrici",
+            "statue"
+          ],
+          "item_counts": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "player_a_values": [
+            1,
+            2,
+            1,
+            4
+          ],
+          "player_b_values": [
+            2,
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 45,
+          "item_types": [
+            "quadro",
+            "coltello",
+            "patata",
+            "tela"
+          ],
+          "item_types_plural": [
+            "quadri",
+            "coltelli",
+            "patate",
+            "tele"
+          ],
+          "item_counts": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            1,
+            6,
+            1
+          ],
+          "player_b_values": [
+            3,
+            2,
+            2,
+            1
+          ]
+        },
+        {
+          "game_id": 46,
+          "item_types": [
+            "bottone",
+            "cucchiaio",
+            "quadro"
+          ],
+          "item_types_plural": [
+            "bottoni",
+            "cucchiai",
+            "quadri"
+          ],
+          "item_counts": [
+            1,
+            3,
+            3
+          ],
+          "player_a_values": [
+            1,
+            1,
+            2
+          ],
+          "player_b_values": [
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "game_id": 47,
+          "item_types": [
+            "ciotola",
+            "bicchiere",
+            "gesso"
+          ],
+          "item_types_plural": [
+            "ciotole",
+            "bicchieri",
+            "gessi"
+          ],
+          "item_counts": [
+            1,
+            3,
+            4
+          ],
+          "player_a_values": [
+            6,
+            0,
+            1
+          ],
+          "player_b_values": [
+            7,
+            1,
+            0
+          ]
+        },
+        {
+          "game_id": 48,
+          "item_types": [
+            "penna",
+            "scatola",
+            "gomma"
+          ],
+          "item_types_plural": [
+            "penne",
+            "scatole",
+            "gomme"
+          ],
+          "item_counts": [
+            3,
+            2,
+            2
+          ],
+          "player_a_values": [
+            2,
+            1,
+            1
+          ],
+          "player_b_values": [
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 49,
+          "item_types": [
+            "moneta",
+            "bottone",
+            "seme"
+          ],
+          "item_types_plural": [
+            "monete",
+            "bottoni",
+            "semi"
+          ],
+          "item_counts": [
+            1,
+            3,
+            1
+          ],
+          "player_a_values": [
+            3,
+            0,
+            7
+          ],
+          "player_b_values": [
+            3,
+            2,
+            1
+          ]
         }
-    ]
+      ],
+      "max_turns": 5,
+      "mode": "comp",
+      "language": "it",
+      "initial_prompt": "State giocando a un gioco di negoziazione competitiva in cui dovete accordarvi su come dividere una serie di oggetti tra voi e un altro giocatore.\n\nRegole:\n(a) A Lei e all'altro giocatore viene dato un insieme di oggetti. Ognuno di voi riceve anche una funzione di valore segreta, che rappresenta il valore di ciascun tipo di oggetto.\n(b) Si scambiano messaggi con l'altro giocatore per concordare chi si aggiudica gli oggetti. Potete inviare un massimo di $N$ messaggi ciascuno, oppure terminare in anticipo facendo una proposta segreta in qualsiasi momento.\n(c) A ciascuno di voi viene chiesto di inviare una proposta segreta indicando gli oggetti che desiderate, formattata tra parentesi quadre come segue: \"[Proposta: <numero> <nome oggetto>, <numero> <nome oggetto>, <...>]\".\n(d) Se le vostre proposte sono complementari, cioè ci sono abbastanza oggetti per soddisfare entrambe le proposte, a ciascun giocatore viene assegnato un punteggio basato sulla somma dei valori degli oggetti ricevuti. In caso contrario, entrambi ricevono zero punti.\n(e) L'obiettivo è massimizzare la differenza tra il proprio punteggio e quello dell'altro giocatore.\n\nCominciamo.\n\nL'insieme degli oggetti disponibili è:\n\n$ITEMS$\n\nLa funzione valore segreta è:\n\n$VALUE_FUNCTION$\n\nIMPORTANTE: i vostri messaggi, a meno che non si tratti di una proposta segreta, vengono trasmessi direttamente all'altro giocatore, quindi non includete alcuna risposta alle regole o testo di annuncio del vostro messaggio. Per fare una proposta segreta, utilizzate il formato indicato. Non utilizzare delle parentesi quadre quando si comunica all'altro giocatore, altrimenti verrà interpretata come una proposta segreta.\n",
+      "proposal_early": "L'altro giocatore ha presentato una proposta segreta. Ora tocca a Lei presentare una sua proposta.\n",
+      "proposal_timeout": "Il tempo è scaduto. Ora tocca a Lei presentare una proposta segreta.\n"
+    }
+  ]
 }

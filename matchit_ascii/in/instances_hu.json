@@ -1,0 +1,316 @@
+{
+  "experiments": [
+    {
+      "name": "same_grid",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "grid_a": "▢ X X X X\n▢ X X X X\n▢ X X X X\n▢ X X X X\n▢ ▢ ▢ ▢ ▢",
+          "grid_b": "▢ X X X X\n▢ X X X X\n▢ X X X X\n▢ X X X X\n▢ ▢ ▢ ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 1,
+          "grid_a": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\nX X X X X",
+          "grid_b": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 2,
+          "grid_a": "X ▢ ▢ ▢ X\nX X ▢ X X\nX ▢ X ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X",
+          "grid_b": "X ▢ ▢ ▢ X\nX X ▢ X X\nX ▢ X ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 3,
+          "grid_a": "X X X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ ▢ ▢ X",
+          "grid_b": "X X X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 4,
+          "grid_a": "X X X X X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX X X X X",
+          "grid_b": "X X X X X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 5,
+          "grid_a": "X X ▢ X X\nX ▢ ▢ X X\n▢ ▢ ▢ ▢ ▢\nX ▢ ▢ X X\nX X ▢ X X",
+          "grid_b": "X X ▢ X X\nX ▢ ▢ X X\n▢ ▢ ▢ ▢ ▢\nX ▢ ▢ X X\nX X ▢ X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 6,
+          "grid_a": "X ▢ ▢ ▢ X\n▢ X ▢ X ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢",
+          "grid_b": "X ▢ ▢ ▢ X\n▢ X ▢ X ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 7,
+          "grid_a": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ X ▢ X ▢\nX ▢ ▢ ▢ X",
+          "grid_b": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ X ▢ X ▢\nX ▢ ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 8,
+          "grid_a": "▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢\nX X ▢ X X\n▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢",
+          "grid_b": "▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢\nX X ▢ X X\n▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 9,
+          "grid_a": "X ▢ ▢ ▢ X\nX ▢ ▢ X ▢\nX X X ▢ ▢\nX ▢ ▢ X ▢\nX ▢ ▢ ▢ X",
+          "grid_b": "X ▢ ▢ ▢ X\nX ▢ ▢ X ▢\nX X X ▢ ▢\nX ▢ ▢ X ▢\nX ▢ ▢ ▢ X",
+          "decision_turn": 3
+        }
+      ],
+      "initial_prompt": "Egy együttműködésen alapuló találgatós játékban veszel részt.\nA cél annak kiderítése, hogy ez a rács és egy másik kép, amelyet csak én látok, ugyanaz-e.\nKérlek, először írd le a te rácsodat. Ezután én megadom az én leírásomat, és kérdéseket tehetünk fel egymásnak a rácsokról, hogy kiderítsük, ugyanazok-e.  Most kezdd a rövid rácsleírásodat \"LEÍRÁS:\" jelzővel, majd add meg a leírást. Ne adj hozzá semmi mást. Ez a te rácsod:\n$GRID$",
+      "q_reprompt": "Most tegyél fel egy kérdést annak érdekében, hogy új aspektusokat deríts ki az én rácsomról, amely eltérhet a te rácsodtól. Kezdd \"KÉRDÉS:\" jelzővel, és ne adj hozzá semmi mást.",
+      "d_reprompt": "Most hozz döntést. Mit gondolsz: a te rácsod és a másik rács ugyanazt írja le? Írd azt, hogy \"DÖNTÉS: azonos rács\", ha szerinted ugyanarról a rácsról van szó, vagy azt, hogy \"DÖNTÉS: eltérő rács\", ha szerinted a rácsok különbözőek. Ne adj hozzá semmi mást.",
+      "a_request": "Kezdd a válaszodat a \"VÁLASZ:\" jelzővel, és ne adj hozzá semmi mást.",
+      "desc_intro": "Ez az én",
+      "flags": {
+        "description": "LEÍRÁS:",
+        "question": "KÉRDÉS:",
+        "answer": "VÁLASZ:",
+        "decision": "DÖNTÉS:"
+      },
+      "solution": "azonos rács",
+      "wrong_solution": "eltérő rács"
+    },
+    {
+      "name": "similar_grid_1",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "grid_a": "X X ▢ X X\nX X ▢ X X\nX X X X X\nX X ▢ X X\nX X ▢ X X",
+          "grid_b": "X X X X X\nX X X X X\n▢ ▢ X ▢ ▢\nX X X X X\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 1,
+          "grid_a": "X X X X X\nX X X X ▢\nX X X ▢ ▢\nX X ▢ ▢ ▢\nX ▢ ▢ ▢ ▢",
+          "grid_b": "X X X X X\n▢ X X X X\n▢ ▢ X X X\n▢ ▢ ▢ X X\n▢ ▢ ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 2,
+          "grid_a": "X X X X X\nX ▢ ▢ ▢ ▢\nX X X ▢ ▢\nX ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢",
+          "grid_b": "X X X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 3,
+          "grid_a": "X X X X X\nX ▢ ▢ ▢ ▢\nX X X ▢ ▢\nX ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢",
+          "grid_b": "X ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢\nX X X ▢ ▢\nX ▢ ▢ ▢ ▢\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 4,
+          "grid_a": "X X ▢ X X\nX ▢ ▢ ▢ X\n▢ ▢ ▢ ▢ ▢\nX X ▢ X X\nX X ▢ X X",
+          "grid_b": "X X ▢ X X\nX ▢ ▢ X X\n▢ ▢ ▢ ▢ ▢\nX ▢ ▢ X X\nX X ▢ X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 5,
+          "grid_a": "X ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢\nX X X X X",
+          "grid_b": "X ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢\nX X X ▢ ▢\nX ▢ ▢ ▢ ▢\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 6,
+          "grid_a": "▢ ▢ X ▢ ▢\n▢ X X ▢ ▢\nX X X X X\n▢ X X ▢ ▢\n▢ ▢ X ▢ ▢",
+          "grid_b": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\nX X X X X\n▢ X X X ▢\n▢ ▢ X ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 7,
+          "grid_a": "▢ ▢ X ▢ ▢\n▢ X X ▢ ▢\nX X X X X\n▢ X X ▢ ▢\n▢ ▢ X ▢ ▢",
+          "grid_b": "▢ ▢ X ▢ ▢\n▢ ▢ X X ▢\nX X X X X\n▢ ▢ X X ▢\n▢ ▢ X ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 8,
+          "grid_a": "X ▢ ▢ ▢ X\nX X ▢ X X\nX ▢ X ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X",
+          "grid_b": "X ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX ▢ X ▢ X\nX X ▢ X X\nX ▢ ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 9,
+          "grid_a": "▢ ▢ X ▢ ▢\n▢ ▢ X X ▢\nX X X X X\n▢ ▢ X X ▢\n▢ ▢ X ▢ ▢",
+          "grid_b": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\nX X X X X\n▢ X X X ▢\n▢ ▢ X ▢ ▢",
+          "decision_turn": 3
+        }
+      ],
+      "initial_prompt": "Egy együttműködésen alapuló találgatós játékban veszel részt.\nA cél annak kiderítése, hogy ez a rács és egy másik kép, amelyet csak én látok, ugyanaz-e.\nKérlek, először írd le a te rácsodat. Ezután én megadom az én leírásomat, és kérdéseket tehetünk fel egymásnak a rácsokról, hogy kiderítsük, ugyanazok-e.  Most kezdd a rövid rácsleírásodat \"LEÍRÁS:\" jelzővel, majd add meg a leírást. Ne adj hozzá semmi mást. Ez a te rácsod:\n$GRID$",
+      "q_reprompt": "Most tegyél fel egy kérdést annak érdekében, hogy új aspektusokat deríts ki az én rácsomról, amely eltérhet a te rácsodtól. Kezdd \"KÉRDÉS:\" jelzővel, és ne adj hozzá semmi mást.",
+      "d_reprompt": "Most hozz döntést. Mit gondolsz: a te rácsod és a másik rács ugyanazt írja le? Írd azt, hogy \"DÖNTÉS: azonos rács\", ha szerinted ugyanarról a rácsról van szó, vagy azt, hogy \"DÖNTÉS: eltérő rács\", ha szerinted a rácsok különbözőek. Ne adj hozzá semmi mást.",
+      "a_request": "Kezdd a válaszodat a \"VÁLASZ:\" jelzővel, és ne adj hozzá semmi mást.",
+      "desc_intro": "Ez az én",
+      "flags": {
+        "description": "LEÍRÁS:",
+        "question": "KÉRDÉS:",
+        "answer": "VÁLASZ:",
+        "decision": "DÖNTÉS:"
+      },
+      "solution": "eltérő rács",
+      "wrong_solution": "azonos rács"
+    },
+    {
+      "name": "similar_grid_2",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "grid_a": "▢ X X X X\n▢ X X X X\n▢ X X X X\n▢ X X X X\n▢ ▢ ▢ ▢ ▢",
+          "grid_b": "X X X X X\n▢ X X X ▢\n▢ X X X X\n▢ X X X X\n▢ ▢ ▢ ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 1,
+          "grid_a": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\nX X X X X",
+          "grid_b": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ ▢ ▢ ▢\n▢ ▢ X X ▢\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 2,
+          "grid_a": "X ▢ ▢ ▢ X\nX X ▢ X X\nX ▢ X ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X",
+          "grid_b": "X ▢ ▢ ▢ X\nX ▢ ▢ X X\nX X X ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 3,
+          "grid_a": "X X X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ ▢ ▢ X",
+          "grid_b": "X X X X X\n▢ ▢ ▢ ▢ X\n▢ X X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ X ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 4,
+          "grid_a": "X X X X X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX X X X X",
+          "grid_b": "X ▢ X X X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX ▢ X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 5,
+          "grid_a": "X X ▢ X X\nX ▢ ▢ X X\n▢ ▢ ▢ ▢ ▢\nX ▢ ▢ X X\nX X ▢ X X",
+          "grid_b": "X ▢ ▢ X X\nX ▢ ▢ X X\n▢ ▢ ▢ ▢ ▢\nX ▢ ▢ X X\nX X ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 6,
+          "grid_a": "X ▢ ▢ ▢ X\n▢ X ▢ X ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢",
+          "grid_b": "X ▢ ▢ ▢ X\n▢ ▢ ▢ X ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ ▢ ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 7,
+          "grid_a": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ X ▢ X ▢\nX ▢ ▢ ▢ X",
+          "grid_b": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ ▢ ▢ X ▢\nX ▢ X ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 8,
+          "grid_a": "▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢\nX X ▢ X X\n▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢",
+          "grid_b": "X ▢ ▢ ▢ ▢\n▢ ▢ ▢ X ▢\nX X ▢ X X\n▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 9,
+          "grid_a": "X ▢ ▢ ▢ X\nX ▢ ▢ X ▢\nX X X ▢ ▢\nX ▢ ▢ X ▢\nX ▢ ▢ ▢ X",
+          "grid_b": "X ▢ ▢ ▢ X\nX ▢ ▢ X ▢\nX X X X ▢\nX ▢ ▢ X ▢\nX ▢ ▢ X X",
+          "decision_turn": 3
+        }
+      ],
+      "initial_prompt": "Egy együttműködésen alapuló találgatós játékban veszel részt.\nA cél annak kiderítése, hogy ez a rács és egy másik kép, amelyet csak én látok, ugyanaz-e.\nKérlek, először írd le a te rácsodat. Ezután én megadom az én leírásomat, és kérdéseket tehetünk fel egymásnak a rácsokról, hogy kiderítsük, ugyanazok-e.  Most kezdd a rövid rácsleírásodat \"LEÍRÁS:\" jelzővel, majd add meg a leírást. Ne adj hozzá semmi mást. Ez a te rácsod:\n$GRID$",
+      "q_reprompt": "Most tegyél fel egy kérdést annak érdekében, hogy új aspektusokat deríts ki az én rácsomról, amely eltérhet a te rácsodtól. Kezdd \"KÉRDÉS:\" jelzővel, és ne adj hozzá semmi mást.",
+      "d_reprompt": "Most hozz döntést. Mit gondolsz: a te rácsod és a másik rács ugyanazt írja le? Írd azt, hogy \"DÖNTÉS: azonos rács\", ha szerinted ugyanarról a rácsról van szó, vagy azt, hogy \"DÖNTÉS: eltérő rács\", ha szerinted a rácsok különbözőek. Ne adj hozzá semmi mást.",
+      "a_request": "Kezdd a válaszodat a \"VÁLASZ:\" jelzővel, és ne adj hozzá semmi mást.",
+      "desc_intro": "Ez az én",
+      "flags": {
+        "description": "LEÍRÁS:",
+        "question": "KÉRDÉS:",
+        "answer": "VÁLASZ:",
+        "decision": "DÖNTÉS:"
+      },
+      "solution": "eltérő rács",
+      "wrong_solution": "azonos rács"
+    },
+    {
+      "name": "different_grid",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "grid_a": "X ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX ▢ X ▢ X\nX X ▢ X X\nX ▢ ▢ ▢ X",
+          "grid_b": "X X X X X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 1,
+          "grid_a": "X X X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ X X X\n▢ ▢ ▢ ▢ X\nX X X X X",
+          "grid_b": "X ▢ ▢ ▢ X\nX ▢ ▢ X X\nX ▢ X ▢ X\nX X ▢ ▢ X\nX ▢ ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 2,
+          "grid_a": "X X X X X\nX ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢\nX ▢ ▢ ▢ ▢",
+          "grid_b": "▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢\n▢ X X X ▢\n▢ X X X ▢\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 3,
+          "grid_a": "▢ X X X ▢\nX ▢ X ▢ X\nX X ▢ X X\nX X ▢ X X\nX X ▢ X X",
+          "grid_b": "▢ ▢ ▢ ▢ X\n▢ ▢ ▢ X X\n▢ ▢ X X X\n▢ X X X X\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 4,
+          "grid_a": "X X X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ X X X\n▢ ▢ ▢ ▢ X\n▢ ▢ ▢ ▢ X",
+          "grid_b": "▢ ▢ ▢ ▢ ▢\n▢ X X X ▢\n▢ X X X ▢\n▢ X X X ▢\n▢ ▢ ▢ ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 5,
+          "grid_a": "X X X X X\nX ▢ ▢ ▢ ▢\nX X X ▢ ▢\nX ▢ ▢ ▢ ▢\nX X X X X",
+          "grid_b": "▢ ▢ X ▢ ▢\n▢ X X X ▢\nX X X X X\n▢ ▢ X ▢ ▢\n▢ ▢ X ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 6,
+          "grid_a": "X ▢ ▢ ▢ X\nX ▢ ▢ ▢ X\nX X X X X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X",
+          "grid_b": "▢ ▢ ▢ ▢ ▢\nX X X ▢ X\nX X ▢ X X\nX ▢ X X X\n▢ ▢ ▢ ▢ ▢",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 7,
+          "grid_a": "▢ ▢ X ▢ ▢\n▢ X X ▢ ▢\nX X X X X\n▢ X X ▢ ▢\n▢ ▢ X ▢ ▢",
+          "grid_b": "X ▢ ▢ ▢ X\nX X ▢ X X\nX ▢ X ▢ X\nX ▢ ▢ ▢ X\nX ▢ ▢ ▢ X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 8,
+          "grid_a": "▢ X X X X\n▢ X X X X\n▢ X X X X\n▢ X X X X\n▢ ▢ ▢ ▢ ▢",
+          "grid_b": "X ▢ ▢ ▢ ▢\nX X ▢ ▢ ▢\nX X X ▢ ▢\nX X X X ▢\nX X X X X",
+          "decision_turn": 3
+        },
+        {
+          "game_id": 9,
+          "grid_a": "▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢\nX X ▢ X X\n▢ ▢ ▢ ▢ ▢\n▢ ▢ ▢ ▢ ▢",
+          "grid_b": "X ▢ ▢ ▢ X\nX X ▢ ▢ X\nX ▢ X ▢ X\nX ▢ ▢ X X\nX ▢ ▢ ▢ X",
+          "decision_turn": 3
+        }
+      ],
+      "initial_prompt": "Egy együttműködésen alapuló találgatós játékban veszel részt.\nA cél annak kiderítése, hogy ez a rács és egy másik kép, amelyet csak én látok, ugyanaz-e.\nKérlek, először írd le a te rácsodat. Ezután én megadom az én leírásomat, és kérdéseket tehetünk fel egymásnak a rácsokról, hogy kiderítsük, ugyanazok-e.  Most kezdd a rövid rácsleírásodat \"LEÍRÁS:\" jelzővel, majd add meg a leírást. Ne adj hozzá semmi mást. Ez a te rácsod:\n$GRID$",
+      "q_reprompt": "Most tegyél fel egy kérdést annak érdekében, hogy új aspektusokat deríts ki az én rácsomról, amely eltérhet a te rácsodtól. Kezdd \"KÉRDÉS:\" jelzővel, és ne adj hozzá semmi mást.",
+      "d_reprompt": "Most hozz döntést. Mit gondolsz: a te rácsod és a másik rács ugyanazt írja le? Írd azt, hogy \"DÖNTÉS: azonos rács\", ha szerinted ugyanarról a rácsról van szó, vagy azt, hogy \"DÖNTÉS: eltérő rács\", ha szerinted a rácsok különbözőek. Ne adj hozzá semmi mást.",
+      "a_request": "Kezdd a válaszodat a \"VÁLASZ:\" jelzővel, és ne adj hozzá semmi mást.",
+      "desc_intro": "Ez az én",
+      "flags": {
+        "description": "LEÍRÁS:",
+        "question": "KÉRDÉS:",
+        "answer": "VÁLASZ:",
+        "decision": "DÖNTÉS:"
+      },
+      "solution": "eltérő rács",
+      "wrong_solution": "azonos rács"
+    }
+  ]
+}

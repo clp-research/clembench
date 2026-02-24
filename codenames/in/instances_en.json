@@ -1,0 +1,4968 @@
+{
+  "experiments": [
+    {
+      "name": "risk_low",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "bed",
+            "force",
+            "bridge",
+            "well",
+            "mail",
+            "foot",
+            "car",
+            "bar",
+            "lemon",
+            "poison",
+            "rabbit",
+            "hospital",
+            "india",
+            "concert",
+            "chick",
+            "ice",
+            "teacher",
+            "fan",
+            "contract",
+            "africa",
+            "mole",
+            "wind",
+            "school",
+            "lead",
+            "board"
+          ],
+          "assignments": {
+            "team": [
+              "bed",
+              "rabbit",
+              "chick",
+              "well",
+              "force",
+              "bridge",
+              "mail",
+              "contract",
+              "board"
+            ],
+            "opponent": [
+              "teacher",
+              "school",
+              "india",
+              "lead",
+              "concert",
+              "poison",
+              "africa",
+              "foot"
+            ],
+            "innocent": [
+              "ice",
+              "lemon",
+              "wind",
+              "hospital",
+              "bar",
+              "mole",
+              "fan",
+              "car"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "loch ness",
+            "well",
+            "space",
+            "pipe",
+            "model",
+            "suit",
+            "pole",
+            "sock",
+            "star",
+            "school",
+            "pan",
+            "pitch",
+            "state",
+            "match",
+            "laser",
+            "pin",
+            "ball",
+            "war",
+            "cross",
+            "tower",
+            "bow",
+            "pants",
+            "spring",
+            "flute",
+            "court"
+          ],
+          "assignments": {
+            "team": [
+              "pan",
+              "court",
+              "war",
+              "state",
+              "space",
+              "laser",
+              "pants",
+              "flute",
+              "loch ness"
+            ],
+            "opponent": [
+              "star",
+              "match",
+              "pipe",
+              "pin",
+              "sock",
+              "well",
+              "ball",
+              "suit"
+            ],
+            "innocent": [
+              "bow",
+              "cross",
+              "spring",
+              "model",
+              "school",
+              "pole",
+              "tower",
+              "pitch"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "crash",
+            "cold",
+            "poison",
+            "mouse",
+            "lead",
+            "wake",
+            "note",
+            "battery",
+            "amazon",
+            "chest",
+            "new york",
+            "day",
+            "apple",
+            "film",
+            "jupiter",
+            "suit",
+            "fork",
+            "model",
+            "snow",
+            "mercury",
+            "africa",
+            "car",
+            "shoe",
+            "berry",
+            "pin"
+          ],
+          "assignments": {
+            "team": [
+              "day",
+              "shoe",
+              "poison",
+              "berry",
+              "film",
+              "crash",
+              "model",
+              "apple",
+              "car"
+            ],
+            "opponent": [
+              "snow",
+              "cold",
+              "battery",
+              "note",
+              "chest",
+              "africa",
+              "new york",
+              "mercury"
+            ],
+            "innocent": [
+              "fork",
+              "wake",
+              "mouse",
+              "lead",
+              "amazon",
+              "suit",
+              "pin",
+              "jupiter"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "state",
+            "europe",
+            "unicorn",
+            "boot",
+            "slip",
+            "belt",
+            "washington",
+            "pit",
+            "limousine",
+            "pole",
+            "hand",
+            "cliff",
+            "spot",
+            "whip",
+            "gold",
+            "witch",
+            "line",
+            "knight",
+            "chair",
+            "point",
+            "ice",
+            "pistol",
+            "cell",
+            "slug",
+            "copper"
+          ],
+          "assignments": {
+            "team": [
+              "chair",
+              "spot",
+              "whip",
+              "europe",
+              "slip",
+              "gold",
+              "state",
+              "cliff",
+              "point"
+            ],
+            "opponent": [
+              "slug",
+              "pit",
+              "pole",
+              "pistol",
+              "unicorn",
+              "belt",
+              "witch",
+              "limousine"
+            ],
+            "innocent": [
+              "hand",
+              "copper",
+              "knight",
+              "boot",
+              "cell",
+              "ice",
+              "washington",
+              "line"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "fork",
+            "pie",
+            "fall",
+            "dinosaur",
+            "honey",
+            "fly",
+            "loch ness",
+            "battery",
+            "penguin",
+            "bottle",
+            "deck",
+            "piano",
+            "diamond",
+            "washington",
+            "angel",
+            "death",
+            "force",
+            "ray",
+            "engine",
+            "box",
+            "scorpion",
+            "hole",
+            "bow",
+            "india",
+            "pumpkin"
+          ],
+          "assignments": {
+            "team": [
+              "ray",
+              "honey",
+              "pumpkin",
+              "india",
+              "death",
+              "scorpion",
+              "diamond",
+              "fork",
+              "penguin"
+            ],
+            "opponent": [
+              "bow",
+              "battery",
+              "bottle",
+              "fly",
+              "piano",
+              "dinosaur",
+              "washington",
+              "pie"
+            ],
+            "innocent": [
+              "hole",
+              "deck",
+              "engine",
+              "force",
+              "fall",
+              "box",
+              "angel",
+              "loch ness"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "ninja",
+            "king",
+            "state",
+            "mercury",
+            "himalayas",
+            "key",
+            "dress",
+            "whale",
+            "mug",
+            "iron",
+            "wall",
+            "day",
+            "cross",
+            "leprechaun",
+            "bermuda",
+            "march",
+            "lawyer",
+            "penguin",
+            "fly",
+            "crane",
+            "queen",
+            "knight",
+            "board",
+            "grass",
+            "centaur"
+          ],
+          "assignments": {
+            "team": [
+              "mug",
+              "lawyer",
+              "crane",
+              "wall",
+              "king",
+              "cross",
+              "queen",
+              "board",
+              "iron"
+            ],
+            "opponent": [
+              "himalayas",
+              "day",
+              "bermuda",
+              "fly",
+              "penguin",
+              "dress",
+              "centaur",
+              "grass"
+            ],
+            "innocent": [
+              "whale",
+              "march",
+              "key",
+              "knight",
+              "mercury",
+              "ninja",
+              "state",
+              "leprechaun"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "ice",
+            "bear",
+            "crown",
+            "center",
+            "apple",
+            "mine",
+            "square",
+            "pass",
+            "trip",
+            "check",
+            "opera",
+            "point",
+            "bat",
+            "octopus",
+            "pool",
+            "church",
+            "hook",
+            "lab",
+            "duck",
+            "scientist",
+            "ball",
+            "novel",
+            "piano",
+            "scorpion",
+            "wind"
+          ],
+          "assignments": {
+            "team": [
+              "check",
+              "piano",
+              "duck",
+              "ice",
+              "opera",
+              "bat",
+              "pass",
+              "crown",
+              "trip"
+            ],
+            "opponent": [
+              "hook",
+              "apple",
+              "octopus",
+              "point",
+              "novel",
+              "bear",
+              "wind",
+              "lab"
+            ],
+            "innocent": [
+              "scorpion",
+              "scientist",
+              "mine",
+              "ball",
+              "center",
+              "church",
+              "pool",
+              "square"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "ham",
+            "paste",
+            "nut",
+            "dwarf",
+            "germany",
+            "platypus",
+            "buffalo",
+            "canada",
+            "mount",
+            "shakespeare",
+            "post",
+            "pyramid",
+            "genius",
+            "death",
+            "pitch",
+            "block",
+            "snowman",
+            "link",
+            "mail",
+            "mug",
+            "card",
+            "berlin",
+            "ring",
+            "missile",
+            "watch"
+          ],
+          "assignments": {
+            "team": [
+              "card",
+              "death",
+              "snowman",
+              "pyramid",
+              "germany",
+              "block",
+              "watch",
+              "buffalo",
+              "link"
+            ],
+            "opponent": [
+              "shakespeare",
+              "ham",
+              "dwarf",
+              "berlin",
+              "paste",
+              "mount",
+              "ring",
+              "genius"
+            ],
+            "innocent": [
+              "mug",
+              "mail",
+              "canada",
+              "pitch",
+              "nut",
+              "post",
+              "missile",
+              "platypus"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "tail",
+            "gold",
+            "czech",
+            "ham",
+            "carrot",
+            "germany",
+            "stick",
+            "sound",
+            "hook",
+            "draft",
+            "pirate",
+            "australia",
+            "vet",
+            "king",
+            "cold",
+            "nurse",
+            "eagle",
+            "march",
+            "duck",
+            "pin",
+            "stadium",
+            "model",
+            "link",
+            "queen",
+            "dance"
+          ],
+          "assignments": {
+            "team": [
+              "vet",
+              "czech",
+              "nurse",
+              "gold",
+              "draft",
+              "carrot",
+              "link",
+              "ham",
+              "pin"
+            ],
+            "opponent": [
+              "sound",
+              "king",
+              "model",
+              "pirate",
+              "cold",
+              "eagle",
+              "tail",
+              "queen"
+            ],
+            "innocent": [
+              "duck",
+              "hook",
+              "stadium",
+              "stick",
+              "australia",
+              "germany",
+              "dance",
+              "march"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "saturn",
+            "staff",
+            "hook",
+            "trunk",
+            "bow",
+            "yard",
+            "state",
+            "disease",
+            "life",
+            "cross",
+            "match",
+            "chair",
+            "olympus",
+            "chocolate",
+            "air",
+            "contract",
+            "bridge",
+            "horseshoe",
+            "ball",
+            "button",
+            "cliff",
+            "drop",
+            "night",
+            "mint",
+            "diamond"
+          ],
+          "assignments": {
+            "team": [
+              "drop",
+              "olympus",
+              "staff",
+              "night",
+              "bow",
+              "trunk",
+              "air",
+              "hook",
+              "cliff"
+            ],
+            "opponent": [
+              "yard",
+              "cross",
+              "chair",
+              "ball",
+              "disease",
+              "horseshoe",
+              "bridge",
+              "match"
+            ],
+            "innocent": [
+              "button",
+              "diamond",
+              "state",
+              "saturn",
+              "contract",
+              "mint",
+              "life",
+              "chocolate"
+            ],
+            "assassin": []
+          }
+        }
+      ],
+      "variable": "Risk",
+      "language": "en",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 8,
+        "assassin": 0
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "risk_high",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "ivory",
+            "embassy",
+            "bermuda",
+            "belt",
+            "press",
+            "bill",
+            "card",
+            "field",
+            "glass",
+            "europe",
+            "chair",
+            "pyramid",
+            "africa",
+            "scuba diver",
+            "web",
+            "soul",
+            "port",
+            "flute",
+            "mercury",
+            "pupil",
+            "knight",
+            "lab",
+            "skyscraper",
+            "charge",
+            "mass"
+          ],
+          "assignments": {
+            "team": [
+              "embassy",
+              "pupil",
+              "europe",
+              "pyramid",
+              "chair",
+              "ivory",
+              "lab",
+              "port",
+              "charge"
+            ],
+            "opponent": [
+              "web",
+              "belt",
+              "glass",
+              "flute",
+              "press",
+              "mass",
+              "field",
+              "africa"
+            ],
+            "innocent": [
+              "bill",
+              "mercury",
+              "soul"
+            ],
+            "assassin": [
+              "skyscraper",
+              "card",
+              "knight",
+              "bermuda",
+              "scuba diver"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "disease",
+            "tooth",
+            "key",
+            "millionaire",
+            "worm",
+            "organ",
+            "ghost",
+            "spine",
+            "pumpkin",
+            "port",
+            "contract",
+            "limousine",
+            "australia",
+            "fish",
+            "train",
+            "back",
+            "wave",
+            "skyscraper",
+            "stock",
+            "conductor",
+            "yard",
+            "day",
+            "knife",
+            "cycle",
+            "calf"
+          ],
+          "assignments": {
+            "team": [
+              "worm",
+              "knife",
+              "conductor",
+              "millionaire",
+              "pumpkin",
+              "day",
+              "key",
+              "limousine",
+              "tooth"
+            ],
+            "opponent": [
+              "train",
+              "contract",
+              "ghost",
+              "port",
+              "australia",
+              "organ",
+              "back",
+              "stock"
+            ],
+            "innocent": [
+              "spine",
+              "yard",
+              "skyscraper"
+            ],
+            "assassin": [
+              "disease",
+              "wave",
+              "fish",
+              "cycle",
+              "calf"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "europe",
+            "air",
+            "buffalo",
+            "carrot",
+            "shop",
+            "calf",
+            "web",
+            "moscow",
+            "limousine",
+            "key",
+            "straw",
+            "cross",
+            "check",
+            "africa",
+            "march",
+            "dog",
+            "face",
+            "mass",
+            "charge",
+            "bow",
+            "crane",
+            "poison",
+            "foot",
+            "mercury",
+            "cotton"
+          ],
+          "assignments": {
+            "team": [
+              "cotton",
+              "check",
+              "key",
+              "buffalo",
+              "europe",
+              "carrot",
+              "charge",
+              "mercury",
+              "limousine"
+            ],
+            "opponent": [
+              "shop",
+              "face",
+              "poison",
+              "march",
+              "mass",
+              "web",
+              "moscow",
+              "dog"
+            ],
+            "innocent": [
+              "bow",
+              "air",
+              "foot"
+            ],
+            "assassin": [
+              "straw",
+              "cross",
+              "crane",
+              "calf",
+              "africa"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "draft",
+            "pass",
+            "beach",
+            "mexico",
+            "bill",
+            "cold",
+            "court",
+            "star",
+            "bear",
+            "press",
+            "duck",
+            "berry",
+            "mug",
+            "root",
+            "date",
+            "log",
+            "ring",
+            "time",
+            "model",
+            "thumb",
+            "point",
+            "kiwi",
+            "bond",
+            "dress",
+            "brush"
+          ],
+          "assignments": {
+            "team": [
+              "date",
+              "pass",
+              "time",
+              "press",
+              "draft",
+              "court",
+              "dress",
+              "bill",
+              "ring"
+            ],
+            "opponent": [
+              "star",
+              "thumb",
+              "beach",
+              "berry",
+              "bond",
+              "mug",
+              "log",
+              "point"
+            ],
+            "innocent": [
+              "model",
+              "brush",
+              "cold"
+            ],
+            "assassin": [
+              "root",
+              "kiwi",
+              "duck",
+              "mexico",
+              "bear"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "battery",
+            "dress",
+            "code",
+            "spring",
+            "sound",
+            "chick",
+            "temple",
+            "square",
+            "roulette",
+            "ground",
+            "kiwi",
+            "pin",
+            "mercury",
+            "flute",
+            "ghost",
+            "maple",
+            "cycle",
+            "point",
+            "platypus",
+            "press",
+            "buck",
+            "agent",
+            "rose",
+            "scuba diver",
+            "thief"
+          ],
+          "assignments": {
+            "team": [
+              "sound",
+              "cycle",
+              "press",
+              "agent",
+              "rose",
+              "spring",
+              "ghost",
+              "square",
+              "maple"
+            ],
+            "opponent": [
+              "battery",
+              "roulette",
+              "temple",
+              "platypus",
+              "kiwi",
+              "scuba diver",
+              "buck",
+              "pin"
+            ],
+            "innocent": [
+              "flute",
+              "code",
+              "point"
+            ],
+            "assassin": [
+              "dress",
+              "ground",
+              "thief",
+              "mercury",
+              "chick"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "lap",
+            "war",
+            "mercury",
+            "stadium",
+            "crash",
+            "cap",
+            "spring",
+            "shoe",
+            "bomb",
+            "engine",
+            "robot",
+            "life",
+            "chick",
+            "pie",
+            "strike",
+            "thumb",
+            "button",
+            "water",
+            "pants",
+            "plate",
+            "washer",
+            "slip",
+            "plastic",
+            "pass",
+            "hotel"
+          ],
+          "assignments": {
+            "team": [
+              "robot",
+              "plate",
+              "washer",
+              "pie",
+              "plastic",
+              "bomb",
+              "hotel",
+              "thumb",
+              "cap"
+            ],
+            "opponent": [
+              "engine",
+              "war",
+              "button",
+              "pants",
+              "lap",
+              "life",
+              "mercury",
+              "spring"
+            ],
+            "innocent": [
+              "stadium",
+              "crash",
+              "slip"
+            ],
+            "assassin": [
+              "chick",
+              "water",
+              "strike",
+              "shoe",
+              "pass"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "pilot",
+            "spine",
+            "crown",
+            "whip",
+            "pan",
+            "penguin",
+            "state",
+            "air",
+            "octopus",
+            "comic",
+            "game",
+            "jet",
+            "stream",
+            "piano",
+            "sock",
+            "moon",
+            "eagle",
+            "block",
+            "millionaire",
+            "van",
+            "oil",
+            "litter",
+            "hollywood",
+            "bear",
+            "mine"
+          ],
+          "assignments": {
+            "team": [
+              "piano",
+              "hollywood",
+              "crown",
+              "game",
+              "sock",
+              "oil",
+              "pilot",
+              "whip",
+              "spine"
+            ],
+            "opponent": [
+              "millionaire",
+              "comic",
+              "bear",
+              "van",
+              "air",
+              "moon",
+              "block",
+              "stream"
+            ],
+            "innocent": [
+              "eagle",
+              "mine",
+              "penguin"
+            ],
+            "assassin": [
+              "pan",
+              "state",
+              "litter",
+              "jet",
+              "octopus"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "stream",
+            "octopus",
+            "mine",
+            "soldier",
+            "america",
+            "jam",
+            "spider",
+            "chair",
+            "force",
+            "ketchup",
+            "port",
+            "heart",
+            "straw",
+            "bolt",
+            "jack",
+            "disease",
+            "bear",
+            "cat",
+            "pyramid",
+            "change",
+            "pistol",
+            "amazon",
+            "scorpion",
+            "pan",
+            "pirate"
+          ],
+          "assignments": {
+            "team": [
+              "bolt",
+              "straw",
+              "scorpion",
+              "disease",
+              "mine",
+              "spider",
+              "jam",
+              "heart",
+              "chair"
+            ],
+            "opponent": [
+              "pyramid",
+              "change",
+              "port",
+              "pan",
+              "jack",
+              "octopus",
+              "amazon",
+              "pirate"
+            ],
+            "innocent": [
+              "bear",
+              "ketchup",
+              "force"
+            ],
+            "assassin": [
+              "stream",
+              "soldier",
+              "cat",
+              "pistol",
+              "america"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "knight",
+            "crane",
+            "date",
+            "bow",
+            "bill",
+            "mexico",
+            "space",
+            "spot",
+            "mug",
+            "train",
+            "mole",
+            "tick",
+            "bark",
+            "march",
+            "bed",
+            "bug",
+            "green",
+            "pie",
+            "lion",
+            "lawyer",
+            "triangle",
+            "hospital",
+            "jam",
+            "berry",
+            "seal"
+          ],
+          "assignments": {
+            "team": [
+              "mexico",
+              "bow",
+              "knight",
+              "bed",
+              "bark",
+              "green",
+              "mole",
+              "crane",
+              "space"
+            ],
+            "opponent": [
+              "lion",
+              "tick",
+              "triangle",
+              "train",
+              "spot",
+              "berry",
+              "seal",
+              "bug"
+            ],
+            "innocent": [
+              "lawyer",
+              "bill",
+              "pie"
+            ],
+            "assassin": [
+              "date",
+              "hospital",
+              "jam",
+              "march",
+              "mug"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "fair",
+            "tap",
+            "olympus",
+            "pyramid",
+            "duck",
+            "heart",
+            "witch",
+            "contract",
+            "deck",
+            "novel",
+            "organ",
+            "horseshoe",
+            "skyscraper",
+            "mouth",
+            "forest",
+            "mole",
+            "tokyo",
+            "grace",
+            "boot",
+            "spike",
+            "lion",
+            "nurse",
+            "button",
+            "shadow",
+            "honey"
+          ],
+          "assignments": {
+            "team": [
+              "skyscraper",
+              "boot",
+              "shadow",
+              "spike",
+              "tokyo",
+              "duck",
+              "contract",
+              "tap",
+              "heart"
+            ],
+            "opponent": [
+              "nurse",
+              "lion",
+              "mouth",
+              "horseshoe",
+              "mole",
+              "forest",
+              "deck",
+              "witch"
+            ],
+            "innocent": [
+              "organ",
+              "olympus",
+              "honey"
+            ],
+            "assassin": [
+              "pyramid",
+              "grace",
+              "novel",
+              "fair",
+              "button"
+            ]
+          }
+        }
+      ],
+      "variable": "Risk",
+      "language": "en",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 3,
+        "assassin": 5
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "association_easy",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "amethyst",
+            "storm",
+            "cashmere",
+            "measles",
+            "racing",
+            "aids",
+            "spatula",
+            "bear",
+            "emerald",
+            "oboe",
+            "screw",
+            "ladle",
+            "spoon",
+            "swimming",
+            "bowling",
+            "nylon",
+            "awl",
+            "pot",
+            "tsunami",
+            "diamond",
+            "raccoon",
+            "coyote",
+            "thunder",
+            "hail",
+            "malaria"
+          ],
+          "assignments": {
+            "team": [
+              "aids",
+              "measles",
+              "nylon",
+              "thunder",
+              "hail",
+              "tsunami",
+              "storm",
+              "cashmere",
+              "malaria"
+            ],
+            "opponent": [
+              "coyote",
+              "bowling",
+              "raccoon",
+              "bear",
+              "awl",
+              "screw",
+              "swimming",
+              "racing"
+            ],
+            "innocent": [
+              "ladle",
+              "pot",
+              "spatula",
+              "emerald",
+              "spoon",
+              "amethyst",
+              "diamond"
+            ],
+            "assassin": [
+              "oboe"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a type of fabric",
+              "a weather phenomenon",
+              "a disease",
+              "a sport",
+              "a four footed animal",
+              "a carpenter’s tool",
+              "a kitchen utensil",
+              "a precious stone",
+              "a musical instrument"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "dogwood",
+            "hill",
+            "viola",
+            "cod",
+            "horn",
+            "salmon",
+            "trout",
+            "rock",
+            "pear",
+            "maple",
+            "palm",
+            "father",
+            "pastor",
+            "bowl",
+            "funk",
+            "elder",
+            "grater",
+            "guitar",
+            "melon",
+            "cave",
+            "trumpet",
+            "imam",
+            "shark",
+            "island",
+            "strawberry"
+          ],
+          "assignments": {
+            "team": [
+              "strawberry",
+              "pear",
+              "trumpet",
+              "horn",
+              "melon",
+              "viola",
+              "bowl",
+              "grater",
+              "guitar"
+            ],
+            "opponent": [
+              "elder",
+              "father",
+              "imam",
+              "island",
+              "hill",
+              "pastor",
+              "rock",
+              "cave"
+            ],
+            "innocent": [
+              "shark",
+              "trout",
+              "dogwood",
+              "maple",
+              "salmon",
+              "palm",
+              "cod"
+            ],
+            "assassin": [
+              "funk"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a fruit",
+              "a musical instrument",
+              "a kitchen utensil",
+              "a member of the clergy",
+              "a natural earth formation",
+              "a fish",
+              "a tree",
+              "a type of music"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "lamp",
+            "rayon",
+            "flannel",
+            "stool",
+            "sauce",
+            "belt",
+            "wasp",
+            "woodpecker",
+            "chicken",
+            "recliner",
+            "worm",
+            "meteorology",
+            "slacks",
+            "brown",
+            "wren",
+            "desk",
+            "biology",
+            "purple",
+            "ankle",
+            "thyme",
+            "zoology",
+            "organ",
+            "falcon",
+            "blue",
+            "tongue"
+          ],
+          "assignments": {
+            "team": [
+              "slacks",
+              "biology",
+              "tongue",
+              "meteorology",
+              "rayon",
+              "zoology",
+              "flannel",
+              "belt",
+              "ankle"
+            ],
+            "opponent": [
+              "recliner",
+              "sauce",
+              "stool",
+              "desk",
+              "lamp",
+              "wasp",
+              "thyme",
+              "worm"
+            ],
+            "innocent": [
+              "brown",
+              "chicken",
+              "wren",
+              "purple",
+              "falcon",
+              "blue",
+              "woodpecker"
+            ],
+            "assassin": [
+              "organ"
+            ]
+          },
+          "private": {
+            "categories": [
+              "an article of clothing",
+              "a type of fabric",
+              "a part of the human body",
+              "a science",
+              "an insect",
+              "an article of furniture",
+              "a substance for flavoring food",
+              "a bird",
+              "a color",
+              "a musical instrument"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "mumps",
+            "sheep",
+            "fist",
+            "petunia",
+            "rain",
+            "cave",
+            "hydrogen",
+            "rhinoceros",
+            "chapel",
+            "cashmere",
+            "temple",
+            "fleece",
+            "cottonmouth",
+            "lake",
+            "semi",
+            "linen",
+            "nor’easter",
+            "stick",
+            "cannon",
+            "asp",
+            "violet",
+            "cancer",
+            "bicycle",
+            "train",
+            "spear"
+          ],
+          "assignments": {
+            "team": [
+              "mumps",
+              "cashmere",
+              "cancer",
+              "nor’easter",
+              "rain",
+              "linen",
+              "sheep",
+              "rhinoceros",
+              "fleece"
+            ],
+            "opponent": [
+              "stick",
+              "temple",
+              "lake",
+              "fist",
+              "chapel",
+              "cave",
+              "cannon",
+              "spear"
+            ],
+            "innocent": [
+              "petunia",
+              "asp",
+              "train",
+              "semi",
+              "violet",
+              "cottonmouth",
+              "bicycle"
+            ],
+            "assassin": [
+              "hydrogen"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a disease",
+              "a weather phenomenon",
+              "a type of fabric",
+              "a four footed animal",
+              "a weapon",
+              "a building for religious services",
+              "a natural earth formation",
+              "a type of vehicle",
+              "a flower",
+              "a snake",
+              "a chemical element"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "cathedral",
+            "stomach",
+            "deer",
+            "back",
+            "wolf",
+            "engineer",
+            "flamingo",
+            "marigold",
+            "racing",
+            "chest",
+            "birch",
+            "lacrosse",
+            "carnation",
+            "accountant",
+            "leather",
+            "suede",
+            "cashmere",
+            "heart",
+            "desert",
+            "lilac",
+            "elephant",
+            "iris",
+            "parrot",
+            "chapel",
+            "cliff"
+          ],
+          "assignments": {
+            "team": [
+              "flamingo",
+              "back",
+              "chest",
+              "deer",
+              "wolf",
+              "parrot",
+              "elephant",
+              "stomach",
+              "heart"
+            ],
+            "opponent": [
+              "iris",
+              "engineer",
+              "lilac",
+              "chapel",
+              "cathedral",
+              "marigold",
+              "accountant",
+              "carnation"
+            ],
+            "innocent": [
+              "suede",
+              "desert",
+              "cashmere",
+              "cliff",
+              "leather",
+              "racing",
+              "lacrosse"
+            ],
+            "assassin": [
+              "birch"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a part of the human body",
+              "a bird",
+              "a four footed animal",
+              "a flower",
+              "a building for religious services",
+              "an occupation or profession",
+              "a natural earth formation",
+              "a sport",
+              "a type of fabric",
+              "a tree"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "tin",
+            "gloves",
+            "earthquake",
+            "corn",
+            "folk",
+            "grape",
+            "duck",
+            "copper",
+            "lettuce",
+            "finch",
+            "onion",
+            "halibut",
+            "iron",
+            "asparagus",
+            "rap",
+            "r&b",
+            "racing",
+            "bluegrass",
+            "aluminum",
+            "banana",
+            "vulture",
+            "rugby",
+            "vest",
+            "pajamas",
+            "hail"
+          ],
+          "assignments": {
+            "team": [
+              "gloves",
+              "racing",
+              "vest",
+              "pajamas",
+              "rugby",
+              "asparagus",
+              "corn",
+              "onion",
+              "lettuce"
+            ],
+            "opponent": [
+              "hail",
+              "bluegrass",
+              "r&b",
+              "rap",
+              "grape",
+              "earthquake",
+              "banana",
+              "folk"
+            ],
+            "innocent": [
+              "iron",
+              "vulture",
+              "finch",
+              "tin",
+              "copper",
+              "aluminum",
+              "duck"
+            ],
+            "assassin": [
+              "halibut"
+            ]
+          },
+          "private": {
+            "categories": [
+              "an article of clothing",
+              "a vegetable",
+              "a sport",
+              "a weather phenomenon",
+              "a type of music",
+              "a fruit",
+              "a metal",
+              "a bird",
+              "a fish"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "cherry",
+            "bra",
+            "car",
+            "minister",
+            "spade",
+            "gymnastics",
+            "hat",
+            "birch",
+            "castle",
+            "dress",
+            "willow",
+            "townhouse",
+            "rabbi",
+            "trailer",
+            "sugar",
+            "imam",
+            "christmas",
+            "pope",
+            "lawnmower",
+            "soccer",
+            "wheelbarrow",
+            "parsley",
+            "shears",
+            "basketball",
+            "island"
+          ],
+          "assignments": {
+            "team": [
+              "sugar",
+              "pope",
+              "hat",
+              "imam",
+              "dress",
+              "parsley",
+              "rabbi",
+              "bra",
+              "minister"
+            ],
+            "opponent": [
+              "willow",
+              "castle",
+              "trailer",
+              "christmas",
+              "car",
+              "birch",
+              "cherry",
+              "townhouse"
+            ],
+            "innocent": [
+              "lawnmower",
+              "soccer",
+              "spade",
+              "gymnastics",
+              "basketball",
+              "shears",
+              "wheelbarrow"
+            ],
+            "assassin": [
+              "island"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a member of the clergy",
+              "an article of clothing",
+              "a substance for flavoring food",
+              "a type of human dwelling",
+              "a tree",
+              "a sport",
+              "a gardener’s tool",
+              "a natural earth formation"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "diamondback",
+            "violet",
+            "basketball",
+            "platinum",
+            "coyote",
+            "rat",
+            "robin",
+            "rattlesnake",
+            "plateau",
+            "green",
+            "flamingo",
+            "carnation",
+            "stomach",
+            "harp",
+            "trombone",
+            "wren",
+            "sunflower",
+            "curling",
+            "trumpet",
+            "gold",
+            "opossum",
+            "mesa",
+            "titanium",
+            "golf",
+            "gymnastics"
+          ],
+          "assignments": {
+            "team": [
+              "sunflower",
+              "golf",
+              "gymnastics",
+              "curling",
+              "opossum",
+              "coyote",
+              "carnation",
+              "violet",
+              "basketball"
+            ],
+            "opponent": [
+              "platinum",
+              "plateau",
+              "wren",
+              "titanium",
+              "gold",
+              "flamingo",
+              "mesa",
+              "robin"
+            ],
+            "innocent": [
+              "trumpet",
+              "rat",
+              "green",
+              "harp",
+              "trombone",
+              "rattlesnake",
+              "diamondback"
+            ],
+            "assassin": [
+              "stomach"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a sport",
+              "a four footed animal",
+              "a flower",
+              "a natural earth formation",
+              "a metal",
+              "a bird",
+              "a musical instrument",
+              "a snake",
+              "a part of the human body"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "recliner",
+            "orange",
+            "wind",
+            "diesel",
+            "legos",
+            "bicycle",
+            "shoes",
+            "taser",
+            "margarita",
+            "lamp",
+            "spear",
+            "island",
+            "dandelion",
+            "daffodil",
+            "anatomy",
+            "fist",
+            "table",
+            "bra",
+            "hepatitis",
+            "plain",
+            "cave",
+            "wine",
+            "mathematics",
+            "butane",
+            "mumps"
+          ],
+          "assignments": {
+            "team": [
+              "hepatitis",
+              "dandelion",
+              "bicycle",
+              "daffodil",
+              "plain",
+              "legos",
+              "cave",
+              "mumps",
+              "island"
+            ],
+            "opponent": [
+              "butane",
+              "wind",
+              "bra",
+              "lamp",
+              "table",
+              "diesel",
+              "shoes",
+              "recliner"
+            ],
+            "innocent": [
+              "anatomy",
+              "wine",
+              "fist",
+              "spear",
+              "mathematics",
+              "taser",
+              "margarita"
+            ],
+            "assassin": [
+              "orange"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a flower",
+              "a toy",
+              "a natural earth formation",
+              "a disease",
+              "an article of furniture",
+              "an article of clothing",
+              "a type of fuel",
+              "a weapon",
+              "a science",
+              "an alcoholic beverage",
+              "a fruit"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "cucumber",
+            "metal",
+            "dresser",
+            "plum",
+            "hill",
+            "pansy",
+            "mountain",
+            "manslaughter",
+            "burglary",
+            "captain",
+            "sergeant",
+            "mesa",
+            "truck",
+            "nightstand",
+            "cantaloupe",
+            "blackberry",
+            "tulip",
+            "classical",
+            "commander",
+            "tractor",
+            "embezzlement",
+            "mum",
+            "atv",
+            "loveseat",
+            "wagon"
+          ],
+          "assignments": {
+            "team": [
+              "plum",
+              "blackberry",
+              "dresser",
+              "tulip",
+              "nightstand",
+              "mum",
+              "cantaloupe",
+              "pansy",
+              "loveseat"
+            ],
+            "opponent": [
+              "mesa",
+              "hill",
+              "metal",
+              "sergeant",
+              "classical",
+              "captain",
+              "commander",
+              "mountain"
+            ],
+            "innocent": [
+              "atv",
+              "manslaughter",
+              "truck",
+              "burglary",
+              "wagon",
+              "embezzlement",
+              "tractor"
+            ],
+            "assassin": [
+              "cucumber"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a fruit",
+              "an article of furniture",
+              "a flower",
+              "a natural earth formation",
+              "a type of music",
+              "a military title",
+              "a type of vehicle",
+              "a crime",
+              "a vegetable"
+            ]
+          }
+        }
+      ],
+      "variable": "Word Assignments",
+      "language": "en",
+      "number of instances": 10,
+      "generator": "easy word assignments",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "categories.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "association_difficult",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "chest",
+            "screwdriver",
+            "socks",
+            "blouse",
+            "pistol",
+            "face",
+            "martini",
+            "wrench",
+            "sweatshirt",
+            "bourbon",
+            "elbow",
+            "bishop",
+            "nun",
+            "gun",
+            "nor’easter",
+            "fist",
+            "blizzard",
+            "fleece",
+            "typhoon",
+            "machete",
+            "leather",
+            "pajamas",
+            "rye",
+            "monsoon",
+            "pastor"
+          ],
+          "assignments": {
+            "team": [
+              "gun",
+              "fleece",
+              "pajamas",
+              "wrench",
+              "typhoon",
+              "fist",
+              "sweatshirt",
+              "rye",
+              "nun"
+            ],
+            "opponent": [
+              "pistol",
+              "elbow",
+              "chest",
+              "bishop",
+              "blizzard",
+              "socks",
+              "leather",
+              "martini"
+            ],
+            "innocent": [
+              "machete",
+              "screwdriver",
+              "face",
+              "bourbon",
+              "monsoon",
+              "pastor",
+              "blouse"
+            ],
+            "assassin": [
+              "nor’easter"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a weather phenomenon",
+              "an alcoholic beverage",
+              "a type of fabric",
+              "a member of the clergy",
+              "an article of clothing",
+              "a weapon",
+              "a carpenter’s tool",
+              "a part of the human body"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "decade",
+            "panties",
+            "cherry",
+            "nanosecond",
+            "pick",
+            "hat",
+            "month",
+            "grandfather",
+            "rake",
+            "bicycle",
+            "top",
+            "husband",
+            "gun",
+            "cauliflower",
+            "tomato",
+            "maple",
+            "cousin",
+            "cumin",
+            "peppers",
+            "thyme",
+            "siding",
+            "broccoli",
+            "blocks",
+            "window",
+            "son"
+          ],
+          "assignments": {
+            "team": [
+              "peppers",
+              "bicycle",
+              "month",
+              "gun",
+              "window",
+              "pick",
+              "broccoli",
+              "thyme",
+              "husband"
+            ],
+            "opponent": [
+              "nanosecond",
+              "rake",
+              "cumin",
+              "panties",
+              "cousin",
+              "grandfather",
+              "top",
+              "siding"
+            ],
+            "innocent": [
+              "son",
+              "cauliflower",
+              "cherry",
+              "tomato",
+              "maple",
+              "decade",
+              "blocks"
+            ],
+            "assassin": [
+              "hat"
+            ]
+          },
+          "private": {
+            "categories": [
+              "an article of clothing",
+              "a substance for flavoring food",
+              "a part of a building",
+              "a toy",
+              "a relative",
+              "a unit of time",
+              "a gardener’s tool",
+              "a vegetable",
+              "a tree"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "deer",
+            "centimeter",
+            "rat",
+            "mum",
+            "geology",
+            "grandfather",
+            "mile",
+            "anaconda",
+            "wool",
+            "accountant",
+            "aunt",
+            "botany",
+            "grandparent",
+            "actor",
+            "meter",
+            "iris",
+            "orchid",
+            "meteorology",
+            "father",
+            "chemistry",
+            "dress",
+            "black",
+            "socks",
+            "flannel",
+            "donkey"
+          ],
+          "assignments": {
+            "team": [
+              "socks",
+              "chemistry",
+              "botany",
+              "anaconda",
+              "deer",
+              "flannel",
+              "mile",
+              "father",
+              "centimeter"
+            ],
+            "opponent": [
+              "grandparent",
+              "donkey",
+              "geology",
+              "black",
+              "iris",
+              "accountant",
+              "meter",
+              "grandfather"
+            ],
+            "innocent": [
+              "meteorology",
+              "wool",
+              "mum",
+              "dress",
+              "aunt",
+              "actor",
+              "rat"
+            ],
+            "assassin": [
+              "orchid"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a flower",
+              "a science",
+              "a snake",
+              "an occupation or profession",
+              "a four footed animal",
+              "a relative",
+              "an article of clothing",
+              "a type of fabric",
+              "a unit of distance"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "medicine",
+            "psychology",
+            "sapphire",
+            "electricity",
+            "cow",
+            "wasp",
+            "ankle",
+            "ant",
+            "daisy",
+            "meteorology",
+            "yellow",
+            "gold",
+            "centipede",
+            "mathematics",
+            "unleaded",
+            "ruby",
+            "breast",
+            "wind",
+            "raccoon",
+            "tulip",
+            "diamond",
+            "mosquito",
+            "gardenia",
+            "jade",
+            "gray"
+          ],
+          "assignments": {
+            "team": [
+              "daisy",
+              "wasp",
+              "psychology",
+              "breast",
+              "raccoon",
+              "cow",
+              "ruby",
+              "wind",
+              "gold"
+            ],
+            "opponent": [
+              "ant",
+              "gray",
+              "ankle",
+              "gardenia",
+              "meteorology",
+              "jade",
+              "mathematics",
+              "unleaded"
+            ],
+            "innocent": [
+              "tulip",
+              "yellow",
+              "centipede",
+              "mosquito",
+              "sapphire",
+              "medicine",
+              "electricity"
+            ],
+            "assassin": [
+              "diamond"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a precious stone",
+              "a science",
+              "a type of fuel",
+              "an insect",
+              "a color",
+              "a part of the human body",
+              "a flower",
+              "a four footed animal"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "ash",
+            "moth",
+            "kitchen",
+            "willow",
+            "yurt",
+            "condominium",
+            "christmas",
+            "basement",
+            "flea",
+            "soldier",
+            "townhouse",
+            "mexico",
+            "tent",
+            "viola",
+            "grandfather",
+            "italy",
+            "suit",
+            "yoyo",
+            "poland",
+            "hickory",
+            "sweatshirt",
+            "sweden",
+            "father",
+            "horn",
+            "legos"
+          ],
+          "assignments": {
+            "team": [
+              "soldier",
+              "basement",
+              "moth",
+              "italy",
+              "ash",
+              "yurt",
+              "tent",
+              "flea",
+              "sweatshirt"
+            ],
+            "opponent": [
+              "horn",
+              "townhouse",
+              "suit",
+              "sweden",
+              "christmas",
+              "grandfather",
+              "yoyo",
+              "willow"
+            ],
+            "innocent": [
+              "mexico",
+              "hickory",
+              "viola",
+              "father",
+              "condominium",
+              "kitchen",
+              "legos"
+            ],
+            "assassin": [
+              "poland"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a country",
+              "a relative",
+              "a tree",
+              "a toy",
+              "a musical instrument",
+              "a type of human dwelling",
+              "a part of a building",
+              "an article of clothing",
+              "an insect"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "cobra",
+            "tomato",
+            "rifle",
+            "axe",
+            "grandfather",
+            "sister",
+            "celery",
+            "hammer",
+            "dogwood",
+            "orange",
+            "teeth",
+            "platinum",
+            "aunt",
+            "cauliflower",
+            "garden",
+            "heart",
+            "bomb",
+            "green",
+            "willow",
+            "grapefruit",
+            "pear",
+            "copperhead",
+            "lead",
+            "liver",
+            "apple"
+          ],
+          "assignments": {
+            "team": [
+              "cobra",
+              "cauliflower",
+              "dogwood",
+              "grapefruit",
+              "grandfather",
+              "pear",
+              "axe",
+              "celery",
+              "hammer"
+            ],
+            "opponent": [
+              "rifle",
+              "lead",
+              "apple",
+              "sister",
+              "liver",
+              "green",
+              "orange",
+              "tomato"
+            ],
+            "innocent": [
+              "garden",
+              "teeth",
+              "willow",
+              "bomb",
+              "aunt",
+              "copperhead",
+              "platinum"
+            ],
+            "assassin": [
+              "heart"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a part of the human body",
+              "a relative",
+              "a snake",
+              "a tree",
+              "a metal",
+              "a weapon",
+              "a fruit",
+              "a vegetable"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "bass",
+            "carbon",
+            "brother",
+            "taser",
+            "duck",
+            "hammer",
+            "hawk",
+            "guppy",
+            "sodium",
+            "cobra",
+            "mother",
+            "salesperson",
+            "python",
+            "oriole",
+            "coral",
+            "cousin",
+            "swallow",
+            "daughter",
+            "shotgun",
+            "carp",
+            "lawyer",
+            "hydrogen",
+            "firefighter",
+            "club",
+            "electrician"
+          ],
+          "assignments": {
+            "team": [
+              "bass",
+              "club",
+              "oriole",
+              "electrician",
+              "daughter",
+              "hydrogen",
+              "python",
+              "firefighter",
+              "hammer"
+            ],
+            "opponent": [
+              "hawk",
+              "brother",
+              "coral",
+              "lawyer",
+              "carbon",
+              "carp",
+              "swallow",
+              "taser"
+            ],
+            "innocent": [
+              "sodium",
+              "guppy",
+              "duck",
+              "cousin",
+              "shotgun",
+              "cobra",
+              "salesperson"
+            ],
+            "assassin": [
+              "mother"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a relative",
+              "a chemical element",
+              "a weapon",
+              "a bird",
+              "a snake",
+              "an occupation or profession",
+              "a fish"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "train",
+            "bicycling",
+            "lead",
+            "elm",
+            "propane",
+            "hydrogen",
+            "solar",
+            "kiwi",
+            "lupus",
+            "reverend",
+            "hepatitis",
+            "pneumonia",
+            "bishop",
+            "pear",
+            "nun",
+            "cherry",
+            "mango",
+            "barbie",
+            "cedar",
+            "wrestling",
+            "evergreen",
+            "flu",
+            "soccer",
+            "pastor",
+            "running"
+          ],
+          "assignments": {
+            "team": [
+              "barbie",
+              "cedar",
+              "reverend",
+              "bicycling",
+              "mango",
+              "lead",
+              "hydrogen",
+              "bishop",
+              "pneumonia"
+            ],
+            "opponent": [
+              "evergreen",
+              "train",
+              "propane",
+              "nun",
+              "wrestling",
+              "hepatitis",
+              "kiwi",
+              "elm"
+            ],
+            "innocent": [
+              "pear",
+              "pastor",
+              "solar",
+              "running",
+              "flu",
+              "cherry",
+              "lupus"
+            ],
+            "assassin": [
+              "soccer"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a sport",
+              "a fruit",
+              "a tree",
+              "a member of the clergy",
+              "a toy",
+              "a disease",
+              "a type of fuel",
+              "a chemical element"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "chef",
+            "cat",
+            "gold",
+            "wood",
+            "violet",
+            "nitrogen",
+            "secretary",
+            "mouse",
+            "orange",
+            "hallway",
+            "ethanol",
+            "siding",
+            "butane",
+            "zinc",
+            "bluegrass",
+            "propane",
+            "turquoise",
+            "punk",
+            "copper",
+            "teacher",
+            "foundation",
+            "giraffe",
+            "hippopotamus",
+            "blues",
+            "room"
+          ],
+          "assignments": {
+            "team": [
+              "siding",
+              "blues",
+              "nitrogen",
+              "cat",
+              "wood",
+              "hippopotamus",
+              "violet",
+              "secretary",
+              "foundation"
+            ],
+            "opponent": [
+              "giraffe",
+              "mouse",
+              "copper",
+              "room",
+              "teacher",
+              "butane",
+              "ethanol",
+              "orange"
+            ],
+            "innocent": [
+              "turquoise",
+              "propane",
+              "punk",
+              "hallway",
+              "gold",
+              "zinc",
+              "chef"
+            ],
+            "assassin": [
+              "bluegrass"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a type of music",
+              "a color",
+              "a chemical element",
+              "a type of fuel",
+              "a part of a building",
+              "an occupation or profession",
+              "a four footed animal"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "lettuce",
+            "arson",
+            "motorcycle",
+            "lip",
+            "duplex",
+            "kale",
+            "chair",
+            "back",
+            "table",
+            "robbery",
+            "cheetah",
+            "manslaughter",
+            "inch",
+            "townhouse",
+            "car",
+            "shoulder",
+            "green",
+            "hippopotamus",
+            "vandalism",
+            "magenta",
+            "tan",
+            "wagon",
+            "mile",
+            "cabinet",
+            "orange"
+          ],
+          "assignments": {
+            "team": [
+              "table",
+              "duplex",
+              "lettuce",
+              "magenta",
+              "lip",
+              "wagon",
+              "mile",
+              "manslaughter",
+              "orange"
+            ],
+            "opponent": [
+              "car",
+              "inch",
+              "tan",
+              "arson",
+              "cheetah",
+              "chair",
+              "townhouse",
+              "shoulder"
+            ],
+            "innocent": [
+              "motorcycle",
+              "green",
+              "robbery",
+              "kale",
+              "vandalism",
+              "back",
+              "cabinet"
+            ],
+            "assassin": [
+              "hippopotamus"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a unit of distance",
+              "a four footed animal",
+              "a part of the human body",
+              "a vegetable",
+              "a type of vehicle",
+              "an article of furniture",
+              "a crime",
+              "a type of human dwelling",
+              "a color"
+            ]
+          }
+        }
+      ],
+      "variable": "Word Assignments",
+      "language": "en",
+      "number of instances": 10,
+      "generator": "difficult word assignments",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "categories.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "opponent_none",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "bar",
+            "cast",
+            "chair",
+            "smuggler",
+            "gold",
+            "state",
+            "drill",
+            "duck",
+            "hand",
+            "pool",
+            "green",
+            "port",
+            "grace",
+            "air",
+            "stadium",
+            "conductor",
+            "pirate",
+            "pupil",
+            "strike",
+            "king",
+            "eagle",
+            "server",
+            "dog",
+            "genius",
+            "march"
+          ],
+          "assignments": {
+            "team": [
+              "cast",
+              "stadium",
+              "pupil",
+              "pool",
+              "dog",
+              "chair",
+              "bar",
+              "green",
+              "hand"
+            ],
+            "opponent": [
+              "eagle",
+              "king",
+              "genius",
+              "smuggler",
+              "gold",
+              "server",
+              "duck",
+              "grace"
+            ],
+            "innocent": [
+              "drill",
+              "strike",
+              "march",
+              "air",
+              "pirate",
+              "port",
+              "state"
+            ],
+            "assassin": [
+              "conductor"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "bed",
+            "part",
+            "cell",
+            "forest",
+            "force",
+            "angel",
+            "night",
+            "antarctica",
+            "olive",
+            "mount",
+            "spine",
+            "luck",
+            "lemon",
+            "america",
+            "mine",
+            "spy",
+            "death",
+            "theater",
+            "buck",
+            "microscope",
+            "germany",
+            "cold",
+            "pilot",
+            "hollywood",
+            "hook"
+          ],
+          "assignments": {
+            "team": [
+              "hollywood",
+              "antarctica",
+              "spine",
+              "pilot",
+              "mount",
+              "force",
+              "lemon",
+              "cold",
+              "microscope"
+            ],
+            "opponent": [
+              "part",
+              "hook",
+              "bed",
+              "olive",
+              "death",
+              "forest",
+              "mine",
+              "buck"
+            ],
+            "innocent": [
+              "angel",
+              "luck",
+              "cell",
+              "theater",
+              "germany",
+              "night",
+              "america"
+            ],
+            "assassin": [
+              "spy"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "octopus",
+            "casino",
+            "thumb",
+            "unicorn",
+            "drop",
+            "vacuum",
+            "tooth",
+            "apple",
+            "cast",
+            "lead",
+            "america",
+            "engine",
+            "face",
+            "fly",
+            "log",
+            "spell",
+            "hotel",
+            "nurse",
+            "tie",
+            "post",
+            "tap",
+            "stream",
+            "witch",
+            "dwarf",
+            "platypus"
+          ],
+          "assignments": {
+            "team": [
+              "face",
+              "witch",
+              "fly",
+              "dwarf",
+              "platypus",
+              "log",
+              "post",
+              "octopus",
+              "vacuum"
+            ],
+            "opponent": [
+              "nurse",
+              "unicorn",
+              "spell",
+              "casino",
+              "tooth",
+              "lead",
+              "thumb",
+              "hotel"
+            ],
+            "innocent": [
+              "engine",
+              "stream",
+              "tap",
+              "drop",
+              "tie",
+              "cast",
+              "america"
+            ],
+            "assassin": [
+              "apple"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "snow",
+            "duck",
+            "soldier",
+            "canada",
+            "water",
+            "hood",
+            "jam",
+            "date",
+            "fence",
+            "pan",
+            "fish",
+            "buffalo",
+            "part",
+            "fall",
+            "march",
+            "whip",
+            "ray",
+            "car",
+            "paper",
+            "cotton",
+            "field",
+            "crash",
+            "bar",
+            "star",
+            "spike"
+          ],
+          "assignments": {
+            "team": [
+              "jam",
+              "fall",
+              "cotton",
+              "star",
+              "bar",
+              "paper",
+              "march",
+              "soldier",
+              "spike"
+            ],
+            "opponent": [
+              "ray",
+              "fish",
+              "hood",
+              "pan",
+              "snow",
+              "date",
+              "field",
+              "crash"
+            ],
+            "innocent": [
+              "water",
+              "car",
+              "fence",
+              "whip",
+              "canada",
+              "duck",
+              "buffalo"
+            ],
+            "assassin": [
+              "part"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "grace",
+            "nut",
+            "force",
+            "ghost",
+            "ninja",
+            "bark",
+            "bank",
+            "england",
+            "port",
+            "block",
+            "degree",
+            "wake",
+            "crane",
+            "thief",
+            "kid",
+            "mammoth",
+            "stick",
+            "grass",
+            "code",
+            "africa",
+            "hood",
+            "tick",
+            "trunk",
+            "hawk",
+            "plate"
+          ],
+          "assignments": {
+            "team": [
+              "wake",
+              "hawk",
+              "ninja",
+              "nut",
+              "degree",
+              "thief",
+              "block",
+              "kid",
+              "port"
+            ],
+            "opponent": [
+              "plate",
+              "trunk",
+              "force",
+              "ghost",
+              "code",
+              "bank",
+              "hood",
+              "grass"
+            ],
+            "innocent": [
+              "bark",
+              "england",
+              "stick",
+              "africa",
+              "mammoth",
+              "grace",
+              "crane"
+            ],
+            "assassin": [
+              "tick"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "line",
+            "mammoth",
+            "himalayas",
+            "brush",
+            "draft",
+            "yard",
+            "dice",
+            "screen",
+            "diamond",
+            "lab",
+            "gold",
+            "cliff",
+            "doctor",
+            "bottle",
+            "phoenix",
+            "cap",
+            "chick",
+            "crash",
+            "life",
+            "square",
+            "pan",
+            "tag",
+            "copper",
+            "theater",
+            "tick"
+          ],
+          "assignments": {
+            "team": [
+              "phoenix",
+              "himalayas",
+              "life",
+              "bottle",
+              "lab",
+              "mammoth",
+              "tick",
+              "square",
+              "cap"
+            ],
+            "opponent": [
+              "diamond",
+              "pan",
+              "dice",
+              "tag",
+              "copper",
+              "doctor",
+              "cliff",
+              "yard"
+            ],
+            "innocent": [
+              "theater",
+              "draft",
+              "line",
+              "brush",
+              "screen",
+              "chick",
+              "gold"
+            ],
+            "assassin": [
+              "crash"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "comic",
+            "honey",
+            "leprechaun",
+            "game",
+            "tooth",
+            "stick",
+            "knight",
+            "cover",
+            "police",
+            "hand",
+            "match",
+            "bolt",
+            "nurse",
+            "gold",
+            "canada",
+            "sound",
+            "germany",
+            "hotel",
+            "bomb",
+            "cross",
+            "head",
+            "battery",
+            "ghost",
+            "mail",
+            "spell"
+          ],
+          "assignments": {
+            "team": [
+              "battery",
+              "cover",
+              "spell",
+              "bomb",
+              "ghost",
+              "match",
+              "germany",
+              "game",
+              "tooth"
+            ],
+            "opponent": [
+              "bolt",
+              "leprechaun",
+              "sound",
+              "honey",
+              "hotel",
+              "hand",
+              "gold",
+              "stick"
+            ],
+            "innocent": [
+              "head",
+              "knight",
+              "comic",
+              "cross",
+              "nurse",
+              "canada",
+              "police"
+            ],
+            "assassin": [
+              "mail"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "trip",
+            "cell",
+            "leprechaun",
+            "note",
+            "button",
+            "loch ness",
+            "spine",
+            "berry",
+            "match",
+            "glove",
+            "scorpion",
+            "ninja",
+            "file",
+            "vet",
+            "pan",
+            "death",
+            "oil",
+            "kangaroo",
+            "agent",
+            "pool",
+            "bark",
+            "poison",
+            "van",
+            "princess",
+            "swing"
+          ],
+          "assignments": {
+            "team": [
+              "note",
+              "glove",
+              "trip",
+              "van",
+              "agent",
+              "kangaroo",
+              "loch ness",
+              "berry",
+              "princess"
+            ],
+            "opponent": [
+              "oil",
+              "pan",
+              "poison",
+              "file",
+              "cell",
+              "bark",
+              "death",
+              "match"
+            ],
+            "innocent": [
+              "swing",
+              "scorpion",
+              "leprechaun",
+              "ninja",
+              "pool",
+              "spine",
+              "button"
+            ],
+            "assassin": [
+              "vet"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "ruler",
+            "mouse",
+            "bond",
+            "queen",
+            "ambulance",
+            "net",
+            "parachute",
+            "horseshoe",
+            "berlin",
+            "dance",
+            "school",
+            "date",
+            "band",
+            "ice cream",
+            "himalayas",
+            "lap",
+            "ninja",
+            "press",
+            "tag",
+            "gas",
+            "drop",
+            "tooth",
+            "shakespeare",
+            "train",
+            "figure"
+          ],
+          "assignments": {
+            "team": [
+              "figure",
+              "parachute",
+              "band",
+              "tag",
+              "himalayas",
+              "bond",
+              "train",
+              "ambulance",
+              "ninja"
+            ],
+            "opponent": [
+              "lap",
+              "press",
+              "dance",
+              "tooth",
+              "mouse",
+              "ice cream",
+              "drop",
+              "berlin"
+            ],
+            "innocent": [
+              "school",
+              "queen",
+              "gas",
+              "net",
+              "horseshoe",
+              "shakespeare",
+              "ruler"
+            ],
+            "assassin": [
+              "date"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "beat",
+            "vet",
+            "king",
+            "ship",
+            "platypus",
+            "olympus",
+            "ninja",
+            "ambulance",
+            "thief",
+            "table",
+            "server",
+            "wall",
+            "mine",
+            "america",
+            "part",
+            "bolt",
+            "superhero",
+            "fence",
+            "arm",
+            "ghost",
+            "cast",
+            "doctor",
+            "marble",
+            "bank",
+            "box"
+          ],
+          "assignments": {
+            "team": [
+              "ninja",
+              "server",
+              "doctor",
+              "king",
+              "superhero",
+              "vet",
+              "bolt",
+              "table",
+              "box"
+            ],
+            "opponent": [
+              "fence",
+              "mine",
+              "america",
+              "wall",
+              "ship",
+              "cast",
+              "olympus",
+              "thief"
+            ],
+            "innocent": [
+              "beat",
+              "marble",
+              "bank",
+              "platypus",
+              "part",
+              "ghost",
+              "ambulance"
+            ],
+            "assassin": [
+              "arm"
+            ]
+          }
+        }
+      ],
+      "variable": "Opponent Difficulty",
+      "language": "en",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 0,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "opponent_easy",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "sink",
+            "bomb",
+            "jet",
+            "air",
+            "robin",
+            "foot",
+            "diamond",
+            "agent",
+            "club",
+            "gold",
+            "atlantis",
+            "thief",
+            "park",
+            "film",
+            "bermuda",
+            "dog",
+            "queen",
+            "angel",
+            "mouth",
+            "iron",
+            "slug",
+            "bill",
+            "canada",
+            "wake",
+            "match"
+          ],
+          "assignments": {
+            "team": [
+              "sink",
+              "slug",
+              "dog",
+              "angel",
+              "club",
+              "jet",
+              "air",
+              "diamond",
+              "mouth"
+            ],
+            "opponent": [
+              "queen",
+              "wake",
+              "film",
+              "gold",
+              "iron",
+              "bermuda",
+              "agent",
+              "canada"
+            ],
+            "innocent": [
+              "atlantis",
+              "robin",
+              "bill",
+              "foot",
+              "bomb",
+              "match",
+              "thief"
+            ],
+            "assassin": [
+              "park"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "police",
+            "olive",
+            "missile",
+            "robin",
+            "wave",
+            "canada",
+            "bark",
+            "scientist",
+            "piano",
+            "date",
+            "pool",
+            "ambulance",
+            "cook",
+            "moon",
+            "tower",
+            "play",
+            "america",
+            "thumb",
+            "lawyer",
+            "face",
+            "mount",
+            "stadium",
+            "bill",
+            "cap",
+            "time"
+          ],
+          "assignments": {
+            "team": [
+              "play",
+              "tower",
+              "lawyer",
+              "thumb",
+              "canada",
+              "wave",
+              "cook",
+              "ambulance",
+              "stadium"
+            ],
+            "opponent": [
+              "police",
+              "bark",
+              "face",
+              "scientist",
+              "cap",
+              "olive",
+              "moon",
+              "pool"
+            ],
+            "innocent": [
+              "robin",
+              "date",
+              "bill",
+              "missile",
+              "mount",
+              "piano",
+              "america"
+            ],
+            "assassin": [
+              "time"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "horse",
+            "gas",
+            "key",
+            "paste",
+            "millionaire",
+            "pass",
+            "dog",
+            "cycle",
+            "himalayas",
+            "cotton",
+            "mouse",
+            "calf",
+            "court",
+            "grace",
+            "eye",
+            "wake",
+            "compound",
+            "fair",
+            "sink",
+            "needle",
+            "dress",
+            "mercury",
+            "hawk",
+            "casino",
+            "film"
+          ],
+          "assignments": {
+            "team": [
+              "dog",
+              "himalayas",
+              "casino",
+              "eye",
+              "fair",
+              "pass",
+              "gas",
+              "mercury",
+              "needle"
+            ],
+            "opponent": [
+              "grace",
+              "sink",
+              "dress",
+              "court",
+              "cotton",
+              "cycle",
+              "mouse",
+              "paste"
+            ],
+            "innocent": [
+              "millionaire",
+              "calf",
+              "compound",
+              "hawk",
+              "key",
+              "wake",
+              "film"
+            ],
+            "assassin": [
+              "horse"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "leprechaun",
+            "van",
+            "parachute",
+            "tooth",
+            "root",
+            "racket",
+            "bottle",
+            "wind",
+            "pole",
+            "flute",
+            "bank",
+            "grace",
+            "train",
+            "czech",
+            "nail",
+            "cliff",
+            "suit",
+            "belt",
+            "check",
+            "india",
+            "wave",
+            "cat",
+            "chest",
+            "scale",
+            "fish"
+          ],
+          "assignments": {
+            "team": [
+              "root",
+              "cliff",
+              "fish",
+              "tooth",
+              "grace",
+              "india",
+              "belt",
+              "nail",
+              "suit"
+            ],
+            "opponent": [
+              "scale",
+              "wind",
+              "van",
+              "leprechaun",
+              "wave",
+              "chest",
+              "parachute",
+              "flute"
+            ],
+            "innocent": [
+              "cat",
+              "train",
+              "check",
+              "bank",
+              "racket",
+              "czech",
+              "bottle"
+            ],
+            "assassin": [
+              "pole"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "paste",
+            "horn",
+            "missile",
+            "pie",
+            "roulette",
+            "aztec",
+            "mine",
+            "switch",
+            "thumb",
+            "tokyo",
+            "parachute",
+            "shop",
+            "ham",
+            "play",
+            "himalayas",
+            "time",
+            "suit",
+            "novel",
+            "marble",
+            "berry",
+            "pumpkin",
+            "hole",
+            "sock",
+            "server",
+            "school"
+          ],
+          "assignments": {
+            "team": [
+              "himalayas",
+              "aztec",
+              "suit",
+              "roulette",
+              "pie",
+              "sock",
+              "novel",
+              "tokyo",
+              "thumb"
+            ],
+            "opponent": [
+              "berry",
+              "server",
+              "school",
+              "time",
+              "parachute",
+              "shop",
+              "horn",
+              "ham"
+            ],
+            "innocent": [
+              "marble",
+              "paste",
+              "switch",
+              "missile",
+              "mine",
+              "play",
+              "hole"
+            ],
+            "assassin": [
+              "pumpkin"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "screen",
+            "moon",
+            "bolt",
+            "ketchup",
+            "suit",
+            "battery",
+            "date",
+            "well",
+            "pumpkin",
+            "mouse",
+            "log",
+            "match",
+            "leprechaun",
+            "atlantis",
+            "pool",
+            "pipe",
+            "chair",
+            "capital",
+            "circle",
+            "wall",
+            "compound",
+            "school",
+            "line",
+            "nurse",
+            "opera"
+          ],
+          "assignments": {
+            "team": [
+              "pool",
+              "line",
+              "pipe",
+              "atlantis",
+              "nurse",
+              "capital",
+              "ketchup",
+              "moon",
+              "mouse"
+            ],
+            "opponent": [
+              "log",
+              "battery",
+              "school",
+              "well",
+              "opera",
+              "chair",
+              "pumpkin",
+              "date"
+            ],
+            "innocent": [
+              "leprechaun",
+              "circle",
+              "match",
+              "screen",
+              "suit",
+              "wall",
+              "bolt"
+            ],
+            "assassin": [
+              "compound"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "bar",
+            "heart",
+            "luck",
+            "pie",
+            "spring",
+            "lead",
+            "mexico",
+            "beach",
+            "england",
+            "rome",
+            "hook",
+            "berlin",
+            "leprechaun",
+            "ring",
+            "undertaker",
+            "horseshoe",
+            "port",
+            "mass",
+            "sink",
+            "fire",
+            "drop",
+            "wake",
+            "spider",
+            "germany",
+            "compound"
+          ],
+          "assignments": {
+            "team": [
+              "lead",
+              "mass",
+              "bar",
+              "spring",
+              "rome",
+              "luck",
+              "mexico",
+              "wake",
+              "spider"
+            ],
+            "opponent": [
+              "fire",
+              "hook",
+              "horseshoe",
+              "sink",
+              "beach",
+              "germany",
+              "england",
+              "pie"
+            ],
+            "innocent": [
+              "leprechaun",
+              "drop",
+              "ring",
+              "port",
+              "berlin",
+              "heart",
+              "compound"
+            ],
+            "assassin": [
+              "undertaker"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "pitch",
+            "racket",
+            "film",
+            "round",
+            "soul",
+            "bow",
+            "tail",
+            "alps",
+            "scientist",
+            "mass",
+            "ruler",
+            "force",
+            "mail",
+            "smuggler",
+            "boom",
+            "bermuda",
+            "cold",
+            "bridge",
+            "car",
+            "straw",
+            "fair",
+            "spike",
+            "van",
+            "scuba diver",
+            "shadow"
+          ],
+          "assignments": {
+            "team": [
+              "bermuda",
+              "scuba diver",
+              "mass",
+              "car",
+              "alps",
+              "soul",
+              "scientist",
+              "film",
+              "straw"
+            ],
+            "opponent": [
+              "ruler",
+              "bridge",
+              "pitch",
+              "round",
+              "van",
+              "shadow",
+              "racket",
+              "boom"
+            ],
+            "innocent": [
+              "tail",
+              "fair",
+              "smuggler",
+              "spike",
+              "force",
+              "bow",
+              "mail"
+            ],
+            "assassin": [
+              "cold"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "arm",
+            "smuggler",
+            "pound",
+            "limousine",
+            "slip",
+            "horseshoe",
+            "school",
+            "marble",
+            "chocolate",
+            "dragon",
+            "card",
+            "scale",
+            "duck",
+            "nail",
+            "temple",
+            "circle",
+            "mexico",
+            "knight",
+            "shadow",
+            "button",
+            "mouse",
+            "nut",
+            "cap",
+            "state",
+            "disease"
+          ],
+          "assignments": {
+            "team": [
+              "school",
+              "slip",
+              "smuggler",
+              "duck",
+              "knight",
+              "nail",
+              "marble",
+              "button",
+              "nut"
+            ],
+            "opponent": [
+              "scale",
+              "card",
+              "disease",
+              "state",
+              "mouse",
+              "horseshoe",
+              "limousine",
+              "mexico"
+            ],
+            "innocent": [
+              "dragon",
+              "chocolate",
+              "arm",
+              "circle",
+              "shadow",
+              "temple",
+              "cap"
+            ],
+            "assassin": [
+              "pound"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "king",
+            "cross",
+            "embassy",
+            "nurse",
+            "tablet",
+            "mercury",
+            "pyramid",
+            "dinosaur",
+            "press",
+            "piano",
+            "pin",
+            "scale",
+            "button",
+            "novel",
+            "olympus",
+            "force",
+            "spell",
+            "bugle",
+            "alps",
+            "jam",
+            "fly",
+            "thief",
+            "fire",
+            "rome",
+            "eagle"
+          ],
+          "assignments": {
+            "team": [
+              "tablet",
+              "jam",
+              "king",
+              "piano",
+              "scale",
+              "thief",
+              "nurse",
+              "spell",
+              "fire"
+            ],
+            "opponent": [
+              "button",
+              "press",
+              "pin",
+              "bugle",
+              "olympus",
+              "novel",
+              "rome",
+              "alps"
+            ],
+            "innocent": [
+              "embassy",
+              "fly",
+              "dinosaur",
+              "force",
+              "pyramid",
+              "eagle",
+              "mercury"
+            ],
+            "assassin": [
+              "cross"
+            ]
+          }
+        }
+      ],
+      "variable": "Opponent Difficulty",
+      "language": "en",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "opponent_difficult",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "tail",
+            "dragon",
+            "canada",
+            "piano",
+            "robin",
+            "fan",
+            "church",
+            "cell",
+            "bottle",
+            "bolt",
+            "hawk",
+            "lemon",
+            "scuba diver",
+            "tooth",
+            "tag",
+            "millionaire",
+            "antarctica",
+            "ghost",
+            "snowman",
+            "fish",
+            "knight",
+            "spider",
+            "rose",
+            "car",
+            "death"
+          ],
+          "assignments": {
+            "team": [
+              "scuba diver",
+              "church",
+              "fan",
+              "lemon",
+              "tooth",
+              "ghost",
+              "millionaire",
+              "tag",
+              "antarctica"
+            ],
+            "opponent": [
+              "fish",
+              "hawk",
+              "spider",
+              "bolt",
+              "bottle",
+              "rose",
+              "cell",
+              "knight"
+            ],
+            "innocent": [
+              "car",
+              "canada",
+              "robin",
+              "death",
+              "snowman",
+              "dragon",
+              "tail"
+            ],
+            "assassin": [
+              "piano"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "change",
+            "apple",
+            "chocolate",
+            "drill",
+            "organ",
+            "embassy",
+            "pool",
+            "straw",
+            "lab",
+            "sock",
+            "file",
+            "charge",
+            "millionaire",
+            "star",
+            "button",
+            "hood",
+            "bug",
+            "moon",
+            "telescope",
+            "rabbit",
+            "ghost",
+            "limousine",
+            "hawk",
+            "wall",
+            "model"
+          ],
+          "assignments": {
+            "team": [
+              "apple",
+              "sock",
+              "rabbit",
+              "hood",
+              "pool",
+              "organ",
+              "lab",
+              "ghost",
+              "file"
+            ],
+            "opponent": [
+              "moon",
+              "star",
+              "limousine",
+              "charge",
+              "hawk",
+              "drill",
+              "bug",
+              "chocolate"
+            ],
+            "innocent": [
+              "embassy",
+              "telescope",
+              "model",
+              "change",
+              "button",
+              "millionaire",
+              "straw"
+            ],
+            "assassin": [
+              "wall"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "gold",
+            "oil",
+            "berlin",
+            "boom",
+            "teacher",
+            "america",
+            "fair",
+            "triangle",
+            "lab",
+            "chick",
+            "moon",
+            "soldier",
+            "chair",
+            "loch ness",
+            "tap",
+            "berry",
+            "beach",
+            "vacuum",
+            "bomb",
+            "africa",
+            "press",
+            "mouth",
+            "ice",
+            "worm",
+            "ghost"
+          ],
+          "assignments": {
+            "team": [
+              "bomb",
+              "boom",
+              "moon",
+              "chick",
+              "ice",
+              "press",
+              "vacuum",
+              "berry",
+              "america"
+            ],
+            "opponent": [
+              "loch ness",
+              "tap",
+              "soldier",
+              "beach",
+              "africa",
+              "worm",
+              "oil",
+              "gold"
+            ],
+            "innocent": [
+              "lab",
+              "ghost",
+              "fair",
+              "triangle",
+              "berlin",
+              "mouth",
+              "chair"
+            ],
+            "assassin": [
+              "teacher"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "button",
+            "pumpkin",
+            "leprechaun",
+            "cat",
+            "princess",
+            "temple",
+            "limousine",
+            "drill",
+            "post",
+            "duck",
+            "chair",
+            "scientist",
+            "plate",
+            "tick",
+            "glove",
+            "nut",
+            "canada",
+            "cricket",
+            "ray",
+            "shadow",
+            "model",
+            "band",
+            "loch ness",
+            "port",
+            "olive"
+          ],
+          "assignments": {
+            "team": [
+              "plate",
+              "port",
+              "duck",
+              "ray",
+              "band",
+              "glove",
+              "shadow",
+              "button",
+              "canada"
+            ],
+            "opponent": [
+              "scientist",
+              "cat",
+              "pumpkin",
+              "nut",
+              "tick",
+              "cricket",
+              "leprechaun",
+              "princess"
+            ],
+            "innocent": [
+              "loch ness",
+              "limousine",
+              "drill",
+              "post",
+              "olive",
+              "temple",
+              "model"
+            ],
+            "assassin": [
+              "chair"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "nut",
+            "satellite",
+            "film",
+            "loch ness",
+            "genius",
+            "novel",
+            "limousine",
+            "bat",
+            "draft",
+            "pit",
+            "jam",
+            "foot",
+            "sock",
+            "robin",
+            "root",
+            "soldier",
+            "shoe",
+            "london",
+            "crash",
+            "dress",
+            "time",
+            "glove",
+            "dance",
+            "board",
+            "poison"
+          ],
+          "assignments": {
+            "team": [
+              "dress",
+              "nut",
+              "root",
+              "jam",
+              "satellite",
+              "novel",
+              "time",
+              "board",
+              "genius"
+            ],
+            "opponent": [
+              "sock",
+              "robin",
+              "poison",
+              "pit",
+              "draft",
+              "london",
+              "foot",
+              "limousine"
+            ],
+            "innocent": [
+              "crash",
+              "film",
+              "loch ness",
+              "glove",
+              "dance",
+              "soldier",
+              "shoe"
+            ],
+            "assassin": [
+              "bat"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "microscope",
+            "mammoth",
+            "well",
+            "ice cream",
+            "tower",
+            "gold",
+            "cliff",
+            "princess",
+            "alps",
+            "amazon",
+            "belt",
+            "lab",
+            "cross",
+            "hospital",
+            "match",
+            "doctor",
+            "pie",
+            "night",
+            "boom",
+            "mint",
+            "heart",
+            "mine",
+            "tag",
+            "contract",
+            "plane"
+          ],
+          "assignments": {
+            "team": [
+              "lab",
+              "mine",
+              "gold",
+              "mammoth",
+              "cross",
+              "pie",
+              "heart",
+              "well",
+              "night"
+            ],
+            "opponent": [
+              "belt",
+              "plane",
+              "mint",
+              "contract",
+              "microscope",
+              "princess",
+              "cliff",
+              "alps"
+            ],
+            "innocent": [
+              "doctor",
+              "amazon",
+              "match",
+              "hospital",
+              "tower",
+              "ice cream",
+              "tag"
+            ],
+            "assassin": [
+              "boom"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "europe",
+            "new york",
+            "charge",
+            "kangaroo",
+            "back",
+            "robot",
+            "ground",
+            "death",
+            "sound",
+            "school",
+            "queen",
+            "crash",
+            "unicorn",
+            "forest",
+            "play",
+            "ham",
+            "cap",
+            "jack",
+            "india",
+            "cover",
+            "lion",
+            "tower",
+            "button",
+            "whip",
+            "concert"
+          ],
+          "assignments": {
+            "team": [
+              "death",
+              "crash",
+              "new york",
+              "cap",
+              "jack",
+              "school",
+              "charge",
+              "cover",
+              "kangaroo"
+            ],
+            "opponent": [
+              "play",
+              "back",
+              "unicorn",
+              "india",
+              "queen",
+              "ground",
+              "europe",
+              "ham"
+            ],
+            "innocent": [
+              "tower",
+              "whip",
+              "robot",
+              "button",
+              "sound",
+              "lion",
+              "forest"
+            ],
+            "assassin": [
+              "concert"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "paste",
+            "force",
+            "moon",
+            "stock",
+            "unicorn",
+            "figure",
+            "agent",
+            "cover",
+            "box",
+            "telescope",
+            "court",
+            "bolt",
+            "ice cream",
+            "pants",
+            "horse",
+            "ivory",
+            "pole",
+            "africa",
+            "bark",
+            "mass",
+            "engine",
+            "fire",
+            "match",
+            "shark",
+            "arm"
+          ],
+          "assignments": {
+            "team": [
+              "agent",
+              "bark",
+              "paste",
+              "box",
+              "arm",
+              "unicorn",
+              "stock",
+              "figure",
+              "match"
+            ],
+            "opponent": [
+              "mass",
+              "court",
+              "bolt",
+              "telescope",
+              "ivory",
+              "shark",
+              "engine",
+              "pants"
+            ],
+            "innocent": [
+              "moon",
+              "force",
+              "ice cream",
+              "africa",
+              "cover",
+              "pole",
+              "fire"
+            ],
+            "assassin": [
+              "horse"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "washer",
+            "europe",
+            "wave",
+            "teacher",
+            "ground",
+            "stream",
+            "date",
+            "square",
+            "snow",
+            "jupiter",
+            "post",
+            "cross",
+            "string",
+            "beat",
+            "lion",
+            "ambulance",
+            "opera",
+            "stock",
+            "fork",
+            "pupil",
+            "sound",
+            "paper",
+            "cell",
+            "part",
+            "link"
+          ],
+          "assignments": {
+            "team": [
+              "fork",
+              "square",
+              "date",
+              "wave",
+              "link",
+              "lion",
+              "teacher",
+              "sound",
+              "paper"
+            ],
+            "opponent": [
+              "string",
+              "jupiter",
+              "cell",
+              "snow",
+              "beat",
+              "washer",
+              "cross",
+              "europe"
+            ],
+            "innocent": [
+              "post",
+              "stream",
+              "ground",
+              "stock",
+              "part",
+              "pupil",
+              "ambulance"
+            ],
+            "assassin": [
+              "opera"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "bottle",
+            "spy",
+            "saturn",
+            "mass",
+            "wind",
+            "laser",
+            "jack",
+            "force",
+            "cloak",
+            "tap",
+            "alien",
+            "stock",
+            "drill",
+            "worm",
+            "octopus",
+            "police",
+            "grace",
+            "fish",
+            "flute",
+            "lion",
+            "eye",
+            "marble",
+            "bond",
+            "battery",
+            "kid"
+          ],
+          "assignments": {
+            "team": [
+              "bond",
+              "eye",
+              "bottle",
+              "force",
+              "tap",
+              "police",
+              "saturn",
+              "wind",
+              "alien"
+            ],
+            "opponent": [
+              "stock",
+              "flute",
+              "mass",
+              "spy",
+              "battery",
+              "laser",
+              "octopus",
+              "lion"
+            ],
+            "innocent": [
+              "cloak",
+              "fish",
+              "drill",
+              "jack",
+              "worm",
+              "grace",
+              "kid"
+            ],
+            "assassin": [
+              "marble"
+            ]
+          }
+        }
+      ],
+      "variable": "Opponent Difficulty",
+      "language": "en",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 2,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    }
+  ]
+}

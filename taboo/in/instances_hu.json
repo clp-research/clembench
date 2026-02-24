@@ -1,0 +1,620 @@
+{
+  "experiments": [
+    {
+      "name": "high_hu",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "esküvő",
+          "related_word": [
+            "nász",
+            "eljegyzés",
+            "menyasszony"
+          ],
+          "target_word_stem": "esküvő",
+          "related_word_stem": [
+            "nász",
+            "eljegyzés",
+            "menyasszony"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "vacsora",
+          "related_word": [
+            "ebéd",
+            "reggeli",
+            "étkezés"
+          ],
+          "target_word_stem": "vacsora",
+          "related_word_stem": [
+            "ebéd",
+            "reggeli",
+            "étkezés"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "fénykép",
+          "related_word": [
+            "fotó",
+            "felvétel",
+            "fotográfia"
+          ],
+          "target_word_stem": "fénykép",
+          "related_word_stem": [
+            "fotó",
+            "felvétel",
+            "fotográfia"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "konferencia",
+          "related_word": [
+            "értekezlet",
+            "megbeszélés",
+            "tárgyalás"
+          ],
+          "target_word_stem": "konferencia",
+          "related_word_stem": [
+            "értekezlet",
+            "megbeszélés",
+            "tárgyalás"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "dal",
+          "related_word": [
+            "nóta",
+            "melódia",
+            "ének"
+          ],
+          "target_word_stem": "dal",
+          "related_word_stem": [
+            "nóta",
+            "melódia",
+            "ének"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "óceán",
+          "related_word": [
+            "oceanográfia",
+            "tenger",
+            "oceanográfus"
+          ],
+          "target_word_stem": "óceán",
+          "related_word_stem": [
+            "oceanográfia",
+            "tenger",
+            "oceanográfus"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "kábel",
+          "related_word": [
+            "drót",
+            "vezeték",
+            "huzal"
+          ],
+          "target_word_stem": "kábel",
+          "related_word_stem": [
+            "drót",
+            "vezeték",
+            "huzal"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "tanár",
+          "related_word": [
+            "oktató",
+            "pedagógus",
+            "nevelő"
+          ],
+          "target_word_stem": "tanár",
+          "related_word_stem": [
+            "oktató",
+            "pedagógus",
+            "nevelő"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "antik",
+          "related_word": [
+            "ókori",
+            "régi",
+            "mai"
+          ],
+          "target_word_stem": "antik",
+          "related_word_stem": [
+            "ókori",
+            "régi",
+            "mai"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "író",
+          "related_word": [
+            "joghurt",
+            "savó",
+            "tej"
+          ],
+          "target_word_stem": "író",
+          "related_word_stem": [
+            "joghurt",
+            "savó",
+            "tej"
+          ]
+        },
+        {
+          "game_id": 10,
+          "target_word": "hiba",
+          "related_word": [
+            "tévedés",
+            "melléfogás",
+            "baklövés"
+          ],
+          "target_word_stem": "hiba",
+          "related_word_stem": [
+            "tévedés",
+            "melléfogás",
+            "baklövés"
+          ]
+        },
+        {
+          "game_id": 11,
+          "target_word": "gyümölcs",
+          "related_word": [
+            "élelmiszer",
+            "étel",
+            "növény"
+          ],
+          "target_word_stem": "gyümölcs",
+          "related_word_stem": [
+            "élelmiszer",
+            "étel",
+            "növény"
+          ]
+        },
+        {
+          "game_id": 12,
+          "target_word": "labda",
+          "related_word": [
+            "alak",
+            "golyó",
+            "sportszer"
+          ],
+          "target_word_stem": "labda",
+          "related_word_stem": [
+            "alak",
+            "golyó",
+            "sportszer"
+          ]
+        },
+        {
+          "game_id": 13,
+          "target_word": "szél",
+          "related_word": [
+            "légáram",
+            "fuvallat",
+            "fergeteg"
+          ],
+          "target_word_stem": "szél",
+          "related_word_stem": [
+            "légáram",
+            "fuvallat",
+            "fergeteg"
+          ]
+        },
+        {
+          "game_id": 14,
+          "target_word": "szín",
+          "related_word": [
+            "festék",
+            "anyag",
+            "mesterséges"
+          ],
+          "target_word_stem": "szín",
+          "related_word_stem": [
+            "festék",
+            "anyag",
+            "mesterséges"
+          ]
+        },
+        {
+          "game_id": 15,
+          "target_word": "lány",
+          "related_word": [
+            "csaj",
+            "ember",
+            "fiú"
+          ],
+          "target_word_stem": "lány",
+          "related_word_stem": [
+            "csaj",
+            "ember",
+            "fiú"
+          ]
+        },
+        {
+          "game_id": 16,
+          "target_word": "zene",
+          "related_word": [
+            "muzsika",
+            "szimfónia",
+            "zongoraverseny"
+          ],
+          "target_word_stem": "zene",
+          "related_word_stem": [
+            "muzsika",
+            "szimfónia",
+            "zongoraverseny"
+          ]
+        },
+        {
+          "game_id": 17,
+          "target_word": "alma",
+          "related_word": [
+            "élőlény",
+            "étel",
+            "élelmiszer"
+          ],
+          "target_word_stem": "alma",
+          "related_word_stem": [
+            "élőlény",
+            "étel",
+            "élelmiszer"
+          ]
+        },
+        {
+          "game_id": 18,
+          "target_word": "csokoládé",
+          "related_word": [
+            "desszert",
+            "étel",
+            "élelmiszer"
+          ],
+          "target_word_stem": "csokoládé",
+          "related_word_stem": [
+            "desszert",
+            "étel",
+            "élelmiszer"
+          ]
+        },
+        {
+          "game_id": 19,
+          "target_word": "beteg",
+          "related_word": [
+            "páciens",
+            "egészséges",
+            "ostoba"
+          ],
+          "target_word_stem": "beteg",
+          "related_word_stem": [
+            "páciens",
+            "egészséges",
+            "ostoba"
+          ]
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "Egy együttműködő szókitaláló játékot játszol, amelyben egy célszót kell leírnod úgy, hogy egy másik játékos kitalálhassa.\nSzabályok:\n(a) A válaszod formátuma: NYOM: <valamilyen szöveg>. A másik játékos tippjei TIPP-el fognak kezdődni.\n(b) Nem használhatod magát a célszót, sem annak részeit vagy morfológiai változatait a leírásodban.\n(c) Ugyanezek a szabályok érvényesek az alább megadott kapcsolódó szavakra is.\nBefejezési feltételek:\n(i) Ha a leírásodban használod a célszót vagy bármely kapcsolódó szót, akkor veszítesz.\n(ii) Ha a másik játékos $N$ próbálkozáson belül kitalálja a célszót, mindketten nyertek.\nKezdjük el.\nEz az a célszó, amelyet neked le kell írnod, és amelyet a másik játékosnak ki kell találnia:\n$TARGET_WORD$\nKapcsolódó szavak:\n$REL_WORD$\nFontos: Időnyomás alatt vagy, adj rövid, lényegre törő leírásokat!",
+      "guesser_initial_prompt": "Egy együttműködő szókitaláló játékot játszol, amelyben egy másik játékos leírása alapján kell kitalálnod a célszót.\nMinden próbálkozásnál egy tippet adhatsz meg. Akkor nyersz, ha kitalálod a célszót. Akkor veszítesz, ha nem sikerül kitalálnod $N$ próbálkozáson belül.\nMinden próbálkozás után egy új utalást kapsz a másik játékostól, amely NYOM-mal kezdődik.\nA tippjeidet csak a következő formában add meg: TIPP: <egy szó>\nKezdjük el."
+    },
+    {
+      "name": "low_hu",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "univerzum",
+          "related_word": [
+            "világegyetem",
+            "kozmosz",
+            "mindenség"
+          ],
+          "target_word_stem": "univerzum",
+          "related_word_stem": [
+            "világegyetem",
+            "kozmosz",
+            "mindenség"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "eljegyzés",
+          "related_word": [
+            "esküvő",
+            "menyasszony",
+            "vőlegény"
+          ],
+          "target_word_stem": "eljegyzés",
+          "related_word_stem": [
+            "esküvő",
+            "menyasszony",
+            "vőlegény"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "négyszög",
+          "related_word": [
+            "poligon",
+            "rombusz",
+            "síkidom"
+          ],
+          "target_word_stem": "négyszög",
+          "related_word_stem": [
+            "poligon",
+            "rombusz",
+            "síkidom"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "zöldség",
+          "related_word": [
+            "élelmiszer",
+            "étel",
+            "növény"
+          ],
+          "target_word_stem": "zöldség",
+          "related_word_stem": [
+            "élelmiszer",
+            "étel",
+            "növény"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "injekció",
+          "related_word": [
+            "befecskendezés",
+            "oltás",
+            "szuri"
+          ],
+          "target_word_stem": "injekció",
+          "related_word_stem": [
+            "befecskendezés",
+            "oltás",
+            "szuri"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "hiba",
+          "related_word": [
+            "tévedés",
+            "melléfogás",
+            "baklövés"
+          ],
+          "target_word_stem": "hiba",
+          "related_word_stem": [
+            "tévedés",
+            "melléfogás",
+            "baklövés"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "tanár",
+          "related_word": [
+            "oktató",
+            "pedagógus",
+            "nevelő"
+          ],
+          "target_word_stem": "tanár",
+          "related_word_stem": [
+            "oktató",
+            "pedagógus",
+            "nevelő"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "varázsló",
+          "related_word": [
+            "mágus",
+            "segéd",
+            "zsonglőr"
+          ],
+          "target_word_stem": "varázsló",
+          "related_word_stem": [
+            "mágus",
+            "segéd",
+            "zsonglőr"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "konszenzus",
+          "related_word": [
+            "egyetértés",
+            "megegyezés",
+            "megállapodás"
+          ],
+          "target_word_stem": "konszenzus",
+          "related_word_stem": [
+            "egyetértés",
+            "megegyezés",
+            "megállapodás"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "véna",
+          "related_word": [
+            "tehetség",
+            "telér",
+            "gyűjtőér"
+          ],
+          "target_word_stem": "véna",
+          "related_word_stem": [
+            "tehetség",
+            "telér",
+            "gyűjtőér"
+          ]
+        },
+        {
+          "game_id": 10,
+          "target_word": "hiba",
+          "related_word": [
+            "tévedés",
+            "melléfogás",
+            "baklövés"
+          ],
+          "target_word_stem": "hiba",
+          "related_word_stem": [
+            "tévedés",
+            "melléfogás",
+            "baklövés"
+          ]
+        },
+        {
+          "game_id": 11,
+          "target_word": "fog",
+          "related_word": [
+            "tart",
+            "vesz",
+            "megragad"
+          ],
+          "target_word_stem": "fog",
+          "related_word_stem": [
+            "tart",
+            "vesz",
+            "megragad"
+          ]
+        },
+        {
+          "game_id": 12,
+          "target_word": "baromfi",
+          "related_word": [
+            "szárnyas",
+            "csibe",
+            "házityúk"
+          ],
+          "target_word_stem": "baromfi",
+          "related_word_stem": [
+            "szárnyas",
+            "csibe",
+            "házityúk"
+          ]
+        },
+        {
+          "game_id": 13,
+          "target_word": "kifogás",
+          "related_word": [
+            "ellenvetés",
+            "mentség",
+            "ürügy"
+          ],
+          "target_word_stem": "kifogás",
+          "related_word_stem": [
+            "ellenvetés",
+            "mentség",
+            "ürügy"
+          ]
+        },
+        {
+          "game_id": 14,
+          "target_word": "csaj",
+          "related_word": [
+            "lány",
+            "nő",
+            "liba"
+          ],
+          "target_word_stem": "csaj",
+          "related_word_stem": [
+            "lány",
+            "nő",
+            "liba"
+          ]
+        },
+        {
+          "game_id": 15,
+          "target_word": "vőlegény",
+          "related_word": [
+            "eljegyzés",
+            "menyasszony",
+            "esküvő"
+          ],
+          "target_word_stem": "vőlegény",
+          "related_word_stem": [
+            "eljegyzés",
+            "menyasszony",
+            "esküvő"
+          ]
+        },
+        {
+          "game_id": 16,
+          "target_word": "tej",
+          "related_word": [
+            "élelmiszer",
+            "joghurt",
+            "savó"
+          ],
+          "target_word_stem": "tej",
+          "related_word_stem": [
+            "élelmiszer",
+            "joghurt",
+            "savó"
+          ]
+        },
+        {
+          "game_id": 17,
+          "target_word": "banán",
+          "related_word": [
+            "gyümölcs",
+            "növény",
+            "étel"
+          ],
+          "target_word_stem": "banán",
+          "related_word_stem": [
+            "gyümölcs",
+            "növény",
+            "étel"
+          ]
+        },
+        {
+          "game_id": 18,
+          "target_word": "káosz",
+          "related_word": [
+            "zűrzavar",
+            "fejetlenség",
+            "összevisszaság"
+          ],
+          "target_word_stem": "káosz",
+          "related_word_stem": [
+            "zűrzavar",
+            "fejetlenség",
+            "összevisszaság"
+          ]
+        },
+        {
+          "game_id": 19,
+          "target_word": "székesegyház",
+          "related_word": [
+            "katedrális",
+            "bazilika",
+            "dóm"
+          ],
+          "target_word_stem": "székesegyház",
+          "related_word_stem": [
+            "katedrális",
+            "bazilika",
+            "dóm"
+          ]
+        }
+      ],
+      "max_turns": 3,
+      "describer_initial_prompt": "Egy együttműködő szókitaláló játékot játszol, amelyben egy célszót kell leírnod úgy, hogy egy másik játékos kitalálhassa.\nSzabályok:\n(a) A válaszod formátuma: NYOM: <valamilyen szöveg>. A másik játékos tippjei TIPP-el fognak kezdődni.\n(b) Nem használhatod magát a célszót, sem annak részeit vagy morfológiai változatait a leírásodban.\n(c) Ugyanezek a szabályok érvényesek az alább megadott kapcsolódó szavakra is.\nBefejezési feltételek:\n(i) Ha a leírásodban használod a célszót vagy bármely kapcsolódó szót, akkor veszítesz.\n(ii) Ha a másik játékos $N$ próbálkozáson belül kitalálja a célszót, mindketten nyertek.\nKezdjük el.\nEz az a célszó, amelyet neked le kell írnod, és amelyet a másik játékosnak ki kell találnia:\n$TARGET_WORD$\nKapcsolódó szavak:\n$REL_WORD$\nFontos: Időnyomás alatt vagy, adj rövid, lényegre törő leírásokat!",
+      "guesser_initial_prompt": "Egy együttműködő szókitaláló játékot játszol, amelyben egy másik játékos leírása alapján kell kitalálnod a célszót.\nMinden próbálkozásnál egy tippet adhatsz meg. Akkor nyersz, ha kitalálod a célszót. Akkor veszítesz, ha nem sikerül kitalálnod $N$ próbálkozáson belül.\nMinden próbálkozás után egy új utalást kapsz a másik játékostól, amely NYOM-mal kezdődik.\nA tippjeidet csak a következő formában add meg: TIPP: <egy szó>\nKezdjük el."
+    }
+  ]
+}

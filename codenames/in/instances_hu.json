@@ -1,0 +1,4970 @@
+{
+  "experiments": [
+    {
+      "name": "risk_low",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "ágy",
+            "erő",
+            "híd",
+            "kút",
+            "posta",
+            "láb",
+            "autó",
+            "bár",
+            "citrom",
+            "méreg",
+            "nyúl",
+            "kórház",
+            "india",
+            "koncert",
+            "csaj",
+            "jég",
+            "tanár",
+            "rajongó",
+            "szerződés",
+            "afrika",
+            "vakond",
+            "szél",
+            "iskola",
+            "ólom",
+            "tábla"
+          ],
+          "assignments": {
+            "team": [
+              "ágy",
+              "nyúl",
+              "csaj",
+              "kút",
+              "erő",
+              "híd",
+              "posta",
+              "szerződés",
+              "tábla"
+            ],
+            "opponent": [
+              "tanár",
+              "iskola",
+              "india",
+              "ólom",
+              "koncert",
+              "méreg",
+              "afrika",
+              "láb"
+            ],
+            "innocent": [
+              "jég",
+              "citrom",
+              "szél",
+              "kórház",
+              "bár",
+              "vakond",
+              "rajongó",
+              "autó"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "loch ness",
+            "kút",
+            "űr",
+            "cső",
+            "modell",
+            "öltöny",
+            "pólus",
+            "zokni",
+            "csillag",
+            "iskola",
+            "serpenyő",
+            "hangmagasság",
+            "állapot",
+            "mérkőzés",
+            "lézer",
+            "csap",
+            "labda",
+            "háború",
+            "kereszt",
+            "torony",
+            "íj",
+            "nadrág",
+            "tavasz",
+            "fuvola",
+            "bíróság"
+          ],
+          "assignments": {
+            "team": [
+              "serpenyő",
+              "bíróság",
+              "háború",
+              "állapot",
+              "űr",
+              "lézer",
+              "nadrág",
+              "fuvola",
+              "loch ness"
+            ],
+            "opponent": [
+              "csillag",
+              "mérkőzés",
+              "cső",
+              "csap",
+              "zokni",
+              "kút",
+              "labda",
+              "öltöny"
+            ],
+            "innocent": [
+              "íj",
+              "kereszt",
+              "tavasz",
+              "modell",
+              "iskola",
+              "pólus",
+              "torony",
+              "hangmagasság"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "összeomlás",
+            "hideg",
+            "méreg",
+            "egér",
+            "ólom",
+            "ébresztés",
+            "jegyzet",
+            "akkumulátor",
+            "amazonas",
+            "mellkas",
+            "new york",
+            "nap",
+            "alma",
+            "film",
+            "jupiter",
+            "öltöny",
+            "villa",
+            "modell",
+            "hó",
+            "higany",
+            "afrika",
+            "autó",
+            "cipő",
+            "bogyó",
+            "csap"
+          ],
+          "assignments": {
+            "team": [
+              "nap",
+              "cipő",
+              "méreg",
+              "bogyó",
+              "film",
+              "összeomlás",
+              "modell",
+              "alma",
+              "autó"
+            ],
+            "opponent": [
+              "hó",
+              "hideg",
+              "akkumulátor",
+              "jegyzet",
+              "mellkas",
+              "afrika",
+              "new york",
+              "higany"
+            ],
+            "innocent": [
+              "villa",
+              "ébresztés",
+              "egér",
+              "ólom",
+              "amazonas",
+              "öltöny",
+              "csap",
+              "jupiter"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "állapot",
+            "európa",
+            "unikornis",
+            "csizma",
+            "csúszás",
+            "öv",
+            "washington",
+            "gödör",
+            "limuzin",
+            "pólus",
+            "kéz",
+            "szikla",
+            "folt",
+            "ostor",
+            "arany",
+            "boszorkány",
+            "vonal",
+            "lovag",
+            "szék",
+            "pont",
+            "jég",
+            "pisztoly",
+            "cella",
+            "meztelencsiga",
+            "réz"
+          ],
+          "assignments": {
+            "team": [
+              "szék",
+              "folt",
+              "ostor",
+              "európa",
+              "csúszás",
+              "arany",
+              "állapot",
+              "szikla",
+              "pont"
+            ],
+            "opponent": [
+              "meztelencsiga",
+              "gödör",
+              "pólus",
+              "pisztoly",
+              "unikornis",
+              "öv",
+              "boszorkány",
+              "limuzin"
+            ],
+            "innocent": [
+              "kéz",
+              "réz",
+              "lovag",
+              "csizma",
+              "cella",
+              "jég",
+              "washington",
+              "vonal"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "villa",
+            "pite",
+            "esés",
+            "dinoszaurusz",
+            "méz",
+            "légy",
+            "loch ness",
+            "akkumulátor",
+            "pingvin",
+            "palack",
+            "fedélzet",
+            "zongora",
+            "gyémánt",
+            "washington",
+            "angyal",
+            "halál",
+            "erő",
+            "sugár",
+            "motor",
+            "doboz",
+            "skorpió",
+            "lyuk",
+            "íj",
+            "india",
+            "tök"
+          ],
+          "assignments": {
+            "team": [
+              "sugár",
+              "méz",
+              "tök",
+              "india",
+              "halál",
+              "skorpió",
+              "gyémánt",
+              "villa",
+              "pingvin"
+            ],
+            "opponent": [
+              "íj",
+              "akkumulátor",
+              "palack",
+              "légy",
+              "zongora",
+              "dinoszaurusz",
+              "washington",
+              "pite"
+            ],
+            "innocent": [
+              "lyuk",
+              "fedélzet",
+              "motor",
+              "erő",
+              "esés",
+              "doboz",
+              "angyal",
+              "loch ness"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "ninja",
+            "király",
+            "állapot",
+            "higany",
+            "himalája",
+            "kulcs",
+            "ruha",
+            "bálna",
+            "bögre",
+            "vas",
+            "fal",
+            "nap",
+            "kereszt",
+            "manó",
+            "bermuda",
+            "március",
+            "ügyvéd",
+            "pingvin",
+            "légy",
+            "daru",
+            "királynő",
+            "lovag",
+            "tábla",
+            "fű",
+            "kentaur"
+          ],
+          "assignments": {
+            "team": [
+              "bögre",
+              "ügyvéd",
+              "daru",
+              "fal",
+              "király",
+              "kereszt",
+              "királynő",
+              "tábla",
+              "vas"
+            ],
+            "opponent": [
+              "himalája",
+              "nap",
+              "bermuda",
+              "légy",
+              "pingvin",
+              "ruha",
+              "kentaur",
+              "fű"
+            ],
+            "innocent": [
+              "bálna",
+              "március",
+              "kulcs",
+              "lovag",
+              "higany",
+              "ninja",
+              "állapot",
+              "manó"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "jég",
+            "medve",
+            "korona",
+            "központ",
+            "alma",
+            "bánya",
+            "négyzet",
+            "bérlet",
+            "utazás",
+            "ellenőrzés",
+            "opera",
+            "pont",
+            "denevér",
+            "polip",
+            "medence",
+            "templom",
+            "horog",
+            "labor",
+            "kacsa",
+            "tudós",
+            "labda",
+            "regény",
+            "zongora",
+            "skorpió",
+            "szél"
+          ],
+          "assignments": {
+            "team": [
+              "ellenőrzés",
+              "zongora",
+              "kacsa",
+              "jég",
+              "opera",
+              "denevér",
+              "bérlet",
+              "korona",
+              "utazás"
+            ],
+            "opponent": [
+              "horog",
+              "alma",
+              "polip",
+              "pont",
+              "regény",
+              "medve",
+              "szél",
+              "labor"
+            ],
+            "innocent": [
+              "skorpió",
+              "tudós",
+              "bánya",
+              "labda",
+              "központ",
+              "templom",
+              "medence",
+              "négyzet"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "sonka",
+            "paszta",
+            "dió",
+            "törpe",
+            "németország",
+            "kacsacsőrű emlős",
+            "bivaly",
+            "kanada",
+            "hegy",
+            "shakespeare",
+            "posta",
+            "piramis",
+            "zseni",
+            "halál",
+            "hangmagasság",
+            "tömb",
+            "hóember",
+            "kapcsolat",
+            "posta",
+            "bögre",
+            "kártya",
+            "berlin",
+            "gyűrű",
+            "rakéta",
+            "néz"
+          ],
+          "assignments": {
+            "team": [
+              "kártya",
+              "halál",
+              "hóember",
+              "piramis",
+              "németország",
+              "tömb",
+              "néz",
+              "bivaly",
+              "kapcsolat"
+            ],
+            "opponent": [
+              "shakespeare",
+              "sonka",
+              "törpe",
+              "berlin",
+              "paszta",
+              "hegy",
+              "gyűrű",
+              "zseni"
+            ],
+            "innocent": [
+              "bögre",
+              "posta",
+              "kanada",
+              "hangmagasság",
+              "dió",
+              "posta",
+              "rakéta",
+              "kacsacsőrű emlős"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "farok",
+            "arany",
+            "cseh",
+            "sonka",
+            "sárgarépa",
+            "németország",
+            "bot",
+            "hang",
+            "horog",
+            "vázlat",
+            "kalóz",
+            "ausztrália",
+            "állatorvos",
+            "király",
+            "hideg",
+            "nővér",
+            "sas",
+            "március",
+            "kacsa",
+            "csap",
+            "stadion",
+            "modell",
+            "kapcsolat",
+            "királynő",
+            "tánc"
+          ],
+          "assignments": {
+            "team": [
+              "állatorvos",
+              "cseh",
+              "nővér",
+              "arany",
+              "vázlat",
+              "sárgarépa",
+              "kapcsolat",
+              "sonka",
+              "csap"
+            ],
+            "opponent": [
+              "hang",
+              "király",
+              "modell",
+              "kalóz",
+              "hideg",
+              "sas",
+              "farok",
+              "királynő"
+            ],
+            "innocent": [
+              "kacsa",
+              "horog",
+              "stadion",
+              "bot",
+              "ausztrália",
+              "németország",
+              "tánc",
+              "március"
+            ],
+            "assassin": []
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "szaturnusz",
+            "személyzet",
+            "horog",
+            "törzs",
+            "íj",
+            "udvar",
+            "állapot",
+            "betegség",
+            "élet",
+            "kereszt",
+            "mérkőzés",
+            "szék",
+            "olümposz",
+            "csokoládé",
+            "levegő",
+            "szerződés",
+            "híd",
+            "patkó",
+            "labda",
+            "gomb",
+            "szikla",
+            "csepp",
+            "éjszaka",
+            "menta",
+            "gyémánt"
+          ],
+          "assignments": {
+            "team": [
+              "csepp",
+              "olümposz",
+              "személyzet",
+              "éjszaka",
+              "íj",
+              "törzs",
+              "levegő",
+              "horog",
+              "szikla"
+            ],
+            "opponent": [
+              "udvar",
+              "kereszt",
+              "szék",
+              "labda",
+              "betegség",
+              "patkó",
+              "híd",
+              "mérkőzés"
+            ],
+            "innocent": [
+              "gomb",
+              "gyémánt",
+              "állapot",
+              "szaturnusz",
+              "szerződés",
+              "menta",
+              "élet",
+              "csokoládé"
+            ],
+            "assassin": []
+          }
+        }
+      ],
+      "variable": "Risk",
+      "language": "hu",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 8,
+        "assassin": 0
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "risk_high",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "elefántcsont",
+            "nagykövetség",
+            "bermuda",
+            "öv",
+            "sajtó",
+            "számla",
+            "kártya",
+            "mező",
+            "üveg",
+            "európa",
+            "szék",
+            "piramis",
+            "afrika",
+            "búvár",
+            "háló",
+            "lélek",
+            "kikötő",
+            "fuvola",
+            "higany",
+            "tanítvány",
+            "lovag",
+            "labor",
+            "felhőkarcoló",
+            "díj",
+            "tömeg"
+          ],
+          "assignments": {
+            "team": [
+              "nagykövetség",
+              "tanítvány",
+              "európa",
+              "piramis",
+              "szék",
+              "elefántcsont",
+              "labor",
+              "kikötő",
+              "díj"
+            ],
+            "opponent": [
+              "háló",
+              "öv",
+              "üveg",
+              "fuvola",
+              "sajtó",
+              "tömeg",
+              "mező",
+              "afrika"
+            ],
+            "innocent": [
+              "számla",
+              "higany",
+              "lélek"
+            ],
+            "assassin": [
+              "felhőkarcoló",
+              "kártya",
+              "lovag",
+              "bermuda",
+              "búvár"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "betegség",
+            "fog",
+            "kulcs",
+            "milliomos",
+            "féreg",
+            "szerv",
+            "szellem",
+            "gerinc",
+            "tök",
+            "kikötő",
+            "szerződés",
+            "limuzin",
+            "ausztrália",
+            "hal",
+            "vonat",
+            "hát",
+            "hullám",
+            "felhőkarcoló",
+            "készlet",
+            "karmester",
+            "udvar",
+            "nap",
+            "kés",
+            "ciklus",
+            "borjú"
+          ],
+          "assignments": {
+            "team": [
+              "féreg",
+              "kés",
+              "karmester",
+              "milliomos",
+              "tök",
+              "nap",
+              "kulcs",
+              "limuzin",
+              "fog"
+            ],
+            "opponent": [
+              "vonat",
+              "szerződés",
+              "szellem",
+              "kikötő",
+              "ausztrália",
+              "szerv",
+              "hát",
+              "készlet"
+            ],
+            "innocent": [
+              "gerinc",
+              "udvar",
+              "felhőkarcoló"
+            ],
+            "assassin": [
+              "betegség",
+              "hullám",
+              "hal",
+              "ciklus",
+              "borjú"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "európa",
+            "levegő",
+            "bivaly",
+            "sárgarépa",
+            "üzlet",
+            "borjú",
+            "háló",
+            "moszkva",
+            "limuzin",
+            "kulcs",
+            "szalma",
+            "kereszt",
+            "ellenőrzés",
+            "afrika",
+            "március",
+            "kutya",
+            "arc",
+            "tömeg",
+            "díj",
+            "íj",
+            "daru",
+            "méreg",
+            "láb",
+            "higany",
+            "pamut"
+          ],
+          "assignments": {
+            "team": [
+              "pamut",
+              "ellenőrzés",
+              "kulcs",
+              "bivaly",
+              "európa",
+              "sárgarépa",
+              "díj",
+              "higany",
+              "limuzin"
+            ],
+            "opponent": [
+              "üzlet",
+              "arc",
+              "méreg",
+              "március",
+              "tömeg",
+              "háló",
+              "moszkva",
+              "kutya"
+            ],
+            "innocent": [
+              "íj",
+              "levegő",
+              "láb"
+            ],
+            "assassin": [
+              "szalma",
+              "kereszt",
+              "daru",
+              "borjú",
+              "afrika"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "vázlat",
+            "bérlet",
+            "strand",
+            "mexikó",
+            "számla",
+            "hideg",
+            "bíróság",
+            "csillag",
+            "medve",
+            "sajtó",
+            "kacsa",
+            "bogyó",
+            "bögre",
+            "gyökér",
+            "dátum",
+            "napló",
+            "gyűrű",
+            "idő",
+            "modell",
+            "hüvelykujj",
+            "pont",
+            "kivi",
+            "kötés",
+            "ruha",
+            "kefe"
+          ],
+          "assignments": {
+            "team": [
+              "dátum",
+              "bérlet",
+              "idő",
+              "sajtó",
+              "vázlat",
+              "bíróság",
+              "ruha",
+              "számla",
+              "gyűrű"
+            ],
+            "opponent": [
+              "csillag",
+              "hüvelykujj",
+              "strand",
+              "bogyó",
+              "kötés",
+              "bögre",
+              "napló",
+              "pont"
+            ],
+            "innocent": [
+              "modell",
+              "kefe",
+              "hideg"
+            ],
+            "assassin": [
+              "gyökér",
+              "kivi",
+              "kacsa",
+              "mexikó",
+              "medve"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "akkumulátor",
+            "ruha",
+            "kód",
+            "tavasz",
+            "hang",
+            "csaj",
+            "templom",
+            "négyzet",
+            "rulett",
+            "talaj",
+            "kivi",
+            "csap",
+            "higany",
+            "fuvola",
+            "szellem",
+            "juhar",
+            "ciklus",
+            "pont",
+            "kacsacsőrű emlős",
+            "sajtó",
+            "bak",
+            "ügynök",
+            "rózsa",
+            "búvár",
+            "tolvaj"
+          ],
+          "assignments": {
+            "team": [
+              "hang",
+              "ciklus",
+              "sajtó",
+              "ügynök",
+              "rózsa",
+              "tavasz",
+              "szellem",
+              "négyzet",
+              "juhar"
+            ],
+            "opponent": [
+              "akkumulátor",
+              "rulett",
+              "templom",
+              "kacsacsőrű emlős",
+              "kivi",
+              "búvár",
+              "bak",
+              "csap"
+            ],
+            "innocent": [
+              "fuvola",
+              "kód",
+              "pont"
+            ],
+            "assassin": [
+              "ruha",
+              "talaj",
+              "tolvaj",
+              "higany",
+              "csaj"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "öl",
+            "háború",
+            "higany",
+            "stadion",
+            "összeomlás",
+            "sapka",
+            "tavasz",
+            "cipő",
+            "bomba",
+            "motor",
+            "robot",
+            "élet",
+            "csaj",
+            "pite",
+            "sztrájk",
+            "hüvelykujj",
+            "gomb",
+            "víz",
+            "nadrág",
+            "tányér",
+            "mosógép",
+            "csúszás",
+            "műanyag",
+            "bérlet",
+            "szálloda"
+          ],
+          "assignments": {
+            "team": [
+              "robot",
+              "tányér",
+              "mosógép",
+              "pite",
+              "műanyag",
+              "bomba",
+              "szálloda",
+              "hüvelykujj",
+              "sapka"
+            ],
+            "opponent": [
+              "motor",
+              "háború",
+              "gomb",
+              "nadrág",
+              "öl",
+              "élet",
+              "higany",
+              "tavasz"
+            ],
+            "innocent": [
+              "stadion",
+              "összeomlás",
+              "csúszás"
+            ],
+            "assassin": [
+              "csaj",
+              "víz",
+              "sztrájk",
+              "cipő",
+              "bérlet"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "pilóta",
+            "gerinc",
+            "korona",
+            "ostor",
+            "serpenyő",
+            "pingvin",
+            "állapot",
+            "levegő",
+            "polip",
+            "képregény",
+            "játék",
+            "sugárhajtású",
+            "patak",
+            "zongora",
+            "zokni",
+            "hold",
+            "sas",
+            "tömb",
+            "milliomos",
+            "furgon",
+            "olaj",
+            "alom",
+            "hollywood",
+            "medve",
+            "bánya"
+          ],
+          "assignments": {
+            "team": [
+              "zongora",
+              "hollywood",
+              "korona",
+              "játék",
+              "zokni",
+              "olaj",
+              "pilóta",
+              "ostor",
+              "gerinc"
+            ],
+            "opponent": [
+              "milliomos",
+              "képregény",
+              "medve",
+              "furgon",
+              "levegő",
+              "hold",
+              "tömb",
+              "patak"
+            ],
+            "innocent": [
+              "sas",
+              "bánya",
+              "pingvin"
+            ],
+            "assassin": [
+              "serpenyő",
+              "állapot",
+              "alom",
+              "sugárhajtású",
+              "polip"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "patak",
+            "polip",
+            "bánya",
+            "katona",
+            "amerika",
+            "lekvár",
+            "pók",
+            "szék",
+            "erő",
+            "ketchup",
+            "kikötő",
+            "szív",
+            "szalma",
+            "csavar",
+            "joker",
+            "betegség",
+            "medve",
+            "macska",
+            "piramis",
+            "változás",
+            "pisztoly",
+            "amazonas",
+            "skorpió",
+            "serpenyő",
+            "kalóz"
+          ],
+          "assignments": {
+            "team": [
+              "csavar",
+              "szalma",
+              "skorpió",
+              "betegség",
+              "bánya",
+              "pók",
+              "lekvár",
+              "szív",
+              "szék"
+            ],
+            "opponent": [
+              "piramis",
+              "változás",
+              "kikötő",
+              "serpenyő",
+              "joker",
+              "polip",
+              "amazonas",
+              "kalóz"
+            ],
+            "innocent": [
+              "medve",
+              "ketchup",
+              "erő"
+            ],
+            "assassin": [
+              "patak",
+              "katona",
+              "macska",
+              "pisztoly",
+              "amerika"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "lovag",
+            "daru",
+            "dátum",
+            "íj",
+            "számla",
+            "mexikó",
+            "űr",
+            "folt",
+            "bögre",
+            "vonat",
+            "vakond",
+            "kullancs",
+            "kéreg",
+            "március",
+            "ágy",
+            "bogár",
+            "zöld",
+            "pite",
+            "oroszlán",
+            "ügyvéd",
+            "háromszög",
+            "kórház",
+            "lekvár",
+            "bogyó",
+            "fóka"
+          ],
+          "assignments": {
+            "team": [
+              "mexikó",
+              "íj",
+              "lovag",
+              "ágy",
+              "kéreg",
+              "zöld",
+              "vakond",
+              "daru",
+              "űr"
+            ],
+            "opponent": [
+              "oroszlán",
+              "kullancs",
+              "háromszög",
+              "vonat",
+              "folt",
+              "bogyó",
+              "fóka",
+              "bogár"
+            ],
+            "innocent": [
+              "ügyvéd",
+              "számla",
+              "pite"
+            ],
+            "assassin": [
+              "dátum",
+              "kórház",
+              "lekvár",
+              "március",
+              "bögre"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "vásár",
+            "csap",
+            "olümposz",
+            "piramis",
+            "kacsa",
+            "szív",
+            "boszorkány",
+            "szerződés",
+            "fedélzet",
+            "regény",
+            "szerv",
+            "patkó",
+            "felhőkarcoló",
+            "száj",
+            "erdő",
+            "vakond",
+            "tokió",
+            "kegyelem",
+            "csizma",
+            "tüske",
+            "oroszlán",
+            "nővér",
+            "gomb",
+            "árnyék",
+            "méz"
+          ],
+          "assignments": {
+            "team": [
+              "felhőkarcoló",
+              "csizma",
+              "árnyék",
+              "tüske",
+              "tokió",
+              "kacsa",
+              "szerződés",
+              "csap",
+              "szív"
+            ],
+            "opponent": [
+              "nővér",
+              "oroszlán",
+              "száj",
+              "patkó",
+              "vakond",
+              "erdő",
+              "fedélzet",
+              "boszorkány"
+            ],
+            "innocent": [
+              "szerv",
+              "olümposz",
+              "méz"
+            ],
+            "assassin": [
+              "piramis",
+              "kegyelem",
+              "regény",
+              "vásár",
+              "gomb"
+            ]
+          }
+        }
+      ],
+      "variable": "Risk",
+      "language": "hu",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 3,
+        "assassin": 5
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "association_easy",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "ametiszt",
+            "vihar",
+            "kasmír",
+            "kanyaró",
+            "versenyzés",
+            "aids",
+            "spatula",
+            "medve",
+            "smaragd",
+            "oboa",
+            "csavar",
+            "merőkanál",
+            "kanál",
+            "úszás",
+            "tekézés",
+            "nejlon",
+            "ár",
+            "fazék",
+            "cunami",
+            "gyémánt",
+            "mosómedve",
+            "prérifarkas",
+            "mennydörgés",
+            "jégeső",
+            "malária"
+          ],
+          "assignments": {
+            "team": [
+              "aids",
+              "kanyaró",
+              "nejlon",
+              "mennydörgés",
+              "jégeső",
+              "cunami",
+              "vihar",
+              "kasmír",
+              "malária"
+            ],
+            "opponent": [
+              "prérifarkas",
+              "tekézés",
+              "mosómedve",
+              "medve",
+              "ár",
+              "csavar",
+              "úszás",
+              "versenyzés"
+            ],
+            "innocent": [
+              "merőkanál",
+              "fazék",
+              "spatula",
+              "smaragd",
+              "kanál",
+              "ametiszt",
+              "gyémánt"
+            ],
+            "assassin": [
+              "oboa"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a type of fabric",
+              "a weather phenomenon",
+              "a disease",
+              "a sport",
+              "a four footed animal",
+              "a carpenter’s tool",
+              "a kitchen utensil",
+              "a precious stone",
+              "a musical instrument"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "somfa",
+            "domb",
+            "brácsa",
+            "tőkehal",
+            "kürt",
+            "lazac",
+            "pisztráng",
+            "szikla",
+            "körte",
+            "juhar",
+            "pálma",
+            "atya",
+            "lelkész",
+            "tál",
+            "régi slágerek",
+            "idősebb",
+            "reszelő",
+            "gitár",
+            "dinnye",
+            "barlang",
+            "trombita",
+            "imám",
+            "cápa",
+            "sziget",
+            "eper"
+          ],
+          "assignments": {
+            "team": [
+              "eper",
+              "körte",
+              "trombita",
+              "kürt",
+              "dinnye",
+              "brácsa",
+              "tál",
+              "reszelő",
+              "gitár"
+            ],
+            "opponent": [
+              "idősebb",
+              "atya",
+              "imám",
+              "sziget",
+              "domb",
+              "lelkész",
+              "szikla",
+              "barlang"
+            ],
+            "innocent": [
+              "cápa",
+              "pisztráng",
+              "somfa",
+              "juhar",
+              "lazac",
+              "pálma",
+              "tőkehal"
+            ],
+            "assassin": [
+              "régi slágerek"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a fruit",
+              "a musical instrument",
+              "a kitchen utensil",
+              "a member of the clergy",
+              "a natural earth formation",
+              "a fish",
+              "a tree",
+              "a type of music"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "lámpa",
+            "rayon",
+            "flanel",
+            "széklet",
+            "szósz",
+            "öv",
+            "darázs",
+            "harkály",
+            "csirke",
+            "fotel",
+            "féreg",
+            "meteorológia",
+            "szabadidőnadrág",
+            "barna",
+            "ökörszem",
+            "íróasztal",
+            "biológia",
+            "lila",
+            "boka",
+            "kakukkfű",
+            "zoológia",
+            "orgona",
+            "sólyom",
+            "kék",
+            "nyelv"
+          ],
+          "assignments": {
+            "team": [
+              "szabadidőnadrág",
+              "biológia",
+              "nyelv",
+              "meteorológia",
+              "rayon",
+              "zoológia",
+              "flanel",
+              "öv",
+              "boka"
+            ],
+            "opponent": [
+              "fotel",
+              "szósz",
+              "széklet",
+              "íróasztal",
+              "lámpa",
+              "darázs",
+              "kakukkfű",
+              "féreg"
+            ],
+            "innocent": [
+              "barna",
+              "csirke",
+              "ökörszem",
+              "lila",
+              "sólyom",
+              "kék",
+              "harkály"
+            ],
+            "assassin": [
+              "orgona"
+            ]
+          },
+          "private": {
+            "categories": [
+              "an article of clothing",
+              "a type of fabric",
+              "a part of the human body",
+              "a science",
+              "an insect",
+              "an article of furniture",
+              "a substance for flavoring food",
+              "a bird",
+              "a color",
+              "a musical instrument"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "mumpsz",
+            "juh",
+            "ököl",
+            "petúnia",
+            "eső",
+            "barlang",
+            "hidrogén",
+            "orrszarvú",
+            "kápolna",
+            "kordbársony",
+            "szentély",
+            "gyapjú",
+            "pamut szájú",
+            "tó",
+            "félpótkocsi",
+            "rayon",
+            "nor’easter",
+            "bot",
+            "ágyú",
+            "asp",
+            "ibolya",
+            "rák",
+            "kerékpár",
+            "vonat",
+            "lándzsa"
+          ],
+          "assignments": {
+            "team": [
+              "mumpsz",
+              "kordbársony",
+              "rák",
+              "nor’easter",
+              "eső",
+              "rayon",
+              "juh",
+              "orrszarvú",
+              "gyapjú"
+            ],
+            "opponent": [
+              "bot",
+              "szentély",
+              "tó",
+              "ököl",
+              "kápolna",
+              "barlang",
+              "ágyú",
+              "lándzsa"
+            ],
+            "innocent": [
+              "petúnia",
+              "asp",
+              "vonat",
+              "félpótkocsi",
+              "ibolya",
+              "pamut szájú",
+              "kerékpár"
+            ],
+            "assassin": [
+              "hidrogén"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a disease",
+              "a weather phenomenon",
+              "a type of fabric",
+              "a four footed animal",
+              "a weapon",
+              "a building for religious services",
+              "a natural earth formation",
+              "a type of vehicle",
+              "a flower",
+              "a snake",
+              "a chemical element"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "székesegyház",
+            "gyomor",
+            "szarvas",
+            "hát",
+            "farkas",
+            "mérnök",
+            "flamingó",
+            "körömvirág",
+            "versenyzés",
+            "mellkas",
+            "nyír",
+            "lacrosse",
+            "szegfű",
+            "könyvelő",
+            "bőr",
+            "velúr",
+            "kasmír",
+            "szív",
+            "sivatag",
+            "orgona",
+            "elefánt",
+            "nőszirom",
+            "papagáj",
+            "kápolna",
+            "sziklafal"
+          ],
+          "assignments": {
+            "team": [
+              "flamingó",
+              "hát",
+              "mellkas",
+              "szarvas",
+              "farkas",
+              "papagáj",
+              "elefánt",
+              "gyomor",
+              "szív"
+            ],
+            "opponent": [
+              "nőszirom",
+              "mérnök",
+              "orgona",
+              "kápolna",
+              "székesegyház",
+              "körömvirág",
+              "könyvelő",
+              "szegfű"
+            ],
+            "innocent": [
+              "velúr",
+              "sivatag",
+              "kasmír",
+              "sziklafal",
+              "bőr",
+              "versenyzés",
+              "lacrosse"
+            ],
+            "assassin": [
+              "nyír"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a part of the human body",
+              "a bird",
+              "a four footed animal",
+              "a flower",
+              "a building for religious services",
+              "an occupation or profession",
+              "a natural earth formation",
+              "a sport",
+              "a type of fabric",
+              "a tree"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "ón",
+            "kesztyű",
+            "földrengés",
+            "kukorica",
+            "folk",
+            "szőlő",
+            "kacsa",
+            "réz",
+            "saláta",
+            "pinty",
+            "hagyma",
+            "laposhal",
+            "vas",
+            "spárga",
+            "rap",
+            "r&b",
+            "versenyzés",
+            "bluegrass",
+            "alumínium",
+            "banán",
+            "keselyű",
+            "rögbi",
+            "mellény",
+            "pizsama",
+            "jégeső"
+          ],
+          "assignments": {
+            "team": [
+              "kesztyű",
+              "versenyzés",
+              "mellény",
+              "pizsama",
+              "rögbi",
+              "spárga",
+              "kukorica",
+              "hagyma",
+              "saláta"
+            ],
+            "opponent": [
+              "jégeső",
+              "bluegrass",
+              "r&b",
+              "rap",
+              "szőlő",
+              "földrengés",
+              "banán",
+              "folk"
+            ],
+            "innocent": [
+              "vas",
+              "keselyű",
+              "pinty",
+              "ón",
+              "réz",
+              "alumínium",
+              "kacsa"
+            ],
+            "assassin": [
+              "laposhal"
+            ]
+          },
+          "private": {
+            "categories": [
+              "an article of clothing",
+              "a vegetable",
+              "a sport",
+              "a weather phenomenon",
+              "a type of music",
+              "a fruit",
+              "a metal",
+              "a bird",
+              "a fish"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "cseresznye",
+            "melltartó",
+            "autó",
+            "miniszter",
+            "pikkelysömör",
+            "torna",
+            "sapka",
+            "nyír",
+            "kastély",
+            "ruha",
+            "fűz",
+            "szálloda",
+            "rabbi",
+            "lakókocsi",
+            "cukor",
+            "imám",
+            "karácsony",
+            "pápa",
+            "fűnyíró",
+            "labdarúgás",
+            "talicska",
+            "petrezselyem",
+            "nyírók",
+            "kosárlabda",
+            "sziget"
+          ],
+          "assignments": {
+            "team": [
+              "cukor",
+              "pápa",
+              "sapka",
+              "imám",
+              "ruha",
+              "petrezselyem",
+              "rabbi",
+              "melltartó",
+              "miniszter"
+            ],
+            "opponent": [
+              "fűz",
+              "kastély",
+              "lakókocsi",
+              "karácsony",
+              "autó",
+              "nyír",
+              "cseresznye",
+              "szálloda"
+            ],
+            "innocent": [
+              "fűnyíró",
+              "labdarúgás",
+              "pikkelysömör",
+              "torna",
+              "kosárlabda",
+              "nyírók",
+              "talicska"
+            ],
+            "assassin": [
+              "sziget"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a member of the clergy",
+              "an article of clothing",
+              "a substance for flavoring food",
+              "a type of human dwelling",
+              "a tree",
+              "a sport",
+              "a gardener’s tool",
+              "a natural earth formation"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "gyémánt",
+            "ibolya",
+            "kosárlabda",
+            "platina",
+            "prérifarkas",
+            "patkány",
+            "vörösbegy",
+            "csörgőkígyó",
+            "fennsík",
+            "zöld",
+            "flamingó",
+            "szegfű",
+            "gyomor",
+            "hárfa",
+            "harsona",
+            "ökörszem",
+            "napraforgó",
+            "curling",
+            "trombita",
+            "arany",
+            "oposszum",
+            "asztalhegy",
+            "titán",
+            "golf",
+            "torna"
+          ],
+          "assignments": {
+            "team": [
+              "napraforgó",
+              "golf",
+              "torna",
+              "curling",
+              "oposszum",
+              "prérifarkas",
+              "szegfű",
+              "ibolya",
+              "kosárlabda"
+            ],
+            "opponent": [
+              "platina",
+              "fennsík",
+              "ökörszem",
+              "titán",
+              "arany",
+              "flamingó",
+              "asztalhegy",
+              "vörösbegy"
+            ],
+            "innocent": [
+              "trombita",
+              "patkány",
+              "zöld",
+              "hárfa",
+              "harsona",
+              "csörgőkígyó",
+              "gyémánt"
+            ],
+            "assassin": [
+              "gyomor"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a sport",
+              "a four footed animal",
+              "a flower",
+              "a natural earth formation",
+              "a metal",
+              "a bird",
+              "a musical instrument",
+              "a snake",
+              "a part of the human body"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "fotel",
+            "narancs",
+            "szél",
+            "dízel",
+            "legók",
+            "kerékpár",
+            "cipő",
+            "tazer",
+            "margarita",
+            "lámpa",
+            "lándzsa",
+            "sziget",
+            "pitypang",
+            "nárcisz",
+            "anatómia",
+            "ököl",
+            "asztal",
+            "melltartó",
+            "hepatitis",
+            "síkság",
+            "barlang",
+            "bor",
+            "matematika",
+            "bután",
+            "mumpsz"
+          ],
+          "assignments": {
+            "team": [
+              "hepatitis",
+              "pitypang",
+              "kerékpár",
+              "nárcisz",
+              "síkság",
+              "legók",
+              "barlang",
+              "mumpsz",
+              "sziget"
+            ],
+            "opponent": [
+              "bután",
+              "szél",
+              "melltartó",
+              "lámpa",
+              "asztal",
+              "dízel",
+              "cipő",
+              "fotel"
+            ],
+            "innocent": [
+              "anatómia",
+              "bor",
+              "ököl",
+              "lándzsa",
+              "matematika",
+              "tazer",
+              "margarita"
+            ],
+            "assassin": [
+              "narancs"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a flower",
+              "a toy",
+              "a natural earth formation",
+              "a disease",
+              "an article of furniture",
+              "an article of clothing",
+              "a type of fuel",
+              "a weapon",
+              "a science",
+              "an alcoholic beverage",
+              "a fruit"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "uborka",
+            "metal",
+            "komód",
+            "szilva",
+            "domb",
+            "árvácska",
+            "hegy",
+            "gondatlanságból elkövetett emberölés",
+            "betörés",
+            "kapitány",
+            "őrmester",
+            "asztalhegy",
+            "teherautó",
+            "éjjeliszekrény",
+            "sárgadinnye",
+            "szeder",
+            "tulipán",
+            "klasszikus",
+            "parancsnok",
+            "traktor",
+            " sikkasztás",
+            "krizantém",
+            "atv",
+            "kétszemélyes kanapé",
+            "szekér"
+          ],
+          "assignments": {
+            "team": [
+              "szilva",
+              "szeder",
+              "komód",
+              "tulipán",
+              "éjjeliszekrény",
+              "krizantém",
+              "sárgadinnye",
+              "árvácska",
+              "kétszemélyes kanapé"
+            ],
+            "opponent": [
+              "asztalhegy",
+              "domb",
+              "metal",
+              "őrmester",
+              "klasszikus",
+              "kapitány",
+              "parancsnok",
+              "hegy"
+            ],
+            "innocent": [
+              "atv",
+              "gondatlanságból elkövetett emberölés",
+              "teherautó",
+              "betörés",
+              "szekér",
+              " sikkasztás",
+              "traktor"
+            ],
+            "assassin": [
+              "uborka"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a fruit",
+              "an article of furniture",
+              "a flower",
+              "a natural earth formation",
+              "a type of music",
+              "a military title",
+              "a type of vehicle",
+              "a crime",
+              "a vegetable"
+            ]
+          }
+        }
+      ],
+      "variable": "Word Assignments",
+      "language": "hu",
+      "number of instances": 10,
+      "generator": "easy word assignments",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "categories.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "association_difficult",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "martini",
+            "cink",
+            "sárgaréz",
+            "rózsa",
+            "kanapé",
+            "polc",
+            "hóvihar",
+            "zokni",
+            "nor’easter",
+            "blúz",
+            "pulóver",
+            "acél",
+            "geránium",
+            "lábtartó",
+            "püspök",
+            "gyapjú",
+            "tájfun",
+            "szekrény",
+            "bőr",
+            "pizsama",
+            "rozs",
+            "monszun",
+            "lelkész",
+            "bourbon",
+            "apáca"
+          ],
+          "assignments": {
+            "team": [
+              "gyapjú",
+              "lábtartó",
+              "pizsama",
+              "kanapé",
+              "rozs",
+              "pulóver",
+              "rózsa",
+              "apáca",
+              "tájfun"
+            ],
+            "opponent": [
+              "cink",
+              "acél",
+              "martini",
+              "polc",
+              "bőr",
+              "hóvihar",
+              "zokni",
+              "püspök"
+            ],
+            "innocent": [
+              "lelkész",
+              "monszun",
+              "bourbon",
+              "geránium",
+              "blúz",
+              "szekrény",
+              "sárgaréz"
+            ],
+            "assassin": [
+              "nor’easter"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a weather phenomenon",
+              "an alcoholic beverage",
+              "a type of fabric",
+              "a member of the clergy",
+              "an article of clothing",
+              "an article of furniture",
+              "a flower",
+              "a metal"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "rubin",
+            "mumpsz",
+            "nyelv",
+            "gyöngy",
+            "ametiszt",
+            "tuberkulózis",
+            "kastély",
+            "szálloda",
+            "ár",
+            "százlábú",
+            "bolha",
+            "lakókocsi",
+            "völgy",
+            "selyem",
+            "nejlon",
+            "fennsík",
+            "sziget",
+            "cukorbetegség",
+            "gránát",
+            "bőr",
+            "agy",
+            "csavarkulcs",
+            "fül",
+            "csavarhúzó",
+            "sivatag"
+          ],
+          "assignments": {
+            "team": [
+              "nejlon",
+              "sivatag",
+              "gránát",
+              "szálloda",
+              "agy",
+              "csavarhúzó",
+              "bőr",
+              "cukorbetegség",
+              "gyöngy"
+            ],
+            "opponent": [
+              "ametiszt",
+              "ár",
+              "nyelv",
+              "mumpsz",
+              "sziget",
+              "lakókocsi",
+              "fennsík",
+              "bolha"
+            ],
+            "innocent": [
+              "százlábú",
+              "kastély",
+              "csavarkulcs",
+              "rubin",
+              "selyem",
+              "völgy",
+              "fül"
+            ],
+            "assassin": [
+              "tuberkulózis"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a disease",
+              "a part of the human body",
+              "an insect",
+              "a natural earth formation",
+              "a type of human dwelling",
+              "a precious stone",
+              "a carpenter’s tool",
+              "a type of fabric"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "anakonda",
+            "krizantém",
+            "patkány",
+            "geológia",
+            "nőszirom",
+            "könyvelő",
+            "érsek",
+            "miniszter",
+            "szarvas",
+            "keselyű",
+            "nagynéni",
+            "színész",
+            "martini",
+            "nagyszülő",
+            "nagypapa",
+            "orchidea",
+            "meteorológia",
+            "apa",
+            "kémia",
+            "fekete",
+            "vodka",
+            "ökörszem",
+            "szamár",
+            "botanika",
+            "lelkész"
+          ],
+          "assignments": {
+            "team": [
+              "lelkész",
+              "keselyű",
+              "kémia",
+              "szarvas",
+              "anakonda",
+              "apa",
+              "vodka",
+              "ökörszem",
+              "botanika"
+            ],
+            "opponent": [
+              "nőszirom",
+              "geológia",
+              "könyvelő",
+              "fekete",
+              "nagyszülő",
+              "szamár",
+              "nagypapa",
+              "érsek"
+            ],
+            "innocent": [
+              "patkány",
+              "meteorológia",
+              "miniszter",
+              "nagynéni",
+              "színész",
+              "krizantém",
+              "martini"
+            ],
+            "assassin": [
+              "orchidea"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a flower",
+              "a science",
+              "a snake",
+              "an occupation or profession",
+              "a four footed animal",
+              "a relative",
+              "an alcoholic beverage",
+              "a member of the clergy",
+              "a bird"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "postás",
+            "kakukkfű",
+            "teherautó",
+            "szűrő",
+            "koriander",
+            "szél",
+            "kerékpár",
+            "petróleum",
+            "alternatív",
+            "vaj",
+            "soul",
+            "habverő",
+            "sárkány",
+            "régi slágerek",
+            "villa",
+            "eladó",
+            "ágyú",
+            "mustár",
+            "petrezselyem",
+            "vanília",
+            "kőolaj",
+            "bot",
+            "fahéj",
+            "kanál",
+            "autó"
+          ],
+          "assignments": {
+            "team": [
+              "postás",
+              "sárkány",
+              "petrezselyem",
+              "kerékpár",
+              "ágyú",
+              "habverő",
+              "szél",
+              "régi slágerek",
+              "kakukkfű"
+            ],
+            "opponent": [
+              "autó",
+              "bot",
+              "soul",
+              "petróleum",
+              "kanál",
+              "vanília",
+              "fahéj",
+              "eladó"
+            ],
+            "innocent": [
+              "koriander",
+              "szűrő",
+              "kőolaj",
+              "mustár",
+              "teherautó",
+              "alternatív",
+              "vaj"
+            ],
+            "assassin": [
+              "villa"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a kitchen utensil",
+              "a substance for flavoring food",
+              "a type of fuel",
+              "a type of music",
+              "an occupation or profession",
+              "an herb",
+              "a weapon",
+              "a toy"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "kalapács",
+            "paradicsom",
+            "rózsaszín",
+            "ón",
+            "banán",
+            "ólom",
+            "villanyszerelő",
+            "influenza",
+            "mérnök",
+            "rock",
+            "fogó",
+            "jade",
+            "ananász",
+            "ezüst",
+            "régi slágerek",
+            "zafír",
+            "sárga",
+            "cink",
+            "spenót",
+            "aids",
+            "ács",
+            "görögdinnye",
+            "tüdőgyulladás",
+            "folk",
+            "zeller"
+          ],
+          "assignments": {
+            "team": [
+              "rózsaszín",
+              "fogó",
+              "villanyszerelő",
+              "zeller",
+              "zafír",
+              "ananász",
+              "influenza",
+              "régi slágerek",
+              "ón"
+            ],
+            "opponent": [
+              "aids",
+              "paradicsom",
+              "banán",
+              "ács",
+              "cink",
+              "jade",
+              "spenót",
+              "rock"
+            ],
+            "innocent": [
+              "kalapács",
+              "mérnök",
+              "ólom",
+              "folk",
+              "görögdinnye",
+              "tüdőgyulladás",
+              "ezüst"
+            ],
+            "assassin": [
+              "sárga"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a disease",
+              "a color",
+              "a fruit",
+              "a metal",
+              "an occupation or profession",
+              "a type of music",
+              "a vegetable",
+              "a carpenter’s tool",
+              "a precious stone"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "villanyszerelő",
+            "cukorbetegség",
+            "víz",
+            "apa",
+            "hiv",
+            "nagypapa",
+            "ajak",
+            "fejsze",
+            "lelkész",
+            "könyvelő",
+            "arany",
+            "réz",
+            "puska",
+            "orr",
+            "tüdő",
+            "bomba",
+            "titán",
+            "ács",
+            "fenék",
+            "alumínium",
+            "kalapács",
+            "tüdőgyulladás",
+            "imám",
+            "unokatestvér",
+            "lánytestvér"
+          ],
+          "assignments": {
+            "team": [
+              "cukorbetegség",
+              "kalapács",
+              "tüdő",
+              "alumínium",
+              "unokatestvér",
+              "arany",
+              "fejsze",
+              "lelkész",
+              "ács"
+            ],
+            "opponent": [
+              "titán",
+              "víz",
+              "puska",
+              "lánytestvér",
+              "tüdőgyulladás",
+              "orr",
+              "apa",
+              "könyvelő"
+            ],
+            "innocent": [
+              "villanyszerelő",
+              "hiv",
+              "réz",
+              "imám",
+              "ajak",
+              "bomba",
+              "nagypapa"
+            ],
+            "assassin": [
+              "fenék"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a metal",
+              "a part of the human body",
+              "an occupation or profession",
+              "a chemical element",
+              "a disease",
+              "a relative",
+              "a weapon",
+              "a member of the clergy"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "fiútestvér",
+            "ónix",
+            "fecske",
+            "lánya",
+            "városi ház",
+            "szósz",
+            "szabadidőnadrág",
+            "retek",
+            "só",
+            "unokatestvér",
+            "ház",
+            "ametiszt",
+            "sál",
+            "cukkini",
+            "héja",
+            "smaragd",
+            "kacsa",
+            "aranymálinkó",
+            "fűszer",
+            "anya",
+            "jurta",
+            "ruha",
+            "zafír",
+            "saláta",
+            "rövidnadrág"
+          ],
+          "assignments": {
+            "team": [
+              "anya",
+              "aranymálinkó",
+              "szabadidőnadrág",
+              "ház",
+              "só",
+              "ametiszt",
+              "sál",
+              "retek",
+              "ónix"
+            ],
+            "opponent": [
+              "fűszer",
+              "héja",
+              "fiútestvér",
+              "jurta",
+              "fecske",
+              "saláta",
+              "unokatestvér",
+              "rövidnadrág"
+            ],
+            "innocent": [
+              "kacsa",
+              "szósz",
+              "cukkini",
+              "zafír",
+              "ruha",
+              "lánya",
+              "smaragd"
+            ],
+            "assassin": [
+              "városi ház"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a type of human dwelling",
+              "a vegetable",
+              "a relative",
+              "a substance for flavoring food",
+              "an article of clothing",
+              "a bird",
+              "a precious stone"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "szósz",
+            "prédikátor",
+            "szerzetes",
+            "szedán",
+            "rozmaring",
+            "idősebb",
+            "petúnia",
+            "szürke",
+            "mosómedve",
+            "hikori",
+            "atv",
+            "szil",
+            "napenergia",
+            "gyógynövények",
+            "közkatona",
+            "ezredes",
+            "pápa",
+            "tehén",
+            "fa",
+            "alkohol",
+            "karácsony",
+            "szél",
+            "örökzöld",
+            "levendula",
+            "hortenzia"
+          ],
+          "assignments": {
+            "team": [
+              "hikori",
+              "gyógynövények",
+              "atv",
+              "petúnia",
+              "szürke",
+              "idősebb",
+              "ezredes",
+              "alkohol",
+              "mosómedve"
+            ],
+            "opponent": [
+              "karácsony",
+              "közkatona",
+              "prédikátor",
+              "szósz",
+              "levendula",
+              "szedán",
+              "napenergia",
+              "örökzöld"
+            ],
+            "innocent": [
+              "tehén",
+              "szél",
+              "fa",
+              "rozmaring",
+              "hortenzia",
+              "szil",
+              "pápa"
+            ],
+            "assassin": [
+              "szerzetes"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a four footed animal",
+              "a member of the clergy",
+              "a tree",
+              "a substance for flavoring food",
+              "a type of fuel",
+              "a flower",
+              "a type of vehicle",
+              "a color",
+              "a military title"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "asztalhegy",
+            "matematika",
+            "ház",
+            "kanapé",
+            "ajak",
+            "lila",
+            "citrom",
+            "kömény",
+            "ametiszt",
+            "asztal",
+            "gránát",
+            "botanika",
+            "barlang",
+            "tüdő",
+            "kunyhó",
+            "székesegyház",
+            "szék",
+            "sziklafal",
+            "sivatag",
+            "templom",
+            "indigó",
+            "orr",
+            "kunyhó",
+            "íróasztal",
+            "kurkuma"
+          ],
+          "assignments": {
+            "team": [
+              "gránát",
+              "citrom",
+              "orr",
+              "sivatag",
+              "íróasztal",
+              "ház",
+              "szék",
+              "matematika",
+              "lila"
+            ],
+            "opponent": [
+              "templom",
+              "székesegyház",
+              "botanika",
+              "kanapé",
+              "kurkuma",
+              "tüdő",
+              "kunyhó",
+              "asztalhegy"
+            ],
+            "innocent": [
+              "indigó",
+              "ajak",
+              "kunyhó",
+              "ametiszt",
+              "sziklafal",
+              "asztal",
+              "kömény"
+            ],
+            "assassin": [
+              "barlang"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a type of human dwelling",
+              "a color",
+              "a science",
+              "an article of furniture",
+              "a precious stone",
+              "a substance for flavoring food",
+              "a part of the human body",
+              "a natural earth formation",
+              "a building for religious services"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "gyilkosság",
+            "ponty",
+            "paprika",
+            "hárfa",
+            "fehér",
+            "nyelv",
+            "levendula",
+            "bálna",
+            "benzin",
+            "vandalizmus",
+            "ale",
+            "mellkas",
+            "fa",
+            "curry",
+            "vöröscsattogó",
+            "haj",
+            "rum",
+            "kosárlabda",
+            "zongora",
+            "krikett",
+            "hagyma",
+            "crappie",
+            " sikkasztás",
+            "boksz",
+            "hamisítás"
+          ],
+          "assignments": {
+            "team": [
+              "curry",
+              "levendula",
+              "fa",
+              "bálna",
+              "ale",
+              "hamisítás",
+              "krikett",
+              "mellkas",
+              "crappie"
+            ],
+            "opponent": [
+              "hagyma",
+              "vandalizmus",
+              "ponty",
+              "fehér",
+              "vöröscsattogó",
+              "zongora",
+              "haj",
+              "boksz"
+            ],
+            "innocent": [
+              " sikkasztás",
+              "hárfa",
+              "gyilkosság",
+              "rum",
+              "kosárlabda",
+              "paprika",
+              "nyelv"
+            ],
+            "assassin": [
+              "benzin"
+            ]
+          },
+          "private": {
+            "categories": [
+              "a sport",
+              "a part of the human body",
+              "a type of fuel",
+              "a musical instrument",
+              "a substance for flavoring food",
+              "an alcoholic beverage",
+              "a crime",
+              "a color",
+              "a fish"
+            ]
+          }
+        }
+      ],
+      "variable": "Word Assignments",
+      "language": "hu",
+      "number of instances": 10,
+      "generator": "difficult word assignments",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "categories.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "opponent_none",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "kártya",
+            "bánya",
+            "fedélzet",
+            "hegy",
+            "lélek",
+            "címke",
+            "kocka",
+            "szakács",
+            "pite",
+            "karmester",
+            "képregény",
+            "fóka",
+            "gomb",
+            "manó",
+            "kar",
+            "szél",
+            "piramis",
+            "háló",
+            "anglia",
+            "csizma",
+            "ostor",
+            "idő",
+            "tűz",
+            "bár",
+            "szereposztás"
+          ],
+          "assignments": {
+            "team": [
+              "lélek",
+              "ostor",
+              "karmester",
+              "idő",
+              "kocka",
+              "szakács",
+              "tűz",
+              "háló",
+              "anglia"
+            ],
+            "opponent": [
+              "manó",
+              "kártya",
+              "kar",
+              "fedélzet",
+              "gomb",
+              "szél",
+              "pite",
+              "hegy"
+            ],
+            "innocent": [
+              "fóka",
+              "képregény",
+              "szereposztás",
+              "bánya",
+              "csizma",
+              "bár",
+              "címke"
+            ],
+            "assassin": [
+              "piramis"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "húr",
+            "hinta",
+            "alma",
+            "rózsa",
+            "kórház",
+            "harcos",
+            "limuzin",
+            "csap",
+            "tanár",
+            "tömb",
+            "macska",
+            "stadion",
+            "németország",
+            "rakéta",
+            "kullancs",
+            "palack",
+            "ciklus",
+            "készlet",
+            "manó",
+            "korona",
+            "üzlet",
+            "azték",
+            "ágy",
+            "rész",
+            "cella"
+          ],
+          "assignments": {
+            "team": [
+              "tanár",
+              "cella",
+              "húr",
+              "kullancs",
+              "ágy",
+              "palack",
+              "azték",
+              "németország",
+              "készlet"
+            ],
+            "opponent": [
+              "hinta",
+              "csap",
+              "rakéta",
+              "kórház",
+              "ciklus",
+              "alma",
+              "üzlet",
+              "harcos"
+            ],
+            "innocent": [
+              "tömb",
+              "stadion",
+              "rész",
+              "manó",
+              "limuzin",
+              "macska",
+              "korona"
+            ],
+            "assassin": [
+              "rózsa"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "szikla",
+            "oroszlán",
+            "csap",
+            "patkó",
+            "kína",
+            "akkumulátor",
+            "csavar",
+            "angyal",
+            "márvány",
+            "vonat",
+            "nagykövetség",
+            "forradalom",
+            "búvár",
+            "amerika",
+            "posta",
+            "tabletta",
+            "gomb",
+            "zár",
+            "atlantisz",
+            "juhar",
+            "szakács",
+            "pont",
+            "limuzin",
+            "harang",
+            "polip"
+          ],
+          "assignments": {
+            "team": [
+              "patkó",
+              "limuzin",
+              "angyal",
+              "szikla",
+              "polip",
+              "búvár",
+              "pont",
+              "harang",
+              "zár"
+            ],
+            "opponent": [
+              "forradalom",
+              "vonat",
+              "posta",
+              "csavar",
+              "márvány",
+              "nagykövetség",
+              "szakács",
+              "akkumulátor"
+            ],
+            "innocent": [
+              "atlantisz",
+              "gomb",
+              "amerika",
+              "juhar",
+              "tabletta",
+              "csap",
+              "kína"
+            ],
+            "assassin": [
+              "oroszlán"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "koncert",
+            "limuzin",
+            "fedő",
+            "bot",
+            "atlantisz",
+            "erő",
+            "háló",
+            "borjú",
+            "rózsa",
+            "film",
+            "címke",
+            "szaturnusz",
+            "rulett",
+            "ausztrália",
+            "strand",
+            "húr",
+            "dinoszaurusz",
+            "macska",
+            "hó",
+            "kacsa",
+            "katona",
+            "kanada",
+            "víz",
+            "csuklya",
+            "lekvár"
+          ],
+          "assignments": {
+            "team": [
+              "háló",
+              "borjú",
+              "húr",
+              "rózsa",
+              "fedő",
+              "víz",
+              "csuklya",
+              "ausztrália",
+              "bot"
+            ],
+            "opponent": [
+              "lekvár",
+              "atlantisz",
+              "erő",
+              "kanada",
+              "koncert",
+              "katona",
+              "macska",
+              "szaturnusz"
+            ],
+            "innocent": [
+              "hó",
+              "strand",
+              "kacsa",
+              "rulett",
+              "limuzin",
+              "dinoszaurusz",
+              "film"
+            ],
+            "assassin": [
+              "címke"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "park",
+            "berlin",
+            "kés",
+            "cselekmény",
+            "paszta",
+            "néz",
+            "hó",
+            "bíróság",
+            "üveg",
+            "nővér",
+            "hollywood",
+            "klub",
+            "szék",
+            "gyökér",
+            "amerika",
+            "szerv",
+            "kegyelem",
+            "dió",
+            "erő",
+            "szellem",
+            "ninja",
+            "kéreg",
+            "bank",
+            "anglia",
+            "kikötő"
+          ],
+          "assignments": {
+            "team": [
+              "kés",
+              "hó",
+              "üveg",
+              "néz",
+              "klub",
+              "gyökér",
+              "nővér",
+              "paszta",
+              "park"
+            ],
+            "opponent": [
+              "szellem",
+              "ninja",
+              "anglia",
+              "szék",
+              "dió",
+              "amerika",
+              "bíróság",
+              "berlin"
+            ],
+            "innocent": [
+              "kéreg",
+              "kegyelem",
+              "szerv",
+              "bank",
+              "kikötő",
+              "hollywood",
+              "cselekmény"
+            ],
+            "assassin": [
+              "erő"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "készlet",
+            "zseni",
+            "szalma",
+            "szék",
+            "kína",
+            "bogyó",
+            "kölyök",
+            "négyzet",
+            "erdő",
+            "vas",
+            "krikett",
+            "ciklus",
+            "denevér",
+            "vonal",
+            "mamut",
+            "himalája",
+            "kefe",
+            "vázlat",
+            "udvar",
+            "kocka",
+            "képernyő",
+            "gyémánt",
+            "labor",
+            "arany",
+            "szikla"
+          ],
+          "assignments": {
+            "team": [
+              "kölyök",
+              "szalma",
+              "kefe",
+              "szék",
+              "kína",
+              "bogyó",
+              "denevér",
+              "arany",
+              "himalája"
+            ],
+            "opponent": [
+              "krikett",
+              "labor",
+              "kocka",
+              "gyémánt",
+              "vonal",
+              "zseni",
+              "vázlat",
+              "ciklus"
+            ],
+            "innocent": [
+              "mamut",
+              "készlet",
+              "udvar",
+              "szikla",
+              "vas",
+              "képernyő",
+              "négyzet"
+            ],
+            "assassin": [
+              "erdő"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "néz",
+            "fű",
+            "film",
+            "vonat",
+            "kerek",
+            "fal",
+            "piramis",
+            "gyémánt",
+            "oliva",
+            "fej",
+            "bomba",
+            "karmester",
+            "jegyzet",
+            "dinoszaurusz",
+            "skorpió",
+            "kém",
+            "bögre",
+            "kenguru",
+            "képregény",
+            "méz",
+            "manó",
+            "játék",
+            "fog",
+            "bot",
+            "lovag"
+          ],
+          "assignments": {
+            "team": [
+              "fal",
+              "kenguru",
+              "fej",
+              "dinoszaurusz",
+              "film",
+              "skorpió",
+              "fog",
+              "vonat",
+              "képregény"
+            ],
+            "opponent": [
+              "bögre",
+              "fű",
+              "kerek",
+              "gyémánt",
+              "néz",
+              "manó",
+              "bomba",
+              "piramis"
+            ],
+            "innocent": [
+              "játék",
+              "bot",
+              "méz",
+              "oliva",
+              "karmester",
+              "jegyzet",
+              "lovag"
+            ],
+            "assassin": [
+              "kém"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "kapcsoló",
+            "bogyó",
+            "macska",
+            "torony",
+            "ólom",
+            "vákuum",
+            "lövés",
+            "pók",
+            "kutya",
+            "mamut",
+            "réz",
+            "szereposztás",
+            "bár",
+            "milliomos",
+            "összeomlás",
+            "skála",
+            "fedő",
+            "india",
+            "utazás",
+            "cella",
+            "manó",
+            "jegyzet",
+            "gomb",
+            "loch ness",
+            "gerinc"
+          ],
+          "assignments": {
+            "team": [
+              "macska",
+              "milliomos",
+              "mamut",
+              "cella",
+              "összeomlás",
+              "gomb",
+              "kutya",
+              "skála",
+              "lövés"
+            ],
+            "opponent": [
+              "gerinc",
+              "loch ness",
+              "pók",
+              "kapcsoló",
+              "bár",
+              "manó",
+              "utazás",
+              "fedő"
+            ],
+            "innocent": [
+              "torony",
+              "ólom",
+              "bogyó",
+              "szereposztás",
+              "jegyzet",
+              "réz",
+              "vákuum"
+            ],
+            "assassin": [
+              "india"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "hajó",
+            "gyökér",
+            "háló",
+            "bár",
+            "ütő",
+            "folt",
+            "erdő",
+            "csap",
+            "paszta",
+            "mikroszkóp",
+            "ügynök",
+            "pite",
+            "bögre",
+            "nyakkendő",
+            "szellem",
+            "kutya",
+            "vonalzó",
+            "egér",
+            "kötés",
+            "királynő",
+            "mentőautó",
+            "ejtőernyő",
+            "patkó",
+            "berlin",
+            "tánc"
+          ],
+          "assignments": {
+            "team": [
+              "királynő",
+              "háló",
+              "erdő",
+              "kutya",
+              "hajó",
+              "gyökér",
+              "ügynök",
+              "kötés",
+              "pite"
+            ],
+            "opponent": [
+              "berlin",
+              "szellem",
+              "ejtőernyő",
+              "mentőautó",
+              "paszta",
+              "csap",
+              "vonalzó",
+              "patkó"
+            ],
+            "innocent": [
+              "mikroszkóp",
+              "tánc",
+              "bögre",
+              "egér",
+              "bár",
+              "nyakkendő",
+              "folt"
+            ],
+            "assassin": [
+              "ütő"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "törzs",
+            "vonal",
+            "csavar",
+            "iskola",
+            "fény",
+            "ébresztés",
+            "tavasz",
+            "gyökér",
+            "vas",
+            "láb",
+            "európa",
+            "összeomlás",
+            "torony",
+            "héja",
+            "ügyvéd",
+            "unikornis",
+            "műanyag",
+            "krikett",
+            "narancs",
+            "ritmus",
+            "állatorvos",
+            "király",
+            "hajó",
+            "kacsacsőrű emlős",
+            "olümposz"
+          ],
+          "assignments": {
+            "team": [
+              "ügyvéd",
+              "törzs",
+              "hajó",
+              "ritmus",
+              "héja",
+              "vonal",
+              "kacsacsőrű emlős",
+              "unikornis",
+              "állatorvos"
+            ],
+            "opponent": [
+              "fény",
+              "király",
+              "torony",
+              "ébresztés",
+              "csavar",
+              "tavasz",
+              "iskola",
+              "krikett"
+            ],
+            "innocent": [
+              "narancs",
+              "gyökér",
+              "olümposz",
+              "műanyag",
+              "vas",
+              "európa",
+              "összeomlás"
+            ],
+            "assassin": [
+              "láb"
+            ]
+          }
+        }
+      ],
+      "variable": "Opponent Difficulty",
+      "language": "hu",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 0,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "opponent_easy",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "narancs",
+            "bot",
+            "sugár",
+            "tüske",
+            "talaj",
+            "betegség",
+            "jég",
+            "háló",
+            "játék",
+            "ólom",
+            "kaszinó",
+            "tök",
+            "szél",
+            "arc",
+            "lovag",
+            "állapot",
+            "sztrájk",
+            "ütő",
+            "szub",
+            "robot",
+            "pite",
+            "ügynök",
+            "mosógép",
+            "angyal",
+            "lélek"
+          ],
+          "assignments": {
+            "team": [
+              "lélek",
+              "betegség",
+              "lovag",
+              "jég",
+              "angyal",
+              "ütő",
+              "pite",
+              "sugár",
+              "tök"
+            ],
+            "opponent": [
+              "narancs",
+              "arc",
+              "háló",
+              "talaj",
+              "mosógép",
+              "tüske",
+              "robot",
+              "sztrájk"
+            ],
+            "innocent": [
+              "ügynök",
+              "ólom",
+              "bot",
+              "játék",
+              "állapot",
+              "szél",
+              "szub"
+            ],
+            "assassin": [
+              "kaszinó"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "kanada",
+            "ébresztés",
+            "mérkőzés",
+            "amazonas",
+            "folt",
+            "park",
+            "pont",
+            "erdő",
+            "patak",
+            "számla",
+            "szereposztás",
+            "fedélzet",
+            "sapka",
+            "szálloda",
+            "rendőrség",
+            "arany",
+            "háromszög",
+            "vonalzó",
+            "nap",
+            "űr",
+            "farok",
+            "hercegnő",
+            "motor",
+            "fúró",
+            "orvos"
+          ],
+          "assignments": {
+            "team": [
+              "számla",
+              "amazonas",
+              "fúró",
+              "erdő",
+              "vonalzó",
+              "pont",
+              "farok",
+              "arany",
+              "szálloda"
+            ],
+            "opponent": [
+              "folt",
+              "kanada",
+              "rendőrség",
+              "sapka",
+              "orvos",
+              "űr",
+              "motor",
+              "mérkőzés"
+            ],
+            "innocent": [
+              "hercegnő",
+              "háromszög",
+              "fedélzet",
+              "ébresztés",
+              "szereposztás",
+              "nap",
+              "park"
+            ],
+            "assassin": [
+              "patak"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "sapka",
+            "idő",
+            "bérlet",
+            "hold",
+            "róma",
+            "méreg",
+            "daru",
+            "változás",
+            "citrom",
+            "kenguru",
+            "pók",
+            "antarktisz",
+            "kegyelem",
+            "pulyka",
+            "jég",
+            "fuvola",
+            "gomb",
+            "shakespeare",
+            "háború",
+            "ébresztés",
+            "nyúl",
+            "kentaur",
+            "ejtőernyő",
+            "rész",
+            "központ"
+          ],
+          "assignments": {
+            "team": [
+              "nyúl",
+              "ejtőernyő",
+              "fuvola",
+              "ébresztés",
+              "shakespeare",
+              "sapka",
+              "bérlet",
+              "pók",
+              "citrom"
+            ],
+            "opponent": [
+              "gomb",
+              "antarktisz",
+              "kenguru",
+              "rész",
+              "méreg",
+              "róma",
+              "változás",
+              "jég"
+            ],
+            "innocent": [
+              "központ",
+              "idő",
+              "hold",
+              "daru",
+              "háború",
+              "kentaur",
+              "pulyka"
+            ],
+            "assassin": [
+              "kegyelem"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "ruha",
+            "higany",
+            "héja",
+            "kaszinó",
+            "film",
+            "fúró",
+            "hal",
+            "fájl",
+            "dió",
+            "posta",
+            "koncert",
+            "csillag",
+            "bermuda",
+            "gyűrű",
+            "bögre",
+            "hullám",
+            "kéz",
+            "víz",
+            "pite",
+            "kórház",
+            "játék",
+            "négyzet",
+            "tanár",
+            "bálna",
+            "tömeg"
+          ],
+          "assignments": {
+            "team": [
+              "film",
+              "tömeg",
+              "bögre",
+              "gyűrű",
+              "fúró",
+              "posta",
+              "víz",
+              "csillag",
+              "ruha"
+            ],
+            "opponent": [
+              "játék",
+              "kórház",
+              "bermuda",
+              "tanár",
+              "kéz",
+              "bálna",
+              "héja",
+              "hullám"
+            ],
+            "innocent": [
+              "dió",
+              "higany",
+              "hal",
+              "kaszinó",
+              "fájl",
+              "pite",
+              "koncert"
+            ],
+            "assassin": [
+              "négyzet"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "india",
+            "hullám",
+            "macska",
+            "mellkas",
+            "skála",
+            "hal",
+            "köpeny",
+            "olaj",
+            "klub",
+            "vákuum",
+            "húr",
+            "kivi",
+            "cipő",
+            "pólus",
+            "ninja",
+            "játék",
+            "tudós",
+            "sztrájk",
+            "rész",
+            "lyuk",
+            "bak",
+            "akkumulátor",
+            "idegen",
+            "öl",
+            "ébresztés"
+          ],
+          "assignments": {
+            "team": [
+              "hal",
+              "játék",
+              "ninja",
+              "lyuk",
+              "akkumulátor",
+              "idegen",
+              "india",
+              "mellkas",
+              "cipő"
+            ],
+            "opponent": [
+              "húr",
+              "ébresztés",
+              "klub",
+              "vákuum",
+              "kivi",
+              "pólus",
+              "hullám",
+              "rész"
+            ],
+            "innocent": [
+              "öl",
+              "tudós",
+              "köpeny",
+              "bak",
+              "sztrájk",
+              "olaj",
+              "skála"
+            ],
+            "assassin": [
+              "macska"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "bogyó",
+            "tök",
+            "lyuk",
+            "sonka",
+            "zokni",
+            "szerver",
+            "iskola",
+            "hegy",
+            "kereszt",
+            "kacsacsőrű emlős",
+            "templom",
+            "borjú",
+            "műanyag",
+            "pólus",
+            "fű",
+            "erdő",
+            "kenguru",
+            "cső",
+            "hollywood",
+            "posta",
+            "tabletta",
+            "bumm",
+            "olümposz",
+            "font",
+            "elefántcsont"
+          ],
+          "assignments": {
+            "team": [
+              "bogyó",
+              "erdő",
+              "szerver",
+              "kacsacsőrű emlős",
+              "fű",
+              "műanyag",
+              "sonka",
+              "tabletta",
+              "lyuk"
+            ],
+            "opponent": [
+              "posta",
+              "hollywood",
+              "tök",
+              "hegy",
+              "kenguru",
+              "pólus",
+              "borjú",
+              "cső"
+            ],
+            "innocent": [
+              "font",
+              "zokni",
+              "bumm",
+              "olümposz",
+              "iskola",
+              "elefántcsont",
+              "kereszt"
+            ],
+            "assassin": [
+              "templom"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "iskola",
+            "vonal",
+            "nővér",
+            "opera",
+            "bögre",
+            "tolvaj",
+            "ejtőernyő",
+            "posta",
+            "polip",
+            "rendőrség",
+            "folt",
+            "trombita",
+            "peking",
+            "kegyelem",
+            "királynő",
+            "pont",
+            "arc",
+            "szem",
+            "fúró",
+            "szarv",
+            "moszkva",
+            "hó",
+            "élet",
+            "fájl",
+            "óriás"
+          ],
+          "assignments": {
+            "team": [
+              "moszkva",
+              "királynő",
+              "iskola",
+              "trombita",
+              "fájl",
+              "nővér",
+              "vonal",
+              "rendőrség",
+              "peking"
+            ],
+            "opponent": [
+              "szarv",
+              "folt",
+              "opera",
+              "ejtőernyő",
+              "arc",
+              "polip",
+              "hó",
+              "élet"
+            ],
+            "innocent": [
+              "szem",
+              "pont",
+              "kegyelem",
+              "fúró",
+              "posta",
+              "bögre",
+              "tolvaj"
+            ],
+            "assassin": [
+              "óriás"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "szerződés",
+            "tök",
+            "kar",
+            "díj",
+            "sonka",
+            "bogyó",
+            "tokió",
+            "fok",
+            "azték",
+            "napló",
+            "franciaország",
+            "cipő",
+            "farok",
+            "szék",
+            "játék",
+            "szem",
+            "főváros",
+            "képregény",
+            "élet",
+            "vakond",
+            "kullancs",
+            "kerítés",
+            "palack",
+            "vonat",
+            "kód"
+          ],
+          "assignments": {
+            "team": [
+              "azték",
+              "főváros",
+              "élet",
+              "kód",
+              "palack",
+              "kar",
+              "szerződés",
+              "szék",
+              "kerítés"
+            ],
+            "opponent": [
+              "vakond",
+              "játék",
+              "díj",
+              "tök",
+              "sonka",
+              "vonat",
+              "kullancs",
+              "bogyó"
+            ],
+            "innocent": [
+              "képregény",
+              "farok",
+              "napló",
+              "cipő",
+              "fok",
+              "tokió",
+              "franciaország"
+            ],
+            "assassin": [
+              "szem"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "hideg",
+            "összeomlás",
+            "hüvelykujj",
+            "bank",
+            "korona",
+            "torony",
+            "jupiter",
+            "bivaly",
+            "sárgarépa",
+            "hullám",
+            "gomb",
+            "tányér",
+            "víz",
+            "mellkas",
+            "vákuum",
+            "lézer",
+            "vegyület",
+            "cselekmény",
+            "felhőkarcoló",
+            "szakács",
+            "kulcs",
+            "kar",
+            "csempész",
+            "font",
+            "limuzin"
+          ],
+          "assignments": {
+            "team": [
+              "kulcs",
+              "gomb",
+              "szakács",
+              "mellkas",
+              "korona",
+              "jupiter",
+              "bank",
+              "bivaly",
+              "vákuum"
+            ],
+            "opponent": [
+              "sárgarépa",
+              "tányér",
+              "csempész",
+              "hullám",
+              "vegyület",
+              "összeomlás",
+              "víz",
+              "felhőkarcoló"
+            ],
+            "innocent": [
+              "hüvelykujj",
+              "kar",
+              "limuzin",
+              "font",
+              "cselekmény",
+              "hideg",
+              "lézer"
+            ],
+            "assassin": [
+              "torony"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "szem",
+            "mikroszkóp",
+            "citrom",
+            "nyakkendő",
+            "esés",
+            "fény",
+            "new york",
+            "napló",
+            "címke",
+            "mező",
+            "hideg",
+            "gyémánt",
+            "kutya",
+            "kölyök",
+            "bálna",
+            "amazonas",
+            "autó",
+            "űr",
+            "jupiter",
+            "számla",
+            "háló",
+            "ausztrália",
+            "rakéta",
+            "király",
+            "kereszt"
+          ],
+          "assignments": {
+            "team": [
+              "napló",
+              "bálna",
+              "rakéta",
+              "kölyök",
+              "űr",
+              "new york",
+              "háló",
+              "autó",
+              "jupiter"
+            ],
+            "opponent": [
+              "nyakkendő",
+              "mező",
+              "király",
+              "esés",
+              "kutya",
+              "mikroszkóp",
+              "szem",
+              "fény"
+            ],
+            "innocent": [
+              "amazonas",
+              "számla",
+              "hideg",
+              "kereszt",
+              "címke",
+              "citrom",
+              "ausztrália"
+            ],
+            "assassin": [
+              "gyémánt"
+            ]
+          }
+        }
+      ],
+      "variable": "Opponent Difficulty",
+      "language": "hu",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 1,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    },
+    {
+      "name": "opponent_difficult",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "board": [
+            "lézer",
+            "héja",
+            "gomb",
+            "műanyag",
+            "ausztrália",
+            "törpe",
+            "lovag",
+            "bánya",
+            "kullancs",
+            "gyökér",
+            "cselekmény",
+            "kórház",
+            "szarv",
+            "bálna",
+            "csizma",
+            "mosógép",
+            "játék",
+            "nyúl",
+            "hold",
+            "mamut",
+            "furgon",
+            "fagylalt",
+            "pont",
+            "bot",
+            "labda"
+          ],
+          "assignments": {
+            "team": [
+              "pont",
+              "lovag",
+              "műanyag",
+              "játék",
+              "hold",
+              "bánya",
+              "ausztrália",
+              "labda",
+              "gomb"
+            ],
+            "opponent": [
+              "törpe",
+              "gyökér",
+              "kórház",
+              "csizma",
+              "nyúl",
+              "furgon",
+              "lézer",
+              "fagylalt"
+            ],
+            "innocent": [
+              "bálna",
+              "cselekmény",
+              "mosógép",
+              "bot",
+              "héja",
+              "szarv",
+              "kullancs"
+            ],
+            "assassin": [
+              "mamut"
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "board": [
+            "ciklus",
+            "lézer",
+            "modell",
+            "tanítvány",
+            "szerv",
+            "száj",
+            "kalóz",
+            "vas",
+            "pite",
+            "olaj",
+            "kapcsolat",
+            "tű",
+            "kölyök",
+            "csempész",
+            "london",
+            "kullancs",
+            "mexikó",
+            "arany",
+            "tányér",
+            "csuklya",
+            "kivi",
+            "üveg",
+            "pisztoly",
+            "vázlat",
+            "jegyzet"
+          ],
+          "assignments": {
+            "team": [
+              "szerv",
+              "ciklus",
+              "jegyzet",
+              "kalóz",
+              "kullancs",
+              "vas",
+              "arany",
+              "tű",
+              "pite"
+            ],
+            "opponent": [
+              "olaj",
+              "üveg",
+              "kölyök",
+              "tányér",
+              "modell",
+              "kapcsolat",
+              "csuklya",
+              "csempész"
+            ],
+            "innocent": [
+              "mexikó",
+              "london",
+              "száj",
+              "pisztoly",
+              "lézer",
+              "tanítvány",
+              "kivi"
+            ],
+            "assassin": [
+              "vázlat"
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "board": [
+            "ellenőrzés",
+            "fuvola",
+            "háló",
+            "tabletta",
+            "temetkezési vállalkozó",
+            "halál",
+            "személyzet",
+            "kerek",
+            "fagylalt",
+            "helikopter",
+            "olaj",
+            "joker",
+            "jég",
+            "díj",
+            "szikla",
+            "kentaur",
+            "csizma",
+            "nyomon követni",
+            "vázlat",
+            "bár",
+            "fal",
+            "templom",
+            "vörösbegy",
+            "kanada",
+            "dátum"
+          ],
+          "assignments": {
+            "team": [
+              "fuvola",
+              "templom",
+              "tabletta",
+              "helikopter",
+              "kentaur",
+              "dátum",
+              "háló",
+              "ellenőrzés",
+              "kerek"
+            ],
+            "opponent": [
+              "vázlat",
+              "személyzet",
+              "díj",
+              "nyomon követni",
+              "vörösbegy",
+              "jég",
+              "halál",
+              "temetkezési vállalkozó"
+            ],
+            "innocent": [
+              "olaj",
+              "fagylalt",
+              "csizma",
+              "szikla",
+              "joker",
+              "kanada",
+              "fal"
+            ],
+            "assassin": [
+              "bár"
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "board": [
+            "héja",
+            "fáklya",
+            "patkó",
+            "tök",
+            "állapot",
+            "paszta",
+            "tolvaj",
+            "csillag",
+            "pamut",
+            "üveg",
+            "készlet",
+            "narancs",
+            "háromszög",
+            "torony",
+            "felhőkarcoló",
+            "bak",
+            "temetkezési vállalkozó",
+            "ausztrália",
+            "szub",
+            "rendőrség",
+            "fal",
+            "ábra",
+            "királynő",
+            "fej",
+            "olümposz"
+          ],
+          "assignments": {
+            "team": [
+              "fáklya",
+              "paszta",
+              "ábra",
+              "héja",
+              "pamut",
+              "tök",
+              "ausztrália",
+              "háromszög",
+              "rendőrség"
+            ],
+            "opponent": [
+              "fal",
+              "csillag",
+              "felhőkarcoló",
+              "fej",
+              "tolvaj",
+              "bak",
+              "királynő",
+              "üveg"
+            ],
+            "innocent": [
+              "olümposz",
+              "patkó",
+              "állapot",
+              "torony",
+              "narancs",
+              "szub",
+              "temetkezési vállalkozó"
+            ],
+            "assassin": [
+              "készlet"
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "board": [
+            "ügyvéd",
+            "vonat",
+            "németország",
+            "rózsa",
+            "udvar",
+            "műhold",
+            "száj",
+            "cső",
+            "bögre",
+            "szerver",
+            "amerika",
+            "kacsacsőrű emlős",
+            "róma",
+            "óriás",
+            "csaj",
+            "atlantisz",
+            "kullancs",
+            "szub",
+            "csempész",
+            "asztal",
+            "tömb",
+            "tolvaj",
+            "távcső",
+            "csepp",
+            "pilóta"
+          ],
+          "assignments": {
+            "team": [
+              "óriás",
+              "cső",
+              "bögre",
+              "pilóta",
+              "csepp",
+              "vonat",
+              "műhold",
+              "tömb",
+              "csaj"
+            ],
+            "opponent": [
+              "róma",
+              "amerika",
+              "kacsacsőrű emlős",
+              "száj",
+              "asztal",
+              "tolvaj",
+              "ügyvéd",
+              "udvar"
+            ],
+            "innocent": [
+              "szub",
+              "csempész",
+              "szerver",
+              "kullancs",
+              "atlantisz",
+              "németország",
+              "távcső"
+            ],
+            "assassin": [
+              "rózsa"
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "board": [
+            "tánc",
+            "tábla",
+            "méreg",
+            "iskola",
+            "kar",
+            "hold",
+            "néz",
+            "ló",
+            "harang",
+            "összeomlás",
+            "képernyő",
+            "készlet",
+            "ágy",
+            "mentőautó",
+            "furgon",
+            "szék",
+            "vásár",
+            "cselekmény",
+            "éjszaka",
+            "méz",
+            "erdő",
+            "láb",
+            "alom",
+            "idő",
+            "színház"
+          ],
+          "assignments": {
+            "team": [
+              "képernyő",
+              "tábla",
+              "hold",
+              "iskola",
+              "kar",
+              "furgon",
+              "alom",
+              "vásár",
+              "tánc"
+            ],
+            "opponent": [
+              "láb",
+              "ágy",
+              "erdő",
+              "készlet",
+              "méz",
+              "összeomlás",
+              "ló",
+              "szék"
+            ],
+            "innocent": [
+              "méreg",
+              "színház",
+              "idő",
+              "harang",
+              "néz",
+              "mentőautó",
+              "cselekmény"
+            ],
+            "assassin": [
+              "éjszaka"
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "board": [
+            "pite",
+            "éjszaka",
+            "bumm",
+            "menta",
+            "szív",
+            "bánya",
+            "címke",
+            "szerződés",
+            "repülőgép",
+            "kölyök",
+            "szuperhős",
+            "labda",
+            "manó",
+            "kapcsolat",
+            "washington",
+            "bomba",
+            "tábla",
+            "sas",
+            "bögre",
+            "ébresztés",
+            "afrika",
+            "héja",
+            "hüvelykujj",
+            "betegség",
+            "üzlet"
+          ],
+          "assignments": {
+            "team": [
+              "hüvelykujj",
+              "szuperhős",
+              "labda",
+              "betegség",
+              "sas",
+              "washington",
+              "bánya",
+              "címke",
+              "manó"
+            ],
+            "opponent": [
+              "kapcsolat",
+              "afrika",
+              "menta",
+              "kölyök",
+              "bumm",
+              "szerződés",
+              "pite",
+              "szív"
+            ],
+            "innocent": [
+              "tábla",
+              "ébresztés",
+              "bögre",
+              "héja",
+              "repülőgép",
+              "bomba",
+              "üzlet"
+            ],
+            "assassin": [
+              "éjszaka"
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "board": [
+            "sapka",
+            "joker",
+            "india",
+            "fedő",
+            "oroszlán",
+            "torony",
+            "gomb",
+            "ostor",
+            "koncert",
+            "európa",
+            "kulcs",
+            "ritmus",
+            "ébresztés",
+            "pingvin",
+            "pont",
+            "kesztyű",
+            "bumm",
+            "kegyelem",
+            "kártya",
+            "zseni",
+            "trombita",
+            "ügyvéd",
+            "felhőkarcoló",
+            "himalája",
+            "nagykövetség"
+          ],
+          "assignments": {
+            "team": [
+              "trombita",
+              "joker",
+              "himalája",
+              "európa",
+              "fedő",
+              "nagykövetség",
+              "ostor",
+              "kesztyű",
+              "bumm"
+            ],
+            "opponent": [
+              "felhőkarcoló",
+              "torony",
+              "ritmus",
+              "gomb",
+              "zseni",
+              "pont",
+              "kártya",
+              "sapka"
+            ],
+            "innocent": [
+              "koncert",
+              "india",
+              "pingvin",
+              "oroszlán",
+              "kegyelem",
+              "ébresztés",
+              "ügyvéd"
+            ],
+            "assassin": [
+              "kulcs"
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "board": [
+            "elefántcsont",
+            "pólus",
+            "afrika",
+            "kéreg",
+            "tömeg",
+            "motor",
+            "tűz",
+            "mérkőzés",
+            "cápa",
+            "kar",
+            "gyémánt",
+            "műhold",
+            "ügynök",
+            "fúró",
+            "kém",
+            "díj",
+            "szalma",
+            "központ",
+            "szerződés",
+            "vonal",
+            "fájl",
+            "ketchup",
+            "szem",
+            "szikla",
+            "szél"
+          ],
+          "assignments": {
+            "team": [
+              "tűz",
+              "gyémánt",
+              "díj",
+              "központ",
+              "kéreg",
+              "elefántcsont",
+              "ügynök",
+              "vonal",
+              "műhold"
+            ],
+            "opponent": [
+              "fájl",
+              "tömeg",
+              "ketchup",
+              "motor",
+              "szél",
+              "mérkőzés",
+              "szem",
+              "cápa"
+            ],
+            "innocent": [
+              "kar",
+              "szalma",
+              "afrika",
+              "pólus",
+              "fúró",
+              "kém",
+              "szerződés"
+            ],
+            "assassin": [
+              "szikla"
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "board": [
+            "tanítvány",
+            "hang",
+            "papír",
+            "cella",
+            "rész",
+            "kapcsolat",
+            "vonalzó",
+            "törpe",
+            "fok",
+            "kötés",
+            "szaturnusz",
+            "szög",
+            "kártya",
+            "borjú",
+            "bak",
+            "erő",
+            "lyuk",
+            "ló",
+            "hal",
+            "cápa",
+            "boszorkány",
+            "bár",
+            "ejtőernyő",
+            "bivaly",
+            "vegyület"
+          ],
+          "assignments": {
+            "team": [
+              "rész",
+              "papír",
+              "hang",
+              "cápa",
+              "szaturnusz",
+              "kártya",
+              "bak",
+              "boszorkány",
+              "bivaly"
+            ],
+            "opponent": [
+              "bár",
+              "hal",
+              "fok",
+              "vegyület",
+              "törpe",
+              "kapcsolat",
+              "tanítvány",
+              "vonalzó"
+            ],
+            "innocent": [
+              "ejtőernyő",
+              "erő",
+              "szög",
+              "lyuk",
+              "ló",
+              "kötés",
+              "cella"
+            ],
+            "assassin": [
+              "borjú"
+            ]
+          }
+        }
+      ],
+      "variable": "Opponent Difficulty",
+      "language": "hu",
+      "number of instances": 10,
+      "generator": "random",
+      "opponent difficulty": 2,
+      "assignments": {
+        "team": 9,
+        "opponent": 8,
+        "innocent": 7,
+        "assassin": 1
+      },
+      "wordlist": "original.json",
+      "flags": {
+        "IGNORE RAMBLING": false,
+        "IGNORE FALSE TARGETS OR GUESSES": false,
+        "REPROMPT ON ERROR": false,
+        "STRIP WORDS": true,
+        "IGNORE NUMBER OF TARGETS": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,490 @@
+{
+  "experiments": [
+    {
+      "name": "Level_1",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "hárfa",
+          "candidate_list": [
+            "öv",
+            "aids",
+            "székesegyház",
+            "hárfa",
+            "acél",
+            "pap",
+            "aranyhal",
+            "gyújtogatás"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "láb",
+          "candidate_list": [
+            "punk",
+            "aszály",
+            "szentély",
+            "perc",
+            "csákány",
+            "láb",
+            "mustár",
+            "imám"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "vipera",
+          "candidate_list": [
+            "oboa",
+            "ibolya",
+            "szűrő",
+            "opál",
+            "lopás",
+            "afrika",
+            "vipera",
+            "sapka"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "öv",
+          "candidate_list": [
+            "irán",
+            "óra",
+            "folyó",
+            "öv",
+            "bourbon",
+            "geológia",
+            "burgonya",
+            "nyírók"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "harmonika",
+          "candidate_list": [
+            "gyorshajtás",
+            "piton",
+            "harmonika",
+            "szatén",
+            "pulóver",
+            "meteorológia",
+            "mókus",
+            "vodka"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "piton",
+          "candidate_list": [
+            "méter",
+            "cink",
+            "gepárd",
+            "selyem",
+            "piton",
+            "zongora",
+            "hónap",
+            "szerzetes"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "röplabda",
+          "candidate_list": [
+            "narancs",
+            "merőkanál",
+            "saláta",
+            "könyök",
+            "százlábú",
+            "nyaraló",
+            "röplabda",
+            "flanel"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "sátor",
+          "candidate_list": [
+            "fizika",
+            "miniszter",
+            "crappie",
+            "ska",
+            "sátor",
+            "ausztrália",
+            "víz",
+            "pestis"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "varjú",
+          "candidate_list": [
+            "hét",
+            "varjú",
+            "pestis",
+            "mérföld",
+            "tuba",
+            "gránát",
+            "só",
+            "kanyon"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "szabadidőnadrág",
+          "candidate_list": [
+            "szabadidőnadrág",
+            "mennyezet",
+            "tudós",
+            "régi slágerek",
+            "hurrikán",
+            "rotációs kapa",
+            "árvácska",
+            "botanika"
+          ]
+        }
+      ],
+      "max_turns": 8,
+      "question_tag": "KÉRDÉS:",
+      "answer_tag": "VÁLASZ:",
+      "guess_tag": "TIPP:",
+      "answer_variations": [
+        "VÁLASZ: igen",
+        "VÁLASZ: nem",
+        "VÁLASZ: Igen",
+        "VÁLASZ: Nem"
+      ],
+      "letter_based_pattern": "(a célszó (betűvel kezdődik|tartalmazza a betűt))",
+      "direct_guess_pattern": "^a célszó\\s*(['\"])[^'\"]+?\\1\\s*\\?",
+      "length_question_pattern": "a célszó (több|kevesebb|pontosan) \\d+ betűből áll",
+      "syllable_question_pattern": "a célszó (több mint|kevesebb mint|pontosan) \\d+ szótagos",
+      "pos_question_pattern": "^a célszó (főnév|ige|melléknév)\\s*\\?",
+      "answerer_initial_prompt": "Játsszunk egy kitalálós játékot! A feladatod, hogy válaszolj a másik játékos kérdéseire. A(z) $TARGET WORD$ szóval kapcsolatos tudásod alapján válaszolj a következő kérdésekre vagy tippekre. A válaszodat kizárólag „igen” vagy „nem” formában add meg, magyarázat vagy egyéb szavak nélkül. Soha ne fedd fel a megoldást a válaszodban.\nAz alábbi formátumot használd, és NE ADJ HOZZÁ SEMMILYEN más szöveget:\nVÁLASZ: <valami szöveg>\nCélszó: $TARGET WORD$",
+      "guesser_initial_prompt": "Játsszunk egy kitalálós játékot! A feladatod, hogy kérdések sorozatával kiderítsd, az alábbi listában szereplő szavak közül melyik a célszó, a lehető legkevesebb kérdéssel. A maximálisan feltehető kérdések száma: $N. Ne feledd, csak egy lehetőséged van megtippelni a célszót, ezért jól gondold meg!\nA játék szabályai:\nEgy körben csak egy kérdést tehetsz fel. NE TEGYÉL FEL TÖBB KÉRDÉST.\nA kérdések nem vonatkozhatnak a szó szerkezetére, betűzésére vagy konkrét nyelvi jellemzőire, és csak „igen” vagy „nem” válaszolhatóak meg.\nA kérdésekhez az alábbi formátumot használd, és NE ADJ HOZZÁ SEMMILYEN más szöveget:\nKÉRDÉS: <a kérdésed>\nA célszó megtippelésére csak egy lehetőséged van. A tippeléshez az alábbi formátumot használd, és NE ADJ HOZZÁ SEMMILYEN más szöveget:\nTIPP: <célszó>\nNe kérj segítséget vagy utalást. A kérdés legyen rövid és lényegre törő. Kezdjük!\nA lehetséges szavak listája: $LIST$"
+    },
+    {
+      "name": "Level_2",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "matematika",
+          "candidate_list": [
+            "cukorbetegség",
+            "mumpsz",
+            "matematika",
+            "kémia",
+            "ajtó",
+            "iroda",
+            "cink",
+            "vas"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "szél",
+          "candidate_list": [
+            "sügér",
+            "ponty",
+            "bors",
+            "hagyma",
+            "szél",
+            "szén",
+            "század",
+            "nap"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "softball",
+          "candidate_list": [
+            "softball",
+            "krikett",
+            "fokhagyma",
+            "kakukkfű",
+            "fotel",
+            "láda",
+            "kémia",
+            "pszichológia"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "óra",
+          "candidate_list": [
+            "kard",
+            "fegyver",
+            "nap",
+            "óra",
+            "lelkész",
+            "imám",
+            "csirke",
+            "bíboros"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "törő",
+          "candidate_list": [
+            "kürt",
+            "hegedű",
+            "metélőhagyma",
+            "menta",
+            "kastély",
+            "tipi",
+            "spatula",
+            "törő"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "citrom",
+          "candidate_list": [
+            "hagyma",
+            "citrom",
+            "fűnyíró",
+            "nyírók",
+            "hamisítás",
+            "vandalizmus",
+            "metélőhagyma",
+            "oregánó"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "topáz",
+          "candidate_list": [
+            "ezüst",
+            "arany",
+            "golf",
+            "torna",
+            "topáz",
+            "smaragd",
+            "vandalizmus",
+            "erőszak"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "nikkel",
+          "candidate_list": [
+            "gyapjú",
+            "pamut",
+            "nikkel",
+            "bronz",
+            "kék",
+            "zöld",
+            "hikori",
+            "fűz"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "törő",
+          "candidate_list": [
+            "kömény",
+            "bors",
+            "barlang",
+            "szálloda",
+            "benzin",
+            "fa",
+            "merőkanál",
+            "törő"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "sivatag",
+          "candidate_list": [
+            "sivatag",
+            "tó",
+            "vonat",
+            "puzzle",
+            "fogorvos",
+            "ügyvéd",
+            "ezredmásodperc",
+            "század"
+          ]
+        }
+      ],
+      "max_turns": 8,
+      "question_tag": "KÉRDÉS:",
+      "answer_tag": "VÁLASZ:",
+      "guess_tag": "TIPP:",
+      "answer_variations": [
+        "VÁLASZ: igen",
+        "VÁLASZ: nem",
+        "VÁLASZ: Igen",
+        "VÁLASZ: Nem"
+      ],
+      "letter_based_pattern": "(a célszó (betűvel kezdődik|tartalmazza a betűt))",
+      "direct_guess_pattern": "^a célszó\\s*(['\"])[^'\"]+?\\1\\s*\\?",
+      "length_question_pattern": "a célszó (több|kevesebb|pontosan) \\d+ betűből áll",
+      "syllable_question_pattern": "a célszó (több mint|kevesebb mint|pontosan) \\d+ szótagos",
+      "pos_question_pattern": "^a célszó (főnév|ige|melléknév)\\s*\\?",
+      "answerer_initial_prompt": "Játsszunk egy kitalálós játékot! A feladatod, hogy válaszolj a másik játékos kérdéseire. A(z) $TARGET WORD$ szóval kapcsolatos tudásod alapján válaszolj a következő kérdésekre vagy tippekre. A válaszodat kizárólag „igen” vagy „nem” formában add meg, magyarázat vagy egyéb szavak nélkül. Soha ne fedd fel a megoldást a válaszodban.\nAz alábbi formátumot használd, és NE ADJ HOZZÁ SEMMILYEN más szöveget:\nVÁLASZ: <valami szöveg>\nCélszó: $TARGET WORD$",
+      "guesser_initial_prompt": "Játsszunk egy kitalálós játékot! A feladatod, hogy kérdések sorozatával kiderítsd, az alábbi listában szereplő szavak közül melyik a célszó, a lehető legkevesebb kérdéssel. A maximálisan feltehető kérdések száma: $N. Ne feledd, csak egy lehetőséged van megtippelni a célszót, ezért jól gondold meg!\nA játék szabályai:\nEgy körben csak egy kérdést tehetsz fel. NE TEGYÉL FEL TÖBB KÉRDÉST.\nA kérdések nem vonatkozhatnak a szó szerkezetére, betűzésére vagy konkrét nyelvi jellemzőire, és csak „igen” vagy „nem” válaszolhatóak meg.\nA kérdésekhez az alábbi formátumot használd, és NE ADJ HOZZÁ SEMMILYEN más szöveget:\nKÉRDÉS: <a kérdésed>\nA célszó megtippelésére csak egy lehetőséged van. A tippeléshez az alábbi formátumot használd, és NE ADJ HOZZÁ SEMMILYEN más szöveget:\nTIPP: <célszó>\nNe kérj segítséget vagy utalást. A kérdés legyen rövid és lényegre törő. Kezdjük!\nA lehetséges szavak listája: $LIST$"
+    },
+    {
+      "name": "Level_3",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "target_word": "mell",
+          "candidate_list": [
+            "ujj",
+            "bőr",
+            "mell",
+            "csípő",
+            "térd",
+            "láb",
+            "boka",
+            "fej"
+          ]
+        },
+        {
+          "game_id": 1,
+          "target_word": "arany",
+          "candidate_list": [
+            "arany",
+            "zöld",
+            "fehér",
+            "magenta",
+            "sárga",
+            "levendula",
+            "barna",
+            "indigó"
+          ]
+        },
+        {
+          "game_id": 2,
+          "target_word": "pálinka",
+          "candidate_list": [
+            "vodka",
+            "tequila",
+            "pezsgő",
+            "pálinka",
+            "likőr",
+            "scotch",
+            "gin",
+            "rum"
+          ]
+        },
+        {
+          "game_id": 3,
+          "target_word": "bazsalikom",
+          "candidate_list": [
+            "metélőhagyma",
+            "zsálya",
+            "rozmaring",
+            "petrezselyem",
+            "koriander",
+            "bazsalikom",
+            "fahéj",
+            "fokhagyma"
+          ]
+        },
+        {
+          "game_id": 4,
+          "target_word": "levendula",
+          "candidate_list": [
+            "kék",
+            "indigó",
+            "levendula",
+            "sárga",
+            "zöld",
+            "fekete",
+            "rózsaszín",
+            "narancs"
+          ]
+        },
+        {
+          "game_id": 5,
+          "target_word": "nagyszülő",
+          "candidate_list": [
+            "nagyszülő",
+            "nagybácsi",
+            "apa",
+            "lánytestvér",
+            "fiútestvér",
+            "anya",
+            "nagymama",
+            "unokahúg"
+          ]
+        },
+        {
+          "game_id": 6,
+          "target_word": "bors",
+          "candidate_list": [
+            "hagyma",
+            "bors",
+            "petrezselyem",
+            "kapor",
+            "kakukkfű",
+            "bazsalikom",
+            "só",
+            "metélőhagyma"
+          ]
+        },
+        {
+          "game_id": 7,
+          "target_word": "nanoszekundum",
+          "candidate_list": [
+            "másodperc",
+            "év",
+            "évezred",
+            "nap",
+            "hónap",
+            "óra",
+            "évtized",
+            "nanoszekundum"
+          ]
+        },
+        {
+          "game_id": 8,
+          "target_word": "katona",
+          "candidate_list": [
+            "őrmester",
+            "tábornok",
+            "tizedes",
+            "hadnagy",
+            "katona",
+            "őrnagy",
+            "közkatona",
+            "tiszt"
+          ]
+        },
+        {
+          "game_id": 9,
+          "target_word": "patkány",
+          "candidate_list": [
+            "jávorszarvas",
+            "patkány",
+            "szamár",
+            "puma",
+            "kecske",
+            "oposszum",
+            "kutya",
+            "oroszlán"
+          ]
+        }
+      ],
+      "max_turns": 8,
+      "question_tag": "KÉRDÉS:",
+      "answer_tag": "VÁLASZ:",
+      "guess_tag": "TIPP:",
+      "answer_variations": [
+        "VÁLASZ: igen",
+        "VÁLASZ: nem",
+        "VÁLASZ: Igen",
+        "VÁLASZ: Nem"
+      ],
+      "letter_based_pattern": "(a célszó (betűvel kezdődik|tartalmazza a betűt))",
+      "direct_guess_pattern": "^a célszó\\s*(['\"])[^'\"]+?\\1\\s*\\?",
+      "length_question_pattern": "a célszó (több|kevesebb|pontosan) \\d+ betűből áll",
+      "syllable_question_pattern": "a célszó (több mint|kevesebb mint|pontosan) \\d+ szótagos",
+      "pos_question_pattern": "^a célszó (főnév|ige|melléknév)\\s*\\?",
+      "answerer_initial_prompt": "Játsszunk egy kitalálós játékot! A feladatod, hogy válaszolj a másik játékos kérdéseire. A(z) $TARGET WORD$ szóval kapcsolatos tudásod alapján válaszolj a következő kérdésekre vagy tippekre. A válaszodat kizárólag „igen” vagy „nem” formában add meg, magyarázat vagy egyéb szavak nélkül. Soha ne fedd fel a megoldást a válaszodban.\nAz alábbi formátumot használd, és NE ADJ HOZZÁ SEMMILYEN más szöveget:\nVÁLASZ: <valami szöveg>\nCélszó: $TARGET WORD$",
+      "guesser_initial_prompt": "Játsszunk egy kitalálós játékot! A feladatod, hogy kérdések sorozatával kiderítsd, az alábbi listában szereplő szavak közül melyik a célszó, a lehető legkevesebb kérdéssel. A maximálisan feltehető kérdések száma: $N. Ne feledd, csak egy lehetőséged van megtippelni a célszót, ezért jól gondold meg!\nA játék szabályai:\nEgy körben csak egy kérdést tehetsz fel. NE TEGYÉL FEL TÖBB KÉRDÉST.\nA kérdések nem vonatkozhatnak a szó szerkezetére, betűzésére vagy konkrét nyelvi jellemzőire, és csak „igen” vagy „nem” válaszolhatóak meg.\nA kérdésekhez az alábbi formátumot használd, és NE ADJ HOZZÁ SEMMILYEN más szöveget:\nKÉRDÉS: <a kérdésed>\nA célszó megtippelésére csak egy lehetőséged van. A tippeléshez az alábbi formátumot használd, és NE ADJ HOZZÁ SEMMILYEN más szöveget:\nTIPP: <célszó>\nNe kérj segítséget vagy utalást. A kérdés legyen rövid és lényegre törő. Kezdjük!\nA lehetséges szavak listája: $LIST$"
+    }
+  ]
+}

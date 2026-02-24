@@ -6,604 +6,70 @@
         {
           "game_id": 0,
           "item_types": [
-            "kutya",
-            "alma",
-            "takaró"
+            "lámpa",
+            "pohár",
+            "asztal"
           ],
           "item_types_plural": [
-            "kutyák",
-            "almák",
-            "takarók"
+            "lámpák",
+            "poharak",
+            "asztalok"
           ],
           "item_counts": [
-            2,
-            2,
+            4,
+            1,
             1
           ],
           "player_a_values": [
-            2,
-            1,
+            0,
+            6,
             4
           ],
           "player_b_values": [
-            0,
-            3,
-            4
+            2,
+            1,
+            1
           ]
         },
         {
           "game_id": 1,
           "item_types": [
-            "számítógép",
-            "ceruza",
-            "lapát",
-            "asztal"
+            "pohár",
+            "tányér",
+            "kanál"
           ],
           "item_types_plural": [
-            "számítógépek",
-            "ceruzák",
-            "lapátok",
-            "asztalok"
+            "poharak",
+            "tányérok",
+            "kanalák"
           ],
           "item_counts": [
-            1,
-            1,
-            1,
-            2
+            2,
+            2,
+            1
           ],
           "player_a_values": [
-            0,
             1,
-            7,
-            1
+            4,
+            0
           ],
           "player_b_values": [
             1,
-            0,
-            3,
-            3
+            2,
+            4
           ]
         },
         {
           "game_id": 2,
           "item_types": [
+            "törölköző",
             "ceruza",
-            "tányér",
-            "alma"
+            "körte"
           ],
           "item_types_plural": [
+            "törölközők",
             "ceruzák",
-            "tányérok",
-            "almák"
-          ],
-          "item_counts": [
-            1,
-            1,
-            3
-          ],
-          "player_a_values": [
-            3,
-            7,
-            0
-          ],
-          "player_b_values": [
-            1,
-            6,
-            1
-          ]
-        },
-        {
-          "game_id": 3,
-          "item_types": [
-            "macska",
-            "tányér",
-            "számítógép",
-            "lapát"
-          ],
-          "item_types_plural": [
-            "macskák",
-            "tányérok",
-            "számítógépek",
-            "lapátok"
-          ],
-          "item_counts": [
-            1,
-            1,
-            2,
-            1
-          ],
-          "player_a_values": [
-            1,
-            7,
-            0,
-            2
-          ],
-          "player_b_values": [
-            0,
-            1,
-            2,
-            5
-          ]
-        },
-        {
-          "game_id": 4,
-          "item_types": [
-            "számítógép",
-            "asztal",
-            "takaró"
-          ],
-          "item_types_plural": [
-            "számítógépek",
-            "asztalok",
-            "takarók"
-          ],
-          "item_counts": [
-            4,
-            2,
-            1
-          ],
-          "player_a_values": [
-            1,
-            3,
-            0
-          ],
-          "player_b_values": [
-            1,
-            2,
-            2
-          ]
-        },
-        {
-          "game_id": 5,
-          "item_types": [
-            "ceruza",
-            "kutya",
-            "lapát",
-            "takaró"
-          ],
-          "item_types_plural": [
-            "ceruzák",
-            "kutyák",
-            "lapátok",
-            "takarók"
-          ],
-          "item_counts": [
-            1,
-            1,
-            2,
-            1
-          ],
-          "player_a_values": [
-            0,
-            5,
-            1,
-            3
-          ],
-          "player_b_values": [
-            2,
-            0,
-            1,
-            6
-          ]
-        },
-        {
-          "game_id": 6,
-          "item_types": [
-            "macska",
-            "tányér",
-            "ceruza"
-          ],
-          "item_types_plural": [
-            "macskák",
-            "tányérok",
-            "ceruzák"
-          ],
-          "item_counts": [
-            2,
-            1,
-            2
-          ],
-          "player_a_values": [
-            1,
-            0,
-            4
-          ],
-          "player_b_values": [
-            0,
-            4,
-            3
-          ]
-        },
-        {
-          "game_id": 7,
-          "item_types": [
-            "kutya",
-            "számítógép",
-            "macska"
-          ],
-          "item_types_plural": [
-            "kutyák",
-            "számítógépek",
-            "macskák"
-          ],
-          "item_counts": [
-            2,
-            2,
-            2
-          ],
-          "player_a_values": [
-            4,
-            0,
-            1
-          ],
-          "player_b_values": [
-            0,
-            2,
-            3
-          ]
-        },
-        {
-          "game_id": 8,
-          "item_types": [
-            "kutya",
-            "lapát",
-            "párna"
-          ],
-          "item_types_plural": [
-            "kutyák",
-            "lapátok",
-            "párnák"
-          ],
-          "item_counts": [
-            2,
-            1,
-            2
-          ],
-          "player_a_values": [
-            1,
-            8,
-            0
-          ],
-          "player_b_values": [
-            0,
-            8,
-            1
-          ]
-        },
-        {
-          "game_id": 9,
-          "item_types": [
-            "párna",
-            "kutya",
-            "ceruza"
-          ],
-          "item_types_plural": [
-            "párnák",
-            "kutyák",
-            "ceruzák"
-          ],
-          "item_counts": [
-            2,
-            1,
-            3
-          ],
-          "player_a_values": [
-            2,
-            0,
-            2
-          ],
-          "player_b_values": [
-            3,
-            4,
-            0
-          ]
-        },
-        {
-          "game_id": 10,
-          "item_types": [
-            "alma",
-            "ceruza",
-            "párna",
-            "kutya"
-          ],
-          "item_types_plural": [
-            "almák",
-            "ceruzák",
-            "párnák",
-            "kutyák"
-          ],
-          "item_counts": [
-            1,
-            2,
-            1,
-            1
-          ],
-          "player_a_values": [
-            2,
-            2,
-            1,
-            3
-          ],
-          "player_b_values": [
-            6,
-            0,
-            2,
-            2
-          ]
-        },
-        {
-          "game_id": 11,
-          "item_types": [
-            "ceruza",
-            "macska",
-            "tányér"
-          ],
-          "item_types_plural": [
-            "ceruzák",
-            "macskák",
-            "tányérok"
-          ],
-          "item_counts": [
-            2,
-            3,
-            1
-          ],
-          "player_a_values": [
-            2,
-            2,
-            0
-          ],
-          "player_b_values": [
-            0,
-            3,
-            1
-          ]
-        },
-        {
-          "game_id": 12,
-          "item_types": [
-            "alma",
-            "ceruza",
-            "takaró"
-          ],
-          "item_types_plural": [
-            "almák",
-            "ceruzák",
-            "takarók"
-          ],
-          "item_counts": [
-            1,
-            2,
-            2
-          ],
-          "player_a_values": [
-            6,
-            1,
-            1
-          ],
-          "player_b_values": [
-            4,
-            3,
-            0
-          ]
-        },
-        {
-          "game_id": 13,
-          "item_types": [
-            "lapát",
-            "alma",
-            "macska"
-          ],
-          "item_types_plural": [
-            "lapátok",
-            "almák",
-            "macskák"
-          ],
-          "item_counts": [
-            2,
-            3,
-            2
-          ],
-          "player_a_values": [
-            1,
-            2,
-            1
-          ],
-          "player_b_values": [
-            2,
-            0,
-            3
-          ]
-        },
-        {
-          "game_id": 14,
-          "item_types": [
-            "takaró",
-            "párna",
-            "asztal"
-          ],
-          "item_types_plural": [
-            "takarók",
-            "párnák",
-            "asztalok"
-          ],
-          "item_counts": [
-            1,
-            3,
-            2
-          ],
-          "player_a_values": [
-            6,
-            0,
-            2
-          ],
-          "player_b_values": [
-            7,
-            1,
-            0
-          ]
-        },
-        {
-          "game_id": 15,
-          "item_types": [
-            "lapát",
-            "asztal",
-            "ceruza"
-          ],
-          "item_types_plural": [
-            "lapátok",
-            "asztalok",
-            "ceruzák"
-          ],
-          "item_counts": [
-            1,
-            2,
-            2
-          ],
-          "player_a_values": [
-            0,
-            4,
-            1
-          ],
-          "player_b_values": [
-            2,
-            1,
-            3
-          ]
-        },
-        {
-          "game_id": 16,
-          "item_types": [
-            "asztal",
-            "alma",
-            "kutya"
-          ],
-          "item_types_plural": [
-            "asztalok",
-            "almák",
-            "kutyák"
-          ],
-          "item_counts": [
-            3,
-            1,
-            1
-          ],
-          "player_a_values": [
-            0,
-            7,
-            3
-          ],
-          "player_b_values": [
-            1,
-            3,
-            4
-          ]
-        },
-        {
-          "game_id": 17,
-          "item_types": [
-            "párna",
-            "tányér",
-            "alma"
-          ],
-          "item_types_plural": [
-            "párnák",
-            "tányérok",
-            "almák"
-          ],
-          "item_counts": [
-            1,
-            2,
-            2
-          ],
-          "player_a_values": [
-            8,
-            1,
-            0
-          ],
-          "player_b_values": [
-            6,
-            0,
-            2
-          ]
-        },
-        {
-          "game_id": 18,
-          "item_types": [
-            "takaró",
-            "macska",
-            "számítógép",
-            "párna"
-          ],
-          "item_types_plural": [
-            "takarók",
-            "macskák",
-            "számítógépek",
-            "párnák"
-          ],
-          "item_counts": [
-            1,
-            1,
-            2,
-            2
-          ],
-          "player_a_values": [
-            2,
-            2,
-            0,
-            3
-          ],
-          "player_b_values": [
-            2,
-            0,
-            2,
-            2
-          ]
-        },
-        {
-          "game_id": 19,
-          "item_types": [
-            "lapát",
-            "asztal",
-            "takaró",
-            "kutya"
-          ],
-          "item_types_plural": [
-            "lapátok",
-            "asztalok",
-            "takarók",
-            "kutyák"
-          ],
-          "item_counts": [
-            1,
-            3,
-            1,
-            1
-          ],
-          "player_a_values": [
-            1,
-            0,
-            7,
-            2
-          ],
-          "player_b_values": [
-            3,
-            1,
-            3,
-            1
-          ]
-        },
-        {
-          "game_id": 20,
-          "item_types": [
-            "macska",
-            "asztal",
-            "lapát"
-          ],
-          "item_types_plural": [
-            "macskák",
-            "asztalok",
-            "lapátok"
+            "körték"
           ],
           "item_counts": [
             1,
@@ -611,805 +77,9 @@
             1
           ],
           "player_a_values": [
-            8,
-            0,
-            2
-          ],
-          "player_b_values": [
-            0,
-            2,
-            4
-          ]
-        },
-        {
-          "game_id": 21,
-          "item_types": [
-            "számítógép",
-            "alma",
-            "asztal"
-          ],
-          "item_types_plural": [
-            "számítógépek",
-            "almák",
-            "asztalok"
-          ],
-          "item_counts": [
-            1,
-            4,
-            1
-          ],
-          "player_a_values": [
-            5,
-            0,
-            5
-          ],
-          "player_b_values": [
-            3,
-            1,
-            3
-          ]
-        },
-        {
-          "game_id": 22,
-          "item_types": [
-            "kutya",
-            "alma",
-            "lapát"
-          ],
-          "item_types_plural": [
-            "kutyák",
-            "almák",
-            "lapátok"
-          ],
-          "item_counts": [
-            1,
-            1,
-            3
-          ],
-          "player_a_values": [
-            6,
-            4,
-            0
-          ],
-          "player_b_values": [
             2,
             2,
             2
-          ]
-        },
-        {
-          "game_id": 23,
-          "item_types": [
-            "számítógép",
-            "macska",
-            "tányér"
-          ],
-          "item_types_plural": [
-            "számítógépek",
-            "macskák",
-            "tányérok"
-          ],
-          "item_counts": [
-            1,
-            2,
-            2
-          ],
-          "player_a_values": [
-            4,
-            3,
-            0
-          ],
-          "player_b_values": [
-            0,
-            3,
-            2
-          ]
-        },
-        {
-          "game_id": 24,
-          "item_types": [
-            "számítógép",
-            "takaró",
-            "párna"
-          ],
-          "item_types_plural": [
-            "számítógépek",
-            "takarók",
-            "párnák"
-          ],
-          "item_counts": [
-            1,
-            3,
-            1
-          ],
-          "player_a_values": [
-            3,
-            0,
-            7
-          ],
-          "player_b_values": [
-            1,
-            1,
-            6
-          ]
-        },
-        {
-          "game_id": 25,
-          "item_types": [
-            "takaró",
-            "számítógép",
-            "lapát"
-          ],
-          "item_types_plural": [
-            "takarók",
-            "számítógépek",
-            "lapátok"
-          ],
-          "item_counts": [
-            1,
-            1,
-            3
-          ],
-          "player_a_values": [
-            1,
-            6,
-            1
-          ],
-          "player_b_values": [
-            4,
-            0,
-            2
-          ]
-        },
-        {
-          "game_id": 26,
-          "item_types": [
-            "takaró",
-            "asztal",
-            "lapát"
-          ],
-          "item_types_plural": [
-            "takarók",
-            "asztalok",
-            "lapátok"
-          ],
-          "item_counts": [
-            1,
-            3,
-            3
-          ],
-          "player_a_values": [
-            4,
-            1,
-            1
-          ],
-          "player_b_values": [
-            1,
-            2,
-            1
-          ]
-        },
-        {
-          "game_id": 27,
-          "item_types": [
-            "tányér",
-            "ceruza",
-            "kutya"
-          ],
-          "item_types_plural": [
-            "tányérok",
-            "ceruzák",
-            "kutyák"
-          ],
-          "item_counts": [
-            2,
-            2,
-            2
-          ],
-          "player_a_values": [
-            3,
-            0,
-            2
-          ],
-          "player_b_values": [
-            1,
-            3,
-            1
-          ]
-        },
-        {
-          "game_id": 28,
-          "item_types": [
-            "macska",
-            "takaró",
-            "ceruza"
-          ],
-          "item_types_plural": [
-            "macskák",
-            "takarók",
-            "ceruzák"
-          ],
-          "item_counts": [
-            1,
-            2,
-            2
-          ],
-          "player_a_values": [
-            2,
-            2,
-            2
-          ],
-          "player_b_values": [
-            0,
-            5,
-            0
-          ]
-        },
-        {
-          "game_id": 29,
-          "item_types": [
-            "lapát",
-            "kutya",
-            "takaró"
-          ],
-          "item_types_plural": [
-            "lapátok",
-            "kutyák",
-            "takarók"
-          ],
-          "item_counts": [
-            2,
-            2,
-            1
-          ],
-          "player_a_values": [
-            1,
-            3,
-            2
-          ],
-          "player_b_values": [
-            4,
-            0,
-            2
-          ]
-        },
-        {
-          "game_id": 30,
-          "item_types": [
-            "asztal",
-            "ceruza",
-            "kutya"
-          ],
-          "item_types_plural": [
-            "asztalok",
-            "ceruzák",
-            "kutyák"
-          ],
-          "item_counts": [
-            1,
-            1,
-            3
-          ],
-          "player_a_values": [
-            4,
-            6,
-            0
-          ],
-          "player_b_values": [
-            1,
-            6,
-            1
-          ]
-        },
-        {
-          "game_id": 31,
-          "item_types": [
-            "macska",
-            "alma",
-            "számítógép"
-          ],
-          "item_types_plural": [
-            "macskák",
-            "almák",
-            "számítógépek"
-          ],
-          "item_counts": [
-            1,
-            2,
-            2
-          ],
-          "player_a_values": [
-            6,
-            1,
-            1
-          ],
-          "player_b_values": [
-            2,
-            3,
-            1
-          ]
-        },
-        {
-          "game_id": 32,
-          "item_types": [
-            "lapát",
-            "asztal",
-            "számítógép"
-          ],
-          "item_types_plural": [
-            "lapátok",
-            "asztalok",
-            "számítógépek"
-          ],
-          "item_counts": [
-            3,
-            1,
-            3
-          ],
-          "player_a_values": [
-            3,
-            1,
-            0
-          ],
-          "player_b_values": [
-            0,
-            4,
-            2
-          ]
-        },
-        {
-          "game_id": 33,
-          "item_types": [
-            "lapát",
-            "párna",
-            "asztal",
-            "macska"
-          ],
-          "item_types_plural": [
-            "lapátok",
-            "párnák",
-            "asztalok",
-            "macskák"
-          ],
-          "item_counts": [
-            2,
-            1,
-            2,
-            1
-          ],
-          "player_a_values": [
-            1,
-            1,
-            0,
-            7
-          ],
-          "player_b_values": [
-            0,
-            1,
-            3,
-            3
-          ]
-        },
-        {
-          "game_id": 34,
-          "item_types": [
-            "ceruza",
-            "kutya",
-            "alma",
-            "takaró"
-          ],
-          "item_types_plural": [
-            "ceruzák",
-            "kutyák",
-            "almák",
-            "takarók"
-          ],
-          "item_counts": [
-            1,
-            1,
-            1,
-            2
-          ],
-          "player_a_values": [
-            3,
-            2,
-            1,
-            2
-          ],
-          "player_b_values": [
-            2,
-            2,
-            2,
-            2
-          ]
-        },
-        {
-          "game_id": 35,
-          "item_types": [
-            "lapát",
-            "kutya",
-            "számítógép",
-            "macska",
-            "tányér"
-          ],
-          "item_types_plural": [
-            "lapátok",
-            "kutyák",
-            "számítógépek",
-            "macskák",
-            "tányérok"
-          ],
-          "item_counts": [
-            1,
-            1,
-            1,
-            1,
-            1
-          ],
-          "player_a_values": [
-            5,
-            1,
-            2,
-            0,
-            2
-          ],
-          "player_b_values": [
-            0,
-            3,
-            6,
-            1,
-            0
-          ]
-        },
-        {
-          "game_id": 36,
-          "item_types": [
-            "ceruza",
-            "kutya",
-            "tányér"
-          ],
-          "item_types_plural": [
-            "ceruzák",
-            "kutyák",
-            "tányérok"
-          ],
-          "item_counts": [
-            1,
-            3,
-            2
-          ],
-          "player_a_values": [
-            3,
-            1,
-            2
-          ],
-          "player_b_values": [
-            0,
-            2,
-            2
-          ]
-        },
-        {
-          "game_id": 37,
-          "item_types": [
-            "tányér",
-            "ceruza",
-            "számítógép"
-          ],
-          "item_types_plural": [
-            "tányérok",
-            "ceruzák",
-            "számítógépek"
-          ],
-          "item_counts": [
-            1,
-            1,
-            3
-          ],
-          "player_a_values": [
-            9,
-            1,
-            0
-          ],
-          "player_b_values": [
-            5,
-            2,
-            1
-          ]
-        },
-        {
-          "game_id": 38,
-          "item_types": [
-            "párna",
-            "alma",
-            "asztal"
-          ],
-          "item_types_plural": [
-            "párnák",
-            "almák",
-            "asztalok"
-          ],
-          "item_counts": [
-            2,
-            2,
-            2
-          ],
-          "player_a_values": [
-            4,
-            0,
-            1
-          ],
-          "player_b_values": [
-            1,
-            1,
-            3
-          ]
-        },
-        {
-          "game_id": 39,
-          "item_types": [
-            "asztal",
-            "lapát",
-            "macska"
-          ],
-          "item_types_plural": [
-            "asztalok",
-            "lapátok",
-            "macskák"
-          ],
-          "item_counts": [
-            2,
-            3,
-            2
-          ],
-          "player_a_values": [
-            0,
-            2,
-            2
-          ],
-          "player_b_values": [
-            1,
-            2,
-            1
-          ]
-        },
-        {
-          "game_id": 40,
-          "item_types": [
-            "takaró",
-            "macska",
-            "tányér",
-            "asztal"
-          ],
-          "item_types_plural": [
-            "takarók",
-            "macskák",
-            "tányérok",
-            "asztalok"
-          ],
-          "item_counts": [
-            1,
-            3,
-            1,
-            1
-          ],
-          "player_a_values": [
-            1,
-            1,
-            0,
-            6
-          ],
-          "player_b_values": [
-            4,
-            0,
-            3,
-            3
-          ]
-        },
-        {
-          "game_id": 41,
-          "item_types": [
-            "macska",
-            "takaró",
-            "kutya"
-          ],
-          "item_types_plural": [
-            "macskák",
-            "takarók",
-            "kutyák"
-          ],
-          "item_counts": [
-            1,
-            3,
-            3
-          ],
-          "player_a_values": [
-            1,
-            0,
-            3
-          ],
-          "player_b_values": [
-            4,
-            1,
-            1
-          ]
-        },
-        {
-          "game_id": 42,
-          "item_types": [
-            "kutya",
-            "számítógép",
-            "alma"
-          ],
-          "item_types_plural": [
-            "kutyák",
-            "számítógépek",
-            "almák"
-          ],
-          "item_counts": [
-            1,
-            2,
-            3
-          ],
-          "player_a_values": [
-            1,
-            3,
-            1
-          ],
-          "player_b_values": [
-            2,
-            4,
-            0
-          ]
-        },
-        {
-          "game_id": 43,
-          "item_types": [
-            "párna",
-            "asztal",
-            "számítógép",
-            "lapát"
-          ],
-          "item_types_plural": [
-            "párnák",
-            "asztalok",
-            "számítógépek",
-            "lapátok"
-          ],
-          "item_counts": [
-            1,
-            1,
-            2,
-            1
-          ],
-          "player_a_values": [
-            0,
-            4,
-            2,
-            2
-          ],
-          "player_b_values": [
-            1,
-            0,
-            3,
-            3
-          ]
-        },
-        {
-          "game_id": 44,
-          "item_types": [
-            "kutya",
-            "tányér",
-            "asztal",
-            "takaró"
-          ],
-          "item_types_plural": [
-            "kutyák",
-            "tányérok",
-            "asztalok",
-            "takarók"
-          ],
-          "item_counts": [
-            3,
-            1,
-            1,
-            2
-          ],
-          "player_a_values": [
-            0,
-            2,
-            6,
-            1
-          ],
-          "player_b_values": [
-            2,
-            1,
-            1,
-            1
-          ]
-        },
-        {
-          "game_id": 45,
-          "item_types": [
-            "takaró",
-            "alma",
-            "asztal",
-            "párna"
-          ],
-          "item_types_plural": [
-            "takarók",
-            "almák",
-            "asztalok",
-            "párnák"
-          ],
-          "item_counts": [
-            1,
-            2,
-            1,
-            1
-          ],
-          "player_a_values": [
-            2,
-            2,
-            1,
-            3
-          ],
-          "player_b_values": [
-            2,
-            1,
-            1,
-            5
-          ]
-        },
-        {
-          "game_id": 46,
-          "item_types": [
-            "ceruza",
-            "macska",
-            "asztal"
-          ],
-          "item_types_plural": [
-            "ceruzák",
-            "macskák",
-            "asztalok"
-          ],
-          "item_counts": [
-            1,
-            3,
-            1
-          ],
-          "player_a_values": [
-            3,
-            1,
-            4
-          ],
-          "player_b_values": [
-            1,
-            0,
-            9
-          ]
-        },
-        {
-          "game_id": 47,
-          "item_types": [
-            "macska",
-            "ceruza",
-            "számítógép"
-          ],
-          "item_types_plural": [
-            "macskák",
-            "ceruzák",
-            "számítógépek"
-          ],
-          "item_counts": [
-            3,
-            2,
-            1
-          ],
-          "player_a_values": [
-            1,
-            3,
-            1
           ],
           "player_b_values": [
             0,
@@ -1418,49 +88,1280 @@
           ]
         },
         {
-          "game_id": 48,
+          "game_id": 3,
           "item_types": [
-            "lapát",
-            "kutya",
-            "takaró",
-            "számítógép"
+            "banán",
+            "szék",
+            "pohár"
           ],
           "item_types_plural": [
-            "lapátok",
-            "kutyák",
-            "takarók",
-            "számítógépek"
+            "banánok",
+            "székek",
+            "poharak"
+          ],
+          "item_counts": [
+            2,
+            4,
+            1
+          ],
+          "player_a_values": [
+            4,
+            0,
+            2
+          ],
+          "player_b_values": [
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "game_id": 4,
+          "item_types": [
+            "körte",
+            "villa",
+            "toll"
+          ],
+          "item_types_plural": [
+            "körték",
+            "villák",
+            "tollak"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            5,
+            0,
+            0
+          ],
+          "player_b_values": [
+            1,
+            1,
+            3
+          ]
+        },
+        {
+          "game_id": 5,
+          "item_types": [
+            "szappan",
+            "virág",
+            "toll"
+          ],
+          "item_types_plural": [
+            "szappanok",
+            "virágok",
+            "tollak"
+          ],
+          "item_counts": [
+            3,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            2,
+            5
+          ],
+          "player_b_values": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "game_id": 6,
+          "item_types": [
+            "toll",
+            "tányér",
+            "asztal"
+          ],
+          "item_types_plural": [
+            "tollak",
+            "tányérok",
+            "asztalok"
           ],
           "item_counts": [
             1,
+            3,
+            3
+          ],
+          "player_a_values": [
+            1,
+            3,
+            0
+          ],
+          "player_b_values": [
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 7,
+          "item_types": [
+            "körte",
+            "pohár",
+            "ceruza"
+          ],
+          "item_types_plural": [
+            "körték",
+            "poharak",
+            "ceruzák"
+          ],
+          "item_counts": [
+            3,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            5,
+            2
+          ],
+          "player_b_values": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "game_id": 8,
+          "item_types": [
+            "papír",
+            "villa",
+            "narancs",
+            "törölköző"
+          ],
+          "item_types_plural": [
+            "papírok",
+            "villák",
+            "narancsok",
+            "törölközők"
+          ],
+          "item_counts": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "player_a_values": [
+            0,
+            0,
+            1,
+            9
+          ],
+          "player_b_values": [
+            2,
+            1,
+            4,
+            2
+          ]
+        },
+        {
+          "game_id": 9,
+          "item_types": [
+            "kés",
+            "villa",
+            "toll"
+          ],
+          "item_types_plural": [
+            "kések",
+            "villák",
+            "tollak"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            2,
+            1,
+            2
+          ],
+          "player_b_values": [
+            2,
+            0,
+            3
+          ]
+        },
+        {
+          "game_id": 10,
+          "item_types": [
+            "lámpa",
+            "könyv",
+            "papír",
+            "tányér"
+          ],
+          "item_types_plural": [
+            "lámpák",
+            "könyvek",
+            "papírok",
+            "tányérok"
+          ],
+          "item_counts": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "player_a_values": [
+            0,
+            9,
+            0,
+            1
+          ],
+          "player_b_values": [
+            1,
+            0,
+            4,
+            1
+          ]
+        },
+        {
+          "game_id": 11,
+          "item_types": [
+            "toll",
+            "papír",
+            "lámpa"
+          ],
+          "item_types_plural": [
+            "tollak",
+            "papírok",
+            "lámpák"
+          ],
+          "item_counts": [
+            2,
+            3,
+            1
+          ],
+          "player_a_values": [
+            3,
+            0,
+            4
+          ],
+          "player_b_values": [
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "game_id": 12,
+          "item_types": [
+            "ceruza",
+            "toll",
+            "könyv"
+          ],
+          "item_types_plural": [
+            "ceruzák",
+            "tollak",
+            "könyvek"
+          ],
+          "item_counts": [
+            1,
+            2,
+            2
+          ],
+          "player_a_values": [
+            4,
+            1,
+            2
+          ],
+          "player_b_values": [
+            8,
+            0,
+            1
+          ]
+        },
+        {
+          "game_id": 13,
+          "item_types": [
+            "virág",
+            "körte",
+            "kés"
+          ],
+          "item_types_plural": [
+            "virágok",
+            "körték",
+            "kések"
+          ],
+          "item_counts": [
+            4,
+            2,
+            1
+          ],
+          "player_a_values": [
+            2,
+            0,
+            2
+          ],
+          "player_b_values": [
+            1,
+            1,
+            4
+          ]
+        },
+        {
+          "game_id": 14,
+          "item_types": [
+            "alma",
+            "pohár",
+            "körte",
+            "szappan"
+          ],
+          "item_types_plural": [
+            "almák",
+            "poharak",
+            "körték",
+            "szappanok"
+          ],
+          "item_counts": [
+            1,
+            1,
+            3,
+            1
+          ],
+          "player_a_values": [
+            1,
+            8,
+            0,
+            1
+          ],
+          "player_b_values": [
+            2,
+            2,
+            2,
+            0
+          ]
+        },
+        {
+          "game_id": 15,
+          "item_types": [
+            "lámpa",
+            "ceruza",
+            "toll"
+          ],
+          "item_types_plural": [
+            "lámpák",
+            "ceruzák",
+            "tollak"
+          ],
+          "item_counts": [
+            4,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            5,
+            1
+          ],
+          "player_b_values": [
+            0,
+            9,
+            1
+          ]
+        },
+        {
+          "game_id": 16,
+          "item_types": [
+            "pohár",
+            "alma",
+            "szappan"
+          ],
+          "item_types_plural": [
+            "poharak",
+            "almák",
+            "szappanok"
+          ],
+          "item_counts": [
+            1,
+            3,
+            1
+          ],
+          "player_a_values": [
+            9,
+            0,
+            1
+          ],
+          "player_b_values": [
+            6,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 17,
+          "item_types": [
+            "törölköző",
+            "lámpa",
+            "asztal"
+          ],
+          "item_types_plural": [
+            "törölközők",
+            "lámpák",
+            "asztalok"
+          ],
+          "item_counts": [
+            1,
+            1,
+            3
+          ],
+          "player_a_values": [
+            1,
+            6,
+            1
+          ],
+          "player_b_values": [
+            2,
+            8,
+            0
+          ]
+        },
+        {
+          "game_id": 18,
+          "item_types": [
+            "könyv",
+            "banán",
+            "ceruza"
+          ],
+          "item_types_plural": [
+            "könyvek",
+            "banánok",
+            "ceruzák"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            1,
+            3,
+            1
+          ],
+          "player_b_values": [
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "game_id": 19,
+          "item_types": [
+            "banán",
+            "tányér",
+            "szék"
+          ],
+          "item_types_plural": [
+            "banánok",
+            "tányérok",
+            "székek"
+          ],
+          "item_counts": [
+            3,
+            1,
+            1
+          ],
+          "player_a_values": [
+            3,
+            1,
+            0
+          ],
+          "player_b_values": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "game_id": 20,
+          "item_types": [
+            "alma",
+            "könyv",
+            "kulcs"
+          ],
+          "item_types_plural": [
+            "almák",
+            "könyvek",
+            "kulcsok"
+          ],
+          "item_counts": [
+            2,
+            5,
+            1
+          ],
+          "player_a_values": [
+            2,
+            1,
+            1
+          ],
+          "player_b_values": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "game_id": 21,
+          "item_types": [
+            "könyv",
+            "virág",
+            "törölköző"
+          ],
+          "item_types_plural": [
+            "könyvek",
+            "virágok",
+            "törölközők"
+          ],
+          "item_counts": [
+            4,
+            3,
+            1
+          ],
+          "player_a_values": [
+            1,
+            1,
+            3
+          ],
+          "player_b_values": [
+            0,
+            1,
+            7
+          ]
+        },
+        {
+          "game_id": 22,
+          "item_types": [
+            "körte",
+            "törölköző",
+            "szék"
+          ],
+          "item_types_plural": [
+            "körték",
+            "törölközők",
+            "székek"
+          ],
+          "item_counts": [
+            4,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            1,
+            5
+          ],
+          "player_b_values": [
+            0,
+            1,
+            9
+          ]
+        },
+        {
+          "game_id": 23,
+          "item_types": [
+            "tányér",
+            "virág",
+            "szappan"
+          ],
+          "item_types_plural": [
+            "tányérok",
+            "virágok",
+            "szappanok"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            2,
+            0,
+            3
+          ],
+          "player_b_values": [
+            2,
+            1,
+            2
+          ]
+        },
+        {
+          "game_id": 24,
+          "item_types": [
+            "szék",
+            "könyv",
+            "villa",
+            "kulcs"
+          ],
+          "item_types_plural": [
+            "székek",
+            "könyvek",
+            "villák",
+            "kulcsok"
+          ],
+          "item_counts": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            4,
+            1,
+            3
+          ],
+          "player_b_values": [
+            0,
+            1,
+            2,
+            7
+          ]
+        },
+        {
+          "game_id": 25,
+          "item_types": [
+            "kanál",
+            "körte",
+            "pohár"
+          ],
+          "item_types_plural": [
+            "kanalák",
+            "körték",
+            "poharak"
+          ],
+          "item_counts": [
+            1,
+            4,
+            2
+          ],
+          "player_a_values": [
+            4,
+            0,
+            3
+          ],
+          "player_b_values": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "game_id": 26,
+          "item_types": [
+            "banán",
+            "kanál",
+            "papír"
+          ],
+          "item_types_plural": [
+            "banánok",
+            "kanalák",
+            "papírok"
+          ],
+          "item_counts": [
+            1,
+            1,
+            3
+          ],
+          "player_a_values": [
+            0,
+            7,
+            1
+          ],
+          "player_b_values": [
+            9,
+            1,
+            0
+          ]
+        },
+        {
+          "game_id": 27,
+          "item_types": [
+            "kés",
+            "alma",
+            "szappan"
+          ],
+          "item_types_plural": [
+            "kések",
+            "almák",
+            "szappanok"
+          ],
+          "item_counts": [
+            4,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            6,
+            0
+          ],
+          "player_b_values": [
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "game_id": 28,
+          "item_types": [
+            "kulcs",
+            "tányér",
+            "törölköző"
+          ],
+          "item_types_plural": [
+            "kulcsok",
+            "tányérok",
+            "törölközők"
+          ],
+          "item_counts": [
             1,
             1,
             3
           ],
           "player_a_values": [
             3,
-            4,
+            1,
+            2
+          ],
+          "player_b_values": [
+            7,
+            0,
+            1
+          ]
+        },
+        {
+          "game_id": 29,
+          "item_types": [
+            "banán",
+            "kés",
+            "kanál"
+          ],
+          "item_types_plural": [
+            "banánok",
+            "kések",
+            "kanalák"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
             3,
+            0,
+            2
+          ],
+          "player_b_values": [
+            1,
+            1,
+            3
+          ]
+        },
+        {
+          "game_id": 30,
+          "item_types": [
+            "alma",
+            "szappan",
+            "kulcs"
+          ],
+          "item_types_plural": [
+            "almák",
+            "szappanok",
+            "kulcsok"
+          ],
+          "item_counts": [
+            1,
+            2,
+            2
+          ],
+          "player_a_values": [
+            0,
+            1,
+            4
+          ],
+          "player_b_values": [
+            2,
+            4,
+            0
+          ]
+        },
+        {
+          "game_id": 31,
+          "item_types": [
+            "könyv",
+            "papír",
+            "toll"
+          ],
+          "item_types_plural": [
+            "könyvek",
+            "papírok",
+            "tollak"
+          ],
+          "item_counts": [
+            2,
+            3,
+            1
+          ],
+          "player_a_values": [
+            2,
+            0,
+            6
+          ],
+          "player_b_values": [
+            0,
+            1,
+            7
+          ]
+        },
+        {
+          "game_id": 32,
+          "item_types": [
+            "pohár",
+            "asztal",
+            "körte",
+            "kanál"
+          ],
+          "item_types_plural": [
+            "poharak",
+            "asztalok",
+            "körték",
+            "kanalák"
+          ],
+          "item_counts": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "player_a_values": [
+            7,
+            1,
+            1,
+            0
+          ],
+          "player_b_values": [
+            5,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "game_id": 33,
+          "item_types": [
+            "pohár",
+            "banán",
+            "szék",
+            "kanál"
+          ],
+          "item_types_plural": [
+            "poharak",
+            "banánok",
+            "székek",
+            "kanalák"
+          ],
+          "item_counts": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "player_a_values": [
+            0,
+            7,
+            2,
+            1
+          ],
+          "player_b_values": [
+            3,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "game_id": 34,
+          "item_types": [
+            "kanál",
+            "pohár",
+            "tányér"
+          ],
+          "item_types_plural": [
+            "kanalák",
+            "poharak",
+            "tányérok"
+          ],
+          "item_counts": [
+            1,
+            3,
+            1
+          ],
+          "player_a_values": [
+            3,
+            2,
+            1
+          ],
+          "player_b_values": [
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "game_id": 35,
+          "item_types": [
+            "könyv",
+            "körte",
+            "szappan",
+            "szék"
+          ],
+          "item_types_plural": [
+            "könyvek",
+            "körték",
+            "szappanok",
+            "székek"
+          ],
+          "item_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "player_a_values": [
+            8,
+            1,
+            1,
             0
           ],
           "player_b_values": [
             2,
-            0,
+            1,
             5,
             1
           ]
         },
         {
-          "game_id": 49,
+          "game_id": 36,
           "item_types": [
-            "macska",
+            "alma",
+            "törölköző",
+            "kulcs",
+            "papír"
+          ],
+          "item_types_plural": [
+            "almák",
+            "törölközők",
+            "kulcsok",
+            "papírok"
+          ],
+          "item_counts": [
+            1,
+            3,
+            1,
+            1
+          ],
+          "player_a_values": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "player_b_values": [
+            5,
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "game_id": 37,
+          "item_types": [
+            "papír",
+            "villa",
+            "virág"
+          ],
+          "item_types_plural": [
+            "papírok",
+            "villák",
+            "virágok"
+          ],
+          "item_counts": [
+            2,
+            4,
+            1
+          ],
+          "player_a_values": [
+            4,
+            0,
+            2
+          ],
+          "player_b_values": [
+            2,
+            1,
+            2
+          ]
+        },
+        {
+          "game_id": 38,
+          "item_types": [
             "tányér",
+            "könyv",
+            "ceruza",
+            "pohár"
+          ],
+          "item_types_plural": [
+            "tányérok",
+            "könyvek",
+            "ceruzák",
+            "poharak"
+          ],
+          "item_counts": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "player_a_values": [
+            1,
+            2,
+            0,
+            4
+          ],
+          "player_b_values": [
+            1,
+            1,
+            6,
+            0
+          ]
+        },
+        {
+          "game_id": 39,
+          "item_types": [
+            "toll",
+            "asztal",
+            "alma",
+            "ceruza"
+          ],
+          "item_types_plural": [
+            "tollak",
+            "asztalok",
+            "almák",
+            "ceruzák"
+          ],
+          "item_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "player_a_values": [
+            1,
+            5,
+            4,
+            0
+          ],
+          "player_b_values": [
+            0,
+            2,
+            2,
+            3
+          ]
+        },
+        {
+          "game_id": 40,
+          "item_types": [
+            "szappan",
+            "villa",
+            "alma"
+          ],
+          "item_types_plural": [
+            "szappanok",
+            "villák",
+            "almák"
+          ],
+          "item_counts": [
+            1,
+            1,
+            3
+          ],
+          "player_a_values": [
+            2,
+            2,
+            2
+          ],
+          "player_b_values": [
+            3,
+            7,
+            0
+          ]
+        },
+        {
+          "game_id": 41,
+          "item_types": [
+            "kanál",
+            "virág",
+            "kulcs",
+            "törölköző"
+          ],
+          "item_types_plural": [
+            "kanalák",
+            "virágok",
+            "kulcsok",
+            "törölközők"
+          ],
+          "item_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "player_a_values": [
+            4,
+            1,
+            3,
+            1
+          ],
+          "player_b_values": [
+            4,
+            4,
+            2,
+            0
+          ]
+        },
+        {
+          "game_id": 42,
+          "item_types": [
+            "lámpa",
+            "kanál",
             "asztal"
           ],
           "item_types_plural": [
-            "macskák",
-            "tányérok",
+            "lámpák",
+            "kanalák",
             "asztalok"
+          ],
+          "item_counts": [
+            1,
+            3,
+            2
+          ],
+          "player_a_values": [
+            2,
+            0,
+            4
+          ],
+          "player_b_values": [
+            1,
+            1,
+            3
+          ]
+        },
+        {
+          "game_id": 43,
+          "item_types": [
+            "banán",
+            "asztal",
+            "alma"
+          ],
+          "item_types_plural": [
+            "banánok",
+            "asztalok",
+            "almák"
+          ],
+          "item_counts": [
+            4,
+            1,
+            3
+          ],
+          "player_a_values": [
+            1,
+            3,
+            1
+          ],
+          "player_b_values": [
+            1,
+            6,
+            0
+          ]
+        },
+        {
+          "game_id": 44,
+          "item_types": [
+            "lámpa",
+            "virág",
+            "szappan",
+            "villa"
+          ],
+          "item_types_plural": [
+            "lámpák",
+            "virágok",
+            "szappanok",
+            "villák"
+          ],
+          "item_counts": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "player_a_values": [
+            2,
+            0,
+            3,
+            2
+          ],
+          "player_b_values": [
+            2,
+            2,
+            2,
+            0
+          ]
+        },
+        {
+          "game_id": 45,
+          "item_types": [
+            "pohár",
+            "kés",
+            "ceruza"
+          ],
+          "item_types_plural": [
+            "poharak",
+            "kések",
+            "ceruzák"
+          ],
+          "item_counts": [
+            2,
+            2,
+            2
+          ],
+          "player_a_values": [
+            2,
+            3,
+            0
+          ],
+          "player_b_values": [
+            0,
+            3,
+            2
+          ]
+        },
+        {
+          "game_id": 46,
+          "item_types": [
+            "pohár",
+            "papír",
+            "kanál"
+          ],
+          "item_types_plural": [
+            "poharak",
+            "papírok",
+            "kanalák"
           ],
           "item_counts": [
             2,
@@ -1468,14 +1369,108 @@
             1
           ],
           "player_a_values": [
-            1,
-            1,
-            6
+            0,
+            4,
+            2
           ],
           "player_b_values": [
+            2,
+            0,
+            6
+          ]
+        },
+        {
+          "game_id": 47,
+          "item_types": [
+            "alma",
+            "papír",
+            "pohár",
+            "körte"
+          ],
+          "item_types_plural": [
+            "almák",
+            "papírok",
+            "poharak",
+            "körték"
+          ],
+          "item_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "player_a_values": [
+            3,
             3,
             2,
+            1
+          ],
+          "player_b_values": [
+            2,
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "game_id": 48,
+          "item_types": [
+            "toll",
+            "könyv",
+            "tányér"
+          ],
+          "item_types_plural": [
+            "tollak",
+            "könyvek",
+            "tányérok"
+          ],
+          "item_counts": [
+            1,
+            2,
+            2
+          ],
+          "player_a_values": [
+            2,
+            1,
+            3
+          ],
+          "player_b_values": [
+            10,
+            0,
             0
+          ]
+        },
+        {
+          "game_id": 49,
+          "item_types": [
+            "asztal",
+            "könyv",
+            "virág",
+            "ceruza"
+          ],
+          "item_types_plural": [
+            "asztalok",
+            "könyvek",
+            "virágok",
+            "ceruzák"
+          ],
+          "item_counts": [
+            1,
+            2,
+            3,
+            1
+          ],
+          "player_a_values": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "player_b_values": [
+            0,
+            3,
+            1,
+            1
           ]
         }
       ],

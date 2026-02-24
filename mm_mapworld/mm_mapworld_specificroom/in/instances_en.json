@@ -1,0 +1,2801 @@
+{
+  "experiments": [
+    {
+      "name": "on",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "nodes": [
+            "(2, 3)",
+            "(1, 3)",
+            "(1, 2)",
+            "(0, 2)",
+            "(0, 3)",
+            "(0, 1)",
+            "(0, 0)",
+            "(1, 1)"
+          ],
+          "edges": [
+            "((2, 3), (1, 3))",
+            "((1, 3), (1, 2))",
+            "((1, 3), (0, 3))",
+            "((1, 2), (0, 2))",
+            "((0, 2), (0, 3))",
+            "((0, 2), (0, 1))",
+            "((0, 1), (0, 0))",
+            "((0, 1), (1, 1))",
+            "((1, 3), (2, 3))",
+            "((1, 2), (1, 3))",
+            "((0, 3), (1, 3))",
+            "((0, 2), (1, 2))",
+            "((0, 3), (0, 2))",
+            "((0, 1), (0, 2))",
+            "((0, 0), (0, 1))",
+            "((1, 1), (0, 1))"
+          ],
+          "imgs": {
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00013899.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016795.jpg",
+            "(1, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002650.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015419.jpg",
+            "(0, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015524.jpg",
+            "(0, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009542.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015776.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007362.jpg"
+          },
+          "cats": {
+            "(1, 1)": "nursery",
+            "(2, 3)": "staircase",
+            "(1, 3)": "bathroom",
+            "(1, 2)": "playroom",
+            "(0, 2)": "poolroom",
+            "(0, 3)": "hotel_room",
+            "(0, 1)": "recreation_room",
+            "(0, 0)": "dorm_room"
+          },
+          "start": "(1, 1)",
+          "target": "(1, 1)",
+          "target_cat": "nursery",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "nodes": [
+            "(3, 0)",
+            "(2, 0)",
+            "(2, 1)",
+            "(2, 2)",
+            "(2, 3)",
+            "(3, 3)",
+            "(3, 2)",
+            "(3, 1)"
+          ],
+          "edges": [
+            "((3, 0), (2, 0))",
+            "((2, 0), (2, 1))",
+            "((2, 1), (2, 2))",
+            "((2, 2), (2, 3))",
+            "((2, 3), (3, 3))",
+            "((3, 3), (3, 2))",
+            "((3, 2), (3, 1))",
+            "((2, 0), (3, 0))",
+            "((2, 1), (2, 0))",
+            "((2, 2), (2, 1))",
+            "((2, 3), (2, 2))",
+            "((3, 3), (2, 3))",
+            "((3, 2), (3, 3))",
+            "((3, 1), (3, 2))"
+          ],
+          "imgs": {
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010891.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00008480.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00003011.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002535.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00011337.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00014981.jpg",
+            "(3, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010754.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020052.jpg"
+          },
+          "cats": {
+            "(3, 1)": "laundromat",
+            "(3, 0)": "garage",
+            "(2, 0)": "bathroom",
+            "(2, 1)": "bathroom",
+            "(2, 2)": "living_room",
+            "(2, 3)": "pantry",
+            "(3, 3)": "kitchenette",
+            "(3, 2)": "wine_cellar"
+          },
+          "start": "(3, 1)",
+          "target": "(3, 1)",
+          "target_cat": "laundromat",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "nodes": [
+            "(0, 0)",
+            "(0, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(2, 1)"
+          ],
+          "edges": [
+            "((0, 0), (0, 1))",
+            "((0, 0), (1, 0))",
+            "((0, 1), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((1, 0), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((2, 0), (2, 1))",
+            "((3, 0), (3, 1))",
+            "((0, 1), (0, 0))",
+            "((1, 0), (0, 0))",
+            "((1, 1), (0, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (2, 0))",
+            "((2, 1), (2, 0))",
+            "((3, 1), (3, 0))"
+          ],
+          "imgs": {
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010748.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00006981.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020062.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002859.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007399.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005510.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00004452.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020062.jpg"
+          },
+          "cats": {
+            "(2, 1)": "kitchenette",
+            "(0, 0)": "dining_room",
+            "(0, 1)": "wine_cellar",
+            "(1, 1)": "bathroom",
+            "(1, 0)": "dorm_room",
+            "(2, 0)": "childs_room",
+            "(3, 0)": "bow_window",
+            "(3, 1)": "wine_cellar"
+          },
+          "start": "(2, 1)",
+          "target": "(2, 1)",
+          "target_cat": "kitchenette",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "nodes": [
+            "(3, 1)",
+            "(3, 0)",
+            "(2, 0)",
+            "(1, 0)",
+            "(2, 1)",
+            "(1, 1)",
+            "(0, 0)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((3, 1), (3, 0))",
+            "((3, 0), (2, 0))",
+            "((2, 0), (1, 0))",
+            "((2, 0), (2, 1))",
+            "((1, 0), (1, 1))",
+            "((1, 0), (0, 0))",
+            "((2, 1), (1, 1))",
+            "((0, 0), (0, 1))",
+            "((3, 0), (3, 1))",
+            "((2, 0), (3, 0))",
+            "((1, 0), (2, 0))",
+            "((2, 1), (2, 0))",
+            "((1, 1), (1, 0))",
+            "((0, 0), (1, 0))",
+            "((1, 1), (2, 1))",
+            "((0, 1), (0, 0))"
+          ],
+          "imgs": {
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00008421.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016280.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002481.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009542.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00019939.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00003594.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007150.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010754.jpg"
+          },
+          "cats": {
+            "(0, 1)": "game_room",
+            "(3, 1)": "shower",
+            "(3, 0)": "basement",
+            "(2, 0)": "hotel_room",
+            "(1, 0)": "wet_bar",
+            "(2, 1)": "bedroom",
+            "(1, 1)": "dining_room",
+            "(0, 0)": "kitchenette"
+          },
+          "start": "(0, 1)",
+          "target": "(0, 1)",
+          "target_cat": "game_room",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "nodes": [
+            "(0, 2)",
+            "(1, 2)",
+            "(1, 3)",
+            "(2, 3)",
+            "(0, 3)",
+            "(0, 1)",
+            "(1, 1)",
+            "(0, 0)"
+          ],
+          "edges": [
+            "((0, 2), (1, 2))",
+            "((0, 2), (0, 3))",
+            "((0, 2), (0, 1))",
+            "((1, 2), (1, 3))",
+            "((1, 3), (2, 3))",
+            "((1, 3), (0, 3))",
+            "((0, 1), (1, 1))",
+            "((0, 1), (0, 0))",
+            "((1, 2), (0, 2))",
+            "((0, 3), (0, 2))",
+            "((0, 1), (0, 2))",
+            "((1, 3), (1, 2))",
+            "((2, 3), (1, 3))",
+            "((0, 3), (1, 3))",
+            "((1, 1), (0, 1))",
+            "((0, 0), (0, 1))"
+          ],
+          "imgs": {
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007362.jpg",
+            "(0, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010748.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00019938.jpg",
+            "(1, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010889.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009643.jpg",
+            "(0, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005509.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00001911.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009670.jpg"
+          },
+          "cats": {
+            "(0, 0)": "dorm_room",
+            "(0, 2)": "kitchenette",
+            "(1, 2)": "wet_bar",
+            "(1, 3)": "laundromat",
+            "(2, 3)": "hotel_room",
+            "(0, 3)": "childs_room",
+            "(0, 1)": "attic",
+            "(1, 1)": "hotel_room"
+          },
+          "start": "(0, 0)",
+          "target": "(0, 0)",
+          "target_cat": "dorm_room",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "nodes": [
+            "(1, 2)",
+            "(1, 3)",
+            "(2, 3)",
+            "(3, 3)",
+            "(3, 2)",
+            "(2, 2)",
+            "(0, 2)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((1, 2), (1, 3))",
+            "((1, 2), (0, 2))",
+            "((1, 3), (2, 3))",
+            "((2, 3), (3, 3))",
+            "((2, 3), (2, 2))",
+            "((3, 3), (3, 2))",
+            "((3, 2), (2, 2))",
+            "((0, 2), (0, 1))",
+            "((1, 3), (1, 2))",
+            "((0, 2), (1, 2))",
+            "((2, 3), (1, 3))",
+            "((3, 3), (2, 3))",
+            "((2, 2), (2, 3))",
+            "((3, 2), (3, 3))",
+            "((2, 2), (3, 2))",
+            "((0, 1), (0, 2))"
+          ],
+          "imgs": {
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_val_00000303.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020145.jpg",
+            "(1, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00001913.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00011382.jpg",
+            "(3, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005522.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00019939.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00014967.jpg",
+            "(0, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015554.jpg"
+          },
+          "cats": {
+            "(0, 1)": "dinette",
+            "(1, 2)": "youth_hostel",
+            "(1, 3)": "attic",
+            "(2, 3)": "living_room",
+            "(3, 3)": "childs_room",
+            "(3, 2)": "wet_bar",
+            "(2, 2)": "pantry",
+            "(0, 2)": "poolroom"
+          },
+          "start": "(0, 1)",
+          "target": "(0, 1)",
+          "target_cat": "dinette",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "nodes": [
+            "(1, 0)",
+            "(2, 0)",
+            "(0, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(2, 1)",
+            "(1, 1)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((1, 0), (2, 0))",
+            "((1, 0), (0, 0))",
+            "((2, 0), (3, 0))",
+            "((2, 0), (2, 1))",
+            "((3, 0), (3, 1))",
+            "((3, 1), (2, 1))",
+            "((2, 1), (1, 1))",
+            "((1, 1), (0, 1))",
+            "((2, 0), (1, 0))",
+            "((0, 0), (1, 0))",
+            "((3, 0), (2, 0))",
+            "((2, 1), (2, 0))",
+            "((3, 1), (3, 0))",
+            "((2, 1), (3, 1))",
+            "((1, 1), (2, 1))",
+            "((0, 1), (1, 1))"
+          ],
+          "imgs": {
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015776.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_val_00001098.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016739.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015169.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010897.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002781.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009643.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010722.jpg"
+          },
+          "cats": {
+            "(0, 1)": "recreation_room",
+            "(1, 0)": "bathroom",
+            "(2, 0)": "stable",
+            "(0, 0)": "parlor",
+            "(3, 0)": "laundromat",
+            "(3, 1)": "bathroom",
+            "(2, 1)": "hotel_room",
+            "(1, 1)": "kitchen"
+          },
+          "start": "(0, 1)",
+          "target": "(0, 1)",
+          "target_cat": "recreation_room",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "nodes": [
+            "(3, 2)",
+            "(3, 3)",
+            "(3, 1)",
+            "(3, 0)",
+            "(2, 0)",
+            "(1, 0)",
+            "(2, 2)",
+            "(1, 2)"
+          ],
+          "edges": [
+            "((3, 2), (3, 3))",
+            "((3, 2), (3, 1))",
+            "((3, 2), (2, 2))",
+            "((3, 1), (3, 0))",
+            "((3, 0), (2, 0))",
+            "((2, 0), (1, 0))",
+            "((2, 2), (1, 2))",
+            "((3, 3), (3, 2))",
+            "((3, 1), (3, 2))",
+            "((2, 2), (3, 2))",
+            "((3, 0), (3, 1))",
+            "((2, 0), (3, 0))",
+            "((1, 0), (2, 0))",
+            "((1, 2), (2, 2))"
+          ],
+          "imgs": {
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010088.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016808.jpg",
+            "(3, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010897.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015419.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015510.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020145.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009663.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00014967.jpg"
+          },
+          "cats": {
+            "(1, 2)": "kennel",
+            "(3, 2)": "staircase",
+            "(3, 3)": "laundromat",
+            "(3, 1)": "playroom",
+            "(3, 0)": "poolroom",
+            "(2, 0)": "youth_hostel",
+            "(1, 0)": "hotel_room",
+            "(2, 2)": "pantry"
+          },
+          "start": "(1, 2)",
+          "target": "(1, 2)",
+          "target_cat": "kennel",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "nodes": [
+            "(1, 0)",
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(3, 2)",
+            "(2, 2)",
+            "(2, 3)",
+            "(3, 3)"
+          ],
+          "edges": [
+            "((1, 0), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((3, 0), (3, 1))",
+            "((3, 1), (3, 2))",
+            "((3, 2), (2, 2))",
+            "((2, 2), (2, 3))",
+            "((2, 3), (3, 3))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (2, 0))",
+            "((3, 1), (3, 0))",
+            "((3, 2), (3, 1))",
+            "((2, 2), (3, 2))",
+            "((2, 3), (2, 2))",
+            "((3, 3), (2, 3))"
+          ],
+          "imgs": {
+            "(3, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020145.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_val_00001688.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015207.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00003601.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005756.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002481.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010895.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005765.jpg"
+          },
+          "cats": {
+            "(3, 3)": "youth_hostel",
+            "(1, 0)": "pantry",
+            "(2, 0)": "parlor",
+            "(3, 0)": "bedroom",
+            "(3, 1)": "closet",
+            "(3, 2)": "basement",
+            "(2, 2)": "laundromat",
+            "(2, 3)": "closet"
+          },
+          "start": "(3, 3)",
+          "target": "(3, 3)",
+          "target_cat": "youth_hostel",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "nodes": [
+            "(2, 3)",
+            "(2, 2)",
+            "(3, 3)",
+            "(3, 2)",
+            "(3, 1)",
+            "(2, 1)",
+            "(1, 1)",
+            "(1, 0)"
+          ],
+          "edges": [
+            "((2, 3), (2, 2))",
+            "((2, 3), (3, 3))",
+            "((3, 3), (3, 2))",
+            "((3, 2), (3, 1))",
+            "((3, 1), (2, 1))",
+            "((2, 1), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((2, 2), (2, 3))",
+            "((3, 3), (2, 3))",
+            "((3, 2), (3, 3))",
+            "((3, 1), (3, 2))",
+            "((2, 1), (3, 1))",
+            "((1, 1), (2, 1))",
+            "((1, 0), (1, 1))"
+          ],
+          "imgs": {
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016739.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020043.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00011397.jpg",
+            "(3, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016280.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020052.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002655.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010754.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015554.jpg"
+          },
+          "cats": {
+            "(1, 0)": "stable",
+            "(2, 3)": "wine_cellar",
+            "(2, 2)": "living_room",
+            "(3, 3)": "shower",
+            "(3, 2)": "wine_cellar",
+            "(3, 1)": "bathroom",
+            "(2, 1)": "kitchenette",
+            "(1, 1)": "poolroom"
+          },
+          "start": "(1, 0)",
+          "target": "(1, 0)",
+          "target_cat": "stable",
+          "dist": 0,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "close",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "nodes": [
+            "(3, 0)",
+            "(3, 1)",
+            "(3, 2)",
+            "(2, 1)",
+            "(1, 1)",
+            "(1, 2)",
+            "(2, 2)",
+            "(2, 3)"
+          ],
+          "edges": [
+            "((3, 0), (3, 1))",
+            "((3, 1), (3, 2))",
+            "((3, 1), (2, 1))",
+            "((2, 1), (1, 1))",
+            "((1, 1), (1, 2))",
+            "((1, 2), (2, 2))",
+            "((2, 2), (2, 3))",
+            "((3, 1), (3, 0))",
+            "((3, 2), (3, 1))",
+            "((2, 1), (3, 1))",
+            "((1, 1), (2, 1))",
+            "((1, 2), (1, 1))",
+            "((2, 2), (1, 2))",
+            "((2, 3), (2, 2))"
+          ],
+          "imgs": {
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_val_00001331.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00000302.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00013881.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009318.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015419.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00011252.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015184.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015524.jpg"
+          },
+          "cats": {
+            "(2, 2)": "dorm_room",
+            "(3, 0)": "bedroom",
+            "(3, 1)": "nursery",
+            "(3, 2)": "home_office",
+            "(2, 1)": "playroom",
+            "(1, 1)": "living_room",
+            "(1, 2)": "parlor",
+            "(2, 3)": "poolroom"
+          },
+          "start": "(2, 3)",
+          "target": "(2, 2)",
+          "target_cat": "dorm_room",
+          "dist": 1,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "nodes": [
+            "(3, 1)",
+            "(2, 1)",
+            "(2, 0)",
+            "(1, 0)",
+            "(0, 0)",
+            "(0, 1)",
+            "(0, 2)",
+            "(0, 3)"
+          ],
+          "edges": [
+            "((3, 1), (2, 1))",
+            "((2, 1), (2, 0))",
+            "((2, 0), (1, 0))",
+            "((1, 0), (0, 0))",
+            "((0, 0), (0, 1))",
+            "((0, 1), (0, 2))",
+            "((0, 2), (0, 3))",
+            "((2, 1), (3, 1))",
+            "((2, 0), (2, 1))",
+            "((1, 0), (2, 0))",
+            "((0, 0), (1, 0))",
+            "((0, 1), (0, 0))",
+            "((0, 2), (0, 1))",
+            "((0, 3), (0, 2))"
+          ],
+          "imgs": {
+            "(0, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010596.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015538.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002722.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005761.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00014975.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020174.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016280.jpg",
+            "(0, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005503.jpg"
+          },
+          "cats": {
+            "(0, 2)": "kitchen",
+            "(3, 1)": "poolroom",
+            "(2, 1)": "bathroom",
+            "(2, 0)": "closet",
+            "(1, 0)": "pantry",
+            "(0, 0)": "youth_hostel",
+            "(0, 1)": "shower",
+            "(0, 3)": "childs_room"
+          },
+          "start": "(0, 3)",
+          "target": "(0, 2)",
+          "target_cat": "kitchen",
+          "dist": 1,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "nodes": [
+            "(0, 0)",
+            "(0, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(2, 1)"
+          ],
+          "edges": [
+            "((0, 0), (0, 1))",
+            "((0, 0), (1, 0))",
+            "((0, 1), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((1, 0), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((2, 0), (2, 1))",
+            "((3, 0), (3, 1))",
+            "((0, 1), (0, 0))",
+            "((1, 0), (0, 0))",
+            "((1, 1), (0, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (2, 0))",
+            "((2, 1), (2, 0))",
+            "((3, 1), (3, 0))"
+          ],
+          "imgs": {
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010748.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00006981.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020062.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002859.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007399.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005510.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00004452.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020062.jpg"
+          },
+          "cats": {
+            "(2, 0)": "kitchenette",
+            "(0, 0)": "dining_room",
+            "(0, 1)": "wine_cellar",
+            "(1, 1)": "bathroom",
+            "(1, 0)": "dorm_room",
+            "(3, 0)": "childs_room",
+            "(3, 1)": "bow_window",
+            "(2, 1)": "wine_cellar"
+          },
+          "start": "(2, 1)",
+          "target": "(2, 0)",
+          "target_cat": "kitchenette",
+          "dist": 1,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "nodes": [
+            "(1, 1)",
+            "(2, 1)",
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(1, 0)",
+            "(0, 0)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((1, 1), (2, 1))",
+            "((1, 1), (1, 0))",
+            "((2, 1), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (3, 1))",
+            "((1, 0), (0, 0))",
+            "((0, 0), (0, 1))",
+            "((2, 1), (1, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 0), (2, 1))",
+            "((3, 0), (2, 0))",
+            "((1, 0), (2, 0))",
+            "((3, 1), (3, 0))",
+            "((0, 0), (1, 0))",
+            "((0, 1), (0, 0))"
+          ],
+          "imgs": {
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00008421.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016280.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002481.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009542.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00019939.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00003594.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007150.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010754.jpg"
+          },
+          "cats": {
+            "(1, 0)": "game_room",
+            "(1, 1)": "shower",
+            "(2, 1)": "basement",
+            "(2, 0)": "hotel_room",
+            "(3, 0)": "wet_bar",
+            "(3, 1)": "bedroom",
+            "(0, 0)": "dining_room",
+            "(0, 1)": "kitchenette"
+          },
+          "start": "(0, 1)",
+          "target": "(1, 0)",
+          "target_cat": "game_room",
+          "dist": 2,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "nodes": [
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(2, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(1, 2)",
+            "(2, 2)"
+          ],
+          "edges": [
+            "((2, 0), (3, 0))",
+            "((2, 0), (2, 1))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (3, 1))",
+            "((3, 1), (2, 1))",
+            "((2, 1), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((1, 1), (1, 2))",
+            "((1, 2), (2, 2))",
+            "((3, 0), (2, 0))",
+            "((2, 1), (2, 0))",
+            "((1, 0), (2, 0))",
+            "((3, 1), (3, 0))",
+            "((2, 1), (3, 1))",
+            "((1, 1), (2, 1))",
+            "((1, 0), (1, 1))",
+            "((1, 2), (1, 1))",
+            "((2, 2), (1, 2))"
+          ],
+          "imgs": {
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020145.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010748.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00019938.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010889.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009643.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005509.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00001911.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009670.jpg"
+          },
+          "cats": {
+            "(1, 2)": "youth_hostel",
+            "(2, 0)": "kitchenette",
+            "(3, 0)": "wet_bar",
+            "(3, 1)": "laundromat",
+            "(2, 1)": "hotel_room",
+            "(1, 1)": "childs_room",
+            "(1, 0)": "attic",
+            "(2, 2)": "hotel_room"
+          },
+          "start": "(2, 2)",
+          "target": "(1, 2)",
+          "target_cat": "youth_hostel",
+          "dist": 1,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "nodes": [
+            "(2, 2)",
+            "(3, 2)",
+            "(3, 3)",
+            "(2, 3)",
+            "(1, 3)",
+            "(1, 2)",
+            "(0, 2)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((2, 2), (3, 2))",
+            "((2, 2), (2, 3))",
+            "((3, 2), (3, 3))",
+            "((3, 3), (2, 3))",
+            "((2, 3), (1, 3))",
+            "((1, 3), (1, 2))",
+            "((1, 2), (0, 2))",
+            "((0, 2), (0, 1))",
+            "((3, 2), (2, 2))",
+            "((2, 3), (2, 2))",
+            "((3, 3), (3, 2))",
+            "((2, 3), (3, 3))",
+            "((1, 3), (2, 3))",
+            "((1, 2), (1, 3))",
+            "((0, 2), (1, 2))",
+            "((0, 1), (0, 2))"
+          ],
+          "imgs": {
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_val_00000303.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020145.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00001913.jpg",
+            "(3, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00011382.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005522.jpg",
+            "(1, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00019939.jpg",
+            "(0, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00014967.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015554.jpg"
+          },
+          "cats": {
+            "(1, 2)": "dinette",
+            "(2, 2)": "youth_hostel",
+            "(3, 2)": "attic",
+            "(3, 3)": "living_room",
+            "(2, 3)": "childs_room",
+            "(1, 3)": "wet_bar",
+            "(0, 2)": "pantry",
+            "(0, 1)": "poolroom"
+          },
+          "start": "(0, 1)",
+          "target": "(1, 2)",
+          "target_cat": "dinette",
+          "dist": 2,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "nodes": [
+            "(0, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(2, 1)",
+            "(0, 2)"
+          ],
+          "edges": [
+            "((0, 1), (1, 1))",
+            "((0, 1), (0, 2))",
+            "((1, 1), (1, 0))",
+            "((1, 1), (2, 1))",
+            "((1, 0), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((2, 0), (2, 1))",
+            "((3, 0), (3, 1))",
+            "((3, 1), (2, 1))",
+            "((1, 1), (0, 1))",
+            "((0, 2), (0, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 1), (1, 1))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (2, 0))",
+            "((2, 1), (2, 0))",
+            "((3, 1), (3, 0))",
+            "((2, 1), (3, 1))"
+          ],
+          "imgs": {
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00004452.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00014990.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002489.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016739.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015169.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015776.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002481.jpg",
+            "(0, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005464.jpg"
+          },
+          "cats": {
+            "(1, 1)": "bow_window",
+            "(0, 1)": "pantry",
+            "(1, 0)": "basement",
+            "(2, 0)": "stable",
+            "(3, 0)": "parlor",
+            "(3, 1)": "recreation_room",
+            "(2, 1)": "basement",
+            "(0, 2)": "childs_room"
+          },
+          "start": "(0, 2)",
+          "target": "(1, 1)",
+          "target_cat": "bow_window",
+          "dist": 2,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "nodes": [
+            "(1, 3)",
+            "(1, 2)",
+            "(2, 3)",
+            "(2, 2)",
+            "(2, 1)",
+            "(2, 0)",
+            "(1, 0)",
+            "(0, 0)"
+          ],
+          "edges": [
+            "((1, 3), (1, 2))",
+            "((1, 3), (2, 3))",
+            "((2, 3), (2, 2))",
+            "((2, 2), (2, 1))",
+            "((2, 1), (2, 0))",
+            "((2, 0), (1, 0))",
+            "((1, 0), (0, 0))",
+            "((1, 2), (1, 3))",
+            "((2, 3), (1, 3))",
+            "((2, 2), (2, 3))",
+            "((2, 1), (2, 2))",
+            "((2, 0), (2, 1))",
+            "((1, 0), (2, 0))",
+            "((0, 0), (1, 0))"
+          ],
+          "imgs": {
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00004452.jpg",
+            "(1, 3)": "../mm_mapworld_specificroom/resources/images/ADE_val_00000750.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00011126.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015410.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010088.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005464.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020145.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015776.jpg"
+          },
+          "cats": {
+            "(1, 0)": "bow_window",
+            "(1, 3)": "shower",
+            "(1, 2)": "living_room",
+            "(2, 3)": "playroom",
+            "(2, 2)": "kennel",
+            "(2, 1)": "childs_room",
+            "(2, 0)": "youth_hostel",
+            "(0, 0)": "recreation_room"
+          },
+          "start": "(0, 0)",
+          "target": "(1, 0)",
+          "target_cat": "bow_window",
+          "dist": 1,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "nodes": [
+            "(1, 1)",
+            "(1, 0)",
+            "(2, 0)",
+            "(2, 1)",
+            "(0, 0)",
+            "(0, 1)",
+            "(3, 0)",
+            "(3, 1)"
+          ],
+          "edges": [
+            "((1, 1), (1, 0))",
+            "((1, 1), (2, 1))",
+            "((1, 1), (0, 1))",
+            "((1, 0), (2, 0))",
+            "((1, 0), (0, 0))",
+            "((2, 0), (2, 1))",
+            "((2, 0), (3, 0))",
+            "((0, 0), (0, 1))",
+            "((3, 0), (3, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 1), (1, 1))",
+            "((0, 1), (1, 1))",
+            "((2, 0), (1, 0))",
+            "((0, 0), (1, 0))",
+            "((2, 1), (2, 0))",
+            "((3, 0), (2, 0))",
+            "((0, 1), (0, 0))",
+            "((3, 1), (3, 0))"
+          ],
+          "imgs": {
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00006776.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016810.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007218.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016798.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00013899.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016739.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_val_00001331.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010088.jpg"
+          },
+          "cats": {
+            "(3, 0)": "dinette",
+            "(1, 1)": "staircase",
+            "(1, 0)": "dining_room",
+            "(2, 0)": "staircase",
+            "(2, 1)": "nursery",
+            "(0, 0)": "stable",
+            "(0, 1)": "dorm_room",
+            "(3, 1)": "kennel"
+          },
+          "start": "(3, 1)",
+          "target": "(3, 0)",
+          "target_cat": "dinette",
+          "dist": 1,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "nodes": [
+            "(0, 0)",
+            "(0, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(1, 2)",
+            "(1, 3)",
+            "(2, 2)",
+            "(3, 2)"
+          ],
+          "edges": [
+            "((0, 0), (0, 1))",
+            "((0, 0), (1, 0))",
+            "((0, 1), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((1, 1), (1, 2))",
+            "((1, 2), (1, 3))",
+            "((1, 2), (2, 2))",
+            "((2, 2), (3, 2))",
+            "((0, 1), (0, 0))",
+            "((1, 0), (0, 0))",
+            "((1, 1), (0, 1))",
+            "((1, 0), (1, 1))",
+            "((1, 2), (1, 1))",
+            "((1, 3), (1, 2))",
+            "((2, 2), (1, 2))",
+            "((3, 2), (2, 2))"
+          ],
+          "imgs": {
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010754.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015554.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010088.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_val_00000750.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015517.jpg",
+            "(1, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015410.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010088.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002721.jpg"
+          },
+          "cats": {
+            "(1, 2)": "kitchenette",
+            "(0, 0)": "poolroom",
+            "(0, 1)": "kennel",
+            "(1, 1)": "shower",
+            "(1, 0)": "poolroom",
+            "(1, 3)": "playroom",
+            "(2, 2)": "kennel",
+            "(3, 2)": "bathroom"
+          },
+          "start": "(3, 2)",
+          "target": "(1, 2)",
+          "target_cat": "kitchenette",
+          "dist": 2,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "far",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "nodes": [
+            "(3, 0)",
+            "(3, 1)",
+            "(3, 2)",
+            "(2, 1)",
+            "(1, 1)",
+            "(1, 2)",
+            "(2, 2)",
+            "(2, 3)"
+          ],
+          "edges": [
+            "((3, 0), (3, 1))",
+            "((3, 1), (3, 2))",
+            "((3, 1), (2, 1))",
+            "((2, 1), (1, 1))",
+            "((1, 1), (1, 2))",
+            "((1, 2), (2, 2))",
+            "((2, 2), (2, 3))",
+            "((3, 1), (3, 0))",
+            "((3, 2), (3, 1))",
+            "((2, 1), (3, 1))",
+            "((1, 1), (2, 1))",
+            "((1, 2), (1, 1))",
+            "((2, 2), (1, 2))",
+            "((2, 3), (2, 2))"
+          ],
+          "imgs": {
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_val_00001331.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00000302.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00013881.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009318.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015419.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00011252.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015184.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015524.jpg"
+          },
+          "cats": {
+            "(1, 1)": "dorm_room",
+            "(3, 0)": "bedroom",
+            "(3, 1)": "nursery",
+            "(3, 2)": "home_office",
+            "(2, 1)": "playroom",
+            "(1, 2)": "living_room",
+            "(2, 2)": "parlor",
+            "(2, 3)": "poolroom"
+          },
+          "start": "(2, 3)",
+          "target": "(1, 1)",
+          "target_cat": "dorm_room",
+          "dist": 3,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "nodes": [
+            "(3, 1)",
+            "(2, 1)",
+            "(2, 0)",
+            "(1, 0)",
+            "(0, 0)",
+            "(0, 1)",
+            "(0, 2)",
+            "(0, 3)"
+          ],
+          "edges": [
+            "((3, 1), (2, 1))",
+            "((2, 1), (2, 0))",
+            "((2, 0), (1, 0))",
+            "((1, 0), (0, 0))",
+            "((0, 0), (0, 1))",
+            "((0, 1), (0, 2))",
+            "((0, 2), (0, 3))",
+            "((2, 1), (3, 1))",
+            "((2, 0), (2, 1))",
+            "((1, 0), (2, 0))",
+            "((0, 0), (1, 0))",
+            "((0, 1), (0, 0))",
+            "((0, 2), (0, 1))",
+            "((0, 3), (0, 2))"
+          ],
+          "imgs": {
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010596.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015538.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002722.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005761.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00014975.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020174.jpg",
+            "(0, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016280.jpg",
+            "(0, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005503.jpg"
+          },
+          "cats": {
+            "(0, 0)": "kitchen",
+            "(3, 1)": "poolroom",
+            "(2, 1)": "bathroom",
+            "(2, 0)": "closet",
+            "(1, 0)": "pantry",
+            "(0, 1)": "youth_hostel",
+            "(0, 2)": "shower",
+            "(0, 3)": "childs_room"
+          },
+          "start": "(0, 3)",
+          "target": "(0, 0)",
+          "target_cat": "kitchen",
+          "dist": 3,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "nodes": [
+            "(0, 0)",
+            "(0, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(2, 1)"
+          ],
+          "edges": [
+            "((0, 0), (0, 1))",
+            "((0, 0), (1, 0))",
+            "((0, 1), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((1, 0), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((2, 0), (2, 1))",
+            "((3, 0), (3, 1))",
+            "((0, 1), (0, 0))",
+            "((1, 0), (0, 0))",
+            "((1, 1), (0, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (2, 0))",
+            "((2, 1), (2, 0))",
+            "((3, 1), (3, 0))"
+          ],
+          "imgs": {
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010748.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00006981.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020062.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002859.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007399.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005510.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00004452.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020062.jpg"
+          },
+          "cats": {
+            "(3, 1)": "kitchenette",
+            "(0, 0)": "dining_room",
+            "(0, 1)": "wine_cellar",
+            "(1, 1)": "bathroom",
+            "(1, 0)": "dorm_room",
+            "(2, 0)": "childs_room",
+            "(3, 0)": "bow_window",
+            "(2, 1)": "wine_cellar"
+          },
+          "start": "(2, 1)",
+          "target": "(3, 1)",
+          "target_cat": "kitchenette",
+          "dist": 3,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "nodes": [
+            "(1, 1)",
+            "(2, 1)",
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(1, 0)",
+            "(0, 0)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((1, 1), (2, 1))",
+            "((1, 1), (1, 0))",
+            "((2, 1), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (3, 1))",
+            "((1, 0), (0, 0))",
+            "((0, 0), (0, 1))",
+            "((2, 1), (1, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 0), (2, 1))",
+            "((3, 0), (2, 0))",
+            "((1, 0), (2, 0))",
+            "((3, 1), (3, 0))",
+            "((0, 0), (1, 0))",
+            "((0, 1), (0, 0))"
+          ],
+          "imgs": {
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00008421.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016280.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002481.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009542.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00019939.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00003594.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007150.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010754.jpg"
+          },
+          "cats": {
+            "(3, 0)": "game_room",
+            "(1, 1)": "shower",
+            "(2, 1)": "basement",
+            "(2, 0)": "hotel_room",
+            "(3, 1)": "wet_bar",
+            "(1, 0)": "bedroom",
+            "(0, 0)": "dining_room",
+            "(0, 1)": "kitchenette"
+          },
+          "start": "(0, 1)",
+          "target": "(3, 0)",
+          "target_cat": "game_room",
+          "dist": 4,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "nodes": [
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(2, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(1, 2)",
+            "(2, 2)"
+          ],
+          "edges": [
+            "((2, 0), (3, 0))",
+            "((2, 0), (2, 1))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (3, 1))",
+            "((3, 1), (2, 1))",
+            "((2, 1), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((1, 1), (1, 2))",
+            "((1, 2), (2, 2))",
+            "((3, 0), (2, 0))",
+            "((2, 1), (2, 0))",
+            "((1, 0), (2, 0))",
+            "((3, 1), (3, 0))",
+            "((2, 1), (3, 1))",
+            "((1, 1), (2, 1))",
+            "((1, 0), (1, 1))",
+            "((1, 2), (1, 1))",
+            "((2, 2), (1, 2))"
+          ],
+          "imgs": {
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020145.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010748.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00019938.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010889.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009643.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005509.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00001911.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00009670.jpg"
+          },
+          "cats": {
+            "(1, 0)": "youth_hostel",
+            "(2, 0)": "kitchenette",
+            "(3, 0)": "wet_bar",
+            "(3, 1)": "laundromat",
+            "(2, 1)": "hotel_room",
+            "(1, 1)": "childs_room",
+            "(1, 2)": "attic",
+            "(2, 2)": "hotel_room"
+          },
+          "start": "(2, 2)",
+          "target": "(1, 0)",
+          "target_cat": "youth_hostel",
+          "dist": 3,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "nodes": [
+            "(2, 2)",
+            "(3, 2)",
+            "(3, 3)",
+            "(2, 3)",
+            "(1, 3)",
+            "(1, 2)",
+            "(0, 2)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((2, 2), (3, 2))",
+            "((2, 2), (2, 3))",
+            "((3, 2), (3, 3))",
+            "((3, 3), (2, 3))",
+            "((2, 3), (1, 3))",
+            "((1, 3), (1, 2))",
+            "((1, 2), (0, 2))",
+            "((0, 2), (0, 1))",
+            "((3, 2), (2, 2))",
+            "((2, 3), (2, 2))",
+            "((3, 3), (3, 2))",
+            "((2, 3), (3, 3))",
+            "((1, 3), (2, 3))",
+            "((1, 2), (1, 3))",
+            "((0, 2), (1, 2))",
+            "((0, 1), (0, 2))"
+          ],
+          "imgs": {
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_val_00000303.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020145.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00001913.jpg",
+            "(3, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00011382.jpg",
+            "(1, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005522.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00019939.jpg",
+            "(0, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00014967.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015554.jpg"
+          },
+          "cats": {
+            "(2, 3)": "dinette",
+            "(2, 2)": "youth_hostel",
+            "(3, 2)": "attic",
+            "(3, 3)": "living_room",
+            "(1, 3)": "childs_room",
+            "(1, 2)": "wet_bar",
+            "(0, 2)": "pantry",
+            "(0, 1)": "poolroom"
+          },
+          "start": "(0, 1)",
+          "target": "(2, 3)",
+          "target_cat": "dinette",
+          "dist": 4,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "nodes": [
+            "(0, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)",
+            "(2, 1)",
+            "(0, 2)"
+          ],
+          "edges": [
+            "((0, 1), (1, 1))",
+            "((0, 1), (0, 2))",
+            "((1, 1), (1, 0))",
+            "((1, 1), (2, 1))",
+            "((1, 0), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((2, 0), (2, 1))",
+            "((3, 0), (3, 1))",
+            "((3, 1), (2, 1))",
+            "((1, 1), (0, 1))",
+            "((0, 2), (0, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 1), (1, 1))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (2, 0))",
+            "((2, 1), (2, 0))",
+            "((3, 1), (3, 0))",
+            "((2, 1), (3, 1))"
+          ],
+          "imgs": {
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00004452.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00014990.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002489.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016739.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015169.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015776.jpg",
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002481.jpg",
+            "(0, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005464.jpg"
+          },
+          "cats": {
+            "(3, 1)": "bow_window",
+            "(0, 1)": "pantry",
+            "(1, 1)": "basement",
+            "(1, 0)": "stable",
+            "(2, 0)": "parlor",
+            "(3, 0)": "recreation_room",
+            "(2, 1)": "basement",
+            "(0, 2)": "childs_room"
+          },
+          "start": "(0, 2)",
+          "target": "(3, 1)",
+          "target_cat": "bow_window",
+          "dist": 4,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "nodes": [
+            "(1, 3)",
+            "(1, 2)",
+            "(2, 3)",
+            "(2, 2)",
+            "(2, 1)",
+            "(2, 0)",
+            "(1, 0)",
+            "(0, 0)"
+          ],
+          "edges": [
+            "((1, 3), (1, 2))",
+            "((1, 3), (2, 3))",
+            "((2, 3), (2, 2))",
+            "((2, 2), (2, 1))",
+            "((2, 1), (2, 0))",
+            "((2, 0), (1, 0))",
+            "((1, 0), (0, 0))",
+            "((1, 2), (1, 3))",
+            "((2, 3), (1, 3))",
+            "((2, 2), (2, 3))",
+            "((2, 1), (2, 2))",
+            "((2, 0), (2, 1))",
+            "((1, 0), (2, 0))",
+            "((0, 0), (1, 0))"
+          ],
+          "imgs": {
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00004452.jpg",
+            "(1, 3)": "../mm_mapworld_specificroom/resources/images/ADE_val_00000750.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00011126.jpg",
+            "(2, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015410.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010088.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00005464.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00020145.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015776.jpg"
+          },
+          "cats": {
+            "(2, 1)": "bow_window",
+            "(1, 3)": "shower",
+            "(1, 2)": "living_room",
+            "(2, 3)": "playroom",
+            "(2, 2)": "kennel",
+            "(2, 0)": "childs_room",
+            "(1, 0)": "youth_hostel",
+            "(0, 0)": "recreation_room"
+          },
+          "start": "(0, 0)",
+          "target": "(2, 1)",
+          "target_cat": "bow_window",
+          "dist": 3,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "nodes": [
+            "(1, 1)",
+            "(1, 0)",
+            "(2, 0)",
+            "(2, 1)",
+            "(0, 0)",
+            "(0, 1)",
+            "(3, 0)",
+            "(3, 1)"
+          ],
+          "edges": [
+            "((1, 1), (1, 0))",
+            "((1, 1), (2, 1))",
+            "((1, 1), (0, 1))",
+            "((1, 0), (2, 0))",
+            "((1, 0), (0, 0))",
+            "((2, 0), (2, 1))",
+            "((2, 0), (3, 0))",
+            "((0, 0), (0, 1))",
+            "((3, 0), (3, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 1), (1, 1))",
+            "((0, 1), (1, 1))",
+            "((2, 0), (1, 0))",
+            "((0, 0), (1, 0))",
+            "((2, 1), (2, 0))",
+            "((3, 0), (2, 0))",
+            "((0, 1), (0, 0))",
+            "((3, 1), (3, 0))"
+          ],
+          "imgs": {
+            "(2, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00006776.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016810.jpg",
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00007218.jpg",
+            "(2, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016798.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00013899.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00016739.jpg",
+            "(3, 0)": "../mm_mapworld_specificroom/resources/images/ADE_val_00001331.jpg",
+            "(3, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010088.jpg"
+          },
+          "cats": {
+            "(2, 1)": "dinette",
+            "(1, 1)": "staircase",
+            "(1, 0)": "dining_room",
+            "(2, 0)": "staircase",
+            "(0, 0)": "nursery",
+            "(0, 1)": "stable",
+            "(3, 0)": "dorm_room",
+            "(3, 1)": "kennel"
+          },
+          "start": "(3, 1)",
+          "target": "(2, 1)",
+          "target_cat": "dinette",
+          "dist": 3,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "nodes": [
+            "(0, 0)",
+            "(0, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(1, 2)",
+            "(1, 3)",
+            "(2, 2)",
+            "(3, 2)"
+          ],
+          "edges": [
+            "((0, 0), (0, 1))",
+            "((0, 0), (1, 0))",
+            "((0, 1), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((1, 1), (1, 2))",
+            "((1, 2), (1, 3))",
+            "((1, 2), (2, 2))",
+            "((2, 2), (3, 2))",
+            "((0, 1), (0, 0))",
+            "((1, 0), (0, 0))",
+            "((1, 1), (0, 1))",
+            "((1, 0), (1, 1))",
+            "((1, 2), (1, 1))",
+            "((1, 3), (1, 2))",
+            "((2, 2), (1, 2))",
+            "((3, 2), (2, 2))"
+          ],
+          "imgs": {
+            "(1, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010754.jpg",
+            "(0, 0)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015554.jpg",
+            "(0, 1)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010088.jpg",
+            "(1, 1)": "../mm_mapworld_specificroom/resources/images/ADE_val_00000750.jpg",
+            "(1, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015517.jpg",
+            "(1, 3)": "../mm_mapworld_specificroom/resources/images/ADE_train_00015410.jpg",
+            "(2, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00010088.jpg",
+            "(3, 2)": "../mm_mapworld_specificroom/resources/images/ADE_train_00002721.jpg"
+          },
+          "cats": {
+            "(1, 0)": "kitchenette",
+            "(0, 0)": "poolroom",
+            "(0, 1)": "kennel",
+            "(1, 1)": "shower",
+            "(1, 2)": "poolroom",
+            "(1, 3)": "playroom",
+            "(2, 2)": "kennel",
+            "(3, 2)": "bathroom"
+          },
+          "start": "(3, 2)",
+          "target": "(1, 0)",
+          "target_cat": "kitchenette",
+          "dist": 4,
+          "use_images": true,
+          "reprompt": false,
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "Please help me with the following task. The goal is to explore rooms and find target room. In each room I will show you an image of the room and tell you in what directions we can go from there. You then give me a description of the room you see in exactly one sentence. Please give your answer in the following format: \"{\"description\": \"<room description>\", \"action\": \"<action>\"}\". To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. Most importantly, once we have found the target room, replace <action> with \"DONE\" instead. Omit any other text.\nHere is an example:\nThe target room is a bathroom.\nWe have made a step and are now in this room. From here we can go: north, west. What is your next instruction?\n{\"description\": \"We are in a kitchen with a red fridge.\", \"action\": \"GO: north\"}\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a living room with a couch and a tv.\", \"action\": \"GO: east\"}\n...\nWe have made a step and are now in this room. From here we can go: south, east. What is your next instruction?\n{\"description\": \"We are in a bathroom, there is a shower and a sink\", \"action\": \"DONE\"}\nLet us start. The target room is a $GOAL$\nWe are now in this room. From here we can go: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is {\"description\": \"<room description>\", \"action\": \"<action>\"}\". Replace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: DIRECTION\" where DIRECTION can be one of [north, south, east, west]. If we have found a $GOAL$, replace <action> with \"DONE\" instead. What should we do? ",
+          "limit_warning": "We have been exploring for a while now. Once we are in a $GOAL$ choose \"DONE\" as the next <action>.",
+          "loop_warning": "It seems like we are going back and forth between two rooms. Be sure to explore other rooms in order to find a $GOAL$. ",
+          "move_construction": "GO: ",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "response_regex": "^\\{[\\s]*\"description\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"action\":\\s*\"([^\\{]*?)\"[\\s]*\\}$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

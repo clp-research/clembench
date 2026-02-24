@@ -1,0 +1,2769 @@
+{
+  "experiments": [
+    {
+      "name": "small",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "nodes": [
+            "(2, 3)",
+            "(1, 3)",
+            "(1, 2)",
+            "(0, 2)"
+          ],
+          "edges": [
+            "((2, 3), (1, 3))",
+            "((1, 3), (1, 2))",
+            "((1, 2), (0, 2))",
+            "((1, 3), (2, 3))",
+            "((1, 2), (1, 3))",
+            "((0, 2), (1, 2))"
+          ],
+          "imgs": {
+            "(2, 3)": "resources/images/ADE_train_00007115.jpg",
+            "(1, 3)": "resources/images/ADE_train_00008395.jpg",
+            "(1, 2)": "resources/images/ADE_train_00010701.jpg",
+            "(0, 2)": "resources/images/ADE_train_00005522.jpg"
+          },
+          "cats": {
+            "(2, 3)": [
+              "dining_room/ADE_train_00007115.jpg"
+            ],
+            "(1, 3)": [
+              "game_room/ADE_train_00008395.jpg"
+            ],
+            "(1, 2)": [
+              "kitchen/ADE_train_00010701.jpg"
+            ],
+            "(0, 2)": [
+              "childs_room/ADE_train_00005522.jpg"
+            ]
+          },
+          "start": "(2, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "nodes": [
+            "(2, 2)",
+            "(2, 1)",
+            "(1, 1)",
+            "(1, 0)"
+          ],
+          "edges": [
+            "((2, 2), (2, 1))",
+            "((2, 1), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((2, 1), (2, 2))",
+            "((1, 1), (2, 1))",
+            "((1, 0), (1, 1))"
+          ],
+          "imgs": {
+            "(2, 2)": "resources/images/ADE_train_00000637.jpg",
+            "(2, 1)": "resources/images/ADE_train_00007046.jpg",
+            "(1, 1)": "resources/images/ADE_train_00007022.jpg",
+            "(1, 0)": "resources/images/ADE_train_00011323.jpg"
+          },
+          "cats": {
+            "(2, 2)": [
+              "kitchen/ADE_train_00000637.jpg"
+            ],
+            "(2, 1)": [
+              "dining_room/ADE_train_00007046.jpg"
+            ],
+            "(1, 1)": [
+              "dining_room/ADE_train_00007022.jpg"
+            ],
+            "(1, 0)": [
+              "living_room/ADE_train_00011323.jpg"
+            ]
+          },
+          "start": "(2, 2)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "nodes": [
+            "(0, 1)",
+            "(0, 0)",
+            "(1, 0)",
+            "(2, 0)"
+          ],
+          "edges": [
+            "((0, 1), (0, 0))",
+            "((0, 0), (1, 0))",
+            "((1, 0), (2, 0))",
+            "((0, 0), (0, 1))",
+            "((1, 0), (0, 0))",
+            "((2, 0), (1, 0))"
+          ],
+          "imgs": {
+            "(0, 1)": "resources/images/ADE_train_00003531.jpg",
+            "(0, 0)": "resources/images/ADE_train_00002672.jpg",
+            "(1, 0)": "resources/images/ADE_train_00009573.jpg",
+            "(2, 0)": "resources/images/ADE_train_00002810.jpg"
+          },
+          "cats": {
+            "(0, 1)": [
+              "bedroom/ADE_train_00003531.jpg"
+            ],
+            "(0, 0)": [
+              "bathroom/ADE_train_00002672.jpg"
+            ],
+            "(1, 0)": [
+              "hotel_room/ADE_train_00009573.jpg"
+            ],
+            "(2, 0)": [
+              "bathroom/ADE_train_00002810.jpg"
+            ]
+          },
+          "start": "(1, 0)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "nodes": [
+            "(3, 1)",
+            "(2, 1)",
+            "(2, 0)",
+            "(1, 0)"
+          ],
+          "edges": [
+            "((3, 1), (2, 1))",
+            "((2, 1), (2, 0))",
+            "((2, 0), (1, 0))",
+            "((2, 1), (3, 1))",
+            "((2, 0), (2, 1))",
+            "((1, 0), (2, 0))"
+          ],
+          "imgs": {
+            "(3, 1)": "resources/images/ADE_train_00003793.jpg",
+            "(2, 1)": "resources/images/ADE_train_00003721.jpg",
+            "(2, 0)": "resources/images/ADE_train_00004168.jpg",
+            "(1, 0)": "resources/images/ADE_train_00011314.jpg"
+          },
+          "cats": {
+            "(3, 1)": [
+              "bedroom/ADE_train_00003793.jpg"
+            ],
+            "(2, 1)": [
+              "bedroom/ADE_train_00003721.jpg"
+            ],
+            "(2, 0)": [
+              "bedroom/ADE_train_00004168.jpg"
+            ],
+            "(1, 0)": [
+              "living_room/ADE_train_00011314.jpg"
+            ]
+          },
+          "start": "(2, 1)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "nodes": [
+            "(3, 2)",
+            "(3, 3)",
+            "(3, 1)",
+            "(2, 1)"
+          ],
+          "edges": [
+            "((3, 2), (3, 3))",
+            "((3, 2), (3, 1))",
+            "((3, 1), (2, 1))",
+            "((3, 3), (3, 2))",
+            "((3, 1), (3, 2))",
+            "((2, 1), (3, 1))"
+          ],
+          "imgs": {
+            "(3, 2)": "resources/images/ADE_train_00007022.jpg",
+            "(3, 3)": "resources/images/ADE_val_00000097.jpg",
+            "(3, 1)": "resources/images/ADE_train_00002578.jpg",
+            "(2, 1)": "resources/images/ADE_train_00007115.jpg"
+          },
+          "cats": {
+            "(3, 2)": [
+              "dining_room/ADE_train_00007022.jpg"
+            ],
+            "(3, 3)": [
+              "bathroom/ADE_val_00000097.jpg"
+            ],
+            "(3, 1)": [
+              "bathroom/ADE_train_00002578.jpg"
+            ],
+            "(2, 1)": [
+              "dining_room/ADE_train_00007115.jpg"
+            ]
+          },
+          "start": "(3, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "nodes": [
+            "(0, 2)",
+            "(1, 2)",
+            "(1, 1)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((0, 2), (1, 2))",
+            "((1, 2), (1, 1))",
+            "((1, 1), (0, 1))",
+            "((1, 2), (0, 2))",
+            "((1, 1), (1, 2))",
+            "((0, 1), (1, 1))"
+          ],
+          "imgs": {
+            "(0, 2)": "resources/images/ADE_train_00008346.jpg",
+            "(1, 2)": "resources/images/ADE_train_00002711.jpg",
+            "(1, 1)": "resources/images/ADE_train_00010392.jpg",
+            "(0, 1)": "resources/images/ADE_train_00016808.jpg"
+          },
+          "cats": {
+            "(0, 2)": [
+              "game_room/ADE_train_00008346.jpg"
+            ],
+            "(1, 2)": [
+              "bathroom/ADE_train_00002711.jpg"
+            ],
+            "(1, 1)": [
+              "kitchen/ADE_train_00010392.jpg"
+            ],
+            "(0, 1)": [
+              "staircase/ADE_train_00016808.jpg"
+            ]
+          },
+          "start": "(1, 2)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "nodes": [
+            "(1, 0)",
+            "(2, 0)",
+            "(2, 1)",
+            "(1, 1)"
+          ],
+          "edges": [
+            "((1, 0), (2, 0))",
+            "((1, 0), (1, 1))",
+            "((2, 0), (2, 1))",
+            "((2, 0), (1, 0))",
+            "((1, 1), (1, 0))",
+            "((2, 1), (2, 0))"
+          ],
+          "imgs": {
+            "(1, 0)": "resources/images/ADE_train_00001927.jpg",
+            "(2, 0)": "resources/images/ADE_train_00010595.jpg",
+            "(2, 1)": "resources/images/ADE_train_00007233.jpg",
+            "(1, 1)": "resources/images/ADE_train_00009542.jpg"
+          },
+          "cats": {
+            "(1, 0)": [
+              "attic/ADE_train_00001927.jpg"
+            ],
+            "(2, 0)": [
+              "kitchen/ADE_train_00010595.jpg"
+            ],
+            "(2, 1)": [
+              "dining_room/ADE_train_00007233.jpg"
+            ],
+            "(1, 1)": [
+              "hotel_room/ADE_train_00009542.jpg"
+            ]
+          },
+          "start": "(1, 0)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "nodes": [
+            "(3, 3)",
+            "(3, 2)",
+            "(2, 2)",
+            "(2, 3)"
+          ],
+          "edges": [
+            "((3, 3), (3, 2))",
+            "((3, 2), (2, 2))",
+            "((2, 2), (2, 3))",
+            "((3, 2), (3, 3))",
+            "((2, 2), (3, 2))",
+            "((2, 3), (2, 2))"
+          ],
+          "imgs": {
+            "(3, 3)": "resources/images/ADE_train_00003559.jpg",
+            "(3, 2)": "resources/images/ADE_train_00008421.jpg",
+            "(2, 2)": "resources/images/ADE_train_00009670.jpg",
+            "(2, 3)": "resources/images/ADE_train_00010462.jpg"
+          },
+          "cats": {
+            "(3, 3)": [
+              "bedroom/ADE_train_00003559.jpg"
+            ],
+            "(3, 2)": [
+              "game_room/ADE_train_00008421.jpg"
+            ],
+            "(2, 2)": [
+              "hotel_room/ADE_train_00009670.jpg"
+            ],
+            "(2, 3)": [
+              "kitchen/ADE_train_00010462.jpg"
+            ]
+          },
+          "start": "(3, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "nodes": [
+            "(1, 1)",
+            "(1, 0)",
+            "(2, 0)",
+            "(2, 1)"
+          ],
+          "edges": [
+            "((1, 1), (1, 0))",
+            "((1, 0), (2, 0))",
+            "((2, 0), (2, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 0), (1, 0))",
+            "((2, 1), (2, 0))"
+          ],
+          "imgs": {
+            "(1, 1)": "resources/images/ADE_train_00009358.jpg",
+            "(1, 0)": "resources/images/ADE_train_00014967.jpg",
+            "(2, 0)": "resources/images/ADE_train_00005522.jpg",
+            "(2, 1)": "resources/images/ADE_train_00000057.jpg"
+          },
+          "cats": {
+            "(1, 1)": [
+              "home_office/ADE_train_00009358.jpg"
+            ],
+            "(1, 0)": [
+              "pantry/ADE_train_00014967.jpg"
+            ],
+            "(2, 0)": [
+              "childs_room/ADE_train_00005522.jpg"
+            ],
+            "(2, 1)": [
+              "bathroom/ADE_train_00000057.jpg"
+            ]
+          },
+          "start": "(2, 1)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "nodes": [
+            "(0, 1)",
+            "(0, 0)",
+            "(1, 0)",
+            "(1, 1)"
+          ],
+          "edges": [
+            "((0, 1), (0, 0))",
+            "((0, 0), (1, 0))",
+            "((1, 0), (1, 1))",
+            "((0, 0), (0, 1))",
+            "((1, 0), (0, 0))",
+            "((1, 1), (1, 0))"
+          ],
+          "imgs": {
+            "(0, 1)": "resources/images/ADE_train_00002675.jpg",
+            "(0, 0)": "resources/images/ADE_val_00001968.jpg",
+            "(1, 0)": "resources/images/ADE_train_00009380.jpg",
+            "(1, 1)": "resources/images/ADE_train_00010897.jpg"
+          },
+          "cats": {
+            "(0, 1)": [
+              "bathroom/ADE_train_00002675.jpg"
+            ],
+            "(0, 0)": [
+              "living_room/ADE_val_00001968.jpg"
+            ],
+            "(1, 0)": [
+              "home_office/ADE_train_00009380.jpg"
+            ],
+            "(1, 1)": [
+              "laundromat/ADE_train_00010897.jpg"
+            ]
+          },
+          "start": "(0, 1)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "medium",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "nodes": [
+            "(3, 3)",
+            "(3, 2)",
+            "(2, 2)",
+            "(1, 2)",
+            "(0, 2)",
+            "(0, 3)"
+          ],
+          "edges": [
+            "((3, 3), (3, 2))",
+            "((3, 2), (2, 2))",
+            "((2, 2), (1, 2))",
+            "((1, 2), (0, 2))",
+            "((0, 2), (0, 3))",
+            "((3, 2), (3, 3))",
+            "((2, 2), (3, 2))",
+            "((1, 2), (2, 2))",
+            "((0, 2), (1, 2))",
+            "((0, 3), (0, 2))"
+          ],
+          "imgs": {
+            "(3, 3)": "resources/images/ADE_train_00002567.jpg",
+            "(3, 2)": "resources/images/ADE_train_00000319.jpg",
+            "(2, 2)": "resources/images/ADE_train_00003337.jpg",
+            "(1, 2)": "resources/images/ADE_train_00002647.jpg",
+            "(0, 2)": "resources/images/ADE_train_00014981.jpg",
+            "(0, 3)": "resources/images/ADE_train_00000653.jpg"
+          },
+          "cats": {
+            "(3, 3)": [
+              "bathroom/ADE_train_00002567.jpg"
+            ],
+            "(3, 2)": [
+              "bedroom/ADE_train_00000319.jpg"
+            ],
+            "(2, 2)": [
+              "bedroom/ADE_train_00003337.jpg"
+            ],
+            "(1, 2)": [
+              "bathroom/ADE_train_00002647.jpg"
+            ],
+            "(0, 2)": [
+              "pantry/ADE_train_00014981.jpg"
+            ],
+            "(0, 3)": [
+              "living_room/ADE_train_00000653.jpg"
+            ]
+          },
+          "start": "(3, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "nodes": [
+            "(0, 3)",
+            "(0, 2)",
+            "(0, 1)",
+            "(1, 3)",
+            "(2, 3)",
+            "(1, 2)"
+          ],
+          "edges": [
+            "((0, 3), (0, 2))",
+            "((0, 3), (1, 3))",
+            "((0, 2), (0, 1))",
+            "((1, 3), (2, 3))",
+            "((1, 3), (1, 2))",
+            "((0, 2), (0, 3))",
+            "((1, 3), (0, 3))",
+            "((0, 1), (0, 2))",
+            "((2, 3), (1, 3))",
+            "((1, 2), (1, 3))"
+          ],
+          "imgs": {
+            "(0, 3)": "resources/images/ADE_train_00002578.jpg",
+            "(0, 2)": "resources/images/ADE_train_00008362.jpg",
+            "(0, 1)": "resources/images/ADE_train_00009399.jpg",
+            "(1, 3)": "resources/images/ADE_train_00011197.jpg",
+            "(2, 3)": "resources/images/ADE_train_00000460.jpg",
+            "(1, 2)": "resources/images/ADE_val_00000459.jpg"
+          },
+          "cats": {
+            "(0, 3)": [
+              "bathroom/ADE_train_00002578.jpg"
+            ],
+            "(0, 2)": [
+              "game_room/ADE_train_00008362.jpg"
+            ],
+            "(0, 1)": [
+              "home_office/ADE_train_00009399.jpg"
+            ],
+            "(1, 3)": [
+              "living_room/ADE_train_00011197.jpg"
+            ],
+            "(2, 3)": [
+              "bedroom/ADE_train_00000460.jpg"
+            ],
+            "(1, 2)": [
+              "kitchen/ADE_val_00000459.jpg"
+            ]
+          },
+          "start": "(0, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "nodes": [
+            "(2, 2)",
+            "(3, 2)",
+            "(3, 1)",
+            "(2, 1)",
+            "(2, 0)",
+            "(3, 0)"
+          ],
+          "edges": [
+            "((2, 2), (3, 2))",
+            "((2, 2), (2, 1))",
+            "((3, 2), (3, 1))",
+            "((3, 1), (2, 1))",
+            "((2, 1), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((3, 2), (2, 2))",
+            "((2, 1), (2, 2))",
+            "((3, 1), (3, 2))",
+            "((2, 1), (3, 1))",
+            "((2, 0), (2, 1))",
+            "((3, 0), (2, 0))"
+          ],
+          "imgs": {
+            "(2, 2)": "resources/images/ADE_train_00001927.jpg",
+            "(3, 2)": "resources/images/ADE_train_00000751.jpg",
+            "(3, 1)": "resources/images/ADE_val_00001099.jpg",
+            "(2, 1)": "resources/images/ADE_train_00007022.jpg",
+            "(2, 0)": "resources/images/ADE_val_00000303.jpg",
+            "(3, 0)": "resources/images/ADE_train_00000634.jpg"
+          },
+          "cats": {
+            "(2, 2)": [
+              "attic/ADE_train_00001927.jpg"
+            ],
+            "(3, 2)": [
+              "living_room/ADE_train_00000751.jpg"
+            ],
+            "(3, 1)": [
+              "bathroom/ADE_val_00001099.jpg"
+            ],
+            "(2, 1)": [
+              "dining_room/ADE_train_00007022.jpg"
+            ],
+            "(2, 0)": [
+              "dinette/ADE_val_00000303.jpg"
+            ],
+            "(3, 0)": [
+              "kitchen/ADE_train_00000634.jpg"
+            ]
+          },
+          "start": "(3, 2)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "nodes": [
+            "(1, 2)",
+            "(1, 3)",
+            "(2, 3)",
+            "(3, 3)",
+            "(3, 2)",
+            "(2, 2)"
+          ],
+          "edges": [
+            "((1, 2), (1, 3))",
+            "((1, 3), (2, 3))",
+            "((2, 3), (3, 3))",
+            "((3, 3), (3, 2))",
+            "((3, 2), (2, 2))",
+            "((1, 3), (1, 2))",
+            "((2, 3), (1, 3))",
+            "((3, 3), (2, 3))",
+            "((3, 2), (3, 3))",
+            "((2, 2), (3, 2))"
+          ],
+          "imgs": {
+            "(1, 2)": "resources/images/ADE_train_00007191.jpg",
+            "(1, 3)": "resources/images/ADE_train_00000024.jpg",
+            "(2, 3)": "resources/images/ADE_train_00002882.jpg",
+            "(3, 3)": "resources/images/ADE_train_00003002.jpg",
+            "(3, 2)": "resources/images/ADE_train_00000646.jpg",
+            "(2, 2)": "resources/images/ADE_train_00000606.jpg"
+          },
+          "cats": {
+            "(1, 2)": [
+              "dining_room/ADE_train_00007191.jpg"
+            ],
+            "(1, 3)": [
+              "bathroom/ADE_train_00000024.jpg"
+            ],
+            "(2, 3)": [
+              "bathroom/ADE_train_00002882.jpg"
+            ],
+            "(3, 3)": [
+              "bathroom/ADE_train_00003002.jpg"
+            ],
+            "(3, 2)": [
+              "kitchen/ADE_train_00000646.jpg"
+            ],
+            "(2, 2)": [
+              "kitchen/ADE_train_00000606.jpg"
+            ]
+          },
+          "start": "(1, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "nodes": [
+            "(0, 3)",
+            "(0, 2)",
+            "(1, 2)",
+            "(0, 1)",
+            "(1, 3)",
+            "(2, 2)"
+          ],
+          "edges": [
+            "((0, 3), (0, 2))",
+            "((0, 3), (1, 3))",
+            "((0, 2), (1, 2))",
+            "((0, 2), (0, 1))",
+            "((1, 2), (1, 3))",
+            "((1, 2), (2, 2))",
+            "((0, 2), (0, 3))",
+            "((1, 3), (0, 3))",
+            "((1, 2), (0, 2))",
+            "((0, 1), (0, 2))",
+            "((1, 3), (1, 2))",
+            "((2, 2), (1, 2))"
+          ],
+          "imgs": {
+            "(0, 3)": "resources/images/ADE_train_00004168.jpg",
+            "(0, 2)": "resources/images/ADE_train_00002781.jpg",
+            "(1, 2)": "resources/images/ADE_train_00004095.jpg",
+            "(0, 1)": "resources/images/ADE_val_00001688.jpg",
+            "(1, 3)": "resources/images/ADE_train_00000544.jpg",
+            "(2, 2)": "resources/images/ADE_train_00010305.jpg"
+          },
+          "cats": {
+            "(0, 3)": [
+              "bedroom/ADE_train_00004168.jpg"
+            ],
+            "(0, 2)": [
+              "bathroom/ADE_train_00002781.jpg"
+            ],
+            "(1, 2)": [
+              "bedroom/ADE_train_00004095.jpg"
+            ],
+            "(0, 1)": [
+              "pantry/ADE_val_00001688.jpg"
+            ],
+            "(1, 3)": [
+              "bedroom/ADE_train_00000544.jpg"
+            ],
+            "(2, 2)": [
+              "kitchen/ADE_train_00010305.jpg"
+            ]
+          },
+          "start": "(1, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "nodes": [
+            "(3, 3)",
+            "(3, 2)",
+            "(2, 2)",
+            "(2, 3)",
+            "(1, 3)",
+            "(0, 3)"
+          ],
+          "edges": [
+            "((3, 3), (3, 2))",
+            "((3, 3), (2, 3))",
+            "((3, 2), (2, 2))",
+            "((2, 2), (2, 3))",
+            "((2, 3), (1, 3))",
+            "((1, 3), (0, 3))",
+            "((3, 2), (3, 3))",
+            "((2, 3), (3, 3))",
+            "((2, 2), (3, 2))",
+            "((2, 3), (2, 2))",
+            "((1, 3), (2, 3))",
+            "((0, 3), (1, 3))"
+          ],
+          "imgs": {
+            "(3, 3)": "resources/images/ADE_train_00016795.jpg",
+            "(3, 2)": "resources/images/ADE_train_00003878.jpg",
+            "(2, 2)": "resources/images/ADE_train_00000103.jpg",
+            "(2, 3)": "resources/images/ADE_train_00006902.jpg",
+            "(1, 3)": "resources/images/ADE_train_00011477.jpg",
+            "(0, 3)": "resources/images/ADE_train_00010722.jpg"
+          },
+          "cats": {
+            "(3, 3)": [
+              "staircase/ADE_train_00016795.jpg"
+            ],
+            "(3, 2)": [
+              "bedroom/ADE_train_00003878.jpg"
+            ],
+            "(2, 2)": [
+              "bathroom/ADE_train_00000103.jpg"
+            ],
+            "(2, 3)": [
+              "dining_room/ADE_train_00006902.jpg"
+            ],
+            "(1, 3)": [
+              "living_room/ADE_train_00011477.jpg"
+            ],
+            "(0, 3)": [
+              "kitchen/ADE_train_00010722.jpg"
+            ]
+          },
+          "start": "(1, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "nodes": [
+            "(1, 3)",
+            "(0, 3)",
+            "(1, 2)",
+            "(1, 1)",
+            "(2, 3)",
+            "(2, 2)"
+          ],
+          "edges": [
+            "((1, 3), (0, 3))",
+            "((1, 3), (1, 2))",
+            "((1, 3), (2, 3))",
+            "((1, 2), (1, 1))",
+            "((2, 3), (2, 2))",
+            "((0, 3), (1, 3))",
+            "((1, 2), (1, 3))",
+            "((2, 3), (1, 3))",
+            "((1, 1), (1, 2))",
+            "((2, 2), (2, 3))"
+          ],
+          "imgs": {
+            "(1, 3)": "resources/images/ADE_train_00006984.jpg",
+            "(0, 3)": "resources/images/ADE_train_00006902.jpg",
+            "(1, 2)": "resources/images/ADE_train_00016810.jpg",
+            "(1, 1)": "resources/images/ADE_train_00004452.jpg",
+            "(2, 3)": "resources/images/ADE_train_00011352.jpg",
+            "(2, 2)": "resources/images/ADE_train_00000606.jpg"
+          },
+          "cats": {
+            "(1, 3)": [
+              "dining_room/ADE_train_00006984.jpg"
+            ],
+            "(0, 3)": [
+              "dining_room/ADE_train_00006902.jpg"
+            ],
+            "(1, 2)": [
+              "staircase/ADE_train_00016810.jpg"
+            ],
+            "(1, 1)": [
+              "bow_window/ADE_train_00004452.jpg"
+            ],
+            "(2, 3)": [
+              "living_room/ADE_train_00011352.jpg"
+            ],
+            "(2, 2)": [
+              "kitchen/ADE_train_00000606.jpg"
+            ]
+          },
+          "start": "(1, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "nodes": [
+            "(3, 1)",
+            "(3, 2)",
+            "(3, 3)",
+            "(2, 3)",
+            "(1, 3)",
+            "(0, 3)"
+          ],
+          "edges": [
+            "((3, 1), (3, 2))",
+            "((3, 2), (3, 3))",
+            "((3, 3), (2, 3))",
+            "((2, 3), (1, 3))",
+            "((1, 3), (0, 3))",
+            "((3, 2), (3, 1))",
+            "((3, 3), (3, 2))",
+            "((2, 3), (3, 3))",
+            "((1, 3), (2, 3))",
+            "((0, 3), (1, 3))"
+          ],
+          "imgs": {
+            "(3, 1)": "resources/images/ADE_train_00007233.jpg",
+            "(3, 2)": "resources/images/ADE_train_00003341.jpg",
+            "(3, 3)": "resources/images/ADE_train_00004452.jpg",
+            "(2, 3)": "resources/images/ADE_train_00000032.jpg",
+            "(1, 3)": "resources/images/ADE_train_00010375.jpg",
+            "(0, 3)": "resources/images/ADE_train_00015410.jpg"
+          },
+          "cats": {
+            "(3, 1)": [
+              "dining_room/ADE_train_00007233.jpg"
+            ],
+            "(3, 2)": [
+              "bedroom/ADE_train_00003341.jpg"
+            ],
+            "(3, 3)": [
+              "bow_window/ADE_train_00004452.jpg"
+            ],
+            "(2, 3)": [
+              "bathroom/ADE_train_00000032.jpg"
+            ],
+            "(1, 3)": [
+              "kitchen/ADE_train_00010375.jpg"
+            ],
+            "(0, 3)": [
+              "playroom/ADE_train_00015410.jpg"
+            ]
+          },
+          "start": "(1, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "nodes": [
+            "(1, 2)",
+            "(0, 2)",
+            "(0, 1)",
+            "(2, 2)",
+            "(1, 1)",
+            "(2, 1)"
+          ],
+          "edges": [
+            "((1, 2), (0, 2))",
+            "((1, 2), (2, 2))",
+            "((1, 2), (1, 1))",
+            "((0, 2), (0, 1))",
+            "((1, 1), (2, 1))",
+            "((0, 2), (1, 2))",
+            "((2, 2), (1, 2))",
+            "((1, 1), (1, 2))",
+            "((0, 1), (0, 2))",
+            "((2, 1), (1, 1))"
+          ],
+          "imgs": {
+            "(1, 2)": "resources/images/ADE_train_00011468.jpg",
+            "(0, 2)": "resources/images/ADE_train_00002984.jpg",
+            "(0, 1)": "resources/images/ADE_train_00002940.jpg",
+            "(2, 2)": "resources/images/ADE_train_00006860.jpg",
+            "(1, 1)": "resources/images/ADE_train_00007104.jpg",
+            "(2, 1)": "resources/images/ADE_train_00007218.jpg"
+          },
+          "cats": {
+            "(1, 2)": [
+              "living_room/ADE_train_00011468.jpg"
+            ],
+            "(0, 2)": [
+              "bathroom/ADE_train_00002984.jpg"
+            ],
+            "(0, 1)": [
+              "bathroom/ADE_train_00002940.jpg"
+            ],
+            "(2, 2)": [
+              "dining_room/ADE_train_00006860.jpg"
+            ],
+            "(1, 1)": [
+              "dining_room/ADE_train_00007104.jpg"
+            ],
+            "(2, 1)": [
+              "dining_room/ADE_train_00007218.jpg"
+            ]
+          },
+          "start": "(0, 2)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "nodes": [
+            "(2, 0)",
+            "(2, 1)",
+            "(3, 1)",
+            "(3, 0)",
+            "(3, 2)",
+            "(1, 0)"
+          ],
+          "edges": [
+            "((2, 0), (2, 1))",
+            "((2, 0), (3, 0))",
+            "((2, 0), (1, 0))",
+            "((2, 1), (3, 1))",
+            "((3, 1), (3, 0))",
+            "((3, 1), (3, 2))",
+            "((2, 1), (2, 0))",
+            "((3, 0), (2, 0))",
+            "((1, 0), (2, 0))",
+            "((3, 1), (2, 1))",
+            "((3, 0), (3, 1))",
+            "((3, 2), (3, 1))"
+          ],
+          "imgs": {
+            "(2, 0)": "resources/images/ADE_train_00010440.jpg",
+            "(2, 1)": "resources/images/ADE_train_00003341.jpg",
+            "(3, 1)": "resources/images/ADE_train_00005761.jpg",
+            "(3, 0)": "resources/images/ADE_train_00015151.jpg",
+            "(3, 2)": "resources/images/ADE_train_00011477.jpg",
+            "(1, 0)": "resources/images/ADE_train_00000083.jpg"
+          },
+          "cats": {
+            "(2, 0)": [
+              "kitchen/ADE_train_00010440.jpg"
+            ],
+            "(2, 1)": [
+              "bedroom/ADE_train_00003341.jpg"
+            ],
+            "(3, 1)": [
+              "closet/ADE_train_00005761.jpg"
+            ],
+            "(3, 0)": [
+              "parlor/ADE_train_00015151.jpg"
+            ],
+            "(3, 2)": [
+              "living_room/ADE_train_00011477.jpg"
+            ],
+            "(1, 0)": [
+              "bathroom/ADE_train_00000083.jpg"
+            ]
+          },
+          "start": "(1, 0)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "large",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "nodes": [
+            "(3, 2)",
+            "(3, 1)",
+            "(3, 3)",
+            "(2, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(2, 0)",
+            "(0, 0)"
+          ],
+          "edges": [
+            "((3, 2), (3, 1))",
+            "((3, 2), (3, 3))",
+            "((3, 1), (2, 1))",
+            "((2, 1), (1, 1))",
+            "((2, 1), (2, 0))",
+            "((1, 1), (1, 0))",
+            "((1, 0), (2, 0))",
+            "((1, 0), (0, 0))",
+            "((3, 1), (3, 2))",
+            "((3, 3), (3, 2))",
+            "((2, 1), (3, 1))",
+            "((1, 1), (2, 1))",
+            "((2, 0), (2, 1))",
+            "((1, 0), (1, 1))",
+            "((2, 0), (1, 0))",
+            "((0, 0), (1, 0))"
+          ],
+          "imgs": {
+            "(3, 2)": "resources/images/ADE_train_00010230.jpg",
+            "(3, 1)": "resources/images/ADE_train_00000507.jpg",
+            "(3, 3)": "resources/images/ADE_train_00003397.jpg",
+            "(2, 1)": "resources/images/ADE_train_00000595.jpg",
+            "(1, 1)": "resources/images/ADE_train_00000057.jpg",
+            "(1, 0)": "resources/images/ADE_train_00003839.jpg",
+            "(2, 0)": "resources/images/ADE_train_00011243.jpg",
+            "(0, 0)": "resources/images/ADE_train_00007204.jpg"
+          },
+          "cats": {
+            "(3, 2)": [
+              "kitchen/ADE_train_00010230.jpg"
+            ],
+            "(3, 1)": [
+              "bedroom/ADE_train_00000507.jpg"
+            ],
+            "(3, 3)": [
+              "bedroom/ADE_train_00003397.jpg"
+            ],
+            "(2, 1)": [
+              "kitchen/ADE_train_00000595.jpg"
+            ],
+            "(1, 1)": [
+              "bathroom/ADE_train_00000057.jpg"
+            ],
+            "(1, 0)": [
+              "bedroom/ADE_train_00003839.jpg"
+            ],
+            "(2, 0)": [
+              "living_room/ADE_train_00011243.jpg"
+            ],
+            "(0, 0)": [
+              "dining_room/ADE_train_00007204.jpg"
+            ]
+          },
+          "start": "(2, 0)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 1,
+          "nodes": [
+            "(0, 3)",
+            "(0, 2)",
+            "(1, 2)",
+            "(0, 1)",
+            "(1, 1)",
+            "(1, 0)",
+            "(0, 0)",
+            "(2, 0)"
+          ],
+          "edges": [
+            "((0, 3), (0, 2))",
+            "((0, 2), (1, 2))",
+            "((0, 2), (0, 1))",
+            "((0, 1), (1, 1))",
+            "((0, 1), (0, 0))",
+            "((1, 1), (1, 0))",
+            "((1, 0), (0, 0))",
+            "((1, 0), (2, 0))",
+            "((0, 2), (0, 3))",
+            "((1, 2), (0, 2))",
+            "((0, 1), (0, 2))",
+            "((1, 1), (0, 1))",
+            "((0, 0), (0, 1))",
+            "((1, 0), (1, 1))",
+            "((0, 0), (1, 0))",
+            "((2, 0), (1, 0))"
+          ],
+          "imgs": {
+            "(0, 3)": "resources/images/ADE_train_00000751.jpg",
+            "(0, 2)": "resources/images/ADE_train_00007204.jpg",
+            "(1, 2)": "resources/images/ADE_train_00003397.jpg",
+            "(0, 1)": "resources/images/ADE_train_00015207.jpg",
+            "(1, 1)": "resources/images/ADE_train_00015151.jpg",
+            "(1, 0)": "resources/images/ADE_train_00003559.jpg",
+            "(0, 0)": "resources/images/ADE_train_00002650.jpg",
+            "(2, 0)": "resources/images/ADE_train_00000877.jpg"
+          },
+          "cats": {
+            "(0, 3)": [
+              "living_room/ADE_train_00000751.jpg"
+            ],
+            "(0, 2)": [
+              "dining_room/ADE_train_00007204.jpg"
+            ],
+            "(1, 2)": [
+              "bedroom/ADE_train_00003397.jpg"
+            ],
+            "(0, 1)": [
+              "parlor/ADE_train_00015207.jpg"
+            ],
+            "(1, 1)": [
+              "parlor/ADE_train_00015151.jpg"
+            ],
+            "(1, 0)": [
+              "bedroom/ADE_train_00003559.jpg"
+            ],
+            "(0, 0)": [
+              "bathroom/ADE_train_00002650.jpg"
+            ],
+            "(2, 0)": [
+              "living_room/ADE_train_00000877.jpg"
+            ]
+          },
+          "start": "(0, 1)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 2,
+          "nodes": [
+            "(1, 1)",
+            "(2, 1)",
+            "(2, 2)",
+            "(0, 1)",
+            "(0, 0)",
+            "(1, 0)",
+            "(0, 2)",
+            "(1, 2)"
+          ],
+          "edges": [
+            "((1, 1), (2, 1))",
+            "((1, 1), (0, 1))",
+            "((2, 1), (2, 2))",
+            "((0, 1), (0, 0))",
+            "((0, 1), (0, 2))",
+            "((0, 0), (1, 0))",
+            "((0, 2), (1, 2))",
+            "((2, 1), (1, 1))",
+            "((0, 1), (1, 1))",
+            "((2, 2), (2, 1))",
+            "((0, 0), (0, 1))",
+            "((0, 2), (0, 1))",
+            "((1, 0), (0, 0))",
+            "((1, 2), (0, 2))"
+          ],
+          "imgs": {
+            "(1, 1)": "resources/images/ADE_train_00003011.jpg",
+            "(2, 1)": "resources/images/ADE_train_00000901.jpg",
+            "(2, 2)": "resources/images/ADE_train_00001899.jpg",
+            "(0, 1)": "resources/images/ADE_train_00002649.jpg",
+            "(0, 0)": "resources/images/ADE_train_00011126.jpg",
+            "(1, 0)": "resources/images/ADE_val_00001380.jpg",
+            "(0, 2)": "resources/images/ADE_train_00015776.jpg",
+            "(1, 2)": "resources/images/ADE_train_00002584.jpg"
+          },
+          "cats": {
+            "(1, 1)": [
+              "bathroom/ADE_train_00003011.jpg"
+            ],
+            "(2, 1)": [
+              "living_room/ADE_train_00000901.jpg"
+            ],
+            "(2, 2)": [
+              "attic/ADE_train_00001899.jpg"
+            ],
+            "(0, 1)": [
+              "bathroom/ADE_train_00002649.jpg"
+            ],
+            "(0, 0)": [
+              "living_room/ADE_train_00011126.jpg"
+            ],
+            "(1, 0)": [
+              "garage/ADE_val_00001380.jpg"
+            ],
+            "(0, 2)": [
+              "recreation_room/ADE_train_00015776.jpg"
+            ],
+            "(1, 2)": [
+              "bathroom/ADE_train_00002584.jpg"
+            ]
+          },
+          "start": "(1, 2)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 3,
+          "nodes": [
+            "(1, 3)",
+            "(2, 3)",
+            "(1, 2)",
+            "(0, 2)",
+            "(0, 1)",
+            "(0, 0)",
+            "(1, 0)",
+            "(1, 1)"
+          ],
+          "edges": [
+            "((1, 3), (2, 3))",
+            "((1, 3), (1, 2))",
+            "((1, 2), (0, 2))",
+            "((0, 2), (0, 1))",
+            "((0, 1), (0, 0))",
+            "((0, 0), (1, 0))",
+            "((1, 0), (1, 1))",
+            "((2, 3), (1, 3))",
+            "((1, 2), (1, 3))",
+            "((0, 2), (1, 2))",
+            "((0, 1), (0, 2))",
+            "((0, 0), (0, 1))",
+            "((1, 0), (0, 0))",
+            "((1, 1), (1, 0))"
+          ],
+          "imgs": {
+            "(1, 3)": "resources/images/ADE_train_00006775.jpg",
+            "(2, 3)": "resources/images/ADE_train_00006902.jpg",
+            "(1, 2)": "resources/images/ADE_train_00004016.jpg",
+            "(0, 2)": "resources/images/ADE_val_00001968.jpg",
+            "(0, 1)": "resources/images/ADE_train_00015151.jpg",
+            "(0, 0)": "resources/images/ADE_train_00003887.jpg",
+            "(1, 0)": "resources/images/ADE_train_00007093.jpg",
+            "(1, 1)": "resources/images/ADE_train_00011332.jpg"
+          },
+          "cats": {
+            "(1, 3)": [
+              "dinette/ADE_train_00006775.jpg"
+            ],
+            "(2, 3)": [
+              "dining_room/ADE_train_00006902.jpg"
+            ],
+            "(1, 2)": [
+              "bedroom/ADE_train_00004016.jpg"
+            ],
+            "(0, 2)": [
+              "living_room/ADE_val_00001968.jpg"
+            ],
+            "(0, 1)": [
+              "parlor/ADE_train_00015151.jpg"
+            ],
+            "(0, 0)": [
+              "bedroom/ADE_train_00003887.jpg"
+            ],
+            "(1, 0)": [
+              "dining_room/ADE_train_00007093.jpg"
+            ],
+            "(1, 1)": [
+              "living_room/ADE_train_00011332.jpg"
+            ]
+          },
+          "start": "(0, 1)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 4,
+          "nodes": [
+            "(2, 3)",
+            "(1, 3)",
+            "(1, 2)",
+            "(0, 3)",
+            "(0, 2)",
+            "(3, 3)",
+            "(3, 2)",
+            "(3, 1)"
+          ],
+          "edges": [
+            "((2, 3), (1, 3))",
+            "((2, 3), (3, 3))",
+            "((1, 3), (1, 2))",
+            "((1, 3), (0, 3))",
+            "((1, 2), (0, 2))",
+            "((0, 3), (0, 2))",
+            "((3, 3), (3, 2))",
+            "((3, 2), (3, 1))",
+            "((1, 3), (2, 3))",
+            "((3, 3), (2, 3))",
+            "((1, 2), (1, 3))",
+            "((0, 3), (1, 3))",
+            "((0, 2), (1, 2))",
+            "((0, 2), (0, 3))",
+            "((3, 2), (3, 3))",
+            "((3, 1), (3, 2))"
+          ],
+          "imgs": {
+            "(2, 3)": "resources/images/ADE_train_00002555.jpg",
+            "(1, 3)": "resources/images/ADE_train_00001911.jpg",
+            "(1, 2)": "resources/images/ADE_train_00010247.jpg",
+            "(0, 3)": "resources/images/ADE_train_00010230.jpg",
+            "(0, 2)": "resources/images/ADE_train_00007064.jpg",
+            "(3, 3)": "resources/images/ADE_train_00002901.jpg",
+            "(3, 2)": "resources/images/ADE_train_00003531.jpg",
+            "(3, 1)": "resources/images/ADE_train_00009534.jpg"
+          },
+          "cats": {
+            "(2, 3)": [
+              "bathroom/ADE_train_00002555.jpg"
+            ],
+            "(1, 3)": [
+              "attic/ADE_train_00001911.jpg"
+            ],
+            "(1, 2)": [
+              "kitchen/ADE_train_00010247.jpg"
+            ],
+            "(0, 3)": [
+              "kitchen/ADE_train_00010230.jpg"
+            ],
+            "(0, 2)": [
+              "dining_room/ADE_train_00007064.jpg"
+            ],
+            "(3, 3)": [
+              "bathroom/ADE_train_00002901.jpg"
+            ],
+            "(3, 2)": [
+              "bedroom/ADE_train_00003531.jpg"
+            ],
+            "(3, 1)": [
+              "hotel_room/ADE_train_00009534.jpg"
+            ]
+          },
+          "start": "(2, 3)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 5,
+          "nodes": [
+            "(3, 0)",
+            "(2, 0)",
+            "(2, 1)",
+            "(3, 1)",
+            "(3, 2)",
+            "(3, 3)",
+            "(2, 3)",
+            "(2, 2)"
+          ],
+          "edges": [
+            "((3, 0), (2, 0))",
+            "((3, 0), (3, 1))",
+            "((2, 0), (2, 1))",
+            "((2, 1), (3, 1))",
+            "((3, 1), (3, 2))",
+            "((3, 2), (3, 3))",
+            "((3, 3), (2, 3))",
+            "((2, 3), (2, 2))",
+            "((2, 0), (3, 0))",
+            "((3, 1), (3, 0))",
+            "((2, 1), (2, 0))",
+            "((3, 1), (2, 1))",
+            "((3, 2), (3, 1))",
+            "((3, 3), (3, 2))",
+            "((2, 3), (3, 3))",
+            "((2, 2), (2, 3))"
+          ],
+          "imgs": {
+            "(3, 0)": "resources/images/ADE_train_00008394.jpg",
+            "(2, 0)": "resources/images/ADE_train_00008346.jpg",
+            "(2, 1)": "resources/images/ADE_train_00010518.jpg",
+            "(3, 1)": "resources/images/ADE_train_00010180.jpg",
+            "(3, 2)": "resources/images/ADE_val_00001098.jpg",
+            "(3, 3)": "resources/images/ADE_train_00015216.jpg",
+            "(2, 3)": "resources/images/ADE_train_00011397.jpg",
+            "(2, 2)": "resources/images/ADE_train_00010333.jpg"
+          },
+          "cats": {
+            "(3, 0)": [
+              "game_room/ADE_train_00008394.jpg"
+            ],
+            "(2, 0)": [
+              "game_room/ADE_train_00008346.jpg"
+            ],
+            "(2, 1)": [
+              "kitchen/ADE_train_00010518.jpg"
+            ],
+            "(3, 1)": [
+              "kitchen/ADE_train_00010180.jpg"
+            ],
+            "(3, 2)": [
+              "bathroom/ADE_val_00001098.jpg"
+            ],
+            "(3, 3)": [
+              "parlor/ADE_train_00015216.jpg"
+            ],
+            "(2, 3)": [
+              "living_room/ADE_train_00011397.jpg"
+            ],
+            "(2, 2)": [
+              "kitchen/ADE_train_00010333.jpg"
+            ]
+          },
+          "start": "(2, 1)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 6,
+          "nodes": [
+            "(3, 3)",
+            "(3, 2)",
+            "(3, 1)",
+            "(2, 3)",
+            "(2, 2)",
+            "(1, 2)",
+            "(1, 1)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((3, 3), (3, 2))",
+            "((3, 3), (2, 3))",
+            "((3, 2), (3, 1))",
+            "((3, 2), (2, 2))",
+            "((2, 3), (2, 2))",
+            "((2, 2), (1, 2))",
+            "((1, 2), (1, 1))",
+            "((1, 1), (0, 1))",
+            "((3, 2), (3, 3))",
+            "((2, 3), (3, 3))",
+            "((3, 1), (3, 2))",
+            "((2, 2), (3, 2))",
+            "((2, 2), (2, 3))",
+            "((1, 2), (2, 2))",
+            "((1, 1), (1, 2))",
+            "((0, 1), (1, 1))"
+          ],
+          "imgs": {
+            "(3, 3)": "resources/images/ADE_train_00000647.jpg",
+            "(3, 2)": "resources/images/ADE_train_00019930.jpg",
+            "(3, 1)": "resources/images/ADE_train_00000634.jpg",
+            "(2, 3)": "resources/images/ADE_train_00008395.jpg",
+            "(2, 2)": "resources/images/ADE_train_00002729.jpg",
+            "(1, 2)": "resources/images/ADE_train_00003910.jpg",
+            "(1, 1)": "resources/images/ADE_train_00015776.jpg",
+            "(0, 1)": "resources/images/ADE_train_00002897.jpg"
+          },
+          "cats": {
+            "(3, 3)": [
+              "kitchen/ADE_train_00000647.jpg"
+            ],
+            "(3, 2)": [
+              "wet_bar/ADE_train_00019930.jpg"
+            ],
+            "(3, 1)": [
+              "kitchen/ADE_train_00000634.jpg"
+            ],
+            "(2, 3)": [
+              "game_room/ADE_train_00008395.jpg"
+            ],
+            "(2, 2)": [
+              "bathroom/ADE_train_00002729.jpg"
+            ],
+            "(1, 2)": [
+              "bedroom/ADE_train_00003910.jpg"
+            ],
+            "(1, 1)": [
+              "recreation_room/ADE_train_00015776.jpg"
+            ],
+            "(0, 1)": [
+              "bathroom/ADE_train_00002897.jpg"
+            ]
+          },
+          "start": "(1, 1)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 7,
+          "nodes": [
+            "(1, 2)",
+            "(1, 3)",
+            "(1, 1)",
+            "(1, 0)",
+            "(0, 0)",
+            "(2, 0)",
+            "(3, 0)",
+            "(3, 1)"
+          ],
+          "edges": [
+            "((1, 2), (1, 3))",
+            "((1, 2), (1, 1))",
+            "((1, 1), (1, 0))",
+            "((1, 0), (0, 0))",
+            "((1, 0), (2, 0))",
+            "((2, 0), (3, 0))",
+            "((3, 0), (3, 1))",
+            "((1, 3), (1, 2))",
+            "((1, 1), (1, 2))",
+            "((1, 0), (1, 1))",
+            "((0, 0), (1, 0))",
+            "((2, 0), (1, 0))",
+            "((3, 0), (2, 0))",
+            "((3, 1), (3, 0))"
+          ],
+          "imgs": {
+            "(1, 2)": "resources/images/ADE_train_00010359.jpg",
+            "(1, 3)": "resources/images/ADE_train_00013881.jpg",
+            "(1, 1)": "resources/images/ADE_train_00011381.jpg",
+            "(1, 0)": "resources/images/ADE_val_00001716.jpg",
+            "(0, 0)": "resources/images/ADE_train_00015419.jpg",
+            "(2, 0)": "resources/images/ADE_train_00013899.jpg",
+            "(3, 0)": "resources/images/ADE_train_00011243.jpg",
+            "(3, 1)": "resources/images/ADE_train_00003746.jpg"
+          },
+          "cats": {
+            "(1, 2)": [
+              "kitchen/ADE_train_00010359.jpg"
+            ],
+            "(1, 3)": [
+              "nursery/ADE_train_00013881.jpg"
+            ],
+            "(1, 1)": [
+              "living_room/ADE_train_00011381.jpg"
+            ],
+            "(1, 0)": [
+              "poolroom/ADE_val_00001716.jpg"
+            ],
+            "(0, 0)": [
+              "playroom/ADE_train_00015419.jpg"
+            ],
+            "(2, 0)": [
+              "nursery/ADE_train_00013899.jpg"
+            ],
+            "(3, 0)": [
+              "living_room/ADE_train_00011243.jpg"
+            ],
+            "(3, 1)": [
+              "bedroom/ADE_train_00003746.jpg"
+            ]
+          },
+          "start": "(2, 0)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 8,
+          "nodes": [
+            "(1, 0)",
+            "(2, 0)",
+            "(2, 1)",
+            "(2, 2)",
+            "(1, 2)",
+            "(1, 1)",
+            "(0, 1)",
+            "(3, 1)"
+          ],
+          "edges": [
+            "((1, 0), (2, 0))",
+            "((2, 0), (2, 1))",
+            "((2, 1), (2, 2))",
+            "((2, 1), (1, 1))",
+            "((2, 1), (3, 1))",
+            "((2, 2), (1, 2))",
+            "((1, 2), (1, 1))",
+            "((1, 1), (0, 1))",
+            "((2, 0), (1, 0))",
+            "((2, 1), (2, 0))",
+            "((2, 2), (2, 1))",
+            "((1, 1), (2, 1))",
+            "((3, 1), (2, 1))",
+            "((1, 2), (2, 2))",
+            "((1, 1), (1, 2))",
+            "((0, 1), (1, 1))"
+          ],
+          "imgs": {
+            "(1, 0)": "resources/images/ADE_train_00002871.jpg",
+            "(2, 0)": "resources/images/ADE_val_00000459.jpg",
+            "(2, 1)": "resources/images/ADE_train_00000056.jpg",
+            "(2, 2)": "resources/images/ADE_train_00009384.jpg",
+            "(1, 2)": "resources/images/ADE_train_00000645.jpg",
+            "(1, 1)": "resources/images/ADE_train_00001907.jpg",
+            "(0, 1)": "resources/images/ADE_train_00002665.jpg",
+            "(3, 1)": "resources/images/ADE_val_00000485.jpg"
+          },
+          "cats": {
+            "(1, 0)": [
+              "bathroom/ADE_train_00002871.jpg"
+            ],
+            "(2, 0)": [
+              "kitchen/ADE_val_00000459.jpg"
+            ],
+            "(2, 1)": [
+              "bathroom/ADE_train_00000056.jpg"
+            ],
+            "(2, 2)": [
+              "home_office/ADE_train_00009384.jpg"
+            ],
+            "(1, 2)": [
+              "kitchen/ADE_train_00000645.jpg"
+            ],
+            "(1, 1)": [
+              "attic/ADE_train_00001907.jpg"
+            ],
+            "(0, 1)": [
+              "bathroom/ADE_train_00002665.jpg"
+            ],
+            "(3, 1)": [
+              "kitchen/ADE_val_00000485.jpg"
+            ]
+          },
+          "start": "(1, 2)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        },
+        {
+          "game_id": 9,
+          "nodes": [
+            "(2, 3)",
+            "(1, 3)",
+            "(1, 2)",
+            "(2, 2)",
+            "(2, 1)",
+            "(0, 2)",
+            "(1, 1)",
+            "(0, 1)"
+          ],
+          "edges": [
+            "((2, 3), (1, 3))",
+            "((1, 3), (1, 2))",
+            "((1, 2), (2, 2))",
+            "((1, 2), (0, 2))",
+            "((1, 2), (1, 1))",
+            "((2, 2), (2, 1))",
+            "((1, 1), (0, 1))",
+            "((1, 3), (2, 3))",
+            "((1, 2), (1, 3))",
+            "((2, 2), (1, 2))",
+            "((0, 2), (1, 2))",
+            "((1, 1), (1, 2))",
+            "((2, 1), (2, 2))",
+            "((0, 1), (1, 1))"
+          ],
+          "imgs": {
+            "(2, 3)": "resources/images/ADE_val_00001469.jpg",
+            "(1, 3)": "resources/images/ADE_train_00005464.jpg",
+            "(1, 2)": "resources/images/ADE_train_00001899.jpg",
+            "(2, 2)": "resources/images/ADE_train_00015510.jpg",
+            "(2, 1)": "resources/images/ADE_train_00007088.jpg",
+            "(0, 2)": "resources/images/ADE_train_00008421.jpg",
+            "(1, 1)": "resources/images/ADE_train_00002877.jpg",
+            "(0, 1)": "resources/images/ADE_train_00011319.jpg"
+          },
+          "cats": {
+            "(2, 3)": [
+              "kitchen/ADE_val_00001469.jpg"
+            ],
+            "(1, 3)": [
+              "childs_room/ADE_train_00005464.jpg"
+            ],
+            "(1, 2)": [
+              "attic/ADE_train_00001899.jpg"
+            ],
+            "(2, 2)": [
+              "poolroom/ADE_train_00015510.jpg"
+            ],
+            "(2, 1)": [
+              "dining_room/ADE_train_00007088.jpg"
+            ],
+            "(0, 2)": [
+              "game_room/ADE_train_00008421.jpg"
+            ],
+            "(1, 1)": [
+              "bathroom/ADE_train_00002877.jpg"
+            ],
+            "(0, 1)": [
+              "living_room/ADE_train_00011319.jpg"
+            ]
+          },
+          "start": "(1, 2)",
+          "use_loop_warning": true,
+          "use_turn_limit_warning": true,
+          "initial_prompt": "We are currently in this room. Please help me with the following task. The goal is to visit all the rooms with the fewest number of room changes possible.  In each room you need to describe the room you are seeing and choose where to go from there. Additionally, you need to provide a graph representing the map you have uncovered. Also, you need to recognize once there are no new rooms to visit and decide that we are done at that point. Please give your answer in the following format: \n'{\"action\":\"<action>\", \"description\": \"<room description>\", \"graph\": <graph>}'.\n<action> needs to be in the format \"GO: <direction>\" where <direction> is one of [north, east, south, west]. Alternatively, choose \"DONE\" as your action once you have explored the entire map.\n<room description> should be a single sentence describing the room shown to you.\n<graph> represents the map in this format: {\"nodes\":[], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}\nOmit any other text and answer only following the format, not adding anything except the dictionary!\n\nHere is an example: \nWe are in this room. From here we can go: south, west. What is your next instruction?\n{\"action\":\"GO: north\", \"description\": \"We are in a kitchen with a red fridge.\", \"graph\":{\"nodes\":[\"Kitchen\"], \"edges\":{\"north\": [], \"south\": [], \"east\": [], \"west\": []}}}\nWe have made a step and are now in this room. From here we can go: east. What is your next instruction?\n{\"action\":\"GO: east\", \"description\": \"We are in a living room with a couch and a tv.\", \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [], \"west\": []}}}\nYou have made a step and are now in this room. From here we can go: west, south. What is your next instruction?\n{\"action\":\"GO: south\", \"description\": \"We are in a bedroom with two beds and a nightstand.\",  \"graph\":{\"nodes\":[\"Kitchen\", \"Living Room\", \"Bedroom\"], \"edges\":{\"north\": [[\"Kitchen\", \"Living Room\"]], \"south\": [], \"east\": [[\"Living Room\", \"Bedroom\"]], \"west\": []}}}\n...\nYou have made a step and are now in this room. From here we can go: north. What is your next instruction?\nExample answer:\n{\"action\":\"DONE\", \"description\": \"We are in a stairwell, the stair is curved.\", \"graph\":\"{...}\"}\n\nLet us start.\nCurrently available directions: $INITIAL_DIRECTIONS$. What is your next instruction?\n",
+          "success_response": "We have made a step and are now in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "invalid_response": "The move was invalid and we are still in this room. From here we can go: $DIRECTIONS$. What is your next instruction?",
+          "reprompt": false,
+          "use_images": true,
+          "reprompt_format": "Please only give your answer in the provided format so I can understand it. The format is: {\"action\": \"<action>\", \"description\": \"<room description>\", \"graph\": {\"nodes\": [], \"edges\": {}}}. \nReplace <room description> with a single sentence describing the room we are in. To move to a neighboring room, replace <action> with \"GO: <direction>\" where <direction> can be one of [north, south, east, west]. To stop the exploration replace <action> with \"DONE\". What is your next instruction? ",
+          "limit_warning": "We have been exploring for a while now. To stop exploring choose \"DONE\" as our next action. ",
+          "loop_warning": "It seems like we are going back and forth between two rooms. To stop exploring choose \"DONE\" as our next action. ",
+          "move_construction": "GO: ",
+          "stop_construction": "DONE",
+          "response_regex": "^\\{[\\s]*\"action\":\\s*\"([^\\{]*?)\"\\s*,\\s*\"description\":\\s*\"([^\\{]*?)\"[\\s]*,\\s*\"graph\":\\s*(\\{\\s*\"nodes\"\\s*:\\s*\\[.*\\]\\s*,\\s*\"edges\"\\s*:\\s*\\{.*\\})\\s*\\}$",
+          "done_regex": "^DONE$",
+          "move_regex": "^GO:\\s*(north|east|west|south)$",
+          "directions": [
+            "north",
+            "east",
+            "west",
+            "south"
+          ],
+          "dir_to_delta": {
+            "north": [
+              -1,
+              0
+            ],
+            "south": [
+              1,
+              0
+            ],
+            "east": [
+              0,
+              1
+            ],
+            "west": [
+              0,
+              -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

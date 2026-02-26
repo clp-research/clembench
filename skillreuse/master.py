@@ -160,7 +160,7 @@ class SkillReuseMaster(DialogueGameMaster):
         #yield from regular_boards
 
 
-    def _prepare_boardinfo(self) -> Tuple[bool, str]:
+    def _prepare_boardinfo(self, goal: str=None) -> Tuple[bool, str]:
         try: 
             variant, self.board_info = next(self.boardgen)
         except StopIteration:
@@ -184,7 +184,7 @@ class SkillReuseMaster(DialogueGameMaster):
         self.player_grid_match_status = False
         self.player_grid = None
         self.player_occupied_cells = None
-        self.player_a_goal = None
+        self.player_a_goal = goal
         self.gtcode = None
         self.gt_usage = None
         self.gt_occupied_cells = None
@@ -206,9 +206,17 @@ class SkillReuseMaster(DialogueGameMaster):
         self.gtcode = {"function": gtcode_function, "usage": self.gt_usage}
         self.gamedata["used_gtcode_for_validation"] = self.gtcode
 
-        ascii_rep_board, board_rep = self.prepare_ascii_rep.get_ascii_representation(self.gtcode, self.board_info["size"])
-        self.player_a_goal = ascii_rep_board #Layer-wise representation
-        logger.info(f"Player A Goal:Prepared ASCII representation for variant {variant}:\n{ascii_rep_board}")
+        #player_a_goal will be set to goal that was prepared during instance creation (send as input to this function). This is okay as long as we have only one game. If multiple games (reconstruct, reuse,repeat) clubbed together then it will be a problem.
+        if self.player_a_goal is None:
+            logger.info(f"Player A goal from reuse data is None, preparing ASCII representation from gtcode for variant {variant}.")
+            skill_name = self.board_info["combo_name"]
+            colors = self.board_info["colors"] if "colors" in self.board_info else None
+            repeat_locations = [self.board_info["repeat_locations"]] if "repeat_locations" in self.board_info else None
+            target_board_rep, goldboard, *_ = self.prepare_ascii_rep.get_ascii_representation_rb(self.board_info["size"], self.gtcode, skill_name, colors, repeat_locations)
+            #ascii_rep_board, board_rep = self.prepare_ascii_rep.get_ascii_representation(self.gtcode, self.board_info["size"])
+            self.player_a_goal = target_board_rep#ascii_rep_board #Layer-wise representation
+        logger.info(f"Player A Goal:Prepared ASCII representation for variant {variant}:\n{self.player_a_goal}")
+
         self.gt_occupied_cells = self.prepare_ascii_rep.get_occupied_cells(self.gtcode, self.board_info["size"])                
 
         self.board_info["locations"] = {"row": self.board_info["x"][0]+1, "col": self.board_info["y"][0]+1}
@@ -216,7 +224,7 @@ class SkillReuseMaster(DialogueGameMaster):
         return True, variant
     
     def _set_current_task_context(self, optim_step: bool=False) -> Dict:
-        status, variant = self._prepare_boardinfo()
+        status, variant = self._prepare_boardinfo(self.reuse_data["goal"])
         if not status:
             #raise GameError("No board info available to start the game.")
             logger.error("No board info available to start the game.")
@@ -229,7 +237,8 @@ class SkillReuseMaster(DialogueGameMaster):
         self.max_task_turns = self.reuse_data["max_task_turns"]
         self.gt_image_base64 = self.reuse_data["gt_image_base64"]
         self.empty_board_base64 = self.reuse_data["empty_board_base64"]                
-        p1_data = self.prompt_a["reuse"] + "\n" + self.reuse_data["details"]
+        #p1_data = self.prompt_a["reuse"] + "\n" + self.reuse_data["details"]
+        p1_data = self.reuse_data["details"]
 
         #self.current_task_turns = 0
         return p1_data
@@ -533,8 +542,8 @@ class SkillReuseMaster(DialogueGameMaster):
         p1_data = self.turn_prompt_b[self.current_task]
         use_current_grid = self._get_current_filled_grid()
 
-        if self.use_skills:
-            p1_data += f"\n\nLEARNED SKILLS:\n{self.avail_skills}"
+        #if self.use_skills:
+        #    p1_data += f"\n\nLEARNED SKILLS:\n{self.avail_skills}"
 
         p1_data += f"\n\nUser Instruction:\n{user_instruction}" + f"\n\nCurrent Grid:\n{use_current_grid}"
 

@@ -51,21 +51,26 @@ class ComputeAPICosts:
             messagelist = response_obj.get("output", [])
             if messagelist:
                 if len(messagelist) > 1:
-                    content = messagelist[1]["content"]
+                    content = messagelist[-1]["content"]
                 else:
                     content = messagelist[0]["content"]
                 
-                text = content[0]["text"]
-                if text.startswith("[[ ## instruction ## ]]"):
-                    token_role = "usersimulator"
-                elif text.startswith("[[ ## player_response ## ]]"):
-                    token_role = "cobot"
-                elif text.startswith("[[ ## optimized_function ## ]]"):
-                    token_role = "cobot-optimizer"
-                else:
-                    print(text)
+                if content is None:
+                    print(f"Content is None in response object: {response_obj['output']}, {len(response_obj['output'])}")
                     input()
                     token_role = "unknown"
+                else:
+                    text = content[0]["text"]
+                    if text.startswith("[[ ## instruction ## ]]") or text.startswith("[[ ## instruction ##"):
+                        token_role = "usersimulator"
+                    elif text.startswith("[[ ## player_response ## ]]") or text.startswith("[[ ## player_response ##"):
+                        token_role = "cobot"
+                    elif text.startswith("[[ ## optimized_function ## ]]") or text.startswith("[[ ## optimized_function ##"):
+                        token_role = "cobot-optimizer"
+                    else:
+                        print(text)
+                        input()
+                        token_role = "unknown"
 
 
         return token_role
@@ -87,7 +92,7 @@ class ComputeAPICosts:
             requestsdata = self.readfile(requests_path)
 
         else:
-            print(f"Requests data not found at {requests_path}. Skipping episode.")
+            #print(f"Requests data not found at {requests_path}. Skipping episode.")
             #input()
             return stats
 
@@ -192,6 +197,6 @@ class ComputeAPICosts:
         
 
 if __name__ == "__main__":
-    base_dir = "/home/admin/Desktop/codebase/cocobots/testimageccbts_local/clemnew/clembench/skillreuse/r3_gptskills_1_3inst_gpt"
+    base_dir = "rp1_clpskills_clp"
     compute_costs = ComputeAPICosts()
     compute_costs.run(base_dir)

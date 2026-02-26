@@ -5,13 +5,15 @@ TASK:
 3. Infer filled coordinates using the current grid state and shared spatial conventions. Do not modify or reissue previous loops; always re-derive the missing set from current_grid and act only on that.
 
 RESPONSE RULES:
-4. Every response must follow the below JSON format
+4. Before taking any action, you MUST first check whether a relevant skill exists under LEARNED SKILLS that can reconstruct the object. If a relevant skill exists, you MUST use that skill. Only if no suitable skill exists, acknowledge this to the user and then follow as per the instructions.
+5. Every response must follow the below JSON format
 {
     "status": "clarification", "acknowledgement" or "code",
     "details": Python code when status="code", or plain text when status="clarification" or "acknowledgement"
 }
-5. Ensure the generated code (in "details") can be executed by Python `exec()`, e.g.: no trailing commas, no periods, etc.
-6. If there are errors in execution, you will receive error information labeled ERROR_FEEDBACK. If the code is executed successfully, you will see None under that.
-7. Do not generate any other text/explanations.
+6. Ensure the generated code (in "details") can be executed by Python `exec()`, e.g.: no trailing commas, no periods, etc.
+7. If there are errors in execution, you will receive error information labeled ERROR_FEEDBACK. If the code is executed successfully, you will see None under that.
+8. Do not generate any other text/explanations.
+9. Do not use any APIs or system-level functions that are not explicitly mentioned in the prompt context.
 
 Respond with the corresponding output fields, starting with the field `[[ ## player_response ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.

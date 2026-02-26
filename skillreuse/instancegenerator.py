@@ -154,7 +154,8 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
             "test": test_samples,
             "existing_skills": existing_skills,
             "existing_skills_filename": existing_skills_filename,
-            "prompt_incontext_labels": {"NUM_INCONTEXT_SAMPLES": varconfig["NUM_INCONTEXT_SAMPLES"]}
+            "prompt_incontext_labels": {"NUM_INCONTEXT_SAMPLES": varconfig["NUM_INCONTEXT_SAMPLES"],
+                                        "LEARNEDSKILLS": existing_skills,}
         }
 
         return samples
@@ -193,7 +194,7 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
                 "gt_image_base64": gt_image_base64, "empty_board_base64": empty_board_base64}
 
 
-    def _prepare_skills_info_matching(self, skills_data, instance_data):
+    def _prepare_skills_info(self, skills_data, instance_data):
         skills_info = ""
         skills_functions = {}
 
@@ -260,10 +261,9 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
 
 
         tot_instances = 0
-        randsamples = random.sample(samples["test"], min(len(samples["test"]), 5))
+        randsamples = random.sample(samples["test"], min(len(samples["test"]), 50))
         for sample in randsamples:
         #for sample in samples["test"]:
-            promptsdict = self._prepare_prompts(samples["prompt_incontext_labels"])
 
             #print(sample.keys())
             instance = self.add_game_instance(experiment, tot_instances)
@@ -286,7 +286,6 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
             instance["data"]["num_retry"] = config["num_retry"]
             instance["data"]["use_sandbox_llm"] = config["use_sandbox_llm"]
             instance["data"]["n_turns"] = config["max_turns"]
-            instance["data"]["prompts_dict"] = promptsdict
             if use_images_in_human_prompts:
                 instance["data"]["shapes_references_base64"] = self._get_shapes_references_base64()
             else:
@@ -302,14 +301,21 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
                 instance["data"]["existing_skills"] = None
                 instance["data"]["skills_code"] = None
                 instance["data"]["existing_skills_filename"] = None
+            
+            samples["prompt_incontext_labels"]["LEARNEDSKILLS"] = skills_info
+            promptsdict = self._prepare_prompts(samples["prompt_incontext_labels"])
+            instance["data"]["prompts_dict"] = promptsdict            
+
+
+
             tot_instances += 1
 
-            #if tot_instances == 50:
+            #if tot_instances == 1:
             #    break
 
         print(f"Generated {tot_instances} instances for experiment skillreuse_{ic_type}")
 
-        tot_instances = 0
+        #tot_instances = 0
 
 
 

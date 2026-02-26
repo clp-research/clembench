@@ -410,8 +410,8 @@ def clear(board):
                 if cell_key in occupied_cells:
                     elements = occupied_cells[cell_key]
                     #print(elements)
-                    logger.debug(f"Something wrong in elements: {elements}")
                     #input()
+                    logger.info(f"Elements are: {elements}")
                     #shape_color_str = (', '.join(self._elaborate_shape_color(shape, color) for shape, color in elements))
                     shape_info = self._prepare_shape_color_dict(elements)
                     cell_data = {f"row: {row+1}, col: {col+1}, value: ({shape_info})\n"}
@@ -420,7 +420,7 @@ def clear(board):
             ascii_representation = ascii_representation.strip() + "\n"
         ascii_representation += "]\n"
         #print(ascii_representation)
-        logger.debug(f"ascii_representation = {ascii_representation}")
+        logger.info(f"ascii_representation: {ascii_representation}")
 
         return ascii_representation, board
 

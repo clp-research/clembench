@@ -57,18 +57,23 @@ def process_episode(episode_path: str) -> Dict[str, Any]:
         else:
             stats["from_scratch"]  = 0
             
+    else:
+        stats["reuse_status"] = [0]
+        stats["overall_success"] = [0]
+        stats["overall_loss"] = [0]
+        stats["overall_abort"] = [1]
 
     return stats
 
 
 def compute_scores(base_dir: str, verbose: bool = True, use_gpt_skills=False) -> Dict[str, Any]:
 
-    with open("/home/admin/Desktop/codebase/cocobots/testimageccbts_local/clemnew/clembench/skillreuse/resources/data/en/learnedskills_r3_2_clp-chat.json", "r") as f:
+    with open("resources/data/en/learnedskills_clp_lat.json", "r") as f:
         clp_skills_data = json.load(f)
 
     clp_skill_len = 0#len(clp_skills_data)
 
-    with open("/home/admin/Desktop/codebase/cocobots/testimageccbts_local/clemnew/clembench/skillreuse/resources/data/en/learnedskills_r3_2_gptcodex.json", "r") as f:
+    with open("resources/data/en/learnedskills_gpt_lat.json", "r") as f:
         gpt_skills_data = json.load(f)
 
     gpt_skill_len = 0#len(gpt_skills_data)
@@ -146,7 +151,8 @@ def compute_scores(base_dir: str, verbose: bool = True, use_gpt_skills=False) ->
                 reuse_scratch_success_rate = round((total_scratch_success/total_scratch_eps), 2)
 
 
-                print(f"Number of Episodes: {total_episodes}, Success: {success_percent}, Aborted: {aborted_percent}, Failed: {failed_percent}")
+                print(f"Number of Episodes: {total_episodes}, Success: {sum(accuracy_data)}, Aborted: {total_aborted}, Failed: {total_failed}")
+                print(f"Success Rate: {success_percent}, Aborted Rate: {aborted_percent}, Failed Rate: {failed_percent}")
                 print(f"Reuse Success Rate: {reuse_rate}")
                 print(f"Reuse API Success Rate: {reuse_api_success_rate}, Scratch Success Rate: {reuse_scratch_success_rate}")
 
@@ -157,7 +163,7 @@ def compute_scores(base_dir: str, verbose: bool = True, use_gpt_skills=False) ->
 
 def main():
     parser = argparse.ArgumentParser(description="Compute overall scores from experiment directories")
-    parser.add_argument("base_dir", nargs="?", default="r1", help="Base directory containing model results")
+    parser.add_argument("base_dir", nargs="?", default="rp1_clpskills_clp", help="Base directory containing model results")
     parser.add_argument("--quiet", action="store_true", help="Suppress verbose printing")
     args = parser.parse_args()
 

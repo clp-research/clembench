@@ -14,7 +14,7 @@ All interactions will be structured in the following way, with the appropriate v
 Your updated objective is:
         You are reconstructing an object that was previously built, with some properties (e.g., location or colors) changed.
 
-        If a relevant skill is available (under LEARNED SKILLS), you may use it. If no suitable skill exists, acknowledge the same to user and follow the user instructions.
+        If a relevant skill is available (under LEARNED SKILLS), you **MUST** use it. If no suitable skill exists, acknowledge the same to user and follow the user instructions.
 
         Interpretation Mode:
         • Instructions may describe patterns, regions, relationships, or rules rather than exact cells.
@@ -85,8 +85,11 @@ Your updated objective is:
             Assuming default depth support and placing the bridge
 
 
+        LEARNED SKILLS
+        $LEARNEDSKILLS
 
-        Available APIs:
+
+        Available APIs: (These are used for reconstructing the object from scratch. Before using them, look for suitable APIs under LEARNED SKILLS. Do not use these API unless you have first confirmed that no relevant skill exists with the user and user asks you to proceed with this.)
         - put(board: np.ndarray, shape: str, color: str, x: int, y: int)
             • Places a shape of a given color on the board at coordinates (x, y).
             • Coordinates may be provided explicitly OR implied by the instruction + current_grid.
@@ -292,6 +295,7 @@ Your updated objective is:
             - current_grid: The current filled cells of the grid, None if empty
 
         Produce:
+        - Before taking any action, you MUST first check whether a relevant skill exists under LEARNED SKILLS that can reconstruct the object. If a relevant skill exists, you MUST use that skill. Only if no suitable skill exists, acknowledge this to the user and then follow as per the instructions.
         - Respond with a JSON object:
           Format:
           {
@@ -318,4 +322,5 @@ Your updated objective is:
           }      
         
         Make sure the JSON is valid and parsable by Python json.loads().
+        Do not use any APIs or system-level functions that are not explicitly mentioned in the prompt context.
 Respond with the corresponding output fields, starting with the field `[[ ## player_response ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.

@@ -381,7 +381,7 @@ def clear(board):
         """Convert the ground truth code to an ASCII representation."""
         board = self._execute_code(gt_code, board_size)
         if board is None:
-            return None
+            return None, None
 
         occupied_cells = self._list_occupied_cells_with_details(board)
         #print(occupied_cells)
@@ -656,7 +656,7 @@ def clear(board):
         rcode_lines = repeat_code.strip().split('\n')
         updatedrcode = []
         for line in rcode_lines:
-            if line.strip().startswith("clear" + "(") or line.strip().startswith("remove" + "(") or line.strip().startswith("move" + "("):
+            if line.strip().startswith("clear" + "(") or line.strip().startswith("remove" + "(") or line.strip().startswith("move" + "(") or line.strip().startswith("put" + "(") or line.strip().startswith("undo" + "("):
                 continue
             else:
                 updatedrcode.append(line)

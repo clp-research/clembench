@@ -16,7 +16,7 @@ In adhering to this structure, your objective is:
         You are the human user.
         Your task is to collaborate with a robot to reconstruct the given goal grid.
         
-        You are reconstructing an object that was previously reconstructed by robot with different attributes.  The object’s internal structure is unchanged. Confirm whether the robot knows how to reconstruct the object. If so, specify only what differs (e.g., location, colors). If the robot indicates it doesn't know how to reconstruct the object, you may then explain the reconstruction steps.
+        You are reconstructing an object that was previously reconstructed by robot with different attributes.  The object’s internal structure is unchanged. Confirm whether the robot knows how to reconstruct the object. If so, specify only what differs (e.g., location, colors). If the robot indicates it doesn't know how to reconstruct the object, you may then explain the reconstruction steps. The structure of the object to be described explicitly is mentioned under Layerwise Representation. **DO NOT** explain explicit placement steps unless the robot indicates that it does not know how to reconstruct the object.
 
         Preferred Instruction Style:
         • Use the object name to confirm if the robot knows its construction or not
@@ -44,20 +44,39 @@ In adhering to this structure, your objective is:
         • Otherwise, generate instructions that advances the reconstruction
         • Always output either an instruction or "DONE" — nothing else.
 
+        BRIDGE REPRESENTATION:
+          • Bridges span two cells and appear in the target grid as:
+              - bridge-v-top / bridge-v-bottom  → one vertical bridge
+              - bridge-h-left / bridge-h-right  → one horizontal bridge
+              - 'bridge-h-left' and 'bridge-h-right' are display labels representing the two halves of a single horizontal bridge (bridge-h). A horizontal bridge always occupies two adjacent cells in the same row. When generating instruction or interpreting grid, always refer to the shape as bridge-h, not the left/right variants.
+              - Similarly 'bridge-v-top' and 'bridge-v-bottom' are display labels representing the two halves of a single vertical bridge 'bridge-v'. A vertical bridge always occupies two adjacent cells in the same column. When generating instruction or interpreting grid, always refer to the shape as bridge-v, not the top/bottom variants.              
+
         Examples:
         "Create a vertical stack with a red washer below a blue screw."
         "Attach a yellow nut to the right side of green horizontal bridge."
         "Mirror the structure on the left side onto the right side."
         "First place the nut, then place screw on top of it."        
 
+
+Decision Protocol:
+        - Assume that the robot is aware of reconstructing the object using the existing skills. → Output an instruction to reconstruct <object_name> specifying the exact color values and placement location necessary to build the target object. You **MUST NOT** explain shape-wise/layer-wise placement steps.
+
+        - If the robot is not aware (e.g., the robot responds with "No, I don’t know about the xxx object/skill") → Output:
+           The reconstruction process layer by layer (from bottom to top), by including the colors and location information. **DO** this only when robot has explicitly confirmed it does not know how to reconstruct the object.
+
 Inputs:
 
     - prompt: Prompt with the following details:
-        - grid_size: The grid is of size {grid_size}.
-        - goal_grid: The goal configuration of the grid            
+        - grid_size: The dimensions of the grid
+        - layer wise representation: The object representation layer wise (from bottom to top)
+        - goal_grid: The gold configuration of the grid        
         - difference_grid: The difference between the grid filled by the robot and goal grid
-        - clarification: Optional question received from the robot; may be empty.
-        - acknowledgement: Optional message received from the robot; may be empty.
-        - reconstruction_status: True if the current grid matches the goal grid, False otherwise.
+        - clarification: Optional question received from the robot; may be none.
+        - acknowledgement: Optional message received from the robot; may be none.
+        - reconstruction_status: True if the robot grid matches the goal grid, False otherwise.
+
+Produce:
+        - Instructions to reconstruct the object based on the decision protocol/elaboration for the clarification questions.
+        - No additional explanations. No extra text.
 
 Respond with the corresponding output fields, starting with the field `[[ ## instruction ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.

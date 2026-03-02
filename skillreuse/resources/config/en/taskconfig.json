@@ -9,7 +9,7 @@
     "skillreuse": {
         "TRAIN_DATA_FILE_NAME": "",
         "TEST_DATA_FILE_NAME": "simplereusedata.json",
-        "SKILL_DATA_FILE_NAME": "learnedskills_clp_lat.json",
+        "SKILL_DATA_FILE_NAME": "learnedskills_clp.json",
         "STATIC_INCONTEXT_SAMPLES": "reconstruct_so_mt_static_incontext.txt",
         "NUM_INCONTEXT_SAMPLES": 0
     }

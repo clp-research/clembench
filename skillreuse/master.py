@@ -47,6 +47,9 @@ class SkillReuseMaster(DialogueGameMaster):
         data = self.instancedata
         self.boards = data["boards"]
         self.reuse_data = data["reuse_data"]
+        self.gt_occupied_cells = data["reuse_data"]["target_board_cells"]
+        self.optimfunc_occupied_cells = None
+        self.goal_layerwise_rep = data["reuse_data"]["layerwiserep"]
         self.prompts_dict = data["prompts_dict"]
         self.shapes_references_base64 = data["shapes_references_base64"]        
 
@@ -64,6 +67,7 @@ class SkillReuseMaster(DialogueGameMaster):
         self.existing_skills_filename = data["existing_skills_filename"]
         self.avail_skills = data["existing_skills"]
         self.avail_skills_code = data["skills_code"]
+        self.skillandtargetcellsdiscrep = data["skillandtargetcellsdiscrep"]   
 
         # n_turns is multiplied by 3 because each task has n_turns and there are 3 tasks (reconst, reuse, repeat) + x turns for optim
         self.n_turns = data["n_turns"]#3 * data["n_turns"] + (self.num_optim_turns if self.use_optimizer else 0)
@@ -109,7 +113,9 @@ class SkillReuseMaster(DialogueGameMaster):
         self.gt_image_base64 = None
         self.empty_board_base64 = None
         self.gen_image_base64 = None
+        self.difference_grid = None
         self.used_oracle_code_as_skill_not_available = False
+
 
                 
 
@@ -145,6 +151,7 @@ class SkillReuseMaster(DialogueGameMaster):
             "skills_code": self.avail_skills_code,
             "use_oracle_code": self.use_oracle_code,
             "used_oracle_code_as_skill_not_available": self.used_oracle_code_as_skill_not_available,
+            "skillandtargetcellsdiscrep": self.skillandtargetcellsdiscrep,
 
             "reuse_success": self.reuse_success,
             "loss_reason": None,
@@ -187,7 +194,8 @@ class SkillReuseMaster(DialogueGameMaster):
         self.player_a_goal = goal
         self.gtcode = None
         self.gt_usage = None
-        self.gt_occupied_cells = None
+        #self.gt_occupied_cells = None
+        self.optimfunc_occupied_cells = None
         self.mt_inst_occupied_cells = None
         self.gen_image_base64 = None
         
@@ -217,7 +225,15 @@ class SkillReuseMaster(DialogueGameMaster):
             self.player_a_goal = target_board_rep#ascii_rep_board #Layer-wise representation
         logger.info(f"Player A Goal:Prepared ASCII representation for variant {variant}:\n{self.player_a_goal}")
 
-        self.gt_occupied_cells = self.prepare_ascii_rep.get_occupied_cells(self.gtcode, self.board_info["size"])                
+        #self.gt_occupied_cells = self.prepare_ascii_rep.get_occupied_cells(self.gtcode, self.board_info["size"])
+        if self.skillandtargetcellsdiscrep:
+            self.optimfunc_occupied_cells = self.prepare_ascii_rep.get_occupied_cells(self.gtcode, self.board_info["size"])
+            if self.optimfunc_occupied_cells:
+                self.optimfunc_occupied_cells = {k: [list(x) for x in v] for k, v in self.optimfunc_occupied_cells.items()}
+            else:
+                logger.info(f"Optim function occupied cells is empty for variant {variant} with skill {self.board_info['combo_name']}.GTCode:\n{self.gtcode}")
+        
+        self.gt_occupied_cells = {k: [list(x) for x in v] for k, v in self.gt_occupied_cells.items()}
 
         self.board_info["locations"] = {"row": self.board_info["x"][0]+1, "col": self.board_info["y"][0]+1}
         self.board_info["funcusage"] = self.gt_usage
@@ -267,9 +283,10 @@ class SkillReuseMaster(DialogueGameMaster):
             p1_messages = self.prompt_a[self.current_task]+"\n"+str(p1_data)
 
         self.set_context_for(self.player_a, p1_messages)
-        gt_cells, _ = self.prepare_ascii_rep.get_ascii_representation(self.gtcode, self.board_info["size"])
-        logger.info(f"Ground truth cells:\n{gt_cells}")
-        self.gt_occupied_cells = self.prepare_ascii_rep.get_occupied_cells(self.gtcode, self.board_info["size"])
+        #gt_cells, _ = self.prepare_ascii_rep.get_ascii_representation(self.gtcode, self.board_info["size"])
+        #logger.info(f"Ground truth cells:\n{gt_cells}")
+        logger.info(f"Ground truth Layerwise Representation:\n{self.goal_layerwise_rep}")
+        #self.gt_occupied_cells = self.prepare_ascii_rep.get_occupied_cells(self.gtcode, self.board_info["size"])
         logger.info(f"Ground truth occupied cells:\n{self.gt_occupied_cells}")
 
 
@@ -287,7 +304,7 @@ class SkillReuseMaster(DialogueGameMaster):
         self.gamedata["play_turns_reuse"] = self.play_turns_reuse
         self.gamedata["play_turns_total"] = self.play_turns_total 
         self.gamedata["reuse_genresponse"] = self.reuse_details
-        self.gamedata["used_oracle_code_as_skill_not_available"] = self.used_oracle_code_as_skill_not_available 
+        self.gamedata["used_oracle_code_as_skill_not_available"] = self.used_oracle_code_as_skill_not_available
 
         self._log_game_end()       
 
@@ -502,6 +519,9 @@ class SkillReuseMaster(DialogueGameMaster):
         return self._validate_playerb_response(playerb_response)     
 
     
+    def _get_current_difference_grid(self, gen_occupied_cells=None) -> str:
+        return self.difference_grid
+
     def _get_current_filled_grid(self, gen_occupied_cells=None) -> str:
         return self.player_grid
 
@@ -532,8 +552,7 @@ class SkillReuseMaster(DialogueGameMaster):
         if self.gt_occupied_cells is None or self.player_occupied_cells is None:
             return None
 
-        use_gen_cells = self.gt_occupied_cells
-        difference_grid = self.prepare_ascii_rep.get_layer_representation_diff(use_gen_cells, self.player_occupied_cells)
+        difference_grid = self.prepare_ascii_rep.get_layer_representation_diff(self.gt_occupied_cells, self.player_occupied_cells)
 
         return difference_grid
 
@@ -555,7 +574,8 @@ class SkillReuseMaster(DialogueGameMaster):
 
         use_board = self.genboard[self.current_task]
 
-        parse_a = self._validate_reconstruction(use_board)
+        #parse_a = self._validate_reconstruction(use_board)
+        parse_a, _ = self._validate_game(use_board)
 
         if parse_a["status"] == "failure":
             logger.error(f"Task {self.current_task} task validation failed with error: {parse_a['error']}")
@@ -584,6 +604,10 @@ class SkillReuseMaster(DialogueGameMaster):
 
         gt_cells = self.gt_occupied_cells#self.prepare_ascii_rep.get_ascii_representation_forvalidation(self.gtcode, self.board_info["size"])
         gen_cells = self.player_occupied_cells#self.prepare_ascii_rep.get_ascii_representation_from_board_forvalidation(genboard, self.board_info["size"])
+
+        #gt_cells = {k: [list(x) for x in v] for k, v in gt_cells.items()}
+        #gen_cells = {k: [list(x) for x in v] for k, v in gen_cells.items()}
+
         self.gen_board_cells = gen_cells
 
 
@@ -637,7 +661,7 @@ class SkillReuseMaster(DialogueGameMaster):
 
         clarification_header = "Clarification"
         ack_header = "Acknowledgement"
-        p2_data = f"\nGoal:{self.player_a_goal}\nDifference grid: {difference_grid}\n{clarification_header}: {clarification_text}\n{ack_header}: {ack_text}\nReconstruction Status: {reconstruction_text}"
+        p2_data = f"\nGoal Grid Layerwise Representation:\n{self.goal_layerwise_rep}\nGoal:{self.player_a_goal}\nDifference grid: {difference_grid}\n{clarification_header}: {clarification_text}\n{ack_header}: {ack_text}\nReconstruction Status: {reconstruction_text}"
 
         if self.player_a_type == "human":
             #Add GT image filename in html format
@@ -663,7 +687,7 @@ class SkillReuseMaster(DialogueGameMaster):
     def _prepare_playerb_clarification_response(self, details: str, cfq: bool) -> str:
         #gen_image_base64 = None#self.genresponse[-1]["gen_image_base64"] if self.genresponse and len(self.genresponse) > 0 and "gen_image_base64" in self.genresponse[-1] else None
         gen_image_base64 = self.gen_image_base64
-        diff_grid = self._get_current_filled_grid()
+        diff_grid = self.difference_grid#self._get_difference_grid()#self._get_current_filled_grid()
         reconstruction_complete = "True" if self.player_grid_match_status else "False"
 
         return self._prepare_playerb_turn_response(gen_image_base64, diff_grid, details, reconstruction_complete, cfq)
@@ -708,6 +732,11 @@ class SkillReuseMaster(DialogueGameMaster):
             board_gen_call, error, code_stats = self._execute_playerb_code_response(variant, details)
             if error:
                 logger.error("Error executing generated response.")
+                self.genresponse[self.current_task][-1]
+                self.genresponse[self.current_task][-1]["code_execution_error"].append({"error": error, "response": {"status": "code", "details": details}})
+                self.genresponse[self.current_task][-1]["reconstruction_complete"] = "False"
+                self.genresponse[self.current_task][-1]["optim_func_compare_status"] = False
+
                 return None, error
 
             self._update_task_progress("code_execution", code_stats)
@@ -729,6 +758,8 @@ class SkillReuseMaster(DialogueGameMaster):
             logger.info("Updating player grid with generated ASCII representation.")
             self.player_grid = gen_ascii_rep
             self.player_occupied_cells = gen_occupied_cells
+            if self.player_occupied_cells:
+                self.player_occupied_cells = {k: [list(x) for x in v] for k, v in self.player_occupied_cells.items()}
 
             if self.use_images_in_human_prompts:
                 self.gen_image_base64 = self.prepare_ascii_rep.get_image_gen_board(self.genboard[self.current_task], "turn_playerb_board.png")
@@ -739,13 +770,20 @@ class SkillReuseMaster(DialogueGameMaster):
             self.genresponse[self.current_task][-1]["occupied_cells"] = gen_occupied_cells
             self.genresponse[self.current_task][-1]["code_stats"] = code_stats
             self.genresponse[self.current_task][-1]["gen_image_base64"] = self.gen_image_base64
+            #self.genresponse[self.current_task][-1]["code_execution_error"] = None
 
 
             diff_grid = self._get_difference_grid()
-            result = self._validate_game(self.genboard[self.current_task])
+            self.difference_grid = diff_grid
+            
+            result, optim_func_compare_status = self._validate_game(self.genboard[self.current_task])
+            self.genresponse[self.current_task][-1]["optim_func_compare_status"] = optim_func_compare_status
+
             if result["status"] == "success":
                 self.player_grid_match_status = True
             reconstruction_complete = "True" if self.player_grid_match_status else "False"
+            self.genresponse[self.current_task][-1]["reconstruction_complete"] = reconstruction_complete
+
             p2_response = self._prepare_playerb_turn_response(self.genresponse[self.current_task][-1]["gen_image_base64"], diff_grid,
                                                               None, reconstruction_complete,False)
 
@@ -761,8 +799,14 @@ class SkillReuseMaster(DialogueGameMaster):
 
         result = {"status": "failure", "details": None, "error": None}
 
+        #Always GT cells as the actual target cells: No need to use the gen code exec cells
         gt_cells = self.gt_occupied_cells
-        gen_cells = self.prepare_ascii_rep.get_ascii_representation_from_board_forvalidation(genboard, self.board_info["size"])
+        gen_cells = self.player_occupied_cells#self.prepare_ascii_rep.get_ascii_representation_from_board_forvalidation(genboard, self.board_info["size"])
+
+
+        #gt_cells = {k: [list(x) for x in v] for k, v in gt_cells.items()}
+        #gen_cells = {k: [list(x) for x in v] for k, v in gen_cells.items()}
+
         self.gen_board_cells = gen_cells        
 
         logger.info(f"Ground truth cells: {gt_cells}")
@@ -781,7 +825,15 @@ class SkillReuseMaster(DialogueGameMaster):
             result["status"] = "failure"
             result["error"] = "The generated board does not match the ground truth."
 
-        return result
+        optim_func_compare_status = False
+        if self.skillandtargetcellsdiscrep:
+            if self.optimfunc_occupied_cells and gen_cells:
+                if self.optimfunc_occupied_cells == gen_cells:
+                    logger.info("The generated board matches the occupied cells of the optimization function, even though it does not match the ground truth.")
+                    optim_func_compare_status = True
+
+
+        return result, optim_func_compare_status
 
 
     def _parse_response(self, player: Player, response: str) -> str:
@@ -844,7 +896,8 @@ class SkillReuseMaster(DialogueGameMaster):
                 parse_a["status"] = "on-going"
                 parse_a["details"] = user_instruction
 
-                self.genresponse[self.current_task].append({"current_turn": self.current_task_turns, "instruction": user_instruction})
+                self.genresponse[self.current_task].append({"current_turn": self.current_task_turns, "instruction": user_instruction,
+                                                            "code_execution_error": []})
             return parse_a
 
         elif player == self.player_b:

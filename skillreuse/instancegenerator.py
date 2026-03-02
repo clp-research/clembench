@@ -176,7 +176,9 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
 
         repeat_locations = [location]
 
-        target_board_rep, goldboard, *_ = self.prepare_ascii_rep.get_ascii_representation_rb(board_size, gt_code, skill_name, colors, repeat_locations)
+        target_board_rep, goldboard, target_board_cells, *_ = self.prepare_ascii_rep.get_ascii_representation_rb(board_size, gt_code, skill_name, colors, repeat_locations)
+
+        layerwiserep, *_ = self.prepare_ascii_rep.get_ascii_representation(gt_code, board_size)
 
         gt_image_base64, empty_board_base64 = None, None
 
@@ -185,13 +187,14 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
             gt_image_base64 = self.prepare_ascii_rep.encode_image_to_base64("tempboard11.png")
             empty_board_base64 = empty_board_encoding        
 
-        if gt_image_base64 is None:
-            print("GT image generation failed for reuse data preparation.")
+        #if gt_image_base64 is None:
+        #    print("GT image generation failed for reuse data preparation.")
 
 
-        details = f"Grid size: {gridsize}\nObject name: {skill_name}\nColors: {colors}\nLocation: {location}\nGoal:\n{target_board_rep}\n"
-        return {"details": details, "goal": target_board_rep, "gt_code": gt_code, "max_task_turns": max_task_turns,
-                "gt_image_base64": gt_image_base64, "empty_board_base64": empty_board_base64}
+        details = f"Grid size: {gridsize}\nObject name: {skill_name}\nColors: {colors}\nLocation: {location}\nGoal Grid Layerwise Representation(Use this representation only when the robot explicitly requests step-by-step reconstruction of the object; otherwise, use the object name specified in the Goal directly.):\n{layerwiserep}\nGoal:\n{target_board_rep}\n"
+        return {"details": details, "goal": target_board_rep, "target_board_cells": target_board_cells,
+                "layerwiserep": layerwiserep, "gt_code": gt_code, "max_task_turns": max_task_turns,
+                  "gt_image_base64": gt_image_base64, "empty_board_base64": empty_board_base64}
 
 
     def _prepare_skills_info(self, skills_data, instance_data):
@@ -245,6 +248,31 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
 
         return skills_info, skills_functions        
 
+    def _check_gt_gen_code_discrepancies(self, reuse_instance_data, skills_code, comboname):
+        if skills_code is None:
+            return False
+        gt_code = reuse_instance_data["gt_code"]
+        if comboname not in skills_code:
+            return False
+        gen_code = skills_code[comboname]
+        gt_usage = gt_code["usage"]
+
+        gen_code_mod = {"function": gen_code, "usage": gt_usage}
+
+        boardsize = {"rows": 8,"cols":8}
+        gt_cells = self.prepare_ascii_rep.get_occupied_cells(gt_code, boardsize)
+        gen_cells = self.prepare_ascii_rep.get_occupied_cells(gen_code_mod, boardsize)
+
+        if gt_cells != gen_cells:
+            print(f"Cell mismatch for the comboname {comboname}")
+            #print(f"GT_Cells:\n{gt_cells}")
+            #print(f"Gen_Cells:\n{gen_cells}")
+            #print(f"GT_code\n{gt_code['function']}\n{gt_usage}")
+            #print(f"GEn_code\n{gen_code}")
+            #input()
+            return True
+        return False
+
     # define on_generate, a mandatory method
     def on_generate(self, seed: int, **kwargs):
 
@@ -259,11 +287,19 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
         existing_skills_filename = samples["existing_skills_filename"]
         reuse_turns = config["max_turns"]
 
-
+        skills_info = "None"
+        skills_code = None
+        missed_skills = set()
+        missmatch_cells_skills = set()
+        available_skills = set()
         tot_instances = 0
-        randsamples = random.sample(samples["test"], min(len(samples["test"]), 50))
-        for sample in randsamples:
-        #for sample in samples["test"]:
+        num_discp = 0
+        #randsamples = random.sample(samples["test"], min(len(samples["test"]), 10))
+        #for sample in randsamples:
+        for sample in samples["test"]:#[501:545]:
+            #if sample["simple_reuse"]['combo_name'] not in ["bvbhbhnw", "bhwbvw", "bhbvbvwn", "bhwbv"]:
+            #if sample["simple_reuse"]['combo_name'] not in ["bhwbv"]:
+            #    continue
 
             #print(sample.keys())
             instance = self.add_game_instance(experiment, tot_instances)
@@ -297,6 +333,11 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
                 instance["data"]["existing_skills"] = skills_info
                 instance["data"]["skills_code"] = skills_code
                 instance["data"]["existing_skills_filename"] = existing_skills_filename
+
+                if sample["simple_reuse"]['combo_name'] not in skills_code:
+                    missed_skills.add(sample["simple_reuse"]['combo_name'])
+                else:
+                    available_skills.add(sample["simple_reuse"]['combo_name'])
             else:
                 instance["data"]["existing_skills"] = None
                 instance["data"]["skills_code"] = None
@@ -306,16 +347,38 @@ class SkillReuseInstanceGenerator(GameInstanceGenerator):
             promptsdict = self._prepare_prompts(samples["prompt_incontext_labels"])
             instance["data"]["prompts_dict"] = promptsdict            
 
-
+            discrepstatus = self._check_gt_gen_code_discrepancies(instance["data"]["reuse_data"], skills_code, sample["simple_reuse"]['combo_name'])  
+            if discrepstatus:
+                missmatch_cells_skills.add(sample["simple_reuse"]['combo_name'])
+                instance["data"]["skillandtargetcellsdiscrep"] = True
+                num_discp += 1
+            else:
+                instance["data"]["skillandtargetcellsdiscrep"] = False
 
             tot_instances += 1
 
-            #if tot_instances == 1:
+            #if tot_instances == 10:
             #    break
 
         print(f"Generated {tot_instances} instances for experiment skillreuse_{ic_type}")
-
-        #tot_instances = 0
+        print(f"Total Missed Skills: {len(missed_skills)}")
+        print(f"Total Discrepancies: {num_discp}")
+        if existing_skills_filename:
+            skills_used_filename = existing_skills_filename.split(".")[0]
+            with open(f"resources/data/en/missed_skills_{ic_type}_{skills_used_filename}.txt", "w") as f:
+                f.write(f"Used skills file: {existing_skills_filename}\n\n")
+                f.write(f"Total Available Skills: {len(available_skills)}\n")
+                f.write(f"Total Missed Skills: {len(missed_skills)}\n")
+                f.write(f"Total Missmatch Cells Skills: {len(missmatch_cells_skills)}\n\n")
+                f.write("------------------------------------\n\n")
+                f.write("Missed Skills:\n")
+                for skill in missed_skills:
+                    f.write(f"{skill}\n")
+                f.write("\n\n------------------------------------\n\n")
+                f.write("Missmatch Cells Skills:\n")
+                for skill in missmatch_cells_skills:
+                    f.write(f"{skill}\n")
+                f.write("\n\n------------------------------------\n\n")
 
 
 

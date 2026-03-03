@@ -173,9 +173,13 @@ class InstanceUtils(GameResourceLocator):
         medium_words_list = self.read_file_contents(f"target_words/{self.language}/medium_words.txt")
         hard_words_list = self.read_file_contents(f"target_words/{self.language}/hard_words.txt")
 
-        if not official_words or not word_clues_dict:
-            print("Error in reading the word lists, check and download the relevant files")
+        if not official_words:
+            print("Official words missing.")
             return "DATA_NOT_AVAILABLE"
+
+        if not word_clues_dict:
+            print(f"No clues found for language '{self.language}'. Clue-based variants may not work.")
+            word_clues_dict = {}
 
         self.official_words = official_words
         # self.target_words = target_words
@@ -235,5 +239,5 @@ class InstanceUtils(GameResourceLocator):
 
     def update_game_instance_dict(self, game_instance, word, difficulty):
         game_instance["target_word"] = word
-        game_instance["target_word_clue"] = self.word_clues_dict[word]
+        game_instance["target_word_clue"] = self.word_clues_dict.get(word, "")
         game_instance["target_word_difficulty"] = difficulty

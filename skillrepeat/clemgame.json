@@ -1,0 +1,11 @@
+{
+  "game_name": "skillrepeat",
+  "description": "Collaborative grid repeats task for two players.",
+  "main_game": "skillrepeat",
+  "players": 2,
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": [],
+  "regression": "large",
+  "roles": ["Player", "Cobot"]
+}

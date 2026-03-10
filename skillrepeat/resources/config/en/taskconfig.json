@@ -1,0 +1,16 @@
+{
+    "use_error_feedback": true,
+    "use_images_in_human_prompts": true,
+    "use_skills": true,
+    "use_oracle_code": false,
+    "num_retry": 3,
+    "max_turns": 30,
+    "use_sandbox_llm": false,
+    "skillrepeat": {
+        "TRAIN_DATA_FILE_NAME": "",
+        "TEST_DATA_FILE_NAME": "simplerepeatdata.json",
+        "SKILL_DATA_FILE_NAME": "learnedskills_gpt.json",
+        "STATIC_INCONTEXT_SAMPLES": "reconstruct_so_mt_static_incontext.txt",
+        "NUM_INCONTEXT_SAMPLES": 0
+    }
+}

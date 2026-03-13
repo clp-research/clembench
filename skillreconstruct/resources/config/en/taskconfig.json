@@ -1,0 +1,17 @@
+{
+    "use_error_feedback": true,
+    "use_images_in_human_prompts": true,
+    "num_retry": 3,
+    "num_optim_turns": 10,
+    "num_reconst_turns": 15,
+    "use_optimizer": true,
+    "max_turns": 25,
+    "use_sandbox_llm": false,
+    "skillreconst": {
+        "TRAIN_DATA_FILE_NAME": "",
+        "TEST_DATA_FILE_NAME": "simplereconstdata.json",
+        "SKILL_DATA_FILE_NAME": "learnedskills.json",
+        "STATIC_INCONTEXT_SAMPLES": "reconstruct_so_mt_static_incontext.txt",
+        "NUM_INCONTEXT_SAMPLES": 0
+    }
+}

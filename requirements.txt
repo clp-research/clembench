@@ -16,4 +16,4 @@ Levenshtein # referencegame instance generation
 kaggle # wordle instance generation
 gymnasium # escapegame
 pygame # escapegame
-
+sympy # clean_up

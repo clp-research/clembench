@@ -63,13 +63,13 @@ class AdventureGameMaster(DialogueGameMaster):
         self.goals_required_cnt = len(self.goals_required)
         # initially empty set of achieved goals:
         self.goals_achieved = set()
+
+    def _on_before_game(self):
         # get and record adventure information:
         adventure_info: dict = {"variant": self.game_instance['variant'], "max_turns": self.game_instance['max_turns'],
                                 "optimal_turns": self.game_instance['optimal_turns'],
                                 "goal_count": self.goals_required_cnt}
         self.log_key("adventure_info", adventure_info)
-
-    def _on_before_game(self):
         # get initial room description from IF interpreter:
         initial_room_desc = self.if_interpreter.get_full_room_desc()
         # combine prompt with initial room description as first message:

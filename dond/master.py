@@ -8,7 +8,7 @@ import numpy as np
 from dataclasses import dataclass
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer
+from clemcore.clemgame import GameSpec, GameMaster, DialogueGameMaster, GameScorer, GameBenchmark, Player
 from clemcore.clemgame import ParseError, RuleViolationError, GameError
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
 

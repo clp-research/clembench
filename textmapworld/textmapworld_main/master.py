@@ -367,7 +367,7 @@ class GraphGameScorer(GameScorer):
                     turns_limit_reached = True
 
         for i, val in enumerate(good_move):
-            self.log_turn_score(i, "effiencient_move", val)
+            self.log_turn_score(i, "efficient_move", int(val))
         if aborted:
             self.log_episode_score(METRIC_ABORTED, 1)
             self.log_episode_score(METRIC_SUCCESS, 0)

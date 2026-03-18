@@ -1,0 +1,97 @@
+{
+  "experiments": [
+    {
+      "name": "0_easy_3obj_en",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "modality": "text",
+          "language": "en",
+          "max_penalties": 8,
+          "max_rounds": 12,
+          "empty_cells": 34,
+          "total_cells": 49,
+          "empty_symbol": "◌",
+          "background": "╔═╤═══╤═╗\n║◌│◌◌◌│◌║\n╟─┼──┬┘◌║\n║◌│◌◌│◌◌║\n╟─┴──┘◌◌║\n║◌◌◌◌◌◌◌║\n║◌◌◌◌◌◌◌║\n║◌◌◌◌◌◌◌║\n╚═══════╝",
+          "intermittent_prompts": {
+            "invalid_response": "Penalty: $reason\n\nMake sure that your response only contains either `SAY: <MESSAGE>` or `MOVE: <OBJECT>, (<X>, <Y>)`, and nothing else!\n",
+            "message_relay": "Your message has been relayed to the other player.\n\n\n",
+            "command_prompt": "\n\n\nWhat is your next command?",
+            "new_turn_move": "The other player moved an object on their grid.",
+            "new_turn": "The other player sent this message:\n\n\n\"$turn_message\"",
+            "penalty_counter": "You have collectively accumulated $penalty of 8 penalties.\n",
+            "penalty_reprompt": "Please try again!",
+            "round_counter": "You are currently playing round $round of maximum 12.\n"
+          },
+          "say_pattern": "(?P<head>.*)SAY: (?P<message>[^\\n]+)(?P<tail>.*)",
+          "move_pattern": "(?P<head>.*)MOVE: (?P<obj>[^,]+), \\((?P<x>\\d+), ?(?P<y>\\d+)\\)(?P<tail>.*)",
+          "parse_errors": {
+            "head": "Your message must not contain anything before the command!",
+            "tail": "Your message must not contain anything after the command!",
+            "head_tail": "Your message must not contain anything before or after the command!",
+            "several_commands": "Your message contains more than one command!",
+            "restriction": "Your message contains restricted content!",
+            "invalid_format": "Your message is not in the expected format!",
+            "invalid_start": "You must begin the game by sending a message to the other player!"
+          },
+          "move_messages": {
+            "successful": "Moved '$object' to ($x,$y) successfully. Your updated grid looks like this:\n```\n$grid```\n",
+            "out_of_bounds": "Invalid move: ($x,$y) is out of bounds. Please try again!\n\n",
+            "not_empty": "Penalty: ($x,$y) is not empty, but contains '$object'.\n",
+            "obj_not_found": "Invalid move: Your image has no object with ID '$object'. Please try again!\n\n"
+          },
+          "terminate_question": "finished?",
+          "terminate_answer": "finished!",
+          "objects_1": [
+            {
+              "id": "C",
+              "coord": [
+                6,
+                5
+              ]
+            },
+            {
+              "id": "L",
+              "coord": [
+                5,
+                1
+              ]
+            },
+            {
+              "id": "P",
+              "coord": [
+                4,
+                3
+              ]
+            }
+          ],
+          "objects_2": [
+            {
+              "id": "C",
+              "coord": [
+                4,
+                1
+              ]
+            },
+            {
+              "id": "L",
+              "coord": [
+                7,
+                7
+              ]
+            },
+            {
+              "id": "P",
+              "coord": [
+                4,
+                7
+              ]
+            }
+          ],
+          "p1_initial_prompt": "I am your game master, and you are playing a collaborative game with the following grid as game board:\n\n```\n 1234567\n╔═╤═══╤═╗\n║◌│◌◌L│◌║ 1\n╟─┼──┬┘◌║ 2\n║◌│◌P│◌◌║ 3\n╟─┴──┘◌◌║ 4\n║◌◌◌◌◌C◌║ 5\n║◌◌◌◌◌◌◌║ 6\n║◌◌◌◌◌◌◌║ 7\n╚═══════╝\n\n```\n\n* The upper edge displays x-coordinates increasing to the right, and the right edge y-coordinates increasing downward.\n* The following objects are randomly placed on your grid: 'C', 'L', 'P'.\n\n\nThe other player sees a variation of the game board, where the objects are placed at different random locations. You cannot see the other player's board, and they cannot see yours.\n\n\n**Goal:**\n\nBoth players need to move the objects on their respective background so that identical objects end up at the same coordinates. You have to communicate with the other player to agree upon a common goal configuration.\n\n\n**Rules:**\n\n* In each turn, you can send exactly one of the following two commands:\n 1. `SAY: <MESSAGE>`: to send a message (everything up until the next line break) to the other player. I will forward it to your partner.\n2. `MOVE: <OBJECT>, (<X>, <Y>)`: to move an object to a new position, where `<X>` is the column and `<Y>` is the row. I will inform you if your move was successful or not.\n* If you don't stick to the format, or send several commands at once, I have to penalize you.\n* If both players accumulate more than 8 penalties, you both lose the game.\n* It is vital that you communicate with the other player regarding your goal state! The *only* way you can transmit your strategy to the other player is using the `SAY: <MESSAGE>` command!\n\n\n**Moving Objects**\n\n* You can only move objects to cells within the bounds of the grid. The target cell must be empty, i.e., it must only contain the symbol '◌'.\n* If you try to move an object to a spot that is not empty, or try to move it outside of the grid, I have to penalize you. You get another try.\n* Before making a move, double check that the target spot is empty, and does not hold any letter, frame, or line!\n\n\n**End of Game**\n\nIf you think you reached the goal of aligning all objects, you can ask the other player to finish the game by sending `SAY: finished?`. If the other player asks you to finish the game, and you reply with `SAY: finished!`, the game will end.\n\nBoth players win if the game ends within 12 rounds, where one round is defined as two players each sending a valid command.\n\n**Scoring:**\n\nThe closer the identical objects are in both game boards, the more points you get. Penalties reduce your points. Can you beat the record?\n\n\nPlease send a message to the other player to start the game!",
+          "p2_initial_prompt": "I am your game master, and you are playing a collaborative game with the following grid as game board:\n\n```\n 1234567\n╔═╤═══╤═╗\n║◌│◌C◌│◌║ 1\n╟─┼──┬┘◌║ 2\n║◌│◌◌│◌◌║ 3\n╟─┴──┘◌◌║ 4\n║◌◌◌◌◌◌◌║ 5\n║◌◌◌◌◌◌◌║ 6\n║◌◌◌P◌◌L║ 7\n╚═══════╝\n\n```\n\n* The upper edge displays x-coordinates increasing to the right, and the right edge y-coordinates increasing downward.\n* The following objects are randomly placed on your grid: 'C', 'L', 'P'.\n\n\nThe other player sees a variation of the game board, where the objects are placed at different random locations. You cannot see the other player's board, and they cannot see yours.\n\n\n**Goal:**\n\nBoth players need to move the objects on their respective background so that identical objects end up at the same coordinates. You have to communicate with the other player to agree upon a common goal configuration.\n\n\n**Rules:**\n\n* In each turn, you can send exactly one of the following two commands:\n 1. `SAY: <MESSAGE>`: to send a message (everything up until the next line break) to the other player. I will forward it to your partner.\n2. `MOVE: <OBJECT>, (<X>, <Y>)`: to move an object to a new position, where `<X>` is the column and `<Y>` is the row. I will inform you if your move was successful or not.\n* If you don't stick to the format, or send several commands at once, I have to penalize you.\n* If both players accumulate more than 8 penalties, you both lose the game.\n* It is vital that you communicate with the other player regarding your goal state! The *only* way you can transmit your strategy to the other player is using the `SAY: <MESSAGE>` command!\n\n\n**Moving Objects**\n\n* You can only move objects to cells within the bounds of the grid. The target cell must be empty, i.e., it must only contain the symbol '◌'.\n* If you try to move an object to a spot that is not empty, or try to move it outside of the grid, I have to penalize you. You get another try.\n* Before making a move, double check that the target spot is empty, and does not hold any letter, frame, or line!\n\n\n**End of Game**\n\nIf you think you reached the goal of aligning all objects, you can ask the other player to finish the game by sending `SAY: finished?`. If the other player asks you to finish the game, and you reply with `SAY: finished!`, the game will end.\n\nBoth players win if the game ends within 12 rounds, where one round is defined as two players each sending a valid command.\n\n**Scoring:**\n\nThe closer the identical objects are in both game boards, the more points you get. Penalties reduce your points. Can you beat the record?\n\nThe other player started the game by sending this message:\n\n\"$start_message\"\n\nWhat is your first command?"
+        }
+      ]
+    }
+  ]
+}

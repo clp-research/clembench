@@ -21,6 +21,7 @@ from constants import (
     INVALID_LABEL, INVALID, SUCCESS, NOT_SUCCESS, NOT_PARSED, RESULT)
 
 logger = logging.getLogger(__name__)
+stdout_logger = logging.getLogger('privateshared')
 
 
 class Words:
@@ -86,7 +87,6 @@ class PrivateSharedGame:
         self.max_turns: int = len(question_order)
         self.question_order = question_order
         self.messages: List = []
-        self.current_round: int = 0
 
 
 class PrivateShared(DialogueGameMaster):
@@ -114,6 +114,7 @@ class PrivateShared(DialogueGameMaster):
         self.probing = game_instance['probes']
         self.probe_gt = {slot: i for i, slot in enumerate(game_instance['request_order'])}
         self.game = PrivateSharedGame(game_instance['request_order'], game_instance['slots'])
+
         self.n_probe_turns = self.game.max_turns + 1  # one probing before the game starts and one after each request
         request_strings = self.load_json(REQUESTS_PATH.format(self.experiment['name']))
         self.words = Words(self.load_json(WORDS_PATH.format(game_instance['lang'])))  # load language specific words
@@ -132,6 +133,7 @@ class PrivateShared(DialogueGameMaster):
         self.add_player(self.answerer)
         self.add_player(self.questioner, initial_context=dict(role="user", content=self.words.dummy_prompt))
         self._current_player_idx = 1  # start with the questioner
+        self.current_round = 0 # initialize the current round at 0 for the preliminary probing
 
     def _on_before_game(self):
         self.set_context_for(self.questioner, self.words.dummy_prompt)
@@ -212,9 +214,6 @@ class PrivateShared(DialogueGameMaster):
             self.set_context_for(self.answerer, f"{self.questioner_tag}{parsed_response}")
         else:
             # Check if the answer was correct
-            # TODO: make this robust to outputs with linebreaks and extraneous text - currently these lead to empty filled_slots!
-            #   this is also currently not recording any 'false' values, only true ones
-            #   but in those cases, the metadata recording about slot filling also doesn't work
             slot_filled = self._is_slot_filled(parsed_response)
             self.filled_slots.append(slot_filled)
             self.log_to_self("metadata", f"Slot filled: {slot_filled}")
@@ -376,6 +375,7 @@ class PrivateSharedScorer(GameScorer):
     def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
         super().__init__(game_name, experiment, game_instance)
         self.slots = game_instance["slots"]
+        # stdout_logger.warning(f"Initialized scorer for {game_name} with experiment {experiment['name']} and instance with slots {self.slots}")
 
     def compute_scores(self, episode_interactions: Dict) -> None:
         logs = episode_interactions
@@ -429,8 +429,7 @@ class PrivateSharedScorer(GameScorer):
         # we truncate kappa to be between 0 and 1
         trunc_kappa = max(0, kappa) if not aborted else np.nan
         filled = logs['Filled Slots']
-        # TODO: update proper game code to not produce empty 'Filled Slots' in the first place (see TODO above)
-        # abort fallback above assures that the following line does not lead to exceptions
+        # stdout_logger.warning(f"Filled slots: {filled}")
         sf_acc = sum(filled) / len(filled) if not aborted else np.nan
         bench_score = PrivateSharedScorer.compute_bench_score(sf_acc, trunc_kappa)
 

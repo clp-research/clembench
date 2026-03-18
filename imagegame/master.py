@@ -188,7 +188,6 @@ class ImageGameScorer(GameScorer):
         number_of_turns = 0
 
         # loop over each turn and calculate the metrics for both Player 1 and 2.
-
         for t_index, turn in enumerate(episode_interactions["turns"]):
 
             turn_request_count = 0
@@ -297,15 +296,15 @@ class ImageGameScorer(GameScorer):
             self.log_episode_score(metrics.BENCH_SCORE, f1)
 
             # average of flipped pixel counts
-            flipped_count_sum = round(flipped_count_sum / float(number_of_turns), 4)
+            flipped_count_sum = round(flipped_count_sum / float(number_of_turns), 4) if number_of_turns > 0 else 0
             self.log_episode_score('Average Changed Cell Count', flipped_count_sum)
 
             # average of expression length
-            expression_length_sum = round(expression_length_sum / float(number_of_turns), 4)
+            expression_length_sum = round(expression_length_sum / float(number_of_turns), 4) if number_of_turns > 0 else 0
             self.log_episode_score('Average Generated Instruction Length', expression_length_sum)
 
             # average of number of tokens in generated expression
-            expression_number_of_tokens = round(expression_number_of_tokens / float(number_of_turns), 4)
+            expression_number_of_tokens = round(expression_number_of_tokens / float(number_of_turns), 4) if number_of_turns > 0 else 0
             self.log_episode_score('Average Generated Expression Number of Tokens', expression_number_of_tokens)
 
             # the last turn scores are also the scores for the episode

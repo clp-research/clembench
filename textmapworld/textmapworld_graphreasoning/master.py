@@ -413,7 +413,7 @@ class GraphGameScorer(GameScorer):
                     turns_limit_reached = True
 
         for i, val in enumerate(good_move):
-            self.log_turn_score(i, "effiencient_move", val)
+            self.log_turn_score(i, "efficient_move", int(val))
 
         for i, val in enumerate(graphs_similarity):
             self.log_turn_score(i, "similarity", val)

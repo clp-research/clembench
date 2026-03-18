@@ -292,45 +292,45 @@ class MatchItScorer(GameScorer):
             # calculate episode scores from turn scores
             all_turn_scores.append(turn_score_dict)
 
-            violated_request_count = sum([turn["violated_request_count"] for turn in all_turn_scores])
-            self.log_episode_score(ms.METRIC_REQUEST_COUNT_VIOLATED, violated_request_count)
-            parsed_request_count = sum([turn["parsed_request_count"] for turn in all_turn_scores])
-            self.log_episode_score(ms.METRIC_REQUEST_COUNT_PARSED, parsed_request_count)
-            request_count = sum([turn["request_count"] for turn in all_turn_scores])
-            self.log_episode_score(ms.METRIC_REQUEST_COUNT, request_count)
-            # log episode "success" scores
-            if aborted:
-                self.log_episode_score(ms.METRIC_ABORTED, 1)
+        violated_request_count = sum([turn["violated_request_count"] for turn in all_turn_scores])
+        self.log_episode_score(ms.METRIC_REQUEST_COUNT_VIOLATED, violated_request_count)
+        parsed_request_count = sum([turn["parsed_request_count"] for turn in all_turn_scores])
+        self.log_episode_score(ms.METRIC_REQUEST_COUNT_PARSED, parsed_request_count)
+        request_count = sum([turn["request_count"] for turn in all_turn_scores])
+        self.log_episode_score(ms.METRIC_REQUEST_COUNT, request_count)
+        # log episode "success" scores
+        if aborted:
+            self.log_episode_score(ms.METRIC_ABORTED, 1)
+            self.log_episode_score(ms.METRIC_SUCCESS, 0)
+            self.log_episode_score(ms.METRIC_LOSE, 0)
+            # Game-specific metrics
+            self.log_episode_score(ms.BENCH_SCORE, np.nan)  # metric not applicable
+            self.log_episode_score("Player Score", np.nan)
+        else:
+            # two wrong decisions:
+            if not success_a and not success_b:
+                self.log_episode_score(ms.METRIC_ABORTED, 0)
                 self.log_episode_score(ms.METRIC_SUCCESS, 0)
+                self.log_episode_score(ms.METRIC_LOSE, 1)
+                # Game-specific metrics
+                self.log_episode_score(ms.BENCH_SCORE, 0)
+                self.log_episode_score("Player Score", 0)
+            # only one decided correctly
+            elif success_a != success_b:
+                self.log_episode_score(ms.METRIC_ABORTED, 0)
+                self.log_episode_score(ms.METRIC_SUCCESS, 0)
+                self.log_episode_score(ms.METRIC_LOSE, 1)
+                # Game-specific metrics
+                self.log_episode_score(ms.BENCH_SCORE, 0)  # current decision, may change (before: 50)
+                self.log_episode_score("Player Score", 50)
+
+            else:  # = success_a and success_b:
+                self.log_episode_score(ms.METRIC_ABORTED, 0)
+                self.log_episode_score(ms.METRIC_SUCCESS, 1)
                 self.log_episode_score(ms.METRIC_LOSE, 0)
                 # Game-specific metrics
-                self.log_episode_score(ms.BENCH_SCORE, np.nan)  # metric not applicable
-                self.log_episode_score("Player Score", np.nan)
-            else:
-                # two wrong decisions:
-                if not success_a and not success_b:
-                    self.log_episode_score(ms.METRIC_ABORTED, 0)
-                    self.log_episode_score(ms.METRIC_SUCCESS, 0)
-                    self.log_episode_score(ms.METRIC_LOSE, 1)
-                    # Game-specific metrics
-                    self.log_episode_score(ms.BENCH_SCORE, 0)
-                    self.log_episode_score("Player Score", 0)
-                # only one decided correctly
-                elif success_a != success_b:
-                    self.log_episode_score(ms.METRIC_ABORTED, 0)
-                    self.log_episode_score(ms.METRIC_SUCCESS, 0)
-                    self.log_episode_score(ms.METRIC_LOSE, 1)
-                    # Game-specific metrics
-                    self.log_episode_score(ms.BENCH_SCORE, 0)  # current decision, may change (before: 50)
-                    self.log_episode_score("Player Score", 50)
-
-                else:  # = success_a and success_b:
-                    self.log_episode_score(ms.METRIC_ABORTED, 0)
-                    self.log_episode_score(ms.METRIC_SUCCESS, 1)
-                    self.log_episode_score(ms.METRIC_LOSE, 0)
-                    # Game-specific metrics
-                    self.log_episode_score(ms.BENCH_SCORE, 100)
-                    self.log_episode_score("Player Score", 100)
+                self.log_episode_score(ms.BENCH_SCORE, 100)
+                self.log_episode_score("Player Score", 100)
 
 
 class MatchItBenchmark(GameBenchmark):

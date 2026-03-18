@@ -9,10 +9,9 @@ import random
 import abc
 
 from clemcore.backends import Model
-from clemcore.clemgame import GameSpec, GameMaster, GameBenchmark, Player, DialogueGameMaster, GameScorer, ParseError, GameError, RuleViolationError
+from clemcore.clemgame import GameSpec, GameBenchmark, GameMaster, DialogueGameMaster, GameScorer, Player, ParseError, GameError, RuleViolationError
 from clemcore.clemgame.events import GameEventSource
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
-# from clemcore.utils import file_utils, string_utils
 from resources.game_state.utils import GameObject, png_to_base64
 from resources.game_state.game_state import PicState, GridState, HybridState, SemanticGridState
 from resources.metrics import MetricPreparer, MetricCalculator, END_DISTANCE_SUM, EXPECTED_DISTANCE_SUM, MOVES, INIT_STATES, END_STATES, ingredients_registry, VALID_MOVES, INVALID_MOVES, PARSE_ERRORS
@@ -314,6 +313,7 @@ class CleanUpMaster(DialogueGameMaster):
         """
         Check if the player should pass their turn.
         """
+        # When working with inference providers, uncomment the following line to not exceed free inference budget too quickly.
         # time.sleep(random.uniform(1, 2))
         return self.pass_turn
 

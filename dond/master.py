@@ -144,6 +144,7 @@ class DealOrNoDeal(DialogueGameMaster):
     '''
 
     def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
+        logger.warning(f"Game spec:\n{game_spec}")
         super().__init__(game_spec, experiment, player_models)
 
     def _on_setup(self, **game_instance):

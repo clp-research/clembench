@@ -41,7 +41,6 @@ def letter_to_number(letter: str) -> int:
     :param letter: The lowercase letter to convert
     :return: The corresponding number
     """
-    print(f"Converting letter '{letter}' to number")
     if len(letter) == 1 and letter.isalpha():
         return ord(letter.lower()) - 96
     raise ValueError(f"Letter '{letter}' is not a valid single lowercase letter (a-z)")

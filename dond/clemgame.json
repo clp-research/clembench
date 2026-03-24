@@ -9,5 +9,5 @@
         "it",
         "de"
     ],
-    "benchmark": [3.0]
+    "benchmark": ["3.0"]
 }

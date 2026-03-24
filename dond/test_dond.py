@@ -3,10 +3,20 @@ import unittest
 
 from clemcore.backends import CustomResponseModel
 from clemcore.clemgame.master import ParseError
+from clemcore.clemgame import GameSpec
 from master import DealOrNoDeal
 
 
 def create_dummy_game() -> DealOrNoDeal:
+    game_spec = GameSpec.from_dict({
+        'game_name': 'dond', 
+        'description': 'Deal Or No Deal game between two agents that have to agree on how to divide a set of items between them.', 
+        'main_game': 'dond', 
+        'players': 2, 
+        'languages': ['en', 'it', 'de'], 
+        'benchmark': ['3.0'],
+        'game_path': './'
+    })
     experiment = {
         'name': 'test',
         'mode': 'coop',
@@ -26,7 +36,7 @@ def create_dummy_game() -> DealOrNoDeal:
     }
     players = [CustomResponseModel(), CustomResponseModel()]
     master = DealOrNoDeal(
-        'test_dond', '.', experiment, players  # type: ignore
+        game_spec, experiment, players  # type: ignore
     )
     master.setup(**game)
     return master

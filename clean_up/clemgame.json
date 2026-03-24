@@ -6,7 +6,7 @@
     "players": 2,
     "image": "none",
     "languages": ["en", "zh-CN", "de", "it"],
-    "benchmark": [3.0]
+    "benchmark": ["3.0"]
   },
   {
     "game_name": "mm_clean_up",

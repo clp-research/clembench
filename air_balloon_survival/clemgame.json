@@ -5,5 +5,5 @@
   "players": 2,
   "image": "none",
   "languages": ["en", "de", "it"],
-  "benchmark": [3.0]
+  "benchmark": ["3.0"]
 }

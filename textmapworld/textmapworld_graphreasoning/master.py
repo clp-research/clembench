@@ -439,21 +439,21 @@ class GraphGameScorer(GameScorer):
         exploration = (len(visited) / len(self.nodes) * 100) if len(self.nodes) else 0
         efficiency = (sum(good_move) / len(good_move) * 100) if good_move else 0
         bench_score = (2 * efficiency * exploration / (efficiency + exploration)) if (efficiency + exploration) else 0
-        self.log_episode_score('moves', valid_moves + invalid_moves if stopped else np.NaN)
-        self.log_episode_score('valid_moves', valid_moves if stopped else np.NaN)
-        self.log_episode_score('invalid_moves', invalid_moves if stopped else np.NaN)
-        self.log_episode_score('stopped', int(stopped) if stopped else np.NaN)
-        self.log_episode_score('turns_limit', int(turns_limit_reached) if stopped else np.NaN)
-        self.log_episode_score('loops', count_loops if stopped else np.NaN)
-        self.log_episode_score('number_visited', len(visited) if stopped else np.NaN)
-        self.log_episode_score('seen', len(seen) if stopped else np.NaN)
-        self.log_episode_score('efficiency', efficiency if stopped else np.NaN)
-        self.log_episode_score('exploration', exploration if stopped else np.NaN)
+        self.log_episode_score('moves', valid_moves + invalid_moves if stopped else np.nan)
+        self.log_episode_score('valid_moves', valid_moves if stopped else np.nan)
+        self.log_episode_score('invalid_moves', invalid_moves if stopped else np.nan)
+        self.log_episode_score('stopped', int(stopped) if stopped else np.nan)
+        self.log_episode_score('turns_limit', int(turns_limit_reached) if stopped else np.nan)
+        self.log_episode_score('loops', count_loops if stopped else np.nan)
+        self.log_episode_score('number_visited', len(visited) if stopped else np.nan)
+        self.log_episode_score('seen', len(seen) if stopped else np.nan)
+        self.log_episode_score('efficiency', efficiency if stopped else np.nan)
+        self.log_episode_score('exploration', exploration if stopped else np.nan)
         if graphs_similarity and stopped:
-            self.log_episode_score('graph_similarity', graphs_similarity[-1] if stopped else np.NaN)
+            self.log_episode_score('graph_similarity', graphs_similarity[-1] if stopped else np.nan)
         else:
-            self.log_episode_score('graph_similarity', 0 if stopped else np.NaN)
-        self.log_episode_score(BENCH_SCORE, bench_score if stopped else np.NaN)
+            self.log_episode_score('graph_similarity', 0 if stopped else np.nan)
+        self.log_episode_score(BENCH_SCORE, bench_score if stopped else np.nan)
 
 
 class GraphGameBenchmark(GameBenchmark):

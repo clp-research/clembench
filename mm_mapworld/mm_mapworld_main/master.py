@@ -445,18 +445,18 @@ class MM_MapWorldScorer(GameScorer):
         # log all the scores
         if aborted:  # set all values to NaN if game is aborted
             for i, val in enumerate(good_move):
-                self.log_turn_score(i, "effiencient_move", np.NaN)
+                self.log_turn_score(i, "effiencient_move", np.nan)
             self.log_episode_score(METRIC_ABORTED, 1)
-            self.log_episode_score(METRIC_SUCCESS, np.NaN)
-            self.log_episode_score(METRIC_LOSE, np.NaN)
-            self.log_episode_score('moves', np.NaN)
-            self.log_episode_score('valid_moves', np.NaN)
-            self.log_episode_score('invalid_moves', np.NaN)
-            self.log_episode_score('visited', np.NaN)
-            self.log_episode_score('seen', np.NaN)
-            self.log_episode_score('effieciency', np.NaN)
-            self.log_episode_score('exploration', np.NaN)
-            self.log_episode_score(BENCH_SCORE, np.NaN)
+            self.log_episode_score(METRIC_SUCCESS, np.nan)
+            self.log_episode_score(METRIC_LOSE, np.nan)
+            self.log_episode_score('moves', np.nan)
+            self.log_episode_score('valid_moves', np.nan)
+            self.log_episode_score('invalid_moves', np.nan)
+            self.log_episode_score('visited', np.nan)
+            self.log_episode_score('seen', np.nan)
+            self.log_episode_score('effieciency', np.nan)
+            self.log_episode_score('exploration', np.nan)
+            self.log_episode_score(BENCH_SCORE, np.nan)
         else:  # else set them to their respective values
             self.log_episode_score(METRIC_ABORTED, 0)
             if self.visited_all(visited, self.nodes):

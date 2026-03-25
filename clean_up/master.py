@@ -530,7 +530,7 @@ class CleanUpScorer(GameScorer):
             # the case when game is LOSE is taken care of by MetricCalculator
             self.log_episode_score(BENCH_SCORE, bench_score) 
         else:
-            logger.info(f'aborted, logging Main Score as np.nan')
+            logger.debug(f'aborted, logging Main Score as np.nan')
             self.log_episode_score(BENCH_SCORE, np.nan)
 
 class CleanUpBenchmark(GameBenchmark):

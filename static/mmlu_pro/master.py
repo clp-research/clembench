@@ -9,6 +9,7 @@ from clemcore.backends import Model
 from clemcore.clemgame import Player, GameBenchmark, GameMaster, ParseError
 from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.master import GameState, Outcome
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, BENCH_SCORE
 from jinja2 import Template
@@ -46,22 +47,22 @@ def parse_response(response: str, choices: List, regex_pattern) -> str:
 
 
 @dataclass
-class GameState:
+class MMLUProGameState(GameState):
     target: str
     initial_prompt: str
     choices: List[str]
     regex_pattern: str
     parsed_response: Optional[str] = None
-    success: bool = False  # When response format is adhered to and exact match is achieved
-    failure: bool = False  # When response format is adhered to, but no exact match
-    aborted: bool = False  # When response format is violated
+
+    def __post_init__(self):
+        super().__init__()
 
 
 class MMLUProGameMaster(DialogueGameMaster):
     def _on_setup(self, **instance):
         # Setup game state (arguments in same order as above)
         initial_prompt = Template(self.experiment["initial_prompt"]).render(input=instance["input"])
-        self.state = GameState(instance["target"],
+        self.state = MMLUProGameState(instance["target"],
                                initial_prompt,
                                self.experiment["choices"],
                                self.experiment["regex_pattern"])  # pattern is case-sensitive!
@@ -75,9 +76,6 @@ class MMLUProGameMaster(DialogueGameMaster):
         self.parsed_request_counts: int = 0
         self.violated_request_counts: int = 0
 
-    def _does_game_proceed(self):
-        return not (self.state.aborted or self.state.failure or self.state.success)
-
     def _validate_player_response(self, player: Player, response: str) -> bool:
         self.request_counts += 1
         try:
@@ -89,7 +87,7 @@ class MMLUProGameMaster(DialogueGameMaster):
         except ParseError as e:
             self.violated_request_counts += 1
             self.log_to_self("metadata", f"ParseError: {e.reason}")
-            self.state.aborted = True
+            self.state.abort()
             self.log_to_self("invalid format", "game_result = ABORT")
         return False
 
@@ -97,15 +95,15 @@ class MMLUProGameMaster(DialogueGameMaster):
         self.log_to_self("target", self.state.target)
         if self.state.parsed_response == self.state.target:  # case-sensitive comparison!
             self.log_to_self("correct answer", "game_result = WIN")
-            self.state.success = True
+            self.state.succeed()
         else:
             self.log_to_self("wrong answer", "game_result = LOSE")
-            self.state.failure = True
+            self.state.failed()
 
     def _on_after_game(self):
-        self.log_key(METRIC_ABORTED, int(self.state.aborted))
-        self.log_key(METRIC_LOSE, int(self.state.failure))
-        self.log_key(METRIC_SUCCESS, int(self.state.success))
+        self.log_key(METRIC_ABORTED, int(self.state.outcome == Outcome.ABORTED))
+        self.log_key(METRIC_LOSE, int(self.state.outcome == Outcome.FAILURE))
+        self.log_key(METRIC_SUCCESS, int(self.state.outcome == Outcome.SUCCESS))
 
         self.log_key(METRIC_REQUEST_COUNT, self.request_counts)
         self.log_key(METRIC_REQUEST_COUNT_PARSED, self.parsed_request_counts)

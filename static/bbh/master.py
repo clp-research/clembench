@@ -7,6 +7,7 @@ from clemcore.backends import Model
 from clemcore.clemgame import Player, GameBenchmark, GameMaster
 from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.master import GameState, Outcome
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, BENCH_SCORE
 from jinja2 import Template
@@ -24,13 +25,9 @@ class Answerer(Player):
 
 
 @dataclass
-class GameState:
+class BBHGameState:
     target: str
     initial_prompt: str
-    success: bool = False  # When response format is adhered to and exact match is achieved
-    failure: bool = False  # When response format is adhered to, but no exact match
-    aborted: bool = False  # When response format is violated todo: extract possible choices for each experiment
-
 
 class BbhFewShotGameMaster(DialogueGameMaster):
     def _on_setup(self, **instance):
@@ -38,7 +35,7 @@ class BbhFewShotGameMaster(DialogueGameMaster):
         initial_prompt = initial_prompt_template.render(input=instance["input"])
 
         # Setup game state (arguments in same order as above)
-        self.state = GameState(instance["target"], initial_prompt)
+        self.state = BBHGameState(instance["target"], initial_prompt)
 
         # Setup player
         self.answerer = Answerer(self.player_models[0], self.state.target)
@@ -48,9 +45,6 @@ class BbhFewShotGameMaster(DialogueGameMaster):
         self.request_counts: int = 0
         self.parsed_request_counts: int = 0
         self.violated_request_counts: int = 0
-
-    def _does_game_proceed(self):
-        return not (self.state.aborted or self.state.failure or self.state.success)
 
     def _validate_player_response(self, player: Player, response: str) -> bool:
         self.request_counts += 1
@@ -67,9 +61,9 @@ class BbhFewShotGameMaster(DialogueGameMaster):
             self.state.failure = True
 
     def _on_after_game(self):
-        self.log_key(METRIC_ABORTED, int(self.state.aborted))
-        self.log_key(METRIC_LOSE, int(self.state.failure))
-        self.log_key(METRIC_SUCCESS, int(self.state.success))
+        self.log_key(METRIC_ABORTED, int(self.state.outcome == Outcome.ABORTED))
+        self.log_key(METRIC_LOSE, int(self.state.outcome == Outcome.FAILURE))
+        self.log_key(METRIC_SUCCESS, int(self.state.outcome == Outcome.SUCCESS))
 
         self.log_key(METRIC_REQUEST_COUNT, self.request_counts)
         self.log_key(METRIC_REQUEST_COUNT_PARSED, self.parsed_request_counts)

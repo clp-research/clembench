@@ -58,10 +58,10 @@ class BbhFewShotGameMaster(DialogueGameMaster):
         self.log_to_self("metadata", f"Target: {self.state.target}")
         if parsed_response == self.state.target:
             self.log_to_self("correct answer", "game_result = WIN")
-            self.state.success = True
+            self.state.succeed()
         else:
             self.log_to_self("wrong answer", "game_result = LOSE")
-            self.state.failure = True
+            self.state.failed()
 
     def _on_after_game(self):
         self.log_key(METRIC_ABORTED, int(self.state.outcome == Outcome.ABORTED))

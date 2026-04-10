@@ -6,6 +6,7 @@ from clemcore.backends import Model
 from clemcore.clemgame import Player, GameBenchmark, GameMaster
 from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.master import GameState, Outcome
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, BENCH_SCORE
 
@@ -23,12 +24,12 @@ class InstructionFollower(Player):
 
 
 @dataclass
-class GameState:
+class IFEvalGameState(GameState):
     target: Dict
     initial_prompt: str
-    success: bool = False  # When response format is adhered to and exact match is achieved
-    failure: bool = False  # When response format is adhered to, but no exact match
-    aborted: bool = False  # When response format is violated (not applicable to IFEval)
+
+    def __post_init__(self):
+        super().__init__()
 
 
 def is_successful(response: str, targets: Dict) -> bool:
@@ -46,7 +47,7 @@ def is_successful(response: str, targets: Dict) -> bool:
 class IFEvalGameMaster(DialogueGameMaster):
     def _on_setup(self, **instance):
         # Setup game state (arguments in same order as above)
-        self.state = GameState(instance["target"], instance["input"])
+        self.state = IFEvalGameState(instance["target"], instance["input"])
 
         # Setup player
         required_max_tokens = self.experiment["meta"]["generation_kwargs"]["max_gen_toks"]
@@ -66,9 +67,6 @@ class IFEvalGameMaster(DialogueGameMaster):
         self.parsed_request_counts: int = 0
         self.violated_request_counts: int = 0
 
-    def _does_game_proceed(self):
-        return not (self.state.aborted or self.state.failure or self.state.success)
-
     def _validate_player_response(self, player: Player, response: str) -> bool:
         self.request_counts += 1
         self.parsed_request_counts += 1
@@ -78,15 +76,15 @@ class IFEvalGameMaster(DialogueGameMaster):
         self.log_to_self("target", self.state.target)
         if is_successful(parsed_response, self.state.target):
             self.log_to_self("followed all instructions", "game_result = WIN")
-            self.state.success = True
+            self.state.succeed()
         else:
             self.log_to_self("followed not all instructions", "game_result = LOSE")
-            self.state.failure = True
+            self.state.failed()
 
     def _on_after_game(self):
-        self.log_key(METRIC_ABORTED, int(self.state.aborted))
-        self.log_key(METRIC_LOSE, int(self.state.failure))
-        self.log_key(METRIC_SUCCESS, int(self.state.success))
+        self.log_key(METRIC_ABORTED, int(self.state.outcome == Outcome.ABORTED))
+        self.log_key(METRIC_LOSE, int(self.state.outcome == Outcome.FAILURE))
+        self.log_key(METRIC_SUCCESS, int(self.state.outcome == Outcome.SUCCESS))
 
         self.log_key(METRIC_REQUEST_COUNT, self.request_counts)
         self.log_key(METRIC_REQUEST_COUNT_PARSED, self.parsed_request_counts)

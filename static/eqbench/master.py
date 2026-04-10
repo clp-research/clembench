@@ -10,6 +10,7 @@ from clemcore.backends import Model
 from clemcore.clemgame import Player, GameBenchmark, GameMaster, ParseError
 from clemcore.clemgame.legacy.scorer import GameScorer
 from clemcore.clemgame.legacy.master import DialogueGameMaster
+from clemcore.clemgame.master import GameState, Outcome
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_LOSE, METRIC_SUCCESS, METRIC_REQUEST_COUNT, \
     METRIC_REQUEST_COUNT_PARSED, METRIC_REQUEST_COUNT_VIOLATED, BENCH_SCORE
 
@@ -65,19 +66,19 @@ def parse_response(response: str, reference: Dict) -> Dict:
 
 
 @dataclass
-class GameState:
+class EQBenchGameState(GameState):
     target: Dict  # For EQBench, the target is a dict of emotion-score pairs
     initial_prompt: str  # For EQBench the input is the prompt (no templates)
     parsed_response: Optional[Dict] = None  # For EQBench, the response becomes a Dict after parsing
-    success: bool = False  # When response format is adhered to and exact match is achieved
-    failure: bool = False  # When response format is adhered to, but no exact match
-    aborted: bool = False  # When response format is violated
+
+    def __post_init__(self):
+        super().__init__()
 
 
 class EQBenchGameMaster(DialogueGameMaster):
     def _on_setup(self, **instance):
         # Setup game state (arguments in same order as above)
-        self.state = GameState(instance["target"], instance["input"])
+        self.state = EQBenchGameState(instance["target"], instance["input"])
 
         # Setup player
         self.answerer = Answerer(self.player_models[0], self.state.target)
@@ -87,9 +88,6 @@ class EQBenchGameMaster(DialogueGameMaster):
         self.request_counts: int = 0
         self.parsed_request_counts: int = 0
         self.violated_request_counts: int = 0
-
-    def _does_game_proceed(self):
-        return not (self.state.aborted or self.state.failure or self.state.success)
 
     def _validate_player_response(self, player: Player, response: str) -> bool:
         self.request_counts += 1
@@ -102,7 +100,7 @@ class EQBenchGameMaster(DialogueGameMaster):
         except ParseError as e:
             self.violated_request_counts += 1
             self.log_to_self("metadata", f"ParseError: {e.reason}")
-            self.state.aborted = True
+            self.state.abort()
             self.log_to_self("invalid format", "game_result = ABORT")
         return False
 
@@ -110,17 +108,17 @@ class EQBenchGameMaster(DialogueGameMaster):
         self.log_to_self("target", to_response_format(self.state.target))
         if self.state.parsed_response == self.state.target:
             self.log_to_self("exact match", "game_result = WIN")
-            self.state.success = True
+            self.state.succeed()
         else:
             self.log_to_self("not exact match", "game_result = LOSE")
-            self.state.failure = True
+            self.state.failed()
 
     def _on_after_game(self):
         self.log_key(KEY_PARSED_RESPONSE, self.state.parsed_response)
 
-        self.log_key(METRIC_ABORTED, int(self.state.aborted))
-        self.log_key(METRIC_LOSE, int(self.state.failure))
-        self.log_key(METRIC_SUCCESS, int(self.state.success))
+        self.log_key(METRIC_ABORTED, int(self.state.outcome == Outcome.ABORTED))
+        self.log_key(METRIC_LOSE, int(self.state.outcome == Outcome.FAILURE))
+        self.log_key(METRIC_SUCCESS, int(self.state.outcome == Outcome.SUCCESS))
 
         self.log_key(METRIC_REQUEST_COUNT, self.request_counts)
         self.log_key(METRIC_REQUEST_COUNT_PARSED, self.parsed_request_counts)
